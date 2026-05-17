@@ -609,7 +609,6 @@ function IndexPopup() {
           const isActive = activeGame === game.id
           const isCompleted = !!completedToday[game.id]
           const localizedTitle = getMessage(game.id) || game.title
-          const IconComponent = game.icon
 
           return (
             <button
@@ -632,10 +631,10 @@ function IndexPopup() {
               <div className="flex flex-col items-center gap-3 z-10">
                 <span
                   className={cn(
-                    "p-2 rounded-md bg-secondary text-secondary-foreground transition-colors duration-200",
+                    "p-2 rounded-md bg-secondary transition-colors duration-200 flex items-center justify-center shrink-0 w-8 h-8",
                     (isActive || isCompleted) && game.color.popupIconBg
                   )}>
-                  <IconComponent className="w-4 h-4" />
+                  <img src={game.icon} alt={localizedTitle} className="w-5 h-5 object-contain" />
                 </span>
                 <span
                   className={cn(

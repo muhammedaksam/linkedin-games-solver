@@ -363,7 +363,6 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 gap-4 w-full">
               {GAMES_CONFIG.map((game) => {
                 const pb = personalBests[game.id]
-                const IconComponent = game.icon
 
                 return (
                   <div
@@ -377,12 +376,11 @@ export default function Dashboard() {
                     <div className="flex items-center gap-3.5">
                       <span
                         className={cn(
-                          "p-3 rounded-lg border bg-gradient-to-br flex items-center justify-center shrink-0",
+                          "p-3 rounded-lg border bg-gradient-to-br flex items-center justify-center shrink-0 w-11 h-11",
                           game.color.gradient,
-                          game.color.text,
                           game.color.border
                         )}>
-                        <IconComponent className="w-5 h-5" />
+                        <img src={game.icon} alt={game.title} className="w-6 h-6 object-contain" />
                       </span>
                       <div className="flex flex-col">
                         <span className="text-xs font-bold text-foreground">
@@ -468,22 +466,19 @@ export default function Dashboard() {
                             (g) => g.id === gameId
                           )
                           if (!record?.solved) return null
-                          const IconComponent = gameConfig?.icon
-
                           return (
                             <div
                               key={gameId}
                               className="flex items-center justify-between py-2 border-b border-border last:border-b-0 last:pb-0 first:pt-0">
                               <div className="flex items-center gap-3">
-                                {gameConfig && IconComponent && (
+                                {gameConfig && (
                                   <span
                                     className={cn(
-                                      "p-1.5 rounded border bg-gradient-to-br flex items-center justify-center shrink-0",
+                                      "p-1.5 rounded border bg-gradient-to-br flex items-center justify-center shrink-0 w-8 h-8",
                                       gameConfig.color.gradient,
-                                      gameConfig.color.text,
                                       gameConfig.color.border
                                     )}>
-                                    <IconComponent className="w-3.5 h-3.5" />
+                                    <img src={gameConfig.icon} alt={gameConfig.title} className="w-4 h-4 object-contain" />
                                   </span>
                                 )}
                                 <span className="text-xs font-bold">

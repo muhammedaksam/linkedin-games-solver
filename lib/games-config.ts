@@ -1,17 +1,15 @@
-import {
-  ChevronsUp,
-  Crown,
-  Grid3X3,
-  Layers,
-  Sun,
-  Target,
-  Zap
-} from "lucide-react"
+import crossclimbIcon from "data-base64:~assets/crossclimb.svg"
+import patchesIcon from "data-base64:~assets/patches.svg"
+import pinpointIcon from "data-base64:~assets/pinpoint.svg"
+import queensIcon from "data-base64:~assets/queens.svg"
+import sudokuIcon from "data-base64:~assets/sudoku.svg"
+import tangoIcon from "data-base64:~assets/tango.svg"
+import zipIcon from "data-base64:~assets/zip.svg"
 
 export interface GameMetadata {
   id: string
   title: string
-  icon: typeof Grid3X3
+  icon: string
   path: string
   color: {
     // Dashboard styling (Cards, logs, stats list)
@@ -33,7 +31,7 @@ export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "sudoku",
     title: "Mini Sudoku",
-    icon: Grid3X3,
+    icon: sudokuIcon,
     path: "mini-sudoku",
     color: {
       gradient: "from-emerald-500/10 to-teal-500/10",
@@ -52,7 +50,7 @@ export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "tango",
     title: "Tango",
-    icon: Sun,
+    icon: tangoIcon,
     path: "tango",
     color: {
       gradient: "from-blue-500/10 to-indigo-500/10",
@@ -71,7 +69,7 @@ export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "queens",
     title: "Queens",
-    icon: Crown,
+    icon: queensIcon,
     path: "queens",
     color: {
       gradient: "from-violet-500/10 to-fuchsia-500/10",
@@ -90,7 +88,7 @@ export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "zip",
     title: "Zip",
-    icon: Zap,
+    icon: zipIcon,
     path: "zip",
     color: {
       gradient: "from-orange-500/10 to-amber-500/10",
@@ -109,7 +107,7 @@ export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "patches",
     title: "Patches",
-    icon: Layers,
+    icon: patchesIcon,
     path: "patches",
     color: {
       gradient: "from-rose-500/10 to-pink-500/10",
@@ -128,7 +126,7 @@ export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "crossclimb",
     title: "Crossclimb",
-    icon: ChevronsUp,
+    icon: crossclimbIcon,
     path: "crossclimb",
     color: {
       gradient: "from-cyan-500/10 to-teal-500/10",
@@ -147,7 +145,7 @@ export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "pinpoint",
     title: "Pinpoint",
-    icon: Target,
+    icon: pinpointIcon,
     path: "pinpoint",
     color: {
       gradient: "from-blue-500/10 to-indigo-500/10",
