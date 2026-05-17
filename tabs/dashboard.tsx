@@ -11,13 +11,19 @@ import {
 } from "lucide-react"
 import { useEffect, useMemo, useState } from "react"
 
+import { Storage } from "@plasmohq/storage"
+import { useStorage } from "@plasmohq/storage/hook"
+
+import { GAMES_CONFIG } from "~/lib/games-config"
 import { cn } from "~/lib/utils"
 
 import { Calendar } from "../components/ui/calendar"
 
 import "./dashboard.css"
 
-import { GAMES_CONFIG } from "~/lib/games-config"
+const localStorage = new Storage({
+  area: "local"
+})
 
 interface SolveRecord {
   solved: boolean
@@ -88,10 +94,23 @@ function formatDateString(dateStr: string): string {
 }
 
 export default function Dashboard() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark")
-  const [history, setHistory] = useState<
-    Record<string, Record<string, SolveRecord>>
-  >({})
+  // Reactive state hooks synchronized through @plasmohq/storage
+  const [theme, setTheme] = useStorage<"light" | "dark">(
+    {
+      key: "theme",
+      instance: localStorage
+    },
+    "dark"
+  )
+
+  const [history] = useStorage<Record<string, Record<string, SolveRecord>>>(
+    {
+      key: "solveHistory",
+      instance: localStorage
+    },
+    {}
+  )
+
   const [totalSolved, setTotalSolved] = useState<number>(0)
   const [averageTime, setAverageTime] = useState<number>(0)
   const [streak, setStreak] = useState<number>(0)
@@ -102,7 +121,7 @@ export default function Dashboard() {
 
   // Compute date list with completed games to highlight in the calendar
   const solvedDates = useMemo(() => {
-    return Object.keys(history).filter((dateStr) => {
+    return Object.keys(history || {}).filter((dateStr) => {
       const checkDay = history[dateStr]
       return (
         checkDay && Object.values(checkDay).some((g: SolveRecord) => g?.solved)
@@ -118,18 +137,7 @@ export default function Dashboard() {
     return solvedDates.includes(dateStr)
   }
 
-  // Theme Sync on Mount
-  useEffect(() => {
-    if (typeof chrome !== "undefined" && chrome.storage?.local) {
-      chrome.storage.local.get("theme").then((res) => {
-        if (res.theme === "light" || res.theme === "dark") {
-          setTheme(res.theme)
-        }
-      })
-    }
-  }, [])
-
-  // Dynamically set document title on mount to avoid raw __MSG_ templates
+  // Dynamically set document title on mount
   useEffect(() => {
     document.title = getMessage("dashboardTitle")
   }, [])
@@ -144,90 +152,80 @@ export default function Dashboard() {
     }
   }, [theme])
 
-  // Load and crunch database stats
+  // Load and crunch database stats reactively whenever history changes
   useEffect(() => {
-    if (typeof chrome === "undefined" || !chrome.storage?.local) return
+    const rawHistory = history || {}
 
-    chrome.storage.local.get("solveHistory").then((res) => {
-      const rawHistory = res.solveHistory || {}
-      setHistory(rawHistory)
+    let solvedCount = 0
+    let totalSeconds = 0
+    let timedCount = 0
+    const pbMap: Record<string, { time: number; date: string }> = {}
 
-      let solvedCount = 0
-      let totalSeconds = 0
-      let timedCount = 0
-      const pbMap: Record<string, { time: number; date: string }> = {}
+    // Dates sorted
+    const dateKeys = Object.keys(rawHistory).sort()
 
-      // Dates sorted
-      const dateKeys = Object.keys(rawHistory).sort()
+    dateKeys.forEach((dateKey) => {
+      const dayGames = rawHistory[dateKey] || {}
+      Object.keys(dayGames).forEach((gameId) => {
+        const rec = dayGames[gameId]
+        if (rec?.solved) {
+          solvedCount++
+          if (rec.time && rec.time > 0) {
+            totalSeconds += rec.time
+            timedCount++
 
-      dateKeys.forEach((dateKey) => {
-        const dayGames = rawHistory[dateKey] || {}
-        Object.keys(dayGames).forEach((gameId) => {
-          const rec = dayGames[gameId]
-          if (rec?.solved) {
-            solvedCount++
-            if (rec.time && rec.time > 0) {
-              totalSeconds += rec.time
-              timedCount++
-
-              // Check PB
-              if (!pbMap[gameId] || rec.time < pbMap[gameId].time) {
-                pbMap[gameId] = { time: rec.time, date: dateKey }
-              }
-            }
-          }
-        })
-      })
-
-      setTotalSolved(solvedCount)
-      setAverageTime(timedCount > 0 ? Math.round(totalSeconds / timedCount) : 0)
-      setPersonalBests(pbMap)
-
-      // Calculate Streak
-      let activeStreak = 0
-      if (dateKeys.length > 0) {
-        const todayStr = new Date().toISOString().split("T")[0]
-        const yesterdayStr = new Date(Date.now() - 86400000)
-          .toISOString()
-          .split("T")[0]
-
-        // Only start checking if they solved something today or yesterday
-        const hasRecentActivity =
-          rawHistory[todayStr] || rawHistory[yesterdayStr]
-
-        if (hasRecentActivity) {
-          const currentCheck = new Date()
-          while (true) {
-            const checkStr = currentCheck.toISOString().split("T")[0]
-            const checkDay = rawHistory[checkStr]
-            const solvedOnDay =
-              checkDay &&
-              Object.values(checkDay).some((g: SolveRecord) => g?.solved)
-
-            if (solvedOnDay) {
-              activeStreak++
-              currentCheck.setDate(currentCheck.getDate() - 1)
-            } else {
-              break
+            // Check PB
+            if (!pbMap[gameId] || rec.time < pbMap[gameId].time) {
+              pbMap[gameId] = { time: rec.time, date: dateKey }
             }
           }
         }
-      }
-      setStreak(activeStreak)
+      })
     })
-  }, [])
+
+    setTotalSolved(solvedCount)
+    setAverageTime(timedCount > 0 ? Math.round(totalSeconds / timedCount) : 0)
+    setPersonalBests(pbMap)
+
+    // Calculate Streak
+    let activeStreak = 0
+    if (dateKeys.length > 0) {
+      const todayStr = new Date().toISOString().split("T")[0]
+      const yesterdayStr = new Date(Date.now() - 86400000)
+        .toISOString()
+        .split("T")[0]
+
+      // Only start checking if they solved something today or yesterday
+      const hasRecentActivity = rawHistory[todayStr] || rawHistory[yesterdayStr]
+
+      if (hasRecentActivity) {
+        const currentCheck = new Date()
+        while (true) {
+          const checkStr = currentCheck.toISOString().split("T")[0]
+          const checkDay = rawHistory[checkStr]
+          const solvedOnDay =
+            checkDay &&
+            Object.values(checkDay).some((g: SolveRecord) => g?.solved)
+
+          if (solvedOnDay) {
+            activeStreak++
+            currentCheck.setDate(currentCheck.getDate() - 1)
+          } else {
+            break
+          }
+        }
+      }
+    }
+    setStreak(activeStreak)
+  }, [history])
 
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark"
-    setTheme(nextTheme)
-    if (typeof chrome !== "undefined" && chrome.storage?.local) {
-      chrome.storage.local.set({ theme: nextTheme })
-    }
+    setTheme(theme === "dark" ? "light" : "dark")
   }
 
   // Generate grouped timeline data sorted reverse chronological
   const sortedDates = useMemo(() => {
-    return Object.keys(history)
+    return Object.keys(history || {})
       .filter((dateStr) => {
         if (!selectedDate) return true
         const year = selectedDate.getFullYear()

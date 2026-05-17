@@ -2,32 +2,81 @@ import {
   AlertCircle,
   BarChart3,
   CheckCircle2,
+  Eye,
+  EyeOff,
+  Key,
   Moon,
+  Settings,
   Sparkles,
   Sun
 } from "lucide-react"
 import { useCallback, useEffect, useState } from "react"
 
+import { Storage } from "@plasmohq/storage"
+import { useStorage } from "@plasmohq/storage/hook"
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "~/components/ui/select"
 import { GAMES_CONFIG } from "~/lib/games-config"
 import { cn } from "~/lib/utils"
 
 import "./popup.css"
+
+const localStorage = new Storage({
+  area: "local"
+})
+
+interface SolveRecord {
+  solved: boolean
+  time: number
+  solvedAt?: string
+}
+
+type SolveHistory = Record<string, Record<string, SolveRecord>>
+
+const PROVIDER_MODELS: Record<string, { label: string; value: string }[]> = {
+  gemini: [
+    { label: "Gemini 2.5 Flash (Default)", value: "gemini-2.5-flash" },
+    { label: "Gemini 2.5 Pro", value: "gemini-2.5-pro" }
+  ],
+  openai: [
+    { label: "GPT-4o Mini (Default)", value: "gpt-4o-mini" },
+    { label: "GPT-4o", value: "gpt-4o" },
+    { label: "GPT-3.5 Turbo", value: "gpt-3.5-turbo" }
+  ],
+  anthropic: [
+    { label: "Claude 3.5 Haiku (Default)", value: "claude-3-5-haiku" },
+    { label: "Claude 3.5 Sonnet", value: "claude-3-5-sonnet" }
+  ],
+  deepseek: [
+    { label: "DeepSeek Chat (Default)", value: "deepseek-chat" },
+    { label: "DeepSeek Reasoner", value: "deepseek-reasoner" }
+  ],
+  custom: []
+}
 
 // Safe development/chrome localization getter
 function getMessage(key: string, substitutions?: string | string[]): string {
   if (typeof chrome !== "undefined" && chrome.i18n) {
     return chrome.i18n.getMessage(key, substitutions)
   }
-  
+
   // Safe runtime development fallback (so it runs perfectly in web preview or testing)
   const fallbacks: Record<string, string> = {
     title: "LinkedIn Games",
     subtitle: "Solve active boards in a single click",
     switchThemeTitle: "Switch to $1 mode",
-    errorChromeTabIntegration: "Chrome tab integration is only available inside browser extensions.",
+    errorChromeTabIntegration:
+      "Chrome tab integration is only available inside browser extensions.",
     errorActiveTabNotFound: "Could not find the active browser tab.",
     errorNavigationFailed: "Failed to navigate to the $1 board automatically.",
-    errorConnectionFailed: "Could not connect to LinkedIn page. Please reload the tab and try again.",
+    errorConnectionFailed:
+      "Could not connect to LinkedIn page. Please reload the tab and try again.",
     errorExecutionFailedDefault: "Solver execution failed unexpectedly.",
     successSolverStarted: "Solver successfully started! Running...",
     solvingStatus: "Solving...",
@@ -36,6 +85,8 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     queens: "Queens",
     zip: "Zip",
     patches: "Patches",
+    crossclimb: "Crossclimb",
+    pinpoint: "Pinpoint",
     titleSolve: "Solve $1",
     titleCompleted: "Completed today! Click to navigate to $1",
     titleOpen: "Open $1 to solve",
@@ -57,8 +108,8 @@ function getMessage(key: string, substitutions?: string | string[]): string {
 function getLocalDateString(): string {
   const d = new Date()
   const year = d.getFullYear()
-  const month = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
+  const month = String(d.getMonth() + 1).padStart(2, "0")
+  const day = String(d.getDate()).padStart(2, "0")
   return `${year}-${month}-${day}`
 }
 
@@ -67,19 +118,75 @@ function IndexPopup() {
   const [solving, setSolving] = useState<boolean>(false)
   const [solveError, setSolveError] = useState<string | null>(null)
   const [solveSuccess, setSolveSuccess] = useState<boolean>(false)
-  const [theme, setTheme] = useState<"light" | "dark">("dark")
-  const [completedToday, setCompletedToday] = useState<Record<string, boolean>>({})
 
-  // Load theme preference on mount
+  // Reactive state hooks synchronized through @plasmohq/storage
+  const [theme, setTheme] = useStorage<"light" | "dark">(
+    {
+      key: "theme",
+      instance: localStorage
+    },
+    "dark"
+  )
+
+  const [geminiApiKey, setGeminiApiKey] = useStorage<string>(
+    {
+      key: "geminiApiKey",
+      instance: localStorage
+    },
+    ""
+  )
+
+  const [solveHistory] = useStorage<SolveHistory>(
+    {
+      key: "solveHistory",
+      instance: localStorage
+    },
+    {}
+  )
+
+  // Multi-Provider settings storage hooks
+  const [aiProvider, setAiProvider] = useStorage<string>(
+    {
+      key: "aiProvider",
+      instance: localStorage
+    },
+    "gemini"
+  )
+
+  const [aiModel, setAiModel] = useStorage<string>(
+    {
+      key: "aiModel",
+      instance: localStorage
+    },
+    "gemini-2.5-flash"
+  )
+
+  const [aiApiKey, setAiApiKey] = useStorage<string>(
+    {
+      key: "aiApiKey",
+      instance: localStorage
+    },
+    ""
+  )
+
+  const [aiCustomEndpoint, setAiCustomEndpoint] = useStorage<string>(
+    {
+      key: "aiCustomEndpoint",
+      instance: localStorage
+    },
+    ""
+  )
+
+  // Backward compatibility migration: copy legacy key if set
   useEffect(() => {
-    if (typeof chrome !== "undefined" && chrome.storage?.local) {
-      chrome.storage.local.get("theme").then((res) => {
-        if (res.theme === "light" || res.theme === "dark") {
-          setTheme(res.theme)
-        }
-      })
+    if (geminiApiKey && !aiApiKey && aiProvider === "gemini") {
+      setAiApiKey(geminiApiKey)
     }
-  }, [])
+  }, [geminiApiKey, aiApiKey, aiProvider, setAiApiKey])
+
+  // AI Key configuration UI toggle
+  const [showSettings, setShowSettings] = useState<boolean>(false)
+  const [showApiKey, setShowApiKey] = useState<boolean>(false)
 
   // Sync theme class to standard shadcn layout root
   useEffect(() => {
@@ -90,27 +197,6 @@ function IndexPopup() {
       root.classList.remove("dark")
     }
   }, [theme])
-
-  // Load completion history for today from chrome.storage.local
-  const loadCompletionHistory = useCallback(async () => {
-    if (typeof chrome === "undefined" || !chrome.storage?.local) return
-    try {
-      const dateKey = getLocalDateString()
-      const result = await chrome.storage.local.get("solveHistory")
-      const history = result.solveHistory || {}
-      const todayGames = history[dateKey] || {}
-
-      const completed: Record<string, boolean> = {}
-      for (const gameId of Object.keys(todayGames)) {
-        if (todayGames[gameId]?.solved) {
-          completed[gameId] = true
-        }
-      }
-      setCompletedToday(completed)
-    } catch (e) {
-      console.error("Failed to load completion history:", e)
-    }
-  }, [])
 
   const detectActiveGame = useCallback(async () => {
     if (typeof chrome === "undefined" || !chrome.tabs) return
@@ -141,32 +227,13 @@ function IndexPopup() {
     }
   }, [])
 
-  // Sync active game and completion logs on mount
+  // Sync active game on mount
   useEffect(() => {
     detectActiveGame()
-    loadCompletionHistory()
-
-    // Dynamically listen for completion state writes from the content script
-    if (typeof chrome !== "undefined" && chrome.storage) {
-      const listener = (
-        changes: Record<string, chrome.storage.StorageChange>,
-        areaName: string
-      ) => {
-        if (areaName === "local" && changes.solveHistory) {
-          loadCompletionHistory()
-        }
-      }
-      chrome.storage.onChanged.addListener(listener)
-      return () => chrome.storage.onChanged.removeListener(listener)
-    }
-  }, [detectActiveGame, loadCompletionHistory])
+  }, [detectActiveGame])
 
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark"
-    setTheme(nextTheme)
-    if (typeof chrome !== "undefined" && chrome.storage?.local) {
-      chrome.storage.local.set({ theme: nextTheme })
-    }
+    setTheme(theme === "dark" ? "light" : "dark")
   }
 
   const openDashboard = () => {
@@ -187,9 +254,11 @@ function IndexPopup() {
       return
     }
 
-    const getGamePath = (id: string) => id === "sudoku" ? "mini-sudoku" : id
+    const getGamePath = (id: string) => (id === "sudoku" ? "mini-sudoku" : id)
     const gamePath = getGamePath(gameId)
-    const isActiveTabLinkedInGame = tab.url?.includes(`linkedin.com/games/${gamePath}`)
+    const isActiveTabLinkedInGame = tab.url?.includes(
+      `linkedin.com/games/${gamePath}`
+    )
 
     // If the card clicked is NOT the active game on the current tab, we automatically switch/open it!
     if (activeGame !== gameId && !isActiveTabLinkedInGame) {
@@ -205,7 +274,9 @@ function IndexPopup() {
           if (tabs[0].windowId) {
             await chrome.windows.update(tabs[0].windowId, { focused: true })
           }
-          console.log(`[LinkedIn Games Solver] Switched to existing tab for ${gameId}.`)
+          console.log(
+            `[LinkedIn Games Solver] Switched to existing tab for ${gameId}.`
+          )
         } else {
           // Create new tab
           await chrome.tabs.create({
@@ -247,6 +318,16 @@ function IndexPopup() {
     )
   }
 
+  // Derive daily completion counts reactively from solveHistory storage state
+  const dateKey = getLocalDateString()
+  const todayGames = solveHistory?.[dateKey] || {}
+  const completedToday: Record<string, boolean> = {}
+  for (const gameId of Object.keys(todayGames)) {
+    if (todayGames[gameId]?.solved) {
+      completedToday[gameId] = true
+    }
+  }
+
   const solvedCount = Object.values(completedToday).filter(Boolean).length
 
   return (
@@ -266,24 +347,214 @@ function IndexPopup() {
         <div className="flex items-center gap-1.5">
           <button
             type="button"
+            onClick={() => setShowSettings(!showSettings)}
+            className={cn(
+              "p-1.5 rounded-md border border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm outline-none",
+              showSettings &&
+                "bg-accent text-accent-foreground border-emerald-500/30"
+            )}
+            title="AI Settings">
+            <Settings className="w-3.5 h-3.5 text-zinc-400" />
+          </button>
+          <button
+            type="button"
             onClick={openDashboard}
             className="p-1.5 rounded-md border border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm outline-none"
             title={getMessage("dashboardTitle")}>
-            <BarChart3 className="w-3.5 h-3.5 text-emerald-500 animate-in fade-in duration-300" />
+            <BarChart3 className="w-3.5 h-3.5 text-emerald-500" />
           </button>
           <button
             type="button"
             onClick={toggleTheme}
             className="p-1.5 rounded-md border border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm outline-none"
-            title={getMessage("switchThemeTitle", theme === "dark" ? "light" : "dark")}>
+            title={getMessage(
+              "switchThemeTitle",
+              theme === "dark" ? "light" : "dark"
+            )}>
             {theme === "dark" ? (
-              <Sun className="w-3.5 h-3.5 text-orange-400 animate-in spin-in-12 duration-500" />
+              <Sun className="w-3.5 h-3.5 text-orange-400" />
             ) : (
-              <Moon className="w-3.5 h-3.5 text-zinc-600 animate-in spin-in-12 duration-500" />
+              <Moon className="w-3.5 h-3.5 text-zinc-600" />
             )}
           </button>
         </div>
       </header>
+
+      {/* Slide-out / Collapse API Settings panel */}
+      {showSettings && (
+        <div className="mb-5 p-4 rounded-lg border border-border bg-card/60 backdrop-blur-md text-card-foreground shadow-sm animate-in slide-in-from-top-2 duration-300 space-y-4">
+          <div className="flex items-center gap-2 border-b border-border/60 pb-2">
+            <Key className="w-3.5 h-3.5 text-emerald-500" />
+            <h3 className="text-xs font-semibold text-foreground">
+              AI Configuration
+            </h3>
+          </div>
+
+          <div className="space-y-3">
+            {/* AI Provider */}
+            <div className="space-y-1.5">
+              <span className="text-[10px] text-muted-foreground block font-medium">
+                AI Provider
+              </span>
+              <Select
+                value={aiProvider || "gemini"}
+                onValueChange={(val) => {
+                  setAiProvider(val)
+                  // Autoselect a sensible default model
+                  if (val === "gemini") setAiModel("gemini-2.5-flash")
+                  else if (val === "openai") setAiModel("gpt-4o-mini")
+                  else if (val === "anthropic") setAiModel("claude-3-5-haiku")
+                  else if (val === "deepseek") setAiModel("deepseek-chat")
+                  else if (val === "custom") setAiModel("")
+                }}>
+                <SelectTrigger className="w-full text-xs h-8 bg-card/50 border border-border hover:border-emerald-500/30 justify-between">
+                  <SelectValue placeholder="Select Provider" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="gemini">Google Gemini</SelectItem>
+                  <SelectItem value="openai">OpenAI (ChatGPT)</SelectItem>
+                  <SelectItem value="anthropic">Anthropic Claude</SelectItem>
+                  <SelectItem value="deepseek">DeepSeek</SelectItem>
+                  <SelectItem value="custom">
+                    Custom / Local Endpoint
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* AI Model */}
+            {aiProvider !== "custom" && (
+              <div className="space-y-1.5">
+                <span className="text-[10px] text-muted-foreground block font-medium">
+                  Model
+                </span>
+                <Select
+                  value={
+                    PROVIDER_MODELS[aiProvider]?.some(
+                      (m) => m.value === aiModel
+                    )
+                      ? aiModel
+                      : "custom-input"
+                  }
+                  onValueChange={(val) => {
+                    if (val === "custom-input") {
+                      setAiModel("")
+                    } else {
+                      setAiModel(val)
+                    }
+                  }}>
+                  <SelectTrigger className="w-full text-xs h-8 bg-card/50 border border-border hover:border-emerald-500/30 justify-between">
+                    <SelectValue placeholder="Select Model" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {PROVIDER_MODELS[aiProvider]?.map((m) => (
+                      <SelectItem key={m.value} value={m.value}>
+                        {m.label}
+                      </SelectItem>
+                    ))}
+                    <SelectItem value="custom-input">
+                      Custom Model Name...
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+
+            {/* Custom Model Input Slot */}
+            {(aiProvider === "custom" ||
+              !PROVIDER_MODELS[aiProvider]?.some(
+                (m) => m.value === aiModel
+              )) && (
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="ai-model-input"
+                  className="text-[10px] text-muted-foreground block font-medium">
+                  Custom Model Name
+                </label>
+                <input
+                  id="ai-model-input"
+                  type="text"
+                  value={aiModel || ""}
+                  onChange={(e) => setAiModel(e.target.value)}
+                  placeholder={
+                    aiProvider === "custom"
+                      ? "e.g. llama3, mistral"
+                      : "Enter custom identifier..."
+                  }
+                  className="w-full text-xs px-3 py-1.5 rounded-md border border-border bg-muted/20 focus:border-emerald-500/50 focus:bg-background outline-none transition-all duration-200"
+                />
+              </div>
+            )}
+
+            {/* Custom Endpoint Input Slot */}
+            {aiProvider === "custom" && (
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="ai-custom-endpoint"
+                  className="text-[10px] text-muted-foreground block font-medium">
+                  Endpoint URL
+                </label>
+                <input
+                  id="ai-custom-endpoint"
+                  type="text"
+                  value={aiCustomEndpoint || ""}
+                  onChange={(e) => setAiCustomEndpoint(e.target.value)}
+                  placeholder="e.g. http://localhost:11434/v1"
+                  className="w-full text-xs px-3 py-1.5 rounded-md border border-border bg-muted/20 focus:border-emerald-500/50 focus:bg-background outline-none transition-all duration-200"
+                />
+              </div>
+            )}
+
+            {/* API Key */}
+            <div className="space-y-1.5">
+              <label
+                htmlFor="ai-api-key"
+                className="text-[10px] text-muted-foreground block font-medium">
+                {aiProvider === "gemini" && "Gemini API Key"}
+                {aiProvider === "openai" && "OpenAI API Key"}
+                {aiProvider === "anthropic" && "Anthropic API Key"}
+                {aiProvider === "deepseek" && "DeepSeek API Key"}
+                {aiProvider === "custom" && "API Key (Optional)"}
+              </label>
+              <div className="relative flex items-center">
+                <input
+                  id="ai-api-key"
+                  type={showApiKey ? "text" : "password"}
+                  value={aiApiKey || ""}
+                  onChange={(e) => {
+                    setAiApiKey(e.target.value)
+                    // If Gemini, sync to legacy key to support options pages
+                    if (aiProvider === "gemini") {
+                      setGeminiApiKey(e.target.value)
+                    }
+                  }}
+                  placeholder={
+                    aiProvider === "custom"
+                      ? "Optional credentials..."
+                      : "Enter credentials key..."
+                  }
+                  className="w-full text-xs px-3 py-1.5 pr-10 rounded-md border border-border bg-muted/20 focus:border-emerald-500/50 focus:bg-background outline-none transition-all duration-200"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowApiKey(!showApiKey)}
+                  className="absolute right-2 text-muted-foreground hover:text-foreground transition-colors p-1">
+                  {showApiKey ? (
+                    <EyeOff className="w-3.5 h-3.5" />
+                  ) : (
+                    <Eye className="w-3.5 h-3.5" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-[9px] text-muted-foreground/80 leading-relaxed pt-1.5 border-t border-border/40">
+            Selected model solves <strong>Crossclimb</strong> &{" "}
+            <strong>Pinpoint</strong>. The extension never shares your key.
+          </p>
+        </div>
+      )}
 
       {solveError && (
         <div className="flex items-start gap-3 p-3.5 mb-5 rounded-md border border-destructive/20 bg-destructive/10 text-destructive-foreground animate-in fade-in slide-in-from-top-2 duration-300">
@@ -325,8 +596,8 @@ function IndexPopup() {
                 isActive
                   ? getMessage("titleSolve", localizedTitle)
                   : isCompleted
-                  ? getMessage("titleCompleted", localizedTitle)
-                  : getMessage("titleOpen", localizedTitle)
+                    ? getMessage("titleCompleted", localizedTitle)
+                    : getMessage("titleOpen", localizedTitle)
               }>
               <div className="flex flex-col items-center gap-3 z-10">
                 <span
@@ -339,7 +610,8 @@ function IndexPopup() {
                 <span
                   className={cn(
                     "text-xs font-medium tracking-tight transition-colors",
-                    (isActive || isCompleted) && `${game.color.popupTextAccent} font-semibold`
+                    (isActive || isCompleted) &&
+                      `${game.color.popupTextAccent} font-semibold`
                   )}>
                   {localizedTitle}
                 </span>
@@ -353,7 +625,8 @@ function IndexPopup() {
                   <span
                     className={cn(
                       "w-1.5 h-1.5 rounded-full bg-muted-foreground/30 transition-all duration-200",
-                      isActive && `${game.color.popupIndicatorDot} animate-pulse-slow`
+                      isActive &&
+                        `${game.color.popupIndicatorDot} animate-pulse-slow`
                     )}
                   />
                 )}
@@ -380,7 +653,10 @@ function IndexPopup() {
             </>
           ) : (
             <span>
-              {getMessage("dailyProgress", [String(solvedCount), String(GAMES_CONFIG.length)])}
+              {getMessage("dailyProgress", [
+                String(solvedCount),
+                String(GAMES_CONFIG.length)
+              ])}
             </span>
           )}
         </div>

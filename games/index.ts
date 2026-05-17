@@ -1,9 +1,11 @@
-import { BaseSolver } from "./base";
-import { PatchesSolver } from "./patches";
-import { QueensSolver } from "./queens";
-import { SudokuSolver } from "./sudoku";
-import { TangoSolver } from "./tango";
-import { ZipSolver } from "./zip";
+import { BaseSolver } from "./base"
+import { CrossclimbSolver } from "./crossclimb"
+import { PatchesSolver } from "./patches"
+import { PinpointSolver } from "./pinpoint"
+import { QueensSolver } from "./queens"
+import { SudokuSolver } from "./sudoku"
+import { TangoSolver } from "./tango"
+import { ZipSolver } from "./zip"
 
 // List of all solvers adhering to the solver principal
 export const SOLVERS: BaseSolver[] = [
@@ -12,7 +14,9 @@ export const SOLVERS: BaseSolver[] = [
   new QueensSolver(),
   new ZipSolver(),
   new PatchesSolver(),
-];
+  new CrossclimbSolver(),
+  new PinpointSolver()
+]
 
 /**
  * Automatically detects the currently active game solver on the page.
@@ -20,11 +24,19 @@ export const SOLVERS: BaseSolver[] = [
 export function detectActiveSolver(): BaseSolver | null {
   for (const solver of SOLVERS) {
     if (solver.detect()) {
-      return solver;
+      return solver
     }
   }
-  return null;
+  return null
 }
 
-export { BaseSolver };
-export { PatchesSolver, QueensSolver, SudokuSolver, TangoSolver, ZipSolver };
+export { BaseSolver }
+export {
+  CrossclimbSolver,
+  PatchesSolver,
+  PinpointSolver,
+  QueensSolver,
+  SudokuSolver,
+  TangoSolver,
+  ZipSolver
+}

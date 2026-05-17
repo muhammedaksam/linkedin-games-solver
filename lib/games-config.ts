@@ -1,8 +1,10 @@
 import {
+  ChevronsUp,
   Crown,
   Grid3X3,
   Layers,
   Sun,
+  Target,
   Zap
 } from "lucide-react"
 
@@ -13,24 +15,24 @@ export interface GameMetadata {
   path: string
   color: {
     // Dashboard styling (Cards, logs, stats list)
-    gradient: string // e.g., "from-emerald-500/10 to-teal-500/10"
-    text: string // e.g., "text-emerald-500"
-    border: string // e.g., "border-emerald-500/20"
-    badge: string // e.g., "bg-emerald-500/10 text-emerald-500"
-    
-    // Popup cards interactive state styling
-    popupActive: string // active tab styling for this game
-    popupCompleted: string // completed today state styling
-    popupIconBg: string // background highlight for icon
-    popupTextAccent: string // text color accent
-    popupIndicatorDot: string // status indicator dot color
+    gradient: string
+    text: string
+    border: string
+    badge: string
+
+    // Popup list styling
+    popupActive: string
+    popupCompleted: string
+    popupIconBg: string
+    popupTextAccent: string
+    popupIndicatorDot: string
   }
 }
 
 export const GAMES_CONFIG: GameMetadata[] = [
   {
     id: "sudoku",
-    title: "Sudoku",
+    title: "Mini Sudoku",
     icon: Grid3X3,
     path: "mini-sudoku",
     color: {
@@ -38,8 +40,10 @@ export const GAMES_CONFIG: GameMetadata[] = [
       text: "text-emerald-500",
       border: "border-emerald-500/20",
       badge: "bg-emerald-500/10 text-emerald-500",
-      popupActive: "border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shadow-[0_2px_8px_rgba(16,185,129,0.08)]",
-      popupCompleted: "border-emerald-500/30 bg-emerald-500/[0.02] hover:bg-emerald-500/[0.05]",
+      popupActive:
+        "border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shadow-[0_2px_8px_rgba(16,185,129,0.08)]",
+      popupCompleted:
+        "border-emerald-500/30 bg-emerald-500/[0.02] hover:bg-emerald-500/[0.05]",
       popupIconBg: "bg-emerald-500/10 text-emerald-500",
       popupTextAccent: "text-emerald-600 dark:text-emerald-400",
       popupIndicatorDot: "bg-emerald-500"
@@ -51,15 +55,17 @@ export const GAMES_CONFIG: GameMetadata[] = [
     icon: Sun,
     path: "tango",
     color: {
-      gradient: "from-slate-500/10 to-slate-400/10",
-      text: "text-slate-500 dark:text-slate-400",
-      border: "border-slate-500/20",
-      badge: "bg-slate-500/10 text-slate-500 dark:text-slate-400",
-      popupActive: "border-slate-500 bg-slate-500/5 hover:bg-slate-500/10 text-slate-600 dark:text-slate-400 shadow-[0_2px_8px_rgba(100,116,139,0.08)]",
-      popupCompleted: "border-slate-500/30 bg-slate-500/[0.02] hover:bg-slate-500/[0.05]",
-      popupIconBg: "bg-slate-500/10 text-slate-500 dark:text-slate-400",
-      popupTextAccent: "text-slate-600 dark:text-slate-400",
-      popupIndicatorDot: "bg-slate-500"
+      gradient: "from-blue-500/10 to-indigo-500/10",
+      text: "text-blue-500",
+      border: "border-blue-500/20",
+      badge: "bg-blue-500/10 text-blue-500",
+      popupActive:
+        "border-blue-500 bg-blue-500/5 hover:bg-blue-500/10 text-blue-600 dark:text-blue-400 shadow-[0_2px_8px_rgba(59,130,246,0.08)]",
+      popupCompleted:
+        "border-blue-500/30 bg-blue-500/[0.02] hover:bg-blue-500/[0.05]",
+      popupIconBg: "bg-blue-500/10 text-blue-500",
+      popupTextAccent: "text-blue-600 dark:text-blue-400",
+      popupIndicatorDot: "bg-blue-500"
     }
   },
   {
@@ -68,15 +74,17 @@ export const GAMES_CONFIG: GameMetadata[] = [
     icon: Crown,
     path: "queens",
     color: {
-      gradient: "from-purple-500/10 to-fuchsia-500/10",
-      text: "text-purple-500",
-      border: "border-purple-500/20",
-      badge: "bg-purple-500/10 text-purple-500",
-      popupActive: "border-purple-500 bg-purple-500/5 hover:bg-purple-500/10 text-purple-600 dark:text-purple-400 shadow-[0_2px_8px_rgba(168,85,247,0.08)]",
-      popupCompleted: "border-purple-500/30 bg-purple-500/[0.02] hover:bg-emerald-500/[0.05]",
-      popupIconBg: "bg-purple-500/10 text-purple-500",
-      popupTextAccent: "text-purple-600 dark:text-purple-400",
-      popupIndicatorDot: "bg-purple-500"
+      gradient: "from-violet-500/10 to-fuchsia-500/10",
+      text: "text-violet-500",
+      border: "border-violet-500/20",
+      badge: "bg-violet-500/10 text-violet-500",
+      popupActive:
+        "border-violet-500 bg-violet-500/5 hover:bg-violet-500/10 text-violet-600 dark:text-violet-400 shadow-[0_2px_8px_rgba(139,92,246,0.08)]",
+      popupCompleted:
+        "border-violet-500/30 bg-violet-500/[0.02] hover:bg-violet-500/[0.05]",
+      popupIconBg: "bg-violet-500/10 text-violet-500",
+      popupTextAccent: "text-violet-600 dark:text-violet-400",
+      popupIndicatorDot: "bg-violet-500"
     }
   },
   {
@@ -89,8 +97,10 @@ export const GAMES_CONFIG: GameMetadata[] = [
       text: "text-orange-500",
       border: "border-orange-500/20",
       badge: "bg-orange-500/10 text-orange-500",
-      popupActive: "border-orange-500 bg-orange-500/5 hover:bg-orange-500/10 text-orange-600 dark:text-orange-400 shadow-[0_2px_8px_rgba(249,115,22,0.08)]",
-      popupCompleted: "border-orange-500/30 bg-orange-500/[0.02] hover:bg-orange-500/[0.05]",
+      popupActive:
+        "border-orange-500 bg-orange-500/5 hover:bg-orange-500/10 text-orange-600 dark:text-orange-400 shadow-[0_2px_8px_rgba(249,115,22,0.08)]",
+      popupCompleted:
+        "border-orange-500/30 bg-orange-500/[0.02] hover:bg-orange-500/[0.05]",
       popupIconBg: "bg-orange-500/10 text-orange-500",
       popupTextAccent: "text-orange-600 dark:text-orange-400",
       popupIndicatorDot: "bg-orange-500"
@@ -102,15 +112,55 @@ export const GAMES_CONFIG: GameMetadata[] = [
     icon: Layers,
     path: "patches",
     color: {
-      gradient: "from-red-500/10 to-rose-500/10",
-      text: "text-red-500",
-      border: "border-red-500/20",
-      badge: "bg-red-500/10 text-red-500",
-      popupActive: "border-red-500 bg-red-500/5 hover:bg-red-500/10 text-red-600 dark:text-red-400 shadow-[0_2px_8px_rgba(239,68,68,0.08)]",
-      popupCompleted: "border-red-500/30 bg-red-500/[0.02] hover:bg-red-500/[0.05]",
-      popupIconBg: "bg-red-500/10 text-red-500",
-      popupTextAccent: "text-red-600 dark:text-red-400",
-      popupIndicatorDot: "bg-red-500"
+      gradient: "from-rose-500/10 to-pink-500/10",
+      text: "text-rose-500",
+      border: "border-rose-500/20",
+      badge: "bg-rose-500/10 text-rose-500",
+      popupActive:
+        "border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-600 dark:text-rose-400 shadow-[0_2px_8px_rgba(244,63,94,0.08)]",
+      popupCompleted:
+        "border-rose-500/30 bg-rose-500/[0.02] hover:bg-rose-500/[0.05]",
+      popupIconBg: "bg-rose-500/10 text-rose-500",
+      popupTextAccent: "text-rose-600 dark:text-rose-400",
+      popupIndicatorDot: "bg-rose-500"
+    }
+  },
+  {
+    id: "crossclimb",
+    title: "Crossclimb",
+    icon: ChevronsUp,
+    path: "crossclimb",
+    color: {
+      gradient: "from-cyan-500/10 to-teal-500/10",
+      text: "text-cyan-500",
+      border: "border-cyan-500/20",
+      badge: "bg-cyan-500/10 text-cyan-500",
+      popupActive:
+        "border-cyan-500 bg-cyan-500/5 hover:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 shadow-[0_2px_8px_rgba(6,182,212,0.08)]",
+      popupCompleted:
+        "border-cyan-500/30 bg-cyan-500/[0.02] hover:bg-cyan-500/[0.05]",
+      popupIconBg: "bg-cyan-500/10 text-cyan-500",
+      popupTextAccent: "text-cyan-600 dark:text-cyan-400",
+      popupIndicatorDot: "bg-cyan-500"
+    }
+  },
+  {
+    id: "pinpoint",
+    title: "Pinpoint",
+    icon: Target,
+    path: "pinpoint",
+    color: {
+      gradient: "from-blue-500/10 to-indigo-500/10",
+      text: "text-blue-500",
+      border: "border-blue-500/20",
+      badge: "bg-blue-500/10 text-blue-500",
+      popupActive:
+        "border-blue-500 bg-blue-500/5 hover:bg-blue-500/10 text-blue-600 dark:text-blue-400 shadow-[0_2px_8px_rgba(59,130,246,0.08)]",
+      popupCompleted:
+        "border-blue-500/30 bg-blue-500/[0.02] hover:bg-blue-500/[0.05]",
+      popupIconBg: "bg-blue-500/10 text-blue-500",
+      popupTextAccent: "text-blue-600 dark:text-blue-400",
+      popupIndicatorDot: "bg-blue-500"
     }
   }
 ]
