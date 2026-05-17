@@ -1,16 +1,11 @@
 import type { PlasmoCSConfig } from "plasmo"
 
-import { Storage } from "@plasmohq/storage"
-
+import { localStorage as storage } from "./lib/storage"
 import { detectActiveSolver, type BaseSolver } from "./games"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://*.linkedin.com/games/*"]
 }
-
-const storage = new Storage({
-  area: "local"
-})
 
 interface SolveRecord {
   solved: boolean
@@ -94,18 +89,20 @@ async function saveGameCompleted(gameId: string, durationSeconds?: number) {
 
     const existing = history[dateKey][gameId]
 
-    // Choose the best possible completion time
-    const newTime =
+    // Choose the best possible completion time (with an absolute minimum of 1 second)
+    const newTime = Math.max(
+      1,
       durationSeconds !== undefined && durationSeconds > 0
         ? durationSeconds
-        : existing?.time || 0
+        : existing?.time || 1
+    )
 
-    // Save if not yet logged, or if we have an active time reading to update a generic "0" reading
+    // Save if not yet logged, or if we have an active time reading to update an existing 0/empty time
     if (
       !existing ||
       (durationSeconds !== undefined &&
         durationSeconds > 0 &&
-        existing.time === 0)
+        (!existing.time || existing.time === 0))
     ) {
       history[dateKey][gameId] = {
         solved: true,

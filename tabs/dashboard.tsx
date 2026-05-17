@@ -166,14 +166,14 @@ export default function Dashboard() {
         const rec = dayGames[gameId]
         if (rec?.solved) {
           solvedCount++
-          if (rec.time && rec.time > 0) {
-            totalSeconds += rec.time
-            timedCount++
+          // Enforce 1s minimum for older 0s logs in stats calculation
+          const solveTime = rec.time !== undefined && rec.time > 0 ? rec.time : 1
+          totalSeconds += solveTime
+          timedCount++
 
-            // Check PB
-            if (!pbMap[gameId] || rec.time < pbMap[gameId].time) {
-              pbMap[gameId] = { time: rec.time, date: dateKey }
-            }
+          // Check PB
+          if (!pbMap[gameId] || solveTime < pbMap[gameId].time) {
+            pbMap[gameId] = { time: solveTime, date: dateKey }
           }
         }
       })
@@ -186,10 +186,14 @@ export default function Dashboard() {
     // Calculate Streak
     let activeStreak = 0
     if (dateKeys.length > 0) {
-      const todayStr = new Date().toISOString().split("T")[0]
-      const yesterdayStr = new Date(Date.now() - 86400000)
-        .toISOString()
-        .split("T")[0]
+      const getLocalStr = (d: Date): string => {
+        const year = d.getFullYear()
+        const month = String(d.getMonth() + 1).padStart(2, "0")
+        const day = String(d.getDate()).padStart(2, "0")
+        return `${year}-${month}-${day}`
+      }
+      const todayStr = getLocalStr(new Date())
+      const yesterdayStr = getLocalStr(new Date(Date.now() - 86400000))
 
       // Only start checking if they solved something today or yesterday
       const hasRecentActivity = rawHistory[todayStr] || rawHistory[yesterdayStr]
@@ -197,7 +201,7 @@ export default function Dashboard() {
       if (hasRecentActivity) {
         const currentCheck = new Date()
         while (true) {
-          const checkStr = currentCheck.toISOString().split("T")[0]
+          const checkStr = getLocalStr(currentCheck)
           const checkDay = rawHistory[checkStr]
           const solvedOnDay =
             checkDay &&
@@ -488,12 +492,10 @@ export default function Dashboard() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-3">
-                                {record.time > 0 && (
-                                  <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-                                    <Clock className="w-3 h-3" />
-                                    {formatTime(record.time)}
-                                  </span>
-                                )}
+                                <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+                                  <Clock className="w-3 h-3" />
+                                  {formatTime(record.time > 0 ? record.time : 1)}
+                                </span>
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                               </div>
                             </div>
