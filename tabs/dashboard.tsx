@@ -11,19 +11,15 @@ import {
 } from "lucide-react"
 import { useEffect, useMemo, useState } from "react"
 
-import { Storage } from "@plasmohq/storage"
 import { useStorage } from "@plasmohq/storage/hook"
 
 import { GAMES_CONFIG } from "~/lib/games-config"
+import { localStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
 
 import { Calendar } from "../components/ui/calendar"
 
 import "./dashboard.css"
-
-const localStorage = new Storage({
-  area: "local"
-})
 
 interface SolveRecord {
   solved: boolean

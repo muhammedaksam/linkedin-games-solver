@@ -83,13 +83,19 @@ export function SelectTrigger({
   )
 }
 
-export function SelectValue({ placeholder }: { placeholder?: string }) {
+export function SelectValue({
+  placeholder,
+  children
+}: {
+  placeholder?: string
+  children?: React.ReactNode
+}) {
   const context = React.useContext(SelectContext)
   if (!context) throw new Error("SelectValue must be used within a Select")
 
   return (
     <span className="block truncate text-xs text-foreground">
-      {context.activeLabel || placeholder}
+      {children || context.activeLabel || placeholder}
     </span>
   )
 }

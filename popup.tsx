@@ -12,9 +12,9 @@ import {
 } from "lucide-react"
 import { useCallback, useEffect, useState } from "react"
 
-import { Storage } from "@plasmohq/storage"
 import { useStorage } from "@plasmohq/storage/hook"
 
+import { Input } from "~/components/ui/input"
 import {
   Select,
   SelectContent,
@@ -23,13 +23,10 @@ import {
   SelectValue
 } from "~/components/ui/select"
 import { GAMES_CONFIG } from "~/lib/games-config"
+import { localStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
 
 import "./popup.css"
-
-const localStorage = new Storage({
-  area: "local"
-})
 
 interface SolveRecord {
   solved: boolean
@@ -92,7 +89,24 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     titleOpen: "Open $1 to solve",
     perfectDay: "Perfect day! All $1 games completed! 🎉",
     dailyProgress: "Daily progress: $1 of $2 games completed today",
-    dashboardTitle: "History & Statistics"
+    dashboardTitle: "History & Statistics",
+    settingModel: "Model",
+    settingModelSelect: "Select Model",
+    settingModelCustomOption: "Custom Model Name...",
+    settingModelCustomLabel: "Custom Model Name",
+    settingModelCustomPlaceholderLocal: "e.g. llama3, mistral",
+    settingModelCustomPlaceholderOther: "Enter custom identifier...",
+    settingEndpointLabel: "Endpoint URL",
+    settingEndpointPlaceholder: "e.g. http://localhost:11434/v1",
+    settingApiKeyGemini: "Gemini API Key",
+    settingApiKeyOpenAI: "OpenAI API Key",
+    settingApiKeyAnthropic: "Anthropic API Key",
+    settingApiKeyDeepSeek: "DeepSeek API Key",
+    settingApiKeyCustom: "API Key (Optional)",
+    settingApiKeyPlaceholderCustom: "Optional credentials...",
+    settingApiKeyPlaceholderDefault: "Enter credentials key...",
+    settingApiKeyNotice:
+      "Selected model solves Crossclimb & Pinpoint. The extension never shares your key."
   }
   let msg = fallbacks[key] || key
   if (substitutions) {
@@ -111,6 +125,14 @@ function getLocalDateString(): string {
   const month = String(d.getMonth() + 1).padStart(2, "0")
   const day = String(d.getDate()).padStart(2, "0")
   return `${year}-${month}-${day}`
+}
+
+const PROVIDER_LABELS: Record<string, string> = {
+  gemini: "Google Gemini",
+  openai: "OpenAI (ChatGPT)",
+  anthropic: "Anthropic Claude",
+  deepseek: "DeepSeek",
+  custom: "Custom / Local Endpoint"
 }
 
 function IndexPopup() {
@@ -408,7 +430,9 @@ function IndexPopup() {
                   else if (val === "custom") setAiModel("")
                 }}>
                 <SelectTrigger className="w-full text-xs h-8 bg-card/50 border border-border hover:border-emerald-500/30 justify-between">
-                  <SelectValue placeholder="Select Provider" />
+                  <SelectValue placeholder="Select Provider">
+                    {PROVIDER_LABELS[aiProvider] || "Select Provider"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="gemini">Google Gemini</SelectItem>
@@ -426,7 +450,7 @@ function IndexPopup() {
             {aiProvider !== "custom" && (
               <div className="space-y-1.5">
                 <span className="text-[10px] text-muted-foreground block font-medium">
-                  Model
+                  {getMessage("settingModel")}
                 </span>
                 <Select
                   value={
@@ -444,7 +468,14 @@ function IndexPopup() {
                     }
                   }}>
                   <SelectTrigger className="w-full text-xs h-8 bg-card/50 border border-border hover:border-emerald-500/30 justify-between">
-                    <SelectValue placeholder="Select Model" />
+                    <SelectValue placeholder={getMessage("settingModelSelect")}>
+                      {PROVIDER_MODELS[aiProvider]?.find(
+                        (m) => m.value === aiModel
+                      )?.label ||
+                        (aiModel
+                          ? aiModel
+                          : getMessage("settingModelCustomOption"))}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {PROVIDER_MODELS[aiProvider]?.map((m) => (
@@ -453,7 +484,7 @@ function IndexPopup() {
                       </SelectItem>
                     ))}
                     <SelectItem value="custom-input">
-                      Custom Model Name...
+                      {getMessage("settingModelCustomOption")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -469,19 +500,18 @@ function IndexPopup() {
                 <label
                   htmlFor="ai-model-input"
                   className="text-[10px] text-muted-foreground block font-medium">
-                  Custom Model Name
+                  {getMessage("settingModelCustomLabel")}
                 </label>
-                <input
+                <Input
                   id="ai-model-input"
                   type="text"
                   value={aiModel || ""}
                   onChange={(e) => setAiModel(e.target.value)}
                   placeholder={
                     aiProvider === "custom"
-                      ? "e.g. llama3, mistral"
-                      : "Enter custom identifier..."
+                      ? getMessage("settingModelCustomPlaceholderLocal")
+                      : getMessage("settingModelCustomPlaceholderOther")
                   }
-                  className="w-full text-xs px-3 py-1.5 rounded-md border border-border bg-muted/20 focus:border-emerald-500/50 focus:bg-background outline-none transition-all duration-200"
                 />
               </div>
             )}
@@ -492,15 +522,14 @@ function IndexPopup() {
                 <label
                   htmlFor="ai-custom-endpoint"
                   className="text-[10px] text-muted-foreground block font-medium">
-                  Endpoint URL
+                  {getMessage("settingEndpointLabel")}
                 </label>
-                <input
+                <Input
                   id="ai-custom-endpoint"
                   type="text"
                   value={aiCustomEndpoint || ""}
                   onChange={(e) => setAiCustomEndpoint(e.target.value)}
-                  placeholder="e.g. http://localhost:11434/v1"
-                  className="w-full text-xs px-3 py-1.5 rounded-md border border-border bg-muted/20 focus:border-emerald-500/50 focus:bg-background outline-none transition-all duration-200"
+                  placeholder={getMessage("settingEndpointPlaceholder")}
                 />
               </div>
             )}
@@ -510,14 +539,16 @@ function IndexPopup() {
               <label
                 htmlFor="ai-api-key"
                 className="text-[10px] text-muted-foreground block font-medium">
-                {aiProvider === "gemini" && "Gemini API Key"}
-                {aiProvider === "openai" && "OpenAI API Key"}
-                {aiProvider === "anthropic" && "Anthropic API Key"}
-                {aiProvider === "deepseek" && "DeepSeek API Key"}
-                {aiProvider === "custom" && "API Key (Optional)"}
+                {aiProvider === "gemini" && getMessage("settingApiKeyGemini")}
+                {aiProvider === "openai" && getMessage("settingApiKeyOpenAI")}
+                {aiProvider === "anthropic" &&
+                  getMessage("settingApiKeyAnthropic")}
+                {aiProvider === "deepseek" &&
+                  getMessage("settingApiKeyDeepSeek")}
+                {aiProvider === "custom" && getMessage("settingApiKeyCustom")}
               </label>
               <div className="relative flex items-center">
-                <input
+                <Input
                   id="ai-api-key"
                   type={showApiKey ? "text" : "password"}
                   value={aiApiKey || ""}
@@ -530,10 +561,10 @@ function IndexPopup() {
                   }}
                   placeholder={
                     aiProvider === "custom"
-                      ? "Optional credentials..."
-                      : "Enter credentials key..."
+                      ? getMessage("settingApiKeyPlaceholderCustom")
+                      : getMessage("settingApiKeyPlaceholderDefault")
                   }
-                  className="w-full text-xs px-3 py-1.5 pr-10 rounded-md border border-border bg-muted/20 focus:border-emerald-500/50 focus:bg-background outline-none transition-all duration-200"
+                  className="pr-10"
                 />
                 <button
                   type="button"
@@ -550,8 +581,7 @@ function IndexPopup() {
           </div>
 
           <p className="text-[9px] text-muted-foreground/80 leading-relaxed pt-1.5 border-t border-border/40">
-            Selected model solves <strong>Crossclimb</strong> &{" "}
-            <strong>Pinpoint</strong>. The extension never shares your key.
+            {getMessage("settingApiKeyNotice")}
           </p>
         </div>
       )}
