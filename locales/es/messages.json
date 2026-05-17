@@ -1,0 +1,146 @@
+{
+  "extensionName": {
+    "message": "Resolutor de Juegos de LinkedIn",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Un ayudante para los juegos de LinkedIn.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "Juegos de LinkedIn",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Resuelve tableros activos en un solo clic",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "Cambiar a modo $1",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "La integración de pestañas de Chrome solo está disponible dentro de las extensiones del navegador.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "No se pudo encontrar la pestaña activa del navegador.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Error al navegar al tablero de $1 automáticamente.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "No se pudo conectar con la página de LinkedIn. Por favor, recarga la pestaña e inténtalo de nuevo.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "La ejecución del resolutor falló inesperadamente.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "¡Resolutor iniciado con éxito! Ejecutando...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Resolviendo...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "titleSolve": {
+    "message": "Resolver $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "¡Completado hoy! Haz clic para navegar a $1",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Abrir $1 para resolver",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "¡Día perfecto! ¡Los $1 juegos completados! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Progreso diario: $1 de $2 juegos completados hoy",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Historial y Estadísticas",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Tu historial completo y estadísticas de juegos de LinkedIn",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Total Resueltos",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Juegos resueltos en todas las fechas",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Tiempo Promedio",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "En todas las finalizaciones registradas",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Racha Activa",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Días activos consecutivos",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 días",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "Mejores Marcas",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Aún no hay registros de resolución.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Historial de Resolución",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Calendario de Actividad",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Limpiar Filtro",
+    "description": "Button to clear selected date filter"
+  }
+}

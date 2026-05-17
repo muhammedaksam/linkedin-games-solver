@@ -1,0 +1,146 @@
+{
+  "extensionName": {
+    "message": "LinkedIn-Spielelöser",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Eine Hilfsanwendung für LinkedIn-Spiele.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn-Spiele",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Aktive Spielbretter mit einem Klick lösen",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "In den $1-Modus wechseln",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Die Chrome-Tab-Integration ist nur in Browser-Erweiterungen verfügbar.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Der aktive Browser-Tab konnte nicht gefunden werden.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Automatische Navigation zum $1-Spielbrett fehlgeschlagen.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Keine Verbindung zur LinkedIn-Seite möglich. Bitte laden Sie den Tab neu und versuchen Sie es erneut.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Die Ausführung des Lösers ist unerwartet fehlgeschlagen.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Löser erfolgreich gestartet! Läuft...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Wird gelöst...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "titleSolve": {
+    "message": "$1 lösen",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Heute abgeschlossen! Klicken, um zu $1 zu wechseln",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "$1 öffnen, um zu lösen",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Perfekter Tag! Alle $1 Spiele abgeschlossen! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Täglicher Fortschritt: Heute $1 von $2 Spielen abgeschlossen",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Verlauf & Statistiken",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Ihr vollständiger LinkedIn-Spiele-Löseverlauf und Statistiken",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Gesamt gelöst",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Spiele gelöst über alle Daten",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Durchschnittszeit",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Über alle aufgezeichneten Fertigstellungen",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Aktive Serie",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Aufeinanderfolgende aktive Tage",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 Tage",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "Persönliche Bestleistungen",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Noch keine Löseaufzeichnungen vorhanden.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Löseverlauf",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Aktivitätskalender",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Filter löschen",
+    "description": "Button to clear selected date filter"
+  }
+}

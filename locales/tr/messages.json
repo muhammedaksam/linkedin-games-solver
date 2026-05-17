@@ -1,0 +1,146 @@
+{
+  "extensionName": {
+    "message": "LinkedIn Oyunları Çözücü",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn Oyunları için bir yardımcı.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn Oyunları",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Aktif oyunları tek tıkla çözün",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "$1 moduna geç",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome sekme entegrasyonu yalnızca tarayıcı uzantıları içinde kullanılabilir.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Aktif tarayıcı sekmesi bulunamadı.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "$1 sekmesine otomatik olarak geçiş yapılamadı.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "LinkedIn sayfasına bağlanılamadı. Lütfen sekmeyi yenileyip tekrar deneyin.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Çözücü beklenmedik bir şekilde başarısız oldu.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Çözücü başarıyla başlatıldı! Çalışıyor...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Çözülüyor...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "titleSolve": {
+    "message": "$1 Çöz",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Bugün tamamlandı! $1 oyununa gitmek için tıklayın",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Çözmek için $1 oyununu açın",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Mükemmel bir gün! Tüm $1 oyun tamamlandı! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Günlük ilerleme: Bugün $1/$2 oyun tamamlandı",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Geçmiş ve İstatistikler",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "LinkedIn Oyunları çözme geçmişiniz ve istatistikleriniz",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Toplam Çözülen",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Tüm tarihlerde çözülen oyunlar",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Ortalama Süre",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Tüm kaydedilen tamamlamalar arasında",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Aktif Seri",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Ardışık aktif gün sayısı",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 gün",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "En İyi Dereceler",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Henüz çözme kaydı kaydedilmedi.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Çözme Geçmişi",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Aktivite Takvimi",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Filtreyi Temizle",
+    "description": "Button to clear selected date filter"
+  }
+}

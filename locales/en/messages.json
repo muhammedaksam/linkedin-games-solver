@@ -1,0 +1,146 @@
+{
+  "extensionName": {
+    "message": "LinkedIn Games Solver",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "A helper for LinkedIn Games.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn Games",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Solve active boards in a single click",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "Switch to $1 mode",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome tab integration is only available inside browser extensions.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Could not find the active browser tab.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Failed to navigate to the $1 board automatically.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Could not connect to LinkedIn page. Please reload the tab and try again.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Solver execution failed unexpectedly.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Solver successfully started! Running...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Solving...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "titleSolve": {
+    "message": "Solve $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Completed today! Click to navigate to $1",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Open $1 to solve",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Perfect day! All $1 games completed! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Daily progress: $1 of $2 games completed today",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "History & Statistics",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Your complete LinkedIn Games solving history & statistics",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Total Solved",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Games solved across all dates",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Average Time",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Across all recorded completions",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Active Streak",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Consecutive active days",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 days",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "Personal Bests",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "No solve records recorded yet.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Solving History",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Activity Calendar",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Clear Filter",
+    "description": "Button to clear selected date filter"
+  }
+}

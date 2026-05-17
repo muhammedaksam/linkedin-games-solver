@@ -1,0 +1,146 @@
+{
+  "extensionName": {
+    "message": "LinkedIn 游戏助手",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn 游戏的辅助工具。",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn 游戏",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "一键自动求解当前游戏",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "切换至 $1 模式",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome 标签页集成功能仅在浏览器扩展中可用。",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "无法找到活动的浏览器标签页。",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "自动跳转至 $1 游戏板失败。",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "无法连接到 LinkedIn 页面。请重新加载标签页并重试。",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "求解器执行意外失败。",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "求解器启动成功！正在运行中...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "正在求解中...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "数独 (Sudoku)",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "探戈 (Tango)",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "皇后 (Queens)",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "titleSolve": {
+    "message": "求解 $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "今日已完成！点击跳转至 $1",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "打开 $1 以求解",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "完美的一天！全部 $1 个游戏已完成！ 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "今日进度：已完成 $1/$2 个游戏",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "历史记录与统计",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "您完整的 LinkedIn 游戏求解历史与数据统计",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "累计已解",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "所有日期内已求解的游戏数",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "平均用时",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "所有记录的求解用时平均值",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "连续天数",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "连续参与 LinkedIn 游戏的天数",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 天",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "个人最佳纪录",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "暂无求解记录。",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "求解历史记录",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "活动日历",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "清除筛选",
+    "description": "Button to clear selected date filter"
+  }
+}
