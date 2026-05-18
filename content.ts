@@ -17,6 +17,8 @@ type SolveHistory = Record<string, Record<string, SolveRecord>>
 
 console.log("[LinkedIn Games Solver] Content script loaded.")
 
+const pageLoadTime = Date.now()
+
 let observer: MutationObserver | null = null
 let injectionTimeout: NodeJS.Timeout | null = null
 
@@ -275,7 +277,7 @@ function injectPinpointSolveButton(active: BaseSolver) {
     // Bind click listener only if we haven't already
     if (!solveButton.dataset.listenerBound) {
       solveButton.dataset.listenerBound = "true"
-      solveButton.addEventListener("click", (e) => {
+      solveButton.addEventListener("click", async (e) => {
         e.preventDefault()
         e.stopPropagation()
 
@@ -288,6 +290,14 @@ function injectPinpointSolveButton(active: BaseSolver) {
           solveButton.querySelector(".solve-btn-text-node") || solveButton
         const originalText = labelNode.textContent || "Solve"
         labelNode.textContent = "Solving..."
+
+        const elapsedSinceLoad = Date.now() - pageLoadTime
+        const minDuration = 6000
+        const delay = Math.max(0, minDuration - elapsedSinceLoad)
+        if (delay > 0) {
+          console.log(`[LinkedIn Games Solver] Pacing solve action: sleeping for ${delay}ms to satisfy minimum play time anti-cheat limit.`)
+          await new Promise((resolve) => setTimeout(resolve, delay))
+        }
 
         const startTime = Date.now()
 
@@ -518,7 +528,7 @@ function injectSolveButton() {
     // Bind click listener only if we haven't already
     if (!solveButton.dataset.listenerBound) {
       solveButton.dataset.listenerBound = "true"
-      solveButton.addEventListener("click", (e) => {
+      solveButton.addEventListener("click", async (e) => {
         e.preventDefault()
         e.stopPropagation()
 
@@ -541,6 +551,14 @@ function injectSolveButton() {
           solveButton.querySelector(".solve-btn-text-node") || textTarget
         const originalText = labelNode.textContent || "Solve"
         labelNode.textContent = "Solving..."
+
+        const elapsedSinceLoad = Date.now() - pageLoadTime
+        const minDuration = 6000
+        const delay = Math.max(0, minDuration - elapsedSinceLoad)
+        if (delay > 0) {
+          console.log(`[LinkedIn Games Solver] Pacing solve action: sleeping for ${delay}ms to satisfy minimum play time anti-cheat limit.`)
+          await new Promise((resolve) => setTimeout(resolve, delay))
+        }
 
         const startTime = Date.now()
 

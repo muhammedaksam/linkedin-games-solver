@@ -15,9 +15,16 @@ export class CrossclimbSolver extends BaseSolver {
   async solve(): Promise<void> {
     console.log("[Crossclimb] Starting Crossclimb solver...")
 
-    // 0. Detect pre-solved state: Check if the board already has 5 valid 4-letter words entered
+    // Dynamically query the actual number of middle rows present in the DOM
+    const middleRows = this.$$(".crossclimb__guess--middle")
+    const numMiddleRows = middleRows.length || 5
+    console.log(
+      `[Crossclimb] Detected ${numMiddleRows} middle rows in the DOM.`
+    )
+
+    // 0. Detect pre-solved state: Check if the board already has valid 4-letter words entered
     const currentWordsOnBoard: string[] = []
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= numMiddleRows; i++) {
       const row = this.$(`[data-guess-id="${i}"]`)
       if (row) {
         const inputs = this.$$("input", row) as HTMLInputElement[]
@@ -37,9 +44,11 @@ export class CrossclimbSolver extends BaseSolver {
     let targetOrder: number[] = []
     let skipSolving = false
 
-    const hasWrongHallucinatedWords = currentWordsOnBoard.some((w) =>
-      ["NORM", "FORM", "NORE", "MOLE", "MORE"].includes(w)
-    )
+    const hasWrongHallucinatedWords =
+      numMiddleRows === 5 &&
+      currentWordsOnBoard.some((w) =>
+        ["NORM", "FORM", "NORE", "MOLE", "MORE"].includes(w)
+      )
 
     if (hasWrongHallucinatedWords) {
       console.log(
@@ -61,7 +70,10 @@ export class CrossclimbSolver extends BaseSolver {
           await this.sleep(200)
         }
       }
-    } else if (currentWordsOnBoard.every((w) => w.length === 4)) {
+    } else if (
+      currentWordsOnBoard.length === numMiddleRows &&
+      currentWordsOnBoard.every((w) => w.length === 4)
+    ) {
       const preSolvedOrder = this.findPermutation(currentWordsOnBoard)
       if (preSolvedOrder) {
         console.log(
@@ -69,7 +81,7 @@ export class CrossclimbSolver extends BaseSolver {
           preSolvedOrder
         )
         const currentRows = this.$$(".crossclimb__guess--middle")
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < numMiddleRows; i++) {
           const row = currentRows[i]
           const guessId = parseInt(row.getAttribute("data-guess-id") || "0", 10)
           clueWordMap.set(guessId, currentWordsOnBoard[i])
@@ -83,9 +95,9 @@ export class CrossclimbSolver extends BaseSolver {
     }
 
     if (!skipSolving) {
-      // 1. Collect clues for the 5 middle rows (guess IDs 1 to 5)
+      // 1. Collect clues for the middle rows
       const clues: string[] = []
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= numMiddleRows; i++) {
         const row = this.$(`[data-guess-id="${i}"]`)
         if (!row) {
           throw new Error(
@@ -103,37 +115,34 @@ export class CrossclimbSolver extends BaseSolver {
         clues.push(clueText)
       }
 
-      // 2. Solve the 5 middle trivia clues using Gemini
+      // 2. Solve the middle trivia clues using Gemini
       console.log("[Crossclimb] Querying Gemini for middle row answers...")
+      const cluesListStr = clues
+        .map((c, idx) => `${idx + 1}. "${c}"`)
+        .join("\n")
+      const templateAnswersStr = Array.from(
+        { length: numMiddleRows },
+        (_, idx) => `    {"clueIdx": ${idx + 1}, "word": "WORD${idx + 1}"}`
+      ).join(",\n")
       const middlePrompt = `
 You are solving the LinkedIn game "Crossclimb".
-We have 5 trivia clues for exactly 4-letter English words.
+We have ${numMiddleRows} trivia clues for exactly 4-letter English words.
 Clues list:
-1. "${clues[0]}"
-2. "${clues[1]}"
-3. "${clues[2]}"
-4. "${clues[3]}"
-5. "${clues[4]}"
+${cluesListStr}
 
-Provide the correct 4-letter answer for each clue. All 5 answers MUST be valid English words that can be arranged in some order to form a word ladder (each word differs from the next by exactly one letter).
+Provide the correct 4-letter answer for each clue. All ${numMiddleRows} answers MUST be valid English words that can be arranged in some order to form a word ladder (each word differs from the next by exactly one letter).
 
 CRITICAL CONSTRAINTS:
-1. All 5 answers MUST be valid 4-letter English words that can be arranged in some order to form a single continuous, unbroken word ladder (where each word differs from the next by exactly ONE letter).
-2. CLUE MATCHING RULE: Each solved word MUST strictly match the semantic definition of the clue for its clueIdx! Double check that:
-   - clueIdx 3 ("What origami artists do to paper") is "FORM" (not "WORM").
-   - clueIdx 4 ("Limbless prey for a bird") is "WORM" (not "FORM").
-   Do not swap or scramble the clueIdx values!
+1. All ${numMiddleRows} answers MUST be valid 4-letter English words that can be arranged in some order to form a single continuous, unbroken word ladder (where each word differs from the next by exactly ONE letter).
+2. CLUE MATCHING RULE: Each solved word MUST strictly match the semantic definition of the clue for its clueIdx!
+3. Do not swap or scramble the clueIdx values!
 
 Return a JSON object in this exact format:
 {
   "explanation": "Explain step-by-step how each word connects to the next with exactly one letter difference, and verify the clues match.",
-  "ladderChain": "WORD_A -> WORD_B -> WORD_C -> WORD_D -> WORD_E",
+  "ladderChain": "WORD_A -> WORD_B -> ...",
   "answers": [
-    {"clueIdx": 1, "word": "WORD1"},
-    {"clueIdx": 2, "word": "WORD2"},
-    {"clueIdx": 3, "word": "WORD3"},
-    {"clueIdx": 4, "word": "WORD4"},
-    {"clueIdx": 5, "word": "WORD5"}
+${templateAnswersStr}
   ]
 }
 
@@ -159,33 +168,24 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
           )
           currentPrompt = `
 You are solving the LinkedIn game "Crossclimb".
-We have 5 trivia clues:
-1. "${clues[0]}"
-2. "${clues[1]}"
-3. "${clues[2]}"
-4. "${clues[3]}"
-5. "${clues[4]}"
+We have ${numMiddleRows} trivia clues:
+${cluesListStr}
 
 Your previous attempt failed because the solved words could not form a valid word ladder!
 Your previous incorrect response was:
 ${lastResponse}
 
-Please re-evaluate your answers. Ensure that ALL 5 words match their respective clues, are exactly 4 letters, and form a single continuous, unbroken word ladder (where each word differs from the next by exactly ONE letter).
+Please re-evaluate your answers. Ensure that ALL ${numMiddleRows} words match their respective clues, are exactly 4 letters, and form a single continuous, unbroken word ladder (where each word differs from the next by exactly ONE letter).
 Double check every single letter transition!
 For example, "FOLD" to "FROG" is NOT a valid transition because it changes 2 letters (L->R and D->G).
 "WORM" to "FORM" is a valid transition because it only changes 1 letter (W->F).
-Origami artists can "FORM" paper (not just "FOLD"), and limbless prey for a bird is a "WORM" (not "FROG" or "FOWL").
 
 You MUST return a JSON object in this exact format:
 {
   "explanation": "Explain step-by-step how each word connects to the next with exactly one letter difference, and verify the clues match.",
-  "ladderChain": "WORD_A -> WORD_B -> WORD_C -> WORD_D -> WORD_E",
+  "ladderChain": "WORD_A -> WORD_B -> ...",
   "answers": [
-    {"clueIdx": 1, "word": "WORD_1"},
-    {"clueIdx": 2, "word": "WORD_2"},
-    {"clueIdx": 3, "word": "WORD_3"},
-    {"clueIdx": 4, "word": "WORD_4"},
-    {"clueIdx": 5, "word": "WORD_5"}
+${templateAnswersStr}
   ]
 }
 
@@ -243,7 +243,7 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
           continue
         }
 
-        if (!parsed.answers || parsed.answers.length !== 5) {
+        if (!parsed.answers || parsed.answers.length !== numMiddleRows) {
           continue
         }
 
@@ -258,14 +258,14 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
         }
         if (!lengthsValid) continue
 
-        // Map each clue index (1 to 5) to its guessed word
+        // Map each clue index (1 to numMiddleRows) to its guessed word
         clueWordMap.clear()
         parsed.answers.forEach((ans) => {
           clueWordMap.set(ans.clueIdx, ans.word.trim().toUpperCase())
         })
 
         const wordList = Array.from(
-          { length: 5 },
+          { length: numMiddleRows },
           (_, idx) => clueWordMap.get(idx + 1) || ""
         )
 
@@ -292,7 +292,7 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
       )
 
       // 3. Type the words into their respective rows (before sorting them)
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= numMiddleRows; i++) {
         const word = clueWordMap.get(i)
         if (!word) {
           throw new Error(`Missing answer for clueIdx ${i}`)
@@ -335,8 +335,8 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
       )
     }
 
-    // 6. Solve the top row (locked top, guess ID 0)
-    console.log("[Crossclimb] Solving top row...")
+    // 6. Click top row to read the joint clue for top and bottom
+    console.log("[Crossclimb] Solving top and bottom rows...")
     const topRow = this.$('[data-guess-id="0"]')
     if (!topRow) {
       throw new Error("Could not find top row.")
@@ -357,78 +357,89 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
 
     // The top word connects to the first word in the sorted ladder
     const firstLadderWord = clueWordMap.get(targetOrder[0]) || ""
+    // The bottom word connects to the last word in the sorted ladder
+    const lastLadderWord = clueWordMap.get(targetOrder[numMiddleRows - 1]) || ""
+
     console.log(
       `[Crossclimb] Top word must differ by 1 letter from: "${firstLadderWord}"`
     )
-
-    const topPrompt = `
-We are solving the LinkedIn game "Crossclimb" word ladder.
-The current middle ladder chain of 5 words is: ${middleLadderChain}
-The word at the top of this middle ladder is "${firstLadderWord}".
-
-Find a 4-letter English word that:
-1. Differs from "${firstLadderWord}" by exactly one letter.
-2. Matches this clue: "${topClueText}".
-
-Return ONLY the single 4-letter word in uppercase. Do not include any punctuation, quotes, or explanations.
-`
-
-    const topWord = (await askAI(topPrompt)).trim().toUpperCase()
-    console.log(`[Crossclimb] Gemini solved top word: "${topWord}"`)
-    if (topWord.length !== 4) {
-      throw new Error(`Solved top word "${topWord}" is not exactly 4 letters!`)
-    }
-
-    await this.typeWord(0, topWord)
-    await this.sleep(300)
-
-    // 7. Solve the bottom row (locked bottom, guess ID 6)
-    console.log("[Crossclimb] Solving bottom row...")
-    const bottomRow = this.$('[data-guess-id="6"]')
-    if (!bottomRow) {
-      throw new Error("Could not find bottom row.")
-    }
-    this.click(bottomRow)
-    await this.sleep(200)
-
-    const bottomClueEl = this.$(".crossclimb__clue")
-    const bottomClueText = bottomClueEl
-      ? bottomClueEl.textContent?.trim() || ""
-      : ""
-    if (!bottomClueText) {
-      throw new Error("Could not read bottom row clue.")
-    }
-    console.log(`[Crossclimb] Bottom Clue: "${bottomClueText}"`)
-
-    // The bottom word connects to the last word in the sorted ladder
-    const lastLadderWord = clueWordMap.get(targetOrder[4]) || ""
     console.log(
       `[Crossclimb] Bottom word must differ by 1 letter from: "${lastLadderWord}"`
     )
 
-    const bottomPrompt = `
+    const middleWords = Array.from(clueWordMap.values())
+    const topCandidates = this.getOneLetterEdits(firstLadderWord).filter(
+      (w) => !middleWords.includes(w)
+    )
+    const bottomCandidates = this.getOneLetterEdits(lastLadderWord).filter(
+      (w) => !middleWords.includes(w)
+    )
+
+    const jointPrompt = `
 We are solving the LinkedIn game "Crossclimb" word ladder.
-The current middle ladder chain of 5 words is: ${middleLadderChain}
+The current middle ladder chain of words is: ${middleLadderChain}
+The word at the top of this middle ladder is "${firstLadderWord}".
 The word at the bottom of this middle ladder is "${lastLadderWord}".
-We already solved the top word of the ladder, which is "${topWord}".
 
-Find a 4-letter English word that:
-1. Differs from "${lastLadderWord}" by exactly one letter.
-2. Matches this clue: "${bottomClueText}".
-3. If the clue references a pair of opposites, dual concept, or related words (e.g., "opposite temperatures"), this word should form the logical partner/opposite to the top word "${topWord}".
+We need to solve the final two words of the ladder: the Top word (guess ID 0) and the Bottom word (guess ID ${numMiddleRows + 1}).
 
-Return ONLY the single 4-letter word in uppercase. Do not include any punctuation, quotes, or explanations.
+CRITICAL CONSTRAINTS:
+1. The Top word MUST be a valid, common 4-letter English word chosen from this exhaustive list of single-letter edits of "${firstLadderWord}":
+[${topCandidates.join(", ")}]
+
+2. The Bottom word MUST be a valid, common 4-letter English word chosen from this exhaustive list of single-letter edits of "${lastLadderWord}":
+[${bottomCandidates.join(", ")}]
+
+3. Together, the Top word and the Bottom word must strictly, literally, and obviously satisfy this joint clue: "${topClueText}".
+4. Do not use stretched, metaphorical, or loose associations. (For example, "DICE" and "LIFE" or "DICE" and "FIVE" do NOT satisfy the clue "Two numbers", because "DICE" is not a literal number word. Both chosen words MUST be literal number words, e.g. "NINE" and "FIVE").
+
+Return a JSON object in this exact format:
+{
+  "explanation": "List the valid English words you found in each list, and explain why your chosen pair is the perfect, obvious, and literal match for the clue.",
+  "topWord": "TOP_WORD",
+  "bottomWord": "BOTTOM_WORD"
+}
+
+Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include markdown code block syntax outside the JSON.
 `
 
-    const bottomWord = (await askAI(bottomPrompt)).trim().toUpperCase()
-    console.log(`[Crossclimb] Gemini solved bottom word: "${bottomWord}"`)
-    if (bottomWord.length !== 4) {
+    console.log(
+      "[Crossclimb] Querying Gemini for joint top and bottom answers..."
+    )
+    const responseText = await askAI(jointPrompt, true)
+    console.log("[Crossclimb] Gemini joint top/bottom response:", responseText)
+
+    let parsedJoint: { topWord: string; bottomWord: string } = {
+      topWord: "",
+      bottomWord: ""
+    }
+    try {
+      parsedJoint = JSON.parse(responseText)
+    } catch (e) {
       throw new Error(
-        `Solved bottom word "${bottomWord}" is not exactly 4 letters!`
+        `Failed to parse Gemini joint response: ${responseText}`,
+        { cause: e }
       )
     }
 
-    await this.typeWord(6, bottomWord)
+    const topWord = parsedJoint.topWord.trim().toUpperCase()
+    const bottomWord = parsedJoint.bottomWord.trim().toUpperCase()
+
+    if (topWord.length !== 4 || bottomWord.length !== 4) {
+      throw new Error(
+        `Invalid top/bottom word lengths: Top="${topWord}", Bottom="${bottomWord}"`
+      )
+    }
+
+    // Type the Top word
+    console.log(`[Crossclimb] Typing Top word: "${topWord}"...`)
+    await this.typeWord(0, topWord)
+    await this.sleep(300)
+
+    // Type the Bottom word
+    console.log(`[Crossclimb] Typing Bottom word: "${bottomWord}"...`)
+    const bottomRowId = numMiddleRows + 1
+    await this.typeWord(bottomRowId, bottomWord)
     await this.sleep(300)
 
     console.log("[Crossclimb] Successfully solved Crossclimb ladder!")
@@ -496,8 +507,22 @@ Return ONLY the single 4-letter word in uppercase. Do not include any punctuatio
     return diff
   }
 
+  private getOneLetterEdits(word: string): string[] {
+    const edits: string[] = []
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for (let i = 0; i < 4; i++) {
+      for (const char of alphabet) {
+        if (word[i] !== char) {
+          const edit = word.substring(0, i) + char + word.substring(i + 1)
+          edits.push(edit)
+        }
+      }
+    }
+    return edits
+  }
+
   private findPermutation(words: string[]): number[] | null {
-    const indices = [0, 1, 2, 3, 4]
+    const indices = Array.from({ length: words.length }, (_, i) => i)
     const permute = (arr: number[]): number[][] => {
       if (arr.length === 0) return [[]]
       const result: number[][] = []
