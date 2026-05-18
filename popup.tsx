@@ -335,6 +335,41 @@ function IndexPopup() {
 
     const getGamePath = (id: string) => (id === "sudoku" ? "mini-sudoku" : id)
     const gamePath = getGamePath(gameId)
+    const dateKey = getLocalDateString()
+    const isCompleted = !!solveHistory?.[dateKey]?.[gameId]?.solved
+
+    // If the game is already completed today, navigate directly to the results page
+    if (isCompleted) {
+      try {
+        const tabs = await chrome.tabs.query({
+          url: `*://*.linkedin.com/games/${gamePath}*`
+        })
+
+        const targetUrl = `https://www.linkedin.com/games/${gamePath}/results/`
+
+        if (tabs.length > 0 && tabs[0].id !== undefined) {
+          // Switch to existing tab and update its URL to results if not already there
+          await chrome.tabs.update(tabs[0].id, { active: true, url: targetUrl })
+          if (tabs[0].windowId) {
+            await chrome.windows.update(tabs[0].windowId, { focused: true })
+          }
+          console.log(
+            `[LinkedIn Games Solver] Switched and navigated existing tab to results for ${gameId}.`
+          )
+        } else {
+          // Create new tab directly pointing to results
+          await chrome.tabs.create({ url: targetUrl })
+          console.log(
+            `[LinkedIn Games Solver] Opened new tab for ${gameId} results page.`
+          )
+        }
+      } catch (e) {
+        console.error("Results page navigation failed:", e)
+        setSolveError(getMessage("errorNavigationFailed", gameId.toUpperCase()))
+      }
+      return
+    }
+
     const isActiveTabLinkedInGame = tab.url?.includes(
       `linkedin.com/games/${gamePath}`
     )

@@ -52,26 +52,60 @@ function parseTimerToSeconds(timeStr: string): number {
   return 0
 }
 
-// Read the stopwatch timer directly from the native LinkedIn page
+// Read the stopwatch timer directly from the native LinkedIn page or results page
 function detectFinalSolveTime(): number | undefined {
+  // Method 1: Active game screen timer
   const clockIcon = document.querySelector(
     'svg#clock-small, svg[data-test-icon="clock-small"], use[href="#clock-small"]'
   )
-  if (!clockIcon) return undefined
-
-  const parent = clockIcon.closest("div")
-  if (!parent) return undefined
-
-  const timerSpan = parent.querySelector(
-    'span[role="text"], span[class*="timer"]'
-  )
-  if (!timerSpan) return undefined
-
-  const text = timerSpan.textContent?.trim()
-  if (text?.includes(":")) {
-    const seconds = parseTimerToSeconds(text)
-    if (seconds > 0) return seconds
+  if (clockIcon) {
+    const parent = clockIcon.closest("div")
+    if (parent) {
+      const timerSpan = parent.querySelector(
+        'span[role="text"], span[class*="timer"]'
+      )
+      if (timerSpan) {
+        const text = timerSpan.textContent?.trim()
+        if (text?.includes(":")) {
+          const seconds = parseTimerToSeconds(text)
+          if (seconds > 0) return seconds
+        }
+      }
+    }
   }
+
+  // Method 2: Results page leaderboard player card (for player "You")
+  const leaderboardPlayers = document.querySelectorAll(
+    ".pr-connections-leaderboard-player__container"
+  )
+  for (const player of Array.from(leaderboardPlayers)) {
+    const textWrapper = player.querySelector(
+      ".pr-connections-leaderboard-player__text-wrapper"
+    )
+    if (textWrapper?.textContent?.trim().toLowerCase().includes("you")) {
+      const scoreEl = player.querySelector(
+        ".pr-connections-leaderboard-player__score"
+      )
+      if (scoreEl) {
+        const text = scoreEl.textContent?.trim()
+        if (text?.includes(":")) {
+          const seconds = parseTimerToSeconds(text)
+          if (seconds > 0) return seconds
+        }
+      }
+    }
+  }
+
+  // Method 3: Results page golden chiclet (carousel slide with solve time)
+  const chiclets = document.querySelectorAll(".pr-golden-chiclet__text")
+  for (const chiclet of Array.from(chiclets)) {
+    const text = chiclet.textContent?.trim()
+    if (text?.includes(":")) {
+      const seconds = parseTimerToSeconds(text)
+      if (seconds > 0) return seconds
+    }
+  }
+
   return undefined
 }
 
@@ -98,7 +132,7 @@ async function saveGameCompleted(gameId: string, durationSeconds?: number) {
       !existing ||
       (durationSeconds !== undefined &&
         durationSeconds > 0 &&
-        (!existing.time || existing.time === 0))
+        (!existing.time || existing.time === 0 || existing.time === 1))
     ) {
       history[dateKey][gameId] = {
         solved: true,
@@ -222,9 +256,9 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = () => {
   return new Promise<Element>((resolve) => {
     const targets = [
       '[data-testid="under-board-controls"]',
-      '.sudoku-under-board-controls-container',
-      '.under-board-controls-container',
-      '.pinpoint__bottom-section'
+      ".sudoku-under-board-controls-container",
+      ".under-board-controls-container",
+      ".pinpoint__bottom-section"
     ]
 
     const check = () => {
@@ -256,12 +290,17 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = () => {
 }
 
 // Overwrite root container generation to insert custom wrapper inheriting native LinkedIn styles
-export const getRootContainer = async (payload: { anchor: { element: HTMLElement } }) => {
+export const getRootContainer = async (payload: {
+  anchor: { element: HTMLElement }
+}) => {
   const { anchor } = payload
   if (!anchor?.element) return null
 
   // Inject host-level CSS override to ensure correct layout and 100% width matching
-  if (typeof document !== "undefined" && !document.getElementById("linkedin-solver-host-styles")) {
+  if (
+    typeof document !== "undefined" &&
+    !document.getElementById("linkedin-solver-host-styles")
+  ) {
     const hostStyle = document.createElement("style")
     hostStyle.id = "linkedin-solver-host-styles"
     hostStyle.textContent = `
@@ -281,10 +320,13 @@ export const getRootContainer = async (payload: { anchor: { element: HTMLElement
 
   // Dedicated bottom container for Pinpoint
   if (anchor.element.classList.contains("pinpoint__bottom-section")) {
-    let container = anchor.element.querySelector(".linkedin-solver-solve-btn-wrapper") as HTMLElement | null
+    let container = anchor.element.querySelector(
+      ".linkedin-solver-solve-btn-wrapper"
+    ) as HTMLElement | null
     if (!container) {
       container = document.createElement("div")
-      container.className = "linkedin-solver-solve-btn-wrapper pinpoint-solve-btn-container"
+      container.className =
+        "linkedin-solver-solve-btn-wrapper pinpoint-solve-btn-container"
       container.style.marginTop = "12px"
       container.style.display = "flex"
       container.style.justifyContent = "center"
@@ -303,7 +345,9 @@ export const getRootContainer = async (payload: { anchor: { element: HTMLElement
       underBoardControls.style.gap = "8px"
     }
 
-    let container = underBoardControls.querySelector(".linkedin-solver-solve-btn-wrapper") as HTMLElement | null
+    let container = underBoardControls.querySelector(
+      ".linkedin-solver-solve-btn-wrapper"
+    ) as HTMLElement | null
     if (!container) {
       container = document.createElement("div")
       container.className = "linkedin-solver-solve-btn-wrapper"
@@ -316,14 +360,18 @@ export const getRootContainer = async (payload: { anchor: { element: HTMLElement
         !firstWrapper.hasAttribute("data-control-btn") &&
         firstWrapper.tagName !== "BUTTON"
       ) {
-        const classes = firstWrapper.className.split(" ").filter(c => c && c !== "linkedin-solver-solve-btn-wrapper")
-        classes.forEach(cls => {
+        const classes = firstWrapper.className
+          .split(" ")
+          .filter((c) => c && c !== "linkedin-solver-solve-btn-wrapper")
+        classes.forEach((cls) => {
           container.classList.add(cls)
         })
       }
 
       let hintWrapper: HTMLElement | null = null
-      const hintBtn = underBoardControls.querySelector('[data-control-btn="hint"]')
+      const hintBtn = underBoardControls.querySelector(
+        '[data-control-btn="hint"]'
+      )
       if (hintBtn) {
         const wrapper =
           hintBtn.closest(".under-board-controls-item") ||
@@ -351,7 +399,9 @@ export const getRootContainer = async (payload: { anchor: { element: HTMLElement
 // ---------------------------------------------------------
 const SolveButtonCSUI = () => {
   const [solving, setSolving] = useState(false)
-  const [status, setStatus] = useState<"idle" | "solving" | "success" | "failed">("idle")
+  const [status, setStatus] = useState<
+    "idle" | "solving" | "success" | "failed"
+  >("idle")
   const [gameEnded, setGameEnded] = useState(false)
   const [active, setActive] = useState<BaseSolver | null>(null)
   const [buttonClasses, setButtonClasses] = useState<string>("")
@@ -361,16 +411,21 @@ const SolveButtonCSUI = () => {
   // Dynamically clone native obfuscated LinkedIn classes at mount time
   useEffect(() => {
     const getNativeStyles = () => {
-      const underBoard = document.querySelector('[data-testid="under-board-controls"], .sudoku-under-board-controls-container, .under-board-controls-container')
-      const nativeBtn = underBoard?.querySelector('button') || document.querySelector('[data-control-btn="hint"]') || document.querySelector('.pinpoint__bottom-section button')
-      
+      const underBoard = document.querySelector(
+        '[data-testid="under-board-controls"], .sudoku-under-board-controls-container, .under-board-controls-container'
+      )
+      const nativeBtn =
+        underBoard?.querySelector("button") ||
+        document.querySelector('[data-control-btn="hint"]') ||
+        document.querySelector(".pinpoint__bottom-section button")
+
       if (nativeBtn) {
         setButtonClasses(nativeBtn.className)
-        
-        const span1 = nativeBtn.querySelector('span')
+
+        const span1 = nativeBtn.querySelector("span")
         if (span1) {
           setSpan1Classes(span1.className)
-          const span2 = span1.querySelector('span')
+          const span2 = span1.querySelector("span")
           if (span2) {
             setSpan2Classes(span2.className)
           }
@@ -406,7 +461,9 @@ const SolveButtonCSUI = () => {
         const controlWrappers = Array.from(underBoardControls.children)
         if (controlWrappers.length >= 2) {
           const undoButton = controlWrappers[0]?.querySelector("button")
-          const hintWrapper = controlWrappers[controlWrappers.length - 1] as HTMLElement
+          const hintWrapper = controlWrappers[
+            controlWrappers.length - 1
+          ] as HTMLElement
           const hintButton = hintWrapper?.querySelector("button")
           if (
             undoButton &&
@@ -414,8 +471,14 @@ const SolveButtonCSUI = () => {
             undoButton.hasAttribute("disabled") &&
             hintButton.hasAttribute("disabled")
           ) {
-            const activeName = currentActive ? currentActive.name.toLowerCase() : ""
-            if (["tango", "queens", "sudoku", "patches", "zip"].includes(activeName)) {
+            const activeName = currentActive
+              ? currentActive.name.toLowerCase()
+              : ""
+            if (
+              ["tango", "queens", "sudoku", "patches", "zip"].includes(
+                activeName
+              )
+            ) {
               // Both disabled at start of game due to empty history & cooldown.
               // Only treat as ended if page was loaded > 15s ago.
               if (Date.now() - pageLoadTime > 15000) {
@@ -439,12 +502,18 @@ const SolveButtonCSUI = () => {
     const messageListener = (
       message: { action: string },
       _sender: chrome.runtime.MessageSender,
-      sendResponse: (response?: { game?: string | null; success?: boolean; error?: string }) => void
+      sendResponse: (response?: {
+        game?: string | null
+        success?: boolean
+        error?: string
+      }) => void
     ) => {
       if (message.action === "detectGame") {
         try {
           const currentActive = detectActiveSolver()
-          sendResponse({ game: currentActive ? currentActive.name.toLowerCase() : null })
+          sendResponse({
+            game: currentActive ? currentActive.name.toLowerCase() : null
+          })
         } catch (e) {
           console.error("[LinkedIn Games Solver] Game detection failed:", e)
           const errMsg = e instanceof Error ? e.message : String(e)
@@ -458,12 +527,15 @@ const SolveButtonCSUI = () => {
         if (!currentActive) {
           sendResponse({
             success: false,
-            error: "No matching game solver detected on this page. Please make sure you are on an active game board."
+            error:
+              "No matching game solver detected on this page. Please make sure you are on an active game board."
           })
           return true
         }
 
-        console.log(`[LinkedIn Games Solver] Executing solver for: ${currentActive.name}`)
+        console.log(
+          `[LinkedIn Games Solver] Executing solver for: ${currentActive.name}`
+        )
         setSolving(true)
         setStatus("solving")
 
@@ -471,18 +543,33 @@ const SolveButtonCSUI = () => {
         currentActive
           .solve()
           .then(async () => {
-            console.log(`[LinkedIn Games Solver] Solver ${currentActive.name} completed successfully.`)
+            console.log(
+              `[LinkedIn Games Solver] Solver ${currentActive.name} completed successfully.`
+            )
             setStatus("success")
             const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-            await saveGameCompleted(currentActive.name.toLowerCase(), durationSeconds)
-            sendResponse({ success: true, game: currentActive.name.toLowerCase() })
+            await saveGameCompleted(
+              currentActive.name.toLowerCase(),
+              durationSeconds
+            )
+            sendResponse({
+              success: true,
+              game: currentActive.name.toLowerCase()
+            })
             setTimeout(() => setStatus("idle"), 2500)
           })
           .catch((err: Error | unknown) => {
-            console.error(`[LinkedIn Games Solver] Solver ${currentActive.name} failed:`, err)
+            console.error(
+              `[LinkedIn Games Solver] Solver ${currentActive.name} failed:`,
+              err
+            )
             setStatus("failed")
             const errMsg = err instanceof Error ? err.message : String(err)
-            sendResponse({ success: false, error: errMsg, game: currentActive.name.toLowerCase() })
+            sendResponse({
+              success: false,
+              error: errMsg,
+              game: currentActive.name.toLowerCase()
+            })
             setTimeout(() => setStatus("idle"), 2500)
           })
           .finally(() => {
@@ -510,7 +597,9 @@ const SolveButtonCSUI = () => {
     const minDuration = 6000
     const delay = Math.max(0, minDuration - elapsedSinceLoad)
     if (delay > 0) {
-      console.log(`[LinkedIn Games Solver] Pacing solve action: sleeping for ${delay}ms to satisfy minimum play time anti-cheat limit.`)
+      console.log(
+        `[LinkedIn Games Solver] Pacing solve action: sleeping for ${delay}ms to satisfy minimum play time anti-cheat limit.`
+      )
       await new Promise((resolve) => setTimeout(resolve, delay))
     }
 
@@ -546,8 +635,8 @@ const SolveButtonCSUI = () => {
         style={{
           width: "100%",
           maxWidth: isPinpoint ? "320px" : undefined,
-          opacity: (solving || gameEnded) ? 0.6 : undefined,
-          cursor: (solving || gameEnded) ? "not-allowed" : "pointer"
+          opacity: solving || gameEnded ? 0.6 : undefined,
+          cursor: solving || gameEnded ? "not-allowed" : "pointer"
         }}>
         {span1Classes ? (
           <span className={span1Classes}>
