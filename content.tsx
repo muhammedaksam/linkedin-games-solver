@@ -160,7 +160,11 @@ async function checkVisitedGameSolved() {
         hintButton.hasAttribute("disabled")
       ) {
         if (["tango", "queens", "sudoku", "patches", "zip"].includes(gameId)) {
-          controlsEnded = true
+          // Both disabled at start of game due to empty history & cooldown.
+          // Only treat as ended if page was loaded > 15s ago.
+          if (Date.now() - pageLoadTime > 15000) {
+            controlsEnded = true
+          }
         }
       }
 
@@ -214,19 +218,41 @@ setInterval(checkVisitedGameSolved, 1500)
 // ---------------------------------------------------------
 
 // Tell Plasmo CSUI where to watch on the page to mount the component
-export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
-  const targets = [
-    '[data-testid="under-board-controls"]',
-    '.sudoku-under-board-controls-container',
-    '.under-board-controls-container',
-    '.pinpoint__bottom-section'
-  ]
+export const getInlineAnchor: PlasmoGetInlineAnchor = () => {
+  return new Promise<Element>((resolve) => {
+    const targets = [
+      '[data-testid="under-board-controls"]',
+      '.sudoku-under-board-controls-container',
+      '.under-board-controls-container',
+      '.pinpoint__bottom-section'
+    ]
 
-  for (const selector of targets) {
-    const el = document.querySelector(selector)
-    if (el) return el
-  }
-  return null
+    const check = () => {
+      for (const selector of targets) {
+        const el = document.querySelector(selector)
+        if (el) {
+          resolve(el)
+          return true
+        }
+      }
+      return false
+    }
+
+    // Direct check if already present
+    if (check()) return
+
+    // Dynamic SPA observer fallback
+    const observer = new MutationObserver(() => {
+      if (check()) {
+        observer.disconnect()
+      }
+    })
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    })
+  })
 }
 
 // Overwrite root container generation to insert custom wrapper inheriting native LinkedIn styles
@@ -390,7 +416,11 @@ const SolveButtonCSUI = () => {
           ) {
             const activeName = currentActive ? currentActive.name.toLowerCase() : ""
             if (["tango", "queens", "sudoku", "patches", "zip"].includes(activeName)) {
-              controlsEnded = true
+              // Both disabled at start of game due to empty history & cooldown.
+              // Only treat as ended if page was loaded > 15s ago.
+              if (Date.now() - pageLoadTime > 15000) {
+                controlsEnded = true
+              }
             }
           }
         }
