@@ -70,8 +70,9 @@ Return ONLY the single category name (a single word or very short phrase, e.g. "
 Do not include any quotes, periods, punctuation, or explanations.
 `
 
-      const category = (await askAI(prompt)).trim()
-      console.log(`[Pinpoint] Gemini category guess: "${category}"`)
+      const rawCategory = await askAI(prompt)
+      const category = this.cleanCategoryGuess(rawCategory)
+      console.log(`[Pinpoint] Gemini category guess: "${category}" (raw: "${rawCategory.trim()}")`)
 
       if (!category) {
         console.warn(
@@ -89,9 +90,7 @@ Do not include any quotes, periods, punctuation, or explanations.
 
         console.log(`[Pinpoint] Submitting guess: "${category}"`)
         input.focus()
-        input.value = category
-        input.dispatchEvent(new Event("input", { bubbles: true }))
-        input.dispatchEvent(new Event("change", { bubbles: true }))
+        this.setReactInputValue(input, category)
         await this.sleep(150)
 
         const form = this.$(".pinpoint__form")
@@ -138,5 +137,52 @@ Do not include any quotes, periods, punctuation, or explanations.
     }
 
     console.log("[Pinpoint] Solver loop complete!")
+  }
+
+  /**
+   * Sanitizes the category returned by the LLM by stripping surrounding quotes,
+   * markdown wrappers, trailing punctuation, and explanatory prefixes.
+   */
+  private cleanCategoryGuess(text: string): string {
+    let clean = text.trim();
+
+    // 1. Remove markdown formatting like ```text or backticks
+    if (clean.includes("```")) {
+      const match = clean.match(/```(?:[a-zA-Z]+)?\s*([\s\S]*?)\s*```/);
+      if (match?.[1]) {
+        clean = match[1].trim();
+      } else {
+        clean = clean.replace(/```/g, "").trim();
+      }
+    }
+    clean = clean.replace(/`/g, "").trim();
+
+    // 2. Remove surrounding quotes (straight & smart double/single quotes)
+    const quoteRegex = /^[“"‘'“‘”"’'”]+|["'”’]+$/g;
+    clean = clean.replace(quoteRegex, "").trim();
+
+    // 3. Remove common introductory prefixes
+    const prefixes = [
+      /^(?:the\s+)?category\s+is\s*:\s*/i,
+      /^connecting\s+category\s*:\s*/i,
+      /^common\s+category\s*:\s*/i,
+      /^guess\s*:\s*/i,
+      /^answer\s*:\s*/i,
+      /^theme\s*:\s*/i
+    ];
+    for (const prefix of prefixes) {
+      if (prefix.test(clean)) {
+        clean = clean.replace(prefix, "").trim();
+        break;
+      }
+    }
+
+    // 4. Remove trailing punctuation
+    clean = clean.replace(/[.!?]+$/, "").trim();
+
+    // 5. Remove any leftover surrounding quotes again after prefix removal
+    clean = clean.replace(quoteRegex, "").trim();
+
+    return clean;
   }
 }

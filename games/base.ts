@@ -54,4 +54,26 @@ export abstract class BaseSolver {
       buttons,
     });
   }
+
+  /**
+   * Safe and robust way to set the value of a React-controlled input element.
+   * By invoking the native HTMLInputElement.value setter directly, we bypass React's
+   * internal value tracking and ensure the React state registers the change when
+   * we dispatch the "input" and "change" events.
+   */
+  protected setReactInputValue(input: HTMLInputElement, value: string): void {
+    if (!input) return;
+    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value"
+    )?.set;
+    if (nativeInputValueSetter) {
+      nativeInputValueSetter.call(input, value);
+    } else {
+      input.value = value;
+    }
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  }
 }
+

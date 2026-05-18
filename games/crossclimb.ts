@@ -238,7 +238,7 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
         )
 
         try {
-          parsed = JSON.parse(responseText)
+          parsed = this.cleanAndParseJSON(responseText)
         } catch {
           continue
         }
@@ -414,7 +414,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
       bottomWord: ""
     }
     try {
-      parsedJoint = JSON.parse(responseText)
+      parsedJoint = this.cleanAndParseJSON(responseText)
     } catch (e) {
       throw new Error(
         `Failed to parse Gemini joint response: ${responseText}`,
@@ -475,9 +475,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
     for (let i = 0; i < word.length; i++) {
       const input = inputs[i]
       input.focus()
-      input.value = word[i]
-      input.dispatchEvent(new Event("input", { bubbles: true }))
-      input.dispatchEvent(new Event("change", { bubbles: true }))
+      this.setReactInputValue(input, word[i])
       input.dispatchEvent(
         new KeyboardEvent("keydown", { key: word[i], bubbles: true })
       )
@@ -847,4 +845,32 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
     )
     await this.sleep(150)
   }
+
+  /**
+   * Cleans the AI response string, extracts the raw JSON block,
+   * and parses it. This is highly resilient to extra LLM dialogue or markdown code fences.
+   */
+  private cleanAndParseJSON<T>(text: string): T {
+    let cleanText = text.trim()
+
+    // Strip markdown code block notation (e.g. ```json ... ```)
+    if (cleanText.includes("```")) {
+      const match = cleanText.match(/```(?:json)?\s*([\s\S]*?)\s*```/i)
+      if (match?.[1]) {
+        cleanText = match[1].trim()
+      } else {
+        cleanText = cleanText.replace(/```/g, "").trim()
+      }
+    }
+
+    // Find the first '{' and the last '}' to extract raw JSON
+    const firstBrace = cleanText.indexOf("{")
+    const lastBrace = cleanText.lastIndexOf("}")
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      cleanText = cleanText.substring(firstBrace, lastBrace + 1)
+    }
+
+    return JSON.parse(cleanText) as T
+  }
 }
+

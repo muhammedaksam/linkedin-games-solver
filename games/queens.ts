@@ -37,8 +37,8 @@ export class QueensSolver extends BaseSolver {
     // Place Queens
     for (const idx of solution) {
       await this.setQueenUI(idx);
-      // Small delay to let the UI register the state
-      await this.sleep(150);
+      // Small delay to let the UI register the state snappily
+      await this.sleep(60);
     }
 
     console.log("[Queens] Done solving!");
@@ -267,7 +267,7 @@ export class QueensSolver extends BaseSolver {
     for (let tries = 0; tries < 4; tries++) {
       if (this.readCellState(el) === 1) return;
       this.click(el);
-      await this.sleep(150);
+      await this.sleep(60);
     }
 
     console.warn(`[Queens] Could not set Queen UI at idx: ${idx}`);
