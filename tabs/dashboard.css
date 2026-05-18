@@ -1,57 +1,57 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 224 71.4% 4.1%;
-  --card: 0 0% 100%;
-  --card-foreground: 224 71.4% 4.1%;
+  --background: 220 13% 94%; /* LinkedIn light grey #f4f2ee */
+  --foreground: 0 0% 10%; /* LinkedIn charcoal text #191919 */
+  --card: 0 0% 100%; /* #ffffff */
+  --card-foreground: 0 0% 10%;
   --popover: 0 0% 100%;
-  --popover-foreground: 224 71.4% 4.1%;
-  --primary: 262.1 83.3% 57.8%;
-  --primary-foreground: 210 20% 98%;
-  --secondary: 220 14.3% 95.9%;
-  --secondary-foreground: 220.9 39.3% 11%;
-  --muted: 220 14.3% 95.9%;
-  --muted-foreground: 220 8.9% 46.1%;
-  --accent: 220 14.3% 95.9%;
-  --accent-foreground: 220.9 39.3% 11%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 210 90% 40%; /* LinkedIn blue #0a66c2 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 13% 94%;
+  --secondary-foreground: 0 0% 10%;
+  --muted: 220 10% 97%;
+  --muted-foreground: 0 0% 40%; /* #666666 */
+  --accent: 210 17% 95%;
+  --accent-foreground: 210 90% 40%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 20% 98%;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --ring: 262.1 83.3% 57.8%;
-  --radius: 0.5rem;
+  --border: 0 0% 88%; /* #e0e0e0 */
+  --input: 0 0% 88%;
+  --ring: 210 90% 40%;
+  --radius: 8px;
 }
 
 .dark {
-  --background: 224 71.4% 4.1%;
-  --foreground: 210 20% 98%;
-  --card: 224 71.4% 4.1%;
+  --background: 210 13% 13%; /* LinkedIn dark #1d2226 */
+  --foreground: 210 20% 98%; /* #f8f9fa */
+  --card: 210 10% 15%; /* #1f2226 */
   --card-foreground: 210 20% 98%;
-  --popover: 224 71.4% 4.1%;
+  --popover: 210 10% 15%;
   --popover-foreground: 210 20% 98%;
-  --primary: 263.4 70% 50.4%;
-  --primary-foreground: 210 20% 98%;
-  --secondary: 215 27.9% 16.9%;
+  --primary: 210 90% 70%; /* #70b5f9 */
+  --primary-foreground: 210 10% 10%;
+  --secondary: 210 10% 20%; /* #293138 */
   --secondary-foreground: 210 20% 98%;
-  --muted: 215 27.9% 16.9%;
-  --muted-foreground: 217.9 10.6% 64.9%;
-  --accent: 215 27.9% 16.9%;
-  --accent-foreground: 210 20% 98%;
+  --muted: 210 10% 20%;
+  --muted-foreground: 210 10% 70%; /* #b0b0b0 */
+  --accent: 210 10% 25%;
+  --accent-foreground: 210 90% 70%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 20% 98%;
-  --border: 215 27.9% 16.9%;
-  --input: 215 27.9% 16.9%;
-  --ring: 263.4 70% 50.4%;
+  --border: 210 10% 23%; /* #2f3539 */
+  --input: 210 10% 23%;
+  --ring: 210 90% 70%;
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -64,9 +64,7 @@ body {
 
 /* Glassmorphism Cards */
 .bg-card {
-  background-color: hsl(var(--card) / 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: hsl(var(--card));
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -81,8 +79,8 @@ body {
     transform: scale(1);
   }
   50% {
-    opacity: 0.8;
-    transform: scale(1.05);
+    opacity: 0.85;
+    transform: scale(1.02);
   }
 }
 
@@ -98,4 +96,20 @@ button, a {
 button:focus-visible, a:focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
+}
+
+/* Custom scrollbars for clean scrollable panels */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
 }

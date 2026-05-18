@@ -214,5 +214,117 @@
   "settingApiKeyNotice": {
     "message": "O modelo selecionado resolve Crossclimb e Pinpoint. A extensão nunca compartilha sua chave.",
     "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Conecte-se com jogos diários divertidos",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Prepare sua mente para o dia de trabalho e compare resultados. Suas pontuações são privadas, a menos que você as compartilhe.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Salvar e voltar aos jogos",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "Solucionador de IA trabalhando...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Concluído hoje",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Resolvidos",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "Configuração do Modelo de IA",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "PROVEDOR DE IA",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "IDENTIFICADOR DO MODELO",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "NOME DO MODELO PERSONALIZADO",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "URL DO ENDPOINT",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "CHAVE API GEMINI",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "CHAVE API OPENAI",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "CHAVE API ANTHROPIC",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "CHAVE API DEEPSEEK",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "CHAVE API (OPCIONAL)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Início",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "Config de IA",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "Stats",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Tema",
+    "description": "Theme nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Progresso Diário",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Resolver Tabuleiro Ativo",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "Voltar para Jogos do LinkedIn",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Painel",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Solucionador",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Analise suas métricas de desempenho, registre recordes e acompanhe os caminhos dos quebra-cabeças concluídos diariamente.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Concluído com Sucesso",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Aviso Legal: Este é um projeto educacional de código aberto independente. Não é afiliado, patrocinado ou endossado pela LinkedIn Corporation. 'LinkedIn' é uma marca registrada da LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
   }
 }

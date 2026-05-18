@@ -214,5 +214,117 @@
   "settingApiKeyNotice": {
     "message": "Seçilen model Crossclimb ve Pinpoint oyunlarını çözer. Uzantı anahtarınızı asla paylaşmaz.",
     "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Eğlenceli günlük oyunlarla bağlantı kurun",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Zihninizi iş gününe hazırlayın ve sonuçları karşılaştırın. Paylaşmadığınız sürece puanlarınız gizlidir.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Kaydet ve Oyunlara Dön",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "Yapay Cihan Çözücü çalışıyor...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Bugün Tamamlandı",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Çözüldü",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "Yapay Zeka Model Yapılandırması",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "YAPAY ZEKA SAĞLAYICISI",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "MODEL KİMLİĞİ",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "ÖZEL MODEL ADI",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "BAĞLANTI NOKTASI URL'Sİ",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API ANAHTARI",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API ANAHTARI",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API ANAHTARI",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API ANAHTARI",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API ANAHTARI (İSTEĞE BAĞLI)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Ana Sayfa",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "YZ Yapılandırması",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "İstatistikler",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Tema",
+    "description": "Theme nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Günlük İlerleme",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Aktif Tablayı Çöz",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "LinkedIn Oyunlarına Dön",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Panel",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Oyun Çözücü",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Performans metriklerinizi analiz edin, serilerinizi kaydedin ve günlük tamamlanan bulmaca yollarınızı izleyin.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Başarıyla Tamamlandı",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Feragatname: Bu bağımsız, açık kaynaklı ve eğitici bir projedir. LinkedIn Corporation ile hiçbir bağlantısı, sponsorluğu veya onayı yoktur. 'LinkedIn', LinkedIn Corporation'ın tescilli markasıdır.",
+    "description": "Compliance footer disclaimer text"
   }
 }

@@ -214,5 +214,117 @@
   "settingApiKeyNotice": {
     "message": "所选模型可解决 Crossclimb 和 Pinpoint。此扩展程序绝不会共享您的密钥。",
     "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "通过有趣的每日游戏进行连接",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "为工作日做好思维准备并对比结果。除非您选择分享，否则您的得分是完全保密的。",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "保存并返回游戏",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "AI 求解器工作中...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "今日已完成",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "已解决",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "AI 模型配置",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "AI 提供商",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "模型标识符",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "自定义模型名称",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "终端 URL",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API 密钥",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API 密钥",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API 密钥",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API 密钥",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API 密钥 (可选)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "首页",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "AI 配置",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "统计",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "主题",
+    "description": "Theme nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "每日进度",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "求解当前棋盘",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "返回 LinkedIn 游戏",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "仪表板",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "游戏求解器",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "分析您的绩效指标、记录连续天数并追踪您每日完成的谜题路径。",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "成功完成",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "免责声明：这是一个独立的、开源的教育项目。它与 LinkedIn Corporation 没有任何关联、赞助或认可。'LinkedIn' 是 LinkedIn Corporation 的注册商标。",
+    "description": "Compliance footer disclaimer text"
   }
 }

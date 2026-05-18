@@ -214,5 +214,117 @@
   "settingApiKeyNotice": {
     "message": "Ausgewähltes Modell löst Crossclimb & Pinpoint. Die Erweiterung gibt Ihren Schlüssel niemals weiter.",
     "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Verbinden Sie sich über unterhaltsame, tägliche Spiele",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Bereiten Sie Ihren Geist auf den Arbeitstag vor und vergleichen Sie Ergebnisse. Ihre Ergebnisse sind privat, es sei denn, Sie teilen sie.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Speichern & Zurück zu den Spielen",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "KI-Löser arbeitet...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Heute abgeschlossen",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Gelöst",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "KI-Modellkonfiguration",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "KI-ANBIETER",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "MODELL-IDENTIFIKATION",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "BENUTZERDEFINIERTER MODELLNAME",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "ENDPOINT-URL",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI-API-SCHLÜSSEL",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI-API-SCHLÜSSEL",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC-API-SCHLÜSSEL",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK-API-SCHLÜSSEL",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API-SCHLÜSSEL (OPTIONAL)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Start",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "KI-Konfig",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "Statistiken",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Design",
+    "description": "Theme nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Täglicher Fortschritt",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Aktives Spielfeld lösen",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "Zurück zu LinkedIn-Spielen",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Dashboard",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Spiele-Löser",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Analysieren Sie Ihre Leistungsmetriken, erfassen Sie Strähnen und verfolgen Sie Ihre täglich gelösten Rätselpfade.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Erfolgreich abgeschlossen",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Haftungsausschluss: Dies ist ein unabhängiges, quelloffenes Bildungsprojekt. Es steht in keiner Verbindung zu LinkedIn Corporation, wird nicht von ihr gesponsert oder unterstützt. 'LinkedIn' ist eine eingetragene Marke der LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
   }
 }

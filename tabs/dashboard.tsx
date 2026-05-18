@@ -1,3 +1,5 @@
+import { useEffect, useMemo, useState } from "react"
+import { useStorage } from "@plasmohq/storage/hook"
 import {
   ArrowLeft,
   Calendar as CalendarIcon,
@@ -9,15 +11,13 @@ import {
   Sun,
   Trophy
 } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
 
-import { useStorage } from "@plasmohq/storage/hook"
-
+import { Calendar } from "../components/ui/calendar"
 import { GAMES_CONFIG } from "~/lib/games-config"
 import { localStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
 
-import { Calendar } from "../components/ui/calendar"
+import { DisclaimerFooter } from "~/components/disclaimer-footer"
 
 import "./dashboard.css"
 
@@ -37,7 +37,7 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     title: "LinkedIn Games",
     subtitle: "Solve active boards in a single click",
     switchThemeTitle: "Switch to $1 mode",
-    dashboardTitle: "Solver Dashboard",
+    dashboardTitle: "Stats & History",
     dashboardSubtitle:
       "Your complete LinkedIn Games solving history & statistics",
     statTotalSolved: "Total Solved",
@@ -54,7 +54,38 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     tango: "Tango",
     queens: "Queens",
     zip: "Zip",
-    patches: "Patches"
+    patches: "Patches",
+    crossclimb: "Crossclimb",
+    pinpoint: "Pinpoint",
+    popupCardTitle: "Connect over fun, daily games",
+    popupCardDesc: "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
+    saveAndBack: "Save & Back to Games",
+    solvingWorking: "AI Solver working...",
+    completedToday: "Completed Today",
+    solvedCountSuffix: "Solved",
+    settingsHeaderTitle: "AI Model Configuration",
+    labelAiProvider: "AI PROVIDER",
+    labelModelIdentifier: "MODEL IDENTIFIER",
+    labelCustomModel: "CUSTOM MODEL NAME",
+    labelEndpointUrl: "ENDPOINT URL",
+    labelGeminiKey: "GEMINI API KEY",
+    labelOpenAiKey: "OPENAI API KEY",
+    labelAnthropicKey: "ANTHROPIC API KEY",
+    labelDeepSeekKey: "DEEPSEEK API KEY",
+    labelCustomKey: "API KEY (OPTIONAL)",
+    navHome: "Home",
+    navAiConfig: "AI Config",
+    navStats: "Stats",
+    navTheme: "Theme",
+    dailyProgressLabel: "Daily Progress",
+    solveActiveBoard: "Solve Active Board",
+    backToGames: "Back to LinkedIn Games",
+    dashboardLabel: "Dashboard",
+    gamesSolverTitle: "Games Solver",
+    dashboardDescText: "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
+    completedSuccessfully: "Completed Successfully",
+    activityCalendar: "Activity Calendar",
+    clearFilter: "Clear Filter"
   }
   let msg = fallbacks[key] || key
   if (substitutions) {
@@ -135,7 +166,7 @@ export default function Dashboard() {
 
   // Dynamically set document title on mount
   useEffect(() => {
-    document.title = getMessage("dashboardTitle")
+    document.title = `${getMessage("dashboardTitle")} | LinkedIn Games Solver`
   }, [])
 
   // Class toggle
@@ -238,53 +269,78 @@ export default function Dashboard() {
   }, [history, selectedDate])
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300 antialiased">
-      <div className="max-w-6xl mx-auto px-6 py-8 select-none">
-        {/* Navigation & Header */}
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 pb-8 border-b border-border">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-200 antialiased flex flex-col">
+      {/* LinkedIn Desktop Top Navigation Header */}
+      <header className="sticky top-0 z-50 border-b border-border bg-card shadow-sm h-14 w-full flex items-center justify-between px-6">
+        <div className="max-w-6xl mx-auto w-full flex items-center justify-between">
+          {/* Left: Brand */}
+          <div className="flex items-center gap-2">
+            <div className="w-[26px] h-[26px] rounded bg-[#0a66c2] dark:bg-[#ffffff] flex items-center justify-center font-extrabold text-white dark:text-[#1d2226] text-[11px] select-none tracking-tighter leading-none shrink-0">
+              win
+            </div>
+            <div className="h-4 w-[1px] bg-border mx-1" />
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold tracking-tight text-foreground" style={{ fontFamily: "Source Sans 3, sans-serif" }}>
+                {getMessage("gamesSolverTitle")}
+              </span>
+              <span className="text-[11px] text-muted-foreground font-semibold px-2 py-0.5 rounded-full border border-border/80 bg-muted/30">
+                {getMessage("dashboardLabel")}
+              </span>
+            </div>
+          </div>
+
+          {/* Right: Actions */}
           <div className="flex items-center gap-4">
+            {/* Mode Switch */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all duration-200 shadow-sm outline-none"
+              title={getMessage(
+                "switchThemeTitle",
+                theme === "dark" ? "light" : "dark"
+              )}>
+              {theme === "dark" ? (
+                <Sun className="w-4 h-4 text-orange-400 animate-in spin-in-12 duration-500" />
+              ) : (
+                <Moon className="w-4 h-4 text-zinc-600 animate-in spin-in-12 duration-500" />
+              )}
+            </button>
+
+            {/* Back to Games Tab Link */}
             <a
               href="https://www.linkedin.com/games/"
               target="_blank"
               rel="noreferrer"
-              className="p-3 rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-200 shadow-sm"
-              title="Back to LinkedIn Games">
-              <ArrowLeft className="w-4 h-4" />
+              className="px-4 h-[32px] rounded-full border border-[#0a66c2] dark:border-[#70b5f9] text-[#0a66c2] dark:text-[#70b5f9] hover:bg-[#eef3f8] dark:hover:bg-[#293138] font-bold text-xs transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm active:scale-95">
+              <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
+              {getMessage("backToGames")}
             </a>
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-2.5">
-                <Sparkles className="w-5 h-5 text-emerald-500 animate-pulse-slow" />
-                <h1 className="text-2xl font-extrabold tracking-tight">
-                  {getMessage("dashboardTitle")}
-                </h1>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                {getMessage("dashboardSubtitle")}
-              </p>
-            </div>
           </div>
+        </div>
+      </header>
 
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="self-start md:self-auto p-3 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm outline-none"
-            title={getMessage(
-              "switchThemeTitle",
-              theme === "dark" ? "light" : "dark"
-            )}>
-            {theme === "dark" ? (
-              <Sun className="w-4 h-4 text-orange-400 animate-in spin-in-12 duration-500" />
-            ) : (
-              <Moon className="w-4 h-4 text-zinc-600 animate-in spin-in-12 duration-500" />
-            )}
-          </button>
-        </header>
+      {/* Main Body */}
+      <div className="max-w-6xl mx-auto w-full px-6 py-8 flex-1 flex flex-col gap-8">
+        
+        {/* Title Description Banner */}
+        <div className="flex flex-col gap-1 border-b border-border/60 pb-5">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-[#0a66c2] dark:text-[#70b5f9]" />
+            <h1 className="text-xl font-bold tracking-tight text-foreground" style={{ fontFamily: "Source Sans 3, sans-serif" }}>
+              {getMessage("dashboardSubtitle")}
+            </h1>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            {getMessage("dashboardDescText")}
+          </p>
+        </div>
 
-        {/* Stats Row */}
-        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        {/* Stats Grid Row */}
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {/* Card 1: Total Solved */}
-          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-shadow duration-300">
-            <span className="p-3 rounded-lg bg-emerald-500/10 text-emerald-500 shrink-0">
+          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
+            <span className="p-3 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 text-[#057642] dark:text-emerald-400 shrink-0 transition-transform group-hover:scale-105 duration-200">
               <Trophy className="w-6 h-6" />
             </span>
             <div className="flex flex-col gap-0.5">
@@ -301,8 +357,8 @@ export default function Dashboard() {
           </div>
 
           {/* Card 2: Average Time */}
-          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-shadow duration-300">
-            <span className="p-3 rounded-lg bg-blue-500/10 text-blue-500 shrink-0">
+          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
+            <span className="p-3 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 text-[#0a66c2] dark:text-[#70b5f9] shrink-0 transition-transform group-hover:scale-105 duration-200">
               <Clock className="w-6 h-6" />
             </span>
             <div className="flex flex-col gap-0.5">
@@ -319,9 +375,9 @@ export default function Dashboard() {
           </div>
 
           {/* Card 3: Active Streak */}
-          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-shadow duration-300">
-            <span className="p-3 rounded-lg bg-orange-500/10 text-orange-500 shrink-0">
-              <Flame className="w-6 h-6" />
+          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
+            <span className="p-3 rounded-lg bg-orange-500/10 dark:bg-orange-500/20 text-[#e65100] dark:text-[#ffb74d] shrink-0 transition-transform group-hover:scale-105 duration-200">
+              <Flame className="w-6 h-6 animate-pulse" />
             </span>
             <div className="flex flex-col gap-0.5">
               <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
@@ -357,14 +413,14 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left Column: Personal Records */}
           <section className="lg:col-span-2 flex flex-col gap-6">
-            <div className="flex items-center gap-2">
-              <Crown className="w-4 h-4 text-emerald-500" />
-              <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+            <div className="flex items-center gap-2 pb-1 border-b border-border/40">
+              <Crown className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 {getMessage("personalBests")}
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 w-full">
+            <div className="flex flex-col gap-3.5 w-full">
               {GAMES_CONFIG.map((game) => {
                 const pb = personalBests[game.id]
 
@@ -372,32 +428,40 @@ export default function Dashboard() {
                   <div
                     key={game.id}
                     className={cn(
-                      "flex items-center justify-between p-4 rounded-xl border bg-card transition-all duration-200 hover:-translate-y-0.5 shadow-sm",
-                      pb
-                        ? "border-emerald-500/20 bg-emerald-500/[0.01]"
-                        : "border-border"
+                      "flex items-center justify-between p-3.5 rounded-xl border bg-card transition-all duration-200 hover:-translate-y-0.5 shadow-sm group border-border",
+                      pb && "border-emerald-500/20 bg-emerald-500/[0.01]"
                     )}>
                     <div className="flex items-center gap-3.5">
-                      <span
-                        className={cn(
-                          "p-3 rounded-lg border bg-gradient-to-br flex items-center justify-center shrink-0 w-11 h-11",
-                          game.color.gradient,
-                          game.color.border
-                        )}>
-                        <img src={game.icon} alt={game.title} className="w-6 h-6 object-contain" />
-                      </span>
+                      {/* Brand Illustration Square */}
+                      <div className={cn(
+                        "w-11 h-11 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
+                        game.illustrationBg
+                      )}>
+                        <img
+                          src={game.icon}
+                          alt={game.title}
+                          className={cn(
+                            "w-6 h-6 object-contain transition-transform group-hover:scale-110 duration-200",
+                            game.illustrationColor
+                          )}
+                        />
+                      </div>
+
                       <div className="flex flex-col">
+                        <span className="text-[10px] text-muted-foreground leading-none mb-0.5">
+                          {game.description}
+                        </span>
                         <span className="text-xs font-bold text-foreground">
                           {getMessage(game.id) || game.title}
                         </span>
-                        <span className="text-[10px] text-muted-foreground">
-                          {pb ? pb.date : getMessage("noRecordsYet")}
+                        <span className="text-[9px] font-semibold text-muted-foreground/80 mt-0.5">
+                          {pb ? formatDateString(pb.date) : getMessage("noRecordsYet")}
                         </span>
                       </div>
                     </div>
                     {pb && (
-                      <div className="flex items-center gap-2">
-                        <span className="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase bg-emerald-500/10 text-emerald-500 tracking-wider">
+                      <div className="flex items-center">
+                        <span className="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 tracking-wider border border-emerald-500/10">
                           {formatTime(pb.time)}
                         </span>
                       </div>
@@ -408,11 +472,11 @@ export default function Dashboard() {
             </div>
 
             {/* Activity Calendar */}
-            <div className="flex flex-col gap-3 mt-4 w-full">
-              <div className="flex items-center justify-between pr-2 w-full">
+            <div className="flex flex-col gap-3 mt-6 w-full">
+              <div className="flex items-center justify-between pr-2 pb-1 border-b border-border/40 w-full">
                 <div className="flex items-center gap-2">
-                  <CalendarIcon className="w-4 h-4 text-emerald-500" />
-                  <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                  <CalendarIcon className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                     {getMessage("activityCalendar")}
                   </h2>
                 </div>
@@ -420,12 +484,12 @@ export default function Dashboard() {
                   <button
                     type="button"
                     onClick={() => setSelectedDate(undefined)}
-                    className="text-[10px] font-semibold text-emerald-500 hover:text-emerald-400 hover:underline transition-all cursor-pointer">
+                    className="text-[10px] font-bold text-[#0a66c2] dark:text-[#70b5f9] hover:underline transition-all cursor-pointer">
                     {getMessage("clearFilter")}
                   </button>
                 )}
               </div>
-              <div className="w-full">
+              <div className="w-full pt-2">
                 <Calendar
                   mode="single"
                   selected={selectedDate}
@@ -441,16 +505,16 @@ export default function Dashboard() {
 
           {/* Right Column: Historical Logs */}
           <section className="lg:col-span-3 flex flex-col gap-6 w-full">
-            <div className="flex items-center gap-2">
-              <CalendarIcon className="w-4 h-4 text-emerald-500" />
-              <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+            <div className="flex items-center gap-2 pb-1 border-b border-border/40">
+              <CalendarIcon className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 {getMessage("solvingHistory")}
               </h2>
             </div>
 
             {sortedDates.length === 0 ? (
               <div className="flex flex-col items-center justify-center p-12 rounded-2xl border border-dashed border-border bg-card text-center text-muted-foreground">
-                <CalendarIcon className="w-8 h-8 mb-3 opacity-30 text-emerald-500" />
+                <CalendarIcon className="w-8 h-8 mb-3 opacity-30 text-[#0a66c2] dark:text-[#70b5f9]" />
                 <p className="text-xs">{getMessage("noRecordsYet")}</p>
               </div>
             ) : (
@@ -459,11 +523,11 @@ export default function Dashboard() {
                   const dateGames = history[dateStr] || {}
 
                   return (
-                    <div key={dateStr} className="flex flex-col gap-3">
-                      <h3 className="text-[11px] font-bold text-muted-foreground/80 uppercase tracking-wider">
+                    <div key={dateStr} className="flex flex-col gap-2.5 animate-in fade-in duration-300">
+                      <h3 className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-wider pl-1">
                         {formatDateString(dateStr)}
                       </h3>
-                      <div className="flex flex-col gap-2 bg-card border border-border rounded-xl p-4 shadow-sm">
+                      <div className="flex flex-col gap-1 bg-card border border-border rounded-xl p-4 shadow-sm">
                         {Object.keys(dateGames).map((gameId) => {
                           const record = dateGames[gameId]
                           const gameConfig = GAMES_CONFIG.find(
@@ -476,27 +540,37 @@ export default function Dashboard() {
                               className="flex items-center justify-between py-2 border-b border-border last:border-b-0 last:pb-0 first:pt-0">
                               <div className="flex items-center gap-3">
                                 {gameConfig && (
-                                  <span
-                                    className={cn(
-                                      "p-1.5 rounded border bg-gradient-to-br flex items-center justify-center shrink-0 w-8 h-8",
-                                      gameConfig.color.gradient,
-                                      gameConfig.color.border
-                                    )}>
-                                    <img src={gameConfig.icon} alt={gameConfig.title} className="w-4 h-4 object-contain" />
-                                  </span>
+                                  <div className={cn(
+                                    "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
+                                    gameConfig.illustrationBg
+                                  )}>
+                                    <img
+                                      src={gameConfig.icon}
+                                      alt={gameConfig.title}
+                                      className={cn(
+                                        "w-4 h-4 object-contain",
+                                        gameConfig.illustrationColor
+                                      )}
+                                    />
+                                  </div>
                                 )}
-                                <span className="text-xs font-bold">
-                                  {getMessage(gameId) ||
-                                    gameConfig?.title ||
-                                    gameId}
-                                </span>
+                                <div className="flex flex-col">
+                                  <span className="text-xs font-bold">
+                                    {getMessage(gameId) ||
+                                      gameConfig?.title ||
+                                      gameId}
+                                  </span>
+                                  <span className="text-[9px] text-muted-foreground/80 leading-none">
+                                    {gameConfig?.description}
+                                  </span>
+                                </div>
                               </div>
                               <div className="flex items-center gap-3">
                                 <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-                                  <Clock className="w-3 h-3" />
+                                  <Clock className="w-3.5 h-3.5" />
                                   {formatTime(record.time > 0 ? record.time : 1)}
                                 </span>
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                <span className="w-2 h-2 rounded-full bg-[#057642]" title={getMessage("completedSuccessfully")} />
                               </div>
                             </div>
                           )
@@ -510,6 +584,7 @@ export default function Dashboard() {
           </section>
         </div>
       </div>
+      <DisclaimerFooter />
     </div>
   )
 }

@@ -1,18 +1,18 @@
+import { useCallback, useEffect, useState } from "react"
+import { useStorage } from "@plasmohq/storage/hook"
 import {
   AlertCircle,
   BarChart3,
   CheckCircle2,
   Eye,
   EyeOff,
+  Home,
   Key,
   Moon,
   Settings,
   Sparkles,
   Sun
 } from "lucide-react"
-import { useCallback, useEffect, useState } from "react"
-
-import { useStorage } from "@plasmohq/storage/hook"
 
 import { Input } from "~/components/ui/input"
 import {
@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "~/components/ui/select"
+import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { GAMES_CONFIG } from "~/lib/games-config"
 import { localStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
@@ -106,7 +107,34 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     settingApiKeyPlaceholderCustom: "Optional credentials...",
     settingApiKeyPlaceholderDefault: "Enter credentials key...",
     settingApiKeyNotice:
-      "Selected model solves Crossclimb & Pinpoint. The extension never shares your key."
+      "Selected model solves Crossclimb & Pinpoint. The extension never shares your key.",
+    popupCardTitle: "Connect over fun, daily games",
+    popupCardDesc: "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
+    saveAndBack: "Save & Back to Games",
+    solvingWorking: "AI Solver working...",
+    completedToday: "Completed Today",
+    solvedCountSuffix: "Solved",
+    settingsHeaderTitle: "AI Model Configuration",
+    labelAiProvider: "AI PROVIDER",
+    labelModelIdentifier: "MODEL IDENTIFIER",
+    labelCustomModel: "CUSTOM MODEL NAME",
+    labelEndpointUrl: "ENDPOINT URL",
+    labelGeminiKey: "GEMINI API KEY",
+    labelOpenAiKey: "OPENAI API KEY",
+    labelAnthropicKey: "ANTHROPIC API KEY",
+    labelDeepSeekKey: "DEEPSEEK API KEY",
+    labelCustomKey: "API KEY (OPTIONAL)",
+    navHome: "Home",
+    navAiConfig: "AI Config",
+    navStats: "Stats",
+    navTheme: "Theme",
+    dailyProgressLabel: "Daily Progress",
+    solveActiveBoard: "Solve Active Board",
+    backToGames: "Back to LinkedIn Games",
+    dashboardLabel: "Dashboard",
+    gamesSolverTitle: "Games Solver",
+    dashboardDescText: "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
+    completedSuccessfully: "Completed Successfully"
   }
   let msg = fallbacks[key] || key
   if (substitutions) {
@@ -125,6 +153,32 @@ function getLocalDateString(): string {
   const month = String(d.getMonth() + 1).padStart(2, "0")
   const day = String(d.getDate()).padStart(2, "0")
   return `${year}-${month}-${day}`
+}
+
+// Generate daily puzzle numbers dynamically based on reference dates
+function getPuzzleNumber(gameId: string): number {
+  const referenceDate = new Date(2026, 4, 18) // May 18, 2026
+  const today = new Date()
+  
+  // Reset times to midnight for precise day calculation
+  referenceDate.setHours(0, 0, 0, 0)
+  today.setHours(0, 0, 0, 0)
+  
+  const diffTime = today.getTime() - referenceDate.getTime()
+  const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24))
+  
+  const baseNumbers: Record<string, number> = {
+    queens: 748,
+    patches: 62,
+    zip: 427,
+    sudoku: 280,
+    tango: 588,
+    crossclimb: 748,
+    pinpoint: 748
+  }
+  
+  const base = baseNumbers[gameId] || 748
+  return base + diffDays
 }
 
 const PROVIDER_LABELS: Record<string, string> = {
@@ -282,7 +336,7 @@ function IndexPopup() {
       `linkedin.com/games/${gamePath}`
     )
 
-    // If the card clicked is NOT the active game on the current tab, we automatically switch/open it!
+    // If the card clicked is NOT the active game on the current tab, switch/open it
     if (activeGame !== gameId && !isActiveTabLinkedInGame) {
       try {
         const tabs = await chrome.tabs.query({
@@ -352,344 +406,440 @@ function IndexPopup() {
 
   const solvedCount = Object.values(completedToday).filter(Boolean).length
 
+  // Global Nav Items styled as LinkedIn Tab icons
+  const navItems = [
+    {
+      id: "home",
+      label: getMessage("navHome"),
+      icon: Home,
+      active: !showSettings,
+      onClick: () => setShowSettings(false)
+    },
+    {
+      id: "settings",
+      label: getMessage("navAiConfig"),
+      icon: Settings,
+      active: showSettings,
+      onClick: () => setShowSettings(true)
+    },
+    {
+      id: "dashboard",
+      label: getMessage("navStats"),
+      icon: BarChart3,
+      active: false,
+      onClick: openDashboard
+    },
+    {
+      id: "theme",
+      label: getMessage("navTheme"),
+      icon: theme === "dark" ? Sun : Moon,
+      active: false,
+      onClick: toggleTheme
+    }
+  ]
+
   return (
-    <main className="flex flex-col h-full min-h-[480px] p-6 select-none animate-in fade-in duration-300">
-      <header className="mb-6 flex items-start justify-between">
-        <div className="flex flex-col items-start gap-1">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-emerald-500 animate-pulse-slow" />
-            <h1 className="text-lg font-bold tracking-tight text-foreground">
-              {getMessage("title")}
-            </h1>
-          </div>
-          <p className="text-[11px] text-muted-foreground">
-            {getMessage("subtitle")}
-          </p>
-        </div>
+    <main className="flex flex-col min-h-[520px] select-none bg-background text-foreground transition-colors duration-200">
+      {/* LinkedIn Miniature Top Navigation Header */}
+      <header className="sticky top-0 z-50 flex items-center justify-between px-4 border-b border-border bg-card shadow-sm h-[52px]">
+        {/* Left: Brand */}
         <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => setShowSettings(!showSettings)}
-            className={cn(
-              "p-1.5 rounded-md border border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm outline-none",
-              showSettings &&
-                "bg-accent text-accent-foreground border-emerald-500/30"
-            )}
-            title="AI Settings">
-            <Settings className="w-3.5 h-3.5 text-zinc-400" />
-          </button>
-          <button
-            type="button"
-            onClick={openDashboard}
-            className="p-1.5 rounded-md border border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm outline-none"
-            title={getMessage("dashboardTitle")}>
-            <BarChart3 className="w-3.5 h-3.5 text-emerald-500" />
-          </button>
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="p-1.5 rounded-md border border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm outline-none"
-            title={getMessage(
-              "switchThemeTitle",
-              theme === "dark" ? "light" : "dark"
-            )}>
-            {theme === "dark" ? (
-              <Sun className="w-3.5 h-3.5 text-orange-400" />
-            ) : (
-              <Moon className="w-3.5 h-3.5 text-zinc-600" />
-            )}
-          </button>
+          <div className="w-[22px] h-[22px] rounded bg-[#0a66c2] dark:bg-[#ffffff] flex items-center justify-center font-extrabold text-white dark:text-[#1d2226] text-[9px] select-none tracking-tighter leading-none shrink-0">
+            win
+          </div>
+          <div className="h-3.5 w-[1px] bg-border mx-0.5" />
+          <span className="text-[12px] font-bold tracking-tight text-foreground" style={{ fontFamily: "Source Sans 3, sans-serif" }}>
+            {getMessage("gamesSolverTitle")}
+          </span>
+        </div>
+
+        {/* Right: LinkedIn Global Nav Links */}
+        <div className="flex items-center gap-3.5 h-full">
+          {navItems.map((item) => {
+            const IconComponent = item.icon
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={item.onClick}
+                className={cn(
+                  "relative flex flex-col items-center justify-center h-full px-1 text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent pt-1",
+                  item.active && "text-foreground"
+                )}>
+                <IconComponent className={cn("w-[18px] h-[18px] transition-transform active:scale-95", item.active && "stroke-[2.2px]")} />
+                <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight">
+                  {item.label}
+                </span>
+                {item.active && (
+                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-foreground rounded-t" />
+                )}
+              </button>
+            )
+          })}
         </div>
       </header>
 
-      {/* Slide-out / Collapse API Settings panel */}
-      {showSettings && (
-        <div className="mb-5 p-4 rounded-lg border border-border bg-card/60 backdrop-blur-md text-card-foreground shadow-sm animate-in slide-in-from-top-2 duration-300 space-y-4">
-          <div className="flex items-center gap-2 border-b border-border/60 pb-2">
-            <Key className="w-3.5 h-3.5 text-emerald-500" />
-            <h3 className="text-xs font-semibold text-foreground">
-              AI Configuration
-            </h3>
+      {/* Main Content Area */}
+      <div className="flex-1 p-4 pb-6 space-y-4 overflow-y-auto max-h-[468px]">
+        {solveError && (
+          <div className="flex items-start gap-3 p-3 rounded-lg border border-destructive/20 bg-destructive/10 text-destructive animate-in fade-in slide-in-from-top-2 duration-300">
+            <AlertCircle className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+            <div className="text-[11px] leading-relaxed font-semibold">
+              {solveError}
+            </div>
           </div>
+        )}
 
-          <div className="space-y-3">
-            {/* AI Provider */}
-            <div className="space-y-1.5">
-              <span className="text-[10px] text-muted-foreground block font-medium">
-                AI Provider
-              </span>
-              <Select
-                value={aiProvider || "gemini"}
-                onValueChange={(val) => {
-                  setAiProvider(val)
-                  // Autoselect a sensible default model
-                  if (val === "gemini") setAiModel("gemini-2.5-flash")
-                  else if (val === "openai") setAiModel("gpt-4o-mini")
-                  else if (val === "anthropic") setAiModel("claude-3-5-haiku")
-                  else if (val === "deepseek") setAiModel("deepseek-chat")
-                  else if (val === "custom") setAiModel("")
-                }}>
-                <SelectTrigger className="w-full text-xs h-8 bg-card/50 border border-border hover:border-emerald-500/30 justify-between">
-                  <SelectValue placeholder="Select Provider">
-                    {PROVIDER_LABELS[aiProvider] || "Select Provider"}
-                  </SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="gemini">Google Gemini</SelectItem>
-                  <SelectItem value="openai">OpenAI (ChatGPT)</SelectItem>
-                  <SelectItem value="anthropic">Anthropic Claude</SelectItem>
-                  <SelectItem value="deepseek">DeepSeek</SelectItem>
-                  <SelectItem value="custom">
-                    Custom / Local Endpoint
-                  </SelectItem>
-                </SelectContent>
-              </Select>
+        {solveSuccess && (
+          <div className="flex items-start gap-3 p-3 rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 animate-in fade-in slide-in-from-top-2 duration-300">
+            <CheckCircle2 className="w-4 h-4 text-[#057642] dark:text-emerald-400 shrink-0 mt-0.5" />
+            <div className="text-[11px] leading-relaxed font-semibold">
+              {getMessage("successSolverStarted")}
+            </div>
+          </div>
+        )}
+
+        {/* AI Config Tab View */}
+        {showSettings ? (
+          <div className="bg-card border border-border rounded-xl p-4 shadow-sm space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <div className="flex items-center gap-2 border-b border-border pb-2.5">
+              <Key className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+              <h3 className="text-sm font-bold text-foreground">
+                {getMessage("settingsHeaderTitle")}
+              </h3>
             </div>
 
-            {/* AI Model */}
-            {aiProvider !== "custom" && (
+            <div className="space-y-4">
+              {/* AI Provider */}
               <div className="space-y-1.5">
-                <span className="text-[10px] text-muted-foreground block font-medium">
-                  {getMessage("settingModel")}
+                <span className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                  {getMessage("labelAiProvider")}
                 </span>
                 <Select
-                  value={
-                    PROVIDER_MODELS[aiProvider]?.some(
-                      (m) => m.value === aiModel
-                    )
-                      ? aiModel
-                      : "custom-input"
-                  }
+                  value={aiProvider || "gemini"}
                   onValueChange={(val) => {
-                    if (val === "custom-input") {
-                      setAiModel("")
-                    } else {
-                      setAiModel(val)
-                    }
+                    setAiProvider(val)
+                    // Autoselect a sensible default model
+                    if (val === "gemini") setAiModel("gemini-2.5-flash")
+                    else if (val === "openai") setAiModel("gpt-4o-mini")
+                    else if (val === "anthropic") setAiModel("claude-3-5-haiku")
+                    else if (val === "deepseek") setAiModel("deepseek-chat")
+                    else if (val === "custom") setAiModel("")
                   }}>
-                  <SelectTrigger className="w-full text-xs h-8 bg-card/50 border border-border hover:border-emerald-500/30 justify-between">
-                    <SelectValue placeholder={getMessage("settingModelSelect")}>
-                      {PROVIDER_MODELS[aiProvider]?.find(
-                        (m) => m.value === aiModel
-                      )?.label ||
-                        (aiModel
-                          ? aiModel
-                          : getMessage("settingModelCustomOption"))}
+                  <SelectTrigger className="w-full text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus:ring-1 focus:ring-[#0a66c2] dark:focus:ring-[#70b5f9] justify-between">
+                    <SelectValue placeholder="Select Provider">
+                      {PROVIDER_LABELS[aiProvider] || "Select Provider"}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
-                    {PROVIDER_MODELS[aiProvider]?.map((m) => (
-                      <SelectItem key={m.value} value={m.value}>
-                        {m.label}
-                      </SelectItem>
-                    ))}
-                    <SelectItem value="custom-input">
-                      {getMessage("settingModelCustomOption")}
-                    </SelectItem>
+                    <SelectItem value="gemini">Google Gemini</SelectItem>
+                    <SelectItem value="openai">OpenAI (ChatGPT)</SelectItem>
+                    <SelectItem value="anthropic">Anthropic Claude</SelectItem>
+                    <SelectItem value="deepseek">DeepSeek</SelectItem>
+                    <SelectItem value="custom">Custom / Local Endpoint</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-            )}
 
-            {/* Custom Model Input Slot */}
-            {(aiProvider === "custom" ||
-              !PROVIDER_MODELS[aiProvider]?.some(
-                (m) => m.value === aiModel
-              )) && (
-              <div className="space-y-1.5">
-                <label
-                  htmlFor="ai-model-input"
-                  className="text-[10px] text-muted-foreground block font-medium">
-                  {getMessage("settingModelCustomLabel")}
-                </label>
-                <Input
-                  id="ai-model-input"
-                  type="text"
-                  value={aiModel || ""}
-                  onChange={(e) => setAiModel(e.target.value)}
-                  placeholder={
-                    aiProvider === "custom"
-                      ? getMessage("settingModelCustomPlaceholderLocal")
-                      : getMessage("settingModelCustomPlaceholderOther")
-                  }
-                />
-              </div>
-            )}
-
-            {/* Custom Endpoint Input Slot */}
-            {aiProvider === "custom" && (
-              <div className="space-y-1.5">
-                <label
-                  htmlFor="ai-custom-endpoint"
-                  className="text-[10px] text-muted-foreground block font-medium">
-                  {getMessage("settingEndpointLabel")}
-                </label>
-                <Input
-                  id="ai-custom-endpoint"
-                  type="text"
-                  value={aiCustomEndpoint || ""}
-                  onChange={(e) => setAiCustomEndpoint(e.target.value)}
-                  placeholder={getMessage("settingEndpointPlaceholder")}
-                />
-              </div>
-            )}
-
-            {/* API Key */}
-            <div className="space-y-1.5">
-              <label
-                htmlFor="ai-api-key"
-                className="text-[10px] text-muted-foreground block font-medium">
-                {aiProvider === "gemini" && getMessage("settingApiKeyGemini")}
-                {aiProvider === "openai" && getMessage("settingApiKeyOpenAI")}
-                {aiProvider === "anthropic" &&
-                  getMessage("settingApiKeyAnthropic")}
-                {aiProvider === "deepseek" &&
-                  getMessage("settingApiKeyDeepSeek")}
-                {aiProvider === "custom" && getMessage("settingApiKeyCustom")}
-              </label>
-              <div className="relative flex items-center">
-                <Input
-                  id="ai-api-key"
-                  type={showApiKey ? "text" : "password"}
-                  value={aiApiKey || ""}
-                  onChange={(e) => {
-                    setAiApiKey(e.target.value)
-                    // If Gemini, sync to legacy key to support options pages
-                    if (aiProvider === "gemini") {
-                      setGeminiApiKey(e.target.value)
+              {/* AI Model */}
+              {aiProvider !== "custom" && (
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                    {getMessage("labelModelIdentifier")}
+                  </span>
+                  <Select
+                    value={
+                      PROVIDER_MODELS[aiProvider]?.some((m) => m.value === aiModel)
+                        ? aiModel
+                        : "custom-input"
                     }
-                  }}
-                  placeholder={
-                    aiProvider === "custom"
-                      ? getMessage("settingApiKeyPlaceholderCustom")
-                      : getMessage("settingApiKeyPlaceholderDefault")
-                  }
-                  className="pr-10"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowApiKey(!showApiKey)}
-                  className="absolute right-2 text-muted-foreground hover:text-foreground transition-colors p-1">
-                  {showApiKey ? (
-                    <EyeOff className="w-3.5 h-3.5" />
-                  ) : (
-                    <Eye className="w-3.5 h-3.5" />
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-[9px] text-muted-foreground/80 leading-relaxed pt-1.5 border-t border-border/40">
-            {getMessage("settingApiKeyNotice")}
-          </p>
-        </div>
-      )}
-
-      {solveError && (
-        <div className="flex items-start gap-3 p-3.5 mb-5 rounded-md border border-destructive/20 bg-destructive/10 text-destructive-foreground animate-in fade-in slide-in-from-top-2 duration-300">
-          <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-          <div className="text-[11px] leading-relaxed text-red-400/90">
-            {solveError}
-          </div>
-        </div>
-      )}
-
-      {solveSuccess && (
-        <div className="flex items-start gap-3 p-3.5 mb-5 rounded-md border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 animate-in fade-in slide-in-from-top-2 duration-300">
-          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-          <div className="text-[11px] leading-relaxed text-emerald-600 dark:text-emerald-400/90 font-medium">
-            {getMessage("successSolverStarted")}
-          </div>
-        </div>
-      )}
-
-      <div className="grid grid-cols-2 gap-3 flex-1 mb-5">
-        {GAMES_CONFIG.map((game) => {
-          const isActive = activeGame === game.id
-          const isCompleted = !!completedToday[game.id]
-          const localizedTitle = getMessage(game.id) || game.title
-
-          return (
-            <button
-              key={game.id}
-              type="button"
-              onClick={() => handleSolve(game.id)}
-              disabled={solving}
-              className={cn(
-                "group relative flex flex-col items-center justify-center p-5 text-center transition-all duration-200 rounded-lg border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground disabled:opacity-50 disabled:cursor-not-allowed outline-none select-none",
-                isActive && game.color.popupActive,
-                isCompleted && !isActive && game.color.popupCompleted
-              )}
-              title={
-                isActive
-                  ? getMessage("titleSolve", localizedTitle)
-                  : isCompleted
-                    ? getMessage("titleCompleted", localizedTitle)
-                    : getMessage("titleOpen", localizedTitle)
-              }>
-              <div className="flex flex-col items-center gap-3 z-10">
-                <span
-                  className={cn(
-                    "p-2 rounded-md bg-secondary transition-colors duration-200 flex items-center justify-center shrink-0 w-8 h-8",
-                    (isActive || isCompleted) && game.color.popupIconBg
-                  )}>
-                  <img src={game.icon} alt={localizedTitle} className="w-5 h-5 object-contain" />
-                </span>
-                <span
-                  className={cn(
-                    "text-xs font-medium tracking-tight transition-colors",
-                    (isActive || isCompleted) &&
-                      `${game.color.popupTextAccent} font-semibold`
-                  )}>
-                  {localizedTitle}
-                </span>
-              </div>
-
-              {/* Status Indicator Dot / Checkmark Badge */}
-              <div className="absolute top-3 right-3 flex items-center justify-center">
-                {isCompleted ? (
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 animate-in zoom-in duration-300" />
-                ) : (
-                  <span
-                    className={cn(
-                      "w-1.5 h-1.5 rounded-full bg-muted-foreground/30 transition-all duration-200",
-                      isActive &&
-                        `${game.color.popupIndicatorDot} animate-pulse-slow`
-                    )}
-                  />
-                )}
-              </div>
-
-              {solving && isActive && (
-                <div className="absolute inset-x-0 bottom-0 py-1 bg-zinc-950/90 text-[9px] font-semibold tracking-wider uppercase text-emerald-400 rounded-b-lg border-t border-emerald-500/20 animate-pulse-slow">
-                  {getMessage("solvingStatus")}
+                    onValueChange={(val) => {
+                      if (val === "custom-input") {
+                        setAiModel("")
+                      } else {
+                        setAiModel(val)
+                      }
+                    }}>
+                    <SelectTrigger className="w-full text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
+                      <SelectValue placeholder={getMessage("settingModelSelect")}>
+                        {PROVIDER_MODELS[aiProvider]?.find((m) => m.value === aiModel)?.label ||
+                          (aiModel ? aiModel : getMessage("settingModelCustomOption"))}
+                      </SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      {PROVIDER_MODELS[aiProvider]?.map((m) => (
+                        <SelectItem key={m.value} value={m.value}>
+                          {m.label}
+                        </SelectItem>
+                      ))}
+                      <SelectItem value="custom-input">
+                        {getMessage("settingModelCustomOption")}
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               )}
-            </button>
-          )
-        })}
-      </div>
 
-      <footer className="mt-auto py-3 px-4 bg-muted/40 border border-border rounded-lg text-center">
-        <div className="text-[10px] leading-relaxed text-muted-foreground font-medium flex items-center justify-center gap-1.5">
-          {solvedCount === GAMES_CONFIG.length ? (
-            <>
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
-                {getMessage("perfectDay", String(GAMES_CONFIG.length))}
-              </span>
-            </>
-          ) : (
-            <span>
-              {getMessage("dailyProgress", [
-                String(solvedCount),
-                String(GAMES_CONFIG.length)
-              ])}
-            </span>
-          )}
-        </div>
-      </footer>
+              {/* Custom Model Input Slot */}
+              {(aiProvider === "custom" ||
+                !PROVIDER_MODELS[aiProvider]?.some((m) => m.value === aiModel)) && (
+                <div className="space-y-1.5">
+                  <label htmlFor="ai-model-input" className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                    {getMessage("labelCustomModel")}
+                  </label>
+                  <Input
+                    id="ai-model-input"
+                    type="text"
+                    value={aiModel || ""}
+                    onChange={(e) => setAiModel(e.target.value)}
+                    placeholder={
+                      aiProvider === "custom"
+                        ? getMessage("settingModelCustomPlaceholderLocal")
+                        : getMessage("settingModelCustomPlaceholderOther")
+                    }
+                    className="text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                  />
+                </div>
+              )}
+
+              {/* Custom Endpoint Input Slot */}
+              {aiProvider === "custom" && (
+                <div className="space-y-1.5">
+                  <label htmlFor="ai-custom-endpoint" className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                    {getMessage("labelEndpointUrl")}
+                  </label>
+                  <Input
+                    id="ai-custom-endpoint"
+                    type="text"
+                    value={aiCustomEndpoint || ""}
+                    onChange={(e) => setAiCustomEndpoint(e.target.value)}
+                    placeholder={getMessage("settingEndpointPlaceholder")}
+                    className="text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                  />
+                </div>
+              )}
+
+              {/* API Key */}
+              <div className="space-y-1.5">
+                <label htmlFor="ai-api-key" className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                  {aiProvider === "gemini" && getMessage("labelGeminiKey")}
+                  {aiProvider === "openai" && getMessage("labelOpenAiKey")}
+                  {aiProvider === "anthropic" && getMessage("labelAnthropicKey")}
+                  {aiProvider === "deepseek" && getMessage("labelDeepSeekKey")}
+                  {aiProvider === "custom" && getMessage("labelCustomKey")}
+                </label>
+                <div className="relative flex items-center">
+                  <Input
+                    id="ai-api-key"
+                    type={showApiKey ? "text" : "password"}
+                    value={aiApiKey || ""}
+                    onChange={(e) => {
+                      setAiApiKey(e.target.value)
+                      if (aiProvider === "gemini") {
+                        setGeminiApiKey(e.target.value)
+                      }
+                    }}
+                    placeholder={
+                      aiProvider === "custom"
+                        ? getMessage("settingApiKeyPlaceholderCustom")
+                        : getMessage("settingApiKeyPlaceholderDefault")
+                    }
+                    className="pr-10 text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowApiKey(!showApiKey)}
+                    className="absolute right-2.5 text-muted-foreground hover:text-foreground transition-colors p-1">
+                    {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="h-[1px] bg-border/60" />
+
+            <p className="text-[9px] text-muted-foreground leading-relaxed">
+              {getMessage("settingApiKeyNotice")}
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setShowSettings(false)}
+              className="w-full h-9 bg-[#0a66c2] hover:bg-[#004182] dark:bg-[#70b5f9] dark:hover:bg-[#5fa3e5] text-white dark:text-[#1d2226] text-xs font-bold rounded-full transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98]">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              {getMessage("saveAndBack")}
+            </button>
+          </div>
+        ) : (
+          /* Games Dashboard View */
+          <>
+            {/* Connect over fun, daily games Card */}
+            <div className="bg-card border border-border rounded-xl p-4 shadow-sm space-y-3">
+              <div className="space-y-1">
+                <h2 className="text-sm font-semibold tracking-tight text-foreground leading-snug">
+                  {getMessage("popupCardTitle")}
+                </h2>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  {getMessage("popupCardDesc")}
+                </p>
+              </div>
+
+              <div className="h-[1px] bg-border/60" />
+
+              {/* List of Game Cards */}
+              <div className="flex flex-col gap-2.5">
+                {GAMES_CONFIG.map((game) => {
+                  const isActive = activeGame === game.id
+                  const isCompleted = !!completedToday[game.id]
+                  const localizedTitle = getMessage(game.id) || game.title
+                  const puzzleNumber = getPuzzleNumber(game.id)
+
+                  return (
+                    <button
+                      key={game.id}
+                      type="button"
+                      onClick={() => handleSolve(game.id)}
+                      className={cn(
+                        "w-full text-left group relative flex items-center justify-between p-3 rounded-lg border border-border bg-card hover:bg-muted/30 dark:hover:bg-[#222a30] transition-all duration-200 cursor-pointer select-none",
+                        isActive && "border-[#0a66c2] dark:border-[#70b5f9] bg-[#f0f7fe] dark:bg-[#1a2b3c] shadow-sm",
+                        isCompleted && "border-border/60 bg-card/60"
+                      )}
+                      title={
+                        isActive
+                          ? getMessage("titleSolve", localizedTitle)
+                          : isCompleted
+                            ? getMessage("titleCompleted", localizedTitle)
+                            : getMessage("titleOpen", localizedTitle)
+                      }>
+                      
+                      {/* Left side: Description & Title */}
+                      <div className="flex flex-col items-start space-y-0.5 flex-1 pr-3">
+                        <span className="text-[10px] text-muted-foreground leading-none">
+                          {game.description}
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className={cn(
+                            "text-xs font-bold tracking-tight text-foreground transition-colors",
+                            isActive && "text-[#0a66c2] dark:text-[#70b5f9]",
+                            isCompleted && "text-muted-foreground"
+                          )}>
+                            {localizedTitle}
+                          </span>
+                          <span className="text-[9px] font-semibold text-muted-foreground/70">
+                            #{puzzleNumber}
+                          </span>
+                        </div>
+
+                        {/* Badges / Active Alerts */}
+                        {isActive && !isCompleted && !solving && (
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] font-bold bg-[#0a66c2]/10 dark:bg-[#70b5f9]/10 text-[#0a66c2] dark:text-[#70b5f9] animate-pulse mt-1">
+                            <Sparkles className="w-2.5 h-2.5 shrink-0 fill-current" />
+                            {getMessage("solveActiveBoard")}
+                          </span>
+                        )}
+
+                        {solving && isActive && (
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 animate-pulse mt-1">
+                            <span className="w-1 h-1.5 rounded-full bg-emerald-500 animate-ping mr-0.5" />
+                            {getMessage("solvingWorking")}
+                          </span>
+                        )}
+
+                        {isCompleted && (
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-[#057642] mt-1">
+                            {getMessage("completedToday")}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Right side: Illustration Square */}
+                      <div className="relative shrink-0">
+                        <div className={cn(
+                          "w-11 h-11 rounded-lg flex items-center justify-center transition-all duration-300 relative shadow-sm",
+                          game.illustrationBg,
+                          isCompleted && "opacity-60"
+                        )}>
+                          <img
+                            src={game.icon}
+                            alt={localizedTitle}
+                            className={cn(
+                              "w-6 h-6 object-contain transition-transform group-hover:scale-110 duration-200",
+                              game.illustrationColor
+                            )}
+                          />
+                          
+                          {/* Outer glow ring when active */}
+                          {isActive && !isCompleted && (
+                            <div className="absolute inset-0 rounded-lg border-2 border-[#0a66c2] dark:border-[#70b5f9] animate-ping opacity-30 scale-105 pointer-events-none" />
+                          )}
+                        </div>
+
+                        {/* Status Pin/Dot */}
+                        <div className="absolute -top-1.5 -right-1.5 flex items-center justify-center bg-card rounded-full p-0.5 shadow-sm">
+                          {isCompleted ? (
+                            <div className="w-4 h-4 rounded-full bg-[#057642] flex items-center justify-center animate-in zoom-in duration-300">
+                              <CheckCircle2 className="w-3 h-3 text-white stroke-[3px]" />
+                            </div>
+                          ) : (
+                            <div className={cn(
+                              "w-3 h-3 rounded-full border-2 border-card flex items-center justify-center",
+                              isActive ? "bg-[#0a66c2] dark:bg-[#70b5f9] animate-pulse" : "bg-muted-foreground/30"
+                            )} />
+                          )}
+                        </div>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Daily Solves Progress Card */}
+            <div className="bg-card border border-border rounded-xl p-4 shadow-sm space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h3 className="text-xs font-semibold text-foreground">
+                    {getMessage("dailyProgressLabel")}
+                  </h3>
+                </div>
+                <span className="text-[11px] font-bold text-muted-foreground">
+                  {solvedCount} / {GAMES_CONFIG.length} {getMessage("solvedCountSuffix")}
+                </span>
+              </div>
+
+              {/* Progress Slider */}
+              <div className="w-full bg-muted dark:bg-[#293138] h-2 rounded-full overflow-hidden border border-border/30">
+                <div
+                  className={cn(
+                    "h-full transition-all duration-500 rounded-full",
+                    solvedCount === GAMES_CONFIG.length
+                      ? "bg-[#057642]" // Completed success green
+                      : "bg-[#0a66c2] dark:bg-[#70b5f9]" // Standard blue
+                  )}
+                  style={{ width: `${(solvedCount / GAMES_CONFIG.length) * 100}%` }}
+                />
+              </div>
+
+              <div className="text-[11px] leading-relaxed text-muted-foreground text-center font-medium pt-1.5 border-t border-border/40">
+                {solvedCount === GAMES_CONFIG.length ? (
+                  <div className="flex items-center justify-center gap-1 text-[#057642] dark:text-emerald-400 font-bold animate-bounce">
+                    <span>{getMessage("perfectDay", String(GAMES_CONFIG.length))}</span>
+                  </div>
+                ) : (
+                  <span>
+                    {getMessage("dailyProgress", [
+                      String(solvedCount),
+                      String(GAMES_CONFIG.length)
+                    ])}
+                  </span>
+                )}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+      <DisclaimerFooter />
     </main>
   )
 }
