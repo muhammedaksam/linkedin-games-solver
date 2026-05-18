@@ -234,6 +234,25 @@ export const getRootContainer = async (payload: { anchor: { element: HTMLElement
   const { anchor } = payload
   if (!anchor?.element) return null
 
+  // Inject host-level CSS override to ensure correct layout and 100% width matching
+  if (typeof document !== "undefined" && !document.getElementById("linkedin-solver-host-styles")) {
+    const hostStyle = document.createElement("style")
+    hostStyle.id = "linkedin-solver-host-styles"
+    hostStyle.textContent = `
+      .linkedin-solver-solve-btn-wrapper {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+      .linkedin-solver-solve-btn-wrapper #plasmo-inline {
+        width: 100% !important;
+        display: flex !important;
+      }
+    `
+    document.head.appendChild(hostStyle)
+  }
+
   // Dedicated bottom container for Pinpoint
   if (anchor.element.classList.contains("pinpoint__bottom-section")) {
     let container = anchor.element.querySelector(".linkedin-solver-solve-btn-wrapper") as HTMLElement | null
@@ -262,6 +281,20 @@ export const getRootContainer = async (payload: { anchor: { element: HTMLElement
     if (!container) {
       container = document.createElement("div")
       container.className = "linkedin-solver-solve-btn-wrapper"
+
+      // Only copy classes if the wrapper is a pure wrapper container, NOT a button/CTA itself!
+      const firstWrapper = underBoardControls.children[0] as HTMLElement | null
+      if (
+        firstWrapper?.className &&
+        firstWrapper.getAttribute("role") !== "button" &&
+        !firstWrapper.hasAttribute("data-control-btn") &&
+        firstWrapper.tagName !== "BUTTON"
+      ) {
+        const classes = firstWrapper.className.split(" ").filter(c => c && c !== "linkedin-solver-solve-btn-wrapper")
+        classes.forEach(cls => {
+          container.classList.add(cls)
+        })
+      }
 
       let hintWrapper: HTMLElement | null = null
       const hintBtn = underBoardControls.querySelector('[data-control-btn="hint"]')
@@ -486,14 +519,23 @@ const SolveButtonCSUI = () => {
           opacity: (solving || gameEnded) ? 0.6 : undefined,
           cursor: (solving || gameEnded) ? "not-allowed" : "pointer"
         }}>
-        <span className={span1Classes || undefined}>
-          <span className={span2Classes || "solve-btn-text-node"}>
+        {span1Classes ? (
+          <span className={span1Classes}>
+            <span className={span2Classes || "solve-btn-text-node"}>
+              {status === "idle" && (gameEnded ? "Solved" : "Solve")}
+              {status === "solving" && "Solving..."}
+              {status === "success" && "Solved!"}
+              {status === "failed" && "Failed!"}
+            </span>
+          </span>
+        ) : (
+          <span className="solve-btn-text-node">
             {status === "idle" && (gameEnded ? "Solved" : "Solve")}
             {status === "solving" && "Solving..."}
             {status === "success" && "Solved!"}
             {status === "failed" && "Failed!"}
           </span>
-        </span>
+        )}
       </button>
     )
   }
