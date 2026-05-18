@@ -284,7 +284,7 @@
     "description": "Home nav link label"
   },
   "navAiConfig": {
-    "message": "Config de IA",
+    "message": "Configuración / Opciones",
     "description": "AI Config settings nav link label"
   },
   "navStats": {
@@ -326,5 +326,49 @@
   "disclaimerText": {
     "message": "Descargo de responsabilidad: Este es un proyecto educativo independiente de código abierto. No está afiliado, patrocinado ni respaldado por LinkedIn Corporation. 'LinkedIn' es una marca comercial registrada de LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Credenciales y Modelos",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Guía e Información de Modelos",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Estado de la Conexión",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Solucionador Activo:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Identificador de Modelo:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "¡Configuración guardada automáticamente!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Configure los puntos finales y las credenciales de los modelos de IA para resolver acertijos de forma avanzada.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Rendimiento sobresaliente a costo casi nulo. Resuelve Crossclimb y Pinpoint con una lógica excelente. Predeterminado recomendado: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Rápido, receptivo y extremadamente confiable con patrones de conocimiento general. Predeterminado recomendado: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Máxima capacidad de razonamiento. Maneja asociaciones de palabras muy complejas sin errores. Predeterminado recomendado: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Conéctese a marcos locales de LLM como Ollama o LM Studio. Indique la URL de su punto final (por ejemplo, http://localhost:11434/v1) y el nombre de modelo personalizado.",
+    "description": "Custom guide text"
   }
 }

@@ -284,7 +284,7 @@
     "description": "Home nav link label"
   },
   "navAiConfig": {
-    "message": "Config de IA",
+    "message": "Configurações / Opções",
     "description": "AI Config settings nav link label"
   },
   "navStats": {
@@ -326,5 +326,49 @@
   "disclaimerText": {
     "message": "Aviso Legal: Este é um projeto educacional de código aberto independente. Não é afiliado, patrocinado ou endossado pela LinkedIn Corporation. 'LinkedIn' é uma marca registrada da LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Credenciais e Modelos",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Guia e Informações de Modelos",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Status da Conexão",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Solucionador Ativo:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Identificador do Modelo:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Configurações salvas automaticamente!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Configure endpoints e credenciais de modelos de IA para resolução avançada de quebra-cabeças.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Excelente desempenho a custos quase nulos. Resolve Crossclimb e Pinpoint com ótima lógica. Padrão recomendado: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Rápido, responsivo e extremamente confiável com padrões de conhecimento geral. Padrão recomendado: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Capacidade máxima de raciocínio. Lida com associações de palavras complexas perfeitamente. Padrão recomendado: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Conecte-se a frameworks LLM locais como Ollama ou LM Studio. Aponte a URL do endpoint (ex: http://localhost:11434/v1) e o nome do modelo.",
+    "description": "Custom guide text"
   }
 }

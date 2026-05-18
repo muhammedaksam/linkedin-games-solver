@@ -284,7 +284,7 @@
     "description": "Home nav link label"
   },
   "navAiConfig": {
-    "message": "Config IA",
+    "message": "Paramètres / Options",
     "description": "AI Config settings nav link label"
   },
   "navStats": {
@@ -326,5 +326,49 @@
   "disclaimerText": {
     "message": "Clause de Non-Responsabilité : Il s'agit d'un projet éducatif indépendant et open-source. Il n'est pas affilié, sponsorisé ou approuvé par LinkedIn Corporation. 'LinkedIn' est une marque déposée de LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Identifiants et Modèles",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Guide et Infos des Modèles",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Statut de la Connexion",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Résolveur Actif :",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Identifiant du Modèle :",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Paramètres enregistrés automatiquement !",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Configurez les points de terminaison et les identifiants des modèles d'IA pour la résolution avancée d'énigmes.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Performances exceptionnelles à un coût quasi nul. Résout Crossclimb et Pinpoint avec une excellente logique. Par défaut recommandé : gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Rapide, réactif et extrêmement fiable avec des modèles de connaissances générales. Par défaut recommandé : gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Capacité de raisonnement maximale. Gère sans faille des associations de mots très complexes. Par défaut recommandé : claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Connectez-vous à des frameworks LLM locaux comme Ollama ou LM Studio. Indiquez l'URL de votre point de terminaison (par ex. http://localhost:11434/v1) et le nom du modèle.",
+    "description": "Custom guide text"
   }
 }

@@ -1,23 +1,38 @@
-import { useEffect, useMemo, useState } from "react"
-import { useStorage } from "@plasmohq/storage/hook"
 import {
+  AlertCircle,
   ArrowLeft,
   Calendar as CalendarIcon,
+  CheckCircle2,
   Clock,
   Crown,
+  Eye,
+  EyeOff,
   Flame,
+  Key,
   Moon,
+  Settings,
   Sparkles,
   Sun,
   Trophy
 } from "lucide-react"
+import { useEffect, useMemo, useState } from "react"
 
-import { Calendar } from "../components/ui/calendar"
+import { useStorage } from "@plasmohq/storage/hook"
+
+import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { GAMES_CONFIG } from "~/lib/games-config"
 import { localStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
 
-import { DisclaimerFooter } from "~/components/disclaimer-footer"
+import { Calendar } from "../components/ui/calendar"
+import { Input } from "../components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "../components/ui/select"
 
 import "./dashboard.css"
 
@@ -25,6 +40,35 @@ interface SolveRecord {
   solved: boolean
   time: number
   solvedAt?: string
+}
+
+const PROVIDER_MODELS: Record<string, { label: string; value: string }[]> = {
+  gemini: [
+    { label: "Gemini 2.5 Flash (Default)", value: "gemini-2.5-flash" },
+    { label: "Gemini 2.5 Pro", value: "gemini-2.5-pro" }
+  ],
+  openai: [
+    { label: "GPT-4o Mini (Default)", value: "gpt-4o-mini" },
+    { label: "GPT-4o", value: "gpt-4o" },
+    { label: "GPT-3.5 Turbo", value: "gpt-3.5-turbo" }
+  ],
+  anthropic: [
+    { label: "Claude 3.5 Haiku (Default)", value: "claude-3-5-haiku" },
+    { label: "Claude 3.5 Sonnet", value: "claude-3-5-sonnet" }
+  ],
+  deepseek: [
+    { label: "DeepSeek Chat (Default)", value: "deepseek-chat" },
+    { label: "DeepSeek Reasoner", value: "deepseek-reasoner" }
+  ],
+  custom: []
+}
+
+const PROVIDER_LABELS: Record<string, string> = {
+  gemini: "Google Gemini",
+  openai: "OpenAI (ChatGPT)",
+  anthropic: "Anthropic Claude",
+  deepseek: "DeepSeek",
+  custom: "Custom / Local Endpoint"
 }
 
 // Universal translation helper mirroring popup.tsx
@@ -58,7 +102,8 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     crossclimb: "Crossclimb",
     pinpoint: "Pinpoint",
     popupCardTitle: "Connect over fun, daily games",
-    popupCardDesc: "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
+    popupCardDesc:
+      "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
     saveAndBack: "Save & Back to Games",
     solvingWorking: "AI Solver working...",
     completedToday: "Completed Today",
@@ -74,7 +119,7 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     labelDeepSeekKey: "DEEPSEEK API KEY",
     labelCustomKey: "API KEY (OPTIONAL)",
     navHome: "Home",
-    navAiConfig: "AI Config",
+    navAiConfig: "Settings / Options",
     navStats: "Stats",
     navTheme: "Theme",
     dailyProgressLabel: "Daily Progress",
@@ -82,10 +127,29 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     backToGames: "Back to LinkedIn Games",
     dashboardLabel: "Dashboard",
     gamesSolverTitle: "Games Solver",
-    dashboardDescText: "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
+    dashboardDescText:
+      "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
     completedSuccessfully: "Completed Successfully",
     activityCalendar: "Activity Calendar",
-    clearFilter: "Clear Filter"
+    clearFilter: "Clear Filter",
+    settingApiKeyNotice:
+      "Selected model solves Crossclimb & Pinpoint. The extension never shares your key.",
+    settingsCredentialsTitle: "Credentials & Models",
+    settingsModelGuideTitle: "Model Guide & Info",
+    settingsConnectionStatusTitle: "Connection Status",
+    settingsActiveSolverLabel: "Active Solver:",
+    settingsModelIdentifierLabel: "Model Identifier:",
+    settingsAutoSavedNotification: "Settings auto-saved!",
+    settingsSubtitleDesc:
+      "Configure AI model integration endpoints and credentials for advanced puzzle-solving reasoning.",
+    settingsGeminiGuideDesc:
+      "Outstanding performance at near-zero costs. Solves Crossclimb and Pinpoint with excellent logic. Recommended default: gemini-2.5-flash.",
+    settingsOpenaiGuideDesc:
+      "Fast, responsive, and extremely reliable with general knowledge patterns. Recommended default: gpt-4o-mini.",
+    settingsAnthropicGuideDesc:
+      "Maximum reasoning capacity. Handles very complex word associations flawlessly. Recommended default: claude-3-5-haiku.",
+    settingsCustomGuideDesc:
+      "Connect to local LLM frameworks like Ollama or LM Studio. Point your endpoint URL (e.g., http://localhost:11434/v1) and custom model name."
   }
   let msg = fallbacks[key] || key
   if (substitutions) {
@@ -121,6 +185,17 @@ function formatDateString(dateStr: string): string {
 }
 
 export default function Dashboard() {
+  // Navigation Routing Tab state
+  const [activeTab, setActiveTab] = useState<"stats" | "settings">(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.location.pathname.includes("options")
+    ) {
+      return "settings"
+    }
+    return "stats"
+  })
+
   // Reactive state hooks synchronized through @plasmohq/storage
   const [theme, setTheme] = useStorage<"light" | "dark">(
     {
@@ -138,6 +213,54 @@ export default function Dashboard() {
     {}
   )
 
+  // AI Configuration Storage hooks
+  const [aiProvider, setAiProvider] = useStorage<string>(
+    {
+      key: "aiProvider",
+      instance: localStorage
+    },
+    "gemini"
+  )
+
+  const [aiModel, setAiModel] = useStorage<string>(
+    {
+      key: "aiModel",
+      instance: localStorage
+    },
+    "gemini-2.5-flash"
+  )
+
+  const [aiApiKey, setAiApiKey] = useStorage<string>(
+    {
+      key: "aiApiKey",
+      instance: localStorage
+    },
+    ""
+  )
+
+  const [aiCustomEndpoint, setAiCustomEndpoint] = useStorage<string>(
+    {
+      key: "aiCustomEndpoint",
+      instance: localStorage
+    },
+    ""
+  )
+
+  const [geminiApiKey, setGeminiApiKey] = useStorage<string>(
+    {
+      key: "geminiApiKey",
+      instance: localStorage
+    },
+    ""
+  )
+
+  // Backward compatibility migration: copy legacy key if set
+  useEffect(() => {
+    if (geminiApiKey && !aiApiKey && aiProvider === "gemini") {
+      setAiApiKey(geminiApiKey)
+    }
+  }, [geminiApiKey, aiApiKey, aiProvider, setAiApiKey])
+
   const [totalSolved, setTotalSolved] = useState<number>(0)
   const [averageTime, setAverageTime] = useState<number>(0)
   const [streak, setStreak] = useState<number>(0)
@@ -145,6 +268,26 @@ export default function Dashboard() {
     Record<string, { time: number; date: string }>
   >({})
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
+
+  const [showApiKey, setShowApiKey] = useState(false)
+  const [saveStatus, setSaveStatus] = useState<string | null>(null)
+  const [hasChanged, setHasChanged] = useState(false)
+
+  // Track settings modification to trigger auto-saved notification
+  useEffect(() => {
+    if (hasChanged) {
+      const _deps = [aiProvider, aiModel, aiApiKey, aiCustomEndpoint]
+      setSaveStatus(getMessage("settingsAutoSavedNotification"))
+      const t = setTimeout(() => setSaveStatus(null), 2500)
+      return () => clearTimeout(t)
+    }
+  }, [hasChanged, aiProvider, aiModel, aiApiKey, aiCustomEndpoint])
+
+  // Prevent showing "saved" on initial load
+  useEffect(() => {
+    const t = setTimeout(() => setHasChanged(true), 1500)
+    return () => clearTimeout(t)
+  }, [])
 
   // Compute date list with completed games to highlight in the calendar
   const solvedDates = useMemo(() => {
@@ -198,7 +341,8 @@ export default function Dashboard() {
         if (rec?.solved) {
           solvedCount++
           // Enforce 1s minimum for older 0s logs in stats calculation
-          const solveTime = rec.time !== undefined && rec.time > 0 ? rec.time : 1
+          const solveTime =
+            rec.time !== undefined && rec.time > 0 ? rec.time : 1
           totalSeconds += solveTime
           timedCount++
 
@@ -272,7 +416,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-200 antialiased flex flex-col">
       {/* LinkedIn Desktop Top Navigation Header */}
       <header className="sticky top-0 z-50 border-b border-border bg-card shadow-sm h-14 w-full flex items-center justify-between px-6">
-        <div className="max-w-6xl mx-auto w-full flex items-center justify-between">
+        <div className="max-w-6xl mx-auto w-full flex items-center justify-between h-full">
           {/* Left: Brand */}
           <div className="flex items-center gap-2">
             <div className="w-[26px] h-[26px] rounded bg-[#0a66c2] dark:bg-[#ffffff] flex items-center justify-center font-extrabold text-white dark:text-[#1d2226] text-[11px] select-none tracking-tighter leading-none shrink-0">
@@ -280,13 +424,46 @@ export default function Dashboard() {
             </div>
             <div className="h-4 w-[1px] bg-border mx-1" />
             <div className="flex items-center gap-2">
-              <span className="text-sm font-bold tracking-tight text-foreground" style={{ fontFamily: "Source Sans 3, sans-serif" }}>
+              <span
+                className="text-sm font-bold tracking-tight text-foreground"
+                style={{ fontFamily: "Source Sans 3, sans-serif" }}>
                 {getMessage("gamesSolverTitle")}
               </span>
               <span className="text-[11px] text-muted-foreground font-semibold px-2 py-0.5 rounded-full border border-border/80 bg-muted/30">
                 {getMessage("dashboardLabel")}
               </span>
             </div>
+          </div>
+
+          {/* Center: Desktop Navigation Tabs */}
+          <div className="flex items-center gap-6 h-full">
+            <button
+              type="button"
+              onClick={() => setActiveTab("stats")}
+              className={cn(
+                "relative flex items-center gap-1.5 h-full px-4 text-muted-foreground hover:text-foreground font-bold text-xs select-none transition-all outline-none border-none bg-transparent",
+                activeTab === "stats" && "text-[#0a66c2] dark:text-[#70b5f9]"
+              )}>
+              <Trophy className="w-3.5 h-3.5" />
+              <span>{getMessage("navStats")}</span>
+              {activeTab === "stats" && (
+                <div className="absolute bottom-0 inset-x-0 h-[3px] bg-[#0a66c2] dark:bg-[#70b5f9] rounded-t" />
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab("settings")}
+              className={cn(
+                "relative flex items-center gap-1.5 h-full px-4 text-muted-foreground hover:text-foreground font-bold text-xs select-none transition-all outline-none border-none bg-transparent",
+                activeTab === "settings" && "text-[#0a66c2] dark:text-[#70b5f9]"
+              )}>
+              <Settings className="w-3.5 h-3.5" />
+              <span>{getMessage("navAiConfig")}</span>
+              {activeTab === "settings" && (
+                <div className="absolute bottom-0 inset-x-0 h-[3px] bg-[#0a66c2] dark:bg-[#70b5f9] rounded-t" />
+              )}
+            </button>
           </div>
 
           {/* Right: Actions */}
@@ -322,267 +499,583 @@ export default function Dashboard() {
 
       {/* Main Body */}
       <div className="max-w-6xl mx-auto w-full px-6 py-8 flex-1 flex flex-col gap-8">
-        
         {/* Title Description Banner */}
         <div className="flex flex-col gap-1 border-b border-border/60 pb-5">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#0a66c2] dark:text-[#70b5f9]" />
-            <h1 className="text-xl font-bold tracking-tight text-foreground" style={{ fontFamily: "Source Sans 3, sans-serif" }}>
-              {getMessage("dashboardSubtitle")}
+            {activeTab === "stats" ? (
+              <Sparkles className="w-5 h-5 text-[#0a66c2] dark:text-[#70b5f9]" />
+            ) : (
+              <Key className="w-5 h-5 text-[#0a66c2] dark:text-[#70b5f9]" />
+            )}
+            <h1
+              className="text-xl font-bold tracking-tight text-foreground"
+              style={{ fontFamily: "Source Sans 3, sans-serif" }}>
+              {activeTab === "stats"
+                ? getMessage("dashboardSubtitle")
+                : getMessage("settingsHeaderTitle")}
             </h1>
           </div>
           <p className="text-xs text-muted-foreground">
-            {getMessage("dashboardDescText")}
+            {activeTab === "stats"
+              ? getMessage("dashboardDescText")
+              : getMessage("settingsSubtitleDesc")}
           </p>
         </div>
 
-        {/* Stats Grid Row */}
-        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {/* Card 1: Total Solved */}
-          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
-            <span className="p-3 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 text-[#057642] dark:text-emerald-400 shrink-0 transition-transform group-hover:scale-105 duration-200">
-              <Trophy className="w-6 h-6" />
-            </span>
-            <div className="flex flex-col gap-0.5">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
-                {getMessage("statTotalSolved")}
-              </span>
-              <span className="text-2xl font-extrabold text-foreground leading-none">
-                {totalSolved}
-              </span>
-              <span className="text-[10px] text-muted-foreground">
-                {getMessage("statTotalSolvedDesc")}
-              </span>
-            </div>
-          </div>
+        {/* Dynamic Tab Views */}
+        {activeTab === "stats" ? (
+          <>
+            {/* Stats Grid Row */}
+            <section className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {/* Card 1: Total Solved */}
+              <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
+                <span className="p-3 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 text-[#057642] dark:text-emerald-400 shrink-0 transition-transform group-hover:scale-105 duration-200">
+                  <Trophy className="w-6 h-6" />
+                </span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
+                    {getMessage("statTotalSolved")}
+                  </span>
+                  <span className="text-2xl font-extrabold text-foreground leading-none">
+                    {totalSolved}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground">
+                    {getMessage("statTotalSolvedDesc")}
+                  </span>
+                </div>
+              </div>
 
-          {/* Card 2: Average Time */}
-          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
-            <span className="p-3 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 text-[#0a66c2] dark:text-[#70b5f9] shrink-0 transition-transform group-hover:scale-105 duration-200">
-              <Clock className="w-6 h-6" />
-            </span>
-            <div className="flex flex-col gap-0.5">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
-                {getMessage("statAverageTime")}
-              </span>
-              <span className="text-2xl font-extrabold text-foreground leading-none">
-                {averageTime > 0 ? formatTime(averageTime) : "--"}
-              </span>
-              <span className="text-[10px] text-muted-foreground">
-                {getMessage("statAverageTimeDesc")}
-              </span>
-            </div>
-          </div>
+              {/* Card 2: Average Time */}
+              <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
+                <span className="p-3 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 text-[#0a66c2] dark:text-[#70b5f9] shrink-0 transition-transform group-hover:scale-105 duration-200">
+                  <Clock className="w-6 h-6" />
+                </span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
+                    {getMessage("statAverageTime")}
+                  </span>
+                  <span className="text-2xl font-extrabold text-foreground leading-none">
+                    {averageTime > 0 ? formatTime(averageTime) : "--"}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground">
+                    {getMessage("statAverageTimeDesc")}
+                  </span>
+                </div>
+              </div>
 
-          {/* Card 3: Active Streak */}
-          <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
-            <span className="p-3 rounded-lg bg-orange-500/10 dark:bg-orange-500/20 text-[#e65100] dark:text-[#ffb74d] shrink-0 transition-transform group-hover:scale-105 duration-200">
-              <Flame className="w-6 h-6 animate-pulse" />
-            </span>
-            <div className="flex flex-col gap-0.5">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
-                {getMessage("statActiveStreak")}
-              </span>
-              <span className="text-2xl font-extrabold text-foreground leading-none">
-                {(() => {
-                  let streakText = getMessage("statStreakDays", String(streak))
-                  if (streak === 1) {
-                    if (streakText.endsWith(" days")) {
-                      streakText = streakText.replace(" days", " day")
-                    } else if (streakText.endsWith(" dias")) {
-                      streakText = streakText.replace(" dias", " dia")
-                    } else if (streakText.endsWith(" días")) {
-                      streakText = streakText.replace(" días", " día")
-                    } else if (streakText.endsWith(" jours")) {
-                      streakText = streakText.replace(" jours", " jour")
-                    } else if (streakText.endsWith(" Tage")) {
-                      streakText = streakText.replace(" Tage", " Tag")
-                    }
-                  }
-                  return streakText
-                })()}
-              </span>
-              <span className="text-[10px] text-muted-foreground">
-                {getMessage("statActiveStreakDesc")}
-              </span>
-            </div>
-          </div>
-        </section>
+              {/* Card 3: Active Streak */}
+              <div className="flex items-center gap-5 p-5 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 group">
+                <span className="p-3 rounded-lg bg-orange-500/10 dark:bg-orange-500/20 text-[#e65100] dark:text-[#ffb74d] shrink-0 transition-transform group-hover:scale-105 duration-200">
+                  <Flame className="w-6 h-6 animate-pulse" />
+                </span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
+                    {getMessage("statActiveStreak")}
+                  </span>
+                  <span className="text-2xl font-extrabold text-foreground leading-none">
+                    {(() => {
+                      let streakText = getMessage(
+                        "statStreakDays",
+                        String(streak)
+                      )
+                      if (streak === 1) {
+                        if (streakText.endsWith(" days")) {
+                          streakText = streakText.replace(" days", " day")
+                        } else if (streakText.endsWith(" dias")) {
+                          streakText = streakText.replace(" dias", " dia")
+                        } else if (streakText.endsWith(" días")) {
+                          streakText = streakText.replace(" días", " día")
+                        } else if (streakText.endsWith(" jours")) {
+                          streakText = streakText.replace(" jours", " jour")
+                        } else if (streakText.endsWith(" Tage")) {
+                          streakText = streakText.replace(" Tage", " Tag")
+                        }
+                      }
+                      return streakText
+                    })()}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground">
+                    {getMessage("statActiveStreakDesc")}
+                  </span>
+                </div>
+              </div>
+            </section>
 
-        {/* Multi-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Left Column: Personal Records */}
-          <section className="lg:col-span-2 flex flex-col gap-6">
-            <div className="flex items-center gap-2 pb-1 border-b border-border/40">
-              <Crown className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
-              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                {getMessage("personalBests")}
-              </h2>
-            </div>
-
-            <div className="flex flex-col gap-3.5 w-full">
-              {GAMES_CONFIG.map((game) => {
-                const pb = personalBests[game.id]
-
-                return (
-                  <div
-                    key={game.id}
-                    className={cn(
-                      "flex items-center justify-between p-3.5 rounded-xl border bg-card transition-all duration-200 hover:-translate-y-0.5 shadow-sm group border-border",
-                      pb && "border-emerald-500/20 bg-emerald-500/[0.01]"
-                    )}>
-                    <div className="flex items-center gap-3.5">
-                      {/* Brand Illustration Square */}
-                      <div className={cn(
-                        "w-11 h-11 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
-                        game.illustrationBg
-                      )}>
-                        <img
-                          src={game.icon}
-                          alt={game.title}
-                          className={cn(
-                            "w-6 h-6 object-contain transition-transform group-hover:scale-110 duration-200",
-                            game.illustrationColor
-                          )}
-                        />
-                      </div>
-
-                      <div className="flex flex-col">
-                        <span className="text-[10px] text-muted-foreground leading-none mb-0.5">
-                          {game.description}
-                        </span>
-                        <span className="text-xs font-bold text-foreground">
-                          {getMessage(game.id) || game.title}
-                        </span>
-                        <span className="text-[9px] font-semibold text-muted-foreground/80 mt-0.5">
-                          {pb ? formatDateString(pb.date) : getMessage("noRecordsYet")}
-                        </span>
-                      </div>
-                    </div>
-                    {pb && (
-                      <div className="flex items-center">
-                        <span className="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 tracking-wider border border-emerald-500/10">
-                          {formatTime(pb.time)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* Activity Calendar */}
-            <div className="flex flex-col gap-3 mt-6 w-full">
-              <div className="flex items-center justify-between pr-2 pb-1 border-b border-border/40 w-full">
-                <div className="flex items-center gap-2">
-                  <CalendarIcon className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+            {/* Multi-Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 animate-in fade-in duration-300">
+              {/* Left Column: Personal Records */}
+              <section className="lg:col-span-2 flex flex-col gap-6">
+                <div className="flex items-center gap-2 pb-1 border-b border-border/40">
+                  <Crown className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
                   <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                    {getMessage("activityCalendar")}
+                    {getMessage("personalBests")}
                   </h2>
                 </div>
-                {selectedDate && (
-                  <button
-                    type="button"
-                    onClick={() => setSelectedDate(undefined)}
-                    className="text-[10px] font-bold text-[#0a66c2] dark:text-[#70b5f9] hover:underline transition-all cursor-pointer">
-                    {getMessage("clearFilter")}
-                  </button>
-                )}
-              </div>
-              <div className="w-full pt-2">
-                <Calendar
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  className="rounded-xl border border-border bg-card shadow-sm w-full p-4"
-                  modifiers={{
-                    solved: (date) => hasSolvedOnDate(date)
-                  }}
-                />
-              </div>
-            </div>
-          </section>
 
-          {/* Right Column: Historical Logs */}
-          <section className="lg:col-span-3 flex flex-col gap-6 w-full">
-            <div className="flex items-center gap-2 pb-1 border-b border-border/40">
-              <CalendarIcon className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
-              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                {getMessage("solvingHistory")}
-              </h2>
-            </div>
+                <div className="bg-card border border-border rounded-2xl p-5 shadow-sm flex flex-col gap-1 w-full">
+                  {GAMES_CONFIG.map((game) => {
+                    const pb = personalBests[game.id]
 
-            {sortedDates.length === 0 ? (
-              <div className="flex flex-col items-center justify-center p-12 rounded-2xl border border-dashed border-border bg-card text-center text-muted-foreground">
-                <CalendarIcon className="w-8 h-8 mb-3 opacity-30 text-[#0a66c2] dark:text-[#70b5f9]" />
-                <p className="text-xs">{getMessage("noRecordsYet")}</p>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-6">
-                {sortedDates.map((dateStr) => {
-                  const dateGames = history[dateStr] || {}
+                    return (
+                      <div
+                        key={game.id}
+                        className="flex items-center justify-between py-3 border-b border-border last:border-b-0 last:pb-0 first:pt-0 group">
+                        <div className="flex items-center gap-3.5">
+                          {/* Brand Illustration Square */}
+                          <div
+                            className={cn(
+                              "w-10 h-10 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
+                              game.illustrationBg
+                            )}>
+                            <img
+                              src={game.icon}
+                              alt={game.title}
+                              className={cn(
+                                "w-5.5 h-5.5 object-contain transition-transform group-hover:scale-110 duration-200",
+                                game.illustrationColor
+                              )}
+                            />
+                          </div>
 
-                  return (
-                    <div key={dateStr} className="flex flex-col gap-2.5 animate-in fade-in duration-300">
-                      <h3 className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-wider pl-1">
-                        {formatDateString(dateStr)}
-                      </h3>
-                      <div className="flex flex-col gap-1 bg-card border border-border rounded-xl p-4 shadow-sm">
-                        {Object.keys(dateGames).map((gameId) => {
-                          const record = dateGames[gameId]
-                          const gameConfig = GAMES_CONFIG.find(
-                            (g) => g.id === gameId
-                          )
-                          if (!record?.solved) return null
-                          return (
-                            <div
-                              key={gameId}
-                              className="flex items-center justify-between py-2 border-b border-border last:border-b-0 last:pb-0 first:pt-0">
-                              <div className="flex items-center gap-3">
-                                {gameConfig && (
-                                  <div className={cn(
-                                    "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
-                                    gameConfig.illustrationBg
-                                  )}>
-                                    <img
-                                      src={gameConfig.icon}
-                                      alt={gameConfig.title}
-                                      className={cn(
-                                        "w-4 h-4 object-contain",
-                                        gameConfig.illustrationColor
+                          <div className="flex flex-col">
+                            <span className="text-[10px] text-muted-foreground leading-none mb-0.5">
+                              {game.description}
+                            </span>
+                            <span className="text-xs font-bold text-foreground">
+                              {getMessage(game.id) || game.title}
+                            </span>
+                            <span className="text-[9px] font-semibold text-muted-foreground/80 mt-0.5">
+                              {pb
+                                ? formatDateString(pb.date)
+                                : getMessage("noRecordsYet")}
+                            </span>
+                          </div>
+                        </div>
+                        {pb && (
+                          <div className="flex items-center">
+                            <span className="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 tracking-wider border border-emerald-500/10">
+                              {formatTime(pb.time)}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+
+                {/* Activity Calendar */}
+                <div className="flex flex-col gap-3 mt-6 w-full">
+                  <div className="flex items-center justify-between pr-2 pb-1 border-b border-border/40 w-full">
+                    <div className="flex items-center gap-2">
+                      <CalendarIcon className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+                      <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                        {getMessage("activityCalendar")}
+                      </h2>
+                    </div>
+                    {selectedDate && (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedDate(undefined)}
+                        className="text-[10px] font-bold text-[#0a66c2] dark:text-[#70b5f9] hover:underline transition-all cursor-pointer">
+                        {getMessage("clearFilter")}
+                      </button>
+                    )}
+                  </div>
+                  <div className="w-full pt-2">
+                    <Calendar
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={setSelectedDate}
+                      className="rounded-xl border border-border bg-card shadow-sm w-full p-4"
+                      modifiers={{
+                        solved: (date) => hasSolvedOnDate(date)
+                      }}
+                    />
+                  </div>
+                </div>
+              </section>
+
+              {/* Right Column: Historical Logs */}
+              <section className="lg:col-span-3 flex flex-col gap-6 w-full">
+                <div className="flex items-center gap-2 pb-1 border-b border-border/40">
+                  <CalendarIcon className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    {getMessage("solvingHistory")}
+                  </h2>
+                </div>
+
+                {sortedDates.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center p-12 rounded-2xl border border-dashed border-border bg-card text-center text-muted-foreground">
+                    <CalendarIcon className="w-8 h-8 mb-3 opacity-30 text-[#0a66c2] dark:text-[#70b5f9]" />
+                    <p className="text-xs">{getMessage("noRecordsYet")}</p>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-6">
+                    {sortedDates.map((dateStr) => {
+                      const dateGames = history[dateStr] || {}
+
+                      return (
+                        <div
+                          key={dateStr}
+                          className="flex flex-col gap-2.5 animate-in fade-in duration-300">
+                          <h3 className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-wider pl-1">
+                            {formatDateString(dateStr)}
+                          </h3>
+                          <div className="flex flex-col gap-1 bg-card border border-border rounded-xl p-4 shadow-sm">
+                            {Object.keys(dateGames).map((gameId) => {
+                              const record = dateGames[gameId]
+                              const gameConfig = GAMES_CONFIG.find(
+                                (g) => g.id === gameId
+                              )
+                              if (!record?.solved) return null
+                              return (
+                                <div
+                                  key={gameId}
+                                  className="flex items-center justify-between py-2 border-b border-border last:border-b-0 last:pb-0 first:pt-0">
+                                  <div className="flex items-center gap-3">
+                                    {gameConfig && (
+                                      <div
+                                        className={cn(
+                                          "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
+                                          gameConfig.illustrationBg
+                                        )}>
+                                        <img
+                                          src={gameConfig.icon}
+                                          alt={gameConfig.title}
+                                          className={cn(
+                                            "w-4 h-4 object-contain",
+                                            gameConfig.illustrationColor
+                                          )}
+                                        />
+                                      </div>
+                                    )}
+                                    <div className="flex flex-col">
+                                      <span className="text-xs font-bold">
+                                        {getMessage(gameId) ||
+                                          gameConfig?.title ||
+                                          gameId}
+                                      </span>
+                                      <span className="text-[9px] text-muted-foreground/80 leading-none">
+                                        {gameConfig?.description}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-3">
+                                    <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+                                      <Clock className="w-3.5 h-3.5" />
+                                      {formatTime(
+                                        record.time > 0 ? record.time : 1
+                                      )}
+                                    </span>
+                                    <span
+                                      className="w-2 h-2 rounded-full bg-[#057642]"
+                                      title={getMessage(
+                                        "completedSuccessfully"
                                       )}
                                     />
                                   </div>
-                                )}
-                                <div className="flex flex-col">
-                                  <span className="text-xs font-bold">
-                                    {getMessage(gameId) ||
-                                      gameConfig?.title ||
-                                      gameId}
-                                  </span>
-                                  <span className="text-[9px] text-muted-foreground/80 leading-none">
-                                    {gameConfig?.description}
-                                  </span>
                                 </div>
-                              </div>
-                              <div className="flex items-center gap-3">
-                                <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-                                  <Clock className="w-3.5 h-3.5" />
-                                  {formatTime(record.time > 0 ? record.time : 1)}
-                                </span>
-                                <span className="w-2 h-2 rounded-full bg-[#057642]" title={getMessage("completedSuccessfully")} />
-                              </div>
-                            </div>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )
-                })}
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </section>
+            </div>
+          </>
+        ) : (
+          /* AI Config Settings View */
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 animate-in fade-in duration-300">
+            {/* Left Column: Form Settings */}
+            <div className="lg:col-span-3 bg-card border border-border rounded-2xl p-6 shadow-sm space-y-6">
+              <div className="flex items-center justify-between border-b border-border pb-3">
+                <div className="flex items-center gap-2.5">
+                  <Key className="w-4.5 h-4.5 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h3 className="text-sm font-bold text-foreground">
+                    {getMessage("settingsCredentialsTitle")}
+                  </h3>
+                </div>
+
+                {saveStatus && (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 animate-in fade-in slide-in-from-right-2 duration-300">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    {saveStatus}
+                  </span>
+                )}
               </div>
-            )}
-          </section>
-        </div>
+
+              <div className="space-y-5">
+                {/* AI Provider Select */}
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                    {getMessage("labelAiProvider")}
+                  </span>
+                  <Select
+                    value={aiProvider || "gemini"}
+                    onValueChange={(val) => {
+                      setAiProvider(val)
+                      // Autoselect sensible default models
+                      if (val === "gemini") setAiModel("gemini-2.5-flash")
+                      else if (val === "openai") setAiModel("gpt-4o-mini")
+                      else if (val === "anthropic")
+                        setAiModel("claude-3-5-haiku")
+                      else if (val === "deepseek") setAiModel("deepseek-chat")
+                      else if (val === "custom") setAiModel("")
+                    }}>
+                    <SelectTrigger className="w-full text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus:ring-1 focus:ring-[#0a66c2] dark:focus:ring-[#70b5f9] justify-between">
+                      <SelectValue
+                        placeholder={getMessage("settingModelSelect")}>
+                        {PROVIDER_LABELS[aiProvider] ||
+                          getMessage("settingModelSelect")}
+                      </SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="gemini">Google Gemini</SelectItem>
+                      <SelectItem value="openai">OpenAI (ChatGPT)</SelectItem>
+                      <SelectItem value="anthropic">
+                        Anthropic Claude
+                      </SelectItem>
+                      <SelectItem value="deepseek">DeepSeek</SelectItem>
+                      <SelectItem value="custom">
+                        Custom / Local Endpoint
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* AI Model Select */}
+                {aiProvider !== "custom" && (
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                      {getMessage("labelModelIdentifier")}
+                    </span>
+                    <Select
+                      value={
+                        PROVIDER_MODELS[aiProvider]?.some(
+                          (m) => m.value === aiModel
+                        )
+                          ? aiModel
+                          : "custom-input"
+                      }
+                      onValueChange={(val) => {
+                        if (val === "custom-input") {
+                          setAiModel("")
+                        } else {
+                          setAiModel(val)
+                        }
+                      }}>
+                      <SelectTrigger className="w-full text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
+                        <SelectValue
+                          placeholder={getMessage("settingModelSelect")}>
+                          {PROVIDER_MODELS[aiProvider]?.find(
+                            (m) => m.value === aiModel
+                          )?.label ||
+                            (aiModel
+                              ? aiModel
+                              : getMessage("settingModelCustomOption"))}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {PROVIDER_MODELS[aiProvider]?.map((m) => (
+                          <SelectItem key={m.value} value={m.value}>
+                            {m.label}
+                          </SelectItem>
+                        ))}
+                        <SelectItem value="custom-input">
+                          {getMessage("settingModelCustomOption")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+
+                {/* Custom Model Input Slot */}
+                {(aiProvider === "custom" ||
+                  !PROVIDER_MODELS[aiProvider]?.some(
+                    (m) => m.value === aiModel
+                  )) && (
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="ai-model-input"
+                      className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                      {getMessage("labelCustomModel")}
+                    </label>
+                    <Input
+                      id="ai-model-input"
+                      type="text"
+                      value={aiModel || ""}
+                      onChange={(e) => setAiModel(e.target.value)}
+                      placeholder={
+                        aiProvider === "custom"
+                          ? getMessage("settingModelCustomPlaceholderLocal")
+                          : getMessage("settingModelCustomPlaceholderOther")
+                      }
+                      className="text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                    />
+                  </div>
+                )}
+
+                {/* Custom Endpoint Input Slot */}
+                {aiProvider === "custom" && (
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="ai-custom-endpoint"
+                      className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                      {getMessage("labelEndpointUrl")}
+                    </label>
+                    <Input
+                      id="ai-custom-endpoint"
+                      type="text"
+                      value={aiCustomEndpoint || ""}
+                      onChange={(e) => setAiCustomEndpoint(e.target.value)}
+                      placeholder={getMessage("settingEndpointPlaceholder")}
+                      className="text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                    />
+                  </div>
+                )}
+
+                {/* API Key */}
+                <div className="space-y-1.5">
+                  <label
+                    htmlFor="ai-api-key"
+                    className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                    {aiProvider === "gemini" && getMessage("labelGeminiKey")}
+                    {aiProvider === "openai" && getMessage("labelOpenAiKey")}
+                    {aiProvider === "anthropic" &&
+                      getMessage("labelAnthropicKey")}
+                    {aiProvider === "deepseek" &&
+                      getMessage("labelDeepSeekKey")}
+                    {aiProvider === "custom" && getMessage("labelCustomKey")}
+                  </label>
+                  <div className="relative flex items-center">
+                    <Input
+                      id="ai-api-key"
+                      type={showApiKey ? "text" : "password"}
+                      value={aiApiKey || ""}
+                      onChange={(e) => {
+                        setAiApiKey(e.target.value)
+                        if (aiProvider === "gemini") {
+                          setGeminiApiKey(e.target.value)
+                        }
+                      }}
+                      placeholder={
+                        aiProvider === "custom"
+                          ? getMessage("settingApiKeyPlaceholderCustom")
+                          : getMessage("settingApiKeyPlaceholderDefault")
+                      }
+                      className="pr-10 text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowApiKey(!showApiKey)}
+                      className="absolute right-3.5 text-muted-foreground hover:text-foreground transition-colors p-1 outline-none">
+                      {showApiKey ? (
+                        <EyeOff className="w-4 h-4" />
+                      ) : (
+                        <Eye className="w-4 h-4" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-[1px] bg-border/60" />
+
+              <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-muted/40 border border-border/60 text-muted-foreground">
+                <AlertCircle className="w-4.5 h-4.5 text-orange-400 shrink-0" />
+                <p className="text-[10px] leading-relaxed font-semibold">
+                  {getMessage("settingApiKeyNotice")}
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column: Informative Setup Guide */}
+            <div className="lg:col-span-2 flex flex-col gap-6">
+              {/* Integration Guide Box */}
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+                <div className="flex items-center gap-2 border-b border-border pb-3">
+                  <Sparkles className="w-4 h-4 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    {getMessage("settingsModelGuideTitle")}
+                  </h4>
+                </div>
+
+                <div className="space-y-4">
+                  {/* Option 1: Gemini */}
+                  <div className="space-y-1">
+                    <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                      Google Gemini
+                    </h5>
+                    <p className="text-[10px] text-muted-foreground leading-relaxed pl-3">
+                      {getMessage("settingsGeminiGuideDesc")}
+                    </p>
+                  </div>
+
+                  {/* Option 2: OpenAI */}
+                  <div className="space-y-1">
+                    <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      OpenAI (ChatGPT)
+                    </h5>
+                    <p className="text-[10px] text-muted-foreground leading-relaxed pl-3">
+                      {getMessage("settingsOpenaiGuideDesc")}
+                    </p>
+                  </div>
+
+                  {/* Option 3: Anthropic */}
+                  <div className="space-y-1">
+                    <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+                      Anthropic Claude
+                    </h5>
+                    <p className="text-[10px] text-muted-foreground leading-relaxed pl-3">
+                      {getMessage("settingsAnthropicGuideDesc")}
+                    </p>
+                  </div>
+
+                  {/* Option 4: Local */}
+                  <div className="space-y-1">
+                    <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                      Custom / Local Setup
+                    </h5>
+                    <p className="text-[10px] text-muted-foreground leading-relaxed pl-3">
+                      {getMessage("settingsCustomGuideDesc")}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Status Verification Panel */}
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm flex flex-col gap-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2.5">
+                  {getMessage("settingsConnectionStatusTitle")}
+                </h4>
+                <div className="flex items-center justify-between py-1 text-xs">
+                  <span className="text-muted-foreground">
+                    {getMessage("settingsActiveSolverLabel")}
+                  </span>
+                  <span className="font-bold flex items-center gap-1.5 text-foreground">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    {PROVIDER_LABELS[aiProvider] || "Google Gemini"}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between py-1 text-xs">
+                  <span className="text-muted-foreground">
+                    {getMessage("settingsModelIdentifierLabel")}
+                  </span>
+                  <span className="font-mono text-[10px] font-semibold text-foreground bg-muted/40 px-2 py-0.5 rounded border border-border">
+                    {aiModel || "Custom"}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <DisclaimerFooter />
     </div>

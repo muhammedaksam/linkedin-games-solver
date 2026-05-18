@@ -284,7 +284,7 @@
     "description": "Home nav link label"
   },
   "navAiConfig": {
-    "message": "AI 配置",
+    "message": "设置与选项",
     "description": "AI Config settings nav link label"
   },
   "navStats": {
@@ -326,5 +326,49 @@
   "disclaimerText": {
     "message": "免责声明：这是一个独立的、开源的教育项目。它与 LinkedIn Corporation 没有任何关联、赞助或认可。'LinkedIn' 是 LinkedIn Corporation 的注册商标。",
     "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "凭据与模型",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "模型指南与信息",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "连接状态",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "活动求解器：",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "模型标识符：",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "设置已自动保存！",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "配置人工智能模型集成端点和凭据，以实现高级拼图解决推理。",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "接近零成本的优异性能。以出色的逻辑解决 Crossclimb 和 Pinpoint。推荐默认值：gemini-2.5-flash。",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "在通用知识模式下快速、响应迅速且极其可靠。推荐默认值：gpt-4o-mini。",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "最大程度的推理能力。完美处理非常复杂的词汇关联。推荐默认值：claude-3-5-haiku。",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "连接到本地 LLM 框架（如 Ollama 或 LM Studio）。指定端点 URL（例如 http://localhost:11434/v1）和自定义模型名称。",
+    "description": "Custom guide text"
   }
 }

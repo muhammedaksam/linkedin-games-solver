@@ -284,7 +284,7 @@
     "description": "Home nav link label"
   },
   "navAiConfig": {
-    "message": "KI-Konfig",
+    "message": "Einstellungen / Optionen",
     "description": "AI Config settings nav link label"
   },
   "navStats": {
@@ -326,5 +326,49 @@
   "disclaimerText": {
     "message": "Haftungsausschluss: Dies ist ein unabhängiges, quelloffenes Bildungsprojekt. Es steht in keiner Verbindung zu LinkedIn Corporation, wird nicht von ihr gesponsert oder unterstützt. 'LinkedIn' ist eine eingetragene Marke der LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Anmeldedaten & Modelle",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Modell-Leitfaden & Infos",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Verbindungsstatus",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Aktiver Solver:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Modell-Identifikator:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Einstellungen automatisch gespeichert!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Konfigurieren Sie Endpunkte und Anmeldeinformationen für KI-Modelle für fortschrittliches Lösen von Rätseln.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Hervorragende Leistung bei minimalen Kosten. Löst Crossclimb und Pinpoint mit exzellenter Logik. Empfohlener Standard: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Schnell, reaktionsschnell und extrem zuverlässig bei allgemeinen Wissensmustern. Empfohlener Standard: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Maximale Denkfähigkeit. Behandelt sehr komplexe Wortassoziationen fehlerfrei. Empfohlener Standard: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Verbindung zu lokalen LLM-Frameworks wie Ollama oder LM Studio. Geben Sie Ihre Endpunkt-URL an (z. B. http://localhost:11434/v1) und den benutzerdefinierten Modellnamen.",
+    "description": "Custom guide text"
   }
 }

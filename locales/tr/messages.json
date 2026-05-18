@@ -284,7 +284,7 @@
     "description": "Home nav link label"
   },
   "navAiConfig": {
-    "message": "YZ Yapılandırması",
+    "message": "Ayarlar / Seçenekler",
     "description": "AI Config settings nav link label"
   },
   "navStats": {
@@ -326,5 +326,49 @@
   "disclaimerText": {
     "message": "Feragatname: Bu bağımsız, açık kaynaklı ve eğitici bir projedir. LinkedIn Corporation ile hiçbir bağlantısı, sponsorluğu veya onayı yoktur. 'LinkedIn', LinkedIn Corporation'ın tescilli markasıdır.",
     "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Kimlik Bilgileri ve Modeller",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Model Rehberi ve Bilgi",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Bağlantı Durumu",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Aktif Çözücü:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Model Tanımlayıcı:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Ayarlar otomatik olarak kaydedildi!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Gelişmiş bulmaca çözme mantığı için yapay zeka entegrasyon uç noktalarını ve kimlik bilgilerini yapılandırın.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Sıfıra yakın maliyetle olağanüstü performans. Harika bir mantıkla Crossclimb ve Pinpoint'i çözer. Önerilen varsayılan: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Genel bilgi kalıplarında hızlı, duyarlı ve son derece güvenilir. Önerilen varsayılan: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Maksimum akıl yürütme kapasitesi. Çok karmaşık kelime ilişkilendirmelerini kusursuz şekilde yönetir. Önerilen varsayılan: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Ollama veya LM Studio gibi yerel LLM çerçevelerine bağlanın. Uç nokta URL'nizi (örn. http://localhost:11434/v1) ve özel model adınızı yönlendirin.",
+    "description": "Custom guide text"
   }
 }

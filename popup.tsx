@@ -1,5 +1,3 @@
-import { useCallback, useEffect, useState } from "react"
-import { useStorage } from "@plasmohq/storage/hook"
 import {
   AlertCircle,
   BarChart3,
@@ -13,7 +11,11 @@ import {
   Sparkles,
   Sun
 } from "lucide-react"
+import { useCallback, useEffect, useState } from "react"
 
+import { useStorage } from "@plasmohq/storage/hook"
+
+import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { Input } from "~/components/ui/input"
 import {
   Select,
@@ -22,7 +24,6 @@ import {
   SelectTrigger,
   SelectValue
 } from "~/components/ui/select"
-import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { GAMES_CONFIG } from "~/lib/games-config"
 import { localStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
@@ -109,7 +110,8 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     settingApiKeyNotice:
       "Selected model solves Crossclimb & Pinpoint. The extension never shares your key.",
     popupCardTitle: "Connect over fun, daily games",
-    popupCardDesc: "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
+    popupCardDesc:
+      "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
     saveAndBack: "Save & Back to Games",
     solvingWorking: "AI Solver working...",
     completedToday: "Completed Today",
@@ -125,7 +127,7 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     labelDeepSeekKey: "DEEPSEEK API KEY",
     labelCustomKey: "API KEY (OPTIONAL)",
     navHome: "Home",
-    navAiConfig: "AI Config",
+    navAiConfig: "Settings / Options",
     navStats: "Stats",
     navTheme: "Theme",
     dailyProgressLabel: "Daily Progress",
@@ -133,7 +135,8 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     backToGames: "Back to LinkedIn Games",
     dashboardLabel: "Dashboard",
     gamesSolverTitle: "Games Solver",
-    dashboardDescText: "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
+    dashboardDescText:
+      "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
     completedSuccessfully: "Completed Successfully"
   }
   let msg = fallbacks[key] || key
@@ -159,14 +162,14 @@ function getLocalDateString(): string {
 function getPuzzleNumber(gameId: string): number {
   const referenceDate = new Date(2026, 4, 18) // May 18, 2026
   const today = new Date()
-  
+
   // Reset times to midnight for precise day calculation
   referenceDate.setHours(0, 0, 0, 0)
   today.setHours(0, 0, 0, 0)
-  
+
   const diffTime = today.getTime() - referenceDate.getTime()
   const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24))
-  
+
   const baseNumbers: Record<string, number> = {
     queens: 748,
     patches: 62,
@@ -176,7 +179,7 @@ function getPuzzleNumber(gameId: string): number {
     crossclimb: 748,
     pinpoint: 748
   }
-  
+
   const base = baseNumbers[gameId] || 748
   return base + diffDays
 }
@@ -448,7 +451,9 @@ function IndexPopup() {
             win
           </div>
           <div className="h-3.5 w-[1px] bg-border mx-0.5" />
-          <span className="text-[12px] font-bold tracking-tight text-foreground" style={{ fontFamily: "Source Sans 3, sans-serif" }}>
+          <span
+            className="text-[12px] font-bold tracking-tight text-foreground"
+            style={{ fontFamily: "Source Sans 3, sans-serif" }}>
             {getMessage("gamesSolverTitle")}
           </span>
         </div>
@@ -466,7 +471,12 @@ function IndexPopup() {
                   "relative flex flex-col items-center justify-center h-full px-1 text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent pt-1",
                   item.active && "text-foreground"
                 )}>
-                <IconComponent className={cn("w-[18px] h-[18px] transition-transform active:scale-95", item.active && "stroke-[2.2px]")} />
+                <IconComponent
+                  className={cn(
+                    "w-[18px] h-[18px] transition-transform active:scale-95",
+                    item.active && "stroke-[2.2px]"
+                  )}
+                />
                 <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight">
                   {item.label}
                 </span>
@@ -536,7 +546,9 @@ function IndexPopup() {
                     <SelectItem value="openai">OpenAI (ChatGPT)</SelectItem>
                     <SelectItem value="anthropic">Anthropic Claude</SelectItem>
                     <SelectItem value="deepseek">DeepSeek</SelectItem>
-                    <SelectItem value="custom">Custom / Local Endpoint</SelectItem>
+                    <SelectItem value="custom">
+                      Custom / Local Endpoint
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -549,7 +561,9 @@ function IndexPopup() {
                   </span>
                   <Select
                     value={
-                      PROVIDER_MODELS[aiProvider]?.some((m) => m.value === aiModel)
+                      PROVIDER_MODELS[aiProvider]?.some(
+                        (m) => m.value === aiModel
+                      )
                         ? aiModel
                         : "custom-input"
                     }
@@ -561,9 +575,14 @@ function IndexPopup() {
                       }
                     }}>
                     <SelectTrigger className="w-full text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
-                      <SelectValue placeholder={getMessage("settingModelSelect")}>
-                        {PROVIDER_MODELS[aiProvider]?.find((m) => m.value === aiModel)?.label ||
-                          (aiModel ? aiModel : getMessage("settingModelCustomOption"))}
+                      <SelectValue
+                        placeholder={getMessage("settingModelSelect")}>
+                        {PROVIDER_MODELS[aiProvider]?.find(
+                          (m) => m.value === aiModel
+                        )?.label ||
+                          (aiModel
+                            ? aiModel
+                            : getMessage("settingModelCustomOption"))}
                       </SelectValue>
                     </SelectTrigger>
                     <SelectContent>
@@ -582,9 +601,13 @@ function IndexPopup() {
 
               {/* Custom Model Input Slot */}
               {(aiProvider === "custom" ||
-                !PROVIDER_MODELS[aiProvider]?.some((m) => m.value === aiModel)) && (
+                !PROVIDER_MODELS[aiProvider]?.some(
+                  (m) => m.value === aiModel
+                )) && (
                 <div className="space-y-1.5">
-                  <label htmlFor="ai-model-input" className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                  <label
+                    htmlFor="ai-model-input"
+                    className="text-[10px] font-bold text-muted-foreground block tracking-wider">
                     {getMessage("labelCustomModel")}
                   </label>
                   <Input
@@ -605,7 +628,9 @@ function IndexPopup() {
               {/* Custom Endpoint Input Slot */}
               {aiProvider === "custom" && (
                 <div className="space-y-1.5">
-                  <label htmlFor="ai-custom-endpoint" className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                  <label
+                    htmlFor="ai-custom-endpoint"
+                    className="text-[10px] font-bold text-muted-foreground block tracking-wider">
                     {getMessage("labelEndpointUrl")}
                   </label>
                   <Input
@@ -621,10 +646,13 @@ function IndexPopup() {
 
               {/* API Key */}
               <div className="space-y-1.5">
-                <label htmlFor="ai-api-key" className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                <label
+                  htmlFor="ai-api-key"
+                  className="text-[10px] font-bold text-muted-foreground block tracking-wider">
                   {aiProvider === "gemini" && getMessage("labelGeminiKey")}
                   {aiProvider === "openai" && getMessage("labelOpenAiKey")}
-                  {aiProvider === "anthropic" && getMessage("labelAnthropicKey")}
+                  {aiProvider === "anthropic" &&
+                    getMessage("labelAnthropicKey")}
                   {aiProvider === "deepseek" && getMessage("labelDeepSeekKey")}
                   {aiProvider === "custom" && getMessage("labelCustomKey")}
                 </label>
@@ -650,7 +678,11 @@ function IndexPopup() {
                     type="button"
                     onClick={() => setShowApiKey(!showApiKey)}
                     className="absolute right-2.5 text-muted-foreground hover:text-foreground transition-colors p-1">
-                    {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showApiKey ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -701,7 +733,8 @@ function IndexPopup() {
                       onClick={() => handleSolve(game.id)}
                       className={cn(
                         "w-full text-left group relative flex items-center justify-between p-3 rounded-lg border border-border bg-card hover:bg-muted/30 dark:hover:bg-[#222a30] transition-all duration-200 cursor-pointer select-none",
-                        isActive && "border-[#0a66c2] dark:border-[#70b5f9] bg-[#f0f7fe] dark:bg-[#1a2b3c] shadow-sm",
+                        isActive &&
+                          "border-[#0a66c2] dark:border-[#70b5f9] bg-[#f0f7fe] dark:bg-[#1a2b3c] shadow-sm",
                         isCompleted && "border-border/60 bg-card/60"
                       )}
                       title={
@@ -711,18 +744,18 @@ function IndexPopup() {
                             ? getMessage("titleCompleted", localizedTitle)
                             : getMessage("titleOpen", localizedTitle)
                       }>
-                      
                       {/* Left side: Description & Title */}
                       <div className="flex flex-col items-start space-y-0.5 flex-1 pr-3">
                         <span className="text-[10px] text-muted-foreground leading-none">
                           {game.description}
                         </span>
                         <div className="flex items-center gap-1.5">
-                          <span className={cn(
-                            "text-xs font-bold tracking-tight text-foreground transition-colors",
-                            isActive && "text-[#0a66c2] dark:text-[#70b5f9]",
-                            isCompleted && "text-muted-foreground"
-                          )}>
+                          <span
+                            className={cn(
+                              "text-xs font-bold tracking-tight text-foreground transition-colors",
+                              isActive && "text-[#0a66c2] dark:text-[#70b5f9]",
+                              isCompleted && "text-muted-foreground"
+                            )}>
                             {localizedTitle}
                           </span>
                           <span className="text-[9px] font-semibold text-muted-foreground/70">
@@ -754,11 +787,12 @@ function IndexPopup() {
 
                       {/* Right side: Illustration Square */}
                       <div className="relative shrink-0">
-                        <div className={cn(
-                          "w-11 h-11 rounded-lg flex items-center justify-center transition-all duration-300 relative shadow-sm",
-                          game.illustrationBg,
-                          isCompleted && "opacity-60"
-                        )}>
+                        <div
+                          className={cn(
+                            "w-11 h-11 rounded-lg flex items-center justify-center transition-all duration-300 relative shadow-sm",
+                            game.illustrationBg,
+                            isCompleted && "opacity-60"
+                          )}>
                           <img
                             src={game.icon}
                             alt={localizedTitle}
@@ -767,7 +801,7 @@ function IndexPopup() {
                               game.illustrationColor
                             )}
                           />
-                          
+
                           {/* Outer glow ring when active */}
                           {isActive && !isCompleted && (
                             <div className="absolute inset-0 rounded-lg border-2 border-[#0a66c2] dark:border-[#70b5f9] animate-ping opacity-30 scale-105 pointer-events-none" />
@@ -781,10 +815,14 @@ function IndexPopup() {
                               <CheckCircle2 className="w-3 h-3 text-white stroke-[3px]" />
                             </div>
                           ) : (
-                            <div className={cn(
-                              "w-3 h-3 rounded-full border-2 border-card flex items-center justify-center",
-                              isActive ? "bg-[#0a66c2] dark:bg-[#70b5f9] animate-pulse" : "bg-muted-foreground/30"
-                            )} />
+                            <div
+                              className={cn(
+                                "w-3 h-3 rounded-full border-2 border-card flex items-center justify-center",
+                                isActive
+                                  ? "bg-[#0a66c2] dark:bg-[#70b5f9] animate-pulse"
+                                  : "bg-muted-foreground/30"
+                              )}
+                            />
                           )}
                         </div>
                       </div>
@@ -804,7 +842,8 @@ function IndexPopup() {
                   </h3>
                 </div>
                 <span className="text-[11px] font-bold text-muted-foreground">
-                  {solvedCount} / {GAMES_CONFIG.length} {getMessage("solvedCountSuffix")}
+                  {solvedCount} / {GAMES_CONFIG.length}{" "}
+                  {getMessage("solvedCountSuffix")}
                 </span>
               </div>
 
@@ -817,14 +856,18 @@ function IndexPopup() {
                       ? "bg-[#057642]" // Completed success green
                       : "bg-[#0a66c2] dark:bg-[#70b5f9]" // Standard blue
                   )}
-                  style={{ width: `${(solvedCount / GAMES_CONFIG.length) * 100}%` }}
+                  style={{
+                    width: `${(solvedCount / GAMES_CONFIG.length) * 100}%`
+                  }}
                 />
               </div>
 
               <div className="text-[11px] leading-relaxed text-muted-foreground text-center font-medium pt-1.5 border-t border-border/40">
                 {solvedCount === GAMES_CONFIG.length ? (
                   <div className="flex items-center justify-center gap-1 text-[#057642] dark:text-emerald-400 font-bold animate-bounce">
-                    <span>{getMessage("perfectDay", String(GAMES_CONFIG.length))}</span>
+                    <span>
+                      {getMessage("perfectDay", String(GAMES_CONFIG.length))}
+                    </span>
                   </div>
                 ) : (
                   <span>
