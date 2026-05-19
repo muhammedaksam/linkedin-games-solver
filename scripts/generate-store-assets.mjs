@@ -451,6 +451,164 @@ function generateLocalizedScreenshots() {
   }
 }
 
+function generateSocialPreviews() {
+  const socialDir = path.join(outDir, "social")
+  ensureDir(socialDir)
+
+  // Global: large and small
+  const globalLarge = path.join(socialDir, "social-1280x640.jpg")
+  const globalSmall = path.join(socialDir, "social-640x320.jpg")
+
+  // Create a simple social hero using same accent gradient and centered icons
+  run(
+    [
+      imageMagickCmd,
+      "-size",
+      "1280x640",
+      q("gradient:#0a66c2-#0f172a"),
+      "-gravity",
+      "center",
+      "-fill",
+      q("#0b1220"),
+      "-draw",
+      q("roundrectangle 80,80 1200,560 28,28"),
+      "\\(",
+      q(path.join(tmpDir, "tango-220.png")),
+      "-resize",
+      "260x260",
+      "\\)",
+      "-gravity",
+      "west",
+      "-geometry",
+      "+160+0",
+      "-composite",
+      "\\(",
+      q(path.join(tmpDir, "queens-220.png")),
+      "-resize",
+      "260x260",
+      "\\)",
+      "-gravity",
+      "center",
+      "-geometry",
+      "+0+0",
+      "-composite",
+      "\\(",
+      q(path.join(tmpDir, "icon-300.png")),
+      "-resize",
+      "180x180",
+      "\\)",
+      "-gravity",
+      "east",
+      "-geometry",
+      "+160+0",
+      "-composite",
+      "-strip",
+      "-quality",
+      "92",
+      q(globalLarge)
+    ].join(" ")
+  )
+
+  // Resize for small social preview
+  run(
+    [
+      imageMagickCmd,
+      q(globalLarge),
+      "-resize",
+      "640x320",
+      "-strip",
+      "-quality",
+      "92",
+      q(globalSmall)
+    ].join(" ")
+  )
+
+  // Localized social previews: overlay translated title/description
+  const locales = readdirSync(localesDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+
+  const fallbackMessages = readLocaleMessages("en")
+
+  for (const locale of locales) {
+    const localeSocialDir = path.join(localizedDir, locale, "social")
+    ensureDir(localeSocialDir)
+
+    const msgs = readLocaleMessages(locale)
+    const title = truncateText(
+      cleanText(
+        getMessageValue(msgs, "extensionName") ||
+          getMessageValue(msgs, "title") ||
+          getMessageValue(fallbackMessages, "extensionName") ||
+          getMessageValue(fallbackMessages, "title") ||
+          "LinkedIn Games Solver"
+      ),
+      48
+    )
+
+    const desc = truncateText(
+      cleanText(
+        getMessageValue(msgs, "extensionDescription") ||
+          getMessageValue(msgs, "subtitle") ||
+          getMessageValue(fallbackMessages, "extensionDescription") ||
+          getMessageValue(fallbackMessages, "subtitle") ||
+          "A helper for LinkedIn Games."
+      ),
+      100
+    )
+
+    const localeFontPath = resolveFontPathForLocale(locale)
+
+    // Generate large localized social image
+    const outLarge = path.join(localeSocialDir, "social-1280x640.jpg")
+    run(
+      [
+        imageMagickCmd,
+        q(globalLarge),
+        "-fill",
+        q("rgba(0,0,0,0.45)"),
+        "-draw",
+        q("roundrectangle 64,448 1216,608 20,20"),
+        "-fill",
+        q("#ffffff"),
+        ...(localeFontPath ? ["-font", q(localeFontPath)] : []),
+        "-pointsize",
+        "44",
+        "-gravity",
+        "southwest",
+        "-annotate",
+        "+88+120",
+        q(title),
+        "-pointsize",
+        "26",
+        "-gravity",
+        "southwest",
+        "-annotate",
+        "+88+68",
+        q(desc),
+        "-strip",
+        "-quality",
+        "92",
+        q(outLarge)
+      ].join(" ")
+    )
+
+    // Small localized social
+    run(
+      [
+        imageMagickCmd,
+        q(outLarge),
+        "-resize",
+        "640x320",
+        "-strip",
+        "-quality",
+        "92",
+        q(path.join(localeSocialDir, "social-640x320.jpg"))
+      ].join(" ")
+    )
+  }
+}
+
 function main() {
   ensureTool("rsvg-convert")
   ensureTool(imageMagickCmd)
@@ -468,6 +626,7 @@ function main() {
   generatePromoMarquee()
   generateGlobalScreenshots()
   generateLocalizedScreenshots()
+  generateSocialPreviews()
 
   rmSync(tmpDir, { recursive: true, force: true })
 
