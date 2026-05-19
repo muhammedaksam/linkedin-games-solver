@@ -370,5 +370,13 @@
   "settingsCustomGuideDesc": {
     "message": "连接到本地 LLM 框架（如 Ollama 或 LM Studio）。指定端点 URL（例如 http://localhost:11434/v1）和自定义模型名称。",
     "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "显示更多日期",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "显示更少",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
   }
 }

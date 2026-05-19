@@ -370,5 +370,13 @@
   "settingsCustomGuideDesc": {
     "message": "Conecte-se a frameworks LLM locais como Ollama ou LM Studio. Aponte a URL do endpoint (ex: http://localhost:11434/v1) e o nome do modelo.",
     "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "Mostrar mais datas",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "Mostrar menos",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
   }
 }

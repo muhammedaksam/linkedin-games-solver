@@ -35,9 +35,14 @@ export async function getAIConfig(): Promise<AIConfig> {
 }
 
 export async function askAI(prompt: string, jsonMode = false): Promise<string> {
-  // If running inside the Content Script context (which has chrome.runtime.sendMessage),
+  // If running inside the Content Script context (which has window/document defined),
   // route the API request safely through the Background SW to bypass LinkedIn's strict CSP.
-  if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.sendMessage) {
+  if (
+    typeof window !== "undefined" &&
+    typeof chrome !== "undefined" &&
+    chrome.runtime &&
+    chrome.runtime.sendMessage
+  ) {
     return new Promise((resolve, reject) => {
       chrome.runtime.sendMessage(
         { action: "askAI", prompt, jsonMode },

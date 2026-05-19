@@ -370,5 +370,13 @@
   "settingsCustomGuideDesc": {
     "message": "Ollama veya LM Studio gibi yerel LLM çerçevelerine bağlanın. Uç nokta URL'nizi (örn. http://localhost:11434/v1) ve özel model adınızı yönlendirin.",
     "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "Daha fazla tarih göster",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "Daha az göster",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
   }
 }

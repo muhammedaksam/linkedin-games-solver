@@ -3,6 +3,8 @@ import {
   ArrowLeft,
   Calendar as CalendarIcon,
   CheckCircle2,
+  ChevronDown,
+  ChevronUp,
   Clock,
   Crown,
   Eye,
@@ -149,7 +151,9 @@ function getMessage(key: string, substitutions?: string | string[]): string {
     settingsAnthropicGuideDesc:
       "Maximum reasoning capacity. Handles very complex word associations flawlessly. Recommended default: claude-3-5-haiku.",
     settingsCustomGuideDesc:
-      "Connect to local LLM frameworks like Ollama or LM Studio. Point your endpoint URL (e.g., http://localhost:11434/v1) and custom model name."
+      "Connect to local LLM frameworks like Ollama or LM Studio. Point your endpoint URL (e.g., http://localhost:11434/v1) and custom model name.",
+    showMoreDates: "Show more dates",
+    showLessDates: "Show less"
   }
   let msg = fallbacks[key] || key
   if (substitutions) {
@@ -268,6 +272,7 @@ export default function Dashboard() {
     Record<string, { time: number; date: string }>
   >({})
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
+  const [showAllDates, setShowAllDates] = useState(false)
 
   const [showApiKey, setShowApiKey] = useState(false)
   const [saveStatus, setSaveStatus] = useState<string | null>(null)
@@ -711,7 +716,7 @@ export default function Dashboard() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-6">
-                    {sortedDates.map((dateStr) => {
+                    {sortedDates.slice(0, showAllDates ? undefined : 5).map((dateStr) => {
                       const dateGames = history[dateStr] || {}
 
                       return (
@@ -781,6 +786,26 @@ export default function Dashboard() {
                         </div>
                       )
                     })}
+
+                    {sortedDates.length > 5 && (
+                      <button
+                        type="button"
+                        onClick={() => setShowAllDates(!showAllDates)}
+                        className="flex items-center justify-center gap-1.5 py-2.5 px-4 mt-2 w-full text-xs font-bold text-[#0a66c2] dark:text-[#70b5f9] bg-card hover:bg-muted/40 border border-border rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+                      >
+                        {showAllDates ? (
+                          <>
+                            <span>{getMessage("showLessDates")}</span>
+                            <ChevronUp className="w-3.5 h-3.5 animate-pulse" />
+                          </>
+                        ) : (
+                          <>
+                            <span>{getMessage("showMoreDates")}</span>
+                            <ChevronDown className="w-3.5 h-3.5 animate-pulse" />
+                          </>
+                        )}
+                      </button>
+                    )}
                   </div>
                 )}
               </section>
