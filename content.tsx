@@ -118,7 +118,11 @@ function detectFinalSolveTime(): number | undefined {
 }
 
 // Save completion status to Chrome Storage
-async function saveGameCompleted(gameId: string, durationSeconds?: number) {
+async function saveGameCompleted(
+  gameId: string,
+  durationSeconds?: number,
+  isActualPageTime: boolean = false
+) {
   try {
     const dateKey = getLocalDateString()
     const result = await storage.get<SolveHistory>("solveHistory")
@@ -129,27 +133,36 @@ async function saveGameCompleted(gameId: string, durationSeconds?: number) {
     }
 
     const existing = history[dateKey][gameId]
-    const newTime = Math.max(
-      1,
-      durationSeconds !== undefined && durationSeconds > 0
-        ? durationSeconds
-        : existing?.time || 1
-    )
+    let newTime = existing?.time || 1
+    let shouldUpdate = false
 
-    if (
-      !existing ||
-      (durationSeconds !== undefined &&
-        durationSeconds > 0 &&
-        (!existing.time || existing.time === 0 || existing.time === 1))
-    ) {
+    if (durationSeconds !== undefined && durationSeconds > 0) {
+      if (isActualPageTime) {
+        if (existing?.time !== durationSeconds) {
+          newTime = durationSeconds
+          shouldUpdate = true
+        }
+      } else {
+        if (!existing?.time || existing.time === 0 || existing.time === 1) {
+          newTime = durationSeconds
+          shouldUpdate = true
+        }
+      }
+    }
+
+    if (!existing || !existing.solved) {
+      shouldUpdate = true
+    }
+
+    if (shouldUpdate) {
       history[dateKey][gameId] = {
         solved: true,
-        time: newTime,
+        time: Math.max(1, newTime),
         solvedAt: existing?.solvedAt || new Date().toISOString()
       }
       await storage.set("solveHistory", history)
       console.log(
-        `[LinkedIn Games Solver] Saved completion status for ${gameId}:`,
+        `[LinkedIn Games Solver] Saved completion status for ${gameId} (isActualPageTime=${isActualPageTime}):`,
         history[dateKey][gameId]
       )
     }
@@ -245,7 +258,7 @@ async function checkVisitedGameSolved() {
 
   if (isGameEnded) {
     const finalSeconds = detectFinalSolveTime()
-    await saveGameCompleted(gameId, finalSeconds)
+    await saveGameCompleted(gameId, finalSeconds, true)
   }
 }
 
