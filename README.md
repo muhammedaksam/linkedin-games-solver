@@ -55,3 +55,26 @@ Notes:
 - Requires `rsvg-convert` and ImageMagick `convert` installed in your system PATH.
 - Promo tiles and screenshots are exported as JPEG without alpha.
 - The icon is exported as PNG with transparent padding per Chrome icon guidance.
+
+Additional notes — social previews
+
+- The generator now also creates social preview images intended for repository cards and social sharing:
+	- Global: `store-assets/social/social-1280x640.jpg` and `store-assets/social/social-640x320.jpg`
+	- Localized: `store-assets/localized/<locale>/social/social-1280x640.jpg` and `social-640x320.jpg`
+- The layout respects a safe 40pt margin for important content (keeps text and icons inside the visible "safe area").
+
+Prerequisites and font handling
+
+- `rsvg-convert` is used to rasterize SVG artwork. Install via your package manager (for Debian/Ubuntu: `apt install librsvg2-bin`).
+- ImageMagick is required. The script will prefer the `magick` binary if available, falling back to `convert`.
+- For CJK locales (e.g. `zh_CN`) the generator attempts to detect a suitable system font using `fc-match` and provide its file path to ImageMagick so localized overlays render correctly. If you see missing glyphs, install a CJK font (for example `fonts-noto-cjk` / `ttf-wqy-zenhei`) and re-run.
+
+Quick validation
+
+After running the generator you can verify outputs with ImageMagick's `identify`:
+
+```bash
+identify -format '%f %wx%h %[channels]\n' store-assets/social/*.jpg store-assets/localized/*/social/*.jpg
+```
+
+If you'd like a different layout or font choices, edit `scripts/generate-store-assets.mjs`.
