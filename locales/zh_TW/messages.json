@@ -1,0 +1,427 @@
+{
+  "extensionName": {
+    "message": "LinkedIn 遊戲助手",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn 遊戲的輔助工具。",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn 遊戲",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "一鍵自動求解當前遊戲",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "切換至 $1 模式",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome 標籤頁整合功能僅在瀏覽器擴充功能中可用。",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "無法找到活動的瀏覽器標籤頁。",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "自動跳转至 $1 遊戲板失敗。",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "無法連線到 LinkedIn 頁面。請重新整理標籤頁並重試。",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "求解器執行意外失敗。",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "求解器啟動成功！正在執行中...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "正在求解中...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "數獨 (Sudoku)",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "探戈 (Tango)",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "皇后 (Queens)",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb",
+    "description": "Game name Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint",
+    "description": "Game name Pinpoint"
+  },
+  "titleSolve": {
+    "message": "求解 $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "今日已完成！點擊跳轉至 $1",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "打開 $1 以求解",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "完美的一天！全部 $1 個遊戲已完成！ 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "今日進度：已完成 $1/$2 個遊戲",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "歷史記錄與統計",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "您完整的 LinkedIn 遊戲求解歷史與數據統計",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "累計已解",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "所有日期內已求解的遊戲數",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "平均用時",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "所有記錄的求解用時平均值",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "連續天數",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "連續參與 LinkedIn 遊戲的天数",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 天",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "個人最佳紀錄",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "暫無求解記錄。",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "求解歷史記錄",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "活動日曆",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "清除篩選",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModel": {
+    "message": "模型",
+    "description": "Label for the settings model selection dropdown"
+  },
+  "settingModelSelect": {
+    "message": "選擇模型",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "自訂模型名稱...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "自訂模型名稱",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "例如 llama3, mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "輸入自訂識別碼...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "端點 URL",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "例如 http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Gemini API 金鑰",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "OpenAI API 金鑰",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Anthropic API 金鑰",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "DeepSeek API 金鑰",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "API 金鑰 (選填)",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "選填憑證...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "輸入憑證金鑰...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "所選模型可解決 Crossclimb 和 Pinpoint。此擴充功能絕不會分享您的金鑰。",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "透過有趣的日常遊戲保持聯繫",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "調整身心，為工作日做好準備，並比較結果。除非您本人公開分數，否則您的分數僅對自己顯示。",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "儲存並返回遊戲",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "AI 求解器工作中...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "今日已完成",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "已解決",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "AI 模型設定",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "AI 提供商",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "模型識別碼",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "自訂模型名稱",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "端點 URL",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API 金鑰",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API 金鑰",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API 金鑰",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API 金鑰",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API 金鑰 (選填)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "首頁",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "設定與選項",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "統計",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "主題",
+    "description": "Theme nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "每日進度",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "求解當前棋盤",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "返回 LinkedIn 遊戲",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "儀表板",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "遊戲求解器",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "分析您的績效指標、記錄連續天數並追蹤您每日完成的謎題路徑。",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "成功完成",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "免責聲明：這是一個獨立的、開源的教育專案。它與 LinkedIn Corporation 没有任何關聯、贊助或認可。'LinkedIn' 是 LinkedIn Corporation 的註冊商標。",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "憑證與模型",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "模型指南與資訊",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "連線狀態",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "活動求解器：",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "模型識別碼：",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "設定已自動儲存！",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "設定人工智慧模型整合端點和憑證，以實現高級拼圖解決推理。",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "接近零成本的优异性能。以出色的邏輯解決 Crossclimb 和 Pinpoint。推薦預設值：gemini-2.5-flash。",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "在通用知識模式下快速、響應迅速且極其可靠。推薦預設值：gpt-4o-mini。",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "最大程度的推理能力。完美處理非常複雜的詞彙關聯。推薦預設值：claude-3-5-haiku。",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "連線到本地 LLM 框架（如 Ollama 或 LM Studio）。指定端端 URL（例如 http://localhost:11434/v1）和自訂模型名稱。",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "顯示更多日期",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "顯示更少",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "使用AI求解"
+  },
+  "solveBtn_game": {
+    "message": "求解遊戲"
+  },
+  "solveBtn_solving": {
+    "message": "正在求解..."
+  },
+  "solveBtn_solved": {
+    "message": "已完成求解！"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "經典遊戲迷你版"
+  },
+  "desc_tango": {
+    "message": "協調網格"
+  },
+  "desc_queens": {
+    "message": "為每個地區加冕"
+  },
+  "desc_crossclimb": {
+    "message": "解鎖小知識階梯"
+  },
+  "desc_pinpoint": {
+    "message": "猜測類別"
+  },
+  "scoreClue": {
+    "message": "1 條線索"
+  },
+  "scoreClues": {
+    "message": "$1 條線索"
+  },
+  "scoreSeconds": {
+    "message": "$1秒"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1分 $2秒"
+  }
+}

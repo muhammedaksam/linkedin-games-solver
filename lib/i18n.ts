@@ -2,9 +2,11 @@ import deMessages from "../locales/de/messages.json"
 import enMessages from "../locales/en/messages.json"
 import esMessages from "../locales/es/messages.json"
 import frMessages from "../locales/fr/messages.json"
-import ptMessages from "../locales/pt/messages.json"
+import pt_BRMessages from "../locales/pt_BR/messages.json"
+import pt_PTMessages from "../locales/pt_PT/messages.json"
 import trMessages from "../locales/tr/messages.json"
 import zh_CNMessages from "../locales/zh_CN/messages.json"
+import zh_TWMessages from "../locales/zh_TW/messages.json"
 
 const localesData: Record<string, unknown> = {
   en: enMessages,
@@ -12,8 +14,10 @@ const localesData: Record<string, unknown> = {
   de: deMessages,
   es: esMessages,
   fr: frMessages,
-  pt: ptMessages,
-  zh_CN: zh_CNMessages
+  pt_BR: pt_BRMessages,
+  pt_PT: pt_PTMessages,
+  zh_CN: zh_CNMessages,
+  zh_TW: zh_TWMessages
 }
 
 // Map locale keys to display metadata (labels and flags)
@@ -29,8 +33,10 @@ export const SUPPORTED_LOCALES: LocaleOption[] = [
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
   { code: "es", label: "Español", flag: "🇪🇸" },
   { code: "fr", label: "Français", flag: "🇫🇷" },
-  { code: "pt", label: "Português", flag: "🇵🇹" },
-  { code: "zh_CN", label: "中文", flag: "🇨🇳" }
+  { code: "pt_BR", label: "Português (BR)", flag: "🇧🇷" },
+  { code: "pt_PT", label: "Português (PT)", flag: "🇵🇹" },
+  { code: "zh_CN", label: "简体中文", flag: "🇨🇳" },
+  { code: "zh_TW", label: "繁體中文", flag: "🇹🇼" }
 ]
 
 // Get default browser/system base language
@@ -39,7 +45,11 @@ function getSystemBaseLanguage(): string {
     try {
       const uiLang = chrome.i18n.getUILanguage()
       if (uiLang) {
+        const cleaned = uiLang.replace("-", "_")
+        if (localesData[cleaned]) return cleaned
         const base = uiLang.split("-")[0].split("_")[0].toLowerCase()
+        if (base === "pt") return "pt_BR"
+        if (base === "zh") return uiLang.toLowerCase().includes("tw") || uiLang.toLowerCase().includes("hk") ? "zh_TW" : "zh_CN"
         if (localesData[base]) return base
       }
     } catch (e) {
@@ -48,7 +58,12 @@ function getSystemBaseLanguage(): string {
   }
 
   if (typeof navigator !== "undefined" && navigator.language) {
-    const base = navigator.language.split("-")[0].toLowerCase()
+    const uiLang = navigator.language
+    const cleaned = uiLang.replace("-", "_")
+    if (localesData[cleaned]) return cleaned
+    const base = uiLang.split("-")[0].toLowerCase()
+    if (base === "pt") return "pt_BR"
+    if (base === "zh") return uiLang.toLowerCase().includes("tw") || uiLang.toLowerCase().includes("hk") ? "zh_TW" : "zh_CN"
     if (localesData[base]) return base
   }
 

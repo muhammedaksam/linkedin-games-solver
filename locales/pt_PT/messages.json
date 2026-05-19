@@ -1,0 +1,427 @@
+{
+  "extensionName": {
+    "message": "Solucionador de Jogos do LinkedIn",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Um assistente para jogos do LinkedIn.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "Jogos do LinkedIn",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Resolva tabuleiros ativos com um único clique",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "Mudar para o modo $1",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "A integração de guias do Chrome só está disponível em extensões do navegador.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Não foi possível encontrar a guia ativa do navegador.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Falha ao navegar automaticamente para o tabuleiro do $1.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Não foi possível conectar à página do LinkedIn. Recarregue a guia e tente novamente.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "A execução do solucionador falhou inesperadamente.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Solucionador iniciado com sucesso! Executando...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Resolvendo...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb",
+    "description": "Game name Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint",
+    "description": "Game name Pinpoint"
+  },
+  "titleSolve": {
+    "message": "Resolver $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Concluído hoje! Clique para navegar até $1",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Abrir $1 para resolver",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Dia perfeito! Todos os $1 jogos concluídos! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Progresso diário: $1 de $2 jogos concluídos hoje",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Histórico e Estatísticas",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Seu histórico completo de resolução e estatísticas dos jogos do LinkedIn",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Total Resolvido",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Jogos resolvidos em todas as datas",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Tempo Médio",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Em todas as conclusões gravadas",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Série Ativa",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Dias ativos consecutivos",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 dias",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "Recordes Pessoais",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Nenhum registro de resolução gravado ainda.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Histórico de Resolução",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Calendário de Atividades",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Limpar Filtro",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModel": {
+    "message": "Modelo",
+    "description": "Label for the settings model selection dropdown"
+  },
+  "settingModelSelect": {
+    "message": "Selecionar modelo",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "Nome do modelo personalizado...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "Nome do modelo personalizado",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "ex. llama3, mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Inserir identificador personalizado...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "URL do endpoint",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "ex. http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Chave API do Gemini",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "Chave API do OpenAI",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Chave API do Anthropic",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "Chave API do DeepSeek",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "Chave API (Opcional)",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Credenciais opcionais...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Inserir chave de credenciais...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "O modelo selecionado resolve Crossclimb e Pinpoint. A extensão nunca compartilha sua chave.",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Conecte-se para se divertir com jogos diários",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Prepare sua mente para o dia de trabalho e compare os resultados. Suas pontuações são privadas a menos que você as compartilhe.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Salvar e voltar aos jogos",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "Solucionador de IA trabalhando...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Concluído hoje",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Resolvidos",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "Configuração do Modelo de IA",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "PROVEDOR DE IA",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "IDENTIFICADOR DO MODELO",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "NOME DO MODELO PERSONALIZADO",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "URL DO ENDPOINT",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "CHAVE API GEMINI",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "CHAVE API OPENAI",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "CHAVE API ANTHROPIC",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "CHAVE API DEEPSEEK",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "CHAVE API (OPCIONAL)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Início",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "Configurações / Opções",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "Stats",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Tema",
+    "description": "Theme nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Progresso Diário",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Resolver Tabuleiro Ativo",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "Voltar para Jogos do LinkedIn",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Painel",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Solucionador",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Analise suas métricas de desempenho, registre recordes e acompanhe os caminhos dos quebra-cabeças concluídos diariamente.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Concluído com Sucesso",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Aviso Legal: Este é um projeto educacional de código aberto independente. Não é afiliado, patrocinado ou endossado pela LinkedIn Corporation. 'LinkedIn' é uma marca registrada da LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Credenciais e Modelos",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Guia e Informações de Modelos",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Status da Conexão",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Solucionador Ativo:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Identificador do Modelo:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Configurações salvas automaticamente!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Configure endpoints e credenciais de modelos de IA para resolução avançada de quebra-cabeças.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Excelente desempenho a custos quase nulos. Resolve Crossclimb e Pinpoint com ótima lógica. Padrão recomendado: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Rápido, responsivo e extremamente confiável com padrões de conhecimento geral. Padrão recomendado: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Capacidade máxima de raciocínio. Lida com associações de palavras complexas perfeitamente. Padrão recomendado: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Conecte-se a frameworks LLM locais como Ollama ou LM Studio. Aponte a URL do endpoint (ex: http://localhost:11434/v1) e o nome do modelo.",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "Mostrar mais datas",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "Mostrar menos",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "Resolver com IA"
+  },
+  "solveBtn_game": {
+    "message": "Resolver jogo"
+  },
+  "solveBtn_solving": {
+    "message": "Resolvendo..."
+  },
+  "solveBtn_solved": {
+    "message": "Resolvido!"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "Um jogo clássico, em formato mini"
+  },
+  "desc_tango": {
+    "message": "Tudo se encaixa"
+  },
+  "desc_queens": {
+    "message": "Coroe cada região"
+  },
+  "desc_crossclimb": {
+    "message": "Descubra a série de palavras"
+  },
+  "desc_pinpoint": {
+    "message": "Adivinhe categoria"
+  },
+  "scoreClue": {
+    "message": "1 pista"
+  },
+  "scoreClues": {
+    "message": "$1 pistas"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  }
+}
