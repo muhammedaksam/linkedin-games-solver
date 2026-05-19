@@ -378,5 +378,17 @@
   "showLessDates": {
     "message": "Daha az göster",
     "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "Yapay Zeka ile Çöz"
+  },
+  "solveBtn_game": {
+    "message": "Oyunu Çöz"
+  },
+  "solveBtn_solving": {
+    "message": "Çözülüyor..."
+  },
+  "solveBtn_solved": {
+    "message": "Çözüldü!"
   }
 }

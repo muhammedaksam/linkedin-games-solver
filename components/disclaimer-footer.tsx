@@ -1,14 +1,4 @@
-function getMessage(key: string, substitutions?: string | string[]): string {
-  if (typeof chrome !== "undefined" && chrome.i18n) {
-    return chrome.i18n.getMessage(key, substitutions)
-  }
-
-  const fallbacks: Record<string, string> = {
-    disclaimerText:
-      "Disclaimer: This is an independent, open-source educational project. It is not affiliated with, sponsored by, or endorsed by LinkedIn Corporation. 'LinkedIn' is a registered trademark of LinkedIn Corporation."
-  }
-  return fallbacks[key] || key
-}
+import { getMessage } from "~lib/i18n"
 
 export function DisclaimerFooter({ className }: { className?: string }) {
   return (

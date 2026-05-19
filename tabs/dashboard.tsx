@@ -38,6 +38,8 @@ import {
 
 import "./dashboard.css"
 
+import { getMessage } from "~lib/i18n"
+
 interface SolveRecord {
   solved: boolean
   time: number
@@ -71,98 +73,6 @@ const PROVIDER_LABELS: Record<string, string> = {
   anthropic: "Anthropic Claude",
   deepseek: "DeepSeek",
   custom: "Custom / Local Endpoint"
-}
-
-// Universal translation helper mirroring popup.tsx
-function getMessage(key: string, substitutions?: string | string[]): string {
-  if (typeof chrome !== "undefined" && chrome.i18n) {
-    return chrome.i18n.getMessage(key, substitutions)
-  }
-
-  const fallbacks: Record<string, string> = {
-    title: "LinkedIn Games",
-    subtitle: "Solve active boards in a single click",
-    switchThemeTitle: "Switch to $1 mode",
-    dashboardTitle: "Stats & History",
-    dashboardSubtitle:
-      "Your complete LinkedIn Games solving history & statistics",
-    statTotalSolved: "Total Solved",
-    statTotalSolvedDesc: "Games solved across all dates",
-    statAverageTime: "Average Time",
-    statAverageTimeDesc: "Across all recorded completions",
-    statActiveStreak: "Active Streak",
-    statActiveStreakDesc: "Consecutive active days",
-    statStreakDays: "$1 days",
-    personalBests: "Personal Bests",
-    noRecordsYet: "No solve records recorded yet.",
-    solvingHistory: "Solving History",
-    sudoku: "Sudoku",
-    tango: "Tango",
-    queens: "Queens",
-    zip: "Zip",
-    patches: "Patches",
-    crossclimb: "Crossclimb",
-    pinpoint: "Pinpoint",
-    popupCardTitle: "Connect over fun, daily games",
-    popupCardDesc:
-      "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
-    saveAndBack: "Save & Back to Games",
-    solvingWorking: "AI Solver working...",
-    completedToday: "Completed Today",
-    solvedCountSuffix: "Solved",
-    settingsHeaderTitle: "AI Model Configuration",
-    labelAiProvider: "AI PROVIDER",
-    labelModelIdentifier: "MODEL IDENTIFIER",
-    labelCustomModel: "CUSTOM MODEL NAME",
-    labelEndpointUrl: "ENDPOINT URL",
-    labelGeminiKey: "GEMINI API KEY",
-    labelOpenAiKey: "OPENAI API KEY",
-    labelAnthropicKey: "ANTHROPIC API KEY",
-    labelDeepSeekKey: "DEEPSEEK API KEY",
-    labelCustomKey: "API KEY (OPTIONAL)",
-    navHome: "Home",
-    navAiConfig: "Settings / Options",
-    navStats: "Stats",
-    navTheme: "Theme",
-    dailyProgressLabel: "Daily Progress",
-    solveActiveBoard: "Solve Active Board",
-    backToGames: "Back to LinkedIn Games",
-    dashboardLabel: "Dashboard",
-    gamesSolverTitle: "Games Solver",
-    dashboardDescText:
-      "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
-    completedSuccessfully: "Completed Successfully",
-    activityCalendar: "Activity Calendar",
-    clearFilter: "Clear Filter",
-    settingApiKeyNotice:
-      "Selected model solves Crossclimb & Pinpoint. The extension never shares your key.",
-    settingsCredentialsTitle: "Credentials & Models",
-    settingsModelGuideTitle: "Model Guide & Info",
-    settingsConnectionStatusTitle: "Connection Status",
-    settingsActiveSolverLabel: "Active Solver:",
-    settingsModelIdentifierLabel: "Model Identifier:",
-    settingsAutoSavedNotification: "Settings auto-saved!",
-    settingsSubtitleDesc:
-      "Configure AI model integration endpoints and credentials for advanced puzzle-solving reasoning.",
-    settingsGeminiGuideDesc:
-      "Outstanding performance at near-zero costs. Solves Crossclimb and Pinpoint with excellent logic. Recommended default: gemini-2.5-flash.",
-    settingsOpenaiGuideDesc:
-      "Fast, responsive, and extremely reliable with general knowledge patterns. Recommended default: gpt-4o-mini.",
-    settingsAnthropicGuideDesc:
-      "Maximum reasoning capacity. Handles very complex word associations flawlessly. Recommended default: claude-3-5-haiku.",
-    settingsCustomGuideDesc:
-      "Connect to local LLM frameworks like Ollama or LM Studio. Point your endpoint URL (e.g., http://localhost:11434/v1) and custom model name.",
-    showMoreDates: "Show more dates",
-    showLessDates: "Show less"
-  }
-  let msg = fallbacks[key] || key
-  if (substitutions) {
-    const subs = Array.isArray(substitutions) ? substitutions : [substitutions]
-    subs.forEach((sub, index) => {
-      msg = msg.replace(`$${index + 1}`, sub)
-    })
-  }
-  return msg
 }
 
 function formatTime(seconds: number): string {
@@ -716,83 +626,84 @@ export default function Dashboard() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-6">
-                    {sortedDates.slice(0, showAllDates ? undefined : 5).map((dateStr) => {
-                      const dateGames = history[dateStr] || {}
+                    {sortedDates
+                      .slice(0, showAllDates ? undefined : 5)
+                      .map((dateStr) => {
+                        const dateGames = history[dateStr] || {}
 
-                      return (
-                        <div
-                          key={dateStr}
-                          className="flex flex-col gap-2.5 animate-in fade-in duration-300">
-                          <h3 className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-wider pl-1">
-                            {formatDateString(dateStr)}
-                          </h3>
-                          <div className="flex flex-col gap-1 bg-card border border-border rounded-xl p-4 shadow-sm">
-                            {Object.keys(dateGames).map((gameId) => {
-                              const record = dateGames[gameId]
-                              const gameConfig = GAMES_CONFIG.find(
-                                (g) => g.id === gameId
-                              )
-                              if (!record?.solved) return null
-                              return (
-                                <div
-                                  key={gameId}
-                                  className="flex items-center justify-between py-2 border-b border-border last:border-b-0 last:pb-0 first:pt-0">
-                                  <div className="flex items-center gap-3">
-                                    {gameConfig && (
-                                      <div
-                                        className={cn(
-                                          "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
-                                          gameConfig.illustrationBg
-                                        )}>
-                                        <img
-                                          src={gameConfig.icon}
-                                          alt={gameConfig.title}
+                        return (
+                          <div
+                            key={dateStr}
+                            className="flex flex-col gap-2.5 animate-in fade-in duration-300">
+                            <h3 className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-wider pl-1">
+                              {formatDateString(dateStr)}
+                            </h3>
+                            <div className="flex flex-col gap-1 bg-card border border-border rounded-xl p-4 shadow-sm">
+                              {Object.keys(dateGames).map((gameId) => {
+                                const record = dateGames[gameId]
+                                const gameConfig = GAMES_CONFIG.find(
+                                  (g) => g.id === gameId
+                                )
+                                if (!record?.solved) return null
+                                return (
+                                  <div
+                                    key={gameId}
+                                    className="flex items-center justify-between py-2 border-b border-border last:border-b-0 last:pb-0 first:pt-0">
+                                    <div className="flex items-center gap-3">
+                                      {gameConfig && (
+                                        <div
                                           className={cn(
-                                            "w-4 h-4 object-contain",
-                                            gameConfig.illustrationColor
-                                          )}
-                                        />
+                                            "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm relative transition-all duration-300",
+                                            gameConfig.illustrationBg
+                                          )}>
+                                          <img
+                                            src={gameConfig.icon}
+                                            alt={gameConfig.title}
+                                            className={cn(
+                                              "w-4 h-4 object-contain",
+                                              gameConfig.illustrationColor
+                                            )}
+                                          />
+                                        </div>
+                                      )}
+                                      <div className="flex flex-col">
+                                        <span className="text-xs font-bold">
+                                          {getMessage(gameId) ||
+                                            gameConfig?.title ||
+                                            gameId}
+                                        </span>
+                                        <span className="text-[9px] text-muted-foreground/80 leading-none">
+                                          {gameConfig?.description}
+                                        </span>
                                       </div>
-                                    )}
-                                    <div className="flex flex-col">
-                                      <span className="text-xs font-bold">
-                                        {getMessage(gameId) ||
-                                          gameConfig?.title ||
-                                          gameId}
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                      <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+                                        <Clock className="w-3.5 h-3.5" />
+                                        {formatTime(
+                                          record.time > 0 ? record.time : 1
+                                        )}
                                       </span>
-                                      <span className="text-[9px] text-muted-foreground/80 leading-none">
-                                        {gameConfig?.description}
-                                      </span>
+                                      <span
+                                        className="w-2 h-2 rounded-full bg-[#057642]"
+                                        title={getMessage(
+                                          "completedSuccessfully"
+                                        )}
+                                      />
                                     </div>
                                   </div>
-                                  <div className="flex items-center gap-3">
-                                    <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-                                      <Clock className="w-3.5 h-3.5" />
-                                      {formatTime(
-                                        record.time > 0 ? record.time : 1
-                                      )}
-                                    </span>
-                                    <span
-                                      className="w-2 h-2 rounded-full bg-[#057642]"
-                                      title={getMessage(
-                                        "completedSuccessfully"
-                                      )}
-                                    />
-                                  </div>
-                                </div>
-                              )
-                            })}
+                                )
+                              })}
+                            </div>
                           </div>
-                        </div>
-                      )
-                    })}
+                        )
+                      })}
 
                     {sortedDates.length > 5 && (
                       <button
                         type="button"
                         onClick={() => setShowAllDates(!showAllDates)}
-                        className="flex items-center justify-center gap-1.5 py-2.5 px-4 mt-2 w-full text-xs font-bold text-[#0a66c2] dark:text-[#70b5f9] bg-card hover:bg-muted/40 border border-border rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
-                      >
+                        className="flex items-center justify-center gap-1.5 py-2.5 px-4 mt-2 w-full text-xs font-bold text-[#0a66c2] dark:text-[#70b5f9] bg-card hover:bg-muted/40 border border-border rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] cursor-pointer">
                         {showAllDates ? (
                           <>
                             <span>{getMessage("showLessDates")}</span>

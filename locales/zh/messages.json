@@ -378,5 +378,17 @@
   "showLessDates": {
     "message": "显示更少",
     "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "使用AI求解"
+  },
+  "solveBtn_game": {
+    "message": "求解游戏"
+  },
+  "solveBtn_solving": {
+    "message": "正在求解..."
+  },
+  "solveBtn_solved": {
+    "message": "已完成求解！"
   }
 }
