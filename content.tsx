@@ -469,7 +469,20 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
     const interval = setInterval(() => {
       attempts++
 
-      const toolbar = document.querySelector('[role="toolbar"]')
+      // First check for direct toolbar action containers
+      const actionsContainer = document.querySelector(
+        ".pr-game-web__toolbar-actions, .scaffold-layout-toolbar__content .pr-game-web__toolbar-actions"
+      )
+      if (actionsContainer) {
+        clearInterval(interval)
+        resolve(actionsContainer)
+        return
+      }
+
+      // Check for general toolbar
+      const toolbar = document.querySelector(
+        '[role="toolbar"], .pr-game-web__toolbar, .scaffold-layout-toolbar'
+      )
       if (toolbar) {
         // Find the Reset link (which is an anchor <a> inside the toolbar)
         const resetLink = toolbar.querySelector("a")
