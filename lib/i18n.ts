@@ -4,7 +4,7 @@ import esMessages from "../locales/es/messages.json"
 import frMessages from "../locales/fr/messages.json"
 import ptMessages from "../locales/pt/messages.json"
 import trMessages from "../locales/tr/messages.json"
-import zhMessages from "../locales/zh/messages.json"
+import zh_CNMessages from "../locales/zh_CN/messages.json"
 
 const localesData: Record<string, unknown> = {
   en: enMessages,
@@ -13,7 +13,7 @@ const localesData: Record<string, unknown> = {
   es: esMessages,
   fr: frMessages,
   pt: ptMessages,
-  zh: zhMessages
+  zh_CN: zh_CNMessages
 }
 
 // Map locale keys to display metadata (labels and flags)
@@ -30,7 +30,7 @@ export const SUPPORTED_LOCALES: LocaleOption[] = [
   { code: "es", label: "Español", flag: "🇪🇸" },
   { code: "fr", label: "Français", flag: "🇫🇷" },
   { code: "pt", label: "Português", flag: "🇵🇹" },
-  { code: "zh", label: "中文", flag: "🇨🇳" }
+  { code: "zh_CN", label: "中文", flag: "🇨🇳" }
 ]
 
 // Get default browser/system base language
