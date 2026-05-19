@@ -216,11 +216,11 @@
     "description": "Notice under API key inputs in settings panel"
   },
   "popupCardTitle": {
-    "message": "通过有趣的每日游戏进行连接",
+    "message": "通过有趣的日常游戏保持联系",
     "description": "Title of the card feed in popup"
   },
   "popupCardDesc": {
-    "message": "为工作日做好思维准备并对比结果。除非您选择分享，否则您的得分是完全保密的。",
+    "message": "调整身心，为工作日做好准备，并比较结果。除非您本人公开分数，否则您的分数仅对自己显示。",
     "description": "Description of the card feed in popup"
   },
   "saveAndBack": {
@@ -390,5 +390,38 @@
   },
   "solveBtn_solved": {
     "message": "已完成求解！"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "经典游戏迷你版"
+  },
+  "desc_tango": {
+    "message": "协调网格"
+  },
+  "desc_queens": {
+    "message": "为每个地区加冕"
+  },
+  "desc_crossclimb": {
+    "message": "解锁小知识阶梯"
+  },
+  "desc_pinpoint": {
+    "message": "猜测类别"
+  },
+  "scoreClue": {
+    "message": "1 条线索"
+  },
+  "scoreClues": {
+    "message": "$1 条线索"
+  },
+  "scoreSeconds": {
+    "message": "$1秒"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1分 $2秒"
   }
 }

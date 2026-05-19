@@ -216,11 +216,11 @@
     "description": "Notice under API key inputs in settings panel"
   },
   "popupCardTitle": {
-    "message": "Verbinden Sie sich über unterhaltsame, tägliche Spiele",
+    "message": "Täglich in Kontakt bleiben – mit Spielen",
     "description": "Title of the card feed in popup"
   },
   "popupCardDesc": {
-    "message": "Bereiten Sie Ihren Geist auf den Arbeitstag vor und vergleichen Sie Ergebnisse. Ihre Ergebnisse sind privat, es sei denn, Sie teilen sie.",
+    "message": "Bereiten Sie sich mental auf den Arbeitstag vor und vergleichen Sie Ihre Ergebnisse. Ihre Werte sind nur für Sie sichtbar, sofern Sie sie nicht teilen.",
     "description": "Description of the card feed in popup"
   },
   "saveAndBack": {
@@ -390,5 +390,38 @@
   },
   "solveBtn_solved": {
     "message": "Gelöst!"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "Der Klassiker unter den Mini-Spielen."
+  },
+  "desc_tango": {
+    "message": "Harmonie im Raster herstellen"
+  },
+  "desc_queens": {
+    "message": "Eine Krone für jede Region"
+  },
+  "desc_crossclimb": {
+    "message": "Trivia-Leiter freischalten"
+  },
+  "desc_pinpoint": {
+    "message": "Kategorie erraten"
+  },
+  "scoreClue": {
+    "message": "1 Hinweis"
+  },
+  "scoreClues": {
+    "message": "$1 Hinweise"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
   }
 }

@@ -75,6 +75,27 @@
     "message": "Pinpoint",
     "description": "Game name Pinpoint"
   },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "The classic game, made mini"
+  },
+  "desc_tango": {
+    "message": "Harmonize the grid"
+  },
+  "desc_queens": {
+    "message": "Crown each region"
+  },
+  "desc_crossclimb": {
+    "message": "Unlock a trivia ladder"
+  },
+  "desc_pinpoint": {
+    "message": "Guess the category"
+  },
   "titleSolve": {
     "message": "Solve $1",
     "description": "Tooltip for active game"
@@ -390,5 +411,17 @@
   },
   "solveBtn_solved": {
     "message": "Solved!"
+  },
+  "scoreClue": {
+    "message": "1 clue"
+  },
+  "scoreClues": {
+    "message": "$1 clues"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
   }
 }

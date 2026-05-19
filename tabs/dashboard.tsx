@@ -38,7 +38,9 @@ import {
 
 import "./dashboard.css"
 
-import { getMessage } from "~lib/i18n"
+import { getMessage, locale } from "~lib/i18n"
+
+import { LanguageSwitcher } from "../components/LanguageSwitcher"
 
 interface SolveRecord {
   solved: boolean
@@ -79,8 +81,18 @@ function formatTime(seconds: number): string {
   if (!seconds || seconds <= 0) return "--"
   const m = Math.floor(seconds / 60)
   const s = seconds % 60
-  if (m === 0) return `${s}s`
-  return `${m}m ${s}s`
+  if (m === 0) return getMessage("scoreSeconds", String(s))
+  return getMessage("scoreMinutesSeconds", [String(m), String(s)])
+}
+
+function formatScore(score: number, gameId?: string): string {
+  if (!score || score <= 0) return "--"
+  if (gameId === "pinpoint") {
+    return score === 1
+      ? getMessage("scoreClue")
+      : getMessage("scoreClues", String(score))
+  }
+  return formatTime(score)
 }
 
 function formatDateString(dateStr: string): string {
@@ -92,7 +104,7 @@ function formatDateString(dateStr: string): string {
       day: "numeric"
     }
     const date = new Date(dateStr)
-    return date.toLocaleDateString(undefined, options)
+    return date.toLocaleDateString(locale, options)
   } catch {
     return dateStr
   }
@@ -258,8 +270,11 @@ export default function Dashboard() {
           // Enforce 1s minimum for older 0s logs in stats calculation
           const solveTime =
             rec.time !== undefined && rec.time > 0 ? rec.time : 1
-          totalSeconds += solveTime
-          timedCount++
+
+          if (gameId !== "pinpoint") {
+            totalSeconds += solveTime
+            timedCount++
+          }
 
           // Check PB
           if (!pbMap[gameId] || solveTime < pbMap[gameId].time) {
@@ -398,6 +413,10 @@ export default function Dashboard() {
                 <Moon className="w-4 h-4 text-zinc-600 animate-in spin-in-12 duration-500" />
               )}
             </button>
+
+            <div className="h-6 w-[1px] bg-border mx-0.5 shrink-0" />
+            <LanguageSwitcher align="right" />
+            <div className="h-6 w-[1px] bg-border mx-0.5 shrink-0" />
 
             {/* Back to Games Tab Link */}
             <a
@@ -554,7 +573,7 @@ export default function Dashboard() {
 
                           <div className="flex flex-col">
                             <span className="text-[10px] text-muted-foreground leading-none mb-0.5">
-                              {game.description}
+                              {getMessage(`desc_${game.id}`) || game.description}
                             </span>
                             <span className="text-xs font-bold text-foreground">
                               {getMessage(game.id) || game.title}
@@ -569,7 +588,7 @@ export default function Dashboard() {
                         {pb && (
                           <div className="flex items-center">
                             <span className="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 tracking-wider border border-emerald-500/10">
-                              {formatTime(pb.time)}
+                              {formatScore(pb.time, game.id)}
                             </span>
                           </div>
                         )}
@@ -673,15 +692,16 @@ export default function Dashboard() {
                                             gameId}
                                         </span>
                                         <span className="text-[9px] text-muted-foreground/80 leading-none">
-                                          {gameConfig?.description}
+                                          {gameConfig ? (getMessage(`desc_${gameConfig.id}`) || gameConfig.description) : ""}
                                         </span>
                                       </div>
                                     </div>
                                     <div className="flex items-center gap-3">
                                       <span className="text-[10px] text-muted-foreground flex items-center gap-1">
                                         <Clock className="w-3.5 h-3.5" />
-                                        {formatTime(
-                                          record.time > 0 ? record.time : 1
+                                        {formatScore(
+                                          record.time > 0 ? record.time : 1,
+                                          gameId
                                         )}
                                       </span>
                                       <span

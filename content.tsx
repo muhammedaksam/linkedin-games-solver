@@ -61,7 +61,52 @@ function parseTimerToSeconds(timeStr: string): number {
 }
 
 // Read the stopwatch timer directly from the native LinkedIn page or results page
-function detectFinalSolveTime(): number | undefined {
+function detectFinalSolveTime(gameId?: string): number | undefined {
+  if (!gameId) {
+    const active = detectActiveSolver()
+    gameId = active?.name.toLowerCase()
+  }
+
+  if (gameId === "pinpoint") {
+    // 1. Results page golden chiclet (carousel slide showing e.g. "Solved in 3")
+    const textEls = document.querySelectorAll(
+      ".pr-golden-chiclet__text, .pr-golden-chiclet, .artdeco-carousel__item.active div, .pr-golden-chiclet__carousel-item.active div"
+    )
+    for (const el of Array.from(textEls)) {
+      const text = el.textContent?.trim() || ""
+      const match = text.match(/Solved in (\d+)/i)
+      if (match) {
+        const clues = parseInt(match[1], 10)
+        if (clues > 0 && clues <= 5) return clues
+      }
+    }
+
+    // 2. Leaderboard: player "You" score card (which shows e.g. "3 clues")
+    const leaderboardPlayers = document.querySelectorAll(
+      ".pr-connections-leaderboard-player__container"
+    )
+    for (const player of Array.from(leaderboardPlayers)) {
+      const textWrapper = player.querySelector(
+        ".pr-connections-leaderboard-player__text-wrapper"
+      )
+      if (textWrapper?.textContent?.trim().toLowerCase().includes("you")) {
+        const scoreEl = player.querySelector(
+          ".pr-connections-leaderboard-player__score"
+        )
+        if (scoreEl) {
+          const text = scoreEl.textContent?.trim() || ""
+          const match = text.match(/(\d+)/)
+          if (match) {
+            const clues = parseInt(match[1], 10)
+            if (clues > 0 && clues <= 5) return clues
+          }
+        }
+      }
+    }
+
+    return undefined
+  }
+
   // Method 1: Active game screen timer
   const clockIcon = document.querySelector(
     'svg#clock-small, svg[data-test-icon="clock-small"], use[href="#clock-small"]'
@@ -257,7 +302,7 @@ async function checkVisitedGameSolved() {
     isSudokuEnded
 
   if (isGameEnded) {
-    const finalSeconds = detectFinalSolveTime()
+    const finalSeconds = detectFinalSolveTime(gameId)
     await saveGameCompleted(gameId, finalSeconds, true)
   }
 }

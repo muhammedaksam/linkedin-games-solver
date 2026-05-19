@@ -1,124 +1,104 @@
+import deMessages from "../locales/de/messages.json"
+import enMessages from "../locales/en/messages.json"
+import esMessages from "../locales/es/messages.json"
+import frMessages from "../locales/fr/messages.json"
+import ptMessages from "../locales/pt/messages.json"
+import trMessages from "../locales/tr/messages.json"
+import zhMessages from "../locales/zh/messages.json"
+
+const localesData: Record<string, unknown> = {
+  en: enMessages,
+  tr: trMessages,
+  de: deMessages,
+  es: esMessages,
+  fr: frMessages,
+  pt: ptMessages,
+  zh: zhMessages
+}
+
+// Map locale keys to display metadata (labels and flags)
+export interface LocaleOption {
+  code: string
+  label: string
+  flag: string
+}
+
+export const SUPPORTED_LOCALES: LocaleOption[] = [
+  { code: "en", label: "English", flag: "🇬🇧" },
+  { code: "tr", label: "Türkçe", flag: "🇹🇷" },
+  { code: "de", label: "Deutsch", flag: "🇩🇪" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "fr", label: "Français", flag: "🇫🇷" },
+  { code: "pt", label: "Português", flag: "🇵🇹" },
+  { code: "zh", label: "中文", flag: "🇨🇳" }
+]
+
+// Get default browser/system base language
+function getSystemBaseLanguage(): string {
+  if (typeof chrome !== "undefined" && chrome.i18n) {
+    try {
+      const uiLang = chrome.i18n.getUILanguage()
+      if (uiLang) {
+        const base = uiLang.split("-")[0].split("_")[0].toLowerCase()
+        if (localesData[base]) return base
+      }
+    } catch (e) {
+      console.warn("Failed to get chrome UI language:", e)
+    }
+  }
+
+  if (typeof navigator !== "undefined" && navigator.language) {
+    const base = navigator.language.split("-")[0].toLowerCase()
+    if (localesData[base]) return base
+  }
+
+  return "en"
+}
+
+// Initial state load
+const systemLocale = getSystemBaseLanguage()
+
+export function getActiveLocale(): string {
+  if (typeof window !== "undefined" && window.localStorage) {
+    const saved = window.localStorage.getItem("user-locale")
+    if (saved && localesData[saved]) {
+      return saved
+    }
+  }
+  return systemLocale
+}
+
+export function setActiveLocale(code: string): void {
+  if (typeof window !== "undefined" && window.localStorage) {
+    window.localStorage.setItem("user-locale", code)
+  }
+  // Dispatch custom event for reactive elements in the same window context
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("localeChanged", { detail: code }))
+  }
+}
+
 export function getMessage(
   key: string,
   substitutions?: string | string[]
 ): string {
-  if (typeof chrome !== "undefined" && chrome.i18n) {
-    return chrome.i18n.getMessage(key, substitutions)
+  const activeLoc = getActiveLocale()
+
+  // 1. Fetch from selected locale dictionary
+  const dictionary = localesData[activeLoc] || localesData.en
+  let item = dictionary[key]
+
+  // 2. Fallback to English dictionary if key is missing in active locale
+  if ((!item || !item.message) && activeLoc !== "en") {
+    item = localesData.en[key]
   }
 
-  // Safe runtime development fallback (so it runs perfectly in web preview or testing)
-  const fallbacks: Record<string, string> = {
-    title: "LinkedIn Games",
-    subtitle: "Solve active boards in a single click",
-    switchThemeTitle: "Switch to $1 mode",
-    errorChromeTabIntegration:
-      "Chrome tab integration is only available inside browser extensions.",
-    errorActiveTabNotFound: "Could not find the active browser tab.",
-    errorNavigationFailed: "Failed to navigate to the $1 board automatically.",
-    errorConnectionFailed:
-      "Could not connect to LinkedIn page. Please reload the tab and try again.",
-    errorExecutionFailedDefault: "Solver execution failed unexpectedly.",
-    successSolverStarted: "Solver successfully started! Running...",
-    solvingStatus: "Solving...",
-    sudoku: "Sudoku",
-    tango: "Tango",
-    queens: "Queens",
-    zip: "Zip",
-    patches: "Patches",
-    crossclimb: "Crossclimb",
-    pinpoint: "Pinpoint",
-    titleSolve: "Solve $1",
-    titleCompleted: "Completed today! Click to navigate to $1",
-    titleOpen: "Open $1 to solve",
-    perfectDay: "Perfect day! All $1 games completed! 🎉",
-    dailyProgress: "Daily progress: $1 of $2 games completed today",
-    dashboardTitle: "History & Statistics",
-    settingModel: "Model",
-    settingModelSelect: "Select Model",
-    settingModelCustomOption: "Custom Model Name...",
-    settingModelCustomLabel: "Custom Model Name",
-    settingModelCustomPlaceholderLocal: "e.g. llama3, mistral",
-    settingModelCustomPlaceholderOther: "Enter custom identifier...",
-    settingEndpointLabel: "Endpoint URL",
-    settingEndpointPlaceholder: "e.g. http://localhost:11434/v1",
-    settingApiKeyGemini: "Gemini API Key",
-    settingApiKeyOpenAI: "OpenAI API Key",
-    settingApiKeyAnthropic: "Anthropic API Key",
-    settingApiKeyDeepSeek: "DeepSeek API Key",
-    settingApiKeyCustom: "API Key (Optional)",
-    settingApiKeyPlaceholderCustom: "Optional credentials...",
-    settingApiKeyPlaceholderDefault: "Enter credentials key...",
-    settingApiKeyNotice:
-      "Selected model solves Crossclimb & Pinpoint. The extension never shares your key.",
-    popupCardTitle: "Connect over fun, daily games",
-    popupCardDesc:
-      "Prep your mind for the workday and compare results. Your scores are private unless you share them.",
-    saveAndBack: "Save & Back to Games",
-    solvingWorking: "AI Solver working...",
-    completedToday: "Completed Today",
-    solvedCountSuffix: "Solved",
-    settingsHeaderTitle: "AI Model Configuration",
-    labelAiProvider: "AI PROVIDER",
-    labelModelIdentifier: "MODEL IDENTIFIER",
-    labelCustomModel: "CUSTOM MODEL NAME",
-    labelEndpointUrl: "ENDPOINT URL",
-    labelGeminiKey: "GEMINI API KEY",
-    labelOpenAiKey: "OPENAI API KEY",
-    labelAnthropicKey: "ANTHROPIC API KEY",
-    labelDeepSeekKey: "DEEPSEEK API KEY",
-    labelCustomKey: "API KEY (OPTIONAL)",
-    navHome: "Home",
-    navAiConfig: "Settings / Options",
-    navStats: "Stats",
-    navTheme: "Theme",
-    dailyProgressLabel: "Daily Progress",
-    solveActiveBoard: "Solve Active Board",
-    backToGames: "Back to LinkedIn Games",
-    dashboardLabel: "Dashboard",
-    gamesSolverTitle: "Games Solver",
-    dashboardDescText:
-      "Analyze your performance metrics, record streaks, and trace your daily completed puzzle paths.",
-    completedSuccessfully: "Completed Successfully",
-    solveBtn_withAi: "Solve with AI",
-    solveBtn_game: "Solve Game",
-    solveBtn_solving: "Solving...",
-    solveBtn_solved: "Solved!",
-    disclaimerText:
-      "Disclaimer: This is an independent, open-source educational project. It is not affiliated with, sponsored by, or endorsed by LinkedIn Corporation. 'LinkedIn' is a registered trademark of LinkedIn Corporation.",
-    dashboardSubtitle:
-      "Your complete LinkedIn Games solving history & statistics",
-    statTotalSolved: "Total Solved",
-    statTotalSolvedDesc: "Games solved across all dates",
-    statAverageTime: "Average Time",
-    statAverageTimeDesc: "Across all recorded completions",
-    statActiveStreak: "Active Streak",
-    statActiveStreakDesc: "Consecutive active days",
-    statStreakDays: "$1 days",
-    personalBests: "Personal Bests",
-    noRecordsYet: "No solve records recorded yet.",
-    solvingHistory: "Solving History",
-    activityCalendar: "Activity Calendar",
-    clearFilter: "Clear Filter",
-    settingsCredentialsTitle: "Credentials & Models",
-    settingsModelGuideTitle: "Model Guide & Info",
-    settingsConnectionStatusTitle: "Connection Status",
-    settingsActiveSolverLabel: "Active Solver:",
-    settingsModelIdentifierLabel: "Model Identifier:",
-    settingsAutoSavedNotification: "Settings auto-saved!",
-    settingsSubtitleDesc:
-      "Configure AI model integration endpoints and credentials for advanced puzzle-solving reasoning.",
-    settingsGeminiGuideDesc:
-      "Outstanding performance at near-zero costs. Solves Crossclimb and Pinpoint with excellent logic. Recommended default: gemini-2.5-flash.",
-    settingsOpenaiGuideDesc:
-      "Fast, responsive, and extremely reliable with general knowledge patterns. Recommended default: gpt-4o-mini.",
-    settingsAnthropicGuideDesc:
-      "Maximum reasoning capacity. Handles very complex word associations flawlessly. Recommended default: claude-3-5-haiku.",
-    settingsCustomGuideDesc:
-      "Connect to local LLM frameworks like Ollama or LM Studio. Point your endpoint URL (e.g., http://localhost:11434/v1) and custom model name.",
-    showMoreDates: "Show more dates",
-    showLessDates: "Show less"
+  // 3. Fallback to key itself if not found anywhere
+  if (!item || !item.message) {
+    return key
   }
-  let msg = fallbacks[key] || key
+
+  let msg = item.message
   if (substitutions) {
     const subs = Array.isArray(substitutions) ? substitutions : [substitutions]
     subs.forEach((sub, index) => {
@@ -127,3 +107,5 @@ export function getMessage(
   }
   return msg
 }
+
+export const locale = getActiveLocale()

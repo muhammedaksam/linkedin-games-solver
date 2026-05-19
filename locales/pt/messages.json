@@ -216,11 +216,11 @@
     "description": "Notice under API key inputs in settings panel"
   },
   "popupCardTitle": {
-    "message": "Conecte-se com jogos diários divertidos",
+    "message": "Conecte-se para se divertir com jogos diários",
     "description": "Title of the card feed in popup"
   },
   "popupCardDesc": {
-    "message": "Prepare sua mente para o dia de trabalho e compare resultados. Suas pontuações são privadas, a menos que você as compartilhe.",
+    "message": "Prepare sua mente para o dia de trabalho e compare os resultados. Suas pontuações são privadas a menos que você as compartilhe.",
     "description": "Description of the card feed in popup"
   },
   "saveAndBack": {
@@ -390,5 +390,38 @@
   },
   "solveBtn_solved": {
     "message": "Resolvido!"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "Um jogo clássico, em formato mini"
+  },
+  "desc_tango": {
+    "message": "Tudo se encaixa"
+  },
+  "desc_queens": {
+    "message": "Coroe cada região"
+  },
+  "desc_crossclimb": {
+    "message": "Descubra a série de palavras"
+  },
+  "desc_pinpoint": {
+    "message": "Adivinhe categoria"
+  },
+  "scoreClue": {
+    "message": "1 pista"
+  },
+  "scoreClues": {
+    "message": "$1 pistas"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
   }
 }

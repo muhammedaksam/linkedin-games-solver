@@ -216,11 +216,11 @@
     "description": "Notice under API key inputs in settings panel"
   },
   "popupCardTitle": {
-    "message": "Conéctate a través de divertidos juegos diarios",
+    "message": "Estrecha lazos con divertidos juegos a diario",
     "description": "Title of the card feed in popup"
   },
   "popupCardDesc": {
-    "message": "Prepara tu mente para la jornada laboral y compara resultados. Tus puntuaciones son privadas a menos que las compartas.",
+    "message": "Prepara tu mente para la jornada y compara los resultados. Tu puntuación es privada a menos que la compartas.",
     "description": "Description of the card feed in popup"
   },
   "saveAndBack": {
@@ -390,5 +390,38 @@
   },
   "solveBtn_solved": {
     "message": "¡Resuelto!"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "El clásico juego, en versión mini."
+  },
+  "desc_tango": {
+    "message": "Todo cuadra."
+  },
+  "desc_queens": {
+    "message": "Corona cada región"
+  },
+  "desc_crossclimb": {
+    "message": "Resuelve una escalera de trivial"
+  },
+  "desc_pinpoint": {
+    "message": "Adivina la categoría"
+  },
+  "scoreClue": {
+    "message": "1 pista"
+  },
+  "scoreClues": {
+    "message": "$1 pistas"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
   }
 }

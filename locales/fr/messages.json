@@ -216,11 +216,11 @@
     "description": "Notice under API key inputs in settings panel"
   },
   "popupCardTitle": {
-    "message": "Connectez-vous via des jeux quotidiens amusants",
+    "message": "Entretenez des relations grâce à des jeux quotidiens amusants",
     "description": "Title of the card feed in popup"
   },
   "popupCardDesc": {
-    "message": "Préparez votre esprit pour la journée de travail et comparez les résultats. Vos scores sont privés à moins que vous ne les partagiez.",
+    "message": "Préparez-vous mentalement avant votre journée de travail et comparez les résultats. Vos scores sont privés, sauf si vous souhaitez les partager.",
     "description": "Description of the card feed in popup"
   },
   "saveAndBack": {
@@ -390,5 +390,38 @@
   },
   "solveBtn_solved": {
     "message": "Résolu !"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "Le jeu classique, en version mini"
+  },
+  "desc_tango": {
+    "message": "Harmonisez la grille"
+  },
+  "desc_queens": {
+    "message": "Couronner chaque région"
+  },
+  "desc_crossclimb": {
+    "message": "Déverrouiller un quiz"
+  },
+  "desc_pinpoint": {
+    "message": "Deviner la catégorie"
+  },
+  "scoreClue": {
+    "message": "1 indice"
+  },
+  "scoreClues": {
+    "message": "$1 indices"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
   }
 }

@@ -75,6 +75,27 @@
     "message": "Pinpoint",
     "description": "Game name Pinpoint"
   },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "Klasik oyun artık mini versiyonuyla"
+  },
+  "desc_tango": {
+    "message": "Tabloyu uyumlu hâle getirin"
+  },
+  "desc_queens": {
+    "message": "Her bölgeyi taçlandırın"
+  },
+  "desc_crossclimb": {
+    "message": "Trivia basamaklarının kilidini açın"
+  },
+  "desc_pinpoint": {
+    "message": "Kategoriyi tahmin edin"
+  },
   "titleSolve": {
     "message": "$1 Çöz",
     "description": "Tooltip for active game"
@@ -390,5 +411,17 @@
   },
   "solveBtn_solved": {
     "message": "Çözüldü!"
+  },
+  "scoreClue": {
+    "message": "1 ipucu"
+  },
+  "scoreClues": {
+    "message": "$1 ipucu"
+  },
+  "scoreSeconds": {
+    "message": "$1sn"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1dk $2sn"
   }
 }

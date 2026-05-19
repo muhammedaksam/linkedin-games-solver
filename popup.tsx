@@ -16,6 +16,7 @@ import { useCallback, useEffect, useState } from "react"
 import { useStorage } from "@plasmohq/storage/hook"
 
 import { DisclaimerFooter } from "~/components/disclaimer-footer"
+import { LanguageSwitcher } from "~/components/LanguageSwitcher"
 import { Input } from "~/components/ui/input"
 import {
   Select,
@@ -393,20 +394,20 @@ function IndexPopup() {
       {/* LinkedIn Miniature Top Navigation Header */}
       <header className="sticky top-0 z-50 flex items-center justify-between px-4 border-b border-border bg-card shadow-sm h-[52px]">
         {/* Left: Brand */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 shrink-0">
           <div className="w-[22px] h-[22px] rounded bg-[#0a66c2] dark:bg-[#ffffff] flex items-center justify-center font-extrabold text-white dark:text-[#1d2226] text-[9px] select-none tracking-tighter leading-none shrink-0">
             win
           </div>
           <div className="h-3.5 w-[1px] bg-border mx-0.5" />
           <span
-            className="text-[12px] font-bold tracking-tight text-foreground"
+            className="text-[12px] font-bold tracking-tight text-foreground whitespace-nowrap"
             style={{ fontFamily: "Source Sans 3, sans-serif" }}>
             {getMessage("gamesSolverTitle")}
           </span>
         </div>
 
         {/* Right: LinkedIn Global Nav Links */}
-        <div className="flex items-center gap-3.5 h-full">
+        <div className="flex items-center gap-2 h-full">
           {navItems.map((item) => {
             const IconComponent = item.icon
             return (
@@ -424,7 +425,7 @@ function IndexPopup() {
                     item.active && "stroke-[2.2px]"
                   )}
                 />
-                <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight">
+                <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight whitespace-nowrap">
                   {item.label}
                 </span>
                 {item.active && (
@@ -433,6 +434,8 @@ function IndexPopup() {
               </button>
             )
           })}
+          <div className="h-4 w-[1px] bg-border mx-0.5" />
+          <LanguageSwitcher align="right" />
         </div>
       </header>
 
@@ -694,7 +697,7 @@ function IndexPopup() {
                       {/* Left side: Description & Title */}
                       <div className="flex flex-col items-start space-y-0.5 flex-1 pr-3">
                         <span className="text-[10px] text-muted-foreground leading-none">
-                          {game.description}
+                          {getMessage(`desc_${game.id}`) || game.description}
                         </span>
                         <div className="flex items-center gap-1.5">
                           <span
