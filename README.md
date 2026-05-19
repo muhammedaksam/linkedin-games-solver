@@ -1,66 +1,111 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+# LinkedIn Games Solver
 
-## Getting Started
+LinkedIn Games Solver is a small Plasmo-based browser extension that provides helpers and shortcuts for LinkedIn's built-in browser games. This repository contains the extension source, localization files, and tooling to generate Chrome Web Store assets (icons, promo tiles, screenshots) including localized overlays and social preview images.
 
-First, run the development server:
+## Contents
+
+- Source: extension React/TypeScript files in the project root and `components/`, `games/`, `tabs/`.
+- Locales: `locales/<locale>/messages.json` — translated strings used for overlays and the extension manifest.
+- Asset generator: `scripts/generate-store-assets.mjs` — creates store listing images and social previews.
+
+## Quickstart
+
+Install dependencies and run the dev server:
 
 ```bash
+pnpm install
 pnpm dev
-# or
-npm run dev
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
-
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
-
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
-
-## Making production build
-
-Run the following:
+Build a production package:
 
 ```bash
 pnpm build
-# or
-npm run build
 ```
 
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
+The production build for Chrome MV3 appears under `build/chrome-mv3-prod`.
 
-## Submit to the webstores
+## Generate Chrome Web Store & Social Assets
 
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+This repository includes an automatic generator for the images required by the Chrome Web Store and for social previews used by README/repo cards.
 
-## Generate Chrome Web Store Assets
-
-This project includes an automatic asset generator for Chrome Web Store listing images.
-
-Run:
+Run the generator:
 
 ```bash
 pnpm generate:store-assets
 ```
 
-It generates:
+Outputs (examples):
 
-- `store-assets/store-icon-128.png` (128x128 with transparent padding around centered artwork)
-- `store-assets/global/small-promo-440x280.jpg`
-- `store-assets/global/marquee-promo-1400x560.jpg`
-- `store-assets/global/screenshots/screenshot-1.jpg` ... `screenshot-5.jpg` (1280x800)
-- `store-assets/localized/<locale>/screenshots/screenshot-1.jpg` for each folder in `locales/`
+- `store-assets/store-icon-128.png` — store icon (128×128 PNG)
+- `store-assets/global/small-promo-440x280.jpg` — small promo tile
+- `store-assets/global/marquee-promo-1400x560.jpg` — marquee tile
+- `store-assets/global/screenshots/screenshot-1.jpg` … `screenshot-5.jpg` — screenshots (1280×800)
+- `store-assets/localized/<locale>/screenshots/...` — localized screenshots per `locales/`
+- `store-assets/social/social-1280x640.jpg` and `store-assets/social/social-640x320.jpg` — global social previews
+- `store-assets/localized/<locale>/social/social-1280x640.jpg` and `social-640x320.jpg` — localized social previews
 
-Notes:
+The generator composes images from SVG artwork in `assets/` and overlays translated strings from the `locales/` folder.
 
-- Requires `rsvg-convert` and ImageMagick `convert` installed in your system PATH.
-- Promo tiles and screenshots are exported as JPEG without alpha.
-- The icon is exported as PNG with transparent padding per Chrome icon guidance.
+### Safe area & layout
+
+Social previews are produced with a visible safe margin so important details remain readable when cropped by social platforms. The generator keeps a 40pt safe border for text and icons.
+
+### Localized overlays & CJK fonts
+
+For non-Latin locales (e.g., `zh_CN`), the script will attempt to locate a suitable system font using `fc-match` and pass the font file to ImageMagick so glyphs render correctly. If localized text appears as missing glyphs, install CJK fonts (for example `fonts-noto-cjk` or `ttf-wqy-zenhei`) and re-run.
+
+## Prerequisites
+
+- `node` + `pnpm` (or `npm`) — project tooling.
+- `rsvg-convert` — rasterize SVGs (Debian/Ubuntu: `apt install librsvg2-bin`).
+- ImageMagick — the script prefers `magick` if available, otherwise falls back to `convert`.
+- `fontconfig` utilities (`fc-list`, `fc-match`) — used to auto-detect fonts for CJK overlays.
+
+If any of the above are missing the generator will log a helpful error.
+
+## Validation
+
+Quickly verify generated images with ImageMagick's `identify`:
+
+```bash
+identify -format '%f %wx%h %[channels]\n' store-assets/social/*.jpg store-assets/localized/*/social/*.jpg
+```
+
+## Development notes
+
+- The asset generator is `scripts/generate-store-assets.mjs` (ESM JavaScript). It uses `rsvg-convert` to render SVGs at target sizes and ImageMagick to compose final JPEG/PNG outputs.
+- If you need to tweak layout, fonts, or spacing, edit that script and re-run `pnpm generate:store-assets`.
+
+## Troubleshooting
+
+- Blurry icons: ensure SVGs are rendered at sufficient raster sizes; the generator renders multiple native icon sizes to avoid upscaling.
+- Missing CJK glyphs: install a CJK font package and re-run; confirm `fc-match -f '%{file}\n' ':lang=zh-cn'` returns a valid font path.
+- ImageMagick command differences: some systems install `magick` instead of `convert`. The script will prefer `magick` automatically.
+
+## Contributing
+
+Contributions are welcome. Typical workflows:
+
+1. Fork the repo
+2. Create a feature branch
+3. Run `pnpm install` and `pnpm dev` to test locally
+4. If you modify asset generation, run `pnpm generate:store-assets` and commit results if appropriate
+5. Open a PR describing your change
+
+## License
+
+This project is licensed under the terms in `LICENSE`.
+
+---
+
+If you'd like, I can also add a GitHub Actions workflow to auto-generate and validate these assets on push — want me to add that?
 
 Additional notes — social previews
 
 - The generator now also creates social preview images intended for repository cards and social sharing:
-	- Global: `store-assets/social/social-1280x640.jpg` and `store-assets/social/social-640x320.jpg`
-	- Localized: `store-assets/localized/<locale>/social/social-1280x640.jpg` and `social-640x320.jpg`
+  - Global: `store-assets/social/social-1280x640.jpg` and `store-assets/social/social-640x320.jpg`
+  - Localized: `store-assets/localized/<locale>/social/social-1280x640.jpg` and `social-640x320.jpg`
 - The layout respects a safe 40pt margin for important content (keeps text and icons inside the visible "safe area").
 
 Prerequisites and font handling
