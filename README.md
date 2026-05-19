@@ -31,3 +31,27 @@ This should create a production bundle for your extension, ready to be zipped an
 ## Submit to the webstores
 
 The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+
+## Generate Chrome Web Store Assets
+
+This project includes an automatic asset generator for Chrome Web Store listing images.
+
+Run:
+
+```bash
+pnpm generate:store-assets
+```
+
+It generates:
+
+- `store-assets/store-icon-128.png` (128x128 with transparent padding around centered artwork)
+- `store-assets/global/small-promo-440x280.jpg`
+- `store-assets/global/marquee-promo-1400x560.jpg`
+- `store-assets/global/screenshots/screenshot-1.jpg` ... `screenshot-5.jpg` (1280x800)
+- `store-assets/localized/<locale>/screenshots/screenshot-1.jpg` for each folder in `locales/`
+
+Notes:
+
+- Requires `rsvg-convert` and ImageMagick `convert` installed in your system PATH.
+- Promo tiles and screenshots are exported as JPEG without alpha.
+- The icon is exported as PNG with transparent padding per Chrome icon guidance.
