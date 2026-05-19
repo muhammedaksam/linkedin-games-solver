@@ -760,18 +760,22 @@ async function captureScreenshots(locale = "en") {
         tr: "LinkedIn Oyun Çözücü",
         es: "Solucionador de Juegos de LinkedIn",
         fr: "Résolveur de Jeux LinkedIn",
-        pt: "Solucionador de Jogos do LinkedIn",
+        pt_BR: "Solucionador de Jogos do LinkedIn",
+        pt_PT: "Solucionador de Jogos do LinkedIn",
         de: "LinkedIn-Spiele-Löser",
-        zh_CN: "LinkedIn 游戏求解器"
+        zh_CN: "LinkedIn 游戏求解器",
+        zh_TW: "LinkedIn 遊戲助手"
       }
       const subtitleMap = {
         en: "Power up your workday puzzles with premium AI reasoning",
         tr: "Gelişmiş yapay zeka ile günlük bulmacalarınızı tek tıkla çözün",
         es: "Resuelva sus acertijos diarios con IA de primera calidad",
         fr: "Résolvez vos puzzles quotidiens avec une IA premium",
-        pt: "Resolva seus quebra-cabeças diários com IA premium",
+        pt_BR: "Resolva seus quebra-cabeças diários com IA premium",
+        pt_PT: "Resolva os seus quebra-cabeças diários com IA premium",
         de: "Lösen Sie Ihre täglichen Rätsel mit Premium-KI-Logik",
-        zh_CN: "借助优质人工智能推理能力，轻松解决每日难题"
+        zh_CN: "借助优质人工智能推理能力，轻松解决每日难题",
+        zh_TW: "一鍵自動求解當前 LinkedIn 遊戲"
       }
 
       titleWrapper.innerHTML = `
@@ -900,18 +904,22 @@ async function captureScreenshots(locale = "en") {
         tr: "DOĞAL ENTEGRASYON",
         es: "INTEGRACIÓN NATIVA",
         fr: "INTÉGRATION NATIVE",
-        pt: "INTEGRAÇÃO NATIVA",
+        pt_BR: "INTEGRAÇÃO NATIVA",
+        pt_PT: "INTEGRAÇÃO NATIVA",
         de: "NATIVE INTEGRATION",
-        zh_CN: "原生集成"
+        zh_CN: "原生集成",
+        zh_TW: "原生內嵌整合"
       }
       const subtitleMap = {
         en: "Detects open LinkedIn boards and solves them right on the screen",
         tr: "Açık olan LinkedIn panolarını anında tespit eder ve ekranda çözer",
         es: "Detecta los tableros de LinkedIn abiertos y los resuelve directamente",
         fr: "Détecte les plateaux LinkedIn ouverts et les résout sur l'écran",
-        pt: "Detecta tabuleiros abertos do LinkedIn e resolve-os directamente na tela",
+        pt_BR: "Detecta tabuleiros abertos do LinkedIn e os resolve diretamente na tela",
+        pt_PT: "Deteta tabuleiros abertos do LinkedIn e resolve-os diretamente no ecrã",
         de: "Erkennt geöffnete LinkedIn-Spiele und löst sie direkt auf dem Bildschirm",
-        zh_CN: "自动检测已打开的 LinkedIn 游戏盘并直接在屏幕上求解"
+        zh_CN: "自动检测已打开的 LinkedIn 游戏盘并直接在屏幕上求解",
+        zh_TW: "自動偵測開啟的 LinkedIn 棋盤並直接在螢幕上求解"
       }
 
       titleWrapper.innerHTML = `
