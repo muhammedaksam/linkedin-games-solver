@@ -809,13 +809,11 @@ function IndexPopup() {
                 />
               </div>
 
-              <div className="text-[11px] leading-relaxed text-muted-foreground text-center font-medium pt-1.5 border-t border-border/40">
+              <div className="text-[11px] leading-relaxed text-muted-foreground text-center font-medium pt-3 border-t border-border/40">
                 {solvedCount === GAMES_CONFIG.length ? (
-                  <div className="flex items-center justify-center gap-1 text-[#057642] dark:text-emerald-400 font-bold animate-bounce">
-                    <span>
-                      {getMessage("perfectDay", String(GAMES_CONFIG.length))}
-                    </span>
-                  </div>
+                  <span className="text-[#057642] dark:text-emerald-400 font-bold">
+                    {getMessage("perfectDay", String(GAMES_CONFIG.length))}
+                  </span>
                 ) : (
                   <span>
                     {getMessage("dailyProgress", [
