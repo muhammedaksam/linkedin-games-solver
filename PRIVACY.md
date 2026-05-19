@@ -36,11 +36,3 @@ This extension does not include analytics, telemetry, or crash-reporting integra
 ## Developer contact
 
 For questions, contact: Muhammed Mustafa AKŞAM <info@muhammedaksam.com.tr>
-
-## Hosting this policy
-
-To provide a public Privacy Policy URL (required by some extension stores), host this file on GitHub Pages or your preferred website and enter the public HTTPS URL in the store submission form.
-
----
-
-If you need a shorter or translated version for the Chrome Web Store form, tell me which language and maximum length and I'll prepare it.
