@@ -9,7 +9,8 @@ import {
   Moon,
   Settings,
   Sparkles,
-  Sun
+  Sun,
+  Undo2
 } from "lucide-react"
 import { useCallback, useEffect, useState } from "react"
 
@@ -17,6 +18,12 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { LanguageSwitcher } from "~/components/LanguageSwitcher"
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger
+} from "~/components/ui/context-menu"
 import { Input } from "~/components/ui/input"
 import {
   Select,
@@ -128,7 +135,7 @@ function IndexPopup() {
     ""
   )
 
-  const [solveHistory] = useStorage<SolveHistory>(
+  const [solveHistory, setSolveHistory] = useStorage<SolveHistory>(
     {
       key: "solveHistory",
       instance: localStorage
@@ -343,6 +350,20 @@ function IndexPopup() {
         }
       }
     )
+  }
+
+  const handleMarkNotPlayed = async (gameId: string) => {
+    const dateKey = getLocalDateString()
+    const updated = { ...solveHistory }
+    if (updated[dateKey]) {
+      const { [gameId]: _, ...rest } = updated[dateKey]
+      if (Object.keys(rest).length === 0) {
+        delete updated[dateKey]
+      } else {
+        updated[dateKey] = rest
+      }
+    }
+    await setSolveHistory(updated)
   }
 
   // Derive daily completion counts reactively from solveHistory storage state
@@ -676,7 +697,7 @@ function IndexPopup() {
                   const localizedTitle = getMessage(game.id) || game.title
                   const puzzleNumber = getPuzzleNumber(game.id)
 
-                  return (
+                  const gameButton = (
                     <button
                       key={game.id}
                       type="button"
@@ -778,6 +799,26 @@ function IndexPopup() {
                       </div>
                     </button>
                   )
+
+                  if (isCompleted) {
+                    return (
+                      <ContextMenu key={game.id}>
+                        <ContextMenuTrigger asChild>
+                          {gameButton}
+                        </ContextMenuTrigger>
+                        <ContextMenuContent className="min-w-[180px]">
+                          <ContextMenuItem
+                            onClick={() => handleMarkNotPlayed(game.id)}
+                            className="text-xs gap-2 cursor-pointer">
+                            <Undo2 className="w-3.5 h-3.5" />
+                            {getMessage("markAsNotPlayed")}
+                          </ContextMenuItem>
+                        </ContextMenuContent>
+                      </ContextMenu>
+                    )
+                  }
+
+                  return gameButton
                 })}
               </div>
             </div>

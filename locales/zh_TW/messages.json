@@ -423,5 +423,9 @@
   },
   "scoreMinutesSeconds": {
     "message": "$1分 $2秒"
+  },
+  "markAsNotPlayed": {
+    "message": "標記為未完成",
+    "description": "Context menu option to undo a completed game for today"
   }
 }

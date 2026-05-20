@@ -423,5 +423,9 @@
   },
   "scoreMinutesSeconds": {
     "message": "$1m $2s"
+  },
+  "markAsNotPlayed": {
+    "message": "Als nicht gespielt markieren",
+    "description": "Context menu option to undo a completed game for today"
   }
 }

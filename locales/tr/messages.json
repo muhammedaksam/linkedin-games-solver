@@ -423,5 +423,9 @@
   },
   "scoreMinutesSeconds": {
     "message": "$1dk $2sn"
+  },
+  "markAsNotPlayed": {
+    "message": "Oynanmadı Olarak İşaretle",
+    "description": "Context menu option to undo a completed game for today"
   }
 }
