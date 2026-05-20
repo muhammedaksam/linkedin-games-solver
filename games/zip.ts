@@ -74,95 +74,73 @@ export class ZipSolver extends BaseSolver {
       const children = Array.from(c.children) as HTMLElement[]
       for (let i = 1; i < children.length; i++) {
         const child = children[i]
+        // Skip known non-wall elements
         if (child.hasAttribute("data-cell-content")) continue
         if (child.getAttribute("data-testid") === "filled-cell") continue
+        if (child.hasAttribute("data-cell-hint-arrow")) continue
 
         let neighbor = -1
 
-        // 1. High-fidelity class name detection
         const hasClass = (el: HTMLElement, cls: string) =>
           el.classList.contains(cls) ||
           Array.from(el.classList).some((cname) => cname.includes(cls))
 
-        if (hasClass(child, "_75450fd6")) {
+        // Skip elements that don't look like wall divs.
+        // Wall divs have the container class "c463010f" or similar thin-bar class.
+        // The hint arrow SVG, filled overlay, and number label are all non-wall children.
+        const isLikelyWall =
+          hasClass(child, "c463010f") ||
+          hasClass(child, "_60552dcb")
+        if (!isLikelyWall) continue
+
+        // 1. High-fidelity class name detection (multiple known class name sets)
+        // LinkedIn periodically rotates obfuscated class names.
+        // Bottom wall classes
+        if (
+          hasClass(child, "ae7a33fc") ||
+          hasClass(child, "_75450fd6")
+        ) {
           neighbor = idx + N // Bottom wall
-        } else if (hasClass(child, "_91b41d39")) {
+        }
+        // Left wall classes
+        else if (
+          hasClass(child, "_431926b7") ||
+          hasClass(child, "_91b41d39")
+        ) {
           neighbor = idx - 1 // Left wall
-        } else if (hasClass(child, "ba9aa30f")) {
+        }
+        // Right wall classes
+        else if (
+          hasClass(child, "_8239e74c") ||
+          hasClass(child, "ba9aa30f")
+        ) {
           neighbor = idx + 1 // Right wall
         }
 
-        // 2. Geometric/CSS fallback
+        // 2. Geometric/CSS fallback — only if class detection didn't match
         if (neighbor === -1) {
-          const styles = [
-            window.getComputedStyle(child),
-            window.getComputedStyle(child, "::before"),
-            window.getComputedStyle(child, "::after")
-          ]
-
-          let width = 0,
-            height = 0
-          let top = "",
-            left = ""
-
           const wRect = child.getBoundingClientRect()
           if (wRect && wRect.width > 0 && wRect.height > 0) {
-            width = wRect.width
-            height = wRect.height
-          }
+            const aspectRatio = Math.max(wRect.width, wRect.height) /
+              Math.min(wRect.width, wRect.height)
 
-          for (const cs of styles) {
-            let w = parseFloat(cs.width) || 0
-            let h = parseFloat(cs.height) || 0
+            // Walls are thin bars; reject elements that are roughly square
+            // (aspect ratio < 2 means it's not a thin wall indicator)
+            if (aspectRatio < 2) continue
 
-            const borderTop = parseFloat(cs.borderTopWidth) || 0
-            const borderBottom = parseFloat(cs.borderBottomWidth) || 0
-            const borderLeft = parseFloat(cs.borderLeftWidth) || 0
-            const borderRight = parseFloat(cs.borderRightWidth) || 0
-
-            if (borderTop > 0 || borderBottom > 0) {
-              h = Math.max(h, borderTop, borderBottom)
-              w = Math.max(w, parseFloat(cs.width) || cellRect.width)
-            }
-            if (borderLeft > 0 || borderRight > 0) {
-              w = Math.max(w, borderLeft, borderRight)
-              h = Math.max(h, parseFloat(cs.height) || cellRect.height)
-            }
-
-            if (w > 0 && h > 0 && (w > width || h > height)) {
-              width = w
-              height = h
-              top = cs.top
-              left = cs.left
-            }
-          }
-
-          if (width > 0 && height > 0) {
-            const wcX = wRect ? wRect.left + wRect.width / 2 : 0
-            const wcY = wRect ? wRect.top + wRect.height / 2 : 0
+            const wcX = wRect.left + wRect.width / 2
+            const wcY = wRect.top + wRect.height / 2
             const ccX = cellRect.left + cellRect.width / 2
             const ccY = cellRect.top + cellRect.height / 2
 
-            if (width > height) {
-              // Horizontal wall
-              if (wRect && wRect.width > 0 && wRect.height > 0) {
-                if (wcY < ccY && r > 0) neighbor = idx - N
-                else if (r < N - 1) neighbor = idx + N
-              } else {
-                if ((top === "0px" || parseFloat(top) < 10) && r > 0)
-                  neighbor = idx - N
-                else if (r < N - 1) neighbor = idx + N
-              }
-            } else if (height > width) {
-              // Vertical wall
-              if (wRect && wRect.width > 0 && wRect.height > 0) {
-                if (wcX < ccX && col > 0) neighbor = idx - 1
-                else if (col < N - 1) neighbor = idx + 1
-              } else {
-                if ((left === "0px" || parseFloat(left) < 10) && col > 0)
-                  neighbor = idx - 1
-                else if (col < N - 1) neighbor = idx + 1
-              }
+            if (wRect.width > wRect.height) {
+              // Horizontal wall (wide & thin)
+              if (wcY < ccY && r > 0) neighbor = idx - N    // Top edge
+              else if (r < N - 1) neighbor = idx + N         // Bottom edge
+            } else {
+              // Vertical wall (tall & thin)
+              if (wcX < ccX && col > 0) neighbor = idx - 1   // Left edge
+              else if (col < N - 1) neighbor = idx + 1       // Right edge
             }
           }
         }
