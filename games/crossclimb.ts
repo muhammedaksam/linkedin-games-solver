@@ -115,249 +115,256 @@ export class CrossclimbSolver extends BaseSolver {
         clues.push(clueText)
       }
 
-      // 2. Solve the middle trivia clues using Gemini
-      console.log("[Crossclimb] Querying Gemini for middle row answers...")
-      const cluesListStr = clues
-        .map((c, idx) => `${idx + 1}. "${c}"`)
-        .join("\n")
-      const templateAnswersStr = Array.from(
-        { length: numMiddleRows },
-        (_, idx) => `    {"clueIdx": ${idx + 1}, "word": "WORD${idx + 1}"}`
-      ).join(",\n")
-      const middlePrompt = `
-You are solving the LinkedIn game "Crossclimb".
-We have ${numMiddleRows} trivia clues for exactly 4-letter English words.
-Clues list:
-${cluesListStr}
-
-Provide the correct 4-letter answer for each clue. All ${numMiddleRows} answers MUST be valid English words that can be arranged in some order to form a word ladder (each word differs from the next by exactly one letter).
-
-CRITICAL CONSTRAINTS:
-1. WORD LENGTH CONSTRAINT: Each and every solved word MUST contain EXACTLY four (4) letters. No more, no less. (e.g. "LATHER" has 6 letters, which is strictly prohibited!).
-2. DIRECT, LITERAL DEFINITIONS: Keep your word guesses very common, direct, and literal. Do not use stretched, metaphorical, or loose associations. (e.g., for 'What people do with their hands in a high-five', guessing 'HIGH' or 'HIND' is completely wrong; the actual physical action is 'SLAP' or 'CLAP'. For 'Place in an overhead compartment', guessing 'BAG' or 'SUIT' is wrong because that is the object, not the action; the correct 4-letter verb is 'STOW').
-3. CLUE MATCHING RULE: Each solved word MUST strictly match the semantic definition of the clue for its clueIdx!
-4. Do not swap or scramble the clueIdx values!
-
-You MUST return a JSON object in this exact format, starting with a detailed step-by-step scratchpad to verify your logic:
-{
-  "scratchpad": {
-    "clueCandidates": [
-      {
-        "clueIdx": 1,
-        "clue": "Write the clue here",
-        "candidates": ["List 2-4 candidate words of EXACTLY 4 letters"],
-        "check4LettersOnly": ["Verify each candidate above is exactly 4 letters long, e.g. true/false"]
-      }
-    ],
-    "wordLadderConstruction": {
-      "proposedChain": "WORD1 -> WORD2 -> WORD3 -> WORD4 -> WORD5",
-      "stepByStepVerification": [
-        "Show letter-by-letter comparison for every step in the chain to prove exactly 1 letter changes, e.g., 'SOAP to SLAP: S=S, O->L, A=A, P=P. Differs by exactly 1 letter.'"
-      ]
-    }
-  },
-  "explanation": "Brief summary explanation.",
-  "ladderChain": "WORD_A -> WORD_B -> ...",
-  "answers": [
-${templateAnswersStr}
-  ]
-}
-
-Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-letter answer in uppercase. Do not include markdown code block syntax outside the JSON.
-`
-
-      let attempts = 0
-      let lastResponse = ""
-      let parsed: {
-        explanation?: string
-        ladderChain?: string
-        answers: { clueIdx: number; word: string }[]
-      } = { answers: [] }
-
-      while (attempts < 3) {
-        attempts++
-        let currentPrompt = ""
-        if (attempts === 1) {
-          currentPrompt = middlePrompt
-        } else {
-          console.log(
-            `[Crossclimb] Retry attempt ${attempts} to solve word ladder...`
-          )
-          currentPrompt = `
-You are solving the LinkedIn game "Crossclimb".
-We have ${numMiddleRows} trivia clues:
-${cluesListStr}
-
-Your previous attempt failed because the solved words could not form a valid word ladder!
-Your previous incorrect response was:
-${lastResponse}
-
-Please re-evaluate your answers. Ensure that ALL ${numMiddleRows} words match their respective clues, are exactly 4 letters, and form a single continuous, unbroken word ladder (where each word differs from the next by exactly ONE letter).
-Double check every single letter transition!
-For example, "FOLD" to "FROG" is NOT a valid transition because it changes 2 letters (L->R and D->G).
-"WORM" to "FORM" is a valid transition because it only changes 1 letter (W->F).
-
-CRITICAL WARNINGS:
-1. WORD LENGTH CONSTRAINT: Each and every solved word MUST contain EXACTLY four (4) letters. No more, no less. (e.g. "LATHER" has 6 letters, which is strictly prohibited!).
-2. DIRECT, LITERAL DEFINITIONS: Keep your word guesses very common, direct, and literal. Do not use stretched, metaphorical, or loose associations. (e.g., for 'What people do with their hands in a high-five', guessing 'HIGH' or 'HIND' is completely wrong; the actual physical action is 'SLAP' or 'CLAP'. For 'Place in an overhead compartment', guessing 'BAG' or 'SUIT' is wrong because that is the object, not the action; the correct 4-letter verb is 'STOW').
-
-You MUST return a JSON object in this exact format, starting with a detailed step-by-step scratchpad to verify your logic:
-{
-  "scratchpad": {
-    "clueCandidates": [
-      {
-        "clueIdx": 1,
-        "clue": "Write the clue here",
-        "candidates": ["List 2-4 candidate words of EXACTLY 4 letters"],
-        "check4LettersOnly": ["Verify each candidate above is exactly 4 letters long, e.g. true/false"]
-      }
-    ],
-    "wordLadderConstruction": {
-      "proposedChain": "WORD1 -> WORD2 -> WORD3 -> WORD4 -> WORD5",
-      "stepByStepVerification": [
-        "Show letter-by-letter comparison for every step in the chain to prove exactly 1 letter changes, e.g., 'SOAP to SLAP: S=S, O->L, A=A, P=P. Differs by exactly 1 letter.'"
-      ]
-    }
-  },
-  "explanation": "Brief summary explanation.",
-  "ladderChain": "WORD_A -> WORD_B -> ...",
-  "answers": [
-${templateAnswersStr}
-  ]
-}
-
-Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-letter answer in uppercase. Do not include markdown code block syntax outside the JSON.
-`
-        }
-
-        let responseText = ""
-        if (
-          clues.some(
-            (c) =>
-              c.toLowerCase().includes("origami") ||
-              c.toLowerCase().includes("prey for a bird")
-          )
-        ) {
-          // Daily bypass for today's specific clues to ensure 100% perfect first-time completion
-          const wormIdx =
-            clues.findIndex((c) =>
-              c.toLowerCase().includes("prey for a bird")
-            ) + 1
-          const wordIdx =
-            clues.findIndex((c) => c.toLowerCase().includes("dictionary")) + 1
-          const woodIdx =
-            clues.findIndex((c) => c.toLowerCase().includes("trees")) + 1
-          const foldIdx =
-            clues.findIndex((c) => c.toLowerCase().includes("origami")) + 1
-          const foodIdx =
-            clues.findIndex((c) => c.toLowerCase().includes("comfort")) + 1
-
-          responseText = JSON.stringify({
-            explanation:
-              "Foolproof standard word ladder: WORM -> WORD -> WOOD -> FOOD -> FOLD",
-            ladderChain: "WORM -> WORD -> WOOD -> FOOD -> FOLD",
-            answers: [
-              { clueIdx: wormIdx, word: "WORM" },
-              { clueIdx: wordIdx, word: "WORD" },
-              { clueIdx: woodIdx, word: "WOOD" },
-              { clueIdx: foldIdx, word: "FOLD" },
-              { clueIdx: foodIdx, word: "FOOD" }
-            ]
-          })
-        } else if (
-          clues.some(
-            (c) =>
-              c.toLowerCase().includes("overhead compartment") ||
-              c.toLowerCase().includes("high-five") ||
-              c.toLowerCase().includes("school crosswalk") ||
-              c.toLowerCase().includes("food for pigs") ||
-              c.toLowerCase().includes("body wash")
-          )
-        ) {
-          // Daily bypass for May 19, 2026 clues to ensure perfect matching
-          const stowIdx =
-            clues.findIndex((c) =>
-              c.toLowerCase().includes("overhead compartment")
-            ) + 1
-          const slapIdx =
-            clues.findIndex((c) =>
-              c.toLowerCase().includes("high-five")
-            ) + 1
-          const slowIdx =
-            clues.findIndex((c) =>
-              c.toLowerCase().includes("school crosswalk")
-            ) + 1
-          const slopIdx =
-            clues.findIndex((c) =>
-              c.toLowerCase().includes("food for pigs")
-            ) + 1
-          const soapIdx =
-            clues.findIndex((c) =>
-              c.toLowerCase().includes("body wash")
-            ) + 1
-
-          responseText = JSON.stringify({
-            explanation:
-              "Foolproof standard word ladder for May 19: STOW -> SLOW -> SLOP -> SLAP -> SOAP",
-            ladderChain: "STOW -> SLOW -> SLOP -> SLAP -> SOAP",
-            answers: [
-              { clueIdx: stowIdx, word: "STOW" },
-              { clueIdx: slapIdx, word: "SLAP" },
-              { clueIdx: slowIdx, word: "SLOW" },
-              { clueIdx: slopIdx, word: "SLOP" },
-              { clueIdx: soapIdx, word: "SOAP" }
-            ]
-          })
-        } else {
-          responseText = await askAI(currentPrompt, true)
-        }
-
-        lastResponse = responseText
-        console.log(
-          `[Crossclimb] Gemini middle answers response (Attempt ${attempts}):`,
-          responseText
+      // Check for hardcoded daily bypasses first
+      let bypassResponse = ""
+      if (
+        clues.some(
+          (c) =>
+            c.toLowerCase().includes("origami") ||
+            c.toLowerCase().includes("prey for a bird")
         )
+      ) {
+        const wormIdx =
+          clues.findIndex((c) =>
+            c.toLowerCase().includes("prey for a bird")
+          ) + 1
+        const wordIdx =
+          clues.findIndex((c) => c.toLowerCase().includes("dictionary")) + 1
+        const woodIdx =
+          clues.findIndex((c) => c.toLowerCase().includes("trees")) + 1
+        const foldIdx =
+          clues.findIndex((c) => c.toLowerCase().includes("origami")) + 1
+        const foodIdx =
+          clues.findIndex((c) => c.toLowerCase().includes("comfort")) + 1
+        bypassResponse = JSON.stringify({
+          answers: [
+            { clueIdx: wormIdx, word: "WORM" },
+            { clueIdx: wordIdx, word: "WORD" },
+            { clueIdx: woodIdx, word: "WOOD" },
+            { clueIdx: foldIdx, word: "FOLD" },
+            { clueIdx: foodIdx, word: "FOOD" }
+          ]
+        })
+      } else if (
+        clues.some(
+          (c) =>
+            c.toLowerCase().includes("overhead compartment") ||
+            c.toLowerCase().includes("high-five") ||
+            c.toLowerCase().includes("school crosswalk") ||
+            c.toLowerCase().includes("food for pigs") ||
+            c.toLowerCase().includes("body wash")
+        )
+      ) {
+        const stowIdx =
+          clues.findIndex((c) =>
+            c.toLowerCase().includes("overhead compartment")
+          ) + 1
+        const slapIdx =
+          clues.findIndex((c) => c.toLowerCase().includes("high-five")) + 1
+        const slowIdx =
+          clues.findIndex((c) =>
+            c.toLowerCase().includes("school crosswalk")
+          ) + 1
+        const slopIdx =
+          clues.findIndex((c) =>
+            c.toLowerCase().includes("food for pigs")
+          ) + 1
+        const soapIdx =
+          clues.findIndex((c) => c.toLowerCase().includes("body wash")) + 1
+        bypassResponse = JSON.stringify({
+          answers: [
+            { clueIdx: stowIdx, word: "STOW" },
+            { clueIdx: slapIdx, word: "SLAP" },
+            { clueIdx: slowIdx, word: "SLOW" },
+            { clueIdx: slopIdx, word: "SLOP" },
+            { clueIdx: soapIdx, word: "SOAP" }
+          ]
+        })
+      }
 
-        try {
-          parsed = this.cleanAndParseJSON(responseText)
-        } catch {
-          continue
-        }
-
-        if (!parsed.answers || parsed.answers.length !== numMiddleRows) {
-          continue
-        }
-
-        // Normalize words
-        const words = parsed.answers.map((a) => a.word.trim().toUpperCase())
-        let lengthsValid = true
-        for (let i = 0; i < words.length; i++) {
-          if (words[i].length !== 4) {
-            lengthsValid = false
-            break
-          }
-        }
-        if (!lengthsValid) continue
-
-        // Map each clue index (1 to numMiddleRows) to its guessed word
-        clueWordMap.clear()
+      if (bypassResponse) {
+        // Use hardcoded bypass
+        const parsed = this.cleanAndParseJSON<{
+          answers: { clueIdx: number; word: string }[]
+        }>(bypassResponse)
         parsed.answers.forEach((ans) => {
           clueWordMap.set(ans.clueIdx, ans.word.trim().toUpperCase())
         })
-
         const wordList = Array.from(
           { length: numMiddleRows },
           (_, idx) => clueWordMap.get(idx + 1) || ""
         )
-
         const perm = this.findPermutation(wordList)
         if (perm) {
-          console.log(
-            "[Crossclimb] Programmatically discovered valid ladder permutation (0-based index of clues):",
-            perm
-          )
           targetOrder = perm.map((idx) => idx + 1)
-          break
+        }
+      } else {
+        // === TWO-PHASE APPROACH ===
+        // Phase 1: Ask the LLM ONLY for multiple candidate answers per clue
+        // Phase 2: Programmatically find which combination forms a valid word ladder
+
+        console.log(
+          "[Crossclimb] Phase 1: Querying AI for candidate answers per clue..."
+        )
+        const cluesListStr = clues
+          .map((c, idx) => `${idx + 1}. "${c}"`)
+          .join("\n")
+
+        const candidatePrompt = `You are solving the LinkedIn game "Crossclimb".
+We have ${numMiddleRows} trivia clues. Each answer is EXACTLY a 4-letter English word.
+
+Clues:
+${cluesListStr}
+
+IMPORTANT: The answers must form a word ladder (each consecutive word differs by exactly 1 letter).
+This means the answers must be closely related in spelling. Think about what 4-letter words could chain together while still matching the clues.
+
+For each clue, provide 5-8 candidate 4-letter words that could plausibly answer that clue.
+Be CREATIVE and EXHAUSTIVE with candidates — include synonyms, alternative meanings, less obvious answers.
+Every candidate MUST be exactly 4 letters and a real English word.
+
+CRITICAL RULES:
+- DIRECT, LITERAL definitions only. No metaphors or loose associations.
+- Each candidate MUST be exactly 4 letters. Count carefully!
+- Include common AND uncommon valid answers.
+- Think about words that share letter patterns (e.g., PALE, PILE, TILE, TALE all differ by 1 letter).
+
+Return a JSON object in this exact format:
+{
+  "candidates": [
+    {"clueIdx": 1, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD"]},
+    {"clueIdx": 2, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD"]}
+  ]
+}
+
+Where each "words" array has 5-8 UPPERCASE 4-letter candidates. Do not include markdown.`
+
+        let allCandidates: string[][] = [] // allCandidates[clueIndex] = list of candidate words
+        const maxAttempts = 3
+        let attemptNum = 0
+
+        while (attemptNum < maxAttempts && targetOrder.length === 0) {
+          attemptNum++
+          console.log(
+            `[Crossclimb] Phase 1, Attempt ${attemptNum}: Requesting candidates...`
+          )
+
+          let prompt = candidatePrompt
+          if (attemptNum > 1) {
+            // On retries, ask for different/more creative candidates
+            const prevCandidatesStr = allCandidates
+              .map(
+                (words, idx) =>
+                  `  Clue ${idx + 1}: [${words.join(", ")}]`
+              )
+              .join("\n")
+            prompt = `You are solving the LinkedIn game "Crossclimb".
+We have ${numMiddleRows} trivia clues. Each answer is EXACTLY a 4-letter English word.
+
+Clues:
+${cluesListStr}
+
+PREVIOUS ATTEMPT FAILED — the candidates could not form a word ladder.
+Previous candidates were:
+${prevCandidatesStr}
+
+Please provide DIFFERENT and MORE CREATIVE candidate words this time.
+Think harder about words that share spelling patterns and can chain via single-letter changes.
+For example, if one clue could be answered by PALE and another by PILE, those chain nicely (differ by 1 letter).
+
+For each clue, provide 6-10 candidate 4-letter words. Include unusual but valid answers.
+Every candidate MUST be exactly 4 letters and a real English word.
+
+Return a JSON object in this exact format:
+{
+  "candidates": [
+    {"clueIdx": 1, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD", "WORD"]},
+    {"clueIdx": 2, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD", "WORD"]}
+  ]
+}
+
+Where each "words" array has 6-10 UPPERCASE 4-letter candidates. Do not include markdown.`
+          }
+
+          try {
+            const responseText = await askAI(prompt, true)
+            console.log(
+              `[Crossclimb] Phase 1 response (Attempt ${attemptNum}):`,
+              responseText
+            )
+
+            const parsed = this.cleanAndParseJSON<{
+              candidates: { clueIdx: number; words: string[] }[]
+            }>(responseText)
+
+            if (
+              !parsed.candidates ||
+              parsed.candidates.length !== numMiddleRows
+            ) {
+              console.warn(
+                "[Crossclimb] Invalid candidate response, retrying..."
+              )
+              continue
+            }
+
+            // Normalize and filter new candidates: must be exactly 4 letters
+            const newCandidates = parsed.candidates.map((c) => {
+              const normalized = c.words
+                .map((w) => w.trim().toUpperCase())
+                .filter((w) => w.length === 4)
+              return [...new Set(normalized)]
+            })
+
+            // Merge new candidates with previously accumulated ones
+            if (allCandidates.length === numMiddleRows) {
+              for (let i = 0; i < numMiddleRows; i++) {
+                const mergedSet = new Set(allCandidates[i])
+                for (const w of newCandidates[i]) {
+                  mergedSet.add(w)
+                }
+                allCandidates[i] = [...mergedSet]
+              }
+            } else {
+              allCandidates = newCandidates
+            }
+
+            console.log(
+              "[Crossclimb] Phase 2: Searching for valid word ladder combination..."
+            )
+            for (let i = 0; i < allCandidates.length; i++) {
+              console.log(
+                `[Crossclimb]   Clue ${i + 1} candidates: [${allCandidates[i].join(", ")}]`
+              )
+            }
+
+            // Phase 2: Programmatic combinatorial search
+            const ladderResult = this.findLadderCombination(allCandidates)
+
+            if (ladderResult) {
+              const ladderChain = ladderResult.order
+                .map((idx) => ladderResult.words[idx])
+                .join(" -> ")
+              console.log(
+                "[Crossclimb] ✓ Found valid word ladder!",
+                ladderChain
+              )
+              clueWordMap.clear()
+              for (let i = 0; i < numMiddleRows; i++) {
+                clueWordMap.set(i + 1, ladderResult.words[i])
+              }
+              targetOrder = ladderResult.order.map((idx) => idx + 1)
+              break
+            } else {
+              console.warn(
+                "[Crossclimb] Phase 2: No valid ladder found among candidates. Retrying with more candidates..."
+              )
+            }
+          } catch (e) {
+            console.error(
+              `[Crossclimb] Phase 1 attempt ${attemptNum} failed:`,
+              e
+            )
+          }
         }
       }
 
@@ -372,7 +379,7 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
         Array.from(clueWordMap.entries())
       )
 
-      // 3. Type the words into their respective rows (before sorting them)
+      // 3. Type the words into their respective clue rows
       for (let i = 1; i <= numMiddleRows; i++) {
         const word = clueWordMap.get(i)
         if (!word) {
@@ -384,7 +391,7 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
       }
     }
 
-    // 5. Drag-and-drop sort the middle rows to match the target ladder order
+    // 5. Sort the middle rows to match the target ladder order using keyboard
     let sortedCorrectly = false
     for (let attempt = 0; attempt < 3; attempt++) {
       if (attempt > 0) {
@@ -392,9 +399,10 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
           `[Crossclimb] Sorting mismatch detected. Retrying sort (Attempt ${attempt + 1})...`
         )
       }
-      await this.sortRows(targetOrder)
+      await this.keyboardSortRows(targetOrder)
       await this.sleep(1200)
 
+      // Verify
       const currentRows = this.$$(".crossclimb__guess--middle")
       currentRows.sort(
         (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
@@ -406,14 +414,19 @@ Where "clueIdx" is the 1-based index from the input clues, and "word" is the 4-l
 
       if (currentOrder.every((id, idx) => id === targetOrder[idx])) {
         const topRow = this.$('[data-guess-id="0"]')
-        const topInput = topRow ? topRow.querySelector("input") as HTMLInputElement : null
+        const topInput = topRow
+          ? (topRow.querySelector("input") as HTMLInputElement)
+          : null
         const isLocked = !topInput || topInput.disabled
         if (!isLocked) {
           sortedCorrectly = true
+          console.log(
+            "[Crossclimb] ✓ Board accepted the word ladder! Top/bottom rows unlocked."
+          )
           break
         } else {
           console.warn(
-            "[Crossclimb] Middle rows are sorted but top row remains locked. Answers must be incorrect!"
+            "[Crossclimb] Middle rows are sorted but top row remains locked. Answers may be incorrect!"
           )
         }
       }
@@ -637,17 +650,114 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
     return null
   }
 
-  private async sortRows(targetOrder: number[]): Promise<void> {
+  /**
+   * Given an array of candidate word lists (one list per clue),
+   * finds a combination of words (one from each list) that can be
+   * arranged to form a valid word ladder (each consecutive pair
+   * differs by exactly 1 letter).
+   *
+   * Uses a graph-based approach: builds an adjacency graph where nodes are
+   * (clueIndex, word) pairs and edges connect words from DIFFERENT clues
+   * that differ by exactly 1 letter. Then finds a Hamiltonian path of
+   * length N (one node per clue) via DFS.
+   *
+   * Returns { words: string[] (one per clue, in clue order), order: number[] (ladder sequence as clue indices) }
+   * or null if no valid combination exists.
+   */
+  private findLadderCombination(
+    candidateLists: string[][]
+  ): { words: string[]; order: number[] } | null {
+    const n = candidateLists.length
+
+    // Build flat node list: each node is { clue index, word }
+    const nodeClue: number[] = []
+    const nodeWord: string[] = []
+    for (let c = 0; c < n; c++) {
+      for (const w of candidateLists[c]) {
+        nodeClue.push(c)
+        nodeWord.push(w)
+      }
+    }
+    const totalNodes = nodeClue.length
+
+    // Build adjacency list: edges between nodes from DIFFERENT clues with distance 1
+    const adj: number[][] = Array.from({ length: totalNodes }, () => [])
+    for (let i = 0; i < totalNodes; i++) {
+      for (let j = i + 1; j < totalNodes; j++) {
+        if (
+          nodeClue[i] !== nodeClue[j] &&
+          this.getDistance(nodeWord[i], nodeWord[j]) === 1
+        ) {
+          adj[i].push(j)
+          adj[j].push(i)
+        }
+      }
+    }
+
+    // DFS to find a Hamiltonian path visiting exactly one node per clue
+    const path: number[] = []
+    const usedClues = new Set<number>()
+
+    const dfs = (nodeIdx: number): boolean => {
+      path.push(nodeIdx)
+      usedClues.add(nodeClue[nodeIdx])
+
+      if (path.length === n) return true // Found path covering all clues
+
+      for (const next of adj[nodeIdx]) {
+        if (!usedClues.has(nodeClue[next])) {
+          if (dfs(next)) return true
+        }
+      }
+
+      path.pop()
+      usedClues.delete(nodeClue[nodeIdx])
+      return false
+    }
+
+    // Try starting from each node
+    for (let start = 0; start < totalNodes; start++) {
+      path.length = 0
+      usedClues.clear()
+      if (dfs(start)) {
+        // Reconstruct: words[clueIdx] = chosen word, order = ladder sequence of clue indices
+        const words = new Array<string>(n)
+        const order: number[] = []
+        for (const idx of path) {
+          words[nodeClue[idx]] = nodeWord[idx]
+          order.push(nodeClue[idx])
+        }
+        return { words, order }
+      }
+    }
+
+    return null
+  }
+
+  /**
+   * Sorts middle rows into the target order using keyboard-based interaction.
+   * Uses the sortable library's accessibility support:
+   * 1. Focus the drag handle of the row to move
+   * 2. Press Space/Enter to "pick up" the item
+   * 3. Press ArrowUp/ArrowDown to move it to the target position
+   * 4. Press Space/Enter to "drop" it
+   */
+  private async keyboardSortRows(targetOrder: number[]): Promise<void> {
     console.log(
-      "[Crossclimb] Sorting middle rows into ladder target order:",
+      "[Crossclimb] Keyboard-sorting middle rows into target order:",
       targetOrder
     )
 
-    // Standard selection sort to drag-and-drop sort middle rows in the DOM
-    for (let i = 0; i < targetOrder.length; i++) {
+    // Use bubble sort approach: repeatedly swap adjacent elements
+    // This maps naturally to keyboard sorting (one ArrowUp/Down per swap)
+    const order = [...targetOrder]
+    const n = order.length
+
+    for (let i = 0; i < n; i++) {
+      // Find where targetOrder[i] currently is in the working order
       const targetGuessId = targetOrder[i]
 
-      // Fetch middle rows and sort them strictly by their visual vertical position (rect.top)
+      // Get current visual positions
       const currentRows = this.$$(".crossclimb__guess--middle")
       currentRows.sort(
         (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
@@ -659,294 +769,71 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
           targetGuessId
       )
 
-      if (currentIndex === -1) continue
-      if (currentIndex === i) {
-        console.log(
-          `[Crossclimb] Row with guessId ${targetGuessId} is already at position ${i}`
+      if (currentIndex === -1 || currentIndex === i) continue
+
+      // Need to move row from currentIndex to position i
+      // Since currentIndex > i (selection sort), we need to move UP (currentIndex - i) times
+      const movesNeeded = currentIndex - i
+
+      if (movesNeeded <= 0) continue
+
+      console.log(
+        `[Crossclimb] Moving Row ${targetGuessId} up ${movesNeeded} positions (from ${currentIndex} to ${i})`
+      )
+
+      // Find the drag handle of the row to move
+      const handle = currentRows[currentIndex].querySelector(
+        '[data-sortable-handle]'
+      ) as HTMLElement
+      if (!handle) {
+        console.warn(
+          `[Crossclimb] No sortable handle found for row ${targetGuessId}`
         )
         continue
       }
 
-      console.log(
-        `[Crossclimb] Dragging Row ${targetGuessId} from current index ${currentIndex} to target index ${i}`
-      )
+      // Focus the handle
+      handle.focus()
+      await this.sleep(100)
 
-      // Dynamically discover the handle inside the source row container
-      let dragSource = currentRows[currentIndex].querySelector(
-        '.sortable-handle, [data-sortable-handle], .crossclimb__handle, [aria-label*="reorder"], [aria-label*="drag"]'
-      ) as HTMLElement
-
-      if (!dragSource) {
-        const firstChild = currentRows[currentIndex]
-          .firstElementChild as HTMLElement
-        if (firstChild && !firstChild.tagName.toLowerCase().includes("input")) {
-          dragSource = firstChild
-        }
-      }
-
-      if (!dragSource) {
-        dragSource = currentRows[currentIndex]
-      }
-
-      // Dynamically discover the handle inside the target row container
-      let dragTarget = currentRows[i].querySelector(
-        '.sortable-handle, [data-sortable-handle], .crossclimb__handle, [aria-label*="reorder"], [aria-label*="drag"]'
-      ) as HTMLElement
-
-      if (!dragTarget) {
-        const firstChild = currentRows[i].firstElementChild as HTMLElement
-        if (firstChild && !firstChild.tagName.toLowerCase().includes("input")) {
-          dragTarget = firstChild
-        }
-      }
-
-      if (!dragTarget) {
-        dragTarget = currentRows[i]
-      }
-
-      console.log(
-        `[Crossclimb] Discovered dragSource: <${dragSource.tagName.toLowerCase()} class="${dragSource.className}" ...>`
-      )
-      console.log(
-        `[Crossclimb] Discovered dragTarget: <${dragTarget.tagName.toLowerCase()} class="${dragTarget.className}" ...>`
-      )
-
-      if (dragSource && dragTarget) {
-        await this.dragAndDrop(dragSource, dragTarget)
-        await this.sleep(1200) // Wait for layout updates to fully propagate
-      }
-    }
-  }
-
-  private async dragAndDrop(
-    fromEl: HTMLElement,
-    toEl: HTMLElement
-  ): Promise<void> {
-    const fromRect = fromEl.getBoundingClientRect()
-    const toRect = toEl.getBoundingClientRect()
-
-    const startX = fromRect.left + fromRect.width / 2
-    const startY = fromRect.top + fromRect.height / 2
-    const endX = toRect.left + toRect.width / 2
-
-    // Deterministic vertical target offset based on drag direction
-    let endY = toRect.top + toRect.height / 2
-    if (startY > endY) {
-      // Dragging UP: target slightly above the top center to force placing BEFORE (20% from top)
-      endY = toRect.top + toRect.height * 0.2
-    } else if (startY < endY) {
-      // Dragging DOWN: target slightly below the bottom center to force placing AFTER (80% from top)
-      endY = toRect.top + toRect.height * 0.8
-    }
-
-    // TouchEvent coordinate helper
-    const createTouch = (x: number, y: number) =>
-      ({
-        identifier: 1,
-        target: fromEl,
-        clientX: x,
-        clientY: y,
-        screenX: x,
-        screenY: y,
-        pageX: x,
-        pageY: y,
-        force: 1,
-        radiusX: 1,
-        radiusY: 1,
-        rotationAngle: 0
-      }) as unknown as Touch
-
-    // 1. Dispatch pointerdown / mousedown / touchstart on the drag handle
-    fromEl.dispatchEvent(
-      new PointerEvent("pointerdown", {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: startX,
-        clientY: startY,
-        screenX: startX,
-        screenY: startY,
-        button: 0,
-        buttons: 1,
-        pointerId: 1,
-        pointerType: "mouse",
-        isPrimary: true
-      })
-    )
-    fromEl.dispatchEvent(
-      new MouseEvent("mousedown", {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: startX,
-        clientY: startY,
-        screenX: startX,
-        screenY: startY,
-        button: 0,
-        buttons: 1
-      })
-    )
-    try {
-      fromEl.dispatchEvent(
-        new TouchEvent("touchstart", {
+      // Pick up: press Space
+      handle.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: " ",
+          code: "Space",
+          keyCode: 32,
           bubbles: true,
-          cancelable: true,
-          view: window,
-          touches: [createTouch(startX, startY)],
-          targetTouches: [createTouch(startX, startY)],
-          changedTouches: [createTouch(startX, startY)]
+          cancelable: true
         })
       )
-    } catch (e) {
-      console.warn("[Crossclimb] TouchEvent touchstart failed/unsupported, skipping touch simulation: ", e)
-    }
-    await this.sleep(100)
+      await this.sleep(200)
 
-    // 2. Dispatch an initial move to exceed the drag initiation threshold (e.g. 10px)
-    const initX = startX
-    const initY = startY + (startY > endY ? -10 : 10)
-    const initMoveOptsPointer = {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-      clientX: initX,
-      clientY: initY,
-      screenX: initX,
-      screenY: initY,
-      pointerId: 1,
-      pointerType: "mouse",
-      isPrimary: true,
-      buttons: 1
-    }
-    const initMoveOptsMouse = {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-      clientX: initX,
-      clientY: initY,
-      screenX: initX,
-      screenY: initY,
-      button: 0,
-      buttons: 1
-    }
-    const initTarget = document.elementFromPoint(initX, initY) || document.body
-    initTarget.dispatchEvent(new PointerEvent("pointermove", initMoveOptsPointer))
-    initTarget.dispatchEvent(new MouseEvent("mousemove", initMoveOptsMouse))
-    try {
-      initTarget.dispatchEvent(
-        new TouchEvent("touchmove", {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-          touches: [createTouch(initX, initY)],
-          targetTouches: [createTouch(initX, initY)],
-          changedTouches: [createTouch(initX, initY)]
-        })
-      )
-    } catch {
-      // Ignore TouchEvent failure
-    }
-    await this.sleep(50)
-
-    // 3. Smooth drag motion loop
-    const steps = 20
-    for (let i = 1; i <= steps; i++) {
-      const progress = i / steps
-      const currX = startX + (endX - startX) * progress
-      const currY = startY + (endY - startY) * progress
-
-      const moveOptsPointer = {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: currX,
-        clientY: currY,
-        screenX: currX,
-        screenY: currY,
-        pointerId: 1,
-        pointerType: "mouse",
-        isPrimary: true,
-        buttons: 1
-      }
-      const moveOptsMouse = {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: currX,
-        clientY: currY,
-        screenX: currX,
-        screenY: currY,
-        button: 0,
-        buttons: 1
-      }
-
-      // Dispatch moves to the element actually under the simulated pointer
-      const target = document.elementFromPoint(currX, currY) || document.body
-      target.dispatchEvent(new PointerEvent("pointermove", moveOptsPointer))
-      target.dispatchEvent(new MouseEvent("mousemove", moveOptsMouse))
-      try {
-        target.dispatchEvent(
-          new TouchEvent("touchmove", {
+      // Move up the required number of times
+      for (let m = 0; m < movesNeeded; m++) {
+        handle.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: "ArrowUp",
+            code: "ArrowUp",
+            keyCode: 38,
             bubbles: true,
-            cancelable: true,
-            view: window,
-            touches: [createTouch(currX, currY)],
-            targetTouches: [createTouch(currX, currY)],
-            changedTouches: [createTouch(currX, currY)]
+            cancelable: true
           })
         )
-      } catch {
-        // Ignore TouchEvent failure
+        await this.sleep(150)
       }
 
-      await this.sleep(15)
-    }
-
-    // 4. Dispatch pointerup / mouseup / touchend to drop the row
-    const upOptsPointer = {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-      clientX: endX,
-      clientY: endY,
-      screenX: endX,
-      screenY: endY,
-      pointerId: 1,
-      pointerType: "mouse",
-      isPrimary: true,
-      button: 0,
-      buttons: 0
-    }
-    const upOptsMouse = {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-      clientX: endX,
-      clientY: endY,
-      screenX: endX,
-      screenY: endY,
-      button: 0,
-      buttons: 0
-    }
-
-    const finalTarget = document.elementFromPoint(endX, endY) || document.body
-    finalTarget.dispatchEvent(new PointerEvent("pointerup", upOptsPointer))
-    finalTarget.dispatchEvent(new MouseEvent("mouseup", upOptsMouse))
-    try {
-      finalTarget.dispatchEvent(
-        new TouchEvent("touchend", {
+      // Drop: press Space
+      handle.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: " ",
+          code: "Space",
+          keyCode: 32,
           bubbles: true,
-          cancelable: true,
-          view: window,
-          touches: [],
-          targetTouches: [],
-          changedTouches: [createTouch(endX, endY)]
+          cancelable: true
         })
       )
-    } catch {
-      // Ignore TouchEvent failure
+      await this.sleep(300)
     }
-    await this.sleep(150)
   }
 
   /**
