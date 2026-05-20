@@ -4,16 +4,31 @@ export class QueensSolver extends BaseSolver {
   readonly name = "Queens";
 
   detect(): boolean {
-    return (
-      window.location.href.includes("/queens") ||
-      (!!this.$('[data-testid="interactive-grid"]') &&
-        this.$$('[data-testid^="cell-"]').some((cell) =>
-          cell.getAttribute("aria-label")?.toLowerCase().includes("color")
-        ))
+    if (window.location.href.includes("/queens")) return true;
+
+    // Fallback: check for interactive grid with colored region cells
+    const grid = this.$('[data-testid="interactive-grid"]');
+    if (!grid) return false;
+
+    // Queens boards have colored cells; check for any known color class
+    // or the presence of queen-svg elements
+    const cells = this.$$('[data-testid^="cell-"]', grid);
+    return cells.length > 0 && (
+      cells.some((c) => c.querySelector('[data-testid="queen-svg"]')) ||
+      cells.some((c) => {
+        const classes = c.className;
+        // Check for known color classes from LinkedIn's Queens game
+        return QueensSolver.KNOWN_COLOR_CLASSES
+          ? Array.from(QueensSolver.KNOWN_COLOR_CLASSES).some((cc) => classes.includes(cc))
+          : false;
+      })
     );
   }
 
   async solve(): Promise<void> {
+    // Reset per-board caches
+    QueensSolver._commonClasses = null;
+
     const N = this.inferN();
     const { regionOf, regionCount, givenQueens } = this.buildPuzzle(N);
 
@@ -50,9 +65,21 @@ export class QueensSolver extends BaseSolver {
       throw new Error("Could not find the Queens grid: [data-testid='interactive-grid']");
     }
 
-    const raw = getComputedStyle(grid).getPropertyValue("--f08abb51").trim();
-    const N = Number(raw);
-    if (Number.isFinite(N) && N > 0) return N;
+    // Try known CSS custom property names (LinkedIn obfuscates these and they change)
+    const style = getComputedStyle(grid);
+    for (const prop of ["--_920a8b85", "--f08abb51"]) {
+      const raw = style.getPropertyValue(prop).trim();
+      const n = Number(raw);
+      if (Number.isFinite(n) && n > 0) return n;
+    }
+
+    // Also check the inline style attribute directly
+    const inlineStyle = grid.getAttribute("style") || "";
+    const inlineMatch = inlineStyle.match(/--[\w-]+:\s*(\d+)/);
+    if (inlineMatch) {
+      const n = Number(inlineMatch[1]);
+      if (Number.isFinite(n) && n > 0) return n;
+    }
 
     // Fallback: Infer from total count of cells
     const cells = this.$$('[data-testid^="cell-"][data-cell-idx]');
@@ -64,15 +91,110 @@ export class QueensSolver extends BaseSolver {
     return guess;
   }
 
+  /**
+   * Known CSS classes that LinkedIn uses for cell border/position modifiers.
+   * These are NOT color classes and must be excluded when identifying regions.
+   */
+  private static readonly POSITIONAL_CLASSES = new Set([
+    "_28c8856c", // right edge
+    "_83040b93", // bottom edge
+  ]);
+
+  /**
+   * Stable color classes that represent each region (observed from LinkedIn).
+   * If a cell has one of these in its classList, that IS the region key.
+   * We use these as a first-pass filter; any _remaining_ unknown class that
+   * appears exactly on color-cell groups is also accepted.
+   */
+  private static readonly KNOWN_COLOR_CLASSES = new Set([
+    "_64f5839e", // pistachio green (Fıstık yeşili)
+    "_8afa9b35", // milk coffee / tan (Sütlü kahve)
+    "_507d6304", // light blue (Açık mavi)
+    "_9925ef1e", // pastel green (Pastel yeşil)
+    "_92a923b3", // bright coral (Parlak mercan)
+    "_37804ac2", // light gray (Açık gri)
+    "_81688657", // melon / orange (Kavuniçi)
+    "bbeafac7",  // lilac (Eflatun)
+  ]);
+
   private getRegionKey(cellEl: HTMLElement | null): string {
     if (!cellEl) return "UNKNOWN";
-    const label = (cellEl.getAttribute("aria-label") || "").trim();
-    const m = label.match(/color\s+([^,]+)\s*,/i);
-    if (m?.[1]) return m[1].trim();
 
-    // Fallback: stable class bucket
-    return cellEl.className.split(/\s+/).slice(-1)[0] || "UNKNOWN";
+    // Strategy 1: Try the aria-label.
+    // English format: "Light blue color empty cell, row 1, column 5"
+    // Turkish format: "Açık mavi renkte boş hücre, 1. satır, 5. sütun"
+    // Other locales may vary, but the color name always comes before the first comma.
+    const label = (cellEl.getAttribute("aria-label") || "").trim();
+    if (label) {
+      // English: match "COLOR color ..." before comma
+      const enMatch = label.match(/^(.+?)\s+color\s+/i);
+      if (enMatch?.[1]) return enMatch[1].trim().toLowerCase();
+
+      // Localized: match "COLOR renkte/renk/colored/..." — take everything
+      // before the first comma as the color description, then strip the cell-state
+      // words (empty, queen, etc.) to isolate just the color name.
+      const beforeComma = label.split(",")[0]?.trim();
+      if (beforeComma) {
+        // Remove common cell-state descriptors in known locales
+        const cleaned = beforeComma
+          .replace(
+            /\b(renkte|renk|color|empty|boş|hücre|cell|queen|vacía|vacío|vide|leer|空|vazia|vazio)\b/gi,
+            ""
+          )
+          .replace(/\s{2,}/g, " ")
+          .trim()
+          .toLowerCase();
+        if (cleaned.length > 0) return cleaned;
+      }
+    }
+
+    // Strategy 2: Find the color class from the element's classList.
+    // First check known color classes, then look for a class that isn't a
+    // common structural/positional modifier.
+    const classes = cellEl.className.split(/\s+/);
+    for (const cls of classes) {
+      if (QueensSolver.KNOWN_COLOR_CLASSES.has(cls)) return cls;
+    }
+
+    // Strategy 3: The shared structural classes appear on ALL cells.
+    // We collect all cells, find the "common" classes, and this cell's
+    // unique non-common, non-positional class is likely the color.
+    // For performance, just grab the cell's classes and exclude known structural ones.
+    // The 5th class (0-indexed) in the cell typically carries the color after the
+    // common structural prefix, but we can't rely on index. Instead, exclude
+    // classes shared with ALL cells and positional modifiers.
+    if (!QueensSolver._commonClasses) {
+      const allCells = this.$$('[data-testid^="cell-"][data-cell-idx]');
+      if (allCells.length > 0) {
+        const firstClasses = new Set(allCells[0].className.split(/\s+/));
+        const common = new Set<string>();
+        for (const cls of firstClasses) {
+          if (allCells.every((c) => c.classList.contains(cls))) {
+            common.add(cls);
+          }
+        }
+        QueensSolver._commonClasses = common;
+      } else {
+        QueensSolver._commonClasses = new Set();
+      }
+    }
+    const common = QueensSolver._commonClasses;
+    if (common) {
+      for (const cls of classes) {
+        if (
+          !common.has(cls) &&
+          !QueensSolver.POSITIONAL_CLASSES.has(cls) &&
+          cls.length > 0
+        ) {
+          return cls;
+        }
+      }
+    }
+
+    return "UNKNOWN";
   }
+
+  private static _commonClasses: Set<string> | null = null;
 
   private isLocked(cellEl: HTMLElement | null): boolean {
     return cellEl?.getAttribute("aria-disabled") === "true";
