@@ -7,6 +7,18 @@ import pt_PTMessages from "../locales/pt_PT/messages.json"
 import trMessages from "../locales/tr/messages.json"
 import zh_CNMessages from "../locales/zh_CN/messages.json"
 import zh_TWMessages from "../locales/zh_TW/messages.json"
+import {
+  de,
+  enUS,
+  es,
+  fr,
+  pt,
+  ptBR,
+  tr,
+  zhCN,
+  zhTW
+} from "react-day-picker/locale"
+import type { Locale } from "react-day-picker"
 
 const localesData: Record<string, unknown> = {
   en: enMessages,
@@ -39,11 +51,29 @@ export const SUPPORTED_LOCALES: LocaleOption[] = [
   { code: "zh_TW", label: "繁體中文", flag: "🇹🇼" }
 ]
 
+export const DAY_PICKER_LOCALES: Record<string, Partial<Locale>> = {
+  en: enUS,
+  tr,
+  de,
+  es,
+  fr,
+  pt_BR: ptBR,
+  pt_PT: pt,
+  zh_CN: zhCN,
+  zh_TW: zhTW
+}
+
+export function getDayPickerLocale(code?: string): Partial<Locale> {
+  if (!code) return enUS
+  return DAY_PICKER_LOCALES[code] ?? enUS
+}
+
 // Get default browser/system base language
 function getSystemBaseLanguage(): string {
-  if (typeof chrome !== "undefined" && chrome.i18n) {
+  const chromeApi = globalThis.chrome
+  if (chromeApi?.i18n) {
     try {
-      const uiLang = chrome.i18n.getUILanguage()
+      const uiLang = chromeApi.i18n.getUILanguage()
       if (uiLang) {
         const cleaned = uiLang.replace("-", "_")
         if (localesData[cleaned]) return cleaned

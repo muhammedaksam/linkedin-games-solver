@@ -104,7 +104,8 @@ function formatDateString(dateStr: string): string {
       day: "numeric"
     }
     const date = new Date(dateStr)
-    return date.toLocaleDateString(locale, options)
+    const intlLocale = locale.replace(/_/g, "-")
+    return date.toLocaleDateString(intlLocale, options)
   } catch {
     return dateStr
   }
