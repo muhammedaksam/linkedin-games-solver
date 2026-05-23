@@ -2,6 +2,15 @@
 
 LinkedIn Games Solver is a small Plasmo-based browser extension that provides helpers and shortcuts for LinkedIn's built-in browser games. This repository contains the extension source, localization files, and tooling to generate Chrome Web Store assets (icons, promo tiles, screenshots) including localized overlays and social preview images.
 
+## Features
+
+- **7 Game Solvers**: Complete support for Queens, Sudoku, Tango, Zip, Patches, Crossclimb, and Pinpoint.
+- **Pacing & Solve Speed Controls**: Choose between *Instant* (fastest), *Normal*, or *Stealth Mode* (human-like pacing with randomized click delays to secure streaks against automated detection).
+- **Educational Hint Mode**: Get single-step hints or check your moves. If you make a mistake, cells flash red to guide self-correction without spoiling the game.
+- **Multi-Model AI Integration**: Solves trivia-based games (Crossclimb, Pinpoint) using Gemini, OpenAI GPT-4o, Anthropic Claude, DeepSeek, or custom local models (Ollama).
+- **Interactive Stats Dashboard**: Track streaks, average solve times, activity calendar matrices, and personal best records.
+- **Localized UI**: Native multilingual support for English and Turkish out of the box.
+
 ## Contents
 
 - Source: extension React/TypeScript files in the project root and `components/`, `games/`, `tabs/`.

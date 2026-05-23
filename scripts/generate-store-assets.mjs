@@ -1264,6 +1264,8 @@ LinkedIn Games Solver is the ultimate companion for your daily LinkedIn puzzles.
 * Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
 * Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
 * Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
+* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
+* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
 * Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
 * Private & Secure: Runs completely in your browser. Your API keys are saved securely in your local storage and are never shared with any server.`,
 
@@ -1275,6 +1277,8 @@ LinkedIn Oyun Çözücü, günlük LinkedIn bulmacalarınız için mükemmel bir
 * Serinizi Asla Kaybetmeyin: En zor günlerde veya zamanınız kısıtlı olduğunda bile günlük serinizi güvence altına alın.
 * Bilgi Yarışması ve Kelime Bulmacalarında Ustalaşın: Crossclimb ve Pinpoint gibi oyunlar derin bilgi birikimi ve hızlı çağrışım gerektirir. Dahili yapay zeka bunları yüksek doğrulukla çözer.
 * Doğal Entegrasyon: Çözücü arayüzü doğrudan aktif oyun sekmenizde belirir. Tek bir tıklama ile çözülmüş panoyu ekranda görürsünüz.
+* Eğitici İpucu Modu (Hint Mode): Panoyu otomatik olarak çözmek yerine, bir sonraki mantıklı hamleyi ipucu olarak alın ve yaptığınız hataları ekranda kırmızı vurgularla anında keşfederek oyunu kendi başınıza öğrenin.
+* İnsansı Gizli Mod (Stealth Mode): Otomatik bot algılama korumalarını atlatmak için tıklamalar arasına insansı ve rastgele zamanlanmış gecikmeler (1-3 saniye) ekleyin.
 * Harika Analiz Paneli: Premium, modern takvim panelimizle çözme geçmişinizi, ortalama sürelerinizi, serilerinizi ve kişisel en iyilerinizi takip edin.
 * Gizli ve Güvenli: Tamamen tarayıcınızda çalışır. API anahtarlarınız yerel depolama alanınızda güvenli bir şekilde saklanır ve asla harici sunucularla paylaşılmaz.`,
 
@@ -1286,6 +1290,8 @@ Solucionador de Juegos de LinkedIn es el compañero definitivo para tus acertijo
 * Nunca pierda su racha: Mantenga su impulso diario y asegure su racha de juego incluso en los días más difíciles o cuando tenga poco tiempo.
 * Domine los juegos de palabras y preguntas: Juegos como Crossclimb y Pinpoint requieren conocimientos profundos y asociaciones rápidas. La IA integrada los resuelve con una precisión asombrosa.
 * Integración totalmente nativa: El solucionador aparece directamente en la pestaña del juego activo. Con un solo clic, verá el tablero resuelto directamente en su pantalla.
+* Modo de sugerencia educativo (Hint Mode): Aprenda a resolver acertijos de manera natural. En lugar de autocompletar el tablero, reciba sugerencias de movimientos lógicos individuales y detecte errores al instante con resaltados en rojo en la pantalla.
+* Velocidad de resolución sigilosa (Stealth Mode): Emule el comportamiento de clics humanos con retrasos aleatorios y naturales (1–3 segundos) para proteger su racha diaria de resolución de los sistemas de detección de bots.
 * Panel de estadísticas prémium: Realice un seguimiento de su historial de resolución, tiempos promedio, rachas y récords personales con nuestro moderno calendario y panel analítico.
 * Privado y seguro: Se ejecuta completamente en su navegador. Sus claves de API se guardan de forma segura en su almacenamiento local y nunca se comparten.`,
 
@@ -1297,6 +1303,8 @@ Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidienn
 * Ne perdez jamais votre série: Gardez votre élan quotidien et sécurisez votre série de victoires, même les jours les plus difficiles ou lorsque vous manquez de temps.
 * Maîtrisez les jeux de lettres et de culture: Des jeux comme Crossclimb et Pinpoint exigent une grande culture générale et des associations d'idées rapides. L'IA intégrée les résout avec une haute précision.
 * Intégration 100 % native: L'interface du résolveur s'affiche directement sur l'onglet de votre jeu actif. En un clic, le tableau résolu apparaît à l'écran.
+* Mode indice éducatif (Hint Mode): Apprenez à résoudre les énigmes naturellement. Au lieu de compléter automatiquement, obtenez une suggestion de coup logique et repérez instantanément les erreurs grâce aux surbrillances rouges à l'écran.
+* Vitesse de résolution furtive (Stealth Mode): Émulez les comportements de clics humains avec des délais aléatoires et naturels (1 à 3 secondes) pour protéger votre série de résolutions quotidiennes contre la détection de bots.
 * Tableau de bord analytique moderne: Suivez votre historique de résolution, vos temps moyens, vos séries et vos records personnels grâce à notre calendrier interactif haut de gamme.
 * Privé et sécurisé: Fonctionne entièrement dans votre navigateur. Vos clés API sont stockées localement et en toute sécurité, sans jamais être partagées.`,
 
@@ -1308,6 +1316,8 @@ Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desaf
 * Nunca perca sua sequência: Mantenha seu ritmo diário e garanta sua sequência de vitórias mesmo nos dias mais difíceis ou quando estiver sem tempo.
 * Domine jogos de conhecimentos gerais e palavras: Jogos como Crossclimb e Pinpoint exigem conhecimentos profundos e associações rápidas. A IA integrada resolve-os com alta precisão.
 * Integração totalmente nativa: A sobreposição do solucionador aparece diretamente na aba ativa do jogo. Com um clique, você vê o tabuleiro resolvido na tela.
+* Modo de dica educativo (Hint Mode): Aprenda a resolver os quebra-cabeças naturalmente. Em vez de preencher tudo automaticamente, receba sugestões de movimentos lógicos únicos e identifique erros instantaneamente com destaques vermelhos na tela.
+* Velocidade de resolução furtiva (Stealth Mode): Emule o comportamento de cliques humanos com atrasos aleatórios e naturais (1 a 3 segundos) para proteger sua sequência de resolução diária de detecções de bots.
 * Painel analítico moderno: Acompanhe seu histórico de resoluções, tempos médios, sequências e recordes pessoais com nosso painel moderno e interativo.
 * Privado e seguro: Funciona totalmente no seu navegador. Suas chaves de API são salvas com segurança no armazenamento local e nunca são compartilhadas.`,
 
@@ -1319,6 +1329,8 @@ Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desaf
 * Nunca perca sua sequência: Mantenha seu ritmo diário e garanta sua sequência de vitórias mesmo nos dias mais difíceis ou quando estiver sem tempo.
 * Domine jogos de conhecimentos gerais e palavras: Jogos como Crossclimb e Pinpoint exigem conhecimentos profundos e associações rápidas. A IA integrada resolve-os com alta precisão.
 * Integração totalmente nativa: A sobreposição do solucionador aparece diretamente na aba ativa do jogo. Com um clique, você vê o tabuleiro resolvido na tela.
+* Modo de dica educativo (Hint Mode): Aprenda a resolver os quebra-cabeças naturalmente. Em vez de preencher tudo automaticamente, receba sugestões de movimentos lógicos únicos e identifique erros instantaneamente com destaques vermelhos na tela.
+* Velocidade de resolução furtiva (Stealth Mode): Emule o comportamento de cliques humanos com atrasos aleatórios e naturais (1 a 3 segundos) para proteger sua sequência de resolução diária de detecções de bots.
 * Painel analítico moderno: Acompanhe seu histórico de resoluções, tempos médios, sequências e recordes pessoais com nosso painel moderno e interativo.
 * Privado e seguro: Funciona totalmente no seu navegador. Suas chaves de API são salvas com segurança no armazenamento local e nunca são compartilhadas.`,
 
@@ -1330,6 +1342,8 @@ LinkedIn-Spielelöser ist der ultimative Begleiter für Ihre täglichen LinkedIn
 * Verlieren Sie nie Ihre Serie: Halten Sie Ihre tägliche Serie aufrecht, selbst an den stressigsten Tagen oder wenn die Rätsel besonders knifflig sind.
 * Meistern Sie Quiz- und Worträtsel: Spiele wie Crossclimb und Pinpoint erfordern tiefes Allgemeinwissen und schnelle Assoziationen. Die integrierte KI löst diese mit herausragender Präzision.
 * Nahtlose native Integration: Das Lösungs-Overlay erscheint direkt auf Ihrem aktiven Spiele-Tab. Ein Klick genügt, und das gelöste Spielfeld wird auf dem Bildschirm angezeigt.
+* Pädagogischer Hinweis-Modus (Hint Mode): Lernen Sie, Rätsel auf natürliche Weise zu lösen. Erhalten Sie Vorschläge für einzelne logische Züge, statt das Spielfeld automatisch komplett auszufüllen, und erkennen Sie Fehler sofort durch rote Markierungen auf dem Bildschirm.
+* Getarnte Lösungsgeschwindigkeit (Stealth Mode): Ahmen Sie menschliches Klickverhalten mit zufälligen, natürlichen Verzögerungen (1–3 Sekunden) nach, um Ihre tägliche Löseserie vor Bot-Erkennungs-Systemen zu schützen.
 * Modernes Statistik-Dashboard: Verfolgen Sie Ihren Löseverlauf, Ihre Durchschnittszeiten, Ihre aktuellen Serien und Ihre persönlichen Bestleistungen auf einem modernen Aktivitätskalender.
 * Privat und Sicher: Läuft vollständig lokal in Ihrem Browser. Ihre API-Schlüssel werden sicher in Ihrem lokalen Speicher gesichert und niemals an externe Server übertragen.`,
 
@@ -1341,6 +1355,8 @@ LinkedIn 游戏求解器是您解决每日 LinkedIn 谜题的终极助手。它�
 * 保持您的每日连胜: 确保您的每日连胜记录，即使在最繁忙或谜题最难的日子里也绝不中断。
 * 轻松应对常识与单词挑战: 像 Crossclimb 和 Pinpoint 这类游戏需要深厚的常识储备和敏捷的联想能力。内置的人工智能能够以极高的准确度完美解答。
 * 原生无缝集成: 求解器悬浮窗直接显示在您的游戏标签页上。只需轻轻一点，解出的答案就会呈现在屏幕中。
+* 寓教于乐的提示模式 (Hint Mode): 帮助您自然地掌握解题技巧。它不会一键自动填满所有空格，而是为您指出下一步最合理的逻辑走法，并通过屏幕上的红色高亮瞬间纠正您的错误。
+* 隐形防检测求解速度 (Stealth Mode): 模拟真实的真人点击操作行为，并在点击间加入随机、自然的延迟（1-3秒），有效保护您的每日连胜战绩免遭机器人检测。
 * 精美的数据看板: 通过现代化的日历数据面板，追踪您的求解历史、平均时间、连胜纪录以及个人最佳成绩。
 * 隐私与安全保护: 完全在您的本地浏览器中运行。您的 API 密钥安全保存在本地存储中，绝对不会被上传或分享给任何第三方。`,
 
@@ -1352,6 +1368,8 @@ LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終極助手。它�
 * 保持您的每日連勝: 確保您的每日連勝記錄，即使在最繁忙或謎題最難的日子里也絕不中斷。
 * 輕鬆應對常識與單字挑戰: 像 Crossclimb 和 Pinpoint 這類遊戲需要深厚的常識儲備和敏捷的聯想能力。內置的人工智慧能夠以極高的準確度完美解答。
 * 原生無縫整合: 求解器懸浮窗直接顯示在您的遊戲標籤頁上。只需輕輕一點，解出的答案就會呈現在螢幕中。
+* 寓教於樂的提示模式 (Hint Mode): 幫助您自然地掌握解題技巧。它不會一鍵自動填滿所有空格，而是為您指出下一步最合理的邏輯走法，並透過螢幕上的紅色高亮瞬間糾正您的錯誤。
+* 隱形防檢測求解速度 (Stealth Mode): 模擬真實的真人點擊操作行為，並在點擊間加入隨機、自然的延遲（1-3秒），有效保護您的每日連勝戰績免遭機器人檢測。
 * 精美的數據看板: 透過現代化的日曆數據面板，追蹤您的求解歷史、平均時間、連勝紀錄以及個人最佳成績。
 * 隱私與安全保護: 完全在您的本地瀏覽器中運行。您的 API 金鑰安全保存在本地儲存中，絕對不會被上傳或分享給任何第三方。`
   }
@@ -1379,12 +1397,16 @@ LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終極助手。它�
 
 // --- Main Program Execution ---
 async function main() {
-  ensureTool("rsvg-convert")
-  ensureTool(imageMagickCmd)
+  const hasRsvg = hasTool("rsvg-convert")
+  const hasMagick = hasTool(imageMagickCmd)
 
   console.log("Completely clearing store-assets folder for a clean slate...")
   if (existsSync(outDir)) {
-    rmSync(outDir, { recursive: true, force: true })
+    // If image tools are missing, do not clear the whole folder completely
+    // since screenshots/icons might already exist. Just clear descriptions or create if empty.
+    if (hasRsvg && hasMagick) {
+      rmSync(outDir, { recursive: true, force: true })
+    }
   }
 
   // Build target directories fresh
@@ -1392,6 +1414,14 @@ async function main() {
   ensureDir(path.join(outDir, "global"))
   ensureDir(globalScreenshotsDir)
   ensureDir(localizedDir)
+
+  if (!hasRsvg || !hasMagick) {
+    console.log("\n⚠️ WARNING: 'rsvg-convert' or 'ImageMagick' is missing in PATH. Skipping visual assets generation.")
+    console.log("Generating Markdown store descriptions directly...\n")
+    generateStoreDescriptions()
+    console.log("\nSuccessfully generated Markdown store descriptions!")
+    return
+  }
 
   // Step 1: Pre-render vector assets and compose store icons
   console.log("Preparing icons and rendering basic assets...")
