@@ -8,3 +8,7 @@ LinkedIn Oyun Çözücü, günlük LinkedIn bulmacalarınız için mükemmel bir
 * Doğal Entegrasyon: Çözücü arayüzü doğrudan aktif oyun sekmenizde belirir. Tek bir tıklama ile çözülmüş panoyu ekranda görürsünüz.
 * Harika Analiz Paneli: Premium, modern takvim panelimizle çözme geçmişinizi, ortalama sürelerinizi, serilerinizi ve kişisel en iyilerinizi takip edin.
 * Gizli ve Güvenli: Tamamen tarayıcınızda çalışır. API anahtarlarınız yerel depolama alanınızda güvenli bir şekilde saklanır ve asla harici sunucularla paylaşılmaz.
+
+---
+
+*Feragatname: Bu bağımsız, açık kaynaklı ve eğitici bir projedir. LinkedIn Corporation ile hiçbir bağlantısı, sponsorluğu veya onayı yoktur. 'LinkedIn', LinkedIn Corporation'ın tescilli markasıdır.*

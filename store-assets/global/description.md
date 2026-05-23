@@ -8,3 +8,7 @@ LinkedIn Games Solver is the ultimate companion for your daily LinkedIn puzzles.
 * Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
 * Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
 * Private & Secure: Runs completely in your browser. Your API keys are saved securely in your local storage and are never shared with any server.
+
+---
+
+*Disclaimer: This is an independent, open-source educational project. It is not affiliated with, sponsored by, or endorsed by LinkedIn Corporation. 'LinkedIn' is a registered trademark of LinkedIn Corporation.*

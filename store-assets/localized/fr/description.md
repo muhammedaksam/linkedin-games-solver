@@ -8,3 +8,7 @@ Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidienn
 * Intégration 100 % native: L'interface du résolveur s'affiche directement sur l'onglet de votre jeu actif. En un clic, le tableau résolu apparaît à l'écran.
 * Tableau de bord analytique moderne: Suivez votre historique de résolution, vos temps moyens, vos séries et vos records personnels grâce à notre calendrier interactif haut de gamme.
 * Privé et sécurisé: Fonctionne entièrement dans votre navigateur. Vos clés API sont stockées localement et en toute sécurité, sans jamais être partagées.
+
+---
+
+*Clause de Non-Responsabilité : Il s'agit d'un projet éducatif indépendant et open-source. Il n'est pas affilié, sponsorisé ou approuvé par LinkedIn Corporation. 'LinkedIn' est une marque déposée de LinkedIn Corporation.*

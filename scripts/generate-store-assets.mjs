@@ -1357,14 +1357,21 @@ LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終極助手。它�
   }
 
   // Save global/English description
-  writeFileSync(path.join(outDir, "global", "description.md"), descriptions.en)
+  const enMessages = readLocaleMessages("en")
+  const enDisclaimer = getMessageValue(enMessages, "disclaimerText")
+  const enContent = descriptions.en + (enDisclaimer ? `\n\n---\n\n*${enDisclaimer}*` : "")
+  writeFileSync(path.join(outDir, "global", "description.md"), enContent)
 
   // Save localized descriptions
   for (const [locale, content] of Object.entries(descriptions)) {
     if (locale !== "en") {
+      const localeMessages = readLocaleMessages(locale)
+      const localeDisclaimer = getMessageValue(localeMessages, "disclaimerText")
+      const localizedContent = content + (localeDisclaimer ? `\n\n---\n\n*${localeDisclaimer}*` : "")
+
       const localePath = path.join(localizedDir, locale)
       ensureDir(localePath)
-      writeFileSync(path.join(localePath, "description.md"), content)
+      writeFileSync(path.join(localePath, "description.md"), localizedContent)
     }
   }
   console.log("Store descriptions generated successfully in both global and localized folders!")

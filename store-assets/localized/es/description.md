@@ -8,3 +8,7 @@ Solucionador de Juegos de LinkedIn es el compañero definitivo para tus acertijo
 * Integración totalmente nativa: El solucionador aparece directamente en la pestaña del juego activo. Con un solo clic, verá el tablero resuelto directamente en su pantalla.
 * Panel de estadísticas prémium: Realice un seguimiento de su historial de resolución, tiempos promedio, rachas y récords personales con nuestro moderno calendario y panel analítico.
 * Privado y seguro: Se ejecuta completamente en su navegador. Sus claves de API se guardan de forma segura en su almacenamiento local y nunca se comparten.
+
+---
+
+*Descargo de responsabilidad: Este es un proyecto educativo independiente de código abierto. No está afiliado, patrocinado ni respaldado por LinkedIn Corporation. 'LinkedIn' es una marca comercial registrada de LinkedIn Corporation.*
