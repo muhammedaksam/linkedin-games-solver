@@ -67,80 +67,84 @@ export class ZipSolver extends BaseSolver {
 
     for (const c of cells) {
       const idx = parseInt(c.getAttribute("data-cell-idx") || "0", 10)
-      const cellRect = c.getBoundingClientRect()
       const r = Math.floor(idx / N)
       const col = idx % N
 
       const children = Array.from(c.children) as HTMLElement[]
       for (let i = 1; i < children.length; i++) {
         const child = children[i]
-        // Skip known non-wall elements
-        if (child.hasAttribute("data-cell-content")) continue
-        if (child.getAttribute("data-testid") === "filled-cell") continue
-        if (child.hasAttribute("data-cell-hint-arrow")) continue
+
+        // Skip known non-wall elements (numbers, SVGs, hint arrows, path overlays)
+        if (
+          child.tagName.toLowerCase() !== "div" ||
+          child.children.length > 0 ||
+          (child.textContent || "").trim() !== "" ||
+          child.hasAttribute("data-cell-content") ||
+          child.getAttribute("data-testid") === "filled-cell" ||
+          child.hasAttribute("data-cell-hint-arrow")
+        ) {
+          continue
+        }
 
         let neighbor = -1
 
-        const hasClass = (el: HTMLElement, cls: string) =>
-          el.classList.contains(cls) ||
-          Array.from(el.classList).some((cname) => cname.includes(cls))
+        // Strategy 2: Future-proof computed CSS / Pseudo-element detection (Completely Class-Name Free!)
+        for (const pseudo of ["", "::before", "::after"]) {
+          const s = window.getComputedStyle(child, pseudo === "" ? undefined : pseudo)
+          if (!s || s.display === "none" || s.visibility === "hidden") continue
 
-        // Skip elements that don't look like wall divs.
-        // Wall divs have the container class "c463010f" or similar thin-bar class.
-        // The hint arrow SVG, filled overlay, and number label are all non-wall children.
-        const isLikelyWall =
-          hasClass(child, "c463010f") ||
-          hasClass(child, "_60552dcb")
-        if (!isLikelyWall) continue
+          const bg = s.backgroundColor || ""
+          const hasBg = bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)" && bg !== ""
 
-        // 1. High-fidelity class name detection (multiple known class name sets)
-        // LinkedIn periodically rotates obfuscated class names.
-        // Bottom wall classes
-        if (
-          hasClass(child, "ae7a33fc") ||
-          hasClass(child, "_75450fd6")
-        ) {
-          neighbor = idx + N // Bottom wall
-        }
-        // Left wall classes
-        else if (
-          hasClass(child, "_431926b7") ||
-          hasClass(child, "_91b41d39")
-        ) {
-          neighbor = idx - 1 // Left wall
-        }
-        // Right wall classes
-        else if (
-          hasClass(child, "_8239e74c") ||
-          hasClass(child, "ba9aa30f")
-        ) {
-          neighbor = idx + 1 // Right wall
-        }
+          const borderTop = parseFloat(s.borderTopWidth || "0")
+          const borderBottom = parseFloat(s.borderBottomWidth || "0")
+          const borderLeft = parseFloat(s.borderLeftWidth || "0")
+          const borderRight = parseFloat(s.borderRightWidth || "0")
 
-        // 2. Geometric/CSS fallback — only if class detection didn't match
-        if (neighbor === -1) {
-          const wRect = child.getBoundingClientRect()
-          if (wRect && wRect.width > 0 && wRect.height > 0) {
-            const aspectRatio = Math.max(wRect.width, wRect.height) /
-              Math.min(wRect.width, wRect.height)
+          // 1. Direct Border Check (Element or Pseudo-element)
+          if (borderBottom > 0 && r < N - 1) {
+            neighbor = idx + N
+            break
+          }
+          if (borderLeft > 0 && col > 0) {
+            neighbor = idx - 1
+            break
+          }
+          if (borderRight > 0 && col < N - 1) {
+            neighbor = idx + 1
+            break
+          }
+          if (borderTop > 0 && r > 0) {
+            neighbor = idx - N
+            break
+          }
 
-            // Walls are thin bars; reject elements that are roughly square
-            // (aspect ratio < 2 means it's not a thin wall indicator)
-            if (aspectRatio < 2) continue
+          // 2. Background/Size Positioning Check (Pseudo-element or absolute nested shapes)
+          if (hasBg) {
+            const w = parseFloat(s.width || "0")
+            const h = parseFloat(s.height || "0")
 
-            const wcX = wRect.left + wRect.width / 2
-            const wcY = wRect.top + wRect.height / 2
-            const ccX = cellRect.left + cellRect.width / 2
-            const ccY = cellRect.top + cellRect.height / 2
-
-            if (wRect.width > wRect.height) {
-              // Horizontal wall (wide & thin)
-              if (wcY < ccY && r > 0) neighbor = idx - N    // Top edge
-              else if (r < N - 1) neighbor = idx + N         // Bottom edge
-            } else {
-              // Vertical wall (tall & thin)
-              if (wcX < ccX && col > 0) neighbor = idx - 1   // Left edge
-              else if (col < N - 1) neighbor = idx + 1       // Right edge
+            // Thin horizontal line
+            if (h > 0 && h < 10 && w > 20) {
+              if (s.top === "0px" && r > 0) {
+                neighbor = idx - N
+                break
+              }
+              if ((s.bottom === "0px" || parseFloat(s.top || "0") > 20) && r < N - 1) {
+                neighbor = idx + N
+                break
+              }
+            }
+            // Thin vertical line
+            if (w > 0 && w < 10 && h > 20) {
+              if (s.left === "0px" && col > 0) {
+                neighbor = idx - 1
+                break
+              }
+              if ((s.right === "0px" || parseFloat(s.left || "0") > 20) && col < N - 1) {
+                neighbor = idx + 1
+                break
+              }
             }
           }
         }
