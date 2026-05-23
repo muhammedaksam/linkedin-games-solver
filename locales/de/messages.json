@@ -427,5 +427,53 @@
   "markAsNotPlayed": {
     "message": "Als nicht gespielt markieren",
     "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Lösegeschwindigkeit / Verzögerung",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Sofort (Am schnellsten)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Standard)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Stealth-Modus (Menschliche Verzögerungen)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "LÖSEGESCHWINDIGKEIT & TEMPO",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Der Sofort-Modus löst das Spielfeld in Millisekunden. Der Stealth-Modus ahmt menschliches Verhalten mit zufälligen Verzögerungen (1-3 Sekunden) nach, um Ihre Serien vor automatischer Erkennung zu schützen.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Hinweis erhalten",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Standard-Aktion des Lösers",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Vollständig automatisch lösen",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Pädagogischer Hinweis-Modus",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "STANDARD-LÖSEMODUS",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Wählen Sie die primäre Aktion beim Auslösen des Lösers aus der Tab-Ansicht oder den Spielfeldern. 'Vollständig lösen' beendet das Spiel; der 'Hinweis-Modus' platziert ein korrektes Element.",
+    "description": "Notice for solver action mode choices"
   }
 }

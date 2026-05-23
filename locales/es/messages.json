@@ -427,5 +427,53 @@
   "markAsNotPlayed": {
     "message": "Marcar como no jugado",
     "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Velocidad de resolución / Retraso",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Instantáneo (Más rápido)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Estándar)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Modo sigiloso (Retrasos humanos)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "VELOCIDAD Y RITMO DE RESOLUCIÓN",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "El modo instantáneo completa el tablero en milisegundos. El modo sigiloso emula el comportamiento humano con un ritmo aleatorio (1–3 segundos) para proteger sus rachas de la detección automatizada.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Obtener pista",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Acción predeterminada del solucionador",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Autoresolución completa",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Modo de sugerencia educativo",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "MODO DE RESOLUCIÓN PREDETERMINADO",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Seleccione la acción principal al activar el solucionador desde la vista de pestañas o tableros. La resolución completa finaliza el juego; el modo de sugerencia coloca un elemento correcto.",
+    "description": "Notice for solver action mode choices"
   }
 }

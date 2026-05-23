@@ -427,5 +427,53 @@
   "markAsNotPlayed": {
     "message": "Marquer comme non joué",
     "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Vitesse de résolution / Délai",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Instantané (Le plus rapide)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Standard)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Mode furtif (Délais humains)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "VITESSE ET RYTHME DE RÉSOLUTION",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Le mode instantané résout le plateau en quelques millisecondes. Le mode furtif imite le comportement humain avec des délais aléatoires (1 à 3 secondes) afin de protéger votre série contre la détection automatisée.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Obtenir un indice",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Action par défaut du résolveur",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Résolution automatique complète",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Mode indice éducatif",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "MODE DE RÉSOLUTION PAR DÉFAUT",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Sélectionnez l'action principale lors du déclenchement du résolveur depuis l'onglet ou les plateaux. 'Résolution complète' termine la partie ; le 'Mode indice' place un élément correct.",
+    "description": "Notice for solver action mode choices"
   }
 }

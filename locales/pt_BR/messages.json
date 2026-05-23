@@ -427,5 +427,53 @@
   "markAsNotPlayed": {
     "message": "Marcar como não jogado",
     "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Velocidade de Resolução / Atraso",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Instantâneo (Mais rápido)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Padrão)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Modo Furtivo (Atrasos humanos)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "VELOCIDADE E RITMO DE RESOLUÇÃO",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "O modo instantâneo completa o tabuleiro em milissegundos. O modo furtivo imita o comportamento humano com ritmo aleatório (1 a 3 segundos) para proteger sua sequência contra detecção automatizada.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Obter Dica",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Ação Padrão do Solucionador",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Auto-Resolução Completa",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Modo de Dica Educativo",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "MODO PADRÃO DO SOLUCIONADOR",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Selecione a ação primária ao acionar o solucionador a partir da visualização de abas ou tabuleiros. A Auto-Resolução Completa termina o jogo; o Modo de Dica posiciona um item correto.",
+    "description": "Notice for solver action mode choices"
   }
 }

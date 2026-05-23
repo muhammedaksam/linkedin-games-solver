@@ -427,5 +427,53 @@
   "markAsNotPlayed": {
     "message": "標記為未完成",
     "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "求解速度 / 延遲",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "即時 (最快)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "正常 (標準)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "隱形模式 (模擬真人延遲)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "求解速度與節奏",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "即時模式在毫秒內完成遊戲。隱形模式透過隨機延遲（1-3秒）模擬真人操作行為，以保護您的連勝記錄免遭自動化檢測。",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "獲取提示",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "預設求解操作",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "全自動求解",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "寓教於樂提示模式",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "預設求解器模式",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "選擇從分頁檢視或遊戲盤觸發求解器時的主要操作。全自動求解會直接完成遊戲；提示模式則會為您填入一個正確元素。",
+    "description": "Notice for solver action mode choices"
   }
 }
