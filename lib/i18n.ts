@@ -1,12 +1,4 @@
-import deMessages from "../locales/de/messages.json"
-import enMessages from "../locales/en/messages.json"
-import esMessages from "../locales/es/messages.json"
-import frMessages from "../locales/fr/messages.json"
-import pt_BRMessages from "../locales/pt_BR/messages.json"
-import pt_PTMessages from "../locales/pt_PT/messages.json"
-import trMessages from "../locales/tr/messages.json"
-import zh_CNMessages from "../locales/zh_CN/messages.json"
-import zh_TWMessages from "../locales/zh_TW/messages.json"
+import type { Locale } from "react-day-picker"
 import {
   de,
   enUS,
@@ -18,7 +10,16 @@ import {
   zhCN,
   zhTW
 } from "react-day-picker/locale"
-import type { Locale } from "react-day-picker"
+
+import deMessages from "../locales/de/messages.json"
+import enMessages from "../locales/en/messages.json"
+import esMessages from "../locales/es/messages.json"
+import frMessages from "../locales/fr/messages.json"
+import pt_BRMessages from "../locales/pt_BR/messages.json"
+import pt_PTMessages from "../locales/pt_PT/messages.json"
+import trMessages from "../locales/tr/messages.json"
+import zh_CNMessages from "../locales/zh_CN/messages.json"
+import zh_TWMessages from "../locales/zh_TW/messages.json"
 
 const localesData: Record<string, unknown> = {
   en: enMessages,
@@ -79,7 +80,11 @@ function getSystemBaseLanguage(): string {
         if (localesData[cleaned]) return cleaned
         const base = uiLang.split("-")[0].split("_")[0].toLowerCase()
         if (base === "pt") return "pt_BR"
-        if (base === "zh") return uiLang.toLowerCase().includes("tw") || uiLang.toLowerCase().includes("hk") ? "zh_TW" : "zh_CN"
+        if (base === "zh")
+          return uiLang.toLowerCase().includes("tw") ||
+            uiLang.toLowerCase().includes("hk")
+            ? "zh_TW"
+            : "zh_CN"
         if (localesData[base]) return base
       }
     } catch (e) {
@@ -93,7 +98,11 @@ function getSystemBaseLanguage(): string {
     if (localesData[cleaned]) return cleaned
     const base = uiLang.split("-")[0].toLowerCase()
     if (base === "pt") return "pt_BR"
-    if (base === "zh") return uiLang.toLowerCase().includes("tw") || uiLang.toLowerCase().includes("hk") ? "zh_TW" : "zh_CN"
+    if (base === "zh")
+      return uiLang.toLowerCase().includes("tw") ||
+        uiLang.toLowerCase().includes("hk")
+        ? "zh_TW"
+        : "zh_CN"
     if (localesData[base]) return base
   }
 

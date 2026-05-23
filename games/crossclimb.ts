@@ -125,9 +125,8 @@ export class CrossclimbSolver extends BaseSolver {
         )
       ) {
         const wormIdx =
-          clues.findIndex((c) =>
-            c.toLowerCase().includes("prey for a bird")
-          ) + 1
+          clues.findIndex((c) => c.toLowerCase().includes("prey for a bird")) +
+          1
         const wordIdx =
           clues.findIndex((c) => c.toLowerCase().includes("dictionary")) + 1
         const woodIdx =
@@ -162,13 +161,10 @@ export class CrossclimbSolver extends BaseSolver {
         const slapIdx =
           clues.findIndex((c) => c.toLowerCase().includes("high-five")) + 1
         const slowIdx =
-          clues.findIndex((c) =>
-            c.toLowerCase().includes("school crosswalk")
-          ) + 1
+          clues.findIndex((c) => c.toLowerCase().includes("school crosswalk")) +
+          1
         const slopIdx =
-          clues.findIndex((c) =>
-            c.toLowerCase().includes("food for pigs")
-          ) + 1
+          clues.findIndex((c) => c.toLowerCase().includes("food for pigs")) + 1
         const soapIdx =
           clues.findIndex((c) => c.toLowerCase().includes("body wash")) + 1
         bypassResponse = JSON.stringify({
@@ -253,10 +249,7 @@ Where each "words" array has 5-8 UPPERCASE 4-letter candidates. Do not include m
           if (attemptNum > 1) {
             // On retries, ask for different/more creative candidates
             const prevCandidatesStr = allCandidates
-              .map(
-                (words, idx) =>
-                  `  Clue ${idx + 1}: [${words.join(", ")}]`
-              )
+              .map((words, idx) => `  Clue ${idx + 1}: [${words.join(", ")}]`)
               .join("\n")
             prompt = `You are solving the LinkedIn game "Crossclimb".
 We have ${numMiddleRows} trivia clues. Each answer is EXACTLY a 4-letter English word.
@@ -513,10 +506,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
     const responseText = await askAI(jointPrompt, true)
     console.log("[Crossclimb] Gemini joint top/bottom response:", responseText)
 
-    let parsedJoint: { topWord: string; bottomWord: string } = {
-      topWord: "",
-      bottomWord: ""
-    }
+    let parsedJoint: { topWord: string; bottomWord: string }
     try {
       parsedJoint = this.cleanAndParseJSON(responseText)
     } catch (e) {
@@ -782,7 +772,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
 
       // Find the drag handle of the row to move
       const handle = currentRows[currentIndex].querySelector(
-        '[data-sortable-handle]'
+        "[data-sortable-handle]"
       ) as HTMLElement
       if (!handle) {
         console.warn(
@@ -795,7 +785,12 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
       handle.focus()
       await this.sleep(100)
 
-      const dispatchKey = (target: HTMLElement, key: string, code: string, keyCode: number) => {
+      const dispatchKey = (
+        target: HTMLElement,
+        key: string,
+        code: string,
+        keyCode: number
+      ) => {
         const opts = {
           key,
           code,
@@ -866,4 +861,3 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
     return JSON.parse(cleanText) as T
   }
 }
-

@@ -160,7 +160,9 @@ function Calendar({
             <ChevronDownIcon className={cn("h-4 w-4", className)} {...props} />
           )
         },
-        DayButton: ({ ...props }) => <CalendarDayButton localeCode={activeLocaleCode} {...props} />,
+        DayButton: ({ ...props }) => (
+          <CalendarDayButton localeCode={activeLocaleCode} {...props} />
+        ),
         WeekNumber: ({ children, ...props }) => {
           return (
             <td {...props}>

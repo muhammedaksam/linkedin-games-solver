@@ -18,7 +18,7 @@ import {
   Sun,
   Trophy
 } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
@@ -205,29 +205,34 @@ export default function Dashboard() {
     }
   }, [geminiApiKey, aiApiKey, aiProvider, setAiApiKey])
 
-  const [totalSolved, setTotalSolved] = useState<number>(0)
-  const [averageTime, setAverageTime] = useState<number>(0)
-  const [streak, setStreak] = useState<number>(0)
-  const [personalBests, setPersonalBests] = useState<
-    Record<string, { time: number; date: string }>
-  >({})
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
   const [showAllDates, setShowAllDates] = useState(false)
 
   const [showApiKey, setShowApiKey] = useState(false)
   const [saveStatus, setSaveStatus] = useState<string | null>(null)
-  const [hasChanged, setHasChanged] = useState(false)
+  const hasChangedRef = useRef(false)
+
+  // Arm the auto-save notification after initial load settles
+  useEffect(() => {
+    const t = setTimeout(() => {
+      hasChangedRef.current = true
+    }, 1500)
+    return () => clearTimeout(t)
+  }, [])
+
+  // Flash "auto-saved" notification when any setting changes
+  const showSaveNotification = useCallback(() => {
+    if (!hasChangedRef.current) return
+    setSaveStatus(getMessage("settingsAutoSavedNotification"))
+    const t = setTimeout(() => setSaveStatus(null), 2500)
+    return () => clearTimeout(t)
+  }, [])
 
   // Track settings modification to trigger auto-saved notification
   useEffect(() => {
-    if (hasChanged) {
-      const _deps = [aiProvider, aiModel, aiApiKey, aiCustomEndpoint, solveSpeed, defaultSolveMode]
-      setSaveStatus(getMessage("settingsAutoSavedNotification"))
-      const t = setTimeout(() => setSaveStatus(null), 2500)
-      return () => clearTimeout(t)
-    }
+    return showSaveNotification()
   }, [
-    hasChanged,
+    showSaveNotification,
     aiProvider,
     aiModel,
     aiApiKey,
@@ -236,47 +241,8 @@ export default function Dashboard() {
     defaultSolveMode
   ])
 
-  // Prevent showing "saved" on initial load
-  useEffect(() => {
-    const t = setTimeout(() => setHasChanged(true), 1500)
-    return () => clearTimeout(t)
-  }, [])
-
-  // Compute date list with completed games to highlight in the calendar
-  const solvedDates = useMemo(() => {
-    return Object.keys(history || {}).filter((dateStr) => {
-      const checkDay = history[dateStr]
-      return (
-        checkDay && Object.values(checkDay).some((g: SolveRecord) => g?.solved)
-      )
-    })
-  }, [history])
-
-  const hasSolvedOnDate = (date: Date) => {
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, "0")
-    const day = String(date.getDate()).padStart(2, "0")
-    const dateStr = `${year}-${month}-${day}`
-    return solvedDates.includes(dateStr)
-  }
-
-  // Dynamically set document title on mount
-  useEffect(() => {
-    document.title = `${getMessage("dashboardTitle")} | LinkedIn Games Solver`
-  }, [])
-
-  // Class toggle
-  useEffect(() => {
-    const root = window.document.documentElement
-    if (theme === "dark") {
-      root.classList.add("dark")
-    } else {
-      root.classList.remove("dark")
-    }
-  }, [theme])
-
-  // Load and crunch database stats reactively whenever history changes
-  useEffect(() => {
+  // Compute stats reactively from history using useMemo (no cascading renders)
+  const { totalSolved, averageTime, personalBests, streak } = useMemo(() => {
     const rawHistory = history || {}
 
     let solvedCount = 0
@@ -310,10 +276,6 @@ export default function Dashboard() {
       })
     })
 
-    setTotalSolved(solvedCount)
-    setAverageTime(timedCount > 0 ? Math.round(totalSeconds / timedCount) : 0)
-    setPersonalBests(pbMap)
-
     // Calculate Streak
     let activeStreak = 0
     if (dateKeys.length > 0) {
@@ -324,7 +286,9 @@ export default function Dashboard() {
         return `${year}-${month}-${day}`
       }
       const todayStr = getLocalStr(new Date())
-      const yesterdayStr = getLocalStr(new Date(Date.now() - 86400000))
+      const yesterday = new Date()
+      yesterday.setDate(yesterday.getDate() - 1)
+      const yesterdayStr = getLocalStr(yesterday)
 
       // Only start checking if they solved something today or yesterday
       const hasRecentActivity = rawHistory[todayStr] || rawHistory[yesterdayStr]
@@ -347,8 +311,47 @@ export default function Dashboard() {
         }
       }
     }
-    setStreak(activeStreak)
+
+    return {
+      totalSolved: solvedCount,
+      averageTime: timedCount > 0 ? Math.round(totalSeconds / timedCount) : 0,
+      personalBests: pbMap,
+      streak: activeStreak
+    }
   }, [history])
+
+  // Compute date list with completed games to highlight in the calendar
+  const solvedDates = useMemo(() => {
+    return Object.keys(history || {}).filter((dateStr) => {
+      const checkDay = history[dateStr]
+      return (
+        checkDay && Object.values(checkDay).some((g: SolveRecord) => g?.solved)
+      )
+    })
+  }, [history])
+
+  const hasSolvedOnDate = (date: Date) => {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, "0")
+    const day = String(date.getDate()).padStart(2, "0")
+    const dateStr = `${year}-${month}-${day}`
+    return solvedDates.includes(dateStr)
+  }
+
+  // Dynamically set document title on mount
+  useEffect(() => {
+    document.title = `${getMessage("dashboardTitle")} | LinkedIn Games Solver`
+  }, [])
+
+  // Class toggle
+  useEffect(() => {
+    const root = window.document.documentElement
+    if (theme === "dark") {
+      root.classList.add("dark")
+    } else {
+      root.classList.remove("dark")
+    }
+  }, [theme])
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
@@ -599,7 +602,8 @@ export default function Dashboard() {
 
                           <div className="flex flex-col">
                             <span className="text-[10px] text-muted-foreground leading-none mb-0.5">
-                              {getMessage(`desc_${game.id}`) || game.description}
+                              {getMessage(`desc_${game.id}`) ||
+                                game.description}
                             </span>
                             <span className="text-xs font-bold text-foreground">
                               {getMessage(game.id) || game.title}
@@ -718,7 +722,11 @@ export default function Dashboard() {
                                             gameId}
                                         </span>
                                         <span className="text-[9px] text-muted-foreground/80 leading-none">
-                                          {gameConfig ? (getMessage(`desc_${gameConfig.id}`) || gameConfig.description) : ""}
+                                          {gameConfig
+                                            ? getMessage(
+                                                `desc_${gameConfig.id}`
+                                              ) || gameConfig.description
+                                            : ""}
                                         </span>
                                       </div>
                                     </div>
@@ -986,9 +994,12 @@ export default function Dashboard() {
                       onValueChange={(val) => setSolveSpeed(val)}>
                       <SelectTrigger className="w-full text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
                         <SelectValue placeholder="Select Speed">
-                          {solveSpeed === "instant" && getMessage("solveSpeed_instant")}
-                          {solveSpeed === "normal" && getMessage("solveSpeed_normal")}
-                          {solveSpeed === "stealth" && getMessage("solveSpeed_stealth")}
+                          {solveSpeed === "instant" &&
+                            getMessage("solveSpeed_instant")}
+                          {solveSpeed === "normal" &&
+                            getMessage("solveSpeed_normal")}
+                          {solveSpeed === "stealth" &&
+                            getMessage("solveSpeed_stealth")}
                         </SelectValue>
                       </SelectTrigger>
                       <SelectContent>
@@ -1018,8 +1029,10 @@ export default function Dashboard() {
                       onValueChange={(val) => setDefaultSolveMode(val)}>
                       <SelectTrigger className="w-full text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
                         <SelectValue placeholder="Select Default Action">
-                          {defaultSolveMode === "full" && getMessage("solveMode_full")}
-                          {defaultSolveMode === "hint" && getMessage("solveMode_hint")}
+                          {defaultSolveMode === "full" &&
+                            getMessage("solveMode_full")}
+                          {defaultSolveMode === "hint" &&
+                            getMessage("solveMode_hint")}
                         </SelectValue>
                       </SelectTrigger>
                       <SelectContent>

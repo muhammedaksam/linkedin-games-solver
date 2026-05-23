@@ -67,7 +67,12 @@ function ensureDir(dirPath: string): void {
   mkdirSync(dirPath, { recursive: true })
 }
 
-function renderSvg(svgPath: string, pngPath: string, width: number, height: number): void {
+function renderSvg(
+  svgPath: string,
+  pngPath: string,
+  width: number,
+  height: number
+): void {
   execFileSync(
     "rsvg-convert",
     ["-w", String(width), "-h", String(height), "-o", pngPath, svgPath],
@@ -396,7 +401,9 @@ function generatePromoSmall(): void {
   const screenshotPath = path.join(globalScreenshotsDir, "screenshot-1.jpg")
 
   if (!existsSync(screenshotPath)) {
-    console.log("Screenshot-1 not found, generating base Small Promo without screenshot...")
+    console.log(
+      "Screenshot-1 not found, generating base Small Promo without screenshot..."
+    )
     run(
       [
         imageMagickCmd,
@@ -446,7 +453,9 @@ function generatePromoSmall(): void {
     return
   }
 
-  console.log("Generating premium Small Promo Tile with embedded browser screenshot...")
+  console.log(
+    "Generating premium Small Promo Tile with embedded browser screenshot..."
+  )
   run(
     [
       imageMagickCmd,
@@ -525,7 +534,9 @@ function generatePromoMarquee(): void {
   const dashboardPath = path.join(globalScreenshotsDir, "screenshot-3.jpg")
 
   if (!existsSync(popupPath) || !existsSync(dashboardPath)) {
-    console.log("Screenshots not found, generating base Marquee Promo without screenshots...")
+    console.log(
+      "Screenshots not found, generating base Marquee Promo without screenshots..."
+    )
     run(
       [
         imageMagickCmd,
@@ -591,7 +602,9 @@ function generatePromoMarquee(): void {
     return
   }
 
-  console.log("Generating premium Marquee Promo Tile with layered screenshot mockups...")
+  console.log(
+    "Generating premium Marquee Promo Tile with layered screenshot mockups..."
+  )
   run(
     [
       imageMagickCmd,
@@ -673,7 +686,9 @@ function generatePromoMarquee(): void {
       q("#38bdf8"),
       "-annotate",
       "+90+360",
-      q("Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"),
+      q(
+        "Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+      ),
       "-strip",
       "-quality",
       "93",
@@ -882,7 +897,11 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
 
     await page.evaluate(() => {
       if (typeof chrome !== "undefined" && chrome.tabs) {
-        (chrome.tabs as any).sendMessage = (tabId: number, msg: any, cb: (response: any) => void) => {
+        ;(chrome.tabs as any).sendMessage = (
+          tabId: number,
+          msg: any,
+          cb: (response: any) => void
+        ) => {
           if (msg && msg.action === "detectGame") {
             setTimeout(() => cb({ game: "sudoku" }), 30)
           } else {
@@ -935,8 +954,10 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
         tr: "Açık olan LinkedIn panolarını anında tespit eder ve ekranda çözer",
         es: "Detecta los tableros de LinkedIn abiertos y los resuelve directamente",
         fr: "Detecte les plateaux LinkedIn ouverts et les résout sur l'écran",
-        pt_BR: "Detecta tabuleiros abertos do LinkedIn e os resolve diretamente na tela",
-        pt_PT: "Deteta tabuleiros abertos do LinkedIn e resolve-os diretamente no ecrã",
+        pt_BR:
+          "Detecta tabuleiros abertos do LinkedIn e os resolve diretamente na tela",
+        pt_PT:
+          "Deteta tabuleiros abertos do LinkedIn e resolve-os diretamente no ecrã",
         de: "Erkennt geöffnete LinkedIn-Spiele und löst sie direkt auf dem Bildschirm",
         zh_CN: "自动检测已打开的 LinkedIn 游戏盘并直接在屏幕上求解",
         zh_TW: "自動偵測開啟的 LinkedIn 棋盤並直接在螢幕上求解"
@@ -1397,7 +1418,8 @@ LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終极助手。它�
   // Save global/English description
   const enMessages = readLocaleMessages("en")
   const enDisclaimer = getMessageValue(enMessages, "disclaimerText")
-  const enContent = descriptions.en + (enDisclaimer ? `\n\n---\n\n*${enDisclaimer}*` : "")
+  const enContent =
+    descriptions.en + (enDisclaimer ? `\n\n---\n\n*${enDisclaimer}*` : "")
   writeFileSync(path.join(outDir, "global", "description.md"), enContent)
 
   // Save localized descriptions
@@ -1405,14 +1427,17 @@ LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終极助手。它�
     if (locale !== "en") {
       const localeMessages = readLocaleMessages(locale)
       const localeDisclaimer = getMessageValue(localeMessages, "disclaimerText")
-      const localizedContent = content + (localeDisclaimer ? `\n\n---\n\n*${localeDisclaimer}*` : "")
+      const localizedContent =
+        content + (localeDisclaimer ? `\n\n---\n\n*${localeDisclaimer}*` : "")
 
       const localePath = path.join(localizedDir, locale)
       ensureDir(localePath)
       writeFileSync(path.join(localePath, "description.md"), localizedContent)
     }
   }
-  console.log("Store descriptions generated successfully in both global and localized folders!")
+  console.log(
+    "Store descriptions generated successfully in both global and localized folders!"
+  )
 }
 
 // --- Main Program Execution ---
@@ -1436,7 +1461,9 @@ async function main(): Promise<void> {
   ensureDir(localizedDir)
 
   if (!hasRsvg || !hasMagick) {
-    console.log("\n⚠️ WARNING: 'rsvg-convert' or 'ImageMagick' is missing in PATH. Skipping visual assets generation.")
+    console.log(
+      "\n⚠️ WARNING: 'rsvg-convert' or 'ImageMagick' is missing in PATH. Skipping visual assets generation."
+    )
     console.log("Generating Markdown store descriptions directly...\n")
     generateStoreDescriptions()
     console.log("\nSuccessfully generated Markdown store descriptions!")
@@ -1491,8 +1518,12 @@ async function main(): Promise<void> {
     "- Localized screenshots: store-assets/localized/<locale>/screenshots/*.jpg"
   )
   console.log("- Social media card pre-renders: store-assets/social/*.jpg")
-  console.log("- Localized social media: store-assets/localized/<locale>/social/*.jpg")
-  console.log("- Store listings text (Markdown): store-assets/global/description.md & store-assets/localized/<locale>/description.md")
+  console.log(
+    "- Localized social media: store-assets/localized/<locale>/social/*.jpg"
+  )
+  console.log(
+    "- Store listings text (Markdown): store-assets/global/description.md & store-assets/localized/<locale>/description.md"
+  )
   console.log("All screenshots are beautifully rendered inside a browser!")
   console.log("=======================================================")
 }

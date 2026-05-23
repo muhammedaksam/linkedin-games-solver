@@ -54,7 +54,12 @@ export async function askAI(prompt: string, jsonMode = false): Promise<string> {
           if (response?.success) {
             resolve(response.text)
           } else {
-            reject(new Error(response?.error || "AI call from Background SW returned no response."))
+            reject(
+              new Error(
+                response?.error ||
+                  "AI call from Background SW returned no response."
+              )
+            )
           }
         }
       )
@@ -132,7 +137,7 @@ async function callGemini(
 
   if (!response.ok) {
     const errText = await response.text()
-    let parsedErr = ""
+    let parsedErr: string
     try {
       const errJson = JSON.parse(errText)
       parsedErr = errJson.error?.message || errText
@@ -190,7 +195,7 @@ async function callOpenAICompatible(
 
   if (!response.ok) {
     const errText = await response.text()
-    let parsedErr = ""
+    let parsedErr: string
     try {
       const errJson = JSON.parse(errText)
       parsedErr = errJson.error?.message || errText
@@ -232,7 +237,7 @@ async function callAnthropic(
 
   if (!response.ok) {
     const errText = await response.text()
-    let parsedErr = ""
+    let parsedErr: string
     try {
       const errJson = JSON.parse(errText)
       parsedErr = errJson.error?.message || errText

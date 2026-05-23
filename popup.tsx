@@ -695,9 +695,12 @@ function IndexPopup() {
                   onValueChange={(val) => setSolveSpeed(val)}>
                   <SelectTrigger className="w-full text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
                     <SelectValue placeholder="Select Solving Speed">
-                      {solveSpeed === "instant" && getMessage("solveSpeed_instant")}
-                      {solveSpeed === "normal" && getMessage("solveSpeed_normal")}
-                      {solveSpeed === "stealth" && getMessage("solveSpeed_stealth")}
+                      {solveSpeed === "instant" &&
+                        getMessage("solveSpeed_instant")}
+                      {solveSpeed === "normal" &&
+                        getMessage("solveSpeed_normal")}
+                      {solveSpeed === "stealth" &&
+                        getMessage("solveSpeed_stealth")}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
@@ -727,8 +730,10 @@ function IndexPopup() {
                   onValueChange={(val) => setDefaultSolveMode(val)}>
                   <SelectTrigger className="w-full text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
                     <SelectValue placeholder="Select Default Solver Action">
-                      {defaultSolveMode === "full" && getMessage("solveMode_full")}
-                      {defaultSolveMode === "hint" && getMessage("solveMode_hint")}
+                      {defaultSolveMode === "full" &&
+                        getMessage("solveMode_full")}
+                      {defaultSolveMode === "hint" &&
+                        getMessage("solveMode_hint")}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>

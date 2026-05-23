@@ -1,25 +1,25 @@
-import { BaseSolver } from "./base";
+import { BaseSolver } from "./base"
 
 interface Clue {
-  id: number;
-  r: number;
-  c: number;
-  size: number | null;
-  type: "square" | "tall" | "wide" | "any";
-  validRects?: Rect[];
-  placedRect?: Rect;
+  id: number
+  r: number
+  c: number
+  size: number | null
+  type: "square" | "tall" | "wide" | "any"
+  validRects?: Rect[]
+  placedRect?: Rect
 }
 
 interface Rect {
-  r: number;
-  c: number;
-  w: number;
-  h: number;
-  clueId: number;
+  r: number
+  c: number
+  w: number
+  h: number
+  clueId: number
 }
 
 export class PatchesSolver extends BaseSolver {
-  readonly name = "Patches";
+  readonly name = "Patches"
 
   detect(): boolean {
     return (
@@ -27,107 +27,113 @@ export class PatchesSolver extends BaseSolver {
       (this.$$("[data-cell-idx]").length > 0 &&
         this.$$("[data-cell-idx]").some(
           (cell) =>
-            cell.querySelector('[data-shape]') ||
+            cell.querySelector("[data-shape]") ||
             cell.querySelector('[data-testid^="patches-clue-number-"]')
         ))
-    );
+    )
   }
 
   async solve(): Promise<void> {
-    const parsed = this.parseBoard();
+    const parsed = this.parseBoard()
     if (!parsed) {
-      throw new Error("Could not parse Patches board correctly.");
+      throw new Error("Could not parse Patches board correctly.")
     }
 
-    const { W, H, clues } = parsed;
-    console.log(`[Patches] Board size: ${W}x${H}`);
-    console.log(`[Patches] Clues found:`, clues);
+    const { W, H, clues } = parsed
+    console.log(`[Patches] Board size: ${W}x${H}`)
+    console.log(`[Patches] Clues found:`, clues)
 
-    const solution = this.solvePatches(W, H, clues);
+    const solution = this.solvePatches(W, H, clues)
     if (!solution) {
-      throw new Error("No non-overlapping rectangle solution found for Patches puzzle!");
+      throw new Error(
+        "No non-overlapping rectangle solution found for Patches puzzle!"
+      )
     }
 
-    console.log(`[Patches] Solution found:`, solution);
+    console.log(`[Patches] Solution found:`, solution)
 
     for (const rect of solution) {
-      await this.simulateDrag(rect, W);
-      await this.sleep(200);
+      await this.simulateDrag(rect, W)
+      await this.sleep(200)
     }
 
-    console.log("[Patches] Done solving!");
+    console.log("[Patches] Done solving!")
   }
 
   private parseBoard(): { W: number; H: number; clues: Clue[] } | null {
-    const cells = this.$$("[data-cell-idx]");
-    if (!cells.length) return null;
+    const cells = this.$$("[data-cell-idx]")
+    if (!cells.length) return null
 
-    const total = cells.length;
-    const W = Math.round(Math.sqrt(total));
-    const H = Math.floor(total / W);
+    const total = cells.length
+    const W = Math.round(Math.sqrt(total))
+    const H = Math.floor(total / W)
 
-    const clues: Clue[] = [];
+    const clues: Clue[] = []
 
     cells.forEach((cell, idx) => {
-      const r = Math.floor(idx / W);
-      const c = idx % W;
+      const r = Math.floor(idx / W)
+      const c = idx % W
 
-      const clueNumberEl = cell.querySelector('[data-testid^="patches-clue-number-"]');
-      const shapeEl = cell.querySelector("[data-shape]");
+      const clueNumberEl = cell.querySelector(
+        '[data-testid^="patches-clue-number-"]'
+      )
+      const shapeEl = cell.querySelector("[data-shape]")
 
       if (shapeEl || clueNumberEl) {
-        let type: Clue["type"] = "any";
-        const shapeAttr = shapeEl ? shapeEl.getAttribute("data-shape") : null;
+        let type: Clue["type"]
+        const shapeAttr = shapeEl ? shapeEl.getAttribute("data-shape") : null
 
         switch (shapeAttr) {
           case "PatchesShapeConstraint_HORIZONTAL_RECT":
-            type = "wide";
-            break;
+            type = "wide"
+            break
           case "PatchesShapeConstraint_VERTICAL_RECT":
-            type = "tall";
-            break;
+            type = "tall"
+            break
           case "PatchesShapeConstraint_SQUARE":
-            type = "square";
-            break;
+            type = "square"
+            break
           default:
-            type = "any";
+            type = "any"
         }
 
-        const text = clueNumberEl?.textContent;
-        const size = text ? parseInt(text, 10) : null;
+        const text = clueNumberEl?.textContent
+        const size = text ? parseInt(text, 10) : null
 
         clues.push({
           id: idx,
           r,
           c,
           size,
-          type,
-        });
+          type
+        })
       }
-    });
+    })
 
-    return { W, H, clues };
+    return { W, H, clues }
   }
 
   private solvePatches(W: number, H: number, clues: Clue[]): Rect[] | null {
-    const grid = Array.from({ length: H }, () => Array<number | null>(W).fill(null));
-    let solution: Rect[] | null = null;
+    const grid = Array.from({ length: H }, () =>
+      Array<number | null>(W).fill(null)
+    )
+    let solution: Rect[] | null = null
 
     // Helper to generate all valid rectangles containing the clue's cell
     const getValidRects = (clue: Clue): Rect[] => {
-      const rects: Rect[] = [];
-      const maxSize = clue.size || W * H;
+      const rects: Rect[] = []
+      const maxSize = clue.size || W * H
 
       for (let width = 1; width <= W; width++) {
         for (let height = 1; height <= H; height++) {
-          const area = width * height;
+          const area = width * height
 
-          if (clue.size && area !== clue.size) continue;
-          if (!clue.size && area > maxSize) continue;
+          if (clue.size && area !== clue.size) continue
+          if (!clue.size && area > maxSize) continue
 
-          if (clue.type === "square" && width !== height) continue;
-          if (clue.type === "tall" && height <= width) continue;
-          if (clue.type === "wide" && width <= height) continue;
+          if (clue.type === "square" && width !== height) continue
+          if (clue.type === "tall" && height <= width) continue
+          if (clue.type === "wide" && width <= height) continue
 
           // Determine bounding box coordinates that encompass (clue.r, clue.c)
           for (
@@ -140,39 +146,41 @@ export class PatchesSolver extends BaseSolver {
               c <= Math.min(W - width, clue.c);
               c++
             ) {
-              rects.push({ r, c, w: width, h: height, clueId: clue.id });
+              rects.push({ r, c, w: width, h: height, clueId: clue.id })
             }
           }
         }
       }
-      return rects;
-    };
+      return rects
+    }
 
     const cluesWithRects = clues.map((c) => ({
       ...c,
-      validRects: getValidRects(c),
-    }));
+      validRects: getValidRects(c)
+    }))
 
     const solve = (clueIdx: number) => {
-      if (solution) return;
+      if (solution) return
       if (clueIdx === clues.length) {
         // Confirm everything is covered (no null cells)
         for (let i = 0; i < H; i++) {
           for (let j = 0; j < W; j++) {
-            if (grid[i][j] === null) return;
+            if (grid[i][j] === null) return
           }
         }
-        solution = cluesWithRects.map((c) => c.placedRect).filter((rect): rect is Rect => !!rect);
-        return;
+        solution = cluesWithRects
+          .map((c) => c.placedRect)
+          .filter((rect): rect is Rect => !!rect)
+        return
       }
 
-      const clue = cluesWithRects[clueIdx];
+      const clue = cluesWithRects[clueIdx]
       for (const rect of clue.validRects) {
         // Validate overlaps
-        let overlap = false;
+        let overlap = false
         for (let i = rect.r; i < rect.r + rect.h; i++) {
           for (let j = rect.c; j < rect.c + rect.w; j++) {
-            if (grid[i][j] !== null) overlap = true;
+            if (grid[i][j] !== null) overlap = true
           }
         }
 
@@ -180,53 +188,54 @@ export class PatchesSolver extends BaseSolver {
           // Place
           for (let i = rect.r; i < rect.r + rect.h; i++) {
             for (let j = rect.c; j < rect.c + rect.w; j++) {
-              grid[i][j] = clue.id;
+              grid[i][j] = clue.id
             }
           }
-          clue.placedRect = rect;
+          clue.placedRect = rect
 
-          solve(clueIdx + 1);
-          if (solution) return;
+          solve(clueIdx + 1)
+          if (solution) return
 
           // Backtrack / Undo
           for (let i = rect.r; i < rect.r + rect.h; i++) {
             for (let j = rect.c; j < rect.c + rect.w; j++) {
-              grid[i][j] = null;
+              grid[i][j] = null
             }
           }
         }
       }
-    };
+    }
 
-    solve(0);
-    return solution;
+    solve(0)
+    return solution
   }
 
   private async simulateDrag(rect: Rect, W: number): Promise<void> {
-    const getCell = (r: number, c: number) => this.$(`[data-cell-idx="${r * W + c}"]`);
+    const getCell = (r: number, c: number) =>
+      this.$(`[data-cell-idx="${r * W + c}"]`)
 
-    const startCell = getCell(rect.r, rect.c);
-    const endCell = getCell(rect.r + rect.h - 1, rect.c + rect.w - 1);
+    const startCell = getCell(rect.r, rect.c)
+    const endCell = getCell(rect.r + rect.h - 1, rect.c + rect.w - 1)
 
-    if (!startCell || !endCell) return;
+    if (!startCell || !endCell) return
 
-    startCell.dispatchEvent(this.createMouseEvent("mousedown", 1));
-    await this.sleep(50);
+    startCell.dispatchEvent(this.createMouseEvent("mousedown", 1))
+    await this.sleep(50)
 
     for (let r = rect.r; r <= rect.r + rect.h - 1; r++) {
       for (let c = rect.c; c <= rect.c + rect.w - 1; c++) {
-        if (r === rect.r && c === rect.c) continue; // Start cell is already active
-        const cell = getCell(r, c);
+        if (r === rect.r && c === rect.c) continue // Start cell is already active
+        const cell = getCell(r, c)
         if (cell) {
-          cell.dispatchEvent(this.createMouseEvent("mousemove", 1));
-          cell.dispatchEvent(this.createMouseEvent("mouseenter", 1));
-          cell.dispatchEvent(this.createMouseEvent("mouseover", 1));
-          await this.sleep(50);
+          cell.dispatchEvent(this.createMouseEvent("mousemove", 1))
+          cell.dispatchEvent(this.createMouseEvent("mouseenter", 1))
+          cell.dispatchEvent(this.createMouseEvent("mouseover", 1))
+          await this.sleep(50)
         }
       }
     }
 
-    endCell.dispatchEvent(this.createMouseEvent("mouseup", 0));
-    endCell.dispatchEvent(this.createMouseEvent("click", 0));
+    endCell.dispatchEvent(this.createMouseEvent("mouseup", 0))
+    endCell.dispatchEvent(this.createMouseEvent("click", 0))
   }
 }

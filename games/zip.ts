@@ -90,11 +90,15 @@ export class ZipSolver extends BaseSolver {
 
         // Strategy 2: Future-proof computed CSS / Pseudo-element detection (Completely Class-Name Free!)
         for (const pseudo of ["", "::before", "::after"]) {
-          const s = window.getComputedStyle(child, pseudo === "" ? undefined : pseudo)
+          const s = window.getComputedStyle(
+            child,
+            pseudo === "" ? undefined : pseudo
+          )
           if (!s || s.display === "none" || s.visibility === "hidden") continue
 
           const bg = s.backgroundColor || ""
-          const hasBg = bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)" && bg !== ""
+          const hasBg =
+            bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)" && bg !== ""
 
           const borderTop = parseFloat(s.borderTopWidth || "0")
           const borderBottom = parseFloat(s.borderBottomWidth || "0")
@@ -130,7 +134,10 @@ export class ZipSolver extends BaseSolver {
                 neighbor = idx - N
                 break
               }
-              if ((s.bottom === "0px" || parseFloat(s.top || "0") > 20) && r < N - 1) {
+              if (
+                (s.bottom === "0px" || parseFloat(s.top || "0") > 20) &&
+                r < N - 1
+              ) {
                 neighbor = idx + N
                 break
               }
@@ -141,7 +148,10 @@ export class ZipSolver extends BaseSolver {
                 neighbor = idx - 1
                 break
               }
-              if ((s.right === "0px" || parseFloat(s.left || "0") > 20) && col < N - 1) {
+              if (
+                (s.right === "0px" || parseFloat(s.left || "0") > 20) &&
+                col < N - 1
+              ) {
                 neighbor = idx + 1
                 break
               }

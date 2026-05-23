@@ -1,5 +1,11 @@
 import styleText from "data-text:~popup.css"
-import { AlertCircle, CheckCircle2, Lightbulb, Loader2, Sparkles } from "lucide-react"
+import {
+  AlertCircle,
+  CheckCircle2,
+  Lightbulb,
+  Loader2,
+  Sparkles
+} from "lucide-react"
 import type {
   PlasmoCSConfig,
   PlasmoGetInlineAnchor,
@@ -693,7 +699,10 @@ const GameSolverUI = () => {
       await currentActive.solve(mode)
       if (mode !== "hint") {
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-        await saveGameCompleted(currentActive.name.toLowerCase(), durationSeconds)
+        await saveGameCompleted(
+          currentActive.name.toLowerCase(),
+          durationSeconds
+        )
       }
       setSolveSuccess(true)
     } catch (err) {
@@ -714,7 +723,11 @@ const GameSolverUI = () => {
   const strings = getLocalizedStrings(activeGame)
 
   return (
-    <div className={cn(theme, "relative flex items-center justify-center gap-2 h-8")}>
+    <div
+      className={cn(
+        theme,
+        "relative flex items-center justify-center gap-2 h-8"
+      )}>
       {isCompleted ? (
         <button
           type="button"
