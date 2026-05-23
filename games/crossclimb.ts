@@ -399,7 +399,7 @@ Where each "words" array has 6-10 UPPERCASE 4-letter candidates. Do not include 
           `[Crossclimb] Sorting mismatch detected. Retrying sort (Attempt ${attempt + 1})...`
         )
       }
-      await this.keyboardSortRows(targetOrder)
+      await this.keyboardSortRows(targetOrder, clueWordMap)
       await this.sleep(1200)
 
       // Verify
@@ -407,12 +407,13 @@ Where each "words" array has 6-10 UPPERCASE 4-letter candidates. Do not include 
       currentRows.sort(
         (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
       )
-      const currentOrder = currentRows.map((row) =>
-        parseInt(row.getAttribute("data-guess-id") || "0", 10)
-      )
-      console.log("[Crossclimb] Verifying board order:", currentOrder)
+      const currentWords = currentRows.map((row) => this.getRowWord(row))
+      console.log("[Crossclimb] Verifying board words:", currentWords)
 
-      if (currentOrder.every((id, idx) => id === targetOrder[idx])) {
+      const targetWords = targetOrder.map((id) => clueWordMap.get(id) || "")
+      console.log("[Crossclimb] Target words:", targetWords)
+
+      if (currentWords.every((w, idx) => w === targetWords[idx])) {
         const topRow = this.$('[data-guess-id="0"]')
         const topInput = topRow
           ? (topRow.querySelector("input") as HTMLInputElement)
@@ -742,20 +743,20 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
    * 3. Press ArrowUp/ArrowDown to move it to the target position
    * 4. Press Space/Enter to "drop" it
    */
-  private async keyboardSortRows(targetOrder: number[]): Promise<void> {
+  private async keyboardSortRows(
+    targetOrder: number[],
+    clueWordMap: Map<number, string>
+  ): Promise<void> {
     console.log(
       "[Crossclimb] Keyboard-sorting middle rows into target order:",
       targetOrder
     )
 
-    // Use bubble sort approach: repeatedly swap adjacent elements
-    // This maps naturally to keyboard sorting (one ArrowUp/Down per swap)
-    const order = [...targetOrder]
-    const n = order.length
+    const targetWords = targetOrder.map((id) => clueWordMap.get(id) || "")
+    const n = targetWords.length
 
     for (let i = 0; i < n; i++) {
-      // Find where targetOrder[i] currently is in the working order
-      const targetGuessId = targetOrder[i]
+      const targetWord = targetWords[i]
 
       // Get current visual positions
       const currentRows = this.$$(".crossclimb__guess--middle")
@@ -764,9 +765,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
       )
 
       const currentIndex = currentRows.findIndex(
-        (row) =>
-          parseInt(row.getAttribute("data-guess-id") || "0", 10) ===
-          targetGuessId
+        (row) => this.getRowWord(row) === targetWord
       )
 
       if (currentIndex === -1 || currentIndex === i) continue
@@ -778,7 +777,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
       if (movesNeeded <= 0) continue
 
       console.log(
-        `[Crossclimb] Moving Row ${targetGuessId} up ${movesNeeded} positions (from ${currentIndex} to ${i})`
+        `[Crossclimb] Moving Row containing "${targetWord}" up ${movesNeeded} positions (from ${currentIndex} to ${i})`
       )
 
       // Find the drag handle of the row to move
@@ -787,7 +786,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
       ) as HTMLElement
       if (!handle) {
         console.warn(
-          `[Crossclimb] No sortable handle found for row ${targetGuessId}`
+          `[Crossclimb] No sortable handle found for row containing "${targetWord}"`
         )
         continue
       }
@@ -796,44 +795,48 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
       handle.focus()
       await this.sleep(100)
 
-      // Pick up: press Space
-      handle.dispatchEvent(
-        new KeyboardEvent("keydown", {
-          key: " ",
-          code: "Space",
-          keyCode: 32,
+      const dispatchKey = (target: HTMLElement, key: string, code: string, keyCode: number) => {
+        const opts = {
+          key,
+          code,
+          keyCode,
+          which: keyCode,
           bubbles: true,
           cancelable: true
-        })
-      )
+        }
+        target.dispatchEvent(new KeyboardEvent("keydown", opts))
+        target.dispatchEvent(new KeyboardEvent("keypress", opts))
+        target.dispatchEvent(new KeyboardEvent("keyup", opts))
+      }
+
+      const rowEl = currentRows[currentIndex]
+
+      // Pick up: press Space on both handle and row for compatibility
+      dispatchKey(handle, " ", "Space", 32)
+      dispatchKey(rowEl, " ", "Space", 32)
       await this.sleep(200)
 
       // Move up the required number of times
       for (let m = 0; m < movesNeeded; m++) {
-        handle.dispatchEvent(
-          new KeyboardEvent("keydown", {
-            key: "ArrowUp",
-            code: "ArrowUp",
-            keyCode: 38,
-            bubbles: true,
-            cancelable: true
-          })
-        )
+        dispatchKey(handle, "ArrowUp", "ArrowUp", 38)
+        dispatchKey(rowEl, "ArrowUp", "ArrowUp", 38)
         await this.sleep(150)
       }
 
-      // Drop: press Space
-      handle.dispatchEvent(
-        new KeyboardEvent("keydown", {
-          key: " ",
-          code: "Space",
-          keyCode: 32,
-          bubbles: true,
-          cancelable: true
-        })
-      )
+      // Drop: press Space on both handle and row for compatibility
+      dispatchKey(handle, " ", "Space", 32)
+      dispatchKey(rowEl, " ", "Space", 32)
       await this.sleep(300)
     }
+  }
+
+  private getRowWord(row: HTMLElement): string {
+    const inputs = this.$$("input", row) as HTMLInputElement[]
+    return inputs
+      .map((input) => input.value || "")
+      .join("")
+      .trim()
+      .toUpperCase()
   }
 
   /**
