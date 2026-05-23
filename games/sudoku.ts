@@ -20,40 +20,138 @@ export class SudokuSolver extends BaseSolver {
     );
   }
 
-  async solve(): Promise<void> {
+  async solve(mode: "full" | "hint" = "full"): Promise<void> {
     const N = this.inferN();
-    const original = this.parseBoard(N);
     const regionInfo = this.inferRegions(N);
 
     console.log(`[Sudoku] Detected ${N}x${N} board. Region method: ${regionInfo.kind}`);
     console.log(`[Sudoku] Region count: ${regionInfo.regions}`);
 
-    const solved = this.cloneBoard(original);
+    // Parse only the original/locked given clues to ensure we solve the correct, pristine puzzle
+    const givenGrid = this.parseGivenBoard(N);
+    const solved = this.cloneBoard(givenGrid);
     const ok = this.solveMRV(solved, regionInfo.map);
 
     if (!ok) {
-      console.table(original);
+      console.table(givenGrid);
       throw new Error("No Sudoku solution found! (Could be a parsing mismatch or region inference error.)");
     }
 
     console.log("[Sudoku] Solved grid successfully!");
     console.table(solved);
 
-    // Fill cells
+    if (mode === "hint") {
+      const errorCells: HTMLElement[] = [];
+      const userPlaced = Array.from({ length: N }, () => Array<number>(N).fill(0));
+
+      // 1. Scan the board to check all user-placed inputs
+      for (let idx = 0; idx < N * N; idx++) {
+        const r = Math.floor(idx / N);
+        const c = idx % N;
+        const cell = this.$(`[data-cell-idx="${idx}"]`);
+        if (!cell) continue;
+
+        const isGiven =
+          cell.getAttribute("aria-disabled") === "true" ||
+          cell.classList.contains("sudoku-cell--given") ||
+          cell.className.includes("given");
+
+        if (!isGiven) {
+          const text = (cell.innerText || cell.textContent || "").trim();
+          const match = text.match(/\b([1-9][0-9]*)\b/);
+          const v = match ? Number(match[1]) : 0;
+
+          if (v !== 0) {
+            userPlaced[r][c] = v;
+            // If the user's filled digit does not match the solution, it's a mistake!
+            if (v !== solved[r][c]) {
+              errorCells.push(cell);
+            }
+          }
+        }
+      }
+
+      // 2. If errors exist, flash them red and stop
+      if (errorCells.length > 0) {
+        for (const cell of errorCells) {
+          cell.style.transition = "background-color 200ms, outline 200ms, border-color 200ms";
+          cell.style.backgroundColor = "rgba(220, 38, 38, 0.4)"; // Tailwind red-600
+          cell.style.outline = "2px solid #ef4444";
+          cell.style.outlineOffset = "-2px";
+          cell.style.borderColor = "#dc2626";
+
+          setTimeout(() => {
+            cell.style.backgroundColor = "";
+            cell.style.outline = "";
+            cell.style.outlineOffset = "";
+            cell.style.borderColor = "";
+          }, 3500);
+        }
+        throw new Error("Mistake detected! Correct the highlighted cell(s) first.");
+      }
+
+      // 3. Find the first empty cell and fill it with its correct digit
+      let placedHint = false;
+      for (let idx = 0; idx < N * N; idx++) {
+        const r = Math.floor(idx / N);
+        const c = idx % N;
+
+        if (givenGrid[r][c] === 0 && userPlaced[r][c] === 0) {
+          const val = solved[r][c];
+          if (val) {
+            console.log(`[Sudoku] Placing a single hint digit ${val} at cell index: ${idx}`);
+            await this.fillCell(idx, val);
+            placedHint = true;
+            break; // Stop after a single hint placement!
+          }
+        }
+      }
+
+      if (!placedHint) {
+        console.log("[Sudoku] All cell values are already correctly placed!");
+      }
+    } else {
+      // Full Auto-Solve Mode: Place all missing solution digits
+      const originalCurrent = this.parseBoard(N);
+      for (let idx = 0; idx < N * N; idx++) {
+        const r = Math.floor(idx / N);
+        const c = idx % N;
+
+        if (originalCurrent[r][c] !== 0) continue; // Skip existing numbers
+
+        const val = solved[r][c];
+        if (!val) continue;
+
+        await this.fillCell(idx, val);
+        await this.sleep(35);
+      }
+    }
+
+    console.log("[Sudoku] Done solving!");
+  }
+
+  private parseGivenBoard(N: number): number[][] {
+    const b = Array.from({ length: N }, () => Array<number>(N).fill(0));
     for (let idx = 0; idx < N * N; idx++) {
       const r = Math.floor(idx / N);
       const c = idx % N;
 
-      if (original[r][c] !== 0) continue; // Skip initial values
+      const cell = this.$(`[data-cell-idx="${idx}"]`);
+      if (!cell) continue;
 
-      const val = solved[r][c];
-      if (!val) continue;
+      const isGiven =
+        cell.getAttribute("aria-disabled") === "true" ||
+        cell.classList.contains("sudoku-cell--given") ||
+        cell.className.includes("given");
 
-      await this.fillCell(idx, val);
-      await this.sleep(35);
+      if (isGiven) {
+        const text = (cell.innerText || cell.textContent || "").trim();
+        const match = text.match(/\b([1-9][0-9]*)\b/);
+        const v = match ? Number(match[1]) : 0;
+        b[r][c] = v >= 1 && v <= N ? v : 0;
+      }
     }
-
-    console.log("[Sudoku] Done solving!");
+    return b;
   }
 
   private inferN(): number {

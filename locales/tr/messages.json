@@ -427,5 +427,53 @@
   "markAsNotPlayed": {
     "message": "Oynanmadı Olarak İşaretle",
     "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Çözme Hızı / Gecikme",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Anında (En Hızlı)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Standart)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Gizli Mod (İnsansı gecikmeler)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "ÇÖZME HIZI VE ZAMANLAMA",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Anında modu panoyu milisaniyeler içinde tamamlar. Gizli mod, otomatik tespit işaretlerini önlemek ve serinizi korumak için rastgele zamanlamalı (1-3 saniye) insansı davranışları taklit eder.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "İpucu Al",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Varsayılan Çözme Eylemi",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Tam Otomatik Çözüm",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Eğitici İpucu Modu",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "VARSAYILAN ÇÖZÜCÜ MODU",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Uzantı kartından veya oyun tablalarından çözücüyü tetiklerken varsayılan birincil eylemi seçin. Tam Çözüm oyunu bitirir; İpucu Modu tek bir doğru öğe yerleştirir.",
+    "description": "Notice for solver action mode choices"
   }
 }

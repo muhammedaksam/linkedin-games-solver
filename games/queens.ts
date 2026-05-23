@@ -25,7 +25,7 @@ export class QueensSolver extends BaseSolver {
     );
   }
 
-  async solve(): Promise<void> {
+  async solve(mode: "full" | "hint" = "full"): Promise<void> {
     // Reset per-board caches
     QueensSolver._commonClasses = null;
 
@@ -42,18 +42,70 @@ export class QueensSolver extends BaseSolver {
       );
     }
 
-    const solution = this.solveQueens(N, regionOf, givenQueens);
+    // Solve from absolute scratch (empty given set) to get the true unique board solution
+    const solution = this.solveQueens(N, regionOf, new Set<number>());
     if (!solution) {
       throw new Error("No solution found (or region detection mismatch).");
     }
 
     console.log("[Queens] Solution coordinates:", Array.from(solution).sort((a, b) => a - b));
 
-    // Place Queens
-    for (const idx of solution) {
-      await this.setQueenUI(idx);
-      // Small delay to let the UI register the state snappily
-      await this.sleep(60);
+    if (mode === "hint") {
+      // 1. Gather all current user-placed Queens on the grid
+      const userQueens = new Set<number>();
+      const errorCells: HTMLElement[] = [];
+
+      for (let idx = 0; idx < N * N; idx++) {
+        const el = this.$(`[data-testid="cell-${idx}"][data-cell-idx="${idx}"]`);
+        if (el && this.readCellState(el) === 1) {
+          userQueens.add(idx);
+          // If this Queen is not in the true solution, it's a mistake!
+          if (!solution.has(idx)) {
+            errorCells.push(el);
+          }
+        }
+      }
+
+      // 2. If there are incorrect choices, flash them red and report the error
+      if (errorCells.length > 0) {
+        for (const el of errorCells) {
+          el.style.transition = "background-color 200ms, outline 200ms, border-color 200ms";
+          el.style.backgroundColor = "rgba(220, 38, 38, 0.4)"; // Tailwind red-600
+          el.style.outline = "2px solid #ef4444";
+          el.style.outlineOffset = "-2px";
+          el.style.borderColor = "#dc2626";
+
+          setTimeout(() => {
+            el.style.backgroundColor = "";
+            el.style.outline = "";
+            el.style.outlineOffset = "";
+            el.style.borderColor = "";
+          }, 3500);
+        }
+        throw new Error("Mistake detected! Correct the highlighted cell(s) first.");
+      }
+
+      // 3. Find the first solution coordinate that doesn't have a Queen yet
+      let placedHint = false;
+      for (const idx of solution) {
+        if (!userQueens.has(idx)) {
+          console.log(`[Queens] Placing a single hint Queen at coordinate: ${idx}`);
+          await this.setQueenUI(idx);
+          placedHint = true;
+          break; // Stop after one hint placement!
+        }
+      }
+
+      if (!placedHint) {
+        console.log("[Queens] All queens are already correctly placed!");
+      }
+    } else {
+      // Full Auto-Solve Mode: Place all missing solution Queens
+      for (const idx of solution) {
+        await this.setQueenUI(idx);
+        // Small delay to let the UI register the state snappily
+        await this.sleep(60);
+      }
     }
 
     console.log("[Queens] Done solving!");

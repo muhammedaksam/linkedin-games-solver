@@ -1,3 +1,9 @@
+import { Storage } from "@plasmohq/storage"
+
+const baseStorage = new Storage({
+  area: "local"
+})
+
 export abstract class BaseSolver {
   abstract readonly name: string;
 
@@ -9,7 +15,7 @@ export abstract class BaseSolver {
   /**
    * Solves the active game on the page and fills the UI.
    */
-  abstract solve(): Promise<void>;
+  abstract solve(mode?: "full" | "hint"): Promise<void>;
 
   /**
    * Helper to query a single element.
@@ -26,10 +32,22 @@ export abstract class BaseSolver {
   }
 
   /**
-   * Timing helper.
+   * Timing helper that respects the solve speed settings in storage.
    */
-  protected sleep(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  protected async sleep(ms: number): Promise<void> {
+    try {
+      const speed = (await baseStorage.get<string>("solveSpeed")) || "normal";
+      let actualMs = ms;
+      if (speed === "instant") {
+        actualMs = 2; // Minimal sleep to let the DOM paint/register events
+      } else if (speed === "stealth") {
+        // Emulate human pacing by magnifying standard delay and adding random offset
+        actualMs = ms * 15 + Math.floor(Math.random() * 800) + 400;
+      }
+      return new Promise((resolve) => setTimeout(resolve, actualMs));
+    } catch {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
   }
 
   /**

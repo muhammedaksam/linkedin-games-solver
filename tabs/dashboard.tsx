@@ -10,6 +10,7 @@ import {
   Eye,
   EyeOff,
   Flame,
+  Gauge,
   Key,
   Moon,
   Settings,
@@ -173,6 +174,22 @@ export default function Dashboard() {
     ""
   )
 
+  const [solveSpeed, setSolveSpeed] = useStorage<string>(
+    {
+      key: "solveSpeed",
+      instance: localStorage
+    },
+    "normal"
+  )
+
+  const [defaultSolveMode, setDefaultSolveMode] = useStorage<string>(
+    {
+      key: "defaultSolveMode",
+      instance: localStorage
+    },
+    "full"
+  )
+
   const [geminiApiKey, setGeminiApiKey] = useStorage<string>(
     {
       key: "geminiApiKey",
@@ -204,12 +221,20 @@ export default function Dashboard() {
   // Track settings modification to trigger auto-saved notification
   useEffect(() => {
     if (hasChanged) {
-      const _deps = [aiProvider, aiModel, aiApiKey, aiCustomEndpoint]
+      const _deps = [aiProvider, aiModel, aiApiKey, aiCustomEndpoint, solveSpeed, defaultSolveMode]
       setSaveStatus(getMessage("settingsAutoSavedNotification"))
       const t = setTimeout(() => setSaveStatus(null), 2500)
       return () => clearTimeout(t)
     }
-  }, [hasChanged, aiProvider, aiModel, aiApiKey, aiCustomEndpoint])
+  }, [
+    hasChanged,
+    aiProvider,
+    aiModel,
+    aiApiKey,
+    aiCustomEndpoint,
+    solveSpeed,
+    defaultSolveMode
+  ])
 
   // Prevent showing "saved" on initial load
   useEffect(() => {
@@ -935,6 +960,80 @@ export default function Dashboard() {
                         <Eye className="w-4 h-4" />
                       )}
                     </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-[1px] bg-border/40 my-1" />
+
+              {/* Section 2: Pacing & Solve Speed */}
+              <div className="space-y-5 pt-1">
+                <div className="flex items-center gap-2.5 border-b border-border pb-2.5">
+                  <Gauge className="w-4.5 h-4.5 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
+                    {getMessage("labelSolveSpeed")}
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Solving Speed Selector */}
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                      {getMessage("settingSolveSpeed")}
+                    </span>
+                    <Select
+                      value={solveSpeed || "normal"}
+                      onValueChange={(val) => setSolveSpeed(val)}>
+                      <SelectTrigger className="w-full text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
+                        <SelectValue placeholder="Select Speed">
+                          {solveSpeed === "instant" && getMessage("solveSpeed_instant")}
+                          {solveSpeed === "normal" && getMessage("solveSpeed_normal")}
+                          {solveSpeed === "stealth" && getMessage("solveSpeed_stealth")}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="instant">
+                          {getMessage("solveSpeed_instant")}
+                        </SelectItem>
+                        <SelectItem value="normal">
+                          {getMessage("solveSpeed_normal")}
+                        </SelectItem>
+                        <SelectItem value="stealth">
+                          {getMessage("solveSpeed_stealth")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <p className="text-[9px] text-muted-foreground leading-normal mt-1">
+                      {getMessage("settingSolveSpeedNotice")}
+                    </p>
+                  </div>
+
+                  {/* Default Solve Action Selector */}
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                      {getMessage("settingDefaultSolveMode")}
+                    </span>
+                    <Select
+                      value={defaultSolveMode || "full"}
+                      onValueChange={(val) => setDefaultSolveMode(val)}>
+                      <SelectTrigger className="w-full text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
+                        <SelectValue placeholder="Select Default Action">
+                          {defaultSolveMode === "full" && getMessage("solveMode_full")}
+                          {defaultSolveMode === "hint" && getMessage("solveMode_hint")}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="full">
+                          {getMessage("solveMode_full")}
+                        </SelectItem>
+                        <SelectItem value="hint">
+                          {getMessage("solveMode_hint")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <p className="text-[9px] text-muted-foreground leading-normal mt-1">
+                      {getMessage("settingDefaultSolveModeNotice")}
+                    </p>
                   </div>
                 </div>
               </div>

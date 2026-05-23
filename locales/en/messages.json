@@ -427,5 +427,53 @@
   "markAsNotPlayed": {
     "message": "Mark as Not Played",
     "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Solving Speed / Delay",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Instant (Fastest)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Standard)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Stealth Mode (Human-like delays)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "SOLVING SPEED & PACING",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Instant mode completes the board in milliseconds. Stealth mode mimics human behavior with randomized pacing (1–3 seconds) to secure streaks against automated detection.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Get Hint",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Default Solver Action",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Full Auto-Solve",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Educational Hint Mode",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "DEFAULT SOLVER MODE",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Select the primary action when triggering the solver from tab view or boards. Full Solve finishes the game; Hint Mode places one correct item.",
+    "description": "Notice for solver action mode choices"
   }
 }

@@ -1,5 +1,5 @@
 import styleText from "data-text:~popup.css"
-import { AlertCircle, CheckCircle2, Loader2, Sparkles } from "lucide-react"
+import { AlertCircle, CheckCircle2, Lightbulb, Loader2, Sparkles } from "lucide-react"
 import type {
   PlasmoCSConfig,
   PlasmoGetInlineAnchor,
@@ -346,6 +346,7 @@ const messageListener = (
 
   if (message.action === "solve") {
     const currentActive = detectActiveSolver()
+    const mode = (message as { mode?: "full" | "hint" }).mode || "full"
 
     if (globalSolving) {
       console.log(
@@ -369,7 +370,7 @@ const messageListener = (
     }
 
     console.log(
-      `[LinkedIn Games Solver] Executing solver for: ${currentActive.name}`
+      `[LinkedIn Games Solver] Executing solver for: ${currentActive.name} (mode: ${mode})`
     )
     globalSolving = true
     setReactSolving?.(true)
@@ -378,16 +379,18 @@ const messageListener = (
 
     const startTime = Date.now()
     currentActive
-      .solve()
+      .solve(mode)
       .then(async () => {
         console.log(
           `[LinkedIn Games Solver] Solver ${currentActive.name} completed successfully.`
         )
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-        await saveGameCompleted(
-          currentActive.name.toLowerCase(),
-          durationSeconds
-        )
+        if (mode !== "hint") {
+          await saveGameCompleted(
+            currentActive.name.toLowerCase(),
+            durationSeconds
+          )
+        }
         setReactSuccess?.(true)
         sendResponse({
           success: true,
@@ -590,7 +593,8 @@ const getLocalizedStrings = (activeGame: string) => {
       ? (hasI18n ? getMessage("solveBtn_withAi") : "") || "Solve with AI"
       : (hasI18n ? getMessage("solveBtn_game") : "") || "Solve Game",
     solving: (hasI18n ? getMessage("solveBtn_solving") : "") || "Solving...",
-    solved: (hasI18n ? getMessage("solveBtn_solved") : "") || "Solved!"
+    solved: (hasI18n ? getMessage("solveBtn_solved") : "") || "Solved!",
+    hint: (hasI18n ? getMessage("solveBtn_hint") : "") || "Get Hint"
   }
 }
 
@@ -610,6 +614,14 @@ const GameSolverUI = () => {
       instance: storage
     },
     {}
+  )
+
+  const [defaultSolveMode] = useStorage<string>(
+    {
+      key: "defaultSolveMode",
+      instance: storage
+    },
+    "full"
   )
 
   const [activeGame, setActiveGame] = useState<string | null>(null)
@@ -659,7 +671,7 @@ const GameSolverUI = () => {
   const dateKey = getLocalDateString()
   const isCompleted = !!solveHistory?.[dateKey]?.[activeGame]?.solved
 
-  const handleSolve = async () => {
+  const handleSolve = async (mode: "full" | "hint" = "full") => {
     if (solving) return
 
     const currentActive = detectActiveSolver()
@@ -674,13 +686,15 @@ const GameSolverUI = () => {
     setSolveSuccess(false)
 
     console.log(
-      `[LinkedIn Games Solver UI] Solving active board for: ${currentActive.name}`
+      `[LinkedIn Games Solver UI] Solving active board for: ${currentActive.name} (mode: ${mode})`
     )
     const startTime = Date.now()
     try {
-      await currentActive.solve()
-      const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-      await saveGameCompleted(currentActive.name.toLowerCase(), durationSeconds)
+      await currentActive.solve(mode)
+      if (mode !== "hint") {
+        const durationSeconds = Math.round((Date.now() - startTime) / 1000)
+        await saveGameCompleted(currentActive.name.toLowerCase(), durationSeconds)
+      }
       setSolveSuccess(true)
     } catch (err) {
       const errMsg = err instanceof Error ? err.message : String(err)
@@ -700,7 +714,7 @@ const GameSolverUI = () => {
   const strings = getLocalizedStrings(activeGame)
 
   return (
-    <div className={cn(theme, "relative flex items-center justify-center h-8")}>
+    <div className={cn(theme, "relative flex items-center justify-center gap-2 h-8")}>
       {isCompleted ? (
         <button
           type="button"
@@ -719,18 +733,59 @@ const GameSolverUI = () => {
           <span>{strings.solving}</span>
         </button>
       ) : (
-        <button
-          type="button"
-          onClick={handleSolve}
-          className="solver-btn solver-btn-active"
-          title={
-            activeGame === "crossclimb" || activeGame === "pinpoint"
-              ? "Solve this puzzle automatically using AI solver."
-              : "Solve this puzzle using algorithmic steps."
-          }>
-          <Sparkles className="solver-icon" />
-          <span>{strings.solve}</span>
-        </button>
+        <>
+          {defaultSolveMode === "hint" ? (
+            <>
+              <button
+                type="button"
+                onClick={() => handleSolve("hint")}
+                className="solver-btn solver-btn-active"
+                title="Get a hint for the next single move or check for errors.">
+                <Lightbulb className="solver-icon" />
+                <span>{strings.hint}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSolve("full")}
+                className="solver-btn solver-btn-active"
+                style={{ opacity: 0.7 }}
+                title={
+                  activeGame === "crossclimb" || activeGame === "pinpoint"
+                    ? "Solve this puzzle automatically using AI solver."
+                    : "Solve this puzzle using algorithmic steps."
+                }>
+                <Sparkles className="solver-icon" />
+                <span>{strings.solve}</span>
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => handleSolve("full")}
+                className="solver-btn solver-btn-active"
+                title={
+                  activeGame === "crossclimb" || activeGame === "pinpoint"
+                    ? "Solve this puzzle automatically using AI solver."
+                    : "Solve this puzzle using algorithmic steps."
+                }>
+                <Sparkles className="solver-icon" />
+                <span>{strings.solve}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSolve("hint")}
+                className="solver-btn solver-btn-active"
+                style={{ opacity: 0.7 }}
+                title="Get a hint for the next single move or check for errors.">
+                <Lightbulb className="solver-icon" />
+                <span>{strings.hint}</span>
+              </button>
+            </>
+          )}
+        </>
       )}
 
       {/* Elegant absolute-positioned floating error tooltip */}

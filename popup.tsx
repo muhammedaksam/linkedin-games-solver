@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   Eye,
   EyeOff,
+  Gauge,
   Home,
   Key,
   Moon,
@@ -176,6 +177,22 @@ function IndexPopup() {
     ""
   )
 
+  const [solveSpeed, setSolveSpeed] = useStorage<string>(
+    {
+      key: "solveSpeed",
+      instance: localStorage
+    },
+    "normal"
+  )
+
+  const [defaultSolveMode, setDefaultSolveMode] = useStorage<string>(
+    {
+      key: "defaultSolveMode",
+      instance: localStorage
+    },
+    "full"
+  )
+
   // Backward compatibility migration: copy legacy key if set
   useEffect(() => {
     if (geminiApiKey && !aiApiKey && aiProvider === "gemini") {
@@ -332,7 +349,7 @@ function IndexPopup() {
 
     chrome.tabs.sendMessage(
       tab.id,
-      { action: "solve", game: gameId },
+      { action: "solve", game: gameId, mode: defaultSolveMode },
       (res) => {
         setSolving(false)
 
@@ -656,6 +673,76 @@ function IndexPopup() {
                     )}
                   </button>
                 </div>
+              </div>
+            </div>
+
+            <div className="h-[1px] bg-border/40 my-2" />
+
+            <div className="space-y-4 pt-1">
+              <div className="flex items-center gap-2 border-b border-border/60 pb-1.5">
+                <Gauge className="w-3.5 h-3.5 text-[#0a66c2] dark:text-[#70b5f9]" />
+                <h4 className="text-xs font-bold text-foreground block tracking-wide uppercase">
+                  {getMessage("labelSolveSpeed")}
+                </h4>
+              </div>
+
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                  {getMessage("settingSolveSpeed")}
+                </span>
+                <Select
+                  value={solveSpeed || "normal"}
+                  onValueChange={(val) => setSolveSpeed(val)}>
+                  <SelectTrigger className="w-full text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
+                    <SelectValue placeholder="Select Solving Speed">
+                      {solveSpeed === "instant" && getMessage("solveSpeed_instant")}
+                      {solveSpeed === "normal" && getMessage("solveSpeed_normal")}
+                      {solveSpeed === "stealth" && getMessage("solveSpeed_stealth")}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="instant">
+                      {getMessage("solveSpeed_instant")}
+                    </SelectItem>
+                    <SelectItem value="normal">
+                      {getMessage("solveSpeed_normal")}
+                    </SelectItem>
+                    <SelectItem value="stealth">
+                      {getMessage("solveSpeed_stealth")}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="text-[8px] text-muted-foreground leading-normal mt-1">
+                  {getMessage("settingSolveSpeedNotice")}
+                </p>
+              </div>
+
+              {/* Default Solver Action */}
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold text-muted-foreground block tracking-wider">
+                  {getMessage("settingDefaultSolveMode")}
+                </span>
+                <Select
+                  value={defaultSolveMode || "full"}
+                  onValueChange={(val) => setDefaultSolveMode(val)}>
+                  <SelectTrigger className="w-full text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] justify-between">
+                    <SelectValue placeholder="Select Default Solver Action">
+                      {defaultSolveMode === "full" && getMessage("solveMode_full")}
+                      {defaultSolveMode === "hint" && getMessage("solveMode_hint")}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="full">
+                      {getMessage("solveMode_full")}
+                    </SelectItem>
+                    <SelectItem value="hint">
+                      {getMessage("solveMode_hint")}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="text-[8px] text-muted-foreground leading-normal mt-1">
+                  {getMessage("settingDefaultSolveModeNotice")}
+                </p>
               </div>
             </div>
 
