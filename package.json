@@ -14,7 +14,7 @@
     "dev": "plasmo dev",
     "build": "plasmo build",
     "package": "plasmo package",
-    "generate:store-assets": "node scripts/generate-store-assets.mjs"
+    "generate:store-assets": "tsx scripts/generate-store-assets.ts"
   },
   "dependencies": {
     "@plasmohq/storage": "^1.15.0",
@@ -43,6 +43,7 @@
     "puppeteer": "^25.0.4",
     "tailwindcss": "^3.4.19",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.22.3",
     "typescript": "5.3.3"
   },
   "manifest": {

@@ -32,17 +32,17 @@ const gameIcons = [
   "sudoku",
   "zip",
   "patches"
-]
+] as const
 
-function q(value) {
+function q(value: string | number | boolean): string {
   return `'${String(value).replace(/'/g, `'"'"'`)}` + "'"
 }
 
-function run(command) {
+function run(command: string): void {
   execSync(command, { stdio: "inherit" })
 }
 
-function hasTool(name) {
+function hasTool(name: string): boolean {
   try {
     execFileSync("which", [name], { stdio: "ignore" })
     return true
@@ -51,7 +51,7 @@ function hasTool(name) {
   }
 }
 
-function ensureTool(name) {
+function ensureTool(name: string): void {
   if (!hasTool(name)) {
     throw new Error(
       `Required tool '${name}' is not installed or not available in PATH.`
@@ -59,15 +59,15 @@ function ensureTool(name) {
   }
 }
 
-function resolveImageMagickCmd() {
+function resolveImageMagickCmd(): string {
   return hasTool("magick") ? "magick" : "convert"
 }
 
-function ensureDir(dirPath) {
+function ensureDir(dirPath: string): void {
   mkdirSync(dirPath, { recursive: true })
 }
 
-function renderSvg(svgPath, pngPath, width, height) {
+function renderSvg(svgPath: string, pngPath: string, width: number, height: number): void {
   execFileSync(
     "rsvg-convert",
     ["-w", String(width), "-h", String(height), "-o", pngPath, svgPath],
@@ -80,35 +80,44 @@ function renderSvg(svgPath, pngPath, width, height) {
 const imageMagickCmd = resolveImageMagickCmd()
 
 // --- Locale Utility Helpers ---
-function readLocaleMessages(locale) {
+interface LocaleMessage {
+  message?: string
+  description?: string
+}
+
+interface LocaleMessages {
+  [key: string]: LocaleMessage | undefined
+}
+
+function readLocaleMessages(locale: string): LocaleMessages {
   const localeFile = path.join(localesDir, locale, "messages.json")
   if (!existsSync(localeFile)) {
     return {}
   }
   try {
-    return JSON.parse(readFileSync(localeFile, "utf8"))
+    return JSON.parse(readFileSync(localeFile, "utf8")) as LocaleMessages
   } catch {
     return {}
   }
 }
 
-function getMessageValue(messages, key) {
+function getMessageValue(messages: LocaleMessages, key: string): string {
   const value = messages?.[key]?.message
   return typeof value === "string" ? value : ""
 }
 
-function cleanText(value) {
+function cleanText(value: string): string {
   return value.replace(/\s+/g, " ").trim()
 }
 
-function truncateText(value, maxLength) {
+function truncateText(value: string, maxLength: number): string {
   if (value.length <= maxLength) {
     return value
   }
   return `${value.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`
 }
 
-function resolveFontPathForLocale(locale) {
+function resolveFontPathForLocale(locale: string): string {
   if (!locale.toLowerCase().startsWith("zh")) {
     return ""
   }
@@ -125,7 +134,21 @@ function resolveFontPathForLocale(locale) {
 }
 
 // --- Mock Solve History Generator ---
-function getLocalDateString(offsetDays = 0) {
+interface GameSolveInfo {
+  solved: boolean
+  solvedAt?: string
+  time: number
+}
+
+interface DaySolveInfo {
+  [game: string]: GameSolveInfo
+}
+
+interface SolveHistory {
+  [date: string]: DaySolveInfo
+}
+
+function getLocalDateString(offsetDays: number = 0): string {
   const d = new Date(Date.now() - offsetDays * 24 * 60 * 60 * 1000)
   const year = d.getFullYear()
   const month = String(d.getMonth() + 1).padStart(2, "0")
@@ -133,7 +156,7 @@ function getLocalDateString(offsetDays = 0) {
   return `${year}-${month}-${day}`
 }
 
-function generateMockSolveHistory() {
+function generateMockSolveHistory(): SolveHistory {
   const todayStr = getLocalDateString(0)
   const yesterdayStr = getLocalDateString(1)
   const dayBeforeStr = getLocalDateString(2)
@@ -254,11 +277,8 @@ function generateMockSolveHistory() {
 }
 
 // Generate active progress history (today partially solved)
-function generateMockActiveHistory() {
+function generateMockActiveHistory(): SolveHistory {
   const todayStr = getLocalDateString(0)
-  const yesterdayStr = getLocalDateString(1)
-  const dayBeforeStr = getLocalDateString(2)
-
   const base = generateMockSolveHistory()
 
   base[todayStr] = {
@@ -301,7 +321,7 @@ function generateMockActiveHistory() {
 }
 
 // Render SVGs to temporary PNGs for composite use
-function prepIconRenders() {
+function prepIconRenders(): void {
   ensureDir(tmpDir)
 
   renderSvg(
@@ -352,7 +372,7 @@ function prepIconRenders() {
 }
 
 // Generate the 128x128 store icon
-function generateStoreIcon() {
+function generateStoreIcon(): void {
   const output = path.join(outDir, "store-icon-128.png")
 
   run(
@@ -371,7 +391,7 @@ function generateStoreIcon() {
 }
 
 // Generate 440x280 small promo tile
-function generatePromoSmall() {
+function generatePromoSmall(): void {
   const output = path.join(outDir, "global", "small-promo-440x280.jpg")
   const screenshotPath = path.join(globalScreenshotsDir, "screenshot-1.jpg")
 
@@ -499,7 +519,7 @@ function generatePromoSmall() {
 }
 
 // Generate 1400x560 marquee promo tile
-function generatePromoMarquee() {
+function generatePromoMarquee(): void {
   const output = path.join(outDir, "global", "marquee-promo-1400x560.jpg")
   const popupPath = path.join(globalScreenshotsDir, "screenshot-1.jpg")
   const dashboardPath = path.join(globalScreenshotsDir, "screenshot-3.jpg")
@@ -663,7 +683,7 @@ function generatePromoMarquee() {
 }
 
 // --- Puppeteer Screenshot Engine ---
-async function captureScreenshots(locale = "en") {
+async function captureScreenshots(locale: string = "en"): Promise<void> {
   console.log(`\nGenerating screenshots for locale: [${locale.toUpperCase()}]`)
 
   if (!existsSync(buildDir)) {
@@ -709,9 +729,9 @@ async function captureScreenshots(locale = "en") {
 
     const perfectHistory = generateMockSolveHistory()
     await page.evaluate(
-      (historyData, loc) => {
+      (historyData: SolveHistory, loc: string) => {
         localStorage.setItem("user-locale", loc)
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           chrome.storage.local.set(
             {
               theme: "dark",
@@ -731,7 +751,7 @@ async function captureScreenshots(locale = "en") {
     await page.reload({ waitUntil: "networkidle2" })
     await page.setViewport({ width: 1280, height: 800 })
 
-    await page.evaluate((loc) => {
+    await page.evaluate((loc: string) => {
       const originalContent = document.body.innerHTML
       document.body.innerHTML = ""
 
@@ -755,7 +775,7 @@ async function captureScreenshots(locale = "en") {
       titleWrapper.style.marginBottom = "24px"
       titleWrapper.style.color = "#ffffff"
 
-      const extensionNameMap = {
+      const extensionNameMap: Record<string, string> = {
         en: "LinkedIn Games Solver",
         tr: "LinkedIn Oyun Çözücü",
         es: "Solucionador de Juegos de LinkedIn",
@@ -766,7 +786,7 @@ async function captureScreenshots(locale = "en") {
         zh_CN: "LinkedIn 游戏求解器",
         zh_TW: "LinkedIn 遊戲助手"
       }
-      const subtitleMap = {
+      const subtitleMap: Record<string, string> = {
         en: "Power up your workday puzzles with premium AI reasoning",
         tr: "Gelişmiş yapay zeka ile günlük bulmacalarınızı tek tıkla çözün",
         es: "Resuelva sus acertijos diarios con IA de primera calidad",
@@ -841,9 +861,9 @@ async function captureScreenshots(locale = "en") {
 
     const activeHistory = generateMockActiveHistory()
     await page.evaluate(
-      (historyData, loc) => {
+      (historyData: SolveHistory, loc: string) => {
         localStorage.setItem("user-locale", loc)
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           chrome.storage.local.set(
             {
               theme: "dark",
@@ -862,7 +882,7 @@ async function captureScreenshots(locale = "en") {
 
     await page.evaluate(() => {
       if (typeof chrome !== "undefined" && chrome.tabs) {
-        chrome.tabs.sendMessage = (tabId, msg, cb) => {
+        (chrome.tabs as any).sendMessage = (tabId: number, msg: any, cb: (response: any) => void) => {
           if (msg && msg.action === "detectGame") {
             setTimeout(() => cb({ game: "sudoku" }), 30)
           } else {
@@ -875,7 +895,7 @@ async function captureScreenshots(locale = "en") {
     await page.reload({ waitUntil: "networkidle2" })
     await page.setViewport({ width: 1280, height: 800 })
 
-    await page.evaluate((loc) => {
+    await page.evaluate((loc: string) => {
       const originalContent = document.body.innerHTML
       document.body.innerHTML = ""
 
@@ -899,7 +919,7 @@ async function captureScreenshots(locale = "en") {
       titleWrapper.style.marginBottom = "24px"
       titleWrapper.style.color = "#ffffff"
 
-      const tagMap = {
+      const tagMap: Record<string, string> = {
         en: "NATIVE INTEGRATION",
         tr: "DOĞAL ENTEGRASYON",
         es: "INTEGRACIÓN NATIVA",
@@ -910,11 +930,11 @@ async function captureScreenshots(locale = "en") {
         zh_CN: "原生集成",
         zh_TW: "原生內嵌整合"
       }
-      const subtitleMap = {
+      const subtitleMap: Record<string, string> = {
         en: "Detects open LinkedIn boards and solves them right on the screen",
         tr: "Açık olan LinkedIn panolarını anında tespit eder ve ekranda çözer",
         es: "Detecta los tableros de LinkedIn abiertos y los resuelve directamente",
-        fr: "Détecte les plateaux LinkedIn ouverts et les résout sur l'écran",
+        fr: "Detecte les plateaux LinkedIn ouverts et les résout sur l'écran",
         pt_BR: "Detecta tabuleiros abertos do LinkedIn e os resolve diretamente na tela",
         pt_PT: "Deteta tabuleiros abertos do LinkedIn e resolve-os diretamente no ecrã",
         de: "Erkennt geöffnete LinkedIn-Spiele und löst sie direkt auf dem Bildschirm",
@@ -984,9 +1004,9 @@ async function captureScreenshots(locale = "en") {
     await page.goto(dashboardUrl, { waitUntil: "networkidle2" })
 
     await page.evaluate(
-      (historyData, loc) => {
+      (historyData: SolveHistory, loc: string) => {
         localStorage.setItem("user-locale", loc)
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           chrome.storage.local.set(
             {
               theme: "dark",
@@ -1020,9 +1040,9 @@ async function captureScreenshots(locale = "en") {
     await page.goto(dashboardUrl, { waitUntil: "networkidle2" })
 
     await page.evaluate(
-      (historyData, loc) => {
+      (historyData: SolveHistory, loc: string) => {
         localStorage.setItem("user-locale", loc)
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           chrome.storage.local.set(
             {
               theme: "dark",
@@ -1058,15 +1078,15 @@ async function captureScreenshots(locale = "en") {
       const settingsBtn = buttons.find(
         (b) =>
           b.querySelector("svg.lucide-settings") ||
-          b.textContent.includes("AI Config") ||
-          b.textContent.includes("Options") ||
-          b.textContent.includes("Optionen") ||
-          b.textContent.includes("Einstellungen") ||
-          b.textContent.includes("Ayarlar") ||
-          b.textContent.includes("Configur") ||
-          b.textContent.includes("Configuration") ||
-          b.textContent.includes("Konfiguration") ||
-          b.textContent.includes("设置")
+          b.textContent?.includes("AI Config") ||
+          b.textContent?.includes("Options") ||
+          b.textContent?.includes("Optionen") ||
+          b.textContent?.includes("Einstellungen") ||
+          b.textContent?.includes("Ayarlar") ||
+          b.textContent?.includes("Configur") ||
+          b.textContent?.includes("Configuration") ||
+          b.textContent?.includes("Konfiguration") ||
+          b.textContent?.includes("设置")
       )
       if (settingsBtn) {
         settingsBtn.click()
@@ -1087,7 +1107,7 @@ async function captureScreenshots(locale = "en") {
 }
 
 // --- Global Social Previews Generator ---
-function generateSocialPreviews() {
+function generateSocialPreviews(): void {
   const socialDir = path.join(outDir, "social")
   ensureDir(socialDir)
 
@@ -1158,7 +1178,7 @@ function generateSocialPreviews() {
 }
 
 // --- Localized Social Previews Generator ---
-function generateLocalizedSocialPreviews() {
+function generateLocalizedSocialPreviews(): void {
   if (!existsSync(localesDir)) {
     return
   }
@@ -1253,9 +1273,9 @@ function generateLocalizedSocialPreviews() {
 }
 
 // --- Store Description Markdown Generator ---
-function generateStoreDescriptions() {
+function generateStoreDescriptions(): void {
   console.log("\nGenerating store descriptions...")
-  const descriptions = {
+  const descriptions: Record<string, string> = {
     en: `# LinkedIn Games Solver
 
 LinkedIn Games Solver is the ultimate companion for your daily LinkedIn puzzles. It instantly scans and solves your favorite games directly on the page, including Sudoku, Tango, Queens, Zip, Patches, Crossclimb, and Pinpoint. Powered by advanced local and cloud AI models (like Google Gemini, OpenAI, and Anthropic), it cracks complex trivia ladders and word associations in a blink.
@@ -1336,7 +1356,7 @@ Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desaf
 
     de: `# LinkedIn-Spielelöser
 
-LinkedIn-Spielelöser ist der ultimative Begleiter für Ihre täglichen LinkedIn-Rätsel. Er scannt und löst Ihre Lieblingsspiele wie Sudoku, Tango, Queens, Zip, Patches, Crossclimb und Pinpoint sofort direkt auf der Seite. Unterstützt durch fortschrittliche lokale und Cloud-KI-Modelle (wie Google Gemini, OpenAI und Anthropic) knackt er komplexe Trivia-Leiter und Wortassoziationen im Handumdrehen.
+LinkedIn-Spielelöser is der ultimative Begleiter für Ihre täglichen LinkedIn-Rätsel. Er scannt und löst Ihre Lieblingsspiele wie Sudoku, Tango, Queens, Zip, Patches, Crossclimb und Pinpoint sofort direkt auf der Seite. Unterstützt durch fortschrittliche lokale und Cloud-KI-Modelle (wie Google Gemini, OpenAI und Anthropic) knackt er komplexe Trivia-Leiter und Wortassoziationen im Handumdrehen.
 
 ## Warum installieren?
 * Verlieren Sie nie Ihre Serie: Halten Sie Ihre tägliche Serie aufrecht, selbst an den stressigsten Tagen oder wenn die Rätsel besonders knifflig sind.
@@ -1355,20 +1375,20 @@ LinkedIn 游戏求解器是您解决每日 LinkedIn 谜题的终极助手。它�
 * 保持您的每日连胜: 确保您的每日连胜记录，即使在最繁忙或谜题最难的日子里也绝不中断。
 * 轻松应对常识与单词挑战: 像 Crossclimb 和 Pinpoint 这类游戏需要深厚的常识储备和敏捷的联想能力。内置的人工智能能够以极高的准确度完美解答。
 * 原生无缝集成: 求解器悬浮窗直接显示在您的游戏标签页上。只需轻轻一点，解出的答案就会呈现在屏幕中。
-* 寓教于乐的提示模式 (Hint Mode): 帮助您自然地掌握解题技巧。它不会一键自动填满所有空格，而是为您指出下一步最合理的逻辑走法，并通过屏幕上的红色高亮瞬间纠正您的错误。
+* 寓教于乐的提示模式 (Hint Mode): 帮助您自然地掌握解题技巧。它不会一键自动填满所有空格，而是为您指出下一步最合理的逻辑走法，并通过屏幕上的红色高亮瞬间纠错。
 * 隐形防检测求解速度 (Stealth Mode): 模拟真实的真人点击操作行为，并在点击间加入随机、自然的延迟（1-3秒），有效保护您的每日连胜战绩免遭机器人检测。
 * 精美的数据看板: 通过现代化的日历数据面板，追踪您的求解历史、平均时间、连胜纪录以及个人最佳成绩。
 * 隐私与安全保护: 完全在您的本地浏览器中运行。您的 API 密钥安全保存在本地存储中，绝对不会被上传或分享给任何第三方。`,
 
     zh_TW: `# LinkedIn 遊戲求解器
 
-LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終極助手。它能直接在頁面上瞬間掃描並自動解開您喜愛的遊戲，包括 Sudoku (數獨)、Tango、Queens、Zip、Patches、Crossclimb 和 Pinpoint。依托先進的本地和雲端人工智慧模型（如 Google Gemini、OpenAI 和 Anthropic），它可以在轉瞬之間破解複雜的問答天梯和詞意聯想。
+LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終极助手。它能直接在頁面上瞬間掃描並自動解開您喜愛的遊戲，包括 Sudoku (數獨)、Tango、Queens、Zip、Patches、Crossclimb 和 Pinpoint。依托先進的本地和雲端人工智慧模型（如 Google Gemini、OpenAI 和 Anthropic），它可以在轉瞬之間破解複雜的問答天梯和詞意聯想。
 
 ## 為什麼選擇安裝？
 * 保持您的每日連勝: 確保您的每日連勝記錄，即使在最繁忙或謎題最難的日子里也絕不中斷。
 * 輕鬆應對常識與單字挑戰: 像 Crossclimb 和 Pinpoint 這類遊戲需要深厚的常識儲備和敏捷的聯想能力。內置的人工智慧能夠以極高的準確度完美解答。
 * 原生無縫整合: 求解器懸浮窗直接顯示在您的遊戲標籤頁上。只需輕輕一點，解出的答案就會呈現在螢幕中。
-* 寓教於樂的提示模式 (Hint Mode): 幫助您自然地掌握解題技巧。它不會一鍵自動填滿所有空格，而是為您指出下一步最合理的邏輯走法，並透過螢幕上的紅色高亮瞬間糾正您的錯誤。
+* 寓教於樂的提示模式 (Hint Mode): 幫助您自然地掌握解題技巧。它不會一键自動填滿所有空格，而是為您指出下一步最合理的邏輯走法，並透過螢幕上的紅色高亮瞬間糾正您的錯誤。
 * 隱形防檢測求解速度 (Stealth Mode): 模擬真實的真人點擊操作行為，並在點擊間加入隨機、自然的延遲（1-3秒），有效保護您的每日連勝戰績免遭機器人檢測。
 * 精美的數據看板: 透過現代化的日曆數據面板，追蹤您的求解歷史、平均時間、連勝紀錄以及個人最佳成績。
 * 隱私與安全保護: 完全在您的本地瀏覽器中運行。您的 API 金鑰安全保存在本地儲存中，絕對不會被上傳或分享給任何第三方。`
@@ -1396,7 +1416,7 @@ LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終極助手。它�
 }
 
 // --- Main Program Execution ---
-async function main() {
+async function main(): Promise<void> {
   const hasRsvg = hasTool("rsvg-convert")
   const hasMagick = hasTool(imageMagickCmd)
 
