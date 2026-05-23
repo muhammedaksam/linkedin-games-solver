@@ -51,7 +51,7 @@ function hasTool(name: string): boolean {
   }
 }
 
-function ensureTool(name: string): void {
+function _ensureTool(name: string): void {
   if (!hasTool(name)) {
     throw new Error(
       `Required tool '${name}' is not installed or not available in PATH.`
@@ -897,10 +897,10 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
 
     await page.evaluate(() => {
       if (typeof chrome !== "undefined" && chrome.tabs) {
-        ;(chrome.tabs as any).sendMessage = (
-          tabId: number,
-          msg: any,
-          cb: (response: any) => void
+        ;(chrome.tabs as Record<string, unknown>).sendMessage = (
+          _tabId: number,
+          msg: Record<string, unknown>,
+          cb: (response: unknown) => void
         ) => {
           if (msg && msg.action === "detectGame") {
             setTimeout(() => cb({ game: "sudoku" }), 30)
