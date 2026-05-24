@@ -595,5 +595,37 @@
   "debugErrorNoActiveTab": {
     "message": "No se pudo identificar la pestaña activa.",
     "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "RECORDATORIOS DIARIOS Y PROTECTOR DE RACHA",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Activar recordatorios diarios",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Avisarme antes de que expire mi racha diaria.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Hora del recordatorio",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Seleccione la hora local para verificar juegos no resueltos.",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Protector de racha 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "¡No pierdas tu racha! Aún no has resuelto los juegos de LinkedIn de hoy.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "¡Resolver ahora!",
+    "description": "Desktop notification button text"
   }
 }

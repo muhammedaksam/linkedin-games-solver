@@ -595,5 +595,37 @@
   "debugErrorNoActiveTab": {
     "message": "Não foi possível identificar o separador ativo.",
     "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "LEMBRETES DIÁRIOS E PROTETOR DE OFENSIVA",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Ativar lembretes diários",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Avisar-me antes que a minha ofensiva diária expire.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Hora do lembrete",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Selecione a hora local para verificar jogos não resolvidos.",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Protetor de ofensiva 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Não perca a sua ofensiva! Ainda não resolveu os jogos do LinkedIn de hoje.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Resolver agora!",
+    "description": "Desktop notification button text"
   }
 }

@@ -595,5 +595,37 @@
   "debugErrorNoActiveTab": {
     "message": "Der aktive Tab konnte nicht identifiziert werden.",
     "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "TÄGLICHE ERINNERUNGEN & STREAK-SCHUTZ",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Tägliche Erinnerungen aktivieren",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Warne mich, bevor meine tägliche Serie abläuft.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Erinnerungszeit",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Wählen Sie die lokale Uhrzeit, um nach ungelösten Spielen zu suchen.",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Streak-Schutz 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Verlieren Sie nicht Ihre Serie! Sie haben die heutigen LinkedIn-Spiele noch nicht gelöst.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Jetzt lösen!",
+    "description": "Desktop notification button text"
   }
 }

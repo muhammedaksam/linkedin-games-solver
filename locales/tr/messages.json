@@ -615,5 +615,17 @@
   "settingReminderTimeNotice": {
     "message": "Tamamlanmamış oyunları kontrol etmek için yerel saati seçin.",
     "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Seri Koruyucu 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Çözme serinizi kaybetmeyin! Bugünün LinkedIn oyunlarını henüz çözmediniz.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Şimdi Çöz!",
+    "description": "Desktop notification button text"
   }
 }

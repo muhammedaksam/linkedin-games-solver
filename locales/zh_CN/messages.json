@@ -595,5 +595,37 @@
   "debugErrorNoActiveTab": {
     "message": "无法识别活动标签页。",
     "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "每日提醒与连胜保护",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "启用每日提醒",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "在今日连胜过期前提醒我。",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "提醒时间",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "选择本地时间以检查未完成的游戏。",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "连胜保护器 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "不要失去你的连胜！你今天还没有解决 LinkedIn 游戏。",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "立即解决！",
+    "description": "Desktop notification button text"
   }
 }

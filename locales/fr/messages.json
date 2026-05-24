@@ -595,5 +595,37 @@
   "debugErrorNoActiveTab": {
     "message": "Impossible d'identifier l'onglet actif.",
     "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "RAPPELS QUOTIDIENS ET PROTECTEUR DE SÉRIE",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Activer les rappels quotidiens",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "M'avertir avant que ma série quotidienne n'expire.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Heure du rappel",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Sélectionnez l'heure locale pour vérifier les jeux non résolus.",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Protecteur de série 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Ne perdez pas votre série ! Vous n'avez pas encore résolu les jeux LinkedIn d'aujourd'hui.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Résoudre maintenant !",
+    "description": "Desktop notification button text"
   }
 }

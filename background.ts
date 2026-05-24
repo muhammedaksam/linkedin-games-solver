@@ -144,10 +144,16 @@ const checkAndNotifyStreak = async () => {
       chrome.notifications.create("streak-protector-reminder", {
         type: "basic",
         iconUrl: "icon.png",
-        title: "Streak Protector 🚀",
+        title:
+          chrome.i18n.getMessage("notificationTitle") || "Streak Protector 🚀",
         message:
+          chrome.i18n.getMessage("notificationMessage") ||
           "Don't lose your solving streak! You haven't solved today's LinkedIn games yet.",
-        buttons: [{ title: "Solve Now!" }],
+        buttons: [
+          {
+            title: chrome.i18n.getMessage("notificationButton") || "Solve Now!"
+          }
+        ],
         priority: 2
       })
     }

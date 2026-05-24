@@ -615,5 +615,17 @@
   "settingReminderTimeNotice": {
     "message": "Select local time to check for unsolved games.",
     "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Streak Protector 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Don't lose your solving streak! You haven't solved today's LinkedIn games yet.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Solve Now!",
+    "description": "Desktop notification button text"
   }
 }
