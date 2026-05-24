@@ -627,5 +627,20 @@
   "notificationButton": {
     "message": "¡Resolver ahora!",
     "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Resolver el juego activo de LinkedIn automáticamente."
+  },
+  "commandGetSingleHint": {
+    "message": "Proporcionar una pista de un solo paso o comprobar errores."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Abrir barra lateral automáticamente en juegos"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Abrir automáticamente la barra lateral del solucionador al visitar juegos de LinkedIn."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "ABRIR BARRA LATERAL AUTOMÁTICAMENTE"
   }
 }

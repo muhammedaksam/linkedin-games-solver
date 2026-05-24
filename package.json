@@ -72,7 +72,23 @@
       "sidePanel",
       "alarms",
       "notifications"
-    ]
+    ],
+    "commands": {
+      "solve-active-game": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+S",
+          "mac": "Command+Shift+S"
+        },
+        "description": "__MSG_commandSolveActiveGame__"
+      },
+      "get-single-hint": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+H",
+          "mac": "Command+Shift+H"
+        },
+        "description": "__MSG_commandGetSingleHint__"
+      }
+    }
   },
   "pnpm": {
     "overrides": {

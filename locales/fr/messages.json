@@ -627,5 +627,20 @@
   "notificationButton": {
     "message": "Résoudre maintenant !",
     "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Résoudre le jeu LinkedIn actif automatiquement."
+  },
+  "commandGetSingleHint": {
+    "message": "Fournir un indice en une étape ou vérifier les erreurs."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Ouvrir automatiquement la barre latérale sur les jeux"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Ouvrir automatiquement le panneau latéral du solveur lors de la visite des jeux LinkedIn."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "OUVRIR AUTOMATIQUEMENT LA BARRE LATÉRALE"
   }
 }

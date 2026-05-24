@@ -627,5 +627,20 @@
   "notificationButton": {
     "message": "Jetzt lösen!",
     "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Löse das aktive LinkedIn-Spiel automatisch."
+  },
+  "commandGetSingleHint": {
+    "message": "Gib einen Einzelschritt-Hinweis oder prüfe auf Fehler."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Seitenleiste automatisch bei Spielen öffnen"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Öffne die Seitenleiste des Lösers automatisch beim Aufrufen von LinkedIn-Spielen."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "SEITENLEISTE AUTOMATISCH ÖFFNEN"
   }
 }

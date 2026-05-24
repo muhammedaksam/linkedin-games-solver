@@ -30,6 +30,7 @@ import { cn } from "~/lib/utils"
 
 import { Button } from "../components/ui/button"
 import { Calendar } from "../components/ui/calendar"
+import { Checkbox } from "../components/ui/checkbox"
 import { Input } from "../components/ui/input"
 import {
   Select,
@@ -211,6 +212,14 @@ export default function Dashboard() {
     "20:00"
   )
 
+  const [autoOpenSidepanel, setAutoOpenSidepanel] = useStorage<boolean>(
+    {
+      key: "autoOpenSidepanel",
+      instance: syncStorage
+    },
+    true
+  )
+
   const [geminiApiKey, setGeminiApiKey] = useStorage<string>(
     {
       key: "geminiApiKey",
@@ -261,7 +270,8 @@ export default function Dashboard() {
     solveSpeed,
     defaultSolveMode,
     streakRemindersEnabled,
-    streakReminderTime
+    streakReminderTime,
+    autoOpenSidepanel
   ])
 
   // Compute stats reactively from history using useMemo (no cascading renders)
@@ -1128,13 +1138,11 @@ export default function Dashboard() {
                           {getMessage("settingEnableRemindersDesc")}
                         </span>
                       </div>
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         checked={streakRemindersEnabled || false}
-                        onChange={(e) =>
-                          setStreakRemindersEnabled(e.target.checked)
+                        onCheckedChange={(checked) =>
+                          setStreakRemindersEnabled(!!checked)
                         }
-                        className="w-4.5 h-4.5 rounded text-[#0a66c2] border-border bg-card focus:ring-[#0a66c2] focus:ring-offset-background cursor-pointer"
                       />
                     </div>
                   </div>
@@ -1154,6 +1162,40 @@ export default function Dashboard() {
                     <p className="text-[9px] text-muted-foreground leading-normal mt-1">
                       {getMessage("settingReminderTimeNotice")}
                     </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-[1px] bg-border/40 my-1" />
+
+              {/* Section 4: Auto-Opening Sidebar Option */}
+              <div className="space-y-5 pt-1">
+                <div className="flex items-center gap-2.5 border-b border-border pb-2.5">
+                  <Sparkles className="w-4.5 h-4.5 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
+                    {getMessage("labelAutoOpenSidepanel")}
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Auto-Open Toggle */}
+                  <div className="space-y-2 flex flex-col justify-center">
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                          {getMessage("settingAutoOpenSidepanel")}
+                        </span>
+                        <span className="text-[9px] text-muted-foreground/80 leading-normal">
+                          {getMessage("settingAutoOpenSidepanelDesc")}
+                        </span>
+                      </div>
+                      <Checkbox
+                        checked={autoOpenSidepanel || false}
+                        onCheckedChange={(checked) =>
+                          setAutoOpenSidepanel(!!checked)
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

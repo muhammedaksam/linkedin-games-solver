@@ -627,5 +627,20 @@
   "notificationButton": {
     "message": "Solve Now!",
     "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Solve the active LinkedIn game automatically."
+  },
+  "commandGetSingleHint": {
+    "message": "Provide a single-step hint or check for mistakes."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Auto-Open Sidebar on Games"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Automatically open the solver's side panel when visiting LinkedIn Games."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "AUTO-OPEN SOLVER SIDEBAR"
   }
 }

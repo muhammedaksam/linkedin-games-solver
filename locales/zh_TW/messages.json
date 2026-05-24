@@ -627,5 +627,20 @@
   "notificationButton": {
     "message": "立即解決！",
     "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "自動解決當前活動的 LinkedIn 遊戲。"
+  },
+  "commandGetSingleHint": {
+    "message": "提供單步提示或檢查錯誤。"
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "在遊戲頁面自動打開侧邊欄"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "造訪 LinkedIn 遊戲時自動打開求解器侧邊欄。"
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "自動打開求解器侧邊欄"
   }
 }

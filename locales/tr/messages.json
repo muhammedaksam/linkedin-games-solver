@@ -627,5 +627,20 @@
   "notificationButton": {
     "message": "Şimdi Çöz!",
     "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Aktif LinkedIn oyununu otomatik olarak çöz."
+  },
+  "commandGetSingleHint": {
+    "message": "Tek adımlı ipucu verin veya hataları kontrol edin."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Oyunlarda Kenar Çubuğunu Otomatik Aç"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "LinkedIn Oyunları sayfasını ziyaret ettiğinizde çözücü kenar çubuğunu otomatik olarak aç."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "KENAR ÇUBUĞUNU OTOMATİK AÇ"
   }
 }

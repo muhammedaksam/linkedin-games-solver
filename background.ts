@@ -41,6 +41,16 @@ if (typeof chrome !== "undefined" && chrome.sidePanel) {
           path: "sidepanel.html",
           enabled: true
         })
+
+        // Programmatically auto-open the sidebar panel if enabled and page is fully loaded
+        if (changeInfo.status === "complete") {
+          const autoOpen = await syncStorage.get<boolean>("autoOpenSidepanel") ?? true
+          if (autoOpen) {
+            await chrome.sidePanel.open({ tabId }).catch((err) => {
+              console.warn("[SidePanel] Failed programmatic open (gesture restriction may apply):", err)
+            })
+          }
+        }
       } else {
         await chrome.sidePanel.setOptions({ tabId, enabled: false })
       }
@@ -203,5 +213,21 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         sendResponse({ success: false, error: errMsg })
       })
     return true // Keep channel open for async response
+  }
+})
+
+// Listen to keyboard shortcut commands from Chrome Commands API
+chrome.commands.onCommand.addListener(async (command) => {
+  try {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
+    if (!tab || !tab.id || !tab.url?.includes("linkedin.com/games/")) return
+
+    if (command === "solve-active-game") {
+      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "full" })
+    } else if (command === "get-single-hint") {
+      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "hint" })
+    }
+  } catch (err) {
+    console.error("[Commands] Error dispatching hotkey command message:", err)
   }
 })
