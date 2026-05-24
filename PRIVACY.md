@@ -21,7 +21,6 @@ The extension does not transmit any data off-device unless you explicitly enable
 
 - `storage`: store settings, selected AI provider/model, and optional API keys in `chrome.storage.local`.
 - `activeTab`: used only when you interact with the extension (popup/dashboard) to detect and message the active LinkedIn Games tab.
-- `scripting`: used to execute small helper actions (for example, auto-filling a solution) only when you explicitly request them.
 - Host permission `https://*.linkedin.com/games/*`: required to run the content script and read the game DOM for pages under that pattern.
 
 ## Data retention and sharing

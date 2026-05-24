@@ -67,7 +67,6 @@
     ],
     "permissions": [
       "activeTab",
-      "scripting",
       "storage"
     ]
   },

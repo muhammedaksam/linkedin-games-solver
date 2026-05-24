@@ -1,6 +1,6 @@
 # LinkedIn-Spielelöser
 
-LinkedIn-Spielelöser ist der ultimative Begleiter für Ihre täglichen LinkedIn-Rätsel. Er scannt und löst Ihre Lieblingsspiele wie Sudoku, Tango, Queens, Zip, Patches, Crossclimb und Pinpoint sofort direkt auf der Seite. Unterstützt durch fortschrittliche lokale und Cloud-KI-Modelle (wie Google Gemini, OpenAI und Anthropic) knackt er komplexe Trivia-Leiter und Wortassoziationen im Handumdrehen.
+LinkedIn-Spielelöser ist der ultimative Begleiter für Ihre täglichen LinkedIn-Rätsel. Er scannt und löst Ihre Lieblingsspielbretter sofort direkt auf der Seite. Unterstützt durch fortschrittliche lokale und Cloud-KI-Modelle (wie Google Gemini, OpenAI und Anthropic) knackt er komplexe Trivia-Leiter und Wortassoziationen im Handumdrehen.
 
 ## Warum installieren?
 

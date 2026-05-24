@@ -1,6 +1,6 @@
 # Résolveur de Jeux LinkedIn
 
-Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidiennes sur LinkedIn. Il analyse et résout instantanément vos jeux préférés directement sur la page, notamment Sudoku, Tango, Queens, Zip, Patches, Crossclimb et Pinpoint. Grâce à des modèles d'IA locaux et cloud avancés (tels que Google Gemini, OpenAI et Anthropic), il résout les questionnaires complexes et les associations de mots en un clin d'œil.
+Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidiennes sur LinkedIn. Il analyse et résout instantanément vos plateaux de jeux préférés directement sur la page. Grâce à des modèles d'IA locaux et cloud avancés (tels que Google Gemini, OpenAI et Anthropic), il résout les questionnaires complexes et les associations de mots en un clin d'œil.
 
 ## Pourquoi l'installer ?
 

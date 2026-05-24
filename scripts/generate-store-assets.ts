@@ -1299,7 +1299,7 @@ function generateStoreDescriptions(): void {
   const descriptions: Record<string, string> = {
     en: `# LinkedIn Games Solver
 
-LinkedIn Games Solver is the ultimate companion for your daily LinkedIn puzzles. It instantly scans and solves your favorite games directly on the page, including Sudoku, Tango, Queens, Zip, Patches, Crossclimb, and Pinpoint. Powered by advanced local and cloud AI models (like Google Gemini, OpenAI, and Anthropic), it cracks complex trivia ladders and word associations in a blink.
+LinkedIn Games Solver is the ultimate companion for your daily LinkedIn puzzles. It instantly scans and solves your favorite daily puzzle boards directly on the page. Powered by advanced local and cloud AI models (like Google Gemini, OpenAI, and Anthropic), it cracks complex trivia challenges and word associations in a blink.
 
 ## Why Install It?
 * Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
@@ -1312,7 +1312,7 @@ LinkedIn Games Solver is the ultimate companion for your daily LinkedIn puzzles.
 
     tr: `# LinkedIn Oyun Çözücü
 
-LinkedIn Oyun Çözücü, günlük LinkedIn bulmacalarınız için mükemmel bir yardımcıdır. Sudoku, Tango, Queens, Zip, Patches, Crossclimb ve Pinpoint dahil olmak üzere en sevdiğiniz oyunları doğrudan sayfa üzerinde anında tarar ve çözer. Google Gemini, OpenAI ve Anthropic gibi gelişmiş yapay zeka modellerini kullanarak karmaşık bilgi yarışmalarını ve kelime ilişkilendirmelerini göz açıp kapayıncaya kadar çözer.
+LinkedIn Oyun Çözücü, günlük LinkedIn bulmacalarınız için mükemmel bir yardımcıdır. En sevdiğiniz oyun tahtalarını doğrudan sayfa üzerinde anında tarar ve çözer. Google Gemini, OpenAI ve Anthropic gibi gelişmiş yapay zeka modellerini kullanarak karmaşık bilgi yarışmalarını ve kelime ilişkilendirmelerini göz açıp kapayıncaya kadar çözer.
 
 ## Neden Yüklemelisiniz?
 * Serinizi Asla Kaybetmeyin: En zor günlerde veya zamanınız kısıtlı olduğunda bile günlük serinizi güvence altına alın.
@@ -1325,7 +1325,7 @@ LinkedIn Oyun Çözücü, günlük LinkedIn bulmacalarınız için mükemmel bir
 
     es: `# Solucionador de Juegos de LinkedIn
 
-Solucionador de Juegos de LinkedIn es el compañero definitivo para tus acertijos diarios de LinkedIn. Escanea y resuelve instantáneamente tus juegos favoritos directamente en la página, incluyendo Sudoku, Tango, Queens, Zip, Patches, Crossclimb y Pinpoint. Potenciado por modelos avanzados de IA locales y en la nube (como Google Gemini, OpenAI y Anthropic), resuelve complejos desafíos de preguntas y asociaciones de palabras en un abrir y cerrar de ojos.
+Solucionador de Juegos de LinkedIn es el compañero definitivo para tus acertijos diarios de LinkedIn. Escanea y resuelve instantáneamente tus tableros de juego favoritos directamente en la página. Potenciado por modelos avanzados de IA locales y en la nube (como Google Gemini, OpenAI y Anthropic), resuelve complejos desafíos de preguntas y asociaciones de palabras en un abrir y cerrar de ojos.
 
 ## ¿Por qué instalarlo?
 * Nunca pierda su racha: Mantenga su impulso diario y asegure su racha de juego incluso en los días más difíciles o cuando tenga poco tiempo.
@@ -1338,7 +1338,7 @@ Solucionador de Juegos de LinkedIn es el compañero definitivo para tus acertijo
 
     fr: `# Résolveur de Jeux LinkedIn
 
-Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidiennes sur LinkedIn. Il analyse et résout instantanément vos jeux préférés directement sur la page, notamment Sudoku, Tango, Queens, Zip, Patches, Crossclimb et Pinpoint. Grâce à des modèles d'IA locaux et cloud avancés (tels que Google Gemini, OpenAI et Anthropic), il résout les questionnaires complexes et les associations de mots en un clin d'œil.
+Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidiennes sur LinkedIn. Il analyse et résout instantanément vos plateaux de jeux préférés directement sur la page. Grâce à des modèles d'IA locaux et cloud avancés (tels que Google Gemini, OpenAI et Anthropic), il résout les questionnaires complexes et les associations de mots en un clin d'œil.
 
 ## Pourquoi l'installer ?
 * Ne perdez jamais votre série: Gardez votre élan quotidien et sécurisez votre série de victoires, même les jours les plus difficiles ou lorsque vous manquez de temps.
@@ -1351,7 +1351,7 @@ Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidienn
 
     pt_BR: `# Solucionador de Jogos do LinkedIn
 
-Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desafios diários no LinkedIn. Ele analisa e resolve instantaneamente seus jogos favoritos diretamente na página, incluindo Sudoku, Tango, Queens, Zip, Patches, Crossclimb e Pinpoint. Alimentado por modelos avançados de IA locais e na nuvem (como Google Gemini, OpenAI e Anthropic), resolve testes complexos e associações de palavras em um piscar de olhos.
+Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desafios diários no LinkedIn. Ele analisa e resolve instantaneamente seus jogos favoritos diretamente na página. Alimentado por modelos avançados de IA locais e na nuvem (como Google Gemini, OpenAI e Anthropic), resolve testes complexos e associações de palavras em um piscar de olhos.
 
 ## Por que instalar?
 * Nunca perca sua sequência: Mantenha seu ritmo diário e garanta sua sequência de vitórias mesmo nos dias mais difíceis ou quando estiver sem tempo.
@@ -1364,7 +1364,7 @@ Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desaf
 
     pt_PT: `# Solucionador de Jogos do LinkedIn
 
-Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desafios diários no LinkedIn. Ele analisa e resolve instantaneamente seus jogos favoritos diretamente na página, incluindo Sudoku, Tango, Queens, Zip, Patches, Crossclimb e Pinpoint. Alimentado por modelos avançados de IA locais e na nuvem (como Google Gemini, OpenAI e Anthropic), resolve testes complexos e associações de palavras em um piscar de olhos.
+Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desafios diários no LinkedIn. Ele analisa e resolve instantaneamente seus jogos favoritos diretamente na página. Alimentado por modelos avançados de IA locais e na nuvem (como Google Gemini, OpenAI e Anthropic), resolve testes complexos e associações de palavras em um piscar de olhos.
 
 ## Por que instalar?
 * Nunca perca sua sequência: Mantenha seu ritmo diário e garanta sua sequência de vitórias mesmo nos dias mais difíceis ou quando estiver sem tempo.
@@ -1377,7 +1377,7 @@ Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desaf
 
     de: `# LinkedIn-Spielelöser
 
-LinkedIn-Spielelöser is der ultimative Begleiter für Ihre täglichen LinkedIn-Rätsel. Er scannt und löst Ihre Lieblingsspiele wie Sudoku, Tango, Queens, Zip, Patches, Crossclimb und Pinpoint sofort direkt auf der Seite. Unterstützt durch fortschrittliche lokale und Cloud-KI-Modelle (wie Google Gemini, OpenAI und Anthropic) knackt er komplexe Trivia-Leiter und Wortassoziationen im Handumdrehen.
+LinkedIn-Spielelöser ist der ultimative Begleiter für Ihre täglichen LinkedIn-Rätsel. Er scannt und löst Ihre Lieblingsspielbretter sofort direkt auf der Seite. Unterstützt durch fortschrittliche lokale und Cloud-KI-Modelle (wie Google Gemini, OpenAI und Anthropic) knackt er komplexe Trivia-Leiter und Wortassoziationen im Handumdrehen.
 
 ## Warum installieren?
 * Verlieren Sie nie Ihre Serie: Halten Sie Ihre tägliche Serie aufrecht, selbst an den stressigsten Tagen oder wenn die Rätsel besonders knifflig sind.
@@ -1390,7 +1390,7 @@ LinkedIn-Spielelöser is der ultimative Begleiter für Ihre täglichen LinkedIn-
 
     zh_CN: `# LinkedIn 游戏求解器
 
-LinkedIn 游戏求解器是您解决每日 LinkedIn 谜题的终极助手。它能直接在页面上瞬间扫描并自动解开您喜爱的游戏，包括 Sudoku (数独)、Tango、Queens、Zip、Patches、Crossclimb 和 Pinpoint。依托先进的本地和云端人工智能模型（如 Google Gemini、OpenAI 和 Anthropic），它可以在转瞬之间破解复杂的问答天梯和词意联想。
+LinkedIn 游戏求解器是您解决每日 LinkedIn 谜题的终极助手。它能直接在页面上瞬间扫描并自动解开您喜爱的游戏面板。依托先进的本地和云端人工智能模型（如 Google Gemini、OpenAI 和 Anthropic），它可以在转瞬之间破解复杂的问答和词意联想。
 
 ## 为什么选择安装？
 * 保持您的每日连胜: 确保您的每日连胜记录，即使在最繁忙或谜题最难的日子里也绝不中断。
@@ -1403,7 +1403,7 @@ LinkedIn 游戏求解器是您解决每日 LinkedIn 谜题的终极助手。它�
 
     zh_TW: `# LinkedIn 遊戲求解器
 
-LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終极助手。它能直接在頁面上瞬間掃描並自動解開您喜愛的遊戲，包括 Sudoku (數獨)、Tango、Queens、Zip、Patches、Crossclimb 和 Pinpoint。依托先進的本地和雲端人工智慧模型（如 Google Gemini、OpenAI 和 Anthropic），它可以在轉瞬之間破解複雜的問答天梯和詞意聯想。
+LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終極助手。它能直接在頁面上瞬間掃描並自動解開您喜愛的遊戲面板。依托先進的本地和雲端人工智慧模型（如 Google Gemini、OpenAI 和 Anthropic），它可以在轉瞬之間破解複雜的問答和詞意聯想。
 
 ## 為什麼選擇安裝？
 * 保持您的每日連勝: 確保您的每日連勝記錄，即使在最繁忙或謎題最難的日子里也絕不中斷。
