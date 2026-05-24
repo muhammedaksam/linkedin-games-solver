@@ -1,6 +1,6 @@
 # Privacy Policy — LinkedIn Games Solver
 
-Last updated: 2026-05-19
+Last updated: 2026-05-24
 
 LinkedIn Games Solver provides puzzle-solving helpers for LinkedIn Games pages. This privacy policy explains what data the extension accesses, why, and how that data is used.
 
