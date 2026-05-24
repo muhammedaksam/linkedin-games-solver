@@ -265,7 +265,11 @@ Where each "words" array has 5-8 UPPERCASE ${wordLength}-letter candidates. Do n
         let solvedSuccessfully = false
         const maxSolveAttempts = 5
 
-        for (let solveAttempt = 0; solveAttempt < maxSolveAttempts; solveAttempt++) {
+        for (
+          let solveAttempt = 0;
+          solveAttempt < maxSolveAttempts;
+          solveAttempt++
+        ) {
           console.log(
             `[Crossclimb] Solve attempt ${solveAttempt + 1} of ${maxSolveAttempts}...`
           )
@@ -449,8 +453,12 @@ Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do 
               { length: numMiddleRows },
               (_, idx) => clueWordMap.get(idx + 1) || ""
             )
-            const comboKey = currentWordsList.map((w) => w.toUpperCase()).join(",")
-            console.warn(`[Crossclimb] Blocking incorrect combination: ${comboKey}`)
+            const comboKey = currentWordsList
+              .map((w) => w.toUpperCase())
+              .join(",")
+            console.warn(
+              `[Crossclimb] Blocking incorrect combination: ${comboKey}`
+            )
             blockedCombinations.add(comboKey)
 
             // Reset and retry
