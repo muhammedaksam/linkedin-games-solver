@@ -475,5 +475,9 @@
   "settingDefaultSolveModeNotice": {
     "message": "Wählen Sie die primäre Aktion beim Auslösen des Lösers aus der Tab-Ansicht oder den Spielfeldern. 'Vollständig lösen' beendet das Spiel; der 'Hinweis-Modus' platziert ein korrektes Element.",
     "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Läuft vollständig lokal auf Ihrem Gerät in Google Chrome. Keine Netzwerklatenz und 100 % kostenlos mit Gemini Nano.",
+    "description": "Chrome Built-in AI guide text"
   }
 }

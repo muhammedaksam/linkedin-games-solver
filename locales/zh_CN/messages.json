@@ -475,5 +475,9 @@
   "settingDefaultSolveModeNotice": {
     "message": "选择从标签页视图或游戏盘触发求解器时的主要操作。全自动求解会直接完成游戏；提示模式则会为您填入一个正确元素。",
     "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "完全在您的设备上通过 Google Chrome 本地运行。零网络延迟，借助 Gemini Nano 100% 免费。",
+    "description": "Chrome Built-in AI guide text"
   }
 }

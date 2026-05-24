@@ -475,5 +475,9 @@
   "settingDefaultSolveModeNotice": {
     "message": "Uzantı kartından veya oyun tablalarından çözücüyü tetiklerken varsayılan birincil eylemi seçin. Tam Çözüm oyunu bitirir; İpucu Modu tek bir doğru öğe yerleştirir.",
     "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Google Chrome içinde cihazınızda tamamen yerel olarak çalışır. Sıfır ağ gecikmesi ve Gemini Nano ile %100 ücretsizdir.",
+    "description": "Chrome Built-in AI guide text"
   }
 }
