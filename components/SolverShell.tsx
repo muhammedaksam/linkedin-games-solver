@@ -190,6 +190,57 @@ export function SolverShell({
   // AI Key configuration UI toggle
   const [showApiKey, setShowApiKey] = useState<boolean>(false)
 
+  // Gemini Nano local availability states
+  const [nanoStatus, setNanoStatus] = useState<string>("")
+  const [downloadProgress, setDownloadProgress] = useState<number | null>(null)
+  const [checkingNano, setCheckingNano] = useState<boolean>(false)
+
+  const checkGeminiNano = async () => {
+    setCheckingNano(true)
+    setNanoStatus("Detecting local capability...")
+    setDownloadProgress(null)
+
+    try {
+      let aiNamespace: any = null
+      if (typeof self !== "undefined" && (self as any).ai?.languageModel) {
+        aiNamespace = (self as any).ai.languageModel
+      } else if (typeof window !== "undefined" && (window as any).ai?.languageModel) {
+        aiNamespace = (window as any).ai.languageModel
+      }
+
+      if (!aiNamespace) {
+        setNanoStatus("Built-in Prompt API is unavailable in this browser.")
+        setCheckingNano(false)
+        return
+      }
+
+      const availability = await aiNamespace.availability()
+      if (availability === "unavailable") {
+        setNanoStatus("Gemini Nano is not supported on this device's hardware.")
+      } else if (availability === "after-download") {
+        setNanoStatus("Gemini Nano is supported but needs to be downloaded.")
+        try {
+          const session = await aiNamespace.create()
+          session.addEventListener("downloadprogress", (e: any) => {
+            if (e.total) {
+              const pct = Math.round((e.loaded / e.total) * 100)
+              setDownloadProgress(pct)
+              setNanoStatus(`Downloading local model components: ${pct}%`)
+            }
+          })
+        } catch (err) {
+          console.warn("Download listener initiation skipped:", err)
+        }
+      } else if (availability === "readily") {
+        setNanoStatus("Gemini Nano is fully downloaded and ready locally! 🚀")
+      }
+    } catch (e: any) {
+      setNanoStatus(`Detection failed: ${e.message || String(e)}`)
+    } finally {
+      setCheckingNano(false)
+    }
+  }
+
   // Sync theme class to standard shadcn layout root
   useEffect(() => {
     const root = window.document.documentElement
@@ -872,7 +923,7 @@ export function SolverShell({
 
               {/* Local status premium card when chrome-builtin is selected */}
               {aiProvider === "chrome-builtin" && (
-                <div className="p-3.5 rounded-lg border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400 space-y-1.5 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="p-3.5 rounded-lg border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400 space-y-2.5 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <div className="text-[11px] font-bold flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#0a66c2] dark:text-[#70b5f9]" />
                     {getMessage("settingsChromeBuiltInGuideTitle") ||
@@ -881,6 +932,41 @@ export function SolverShell({
                   <div className="text-[10px] leading-relaxed">
                     {getMessage("settingsChromeBuiltInGuideDesc") ||
                       "Runs completely locally on your device inside Google Chrome."}
+                  </div>
+
+                  <div className="pt-1.5 border-t border-blue-500/10 flex flex-col gap-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={checkGeminiNano}
+                      disabled={checkingNano}
+                      className="text-[10px] h-7 bg-transparent hover:bg-blue-500/15 border-blue-500/35 hover:border-blue-500/50 text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1.5 w-full">
+                      <RefreshCw className={`w-3 h-3 ${checkingNano ? "animate-spin" : ""}`} />
+                      Verify On-Device Gemini Nano
+                    </Button>
+
+                    {nanoStatus && (
+                      <div className="text-[9px] font-semibold flex items-start gap-1.5 leading-relaxed bg-blue-500/5 p-2 rounded border border-blue-500/5">
+                        <AlertCircle className="w-3 h-3 shrink-0 mt-0.5" />
+                        <span>{nanoStatus}</span>
+                      </div>
+                    )}
+
+                    {downloadProgress !== null && (
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[8px] font-extrabold select-none">
+                          <span>DOWNLOAD TELEMETRY</span>
+                          <span>{downloadProgress}%</span>
+                        </div>
+                        <div className="h-1.5 w-full bg-blue-500/10 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-blue-500 dark:bg-blue-400 rounded-full transition-all duration-300"
+                            style={{ width: `${downloadProgress}%` }}
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}

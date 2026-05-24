@@ -211,7 +211,7 @@ chrome.notifications.onButtonClicked.addListener((id, index) => {
   }
 })
 
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "askAI") {
     askAI(message.prompt, message.jsonMode)
       .then((text) => {
@@ -222,6 +222,25 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         sendResponse({ success: false, error: errMsg })
       })
     return true // Keep channel open for async response
+  }
+
+  if (message.action === "captureTab") {
+    const windowId = sender.tab?.windowId || chrome.windows.WINDOW_ID_CURRENT
+    chrome.tabs.captureVisibleTab(
+      windowId,
+      { format: "jpeg", quality: 85 },
+      (dataUrl) => {
+        if (chrome.runtime.lastError) {
+          sendResponse({
+            success: false,
+            error: chrome.runtime.lastError.message
+          })
+        } else {
+          sendResponse({ success: true, dataUrl })
+        }
+      }
+    )
+    return true // Keep channel open
   }
 })
 

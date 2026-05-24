@@ -1,0 +1,83 @@
+/// <reference types="dom-chromium-ai" />
+
+/**
+ * Converts a data URL to an Image Bitmap safely for AI ingestion.
+ */
+async function dataUrlToImageBitmap(dataUrl: string): Promise<ImageBitmap> {
+  const response = await fetch(dataUrl)
+  const blob = await response.blob()
+  return createImageBitmap(blob)
+}
+
+/**
+ * Helper to capture the current active board visually and prompt Gemini Multimodal Nano.
+ */
+export async function solveWithMultimodalAI(
+  promptText: string
+): Promise<string> {
+  if (typeof chrome === "undefined" || !chrome.runtime || !chrome.runtime.sendMessage) {
+    throw new Error("Extension environment required for screenshot solving.")
+  }
+
+  // 1. Capture the tab screen visually using the background service worker
+  const captureRes = await new Promise<{ success: boolean; dataUrl?: string; error?: string }>((resolve) => {
+    chrome.runtime.sendMessage({ action: "captureTab" }, (res) => {
+      resolve(res || { success: false, error: "No response from background worker." })
+    })
+  })
+
+  if (!captureRes.success || !captureRes.dataUrl) {
+    throw new Error(`Screenshot capture failed: ${captureRes.error || "Unknown error"}`)
+  }
+
+  // 2. Convert JPEG data URL to Image Bitmap
+  const imageBitmap = await dataUrlToImageBitmap(captureRes.dataUrl)
+
+  // 3. Detect Chrome's native Multimodal AI session creator
+  let aiNamespace: any = null
+  if (typeof self !== "undefined" && (self as any).ai?.languageModel) {
+    aiNamespace = (self as any).ai.languageModel
+  } else if (typeof window !== "undefined" && (window as any).ai?.languageModel) {
+    aiNamespace = (window as any).ai.languageModel
+  }
+
+  if (!aiNamespace) {
+    throw new Error(
+      "Chrome Built-in Multimodal AI is not available. Please verify your optimization guides flag settings."
+    )
+  }
+
+  // Verify availability
+  const availability = await aiNamespace.availability()
+  if (availability === "unavailable") {
+    throw new Error("Chrome Built-in Multimodal AI model is unavailable on this device.")
+  }
+
+  // 4. Create local multimodal Gemini Nano session
+  // In Chrome Canary, we instantiate Gemini Nano with expected input types
+  const session = await aiNamespace.create({
+    expectedInputs: [{ type: "image" }]
+  })
+
+  try {
+    // 5. Query Gemini Nano session with both image and prompt context
+    console.log("[Multimodal AI] Initiating on-device visual board analysis...")
+    
+    // For Chrome's Prompt/LanguageModel API, multimodal inputs are fed as structured lists
+    const promptInputs = [
+      { role: "user", content: [
+        { type: "text", value: promptText },
+        { type: "image", value: imageBitmap }
+      ]}
+    ]
+
+    const response = await session.prompt(promptInputs)
+    if (!response) {
+      throw new Error("Received empty response from multimodal Nano session.")
+    }
+
+    return response
+  } finally {
+    session.destroy()
+  }
+}

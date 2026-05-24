@@ -63,6 +63,7 @@
   "manifest": {
     "name": "__MSG_extensionName__",
     "default_locale": "en",
+    "devtools_page": "tabs/devtools.html",
     "optional_host_permissions": [
       "https://*.linkedin.com/games/*"
     ],
