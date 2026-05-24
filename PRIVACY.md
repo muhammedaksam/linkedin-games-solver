@@ -22,7 +22,7 @@ The extension does not transmit any data off-device unless you explicitly enable
 - `storage`: store settings, selected AI provider/model, and optional API keys in `chrome.storage.local`.
 - `activeTab`: used only when you interact with the extension (popup/dashboard) to detect and message the active LinkedIn Games tab.
 - `sidePanel`: used to display a responsive, persistent panel next to the LinkedIn page for a fluid and high-fidelity user workspace without blocking active game interactions.
-- `scripting` (Legacy): previously used to execute helper actions (like solution filling) inside the game context (no longer active in current release, but retained for store-compliance declarations).
+- `scripting`: required by the extension framework to register and inject the Main World diagnostics logger script (logger-main.ts) to capture game console events and display solving logs/diagnostics.
 - Host permission `https://*.linkedin.com/games/*`: required to run the content script and read the game DOM for pages under that pattern.
 
 ## Data retention and sharing
