@@ -476,6 +476,10 @@
     "message": "Seleccione la acción principal al activar el solucionador desde la vista de pestañas o tableros. La resolución completa finaliza el juego; el modo de sugerencia coloca un elemento correcto.",
     "description": "Notice for solver action mode choices"
   },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "IA totalmente local y sin costo",
+    "description": "Chrome Built-in AI guide title"
+  },
   "settingsChromeBuiltInGuideDesc": {
     "message": "Se ejecuta de forma completamente local en tu dispositivo dentro de Google Chrome. Sin latencia de red y 100% gratis con Gemini Nano.",
     "description": "Chrome Built-in AI guide text"

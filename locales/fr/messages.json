@@ -476,6 +476,10 @@
     "message": "Sélectionnez l'action principale lors du déclenchement du résolveur depuis l'onglet ou les plateaux. 'Résolution complète' termine la partie ; le 'Mode indice' place un élément correct.",
     "description": "Notice for solver action mode choices"
   },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "IA 100 % locale et sans frais",
+    "description": "Chrome Built-in AI guide title"
+  },
   "settingsChromeBuiltInGuideDesc": {
     "message": "S'exécute entièrement localement sur votre appareil dans Google Chrome. Zéro latence réseau et 100% gratuit avec Gemini Nano.",
     "description": "Chrome Built-in AI guide text"

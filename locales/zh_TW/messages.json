@@ -476,6 +476,10 @@
     "message": "選擇從分頁檢視或遊戲盤觸發求解器時的主要操作。全自動求解會直接完成遊戲；提示模式則會為您填入一個正確元素。",
     "description": "Notice for solver action mode choices"
   },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "零成本且完全本機的 AI",
+    "description": "Chrome Built-in AI guide title"
+  },
   "settingsChromeBuiltInGuideDesc": {
     "message": "完全在您的裝置上透過 Google Chrome 本機執行。零網路延遲，並可搭配 Gemini Nano 100% 免費使用。",
     "description": "Chrome Built-in AI guide text"

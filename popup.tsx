@@ -690,12 +690,10 @@ function IndexPopup() {
                 <div className="p-3.5 rounded-lg border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400 space-y-1.5 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <div className="text-[11px] font-bold flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#0a66c2] dark:text-[#70b5f9]" />
-                    Zero Cost & Fully Local AI
+                    {getMessage("settingsChromeBuiltInGuideTitle")}
                   </div>
                   <div className="text-[10px] leading-relaxed">
-                    Using Chrome's built-in Gemini Nano model. No internet
-                    connection or external API keys are required to solve
-                    puzzles!
+                    {getMessage("settingsChromeBuiltInGuideDesc")}
                   </div>
                 </div>
               )}

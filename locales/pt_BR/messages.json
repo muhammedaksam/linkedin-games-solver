@@ -476,6 +476,10 @@
     "message": "Selecione a ação primária ao acionar o solucionador a partir da visualização de abas ou tabuleiros. A Auto-Resolução Completa termina o jogo; o Modo de Dica posiciona um item correto.",
     "description": "Notice for solver action mode choices"
   },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "IA totalmente local e sem custo",
+    "description": "Chrome Built-in AI guide title"
+  },
   "settingsChromeBuiltInGuideDesc": {
     "message": "Roda completamente localmente no seu dispositivo dentro do Google Chrome. Zero latência de rede e 100% gratuito com o Gemini Nano.",
     "description": "Chrome Built-in AI guide text"
