@@ -475,5 +475,9 @@
   "settingDefaultSolveModeNotice": {
     "message": "Select the primary action when triggering the solver from tab view or boards. Full Solve finishes the game; Hint Mode places one correct item.",
     "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Runs completely locally on your device inside Google Chrome. Zero network latency and 100% free with Gemini Nano.",
+    "description": "Chrome Built-in AI guide text"
   }
 }

@@ -1,3 +1,4 @@
+/// <reference types="dom-chromium-ai" />
 import { Storage } from "@plasmohq/storage"
 
 const storage = new Storage({
@@ -69,8 +70,8 @@ export async function askAI(prompt: string, jsonMode = false): Promise<string> {
   const config = await getAIConfig()
   const { aiProvider, aiModel, aiApiKey, aiCustomEndpoint } = config
 
-  // Custom Ollama / Local endpoints don't necessarily require an API key
-  if (!aiApiKey && aiProvider !== "custom") {
+  // Custom Ollama / Local endpoints and Chrome Built-in AI don't require an API key
+  if (!aiApiKey && aiProvider !== "custom" && aiProvider !== "chrome-builtin") {
     throw new Error(
       `AI API Key is not configured for ${aiProvider.toUpperCase()}. Please open the extension settings to set your key.`
     )
@@ -97,6 +98,8 @@ export async function askAI(prompt: string, jsonMode = false): Promise<string> {
       )
     case "anthropic":
       return callAnthropic(aiModel, aiApiKey, prompt)
+    case "chrome-builtin":
+      return callChromePrompt(prompt, jsonMode)
     case "custom":
       return callOpenAICompatible(
         aiCustomEndpoint,
@@ -254,4 +257,86 @@ async function callAnthropic(
   }
 
   return text
+}
+
+async function callChromePrompt(
+  prompt: string,
+  jsonMode: boolean
+): Promise<string> {
+  let aiNamespace: typeof LanguageModel | null = null
+
+  if (typeof self !== "undefined" && (self as any).LanguageModel) {
+    aiNamespace = (self as any).LanguageModel
+  } else if (typeof window !== "undefined" && (window as any).LanguageModel) {
+    aiNamespace = (window as any).LanguageModel
+  } else if (
+    typeof chrome !== "undefined" &&
+    (chrome as any).aiOriginTrial &&
+    (chrome as any).aiOriginTrial.languageModel
+  ) {
+    aiNamespace = (chrome as any).aiOriginTrial.languageModel
+  } else if (
+    typeof self !== "undefined" &&
+    (self as any).ai &&
+    (self as any).ai.languageModel
+  ) {
+    aiNamespace = (self as any).ai.languageModel
+  } else if (
+    typeof window !== "undefined" &&
+    (window as any).ai &&
+    (window as any).ai.languageModel
+  ) {
+    aiNamespace = (window as any).ai.languageModel
+  }
+
+  if (!aiNamespace) {
+    throw new Error(
+      "Chrome Built-in AI (Prompt API) is not available. Please verify that:\n" +
+        "1. You are running Chrome 138+ (or Chrome 148+ on the web).\n" +
+        "2. You have enabled '#prompt-api-for-gemini-nano' and '#optimization-guide-on-device-model' in chrome://flags.\n" +
+        "3. You have visited chrome://components and verified that 'Optimization Guide On Device Model' is updated/downloaded."
+    )
+  }
+
+  const availability = await aiNamespace.availability()
+  if (availability === "unavailable") {
+    throw new Error(
+      "Chrome Built-in AI is disabled or unsupported on this device. Please check that you meet the hardware requirements:\n" +
+        "- Windows 10/11, macOS 13+, Linux, or Chromebook Plus.\n" +
+        "- At least 16 GB of RAM and 4 CPU cores (or a GPU with > 4 GB VRAM).\n" +
+        "- At least 22 GB of free disk space."
+    )
+  }
+
+  try {
+    const session = await aiNamespace.create()
+    try {
+      let response: string
+      if (jsonMode) {
+        // Prompt API supports structured JSON outputs via responseConstraint
+        const schema = { type: "object" }
+        try {
+          response = await session.prompt(prompt, {
+            responseConstraint: schema
+          })
+        } catch (err) {
+          console.warn(
+            "Failed to prompt with responseConstraint, falling back...",
+            err
+          )
+          response = await session.prompt(prompt)
+        }
+      } else {
+        response = await session.prompt(prompt)
+      }
+      return response
+    } finally {
+      session.destroy()
+    }
+  } catch (err: any) {
+    const msg = err instanceof Error ? err.message : String(err)
+    throw new Error(
+      `Chrome Built-in AI Error: ${msg}. If this is your first time using it, Chrome may still be downloading the Gemini Nano model in the background.`
+    )
+  }
 }

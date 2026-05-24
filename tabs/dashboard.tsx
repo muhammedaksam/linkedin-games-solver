@@ -67,6 +67,7 @@ const PROVIDER_MODELS: Record<string, { label: string; value: string }[]> = {
     { label: "DeepSeek Chat (Default)", value: "deepseek-chat" },
     { label: "DeepSeek Reasoner", value: "deepseek-reasoner" }
   ],
+  "chrome-builtin": [{ label: "Gemini Nano (Built-in)", value: "gemini-nano" }],
   custom: []
 }
 
@@ -75,6 +76,7 @@ const PROVIDER_LABELS: Record<string, string> = {
   openai: "OpenAI (ChatGPT)",
   anthropic: "Anthropic Claude",
   deepseek: "DeepSeek",
+  "chrome-builtin": "Chrome Built-in AI",
   custom: "Custom / Local Endpoint"
 }
 
@@ -813,6 +815,8 @@ export default function Dashboard() {
                       else if (val === "anthropic")
                         setAiModel("claude-3-5-haiku")
                       else if (val === "deepseek") setAiModel("deepseek-chat")
+                      else if (val === "chrome-builtin")
+                        setAiModel("gemini-nano")
                       else if (val === "custom") setAiModel("")
                     }}>
                     <SelectTrigger className="w-full text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus:ring-1 focus:ring-[#0a66c2] dark:focus:ring-[#70b5f9] justify-between">
@@ -829,6 +833,9 @@ export default function Dashboard() {
                         Anthropic Claude
                       </SelectItem>
                       <SelectItem value="deepseek">DeepSeek</SelectItem>
+                      <SelectItem value="chrome-builtin">
+                        Chrome Built-in AI (Gemini Nano)
+                      </SelectItem>
                       <SelectItem value="custom">
                         Custom / Local Endpoint
                       </SelectItem>
@@ -837,7 +844,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* AI Model Select */}
-                {aiProvider !== "custom" && (
+                {aiProvider !== "custom" && aiProvider !== "chrome-builtin" && (
                   <div className="space-y-1.5">
                     <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
                       {getMessage("labelModelIdentifier")}
@@ -883,30 +890,31 @@ export default function Dashboard() {
                 )}
 
                 {/* Custom Model Input Slot */}
-                {(aiProvider === "custom" ||
-                  !PROVIDER_MODELS[aiProvider]?.some(
-                    (m) => m.value === aiModel
-                  )) && (
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="ai-model-input"
-                      className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
-                      {getMessage("labelCustomModel")}
-                    </label>
-                    <Input
-                      id="ai-model-input"
-                      type="text"
-                      value={aiModel || ""}
-                      onChange={(e) => setAiModel(e.target.value)}
-                      placeholder={
-                        aiProvider === "custom"
-                          ? getMessage("settingModelCustomPlaceholderLocal")
-                          : getMessage("settingModelCustomPlaceholderOther")
-                      }
-                      className="text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
-                    />
-                  </div>
-                )}
+                {aiProvider !== "chrome-builtin" &&
+                  (aiProvider === "custom" ||
+                    !PROVIDER_MODELS[aiProvider]?.some(
+                      (m) => m.value === aiModel
+                    )) && (
+                    <div className="space-y-1.5">
+                      <label
+                        htmlFor="ai-model-input"
+                        className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                        {getMessage("labelCustomModel")}
+                      </label>
+                      <Input
+                        id="ai-model-input"
+                        type="text"
+                        value={aiModel || ""}
+                        onChange={(e) => setAiModel(e.target.value)}
+                        placeholder={
+                          aiProvider === "custom"
+                            ? getMessage("settingModelCustomPlaceholderLocal")
+                            : getMessage("settingModelCustomPlaceholderOther")
+                        }
+                        className="text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                      />
+                    </div>
+                  )}
 
                 {/* Custom Endpoint Input Slot */}
                 {aiProvider === "custom" && (
@@ -928,48 +936,65 @@ export default function Dashboard() {
                 )}
 
                 {/* API Key */}
-                <div className="space-y-1.5">
-                  <label
-                    htmlFor="ai-api-key"
-                    className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
-                    {aiProvider === "gemini" && getMessage("labelGeminiKey")}
-                    {aiProvider === "openai" && getMessage("labelOpenAiKey")}
-                    {aiProvider === "anthropic" &&
-                      getMessage("labelAnthropicKey")}
-                    {aiProvider === "deepseek" &&
-                      getMessage("labelDeepSeekKey")}
-                    {aiProvider === "custom" && getMessage("labelCustomKey")}
-                  </label>
-                  <div className="relative flex items-center">
-                    <Input
-                      id="ai-api-key"
-                      type={showApiKey ? "text" : "password"}
-                      value={aiApiKey || ""}
-                      onChange={(e) => {
-                        setAiApiKey(e.target.value)
-                        if (aiProvider === "gemini") {
-                          setGeminiApiKey(e.target.value)
+                {aiProvider !== "chrome-builtin" && (
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="ai-api-key"
+                      className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                      {aiProvider === "gemini" && getMessage("labelGeminiKey")}
+                      {aiProvider === "openai" && getMessage("labelOpenAiKey")}
+                      {aiProvider === "anthropic" &&
+                        getMessage("labelAnthropicKey")}
+                      {aiProvider === "deepseek" &&
+                        getMessage("labelDeepSeekKey")}
+                      {aiProvider === "custom" && getMessage("labelCustomKey")}
+                    </label>
+                    <div className="relative flex items-center">
+                      <Input
+                        id="ai-api-key"
+                        type={showApiKey ? "text" : "password"}
+                        value={aiApiKey || ""}
+                        onChange={(e) => {
+                          setAiApiKey(e.target.value)
+                          if (aiProvider === "gemini") {
+                            setGeminiApiKey(e.target.value)
+                          }
+                        }}
+                        placeholder={
+                          aiProvider === "custom"
+                            ? getMessage("settingApiKeyPlaceholderCustom")
+                            : getMessage("settingApiKeyPlaceholderDefault")
                         }
-                      }}
-                      placeholder={
-                        aiProvider === "custom"
-                          ? getMessage("settingApiKeyPlaceholderCustom")
-                          : getMessage("settingApiKeyPlaceholderDefault")
-                      }
-                      className="pr-10 text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowApiKey(!showApiKey)}
-                      className="absolute right-3.5 text-muted-foreground hover:text-foreground transition-colors p-1 outline-none">
-                      {showApiKey ? (
-                        <EyeOff className="w-4 h-4" />
-                      ) : (
-                        <Eye className="w-4 h-4" />
-                      )}
-                    </button>
+                        className="pr-10 text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowApiKey(!showApiKey)}
+                        className="absolute right-3.5 text-muted-foreground hover:text-foreground transition-colors p-1 outline-none">
+                        {showApiKey ? (
+                          <EyeOff className="w-4 h-4" />
+                        ) : (
+                          <Eye className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Local status premium card when chrome-builtin is selected */}
+                {aiProvider === "chrome-builtin" && (
+                  <div className="p-4 rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400 space-y-1.5 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                    <div className="text-xs font-bold flex items-center gap-1.5">
+                      <Sparkles className="w-4 h-4 animate-pulse text-[#0a66c2] dark:text-[#70b5f9]" />
+                      Zero Cost & Fully Local AI
+                    </div>
+                    <div className="text-[11px] leading-relaxed">
+                      Using Chrome's built-in Gemini Nano model. No internet
+                      connection or external API keys are required to solve
+                      puzzles!
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="h-[1px] bg-border/40 my-1" />
@@ -1114,6 +1139,17 @@ export default function Dashboard() {
                     </h5>
                     <p className="text-[10px] text-muted-foreground leading-relaxed pl-3">
                       {getMessage("settingsCustomGuideDesc")}
+                    </p>
+                  </div>
+
+                  {/* Option 5: Chrome Built-in */}
+                  <div className="space-y-1">
+                    <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                      Chrome Built-in AI
+                    </h5>
+                    <p className="text-[10px] text-muted-foreground leading-relaxed pl-3">
+                      {getMessage("settingsChromeBuiltInGuideDesc")}
                     </p>
                   </div>
                 </div>
