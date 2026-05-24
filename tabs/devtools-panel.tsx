@@ -28,7 +28,7 @@ interface CellEntry {
   color: string
 }
 
-export function DevToolsPanel() {
+export default function DevToolsPanel() {
   const [logs, setLogs] = useState<LogEntry[]>([])
   const [filterType, setFilterType] = useState<string>("all")
   const [searchQuery, setSearchQuery] = useState<string>("")
@@ -405,10 +405,4 @@ export function DevToolsPanel() {
       </div>
     </div>
   )
-}
-
-const rootElement = document.getElementById("root")
-if (rootElement) {
-  const root = createRoot(rootElement)
-  root.render(<DevToolsPanel />)
 }
