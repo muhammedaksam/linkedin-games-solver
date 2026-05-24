@@ -20,12 +20,12 @@ The extension does not transmit any data off-device unless you explicitly enable
 ## Permissions used
 
 - `storage`: used to store preferences, themes, solving history, streaks, and optional API keys. Non-sensitive settings and solve statistics are synchronized across your logged-in browser profiles using `chrome.storage.sync` to ensure a seamless cross-device dashboard. Sensitive values like AI credentials remain strictly confined to `chrome.storage.local` on your local device.
+- `session`: used as high-performance, RAM-only ephemeral storage (`chrome.storage.session`) to cache active debugger logs and solving trace logs. This data lives purely in memory, produces zero disk wear, and is automatically wiped clean when your browser session ends.
 - `activeTab`: used only when you interact with the extension (popup/dashboard) to detect and message the active LinkedIn Games tab.
 - `sidePanel`: used to display a responsive, persistent panel next to the LinkedIn page for a fluid workspace without blocking active game interactions.
-- `scripting`: required by the extension framework to register and inject the Main World diagnostics logger script (logger-main.ts) to capture game console events and display solving logs/diagnostics.
 - `alarms`: used to register background alarms in the service worker to perform daily scheduled checks for unsolved games and protect your active streak.
 - `notifications`: used to display native system-level desktop notifications (Streak Protector) if today's games remain unsolved by your chosen alarm time.
-- Host permission `https://*.linkedin.com/games/*`: required to run the content script and read the game DOM for pages under that pattern.
+- Optional Host Permission `https://*.linkedin.com/games/*`: we request site permissions on-demand. Access to LinkedIn Game pages is only requested when you first click a solver button or try to run the helper. This ensures you can install the extension with zero initial site-read access, placing privacy and user control first.
 
 ## Data retention and sharing
 
