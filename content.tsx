@@ -17,7 +17,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { detectActiveSolver } from "~games"
 import { getMessage } from "~lib/i18n"
-import { localStorage as storage } from "~lib/storage"
+import { syncStorage as storage } from "~lib/storage"
 import {
   cn,
   getLocalDateString,
@@ -398,11 +398,7 @@ const messageListener = (
     try {
       const mainElement = document.querySelector("main")
       const mainHtml = mainElement ? mainElement.outerHTML : ""
-      sendResponse({
-        success: true,
-        logs: capturedLogs,
-        mainHtml
-      })
+      sendResponse({ success: true, logs: capturedLogs, mainHtml })
     } catch (e) {
       sendResponse({
         success: false,
@@ -480,10 +476,7 @@ const messageListener = (
           )
         }
         setReactSuccess?.(true)
-        sendResponse({
-          success: true,
-          game: currentActive.name.toLowerCase()
-        })
+        sendResponse({ success: true, game: currentActive.name.toLowerCase() })
       })
       .catch((err: Error | unknown) => {
         console.error(

@@ -595,5 +595,25 @@
   "debugErrorNoActiveTab": {
     "message": "Aktif sekme tanımlanamadı.",
     "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "GÜNLÜK HATIRLATICILAR & SERİ KORUYUCU",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Günlük Hatırlatıcıları Etkinleştir",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Bugünkü serim dolmadan önce beni uyar.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Hatırlatma Zamanı",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Tamamlanmamış oyunları kontrol etmek için yerel saati seçin.",
+    "description": "Daily reminders time picker notice"
   }
 }

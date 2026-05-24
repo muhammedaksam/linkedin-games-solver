@@ -1,6 +1,7 @@
 import {
   AlertCircle,
   ArrowLeft,
+  Bell,
   Calendar as CalendarIcon,
   CheckCircle2,
   ChevronDown,
@@ -24,7 +25,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { GAMES_CONFIG } from "~/lib/games-config"
-import { localStorage } from "~/lib/storage"
+import { localStorage, syncStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
 
 import { Button } from "../components/ui/button"
@@ -131,7 +132,7 @@ export default function Dashboard() {
   const [theme, setTheme] = useStorage<"light" | "dark">(
     {
       key: "theme",
-      instance: localStorage
+      instance: syncStorage
     },
     "dark"
   )
@@ -139,7 +140,7 @@ export default function Dashboard() {
   const [history] = useStorage<Record<string, Record<string, SolveRecord>>>(
     {
       key: "solveHistory",
-      instance: localStorage
+      instance: syncStorage
     },
     {}
   )
@@ -180,7 +181,7 @@ export default function Dashboard() {
   const [solveSpeed, setSolveSpeed] = useStorage<string>(
     {
       key: "solveSpeed",
-      instance: localStorage
+      instance: syncStorage
     },
     "normal"
   )
@@ -188,9 +189,26 @@ export default function Dashboard() {
   const [defaultSolveMode, setDefaultSolveMode] = useStorage<string>(
     {
       key: "defaultSolveMode",
-      instance: localStorage
+      instance: syncStorage
     },
     "full"
+  )
+
+  const [streakRemindersEnabled, setStreakRemindersEnabled] =
+    useStorage<boolean>(
+      {
+        key: "streakRemindersEnabled",
+        instance: syncStorage
+      },
+      false
+    )
+
+  const [streakReminderTime, setStreakReminderTime] = useStorage<string>(
+    {
+      key: "streakReminderTime",
+      instance: syncStorage
+    },
+    "20:00"
   )
 
   const [geminiApiKey, setGeminiApiKey] = useStorage<string>(
@@ -241,7 +259,9 @@ export default function Dashboard() {
     aiApiKey,
     aiCustomEndpoint,
     solveSpeed,
-    defaultSolveMode
+    defaultSolveMode,
+    streakRemindersEnabled,
+    streakReminderTime
   ])
 
   // Compute stats reactively from history using useMemo (no cascading renders)
@@ -1080,6 +1100,59 @@ export default function Dashboard() {
                     </Select>
                     <p className="text-[9px] text-muted-foreground leading-normal mt-1">
                       {getMessage("settingDefaultSolveModeNotice")}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-[1px] bg-border/40 my-1" />
+
+              {/* Section 3: Daily Reminders & Streak Protector */}
+              <div className="space-y-5 pt-1">
+                <div className="flex items-center gap-2.5 border-b border-border pb-2.5">
+                  <Bell className="w-4.5 h-4.5 text-[#0a66c2] dark:text-[#70b5f9]" />
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
+                    {getMessage("labelDailyReminders")}
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Enable Reminders Toggle */}
+                  <div className="space-y-2 flex flex-col justify-center">
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                          {getMessage("settingEnableReminders")}
+                        </span>
+                        <span className="text-[9px] text-muted-foreground/80 leading-normal">
+                          {getMessage("settingEnableRemindersDesc")}
+                        </span>
+                      </div>
+                      <input
+                        type="checkbox"
+                        checked={streakRemindersEnabled || false}
+                        onChange={(e) =>
+                          setStreakRemindersEnabled(e.target.checked)
+                        }
+                        className="w-4.5 h-4.5 rounded text-[#0a66c2] border-border bg-card focus:ring-[#0a66c2] focus:ring-offset-background cursor-pointer"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Reminder Time Selector */}
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-bold text-muted-foreground block tracking-wider uppercase">
+                      {getMessage("settingReminderTime")}
+                    </span>
+                    <input
+                      type="time"
+                      disabled={!streakRemindersEnabled}
+                      value={streakReminderTime || "20:00"}
+                      onChange={(e) => setStreakReminderTime(e.target.value)}
+                      className="w-full text-xs h-10 px-3 rounded-md bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus:outline-none focus:ring-1 focus:ring-[#0a66c2] disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-900"
+                    />
+                    <p className="text-[9px] text-muted-foreground leading-normal mt-1">
+                      {getMessage("settingReminderTimeNotice")}
                     </p>
                   </div>
                 </div>

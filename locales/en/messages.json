@@ -595,5 +595,25 @@
   "debugErrorNoActiveTab": {
     "message": "Could not identify the active tab.",
     "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "DAILY REMINDERS & STREAK PROTECTOR",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Enable Daily Reminders",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Warn me before today's streak expires.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Reminder Time",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Select local time to check for unsolved games.",
+    "description": "Daily reminders time picker notice"
   }
 }

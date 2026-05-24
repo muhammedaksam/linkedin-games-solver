@@ -40,7 +40,7 @@ import {
   SelectValue
 } from "~/components/ui/select"
 import { GAMES_CONFIG } from "~/lib/games-config"
-import { localStorage } from "~/lib/storage"
+import { localStorage, syncStorage } from "~/lib/storage"
 import {
   cn,
   getLocalDateString,
@@ -108,7 +108,7 @@ export function SolverShell({
   const [theme, setTheme] = useStorage<"light" | "dark">(
     {
       key: "theme",
-      instance: localStorage
+      instance: syncStorage
     },
     "dark"
   )
@@ -124,7 +124,7 @@ export function SolverShell({
   const [solveHistory, setSolveHistory] = useStorage<SolveHistory>(
     {
       key: "solveHistory",
-      instance: localStorage
+      instance: syncStorage
     },
     {}
   )
@@ -165,7 +165,7 @@ export function SolverShell({
   const [solveSpeed, setSolveSpeed] = useStorage<string>(
     {
       key: "solveSpeed",
-      instance: localStorage
+      instance: syncStorage
     },
     "normal"
   )
@@ -173,7 +173,7 @@ export function SolverShell({
   const [defaultSolveMode, setDefaultSolveMode] = useStorage<string>(
     {
       key: "defaultSolveMode",
-      instance: localStorage
+      instance: syncStorage
     },
     "full"
   )

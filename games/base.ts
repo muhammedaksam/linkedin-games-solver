@@ -1,8 +1,6 @@
 import { Storage } from "@plasmohq/storage"
 
-const baseStorage = new Storage({
-  area: "local"
-})
+const baseStorage = new Storage({ area: "local" })
 
 export abstract class BaseSolver {
   abstract readonly name: string

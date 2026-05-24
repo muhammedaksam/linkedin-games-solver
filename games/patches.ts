@@ -100,13 +100,7 @@ export class PatchesSolver extends BaseSolver {
         const text = clueNumberEl?.textContent
         const size = text ? parseInt(text, 10) : null
 
-        clues.push({
-          id: idx,
-          r,
-          c,
-          size,
-          type
-        })
+        clues.push({ id: idx, r, c, size, type })
       }
     })
 

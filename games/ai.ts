@@ -1,9 +1,7 @@
 /// <reference types="dom-chromium-ai" />
 import { Storage } from "@plasmohq/storage"
 
-const storage = new Storage({
-  area: "local"
-})
+const storage = new Storage({ area: "local" })
 
 export interface AIConfig {
   aiProvider: string

@@ -128,16 +128,10 @@ export class TangoSolver extends BaseSolver {
       if (!cell) continue
 
       const eqSvgs = this.$$('svg[data-testid="edge-equal"]', cell).map(
-        (s) => ({
-          svg: s,
-          type: "eq" as const
-        })
+        (s) => ({ svg: s, type: "eq" as const })
       )
       const neqSvgs = this.$$('svg[data-testid="edge-cross"]', cell).map(
-        (s) => ({
-          svg: s,
-          type: "neq" as const
-        })
+        (s) => ({ svg: s, type: "neq" as const })
       )
       const edgeSvgs = [...eqSvgs, ...neqSvgs]
       if (!edgeSvgs.length) continue
