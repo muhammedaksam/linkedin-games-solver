@@ -18,12 +18,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 import { detectActiveSolver } from "~games"
 import { getMessage } from "~lib/i18n"
 import { syncStorage as storage } from "~lib/storage"
-import {
-  cn,
-  getLocalDateString,
-  type SolveHistory,
-  type SolveRecord
-} from "~lib/utils"
+import { cn, getLocalDateString, type SolveHistory } from "~lib/utils"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://*.linkedin.com/games/*"]

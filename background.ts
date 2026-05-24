@@ -113,13 +113,19 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   }
 })
 
+interface SolveRecord {
+  solved: boolean
+  time: number
+  solvedAt?: string
+}
+
 const checkAndNotifyStreak = async () => {
   try {
     const enabled = await syncStorage.get<boolean>("streakRemindersEnabled")
     if (!enabled) return
 
     const history =
-      (await syncStorage.get<Record<string, Record<string, any>>>(
+      (await syncStorage.get<Record<string, Record<string, SolveRecord>>>(
         "solveHistory"
       )) || {}
 
@@ -132,7 +138,7 @@ const checkAndNotifyStreak = async () => {
 
     const checkDay = history[todayStr]
     const solvedToday =
-      checkDay && Object.values(checkDay).some((g: any) => g?.solved)
+      checkDay && Object.values(checkDay).some((g: SolveRecord) => g?.solved)
 
     if (!solvedToday) {
       chrome.notifications.create("streak-protector-reminder", {

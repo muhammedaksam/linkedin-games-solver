@@ -11,7 +11,7 @@ The extension's single purpose is to read the game state and clues from LinkedIn
 ## What data is accessed and why
 
 - Website content: game board state and clue text from `https://*.linkedin.com/games/*`. Purpose: to compute or request a solution and present it to the user. This data is only read when you are on a supported LinkedIn Games page and request the extension's functionality.
-- Settings and preferences: language, UI preferences, chosen AI provider/model, and optional API key or custom AI endpoint. Purpose: to persist user configuration so the extension works across browser sessions.
+- Settings and preferences: language, UI preferences, solve statistics (streaks, personal bests, daily solved counts), chosen AI provider/model, and optional API key or custom AI endpoint. Purpose: to persist user configuration so the extension works across browser sessions.
 
 ## Network requests and AI assistance
 
@@ -19,15 +19,17 @@ The extension does not transmit any data off-device unless you explicitly enable
 
 ## Permissions used
 
-- `storage`: store settings, selected AI provider/model, and optional API keys in `chrome.storage.local`.
+- `storage`: used to store preferences, themes, solving history, streaks, and optional API keys. Non-sensitive settings and solve statistics are synchronized across your logged-in browser profiles using `chrome.storage.sync` to ensure a seamless cross-device dashboard. Sensitive values like AI credentials remain strictly confined to `chrome.storage.local` on your local device.
 - `activeTab`: used only when you interact with the extension (popup/dashboard) to detect and message the active LinkedIn Games tab.
-- `sidePanel`: used to display a responsive, persistent panel next to the LinkedIn page for a fluid and high-fidelity user workspace without blocking active game interactions.
+- `sidePanel`: used to display a responsive, persistent panel next to the LinkedIn page for a fluid workspace without blocking active game interactions.
 - `scripting`: required by the extension framework to register and inject the Main World diagnostics logger script (logger-main.ts) to capture game console events and display solving logs/diagnostics.
+- `alarms`: used to register background alarms in the service worker to perform daily scheduled checks for unsolved games and protect your active streak.
+- `notifications`: used to display native system-level desktop notifications (Streak Protector) if today's games remain unsolved by your chosen alarm time.
 - Host permission `https://*.linkedin.com/games/*`: required to run the content script and read the game DOM for pages under that pattern.
 
 ## Data retention and sharing
 
-- Settings and optional API keys remain stored locally in your browser until you remove them or uninstall the extension.
+- Settings, solved statistics, and optional API keys remain stored locally in your browser storage (`local` and `sync` spaces) until you remove them or uninstall the extension.
 - Game content and prompts are sent only to the AI provider you configured and only when you request AI assistance. We do not sell or transfer user data for advertising or unrelated purposes.
 
 ## No analytics or tracking
