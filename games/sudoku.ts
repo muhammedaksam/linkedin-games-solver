@@ -59,10 +59,7 @@ export class SudokuSolver extends BaseSolver {
         const cell = this.$(`[data-cell-idx="${idx}"]`)
         if (!cell) continue
 
-        const isGiven =
-          cell.getAttribute("aria-disabled") === "true" ||
-          cell.classList.contains("sudoku-cell--given") ||
-          cell.className.includes("given")
+        const isGiven = this.isGivenCell(cell)
 
         if (!isGiven) {
           const text = (cell.innerText || cell.textContent || "").trim()
@@ -143,6 +140,16 @@ export class SudokuSolver extends BaseSolver {
     console.log("[Sudoku] Done solving!")
   }
 
+  private isGivenCell(cell: HTMLElement): boolean {
+    return (
+      cell.getAttribute("aria-disabled") === "true" ||
+      cell.classList.contains("sudoku-cell--given") ||
+      cell.classList.contains("sudoku-cell-prefilled") ||
+      cell.className.includes("given") ||
+      cell.className.includes("prefilled")
+    )
+  }
+
   private parseGivenBoard(N: number): number[][] {
     const b = Array.from({ length: N }, () => Array<number>(N).fill(0))
     for (let idx = 0; idx < N * N; idx++) {
@@ -152,10 +159,7 @@ export class SudokuSolver extends BaseSolver {
       const cell = this.$(`[data-cell-idx="${idx}"]`)
       if (!cell) continue
 
-      const isGiven =
-        cell.getAttribute("aria-disabled") === "true" ||
-        cell.classList.contains("sudoku-cell--given") ||
-        cell.className.includes("given")
+      const isGiven = this.isGivenCell(cell)
 
       if (isGiven) {
         const text = (cell.innerText || cell.textContent || "").trim()

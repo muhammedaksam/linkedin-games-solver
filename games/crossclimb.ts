@@ -22,7 +22,17 @@ export class CrossclimbSolver extends BaseSolver {
       `[Crossclimb] Detected ${numMiddleRows} middle rows in the DOM.`
     )
 
-    // 0. Detect pre-solved state: Check if the board already has valid 4-letter words entered
+    let wordLength = 4
+    const firstRow = middleRows[0] || this.$('[data-guess-id="1"]')
+    if (firstRow) {
+      const inputs = this.$$("input", firstRow)
+      if (inputs.length > 0) {
+        wordLength = inputs.length
+      }
+    }
+    console.log(`[Crossclimb] Detected word length: ${wordLength}`)
+
+    // 0. Detect pre-solved state: Check if the board already has valid words entered
     const currentWordsOnBoard: string[] = []
     for (let i = 1; i <= numMiddleRows; i++) {
       const row = this.$(`[data-guess-id="${i}"]`)
@@ -72,7 +82,7 @@ export class CrossclimbSolver extends BaseSolver {
       }
     } else if (
       currentWordsOnBoard.length === numMiddleRows &&
-      currentWordsOnBoard.every((w) => w.length === 4)
+      currentWordsOnBoard.every((w) => w.length === wordLength)
     ) {
       const preSolvedOrder = this.findPermutation(currentWordsOnBoard)
       if (preSolvedOrder) {
@@ -195,9 +205,11 @@ export class CrossclimbSolver extends BaseSolver {
           targetOrder = perm.map((idx) => idx + 1)
         }
       } else {
-        // === TWO-PHASE APPROACH ===
-        // Phase 1: Ask the LLM ONLY for multiple candidate answers per clue
-        // Phase 2: Programmatically find which combination forms a valid word ladder
+        // === TWO-PHASE APPROACH with Self-Healing Outer Loop ===
+        // Phase 1: Ask the LLM for multiple candidate answers per clue
+        // Phase 2: Programmatically find a valid word ladder among candidates
+        // Self-Healing: If auto-check is enabled and the DOM shows `.crossclimb__guess--incorrect`
+        // after typing, block the combination and search for a different word ladder candidate.
 
         console.log(
           "[Crossclimb] Phase 1: Querying AI for candidate answers per clue..."
@@ -207,52 +219,77 @@ export class CrossclimbSolver extends BaseSolver {
           .join("\n")
 
         const candidatePrompt = `You are solving the LinkedIn game "Crossclimb".
-We have ${numMiddleRows} trivia clues. Each answer is EXACTLY a 4-letter English word.
+We have ${numMiddleRows} trivia clues. Each answer is EXACTLY a ${wordLength}-letter English word.
 
 Clues:
 ${cluesListStr}
 
 IMPORTANT: The answers must form a word ladder (each consecutive word differs by exactly 1 letter).
-This means the answers must be closely related in spelling. Think about what 4-letter words could chain together while still matching the clues.
+This means the answers must be closely related in spelling. Think about what ${wordLength}-letter words could chain together while still matching the clues.
 
-For each clue, provide 5-8 candidate 4-letter words that could plausibly answer that clue.
+To guarantee success:
+1. Brainstorm a complete, fully valid ${wordLength}-letter word ladder where each word is a direct answer to one of the clues, and each consecutive pair differs by exactly 1 letter.
+2. Ensure that ALL the words in this correct ladder are present in the candidate "words" arrays for their respective clues!
+
+For each clue, provide 5-8 candidate ${wordLength}-letter words that could plausibly answer that clue.
 Be CREATIVE and EXHAUSTIVE with candidates — include synonyms, alternative meanings, less obvious answers.
-Every candidate MUST be exactly 4 letters and a real English word.
+Every candidate MUST be exactly ${wordLength} letters and a real, correctly spelled English dictionary word.
 
-CRITICAL RULES:
+EXPERT TIP FOR WORD LADDERS:
+Crossclimb answers are designed as a tight word ladder. The correct answer to a clue is often a single-letter edit of the correct answer to another clue!
+For example, if one of your answers is 'BASHED' (peppered with insults) and another clue is 'Spread some gossip', the correct answer for the gossip clue is likely 'DISHED' (since BASHED -> DISHED is a 1-letter change, and 'dish' is standard slang for spreading gossip).
+When brainstorming candidates for a clue, always look at the best candidates of the other clues, generate their 1-letter edits, and see if any of those edits are perfect, standard English words that fit the current clue!
+
+CRITICAL QUALITY RULES:
 - DIRECT, LITERAL definitions only. No metaphors or loose associations.
-- Each candidate MUST be exactly 4 letters. Count carefully!
-- Include common AND uncommon valid answers.
+- The candidates you suggest for a clue MUST be direct, standard, and highly accurate answers to that clue. Do NOT suggest completely incorrect or extremely loose words just to force a ladder (for example, 'PASTED' is NOT a standard or correct answer for 'crushed into soft form like some potatoes'—that is MASHED; 'GASSED' is not a standard slang for 'peppered with insults'—that is BASHED or SLATED; 'PASSED' is not a standard slang for 'spread some gossip'—that is DISHED or RATTED).
+- Each candidate MUST be exactly ${wordLength} letters. Count carefully!
+- Under NO circumstances should you truncate, drop letters, or misspell words to force them to be exactly ${wordLength} letters. For example, do NOT output 'CRUSHD', 'SMASHT', 'SLAMED', 'CLUBED', 'AMASSD', or 'CHATTD' which are not standard English dictionary words. Every candidate must be a perfectly spelled, standard English dictionary word.
+- If a synonym or answer you brainstormed is not exactly ${wordLength} letters (e.g., 'CRUSHED' is 7 letters), it CANNOT be used. You must find a different synonym of standard spelling that is exactly ${wordLength} letters (e.g., 'MASHED' or 'PUREED').
 - Think about words that share letter patterns (e.g., PALE, PILE, TILE, TALE all differ by 1 letter).
 
 Return a JSON object in this exact format:
 {
+  "reasoning": "A step-by-step reasoning string where you brainstorm candidates for each clue, count their letters explicitly to verify they are exactly ${wordLength} letters, check their dictionary spelling, reject any non-standard abbreviations or wrong-length words, and verify how they form a valid ladder.",
+  "proposedLadder": "A valid, complete chain of words (e.g., WORD1 -> WORD2 -> WORD3 -> WORD4 -> WORD5) that solves the clues in some order.",
+  "explanation": "Explain your brainstormed ladder and how each word answers its corresponding clue.",
   "candidates": [
     {"clueIdx": 1, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD"]},
     {"clueIdx": 2, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD"]}
   ]
 }
 
-Where each "words" array has 5-8 UPPERCASE 4-letter candidates. Do not include markdown.`
+Where each "words" array has 5-8 UPPERCASE ${wordLength}-letter candidates. Do not include markdown.`
 
-        let allCandidates: string[][] = [] // allCandidates[clueIndex] = list of candidate words
-        const maxAttempts = 3
-        let attemptNum = 0
+        const blockedCombinations = new Set<string>()
+        let solvedSuccessfully = false
+        const maxSolveAttempts = 5
 
-        while (attemptNum < maxAttempts && targetOrder.length === 0) {
-          attemptNum++
+        for (let solveAttempt = 0; solveAttempt < maxSolveAttempts; solveAttempt++) {
           console.log(
-            `[Crossclimb] Phase 1, Attempt ${attemptNum}: Requesting candidates...`
+            `[Crossclimb] Solve attempt ${solveAttempt + 1} of ${maxSolveAttempts}...`
           )
 
-          let prompt = candidatePrompt
-          if (attemptNum > 1) {
-            // On retries, ask for different/more creative candidates
-            const prevCandidatesStr = allCandidates
-              .map((words, idx) => `  Clue ${idx + 1}: [${words.join(", ")}]`)
-              .join("\n")
-            prompt = `You are solving the LinkedIn game "Crossclimb".
-We have ${numMiddleRows} trivia clues. Each answer is EXACTLY a 4-letter English word.
+          let allCandidates: string[][] = [] // allCandidates[clueIndex] = list of candidate words
+          const maxAttempts = 3
+          let attemptNum = 0
+          targetOrder = []
+          clueWordMap.clear()
+
+          while (attemptNum < maxAttempts && targetOrder.length === 0) {
+            attemptNum++
+            console.log(
+              `[Crossclimb] Phase 1, Attempt ${attemptNum}: Requesting candidates...`
+            )
+
+            let prompt = candidatePrompt
+            if (attemptNum > 1) {
+              // On retries, ask for different/more creative candidates
+              const prevCandidatesStr = allCandidates
+                .map((words, idx) => `  Clue ${idx + 1}: [${words.join(", ")}]`)
+                .join("\n")
+              prompt = `You are solving the LinkedIn game "Crossclimb".
+We have ${numMiddleRows} trivia clues. Each answer is EXACTLY a ${wordLength}-letter English word.
 
 Clues:
 ${cluesListStr}
@@ -261,126 +298,179 @@ PREVIOUS ATTEMPT FAILED — the candidates could not form a word ladder.
 Previous candidates were:
 ${prevCandidatesStr}
 
-Please provide DIFFERENT and MORE CREATIVE candidate words this time.
+Please think of a DIFFERENT and MORE CREATIVE complete word ladder this time.
 Think harder about words that share spelling patterns and can chain via single-letter changes.
-For example, if one clue could be answered by PALE and another by PILE, those chain nicely (differ by 1 letter).
 
-For each clue, provide 6-10 candidate 4-letter words. Include unusual but valid answers.
-Every candidate MUST be exactly 4 letters and a real English word.
+For each clue, provide 6-10 candidate ${wordLength}-letter words. Include unusual but valid answers.
+Every candidate MUST be exactly ${wordLength} letters and a real, correctly spelled English dictionary word.
+
+EXPERT TIP FOR WORD LADDERS:
+Crossclimb answers are designed as a tight word ladder. The correct answer to a clue is often a single-letter edit of the correct answer to another clue!
+For example, if one of your answers is 'BASHED' (peppered with insults) and another clue is 'Spread some gossip', the correct answer for the gossip clue is likely 'DISHED' (since BASHED -> DISHED is a 1-letter change, and 'dish' is standard slang for spreading gossip).
+When brainstorming candidates for a clue, always look at the best candidates of the other clues, generate their 1-letter edits, and see if any of those edits are perfect, standard English words that fit the current clue!
+
+CRITICAL RULES:
+- DIRECT, LITERAL definitions only. No metaphors or loose associations.
+- The candidates you suggest for a clue MUST be direct, standard, and highly accurate answers to that clue. Do NOT suggest completely incorrect or extremely loose words just to force a ladder (for example, 'PASTED' is NOT a standard or correct answer for 'crushed into soft form like some potatoes'—that is MASHED; 'GASSED' is not a standard slang for 'peppered with insults'—that is BASHED or SLATED; 'PASSED' is not a standard slang for 'spread some gossip'—that is DISHED or RATTED).
+- Under NO circumstances should you truncate, drop letters, or misspell words to force them to be exactly ${wordLength} letters. For example, do NOT output 'CRUSHD', 'SMASHT', 'SLAMED', 'CLUBED', 'AMASSD', or 'CHATTD' which are not standard English dictionary words. Every candidate must be a perfectly spelled, standard English dictionary word.
+- If a synonym or answer is not exactly ${wordLength} letters (e.g. 'CRUSHED' is 7 letters), it CANNOT be used. You must find a different synonym of standard spelling that is exactly ${wordLength} letters (e.g. 'MASHED' or 'PUREED').
+- Count characters carefully!
 
 Return a JSON object in this exact format:
 {
+  "reasoning": "A step-by-step reasoning string where you brainstorm new candidates for each clue, count their letters explicitly to verify they are exactly ${wordLength} letters, check their dictionary spelling, reject any non-standard abbreviations or wrong-length words, and verify how they form a valid ladder.",
+  "proposedLadder": "A new valid, complete chain of words (e.g., WORD1 -> WORD2 -> WORD3 -> WORD4 -> WORD5) that solves the clues in some order.",
+  "explanation": "Explain your new brainstormed ladder and how each word answers its corresponding clue.",
   "candidates": [
     {"clueIdx": 1, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD", "WORD"]},
     {"clueIdx": 2, "clue": "the clue text", "words": ["WORD", "WORD", "WORD", "WORD", "WORD", "WORD"]}
   ]
 }
 
-Where each "words" array has 6-10 UPPERCASE 4-letter candidates. Do not include markdown.`
-          }
-
-          try {
-            const responseText = await askAI(prompt, true)
-            console.log(
-              `[Crossclimb] Phase 1 response (Attempt ${attemptNum}):`,
-              responseText
-            )
-
-            const parsed = this.cleanAndParseJSON<{
-              candidates: { clueIdx: number; words: string[] }[]
-            }>(responseText)
-
-            if (
-              !parsed.candidates ||
-              parsed.candidates.length !== numMiddleRows
-            ) {
-              console.warn(
-                "[Crossclimb] Invalid candidate response, retrying..."
-              )
-              continue
+Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do not include markdown.`
             }
 
-            // Normalize and filter new candidates: must be exactly 4 letters
-            const newCandidates = parsed.candidates.map((c) => {
-              const normalized = c.words
-                .map((w) => w.trim().toUpperCase())
-                .filter((w) => w.length === 4)
-              return [...new Set(normalized)]
-            })
+            try {
+              const responseText = await askAI(prompt, true)
+              console.log(
+                `[Crossclimb] Phase 1 response (Attempt ${attemptNum}):`,
+                responseText
+              )
 
-            // Merge new candidates with previously accumulated ones
-            if (allCandidates.length === numMiddleRows) {
-              for (let i = 0; i < numMiddleRows; i++) {
-                const mergedSet = new Set(allCandidates[i])
-                for (const w of newCandidates[i]) {
-                  mergedSet.add(w)
+              const parsed = this.cleanAndParseJSON<{
+                candidates: { clueIdx: number; words: string[] }[]
+              }>(responseText)
+
+              if (
+                !parsed.candidates ||
+                parsed.candidates.length !== numMiddleRows
+              ) {
+                console.warn(
+                  "[Crossclimb] Invalid candidate response, retrying..."
+                )
+                continue
+              }
+
+              // Normalize and filter new candidates: must be exactly the detected word length
+              const newCandidates = parsed.candidates.map((c) => {
+                const normalized = c.words
+                  .map((w) => w.trim().toUpperCase())
+                  .filter((w) => w.length === wordLength)
+                return [...new Set(normalized)]
+              })
+
+              // Merge new candidates with previously accumulated ones
+              if (allCandidates.length === numMiddleRows) {
+                for (let i = 0; i < numMiddleRows; i++) {
+                  const mergedSet = new Set(allCandidates[i])
+                  for (const w of newCandidates[i]) {
+                    mergedSet.add(w)
+                  }
+                  allCandidates[i] = [...mergedSet]
                 }
-                allCandidates[i] = [...mergedSet]
+              } else {
+                allCandidates = newCandidates
               }
-            } else {
-              allCandidates = newCandidates
-            }
 
-            console.log(
-              "[Crossclimb] Phase 2: Searching for valid word ladder combination..."
-            )
-            for (let i = 0; i < allCandidates.length; i++) {
               console.log(
-                `[Crossclimb]   Clue ${i + 1} candidates: [${allCandidates[i].join(", ")}]`
+                "[Crossclimb] Phase 2: Searching for valid word ladder combination..."
               )
-            }
-
-            // Phase 2: Programmatic combinatorial search
-            const ladderResult = this.findLadderCombination(allCandidates)
-
-            if (ladderResult) {
-              const ladderChain = ladderResult.order
-                .map((idx) => ladderResult.words[idx])
-                .join(" -> ")
-              console.log(
-                "[Crossclimb] ✓ Found valid word ladder!",
-                ladderChain
-              )
-              clueWordMap.clear()
-              for (let i = 0; i < numMiddleRows; i++) {
-                clueWordMap.set(i + 1, ladderResult.words[i])
+              for (let i = 0; i < allCandidates.length; i++) {
+                console.log(
+                  `[Crossclimb]   Clue ${i + 1} candidates: [${allCandidates[i].join(", ")}]`
+                )
               }
-              targetOrder = ladderResult.order.map((idx) => idx + 1)
-              break
-            } else {
-              console.warn(
-                "[Crossclimb] Phase 2: No valid ladder found among candidates. Retrying with more candidates..."
+
+              // Phase 2: Programmatic combinatorial search
+              const ladderResult = this.findLadderCombination(
+                allCandidates,
+                blockedCombinations
+              )
+
+              if (ladderResult) {
+                const ladderChain = ladderResult.order
+                  .map((idx) => ladderResult.words[idx])
+                  .join(" -> ")
+                console.log(
+                  "[Crossclimb] ✓ Found valid word ladder candidate combination:",
+                  ladderChain
+                )
+                clueWordMap.clear()
+                for (let i = 0; i < numMiddleRows; i++) {
+                  clueWordMap.set(i + 1, ladderResult.words[i])
+                }
+                targetOrder = ladderResult.order.map((idx) => idx + 1)
+                break
+              } else {
+                console.warn(
+                  "[Crossclimb] Phase 2: No valid ladder found among candidates. Retrying with more candidates..."
+                )
+              }
+            } catch (e) {
+              console.error(
+                `[Crossclimb] Phase 1 attempt ${attemptNum} failed:`,
+                e
               )
             }
-          } catch (e) {
-            console.error(
-              `[Crossclimb] Phase 1 attempt ${attemptNum} failed:`,
-              e
+          }
+
+          if (targetOrder.length === 0) {
+            throw new Error(
+              "Could not construct a valid word ladder from candidate words after multiple attempts."
             )
           }
+
+          console.log(
+            "[Crossclimb] Inferred middle answers:",
+            Array.from(clueWordMap.entries())
+          )
+
+          // 3. Type the words into their respective clue rows
+          for (let i = 1; i <= numMiddleRows; i++) {
+            const word = clueWordMap.get(i)
+            if (!word) {
+              throw new Error(`Missing answer for clueIdx ${i}`)
+            }
+            console.log(`[Crossclimb] Typing "${word}" into Row ${i}...`)
+            await this.typeWord(i, word)
+            await this.sleep(200)
+          }
+
+          // 4. Wait for board auto-check evaluation (if enabled)
+          console.log("[Crossclimb] Waiting for board auto-check evaluation...")
+          await this.sleep(1500)
+
+          const incorrectRows = this.$$(".crossclimb__guess--incorrect")
+          if (incorrectRows.length > 0) {
+            console.warn(
+              `[Crossclimb] ❌ Detected ${incorrectRows.length} incorrect row(s) on the board.`
+            )
+            const currentWordsList = Array.from(
+              { length: numMiddleRows },
+              (_, idx) => clueWordMap.get(idx + 1) || ""
+            )
+            const comboKey = currentWordsList.map((w) => w.toUpperCase()).join(",")
+            console.warn(`[Crossclimb] Blocking incorrect combination: ${comboKey}`)
+            blockedCombinations.add(comboKey)
+
+            // Reset and retry
+            targetOrder = []
+            clueWordMap.clear()
+            continue
+          } else {
+            console.log(
+              "[Crossclimb] ✓ No incorrect indicators detected. Proceeding to sorting phase!"
+            )
+            solvedSuccessfully = true
+            break
+          }
         }
-      }
 
-      if (targetOrder.length === 0) {
-        throw new Error(
-          "Could not construct a valid word ladder from the solved words after multiple attempts."
-        )
-      }
-
-      console.log(
-        "[Crossclimb] Inferred middle answers:",
-        Array.from(clueWordMap.entries())
-      )
-
-      // 3. Type the words into their respective clue rows
-      for (let i = 1; i <= numMiddleRows; i++) {
-        const word = clueWordMap.get(i)
-        if (!word) {
-          throw new Error(`Missing answer for clueIdx ${i}`)
+        if (!solvedSuccessfully) {
+          throw new Error(
+            "Failed to find a valid and correct combination after multiple self-healing attempts."
+          )
         }
-        console.log(`[Crossclimb] Typing "${word}" into Row ${i}...`)
-        await this.typeWord(i, word)
-        await this.sleep(200)
       }
     }
 
@@ -481,10 +571,10 @@ The word at the bottom of this middle ladder is "${lastLadderWord}".
 We need to solve the final two words of the ladder: the Top word (guess ID 0) and the Bottom word (guess ID ${numMiddleRows + 1}).
 
 CRITICAL CONSTRAINTS:
-1. The Top word MUST be a valid, common 4-letter English word chosen from this exhaustive list of single-letter edits of "${firstLadderWord}":
+1. The Top word MUST be a valid, common ${wordLength}-letter English word chosen from this exhaustive list of single-letter edits of "${firstLadderWord}":
 [${topCandidates.join(", ")}]
 
-2. The Bottom word MUST be a valid, common 4-letter English word chosen from this exhaustive list of single-letter edits of "${lastLadderWord}":
+2. The Bottom word MUST be a valid, common ${wordLength}-letter English word chosen from this exhaustive list of single-letter edits of "${lastLadderWord}":
 [${bottomCandidates.join(", ")}]
 
 3. Together, the Top word and the Bottom word must strictly, literally, and obviously satisfy this joint clue: "${topClueText}".
@@ -497,31 +587,86 @@ Return a JSON object in this exact format:
   "bottomWord": "BOTTOM_WORD"
 }
 
-Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include markdown code block syntax outside the JSON.
+Where "topWord" and "bottomWord" are ${wordLength}-letter words in uppercase. Do not include markdown code block syntax outside the JSON.
 `
 
-    console.log(
-      "[Crossclimb] Querying Gemini for joint top and bottom answers..."
-    )
-    const responseText = await askAI(jointPrompt, true)
-    console.log("[Crossclimb] Gemini joint top/bottom response:", responseText)
+    let topWord = ""
+    let bottomWord = ""
+    let jointAttempt = 0
+    let jointPromptText = jointPrompt
 
-    let parsedJoint: { topWord: string; bottomWord: string }
-    try {
-      parsedJoint = this.cleanAndParseJSON(responseText)
-    } catch (e) {
-      throw new Error(
-        `Failed to parse Gemini joint response: ${responseText}`,
-        { cause: e }
+    while (jointAttempt < 3) {
+      jointAttempt++
+      console.log(
+        `[Crossclimb] Querying Gemini for joint top and bottom answers (Attempt ${jointAttempt})...`
       )
+      const responseText = await askAI(jointPromptText, true)
+      console.log(
+        `[Crossclimb] Gemini joint top/bottom response (Attempt ${jointAttempt}):`,
+        responseText
+      )
+
+      let parsedJoint: { topWord: string; bottomWord: string }
+      try {
+        parsedJoint = this.cleanAndParseJSON(responseText)
+      } catch (e) {
+        throw new Error(
+          `Failed to parse Gemini joint response: ${responseText}`,
+          { cause: e }
+        )
+      }
+
+      topWord = parsedJoint.topWord.trim().toUpperCase()
+      bottomWord = parsedJoint.bottomWord.trim().toUpperCase()
+
+      // Validate candidates
+      const isTopValid = topCandidates.includes(topWord)
+      const isBottomValid = bottomCandidates.includes(bottomWord)
+      const isDuplicate =
+        middleWords.includes(topWord) ||
+        middleWords.includes(bottomWord) ||
+        topWord === bottomWord
+
+      if (isTopValid && isBottomValid && !isDuplicate) {
+        console.log(
+          "[Crossclimb] ✓ Joint top/bottom answers successfully validated!"
+        )
+        break
+      }
+
+      // If invalid, construct a correction prompt and retry
+      console.warn(
+        `[Crossclimb] Joint words validation failed. Top valid: ${isTopValid}, Bottom valid: ${isBottomValid}, Duplicate: ${isDuplicate}. Retrying...`
+      )
+
+      const errors: string[] = []
+      if (!isTopValid) {
+        errors.push(
+          `- The chosen topWord "${topWord}" is NOT in the allowed list of candidate edits for "${firstLadderWord}". You MUST choose strictly from: [${topCandidates.join(", ")}]`
+        )
+      }
+      if (!isBottomValid) {
+        errors.push(
+          `- The chosen bottomWord "${bottomWord}" is NOT in the allowed list of candidate edits for "${lastLadderWord}". You MUST choose strictly from: [${bottomCandidates.join(", ")}]`
+        )
+      }
+      if (isDuplicate) {
+        errors.push(
+          `- You chose words that are already used in the middle ladder or are duplicates of each other. Middle words are: [${middleWords.join(", ")}]. You must choose completely new words that differ by 1 letter and do not duplicate any words.`
+        )
+      }
+
+      jointPromptText = `${jointPrompt}
+
+⚠️ ATTENTION: Your previous response was INVALID because of the following error(s):
+${errors.join("\n")}
+
+Please correct these error(s) and return a new JSON object choosing strictly from the allowed lists above.`
     }
 
-    const topWord = parsedJoint.topWord.trim().toUpperCase()
-    const bottomWord = parsedJoint.bottomWord.trim().toUpperCase()
-
-    if (topWord.length !== 4 || bottomWord.length !== 4) {
+    if (topWord.length !== wordLength || bottomWord.length !== wordLength) {
       throw new Error(
-        `Invalid top/bottom word lengths: Top="${topWord}", Bottom="${bottomWord}"`
+        `Invalid top/bottom word lengths after retry validation: Top="${topWord}", Bottom="${bottomWord}"`
       )
     }
 
@@ -592,8 +737,9 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
   }
 
   private getDistance(w1: string, w2: string): number {
+    if (w1.length !== w2.length) return Math.abs(w1.length - w2.length)
     let diff = 0
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < w1.length; i++) {
       if (w1[i] !== w2[i]) diff++
     }
     return diff
@@ -602,7 +748,7 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
   private getOneLetterEdits(word: string): string[] {
     const edits: string[] = []
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < word.length; i++) {
       for (const char of alphabet) {
         if (word[i] !== char) {
           const edit = word.substring(0, i) + char + word.substring(i + 1)
@@ -656,7 +802,8 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
    * or null if no valid combination exists.
    */
   private findLadderCombination(
-    candidateLists: string[][]
+    candidateLists: string[][],
+    blockedCombinations: Set<string> = new Set()
   ): { words: string[]; order: number[] } | null {
     const n = candidateLists.length
 
@@ -693,7 +840,21 @@ Where "topWord" and "bottomWord" are 4-letter words in uppercase. Do not include
       path.push(nodeIdx)
       usedClues.add(nodeClue[nodeIdx])
 
-      if (path.length === n) return true // Found path covering all clues
+      if (path.length === n) {
+        // Reconstruct words to check blocklist
+        const words = new Array<string>(n)
+        for (const idx of path) {
+          words[nodeClue[idx]] = nodeWord[idx]
+        }
+        const comboKey = words.map((w) => w.toUpperCase()).join(",")
+        if (!blockedCombinations.has(comboKey)) {
+          return true // Found a non-blocked valid path
+        }
+        // Otherwise, this path is blocked, so backtrack!
+        path.pop()
+        usedClues.delete(nodeClue[nodeIdx])
+        return false
+      }
 
       for (const next of adj[nodeIdx]) {
         if (!usedClues.has(nodeClue[next])) {
