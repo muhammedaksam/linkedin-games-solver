@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
+import { Button } from "~/components/ui/button"
 import { getActiveLocale, setActiveLocale, SUPPORTED_LOCALES } from "~lib/i18n"
 import { cn } from "~lib/utils"
 
@@ -40,10 +41,11 @@ export function LanguageSwitcher({ align = "right" }: LanguageSwitcherProps) {
 
   return (
     <div className="relative inline-block text-left" ref={containerRef}>
-      <button
+      <Button
         type="button"
+        variant="ghost"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-col items-center justify-center h-full px-1 text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent pt-1 relative"
+        className="flex flex-col items-center justify-center h-full px-1 text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent pt-1 relative hover:bg-transparent rounded-none"
         title="Change Language">
         <div className="flex items-center justify-center w-[18px] h-[18px] transition-transform active:scale-95">
           <span className="text-[12px] leading-none select-none filter drop-shadow-sm mt-0.5">
@@ -53,7 +55,7 @@ export function LanguageSwitcher({ align = "right" }: LanguageSwitcherProps) {
         <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight">
           {activeLocale.label}
         </span>
-      </button>
+      </Button>
 
       {isOpen && (
         <div
@@ -65,21 +67,22 @@ export function LanguageSwitcher({ align = "right" }: LanguageSwitcherProps) {
             {SUPPORTED_LOCALES.map((loc) => {
               const isActive = loc.code === activeCode
               return (
-                <button
+                <Button
                   key={loc.code}
                   type="button"
+                  variant="ghost"
                   onClick={() => handleSelect(loc.code)}
                   className={cn(
-                    "flex items-center gap-2.5 w-full px-2.5 py-1.5 rounded-lg text-left text-xs font-semibold transition-colors duration-150 cursor-pointer outline-none border-none",
+                    "flex items-center gap-2.5 w-full px-2.5 py-1.5 rounded-lg text-left text-xs font-semibold transition-colors duration-150 cursor-pointer justify-start h-auto",
                     isActive
-                      ? "bg-[#0a66c2]/10 dark:bg-[#70b5f9]/15 text-[#0a66c2] dark:text-[#70b5f9]"
+                      ? "bg-[#0a66c2]/10 dark:bg-[#70b5f9]/15 text-[#0a66c2] dark:text-[#70b5f9] hover:bg-[#0a66c2]/10 dark:hover:bg-[#70b5f9]/15 hover:text-[#0a66c2] dark:hover:text-[#70b5f9]"
                       : "hover:bg-muted/60 dark:hover:bg-[#222a30] text-foreground/80 hover:text-foreground"
                   )}>
                   <span className="text-sm filter drop-shadow-sm leading-none shrink-0">
                     {loc.flag}
                   </span>
                   <span className="truncate flex-1">{loc.label}</span>
-                </button>
+                </Button>
               )
             })}
           </div>

@@ -27,6 +27,7 @@ import { GAMES_CONFIG } from "~/lib/games-config"
 import { localStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
 
+import { Button } from "../components/ui/button"
 import { Calendar } from "../components/ui/calendar"
 import { Input } from "../components/ui/input"
 import {
@@ -398,11 +399,12 @@ export default function Dashboard() {
 
           {/* Center: Desktop Navigation Tabs */}
           <div className="flex items-center gap-6 h-full">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => setActiveTab("stats")}
               className={cn(
-                "relative flex items-center gap-1.5 h-full px-4 text-muted-foreground hover:text-foreground font-bold text-xs select-none transition-all outline-none border-none bg-transparent",
+                "relative flex items-center gap-1.5 h-full px-4 text-muted-foreground hover:text-foreground font-bold text-xs select-none transition-all outline-none border-none bg-transparent hover:bg-transparent rounded-none",
                 activeTab === "stats" && "text-[#0a66c2] dark:text-[#70b5f9]"
               )}>
               <Trophy className="w-3.5 h-3.5" />
@@ -410,13 +412,14 @@ export default function Dashboard() {
               {activeTab === "stats" && (
                 <div className="absolute bottom-0 inset-x-0 h-[3px] bg-[#0a66c2] dark:bg-[#70b5f9] rounded-t" />
               )}
-            </button>
+            </Button>
 
-            <button
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => setActiveTab("settings")}
               className={cn(
-                "relative flex items-center gap-1.5 h-full px-4 text-muted-foreground hover:text-foreground font-bold text-xs select-none transition-all outline-none border-none bg-transparent",
+                "relative flex items-center gap-1.5 h-full px-4 text-muted-foreground hover:text-foreground font-bold text-xs select-none transition-all outline-none border-none bg-transparent hover:bg-transparent rounded-none",
                 activeTab === "settings" && "text-[#0a66c2] dark:text-[#70b5f9]"
               )}>
               <Settings className="w-3.5 h-3.5" />
@@ -424,16 +427,18 @@ export default function Dashboard() {
               {activeTab === "settings" && (
                 <div className="absolute bottom-0 inset-x-0 h-[3px] bg-[#0a66c2] dark:bg-[#70b5f9] rounded-t" />
               )}
-            </button>
+            </Button>
           </div>
 
           {/* Right: Actions */}
           <div className="flex items-center gap-4">
             {/* Mode Switch */}
-            <button
+            <Button
               type="button"
+              variant="outline"
+              size="icon"
               onClick={toggleTheme}
-              className="p-2 rounded-full border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all duration-200 shadow-sm outline-none"
+              className="h-9 w-9 rounded-full border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all duration-200 shadow-sm"
               title={getMessage(
                 "switchThemeTitle",
                 theme === "dark" ? "light" : "dark"
@@ -443,7 +448,7 @@ export default function Dashboard() {
               ) : (
                 <Moon className="w-4 h-4 text-zinc-600 animate-in spin-in-12 duration-500" />
               )}
-            </button>
+            </Button>
 
             <div className="h-6 w-[1px] bg-border mx-0.5 shrink-0" />
             <LanguageSwitcher align="right" />
@@ -639,12 +644,13 @@ export default function Dashboard() {
                       </h2>
                     </div>
                     {selectedDate && (
-                      <button
+                      <Button
                         type="button"
+                        variant="link"
                         onClick={() => setSelectedDate(undefined)}
-                        className="text-[10px] font-bold text-[#0a66c2] dark:text-[#70b5f9] hover:underline transition-all cursor-pointer">
+                        className="text-[10px] font-bold text-[#0a66c2] dark:text-[#70b5f9] hover:underline transition-all cursor-pointer p-0 h-auto">
                         {getMessage("clearFilter")}
-                      </button>
+                      </Button>
                     )}
                   </div>
                   <div className="w-full pt-2">
@@ -756,10 +762,11 @@ export default function Dashboard() {
                       })}
 
                     {sortedDates.length > 5 && (
-                      <button
+                      <Button
                         type="button"
+                        variant="outline"
                         onClick={() => setShowAllDates(!showAllDates)}
-                        className="flex items-center justify-center gap-1.5 py-2.5 px-4 mt-2 w-full text-xs font-bold text-[#0a66c2] dark:text-[#70b5f9] bg-card hover:bg-muted/40 border border-border rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] cursor-pointer">
+                        className="flex items-center justify-center gap-1.5 py-2.5 px-4 mt-2 w-full text-xs font-bold text-[#0a66c2] dark:text-[#70b5f9] bg-card hover:bg-muted/40 border border-border rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] cursor-pointer h-10">
                         {showAllDates ? (
                           <>
                             <span>{getMessage("showLessDates")}</span>
@@ -771,7 +778,7 @@ export default function Dashboard() {
                             <ChevronDown className="w-3.5 h-3.5 animate-pulse" />
                           </>
                         )}
-                      </button>
+                      </Button>
                     )}
                   </div>
                 )}
@@ -967,16 +974,18 @@ export default function Dashboard() {
                         }
                         className="pr-10 text-xs h-10 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
                       />
-                      <button
+                      <Button
                         type="button"
+                        variant="ghost"
+                        size="icon"
                         onClick={() => setShowApiKey(!showApiKey)}
-                        className="absolute right-3.5 text-muted-foreground hover:text-foreground transition-colors p-1 outline-none">
+                        className="absolute right-1.5 text-muted-foreground hover:text-foreground transition-colors h-8 w-8 p-0 hover:bg-transparent">
                         {showApiKey ? (
                           <EyeOff className="w-4 h-4" />
                         ) : (
                           <Eye className="w-4 h-4" />
                         )}
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 )}

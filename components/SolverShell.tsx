@@ -24,6 +24,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { LanguageSwitcher } from "~/components/LanguageSwitcher"
+import { Button } from "~/components/ui/button"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -578,12 +579,13 @@ export function SolverShell({
           {navItems.map((item) => {
             const IconComponent = item.icon
             return (
-              <button
+              <Button
                 key={item.id}
                 type="button"
+                variant="ghost"
                 onClick={item.onClick}
                 className={cn(
-                  "relative flex flex-col items-center justify-center h-full text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent pt-1",
+                  "relative flex flex-col items-center justify-center h-full text-muted-foreground hover:text-foreground hover:bg-transparent transition-all select-none outline-none border-none bg-transparent pt-1 rounded-none",
                   isSidePanel ? "px-1.5" : "px-1",
                   item.active && "text-foreground"
                 )}
@@ -603,7 +605,7 @@ export function SolverShell({
                 {item.active && (
                   <div className="absolute bottom-0 inset-x-0 h-[2px] bg-foreground rounded-t" />
                 )}
-              </button>
+              </Button>
             )
           })}
           <div className="h-4 w-[1px] bg-border mx-0.5 shrink-0" />
@@ -817,16 +819,18 @@ export function SolverShell({
                       }
                       className="pr-10 text-xs h-9 bg-card border border-border hover:border-[#0a66c2] dark:hover:border-[#70b5f9] focus-visible:ring-[#0a66c2] dark:focus-visible:ring-[#70b5f9]"
                     />
-                    <button
+                    <Button
                       type="button"
+                      variant="ghost"
+                      size="icon"
                       onClick={() => setShowApiKey(!showApiKey)}
-                      className="absolute right-2.5 text-muted-foreground hover:text-foreground transition-colors p-1">
+                      className="absolute right-1 text-muted-foreground hover:text-foreground transition-colors h-7 w-7 p-0 hover:bg-transparent">
                       {showApiKey ? (
                         <EyeOff className="w-4 h-4" />
                       ) : (
                         <Eye className="w-4 h-4" />
                       )}
-                    </button>
+                    </Button>
                   </div>
                 </div>
               )}
@@ -937,13 +941,13 @@ export function SolverShell({
                 "The extension never shares your credentials."}
             </p>
 
-            <button
+            <Button
               type="button"
               onClick={() => setActiveTab("home")}
               className="w-full h-9 bg-[#0a66c2] hover:bg-[#004182] dark:bg-[#70b5f9] dark:hover:bg-[#5fa3e5] text-white dark:text-[#1d2226] text-xs font-bold rounded-full transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98]">
               <CheckCircle2 className="w-3.5 h-3.5" />
               {getMessage("saveAndBack") || "Save & Back to Games"}
-            </button>
+            </Button>
           </div>
         )}
 
@@ -974,12 +978,13 @@ export function SolverShell({
                   const puzzleNumber = getPuzzleNumber(game.id)
 
                   const gameButton = (
-                    <button
+                    <Button
                       key={game.id}
                       type="button"
+                      variant="outline"
                       onClick={() => handleSolve(game.id)}
                       className={cn(
-                        "w-full text-left group relative flex items-center justify-between p-3 rounded-lg border border-border bg-card hover:bg-muted/30 dark:hover:bg-[#222a30] transition-all duration-200 cursor-pointer select-none",
+                        "w-full text-left group relative flex items-center justify-between p-3 rounded-lg border border-border bg-card hover:bg-muted/30 dark:hover:bg-[#222a30] transition-all duration-200 cursor-pointer select-none h-auto gap-0",
                         isActive &&
                           "border-[#0a66c2] dark:border-[#70b5f9] bg-[#f0f7fe] dark:bg-[#1a2b3c] shadow-sm",
                         isCompleted && "border-border/60 bg-card/60"
@@ -996,7 +1001,7 @@ export function SolverShell({
                       }>
                       {/* Left side: Description & Title */}
                       <div className="flex flex-col items-start space-y-0.5 flex-1 pr-3">
-                        <span className="text-[10px] text-muted-foreground leading-none">
+                        <span className="text-[10px] text-muted-foreground leading-none font-normal">
                           {getMessage(`desc_${game.id}`) || game.description}
                         </span>
                         <div className="flex items-center gap-1.5">
@@ -1078,7 +1083,7 @@ export function SolverShell({
                           )}
                         </div>
                       </div>
-                    </button>
+                    </Button>
                   )
 
                   if (isCompleted) {
@@ -1223,14 +1228,15 @@ export function SolverShell({
 
               {/* Quick Actions Feed */}
               <div className="grid grid-cols-2 gap-2 pt-1.5">
-                <button
+                <Button
                   type="button"
+                  variant="outline"
                   disabled={!mainHtml}
                   onClick={handleCopyHtml}
                   className={cn(
-                    "h-8 border rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95",
+                    "h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5",
                     copyHtmlSuccess
-                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400"
                       : "border-border hover:bg-muted/40 text-foreground disabled:opacity-40 disabled:pointer-events-none"
                   )}>
                   {copyHtmlSuccess ? (
@@ -1241,16 +1247,17 @@ export function SolverShell({
                   {copyHtmlSuccess
                     ? getMessage("debugHtmlCopied")
                     : getMessage("debugCopyHtml")}
-                </button>
+                </Button>
 
-                <button
+                <Button
                   type="button"
+                  variant="outline"
                   disabled={debugLogs.length === 0}
                   onClick={handleCopyLogs}
                   className={cn(
-                    "h-8 border rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95",
+                    "h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5",
                     copyLogsSuccess
-                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400"
                       : "border-border hover:bg-muted/40 text-foreground disabled:opacity-40 disabled:pointer-events-none"
                   )}>
                   {copyLogsSuccess ? (
@@ -1261,16 +1268,17 @@ export function SolverShell({
                   {copyLogsSuccess
                     ? getMessage("debugLogsCopied")
                     : getMessage("debugCopyLogs")}
-                </button>
+                </Button>
 
-                <button
+                <Button
                   type="button"
+                  variant="outline"
                   disabled={!mainHtml && debugLogs.length === 0}
                   onClick={handleCopyBoth}
                   className={cn(
-                    "col-span-2 h-8 border rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95",
+                    "col-span-2 h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5",
                     copyBothSuccess
-                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400"
                       : "border-border hover:bg-muted/40 text-foreground disabled:opacity-40 disabled:pointer-events-none"
                   )}>
                   {copyBothSuccess ? (
@@ -1281,7 +1289,7 @@ export function SolverShell({
                   {copyBothSuccess
                     ? getMessage("debugBothCopied")
                     : getMessage("debugCopyBoth")}
-                </button>
+                </Button>
               </div>
             </div>
 
@@ -1312,13 +1320,15 @@ export function SolverShell({
                           : "")}
                     </code>
                   </pre>
-                  <button
+                  <Button
                     type="button"
+                    variant="outline"
+                    size="icon"
                     onClick={handleCopyHtml}
-                    className="absolute right-2 top-2 p-1.5 rounded bg-card border border-border hover:bg-muted text-muted-foreground hover:text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute right-2 top-2 h-7 w-7 rounded bg-card border border-border hover:bg-muted text-muted-foreground hover:text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
                     title={getMessage("debugCopyCompleteHtmlTooltip")}>
                     <Copy className="w-3.5 h-3.5" />
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 <div className="text-[10px] text-muted-foreground italic text-center py-6 border border-dashed border-border rounded-lg bg-muted/20">
@@ -1338,21 +1348,25 @@ export function SolverShell({
                 </span>
 
                 <div className="flex items-center gap-1">
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
+                    size="icon"
                     onClick={fetchDebugInfo}
-                    className="p-1 rounded hover:bg-muted text-muted-foreground hover:text-foreground"
+                    className="h-6 w-6 p-0 rounded hover:bg-muted text-muted-foreground hover:text-foreground"
                     title={getMessage("debugRefreshLogsTooltip")}>
                     <RefreshCw className="w-3 h-3" />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     type="button"
+                    variant="ghost"
+                    size="icon"
                     disabled={debugLogs.length === 0}
                     onClick={handleClearLogs}
-                    className="p-1 rounded hover:bg-muted text-muted-foreground hover:text-destructive disabled:opacity-40"
+                    className="h-6 w-6 p-0 rounded hover:bg-muted text-muted-foreground hover:text-destructive disabled:opacity-40"
                     title={getMessage("debugClearLogsTooltip")}>
                     <Trash2 className="w-3 h-3" />
-                  </button>
+                  </Button>
                 </div>
               </div>
 
