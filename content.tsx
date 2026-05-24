@@ -18,32 +18,92 @@ import { useStorage } from "@plasmohq/storage/hook"
 import { detectActiveSolver } from "~games"
 import { getMessage } from "~lib/i18n"
 import { localStorage as storage } from "~lib/storage"
-import { cn } from "~lib/utils"
+import {
+  cn,
+  getLocalDateString,
+  type SolveHistory,
+  type SolveRecord
+} from "~lib/utils"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://*.linkedin.com/games/*"]
 }
 
-interface SolveRecord {
-  solved: boolean
-  time: number
-  solvedAt?: string
+// Keep track of captured logs globally in content.tsx
+const capturedLogs: Array<{
+  type: string
+  message: string
+  timestamp: string
+}> = []
+
+// Capture Isolated World logs
+const originalConsoleLog = console.log
+const originalConsoleError = console.error
+const originalConsoleWarn = console.warn
+const originalConsoleInfo = console.info
+
+const captureIsolatedLog = (type: string, args: any[]) => {
+  const serialized = args.map((arg) => {
+    try {
+      if (arg === null) return "null"
+      if (arg === undefined) return "undefined"
+      if (arg instanceof Error)
+        return `${arg.name}: ${arg.message}\n${arg.stack || ""}`
+      if (typeof arg === "object") return JSON.stringify(arg)
+      return String(arg)
+    } catch (e) {
+      return String(arg)
+    }
+  })
+
+  capturedLogs.push({
+    type,
+    message: serialized.join(" "),
+    timestamp: new Date().toLocaleTimeString()
+  })
+
+  // Maintain a maximum of 500 logs to prevent memory leaks
+  if (capturedLogs.length > 500) {
+    capturedLogs.shift()
+  }
 }
 
-type SolveHistory = Record<string, Record<string, SolveRecord>>
+console.log = (...args) => {
+  originalConsoleLog.apply(console, args)
+  captureIsolatedLog("log", args)
+}
+console.error = (...args) => {
+  originalConsoleError.apply(console, args)
+  captureIsolatedLog("error", args)
+}
+console.warn = (...args) => {
+  originalConsoleWarn.apply(console, args)
+  captureIsolatedLog("warn", args)
+}
+console.info = (...args) => {
+  originalConsoleInfo.apply(console, args)
+  captureIsolatedLog("info", args)
+}
+
+// Window postMessage event listener to capture main world page-level logs
+window.addEventListener("message", (event) => {
+  if (event.source !== window) return
+  if (event.data?.source === "linkedin-games-solver-logger") {
+    capturedLogs.push({
+      type: event.data.type,
+      message: event.data.logs.join(" "),
+      timestamp: event.data.timestamp
+    })
+    // Maintain a maximum of 500 logs to prevent memory leaks
+    if (capturedLogs.length > 500) {
+      capturedLogs.shift()
+    }
+  }
+})
 
 console.log("[LinkedIn Games Solver] Content Script loaded with CSUI.")
 
 const pageLoadTime = Date.now()
-
-// Generate local YYYY-MM-DD date key
-function getLocalDateString(): string {
-  const d = new Date()
-  const year = d.getFullYear()
-  const month = String(d.getMonth() + 1).padStart(2, "0")
-  const day = String(d.getDate()).padStart(2, "0")
-  return `${year}-${month}-${day}`
-}
 
 // Convert MM:SS or HH:MM:SS stopwatch string to seconds
 function parseTimerToSeconds(timeStr: string): number {
@@ -319,6 +379,8 @@ checkVisitedGameSolved()
 // Periodic background scanning for completed games
 setInterval(checkVisitedGameSolved, 1500)
 
+// Log capture system for Dev Tools / Debug Panel has been moved to the top
+
 // Global solver state guard
 let globalSolving = false
 
@@ -330,12 +392,32 @@ let setReactSuccess: ((val: boolean) => void) | null = null
 const messageListener = (
   message: { action: string },
   _sender: chrome.runtime.MessageSender,
-  sendResponse: (response?: {
-    game?: string | null
-    success?: boolean
-    error?: string
-  }) => void
+  sendResponse: (response?: any) => void
 ) => {
+  if (message.action === "getDebugInfo") {
+    try {
+      const mainElement = document.querySelector("main")
+      const mainHtml = mainElement ? mainElement.outerHTML : ""
+      sendResponse({
+        success: true,
+        logs: capturedLogs,
+        mainHtml
+      })
+    } catch (e) {
+      sendResponse({
+        success: false,
+        error: e instanceof Error ? e.message : String(e)
+      })
+    }
+    return true
+  }
+
+  if (message.action === "clearDebugLogs") {
+    capturedLogs.length = 0
+    sendResponse({ success: true })
+    return true
+  }
+
   if (message.action === "detectGame") {
     try {
       const currentActive = detectActiveSolver()

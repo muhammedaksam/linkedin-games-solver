@@ -295,6 +295,10 @@
     "message": "Design",
     "description": "Theme nav link label"
   },
+  "navDebug": {
+    "message": "Debug",
+    "description": "Debug nav link label"
+  },
   "dailyProgressLabel": {
     "message": "Täglicher Fortschritt",
     "description": "Daily progress label"
@@ -483,5 +487,113 @@
   "settingsChromeBuiltInGuideDesc": {
     "message": "Läuft vollständig lokal auf Ihrem Gerät in Google Chrome. Keine Netzwerklatenz und 100 % kostenlos mit Gemini Nano.",
     "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "Spiel-Debugger & Entwicklertools",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "Offline",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "Live",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "Erkanntes Spiel",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "Keines erkannt",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "Ziel-URL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "Kein aktiver Tab",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML kopiert!",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "<main>-HTML kopieren",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "Protokolle kopiert!",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "Konsolenprotokolle kopieren",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "Beides kopiert!",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "Beides kopieren (HTML & Protokolle)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugDomPreview": {
+    "message": "DOM-Element-Vorschau",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n/* ... [abgeschnitten, Gesamtlänge: $1 Zeichen] ... */",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Komplettes <main>-HTML kopieren",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Kein aktives <main>-Tag erfasst. Stellen Sie sicher, dass Sie sich auf einem LinkedIn-Spielbildschirm befinden.",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "Konsolenausgabe",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 Ereignisse",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Protokolle aktualisieren",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Protokolle löschen",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Noch keine Protokolle erfasst. Führen Sie Aktionen auf dem Spielbildschirm aus, um Konsolenereignisse auszulösen.",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "Überwachung von console.log-, console.warn- und console.error-Ereignissen...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "Verbindung mit der LinkedIn-Spielseite wird initialisiert...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Spieldaten konnten nicht abgerufen werden.",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Der aktive Tab ist keine LinkedIn-Spielseite. Navigieren Sie zu einem Spiel, um Details zu erfassen.",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Der aktive Tab konnte nicht identifiziert werden.",
+    "description": "Error string when active tab query fails"
   }
 }

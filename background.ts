@@ -2,6 +2,16 @@ import { askAI } from "~games/ai"
 
 console.log("[LinkedIn Games Solver] Background service worker initialized.")
 
+if (
+  typeof chrome !== "undefined" &&
+  chrome.sidePanel &&
+  chrome.sidePanel.setPanelBehavior
+) {
+  chrome.sidePanel
+    .setPanelBehavior({ openPanelOnActionClick: true })
+    .catch((err) => console.error("Failed to set side panel behavior:", err))
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.action === "askAI") {
     askAI(message.prompt, message.jsonMode)

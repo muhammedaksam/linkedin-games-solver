@@ -336,7 +336,8 @@ async function callChromePrompt(
   } catch (err: any) {
     const msg = err instanceof Error ? err.message : String(err)
     throw new Error(
-      `Chrome Built-in AI Error: ${msg}. If this is your first time using it, Chrome may still be downloading the Gemini Nano model in the background.`
+      `Chrome Built-in AI Error: ${msg}. If this is your first time using it, Chrome may still be downloading the Gemini Nano model in the background.`,
+      { cause: err }
     )
   }
 }

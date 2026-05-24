@@ -295,6 +295,10 @@
     "message": "主题",
     "description": "Theme nav link label"
   },
+  "navDebug": {
+    "message": "调试",
+    "description": "Debug nav link label"
+  },
   "dailyProgressLabel": {
     "message": "每日进度",
     "description": "Daily progress label"
@@ -483,5 +487,113 @@
   "settingsChromeBuiltInGuideDesc": {
     "message": "完全在您的设备上通过 Google Chrome 本地运行。零网络延迟，借助 Gemini Nano 100% 免费。",
     "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "游戏调试器与开发人员工具",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "离线",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "在线",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "检测到的游戏",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "未检测到",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "目标 URL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "无活动标签页",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML 已复制！",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "复制 <main> HTML",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "日志已复制！",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "复制控制台日志",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "全部已复制！",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "复制全部 (HTML 与日志)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugDomPreview": {
+    "message": "DOM 元素预览",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n/* ... [已截断，总字符数：$1] ... */",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "复制完整 <main> HTML",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "未捕获到活动的 <main> 标签。请确保您处于 LinkedIn 游戏画面中。",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "控制台输出",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 个事件",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "刷新日志",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "清除日志",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "暂未捕获到日志。在游戏画面中执行操作以触发控制台事件。",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "正在监听 console.log、console.warn 和 console.error 事件...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "正在初始化与 LinkedIn 游戏页面的连接...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "无法检索游戏数据。",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "当前标签页不是 LinkedIn 游戏页面。请进入一款游戏以获取详细信息。",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "无法识别活动标签页。",
+    "description": "Error string when active tab query fails"
   }
 }

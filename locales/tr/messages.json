@@ -316,6 +316,10 @@
     "message": "Tema",
     "description": "Theme nav link label"
   },
+  "navDebug": {
+    "message": "Hata Ayıklama",
+    "description": "Debug nav link label"
+  },
   "dailyProgressLabel": {
     "message": "Günlük İlerleme",
     "description": "Daily progress label"
@@ -483,5 +487,113 @@
   "settingsChromeBuiltInGuideDesc": {
     "message": "Google Chrome içinde cihazınızda tamamen yerel olarak çalışır. Sıfır ağ gecikmesi ve Gemini Nano ile %100 ücretsizdir.",
     "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "Oyun Hata Ayıklayıcı & Geliştirici Araçları",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "Çevrimdışı",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "Aktif",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "Tespit Edilen Oyun",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "Tespit Edilmedi",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "Hedef URL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "Aktif Sekme Yok",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML Kopyalandı!",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "<main> HTML Kopyala",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "Günlükler Kopyalandı!",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "Konsol Günlüklerini Kopyala",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "İkisi de Kopyalandı!",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "İkisini de Kopyala (HTML & Günlükler)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugDomPreview": {
+    "message": "DOM Elementi Önizlemesi",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n/* ... [kısaltıldı, toplam karakter: $1] ... */",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Tüm <main> HTML'ini kopyala",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Aktif bir <main> etiketi yakalanamadı. Bir LinkedIn oyunu ekranında olduğunuzdan emin olun.",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "Konsol Çıktısı",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 olay",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Günlükleri yenile",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Günlükleri temizle",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Henüz günlük yakalanmadı. Konsol olaylarını tetiklemek için oyun ekranında işlemler yapın.",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "console.log, console.warn ve console.error olayları dinleniyor...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "LinkedIn Oyun sayfasıyla bağlantı kuruluyor...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Oyun verileri alınamadı.",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Aktif sekme bir LinkedIn Oyunları sayfası değil. Detayları yakalamak için bir oyuna geçin.",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Aktif sekme tanımlanamadı.",
+    "description": "Error string when active tab query fails"
   }
 }

@@ -61,10 +61,18 @@
       "Segoe UI",
       Roboto,
       sans-serif;
-    width: 470px;
     height: auto;
-    min-height: 520px;
     overflow-x: hidden;
+  }
+
+  body.is-popup {
+    width: 470px;
+    min-height: 520px;
+  }
+
+  body.is-sidepanel {
+    width: 100%;
+    min-height: 100vh;
   }
 }
 
