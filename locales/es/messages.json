@@ -642,5 +642,23 @@
   },
   "labelAutoOpenSidepanel": {
     "message": "ABRIR BARRA LATERAL AUTOMÁTICAMENTE"
+  },
+  "permissionDialogTitle": {
+    "message": "Conceder acceso a la página"
+  },
+  "permissionDialogDesc": {
+    "message": "Para detectar tableros de juego activos y resolver acertijos, la extensión necesita permiso para ejecutarse en LinkedIn Games. Haz clic a continuación para conceder el acceso."
+  },
+  "permissionDialogButton": {
+    "message": "Conceder acceso"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 ¡Juega y resuelve Queens hoy!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Abrir el solucionador de mini-Sudoku"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Abrir el panel de rachas y rendimiento"
   }
 }

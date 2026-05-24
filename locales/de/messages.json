@@ -642,5 +642,23 @@
   },
   "labelAutoOpenSidepanel": {
     "message": "SEITENLEISTE AUTOMATISCH ÖFFNEN"
+  },
+  "permissionDialogTitle": {
+    "message": "Seitenzugriff gewähren"
+  },
+  "permissionDialogDesc": {
+    "message": "Um aktive Spielbretter zu erkennen und Rätsel zu lösen, benötigt die Erweiterung die Berechtigung, auf LinkedIn-Spielen ausgeführt zu werden. Klicken Sie unten, um den Zugriff zu gewähren."
+  },
+  "permissionDialogButton": {
+    "message": "Zugriff gewähren"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Spiele & löse Queens heute!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Öffne den mini-Sudoku-Löser"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Öffne das Strecken- & Performance-Dashboard"
   }
 }

@@ -642,5 +642,23 @@
   },
   "labelAutoOpenSidepanel": {
     "message": "自動打開求解器侧邊欄"
+  },
+  "permissionDialogTitle": {
+    "message": "授予頁面存取權限"
+  },
+  "permissionDialogDesc": {
+    "message": "為偵測活動的遊戲板並解決謎題，擴充功能需要獲得在 LinkedIn 遊戲上執行的權限。點擊下方以授予存取權限。"
+  },
+  "permissionDialogButton": {
+    "message": "授予權限"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 今天就玩並解決 Queens 皇后棋！"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 打開迷你數獨求解器"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 打開連勝與績效儀表板"
   }
 }

@@ -642,5 +642,23 @@
   },
   "labelAutoOpenSidepanel": {
     "message": "KENAR ÇUBUĞUNU OTOMATİK AÇ"
+  },
+  "permissionDialogTitle": {
+    "message": "Sayfa Erişimi Ver"
+  },
+  "permissionDialogDesc": {
+    "message": "Aktif oyun tahtalarını tespit etmek ve bulmacaları çözmek için uzantının LinkedIn Oyunları'nda çalışması için izne ihtiyacı var. Erişim vermek için aşağıya tıklayın."
+  },
+  "permissionDialogButton": {
+    "message": "Erişim Ver"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Bugün Queens Oyna ve Çöz!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Mini Sudoku Çözücüyü Aç"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Seriler ve Performans Panelini Aç"
   }
 }

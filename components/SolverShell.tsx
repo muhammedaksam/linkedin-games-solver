@@ -92,6 +92,8 @@ export function SolverShell({
   const [solving, setSolving] = useState<boolean>(false)
   const [solveError, setSolveError] = useState<string | null>(null)
   const [solveSuccess, setSolveSuccess] = useState<boolean>(false)
+  const [showPermissionDialog, setShowPermissionDialog] = useState<boolean>(false)
+  const [pendingSolveGameId, setPendingSolveGameId] = useState<string | null>(null)
 
   // Debug Panel States
   const [debugLogs, setDebugLogs] = useState<
@@ -238,11 +240,21 @@ export function SolverShell({
     return () => clearInterval(checkInterval)
   }, [detectActiveGame])
 
-  // Fetch debug logs and main html from content script
+  // Fetch debug logs and main html from content script and storage session
   const fetchDebugInfo = useCallback(async () => {
     if (typeof chrome === "undefined" || !chrome.tabs) return
 
     try {
+      // 1. Instantly retrieve ephemeral logs from session storage to avoid postMessage latency
+      if (chrome.storage?.session) {
+        chrome.storage.session.get("solverLogs", (stored) => {
+          if (stored?.solverLogs) {
+            setDebugLogs(stored.solverLogs)
+          }
+        })
+      }
+
+      // 2. Query active tab for DOM HTML content
       const [tab] = await chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -255,17 +267,25 @@ export function SolverShell({
             { action: "getDebugInfo" },
             (response) => {
               if (chrome.runtime.lastError) {
-                setDebugError(getMessage("debugErrorInitializing"))
+                // If it fails but we have session logs, don't show block error
+                if (debugLogs.length === 0) {
+                  setDebugError(getMessage("debugErrorInitializing"))
+                }
                 return
               }
               if (response?.success) {
-                setDebugLogs(response.logs || [])
+                // Fallback / merge in case storage didn't hit
+                if (response.logs && response.logs.length > 0) {
+                  setDebugLogs(response.logs)
+                }
                 setMainHtml(response.mainHtml || "")
                 setDebugError(null)
               } else {
-                setDebugError(
-                  response?.error || getMessage("debugErrorRetrieveFailed")
-                )
+                if (debugLogs.length === 0) {
+                  setDebugError(
+                    response?.error || getMessage("debugErrorRetrieveFailed")
+                  )
+                }
               }
             }
           )
@@ -278,7 +298,7 @@ export function SolverShell({
     } catch (e) {
       setDebugError(e instanceof Error ? e.message : String(e))
     }
-  }, [])
+  }, [debugLogs.length])
 
   // Poll debug logs when debug tab is open
   useEffect(() => {
@@ -314,6 +334,21 @@ export function SolverShell({
     if (!tab?.id) {
       setSolveError(getMessage("errorActiveTabNotFound"))
       return
+    }
+
+    // Verify optional host permissions for LinkedIn before initiating solve / tab navigation
+    try {
+      const hasPermission = await chrome.permissions.contains({
+        origins: ["https://*.linkedin.com/games/*"]
+      })
+
+      if (!hasPermission) {
+        setShowPermissionDialog(true)
+        setPendingSolveGameId(gameId)
+        return
+      }
+    } catch (e) {
+      console.warn("[Permissions] Optional permission check bypassed:", e)
     }
 
     const getGamePath = (id: string) => (id === "sudoku" ? "mini-sudoku" : id)
@@ -1421,6 +1456,58 @@ export function SolverShell({
         )}
       </div>
       <DisclaimerFooter />
+
+      {showPermissionDialog && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+          <div className="bg-card border border-border rounded-xl p-5 shadow-xl space-y-4 max-w-[360px] text-center">
+            <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <Sparkles className="w-6 h-6 text-primary animate-pulse" />
+            </div>
+            <div className="space-y-1.5 flex flex-col items-center">
+              <h3 className="text-sm font-bold text-foreground">
+                {getMessage("permissionDialogTitle") || "Grant Page Access"}
+              </h3>
+              <p className="text-[11px] text-muted-foreground leading-relaxed">
+                {getMessage("permissionDialogDesc") ||
+                  "To detect active game boards and solve puzzles, the extension needs permission to run on LinkedIn Games. Click below to grant access."}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex-1 text-xs"
+                onClick={() => {
+                  setShowPermissionDialog(false)
+                  setPendingSolveGameId(null)
+                }}>
+                Cancel
+              </Button>
+              <Button
+                variant="default"
+                size="sm"
+                className="flex-1 text-xs bg-primary text-primary-foreground hover:bg-primary/95"
+                onClick={async () => {
+                  try {
+                    const granted = await chrome.permissions.request({
+                      origins: ["https://*.linkedin.com/games/*"]
+                    })
+                    if (granted) {
+                      setShowPermissionDialog(false)
+                      if (pendingSolveGameId) {
+                        handleSolve(pendingSolveGameId)
+                      }
+                    }
+                  } catch (err) {
+                    console.error("Failed to request permission:", err)
+                  }
+                }}>
+                {getMessage("permissionDialogButton") || "Grant Access"}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

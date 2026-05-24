@@ -642,5 +642,23 @@
   },
   "labelAutoOpenSidepanel": {
     "message": "自动打开求解器侧边栏"
+  },
+  "permissionDialogTitle": {
+    "message": "授予页面访问权限"
+  },
+  "permissionDialogDesc": {
+    "message": "为检测活动的游戏板并解决谜题，扩展程序需要获得在 LinkedIn 游戏上运行的权限。点击下方以授予访问权限。"
+  },
+  "permissionDialogButton": {
+    "message": "授予权限"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 今天就玩并解决 Queens 皇后棋！"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 打开迷你数独求解器"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 打开连胜与绩效仪表板"
   }
 }

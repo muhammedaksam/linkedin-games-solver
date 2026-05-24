@@ -37,6 +37,15 @@ const originalConsoleError = console.error
 const originalConsoleWarn = console.warn
 const originalConsoleInfo = console.info
 
+const syncLogsToSession = () => {
+  if (typeof chrome !== "undefined" && chrome.storage?.session) {
+    chrome.storage.session.set({ solverLogs: capturedLogs }).catch(() => {})
+  }
+}
+
+// Initialize session logs on injection
+syncLogsToSession()
+
 const captureIsolatedLog = (type: string, args: any[]) => {
   const serialized = args.map((arg) => {
     try {
@@ -61,6 +70,7 @@ const captureIsolatedLog = (type: string, args: any[]) => {
   if (capturedLogs.length > 500) {
     capturedLogs.shift()
   }
+  syncLogsToSession()
 }
 
 console.log = (...args) => {
@@ -93,6 +103,7 @@ window.addEventListener("message", (event) => {
     if (capturedLogs.length > 500) {
       capturedLogs.shift()
     }
+    syncLogsToSession()
   }
 })
 
@@ -405,6 +416,9 @@ const messageListener = (
 
   if (message.action === "clearDebugLogs") {
     capturedLogs.length = 0
+    if (typeof chrome !== "undefined" && chrome.storage?.session) {
+      chrome.storage.session.remove("solverLogs").catch(() => {})
+    }
     sendResponse({ success: true })
     return true
   }

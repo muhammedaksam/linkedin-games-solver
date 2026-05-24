@@ -63,16 +63,20 @@
   "manifest": {
     "name": "__MSG_extensionName__",
     "default_locale": "en",
-    "host_permissions": [
+    "optional_host_permissions": [
       "https://*.linkedin.com/games/*"
     ],
     "permissions": [
       "activeTab",
       "storage",
+      "session",
       "sidePanel",
       "alarms",
       "notifications"
     ],
+    "omnibox": {
+      "keyword": "solve"
+    },
     "commands": {
       "solve-active-game": {
         "suggested_key": {

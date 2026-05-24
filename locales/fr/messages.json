@@ -642,5 +642,23 @@
   },
   "labelAutoOpenSidepanel": {
     "message": "OUVRIR AUTOMATIQUEMENT LA BARRE LATÉRALE"
+  },
+  "permissionDialogTitle": {
+    "message": "Autoriser l'accès à la page"
+  },
+  "permissionDialogDesc": {
+    "message": "Pour détecter les plateaux de jeu actifs et résoudre des énigmes, l'extension a besoin de l'autorisation de s'exécuter sur LinkedIn Games. Cliquez ci-dessous pour accorder l'accès."
+  },
+  "permissionDialogButton": {
+    "message": "Autoriser l'accès"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Jouez et résolvez Queens aujourd'hui !"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Ouvrir le résolveur de mini-Sudoku"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Ouvrir le tableau de bord des séries et des performances"
   }
 }

@@ -642,5 +642,23 @@
   },
   "labelAutoOpenSidepanel": {
     "message": "AUTO-OPEN SOLVER SIDEBAR"
+  },
+  "permissionDialogTitle": {
+    "message": "Grant Page Access"
+  },
+  "permissionDialogDesc": {
+    "message": "To detect active game boards and solve puzzles, the extension needs permission to run on LinkedIn Games. Click below to grant access."
+  },
+  "permissionDialogButton": {
+    "message": "Grant Access"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Play & Solve Queens today!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Open mini-Sudoku Solver"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Open Streaks & Performance Dashboard"
   }
 }

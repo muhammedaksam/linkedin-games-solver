@@ -4,6 +4,15 @@ import { askAI } from "~games/ai"
 
 console.log("[LinkedIn Games Solver] Background service worker initialized.")
 
+// Allow content scripts to access chrome.storage.session
+if (typeof chrome !== "undefined" && chrome.storage?.session?.setAccessLevel) {
+  chrome.storage.session
+    .setAccessLevel({ accessLevel: "TRUSTED_AND_UNTRUSTED_CONTEXTS" })
+    .catch((err) =>
+      console.error("[Storage] Failed to set session storage access level:", err)
+    )
+}
+
 const syncStorage = new Storage({ area: "sync" })
 
 // Helper to handle dynamic side panel enablement
@@ -231,3 +240,94 @@ chrome.commands.onCommand.addListener(async (command) => {
     console.error("[Commands] Error dispatching hotkey command message:", err)
   }
 })
+
+const GAME_URL_MAP: Record<string, string> = {
+  queens: "queens/",
+  sudoku: "mini-sudoku/",
+  "mini-sudoku": "mini-sudoku/",
+  tango: "tango/",
+  zip: "zip/",
+  patches: "patches/",
+  crossclimb: "crossclimb/",
+  pinpoint: "pinpoint/"
+}
+
+// Listen to Omnibox suggestion input events
+chrome.omnibox.onInputChanged.addListener(async (text, suggest) => {
+  const clean = text.trim().toLowerCase()
+  const allSuggestions = [
+    {
+      content: "queens",
+      descKey: "omniboxSuggestionQueens",
+      defaultDesc: "👑 Play & Solve Queens today!"
+    },
+    {
+      content: "sudoku",
+      descKey: "omniboxSuggestionSudoku",
+      defaultDesc: "🔢 Open mini-Sudoku Solver"
+    },
+    {
+      content: "tango",
+      descKey: "omniboxSuggestionTango",
+      defaultDesc: "🔄 Open Tango Solver"
+    },
+    {
+      content: "pinpoint",
+      descKey: "omniboxSuggestionPinpoint",
+      defaultDesc: "📍 Open Pinpoint Solver"
+    },
+    {
+      content: "crossclimb",
+      descKey: "omniboxSuggestionCrossclimb",
+      defaultDesc: "🧗 Open Crossclimb Solver"
+    },
+    {
+      content: "zip",
+      descKey: "omniboxSuggestionZip",
+      defaultDesc: "⚡ Open Zip Solver"
+    },
+    {
+      content: "patches",
+      descKey: "omniboxSuggestionPatches",
+      defaultDesc: "🧩 Open Patches Solver"
+    },
+    {
+      content: "stats",
+      descKey: "omniboxSuggestionStats",
+      defaultDesc: "📊 Open Streaks & Performance Dashboard"
+    }
+  ]
+
+  const filtered = allSuggestions
+    .filter((item) => !clean || item.content.includes(clean))
+    .map((item) => ({
+      content: item.content,
+      description: chrome.i18n.getMessage(item.descKey) || item.defaultDesc
+    }))
+
+  suggest(filtered)
+})
+
+// Listen to Omnibox input selection events to navigate or open dashboard
+chrome.omnibox.onInputEntered.addListener((text) => {
+  const clean = text.trim().toLowerCase()
+
+  if (clean === "stats" || clean === "dashboard" || clean === "panel") {
+    chrome.tabs.create({
+      url: `chrome-extension://${chrome.runtime.id}/sidepanel.html`
+    })
+    return
+  }
+
+  const gamePath = GAME_URL_MAP[clean]
+  const url = `https://www.linkedin.com/games/${gamePath || ""}`
+
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (tabs && tabs[0] && tabs[0].url?.includes("linkedin.com")) {
+      chrome.tabs.update(tabs[0].id!, { url })
+    } else {
+      chrome.tabs.create({ url })
+    }
+  })
+})
+
