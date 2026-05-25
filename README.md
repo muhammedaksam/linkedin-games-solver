@@ -1,134 +1,137 @@
-# LinkedIn Games Solver
+# 🎮 LinkedIn Games Solver
 
-LinkedIn Games Solver is a small Plasmo-based browser extension that provides helpers and shortcuts for LinkedIn's built-in browser games. This repository contains the extension source, localization files, and tooling to generate Chrome Web Store assets (icons, promo tiles, screenshots) including localized overlays and social preview images.
+[![Version](https://img.shields.io/badge/version-0.0.20-blue.svg?style=for-the-badge)](package.json)
+[![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Edge%20%7C%20Brave-orange.svg?style=for-the-badge)](package.json)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=for-the-badge)](package.json)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-## Features
+An advanced, obfuscation-proof browser extension built with **React**, **TypeScript**, and **Plasmo** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
 
-- **7 Game Solvers**: Complete support for Queens, Sudoku, Tango, Zip, Patches, Crossclimb, and Pinpoint.
-- **Pacing & Solve Speed Controls**: Choose between _Instant_ (fastest), _Normal_, or _Stealth Mode_ (human-like pacing with randomized click delays to secure streaks against automated detection).
-- **Educational Hint Mode**: Get single-step hints or check your moves. If you make a mistake, cells flash red to guide self-correction without spoiling the game.
-- **Multi-Model AI Integration**: Solves trivia-based games (Crossclimb, Pinpoint) using Gemini, OpenAI GPT-4o, Anthropic Claude, DeepSeek, or custom local models (Ollama).
-- **Interactive Stats Dashboard**: Track streaks, average solve times, activity calendar matrices, and personal best records.
-- **Localized UI**: Native multilingual support for English and Turkish out of the box.
+> [!TIP]
+> **State-of-the-Art Architecture**: This extension features a **Main-World React Fiber State extraction bridge** that reads daily board states directly from LinkedIn's virtual tree, rendering the solver entirely immune to CSS class obfuscations or UI changes.
 
-## Contents
+---
 
-- Source: extension React/TypeScript files in the project root and `components/`, `games/`, `tabs/`.
-- Locales: `locales/<locale>/messages.json` — translated strings used for overlays and the extension manifest.
-- Asset generator: `scripts/generate-store-assets.mjs` — creates store listing images and social previews.
+## 🚀 Key Features
 
-## Quickstart
+* **Instant & Guided Solvers**: Instantly solve puzzles or receive step-by-step hints to learn best practices and strategies.
+* **Obfuscation-Proof Engine**: Pulls board states, region matrices, relational edges, and constraints directly from React Fiber virtual tree properties rather than scraping fragile DOM coordinates.
+* **Multi-Model AI Integration**: Uses advanced LLM reasoning (Gemini, Claude, GPT-4o, DeepSeek, or local Ollama) to answer trivia-based games like Crossclimb and Pinpoint.
+* **Human-like Pacing (Stealth Mode)**: Secure your daily streaks with custom pacing controls featuring randomized click delays, mimicking human patterns.
+* **Detailed Activity Stats**: View streaks, average solve metrics, personal records, and visual activity calendar matrices.
+* **Multilingual UI**: Native support for English and Turkish out of the box.
 
-Install dependencies and run the dev server:
+---
 
-```bash
-pnpm install
-pnpm dev
+## 🛠️ Architecture & Extraction Bridge
+
+The extension injects a Main-World (`logger-main.ts`) script that bypasses isolation sandboxing to query the React component virtual tree properties. When a solver triggers, it executes an asynchronous Promise-based IPC bridge to request and parse the underlying Protobuf schemas.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Solver as Isolated Solver (games/patches.ts)
+    participant Bridge as Content Bridge (games/react-bridge.ts)
+    participant MainBridge as Page Logger & Bridge (logger-main.ts)
+    participant ReactTree as React Fiber Tree (MAIN World)
+
+    Solver->>Bridge: fetchReactBoardState("patches")
+    Bridge->>MainBridge: postMessage("EXTRACT_REACT_STATE", requestId)
+    Note over MainBridge: Traverse up element __reactFiber$ return path
+    MainBridge->>ReactTree: Locate memoizedProps.game
+    ReactTree-->>MainBridge: Rebuilds clean board Protobuf JSON
+    MainBridge-->>Bridge: postMessage("REACT_STATE_EXTRACTED", data, success)
+    Note over Bridge: Safety Timeout Guard (1500ms)
+    Bridge-->>Solver: Resolves clean type-safe JSON representation
+    Note over Solver: Falls back to DOM scraping if bridge fails
 ```
 
-Build a production package:
+---
 
+## 🎯 Supported Games & Capabilities
+
+| Game | Platform Framework | Extraction Mode | State Mapping Depth | Fallback Stability |
+| :--- | :---: | :---: | :---: | :---: |
+| **Queens** | ⚛️ React | ⚡ Fiber Bridge | Complete `colorGrid` region coordinates & existing guesses | 🟢 Active DOM Scraper |
+| **Tango** | ⚛️ React | ⚡ Fiber Bridge | Relational edge constraints & lock states | 🟢 SVG Layout Calculations |
+| **Zip** | ⚛️ React | ⚡ Fiber Bridge | Grid size checkpoint sequence & wall indices | 🟢 Active DOM Scraper |
+| **Patches** | ⚛️ React | ⚡ Fiber Bridge | Clue sizes, shape bounds, and complete solution paths | 🟢 Active DOM Scraper |
+| **Sudoku** | 🐹 Ember.js | 👁️ DOM Scraper | Direct input read-outs & aria accessibility parsing | 🟢 Not Applicable |
+| **Crossclimb** | 🐹 Ember.js | 👁️ DOM Scraper | Active input values & candidate word arrays | 🟢 Not Applicable |
+| **Pinpoint** | 🐹 Ember.js | 👁️ DOM Scraper | Category hints & card text lists | 🟢 Not Applicable |
+
+> [!NOTE]
+> **Ember-based Games**: Sudoku, Pinpoint, and Crossclimb are built using Ember.js, which does not feature a virtual React state tree. The extension detects framework contexts automatically, logging descriptive skip events in diagnostics and successfully falling back to DOM scraper pipelines.
+
+---
+
+## 📦 Getting Started
+
+<details>
+<summary>📂 Development Installation & Quickstart</summary>
+
+### 1. Clone & Install Dependencies
+Ensure you have Node.js and `pnpm` installed on your machine.
+```bash
+# Clone the repository
+git clone https://github.com/muhammedaksam/linkedin-games-solver.git
+cd linkedin-games-solver
+
+# Install packages
+pnpm install
+```
+
+### 2. Start Development Server
+```bash
+pnpm dev
+```
+Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, click **Load Unpacked**, and select the `build/chrome-mv3-dev` directory in this workspace.
+
+### 3. Production Compilation
 ```bash
 pnpm build
 ```
+The output will compile cleanly into the `build/chrome-mv3-prod` folder, ready for packing and uploading.
+</details>
 
-The production build for Chrome MV3 appears under `build/chrome-mv3-prod`.
+<details>
+<summary>🎨 Generate Chrome Web Store & Social Assets</summary>
 
-## Generate Chrome Web Store & Social Assets
+This repository includes an automatic generator for Web Store assets and social sharing cards, keeping social visual safe regions in check.
 
-This repository includes an automatic generator for the images required by the Chrome Web Store and for social previews used by README/repo cards.
-
-Run the generator:
-
+### Run Generator
 ```bash
 pnpm generate:store-assets
 ```
 
-Outputs (examples):
+### Outputs
+* `store-assets/store-icon-128.png` — listing icon (128×128)
+* `store-assets/global/small-promo-440x280.jpg` — small listing tile
+* `store-assets/global/marquee-promo-1400x560.jpg` — marquee card
+* `store-assets/global/screenshots/` — compiled localized screenshots (1280×800)
+* `store-assets/social/social-1280x640.jpg` — global social sharing preview cards
 
-- `store-assets/store-icon-128.png` — store icon (128×128 PNG)
-- `store-assets/global/small-promo-440x280.jpg` — small promo tile
-- `store-assets/global/marquee-promo-1400x560.jpg` — marquee tile
-- `store-assets/global/screenshots/screenshot-1.jpg` … `screenshot-5.jpg` — screenshots (1280×800)
-- `store-assets/localized/<locale>/screenshots/...` — localized screenshots per `locales/`
-- `store-assets/social/social-1280x640.jpg` and `store-assets/social/social-640x320.jpg` — global social previews
-- `store-assets/localized/<locale>/social/social-1280x640.jpg` and `social-640x320.jpg` — localized social previews
-
-The generator composes images from SVG artwork in `assets/` and overlays translated strings from the `locales/` folder.
-
-### Safe area & layout
-
-Social previews are produced with a visible safe margin so important details remain readable when cropped by social platforms. The generator keeps a 40pt safe border for text and icons.
-
-### Localized overlays & CJK fonts
-
-For non-Latin locales (e.g., `zh_CN`), the script will attempt to locate a suitable system font using `fc-match` and pass the font file to ImageMagick so glyphs render correctly. If localized text appears as missing glyphs, install CJK fonts (for example `fonts-noto-cjk` or `ttf-wqy-zenhei`) and re-run.
-
-## Prerequisites
-
-- `node` + `pnpm` (or `npm`) — project tooling.
-- `rsvg-convert` — rasterize SVGs (Debian/Ubuntu: `apt install librsvg2-bin`).
-- ImageMagick — the script prefers `magick` if available, otherwise falls back to `convert`.
-- `fontconfig` utilities (`fc-list`, `fc-match`) — used to auto-detect fonts for CJK overlays.
-
-If any of the above are missing the generator will log a helpful error.
-
-## Validation
-
-Quickly verify generated images with ImageMagick's `identify`:
-
-```bash
-identify -format '%f %wx%h %[channels]\n' store-assets/social/*.jpg store-assets/localized/*/social/*.jpg
-```
-
-## Development notes
-
-- The asset generator is `scripts/generate-store-assets.mjs` (ESM JavaScript). It uses `rsvg-convert` to render SVGs at target sizes and ImageMagick to compose final JPEG/PNG outputs.
-- If you need to tweak layout, fonts, or spacing, edit that script and re-run `pnpm generate:store-assets`.
-
-## Troubleshooting
-
-- Blurry icons: ensure SVGs are rendered at sufficient raster sizes; the generator renders multiple native icon sizes to avoid upscaling.
-- Missing CJK glyphs: install a CJK font package and re-run; confirm `fc-match -f '%{file}\n' ':lang=zh-cn'` returns a valid font path.
-- ImageMagick command differences: some systems install `magick` instead of `convert`. The script will prefer `magick` automatically.
-
-## Contributing
-
-Contributions are welcome. Typical workflows:
-
-1. Fork the repo
-2. Create a feature branch
-3. Run `pnpm install` and `pnpm dev` to test locally
-4. If you modify asset generation, run `pnpm generate:store-assets` and commit results if appropriate
-5. Open a PR describing your change
-
-## License
-
-This project is licensed under the terms in `LICENSE`.
+### Prerequisites
+* `rsvg-convert` — SVG rasterizer tool (`apt install librsvg2-bin` or via Homebrew)
+* `ImageMagick` — Image composition engine (prefers the `magick` binary)
+* `fontconfig` — Font utilities to auto-locate typography for localized CJK overlay texts.
+</details>
 
 ---
 
-If you'd like, I can also add a GitHub Actions workflow to auto-generate and validate these assets on push — want me to add that?
+## 🗺️ Extension Roadmap
 
-Additional notes — social previews
+- [x] **React Fiber Bridge Integration**: Zero-downtime, class-obfuscation proof virtual DOM scraping.
+- [x] **Patches Game Support**: Fully integrated clue constraint extraction and layout drag simulators.
+- [x] **Dynamic Selector Discovery**: Adaptive page element scanner supporting Ember.js and React contexts gracefully.
+- [x] **Strict Type-Safety**: Generics-driven IPC messaging constraints.
+- [x] **Localization Overhaul**: Support for multilingual UI strings and layouts.
+- [ ] **AI-Assisted Self-Solving Offline Cache**: Pre-cached solutions for trivia-based games.
 
-- The generator now also creates social preview images intended for repository cards and social sharing:
-  - Global: `store-assets/social/social-1280x640.jpg` and `store-assets/social/social-640x320.jpg`
-  - Localized: `store-assets/localized/<locale>/social/social-1280x640.jpg` and `social-640x320.jpg`
-- The layout respects a safe 40pt margin for important content (keeps text and icons inside the visible "safe area").
+---
 
-Prerequisites and font handling
+## 📄 License & Contribution
 
-- `rsvg-convert` is used to rasterize SVG artwork. Install via your package manager (for Debian/Ubuntu: `apt install librsvg2-bin`).
-- ImageMagick is required. The script will prefer the `magick` binary if available, falling back to `convert`.
-- For CJK locales (e.g. `zh_CN`) the generator attempts to detect a suitable system font using `fc-match` and provide its file path to ImageMagick so localized overlays render correctly. If you see missing glyphs, install a CJK font (for example `fonts-noto-cjk` / `ttf-wqy-zenhei`) and re-run.
+Contributions are extremely welcome! Feel free to open a Pull Request or report an issue. 
 
-Quick validation
-
-After running the generator you can verify outputs with ImageMagick's `identify`:
-
-```bash
-identify -format '%f %wx%h %[channels]\n' store-assets/social/*.jpg store-assets/localized/*/social/*.jpg
-```
-
-If you'd like a different layout or font choices, edit `scripts/generate-store-assets.mjs`.
+Licensed under the terms of the [MIT License](LICENSE).
