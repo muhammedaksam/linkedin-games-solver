@@ -89,10 +89,10 @@ export async function solveWithMultimodalAI(
     // For Chrome's Prompt/LanguageModel API, multimodal inputs are fed as structured lists
     const promptInputs = [
       {
-        role: "user",
+        role: "user" as const,
         content: [
-          { type: "text", value: promptText },
-          { type: "image", value: imageBitmap }
+          { type: "text" as const, value: promptText },
+          { type: "image" as const, value: imageBitmap }
         ]
       }
     ]

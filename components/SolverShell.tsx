@@ -233,7 +233,7 @@ export function SolverShell({
       const availability = await aiNamespace.availability()
       if (availability === "unavailable") {
         setNanoStatus("Gemini Nano is not supported on this device's hardware.")
-      } else if (availability === "after-download") {
+      } else if (availability === "downloadable") {
         setNanoStatus("Gemini Nano is supported but needs to be downloaded.")
         try {
           const session = await aiNamespace.create()
@@ -250,7 +250,7 @@ export function SolverShell({
         } catch (err) {
           console.warn("Download listener initiation skipped:", err)
         }
-      } else if (availability === "readily") {
+      } else if (availability === "available") {
         setNanoStatus("Gemini Nano is fully downloaded and ready locally! 🚀")
       }
     } catch (e: unknown) {
