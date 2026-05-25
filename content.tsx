@@ -137,10 +137,15 @@ function parseTimerToSeconds(timeStr: string): number {
 function detectFinalSolveTime(gameId?: string): number | undefined {
   if (!gameId) {
     const active = detectActiveSolver()
-    gameId = active?.name.toLowerCase()
+    const url = new URL(window.location.href)
+    const isBonus =
+      url.searchParams.get("bonus") === "true" || url.pathname.includes("bonus")
+    gameId = active?.name.toLowerCase() + (isBonus ? "-bonus" : "")
   }
 
-  if (gameId === "pinpoint") {
+  const baseGameId = gameId.replace("-bonus", "")
+
+  if (baseGameId === "pinpoint") {
     // 1. Results page golden chiclet (carousel slide showing e.g. "Solved in 3")
     const textEls = document.querySelectorAll(
       ".pr-golden-chiclet__text, .pr-golden-chiclet, .artdeco-carousel__item.active div, .pr-golden-chiclet__carousel-item.active div"
@@ -297,7 +302,10 @@ async function checkVisitedGameSolved() {
   const active = detectActiveSolver()
   if (!active) return
 
-  const gameId = active.name.toLowerCase()
+  const url = new URL(window.location.href)
+  const isBonus =
+    url.searchParams.get("bonus") === "true" || url.pathname.includes("bonus")
+  const gameId = active.name.toLowerCase() + (isBonus ? "-bonus" : "")
   const isResultsUrl = window.location.href.includes("/results")
   const seeResults = document.querySelector(
     'a[href*="/results/"], a[href*="/results"], .games-share-footer'
@@ -326,13 +334,16 @@ async function checkVisitedGameSolved() {
         controlWrappers.length - 1
       ] as HTMLElement
       const hintButton = hintWrapper?.querySelector("button")
+      const baseGameId = gameId.replace("-bonus", "")
       if (
         undoButton &&
         hintButton &&
         undoButton.hasAttribute("disabled") &&
         hintButton.hasAttribute("disabled")
       ) {
-        if (["tango", "queens", "sudoku", "patches", "zip"].includes(gameId)) {
+        if (
+          ["tango", "queens", "sudoku", "patches", "zip"].includes(baseGameId)
+        ) {
           // Both disabled at start of game due to empty history & cooldown.
           // Only treat as ended if page was loaded > 15s ago.
           if (Date.now() - pageLoadTime > 15000) {

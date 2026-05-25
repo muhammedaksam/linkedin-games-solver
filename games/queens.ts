@@ -5,7 +5,8 @@ export class QueensSolver extends BaseSolver {
   readonly name = "Queens"
 
   detect(): boolean {
-    if (window.location.href.includes("/queens")) return true
+    const url = new URL(window.location.href)
+    if (url.pathname.includes("/queens")) return true
 
     // Fallback: check for interactive grid with colored region cells
     const grid = this.$('[data-testid="interactive-grid"]')
@@ -38,6 +39,7 @@ export class QueensSolver extends BaseSolver {
     let regionCount = 0
     let givenQueens = new Set<number>()
     let reactSuccess = false
+    let reactSolution: Set<number> | undefined = undefined
 
     try {
       console.log("[Queens] Attempting React Fiber state extraction...")
@@ -59,13 +61,17 @@ export class QueensSolver extends BaseSolver {
           }
         }
 
+        if (boardState.solution && boardState.solution.length === N) {
+          reactSolution = new Set(boardState.solution)
+        }
+
         regionCount = regionsMap.size
         reactSuccess = true
         console.log(
           `[Queens] React Extraction Successful! N=${N}, regions=${regionCount}`
         )
       }
-    } catch (err: any) {
+    } catch (err) {
       console.warn(
         "[Queens] React Fiber state extraction failed, falling back to DOM parsing:",
         err.message || err
@@ -91,7 +97,8 @@ export class QueensSolver extends BaseSolver {
     }
 
     // Solve from absolute scratch (empty given set) to get the true unique board solution
-    const solution = this.solveQueens(N, regionOf, new Set<number>())
+    const solution =
+      reactSolution || this.solveQueens(N, regionOf, new Set<number>())
     if (!solution) {
       throw new Error("No solution found (or region detection mismatch).")
     }

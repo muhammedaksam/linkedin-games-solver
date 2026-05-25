@@ -16,8 +16,9 @@ export class TangoSolver extends BaseSolver {
   readonly name = "Tango"
 
   detect(): boolean {
+    const url = new URL(window.location.href)
     return (
-      window.location.href.includes("/tango") ||
+      url.pathname.includes("/tango") ||
       (this.$$('[data-testid^="cell-"]').length > 0 &&
         (!!this.$('[data-testid="cell-zero"]') ||
           !!this.$('[data-testid="cell-one"]') ||
@@ -31,6 +32,7 @@ export class TangoSolver extends BaseSolver {
     let edges: EdgeConstraint[] = []
     let g: number[][] = []
     let reactSuccess = false
+    let reactSolution: number[] | undefined
 
     try {
       console.log("[Tango] Attempting React Fiber state extraction...")
@@ -44,21 +46,26 @@ export class TangoSolver extends BaseSolver {
         N = boardState.size
         g = Array.from({ length: N }, () => Array<number>(N).fill(-1))
 
-        // 1. Populate grid values from React
+        // 1. Populate grid values from React (but only use givens to avoid bad user input)
         for (const cell of boardState.cells) {
           const r = Math.floor(cell.idx / N)
           const c = cell.idx % N
-          g[r][c] = cell.value
+          // If it's not a given, we reset it to -1 so the solver can solve it from scratch
+          g[r][c] = cell.isGiven ? cell.value : -1
         }
 
         // 2. Populate constraints from React
         edges = boardState.constraints
+
+        // 3. Keep the ready solution if it exists
+        reactSolution = boardState.solution
+
         reactSuccess = true
         console.log(
           `[Tango] React Extraction Successful! N=${N}, constraints=${edges.length}`
         )
       }
-    } catch (err: any) {
+    } catch (err) {
       console.warn(
         "[Tango] React Fiber state extraction failed, falling back to layout DOM parsing:",
         err.message || err
@@ -91,7 +98,20 @@ export class TangoSolver extends BaseSolver {
     console.log(`[Tango] Edge constraints found: ${edges.length}`)
     console.table(g)
 
-    const solved = this.solveTango(g, N, adj)
+    let solved: number[][] | null
+
+    if (reactSolution && reactSolution.length === N * N) {
+      console.log("[Tango] Direct solution found via React!")
+      solved = Array.from({ length: N }, () => Array<number>(N).fill(-1))
+      for (let idx = 0; idx < N * N; idx++) {
+        const r = Math.floor(idx / N)
+        const c = idx % N
+        solved[r][c] = reactSolution[idx]
+      }
+    } else {
+      solved = this.solveTango(g, N, adj)
+    }
+
     if (!solved) {
       throw new Error("No consistent Sun/Moon solution found for Tango puzzle!")
     }

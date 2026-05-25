@@ -8,18 +8,19 @@
 An advanced, obfuscation-proof browser extension built with **React**, **TypeScript**, and **Plasmo** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
 
 > [!TIP]
+>
 > **State-of-the-Art Architecture**: This extension features a **Main-World React Fiber State extraction bridge** that reads daily board states directly from LinkedIn's virtual tree, rendering the solver entirely immune to CSS class obfuscations or UI changes.
 
 ---
 
 ## 🚀 Key Features
 
-* **Instant & Guided Solvers**: Instantly solve puzzles or receive step-by-step hints to learn best practices and strategies.
-* **Obfuscation-Proof Engine**: Pulls board states, region matrices, relational edges, and constraints directly from React Fiber virtual tree properties rather than scraping fragile DOM coordinates.
-* **Multi-Model AI Integration**: Uses advanced LLM reasoning (Gemini, Claude, GPT-4o, DeepSeek, or local Ollama) to answer trivia-based games like Crossclimb and Pinpoint.
-* **Human-like Pacing (Stealth Mode)**: Secure your daily streaks with custom pacing controls featuring randomized click delays, mimicking human patterns.
-* **Detailed Activity Stats**: View streaks, average solve metrics, personal records, and visual activity calendar matrices.
-* **Multilingual UI**: Native support for English and Turkish out of the box.
+- **Instant & Guided Solvers**: Instantly solve puzzles or receive step-by-step hints to learn best practices and strategies.
+- **Obfuscation-Proof Engine**: Pulls board states, region matrices, relational edges, and constraints directly from React Fiber virtual tree properties rather than scraping fragile DOM coordinates.
+- **Multi-Model AI Integration**: Uses advanced LLM reasoning (Gemini, Claude, GPT-4o, DeepSeek, or local Ollama) to answer trivia-based games like Crossclimb and Pinpoint.
+- **Human-like Pacing (Stealth Mode)**: Secure your daily streaks with custom pacing controls featuring randomized click delays, mimicking human patterns.
+- **Detailed Activity Stats**: View streaks, average solve metrics, personal records, and visual activity calendar matrices.
+- **Multilingual UI**: Native support for English and Turkish out of the box.
 
 ---
 
@@ -50,17 +51,18 @@ sequenceDiagram
 
 ## 🎯 Supported Games & Capabilities
 
-| Game | Platform Framework | Extraction Mode | State Mapping Depth | Fallback Stability |
-| :--- | :---: | :---: | :---: | :---: |
-| **Queens** | ⚛️ React | ⚡ Fiber Bridge | Complete `colorGrid` region coordinates & existing guesses | 🟢 Active DOM Scraper |
-| **Tango** | ⚛️ React | ⚡ Fiber Bridge | Relational edge constraints & lock states | 🟢 SVG Layout Calculations |
-| **Zip** | ⚛️ React | ⚡ Fiber Bridge | Grid size checkpoint sequence & wall indices | 🟢 Active DOM Scraper |
-| **Patches** | ⚛️ React | ⚡ Fiber Bridge | Clue sizes, shape bounds, and complete solution paths | 🟢 Active DOM Scraper |
-| **Sudoku** | 🐹 Ember.js | 👁️ DOM Scraper | Direct input read-outs & aria accessibility parsing | 🟢 Not Applicable |
-| **Crossclimb** | 🐹 Ember.js | 👁️ DOM Scraper | Active input values & candidate word arrays | 🟢 Not Applicable |
-| **Pinpoint** | 🐹 Ember.js | 👁️ DOM Scraper | Category hints & card text lists | 🟢 Not Applicable |
+| Game           | Platform Framework | Extraction Mode |                    State Mapping Depth                     |     Fallback Stability     |
+| :------------- | :----------------: | :-------------: | :--------------------------------------------------------: | :------------------------: |
+| **Queens**     |      ⚛️ React      | ⚡ Fiber Bridge | Complete `colorGrid` region coordinates & existing guesses |   🟢 Active DOM Scraper    |
+| **Tango**      |      ⚛️ React      | ⚡ Fiber Bridge |         Relational edge constraints & lock states          | 🟢 SVG Layout Calculations |
+| **Zip**        |      ⚛️ React      | ⚡ Fiber Bridge |        Grid size checkpoint sequence & wall indices        |   🟢 Active DOM Scraper    |
+| **Patches**    |      ⚛️ React      | ⚡ Fiber Bridge |   Clue sizes, shape bounds, and complete solution paths    |   🟢 Active DOM Scraper    |
+| **Sudoku**     |    🐹 Ember.js     | 👁️ DOM Scraper  |    Direct input read-outs & aria accessibility parsing     |     🟢 Not Applicable      |
+| **Crossclimb** |    🐹 Ember.js     | 👁️ DOM Scraper  |        Active input values & candidate word arrays         |     🟢 Not Applicable      |
+| **Pinpoint**   |    🐹 Ember.js     | 👁️ DOM Scraper  |              Category hints & card text lists              |     🟢 Not Applicable      |
 
 > [!NOTE]
+>
 > **Ember-based Games**: Sudoku, Pinpoint, and Crossclimb are built using Ember.js, which does not feature a virtual React state tree. The extension detects framework contexts automatically, logging descriptive skip events in diagnostics and successfully falling back to DOM scraper pipelines.
 
 ---
@@ -71,7 +73,9 @@ sequenceDiagram
 <summary>📂 Development Installation & Quickstart</summary>
 
 ### 1. Clone & Install Dependencies
+
 Ensure you have Node.js and `pnpm` installed on your machine.
+
 ```bash
 # Clone the repository
 git clone https://github.com/muhammedaksam/linkedin-games-solver.git
@@ -82,16 +86,21 @@ pnpm install
 ```
 
 ### 2. Start Development Server
+
 ```bash
 pnpm dev
 ```
+
 Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, click **Load Unpacked**, and select the `build/chrome-mv3-dev` directory in this workspace.
 
 ### 3. Production Compilation
+
 ```bash
 pnpm build
 ```
+
 The output will compile cleanly into the `build/chrome-mv3-prod` folder, ready for packing and uploading.
+
 </details>
 
 <details>
@@ -100,21 +109,24 @@ The output will compile cleanly into the `build/chrome-mv3-prod` folder, ready f
 This repository includes an automatic generator for Web Store assets and social sharing cards, keeping social visual safe regions in check.
 
 ### Run Generator
+
 ```bash
 pnpm generate:store-assets
 ```
 
 ### Outputs
-* `store-assets/store-icon-128.png` — listing icon (128×128)
-* `store-assets/global/small-promo-440x280.jpg` — small listing tile
-* `store-assets/global/marquee-promo-1400x560.jpg` — marquee card
-* `store-assets/global/screenshots/` — compiled localized screenshots (1280×800)
-* `store-assets/social/social-1280x640.jpg` — global social sharing preview cards
+
+- `store-assets/store-icon-128.png` — listing icon (128×128)
+- `store-assets/global/small-promo-440x280.jpg` — small listing tile
+- `store-assets/global/marquee-promo-1400x560.jpg` — marquee card
+- `store-assets/global/screenshots/` — compiled localized screenshots (1280×800)
+- `store-assets/social/social-1280x640.jpg` — global social sharing preview cards
 
 ### Prerequisites
-* `rsvg-convert` — SVG rasterizer tool (`apt install librsvg2-bin` or via Homebrew)
-* `ImageMagick` — Image composition engine (prefers the `magick` binary)
-* `fontconfig` — Font utilities to auto-locate typography for localized CJK overlay texts.
+
+- `rsvg-convert` — SVG rasterizer tool (`apt install librsvg2-bin` or via Homebrew)
+- `ImageMagick` — Image composition engine (prefers the `magick` binary)
+- `fontconfig` — Font utilities to auto-locate typography for localized CJK overlay texts.
 </details>
 
 ---
@@ -132,6 +144,6 @@ pnpm generate:store-assets
 
 ## 📄 License & Contribution
 
-Contributions are extremely welcome! Feel free to open a Pull Request or report an issue. 
+Contributions are extremely welcome! Feel free to open a Pull Request or report an issue.
 
 Licensed under the terms of the [MIT License](LICENSE).

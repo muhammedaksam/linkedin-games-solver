@@ -5,8 +5,9 @@ export class CrossclimbSolver extends BaseSolver {
   readonly name = "Crossclimb"
 
   detect(): boolean {
+    const url = new URL(window.location.href)
     return (
-      window.location.href.includes("/crossclimb") ||
+      url.pathname.includes("/crossclimb") ||
       !!this.$(".crossclimb__container") ||
       !!this.$(".crossclimb__wrapper")
     )

@@ -9,6 +9,7 @@ export interface ReactQueensBoard {
   game: "queens"
   boardSize: number
   cells: ReactQueensCell[]
+  solution?: number[]
 }
 
 export interface ReactTangoCell {
@@ -28,6 +29,7 @@ export interface ReactTangoBoard {
   size: number
   cells: ReactTangoCell[] | null
   constraints: ReactTangoConstraint[] | null
+  solution?: number[]
 }
 
 export interface ReactZipCheckpoint {
@@ -45,6 +47,7 @@ export interface ReactZipBoard {
   size: number
   checkpoints: ReactZipCheckpoint[]
   walls: ReactZipWall[]
+  solution?: number[]
 }
 
 export interface ReactPatchesClue {
@@ -63,7 +66,9 @@ export interface ReactPatchesBoard {
   solution?: number[][]
 }
 
-export async function fetchReactBoardState<T extends "queens" | "tango" | "zip" | "patches">(
+export async function fetchReactBoardState<
+  T extends "queens" | "tango" | "zip" | "patches"
+>(
   gameName: T
 ): Promise<
   T extends "queens"

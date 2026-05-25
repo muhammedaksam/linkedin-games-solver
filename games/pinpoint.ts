@@ -5,8 +5,9 @@ export class PinpointSolver extends BaseSolver {
   readonly name = "Pinpoint"
 
   detect(): boolean {
+    const url = new URL(window.location.href)
     return (
-      window.location.href.includes("/pinpoint") ||
+      url.pathname.includes("/pinpoint") ||
       !!this.$(".pinpoint__container") ||
       !!this.$(".pinpoint__wrapper") ||
       !!this.$(".pinpoint__board")

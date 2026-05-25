@@ -491,7 +491,9 @@ export default function DevToolsPanel() {
     const base =
       "w-full h-auto min-w-0 min-h-0 aspect-square rounded-md border flex items-center justify-center font-bold text-[10px] sm:text-xs transition-all duration-200 select-none shadow-sm "
     if (cell.disabled) {
-      return base + "bg-muted/30 text-muted-foreground border-dashed border-border"
+      return (
+        base + "bg-muted/30 text-muted-foreground border-dashed border-border"
+      )
     }
     const hasColor =
       cell.color &&
@@ -580,27 +582,41 @@ export default function DevToolsPanel() {
                       const r = Math.floor(cellIdx / N)
                       const c = cellIdx % N
                       return (
-                        <div key={cell.id} className="relative w-full aspect-square">
+                        <div
+                          key={cell.id}
+                          className="relative w-full aspect-square">
                           <div
                             className={getCellClassName(cell)}
                             style={styles}
                             title={`ID: ${cell.id}\nDisabled: ${cell.disabled}\nCSS Color: ${cell.color}\nSymbol: ${cleanSymbol}`}>
                             {cleanSymbol}
                           </div>
-                          {gameName === "Tango" && c < N - 1 && cell.constraintRight && (
-                            <div
-                              className="absolute top-1/2 left-full -translate-y-1/2 -translate-x-1/2 ml-[3px] z-20 bg-neutral-950/90 text-foreground border border-border/60 w-3.5 h-3.5 flex items-center justify-center rounded text-[8px] font-black shadow-sm select-none pointer-events-none scale-90 backdrop-blur-sm hover:scale-100 transition-transform duration-150"
-                              title={cell.constraintRight === "eq" ? "Equals (=)" : "Opposite (x)"}>
-                              {cell.constraintRight === "eq" ? "=" : "×"}
-                            </div>
-                          )}
-                          {gameName === "Tango" && r < N - 1 && cell.constraintBottom && (
-                            <div
-                              className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2 mt-[3px] z-20 bg-neutral-950/90 text-foreground border border-border/60 w-3.5 h-3.5 flex items-center justify-center rounded text-[8px] font-black shadow-sm select-none pointer-events-none scale-90 backdrop-blur-sm hover:scale-100 transition-transform duration-150"
-                              title={cell.constraintBottom === "eq" ? "Equals (=)" : "Opposite (x)"}>
-                              {cell.constraintBottom === "eq" ? "=" : "×"}
-                            </div>
-                          )}
+                          {gameName === "Tango" &&
+                            c < N - 1 &&
+                            cell.constraintRight && (
+                              <div
+                                className="absolute top-1/2 left-full -translate-y-1/2 -translate-x-1/2 ml-[3px] z-20 bg-neutral-950/90 text-foreground border border-border/60 w-3.5 h-3.5 flex items-center justify-center rounded text-[8px] font-black shadow-sm select-none pointer-events-none scale-90 backdrop-blur-sm hover:scale-100 transition-transform duration-150"
+                                title={
+                                  cell.constraintRight === "eq"
+                                    ? "Equals (=)"
+                                    : "Opposite (x)"
+                                }>
+                                {cell.constraintRight === "eq" ? "=" : "×"}
+                              </div>
+                            )}
+                          {gameName === "Tango" &&
+                            r < N - 1 &&
+                            cell.constraintBottom && (
+                              <div
+                                className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2 mt-[3px] z-20 bg-neutral-950/90 text-foreground border border-border/60 w-3.5 h-3.5 flex items-center justify-center rounded text-[8px] font-black shadow-sm select-none pointer-events-none scale-90 backdrop-blur-sm hover:scale-100 transition-transform duration-150"
+                                title={
+                                  cell.constraintBottom === "eq"
+                                    ? "Equals (=)"
+                                    : "Opposite (x)"
+                                }>
+                                {cell.constraintBottom === "eq" ? "=" : "×"}
+                              </div>
+                            )}
                         </div>
                       )
                     })}

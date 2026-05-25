@@ -23,8 +23,9 @@ export class PatchesSolver extends BaseSolver {
   readonly name = "Patches"
 
   detect(): boolean {
+    const url = new URL(window.location.href)
     return (
-      window.location.href.includes("/patches") ||
+      url.pathname.includes("/patches") ||
       (this.$$("[data-cell-idx]").length > 0 &&
         this.$$("[data-cell-idx]").some(
           (cell) =>
@@ -39,6 +40,7 @@ export class PatchesSolver extends BaseSolver {
     let H = 0
     let clues: Clue[] = []
     let reactSuccess = false
+    let reactSolution: Rect[] | undefined = undefined
 
     try {
       console.log("[Patches] Attempting React Fiber state extraction...")
@@ -53,12 +55,47 @@ export class PatchesSolver extends BaseSolver {
           size: c.size,
           type: c.type
         }))
+
+        if (boardState.solution && boardState.solution.length > 0) {
+          const directSolution: Rect[] = []
+          for (const cellIdxes of boardState.solution) {
+            let minR = Infinity,
+              maxR = -Infinity
+            let minC = Infinity,
+              maxC = -Infinity
+            for (const idx of cellIdxes) {
+              const r = Math.floor(idx / W)
+              const c = idx % W
+              if (r < minR) minR = r
+              if (r > maxR) maxR = r
+              if (c < minC) minC = c
+              if (c > maxC) maxC = c
+            }
+
+            // Find which clue's ID is inside this region
+            const clue = clues.find((c) => cellIdxes.includes(c.id))
+            if (clue) {
+              directSolution.push({
+                r: minR,
+                c: minC,
+                w: maxC - minC + 1,
+                h: maxR - minR + 1,
+                clueId: clue.id
+              })
+            }
+          }
+          if (directSolution.length === clues.length) {
+            reactSolution = directSolution
+            console.log("[Patches] Direct solution mapped from React state!")
+          }
+        }
+
         reactSuccess = true
         console.log(
           `[Patches] React Extraction Successful! W=${W}, H=${H}, clues=${clues.length}`
         )
       }
-    } catch (err: any) {
+    } catch (err) {
       console.warn(
         "[Patches] React Fiber state extraction failed, falling back to DOM parsing:",
         err.message || err
@@ -77,7 +114,7 @@ export class PatchesSolver extends BaseSolver {
       console.log(`[Patches] DOM Clues found:`, clues)
     }
 
-    const solution = this.solvePatches(W, H, clues)
+    const solution = reactSolution || this.solvePatches(W, H, clues)
     if (!solution) {
       throw new Error(
         "No non-overlapping rectangle solution found for Patches puzzle!"

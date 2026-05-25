@@ -5,8 +5,9 @@ export class ZipSolver extends BaseSolver {
   readonly name = "Zip"
 
   detect(): boolean {
+    const url = new URL(window.location.href)
     return (
-      window.location.href.includes("/zip") ||
+      url.pathname.includes("/zip") ||
       (this.$$("[data-cell-idx]").length > 0 &&
         this.$$("[data-cell-idx]").some((cell) =>
           cell.querySelector('[data-cell-content="true"]')
@@ -19,11 +20,16 @@ export class ZipSolver extends BaseSolver {
     let checkpoints = new Map<number, number>()
     let walls = new Set<string>()
     let reactSuccess = false
+    let reactSolution: number[] | undefined = undefined
 
     try {
       console.log("[Zip] Attempting React Fiber state extraction...")
       const boardState = await fetchReactBoardState("zip")
-      if (boardState && boardState.checkpoints && boardState.checkpoints.length > 0) {
+      if (
+        boardState &&
+        boardState.checkpoints &&
+        boardState.checkpoints.length > 0
+      ) {
         N = boardState.size
         checkpoints = new Map<number, number>()
         for (const cp of boardState.checkpoints) {
@@ -42,12 +48,16 @@ export class ZipSolver extends BaseSolver {
           walls = this.getWalls(N)
         }
 
+        if (boardState.solution && boardState.solution.length === N * N) {
+          reactSolution = boardState.solution
+        }
+
         reactSuccess = true
         console.log(
           `[Zip] React Extraction Successful! N=${N}, checkpoints=${checkpoints.size}, walls=${walls.size}`
         )
       }
-    } catch (err: any) {
+    } catch (err) {
       console.warn(
         "[Zip] React Fiber state extraction failed, falling back to DOM parsing:",
         err.message || err
@@ -63,7 +73,7 @@ export class ZipSolver extends BaseSolver {
     console.log(`[Zip] Checkpoints:`, Array.from(checkpoints.entries()))
     console.log(`[Zip] Walls:`, Array.from(walls))
 
-    const solution = this.solveZip(N, checkpoints, walls)
+    const solution = reactSolution || this.solveZip(N, checkpoints, walls)
     if (!solution) {
       throw new Error("No solution path found for Zip puzzle!")
     }

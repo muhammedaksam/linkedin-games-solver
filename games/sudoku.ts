@@ -12,8 +12,9 @@ export class SudokuSolver extends BaseSolver {
   readonly name = "Sudoku"
 
   detect(): boolean {
+    const url = new URL(window.location.href)
     return (
-      window.location.href.includes("/sudoku") ||
+      url.pathname.includes("/sudoku") ||
       (this.$$("[data-cell-idx]").length > 0 &&
         (!!this.$(".sudoku-cell") ||
           this.$$("[data-cell-idx]").some((cell) =>
