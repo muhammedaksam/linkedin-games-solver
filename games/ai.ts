@@ -263,28 +263,32 @@ async function callChromePrompt(
 ): Promise<string> {
   let aiNamespace: typeof LanguageModel | null = null
 
-  if (typeof self !== "undefined" && (self as any).LanguageModel) {
-    aiNamespace = (self as any).LanguageModel
-  } else if (typeof window !== "undefined" && (window as any).LanguageModel) {
-    aiNamespace = (window as any).LanguageModel
-  } else if (
-    typeof chrome !== "undefined" &&
-    (chrome as any).aiOriginTrial &&
-    (chrome as any).aiOriginTrial.languageModel
-  ) {
-    aiNamespace = (chrome as any).aiOriginTrial.languageModel
-  } else if (
-    typeof self !== "undefined" &&
-    (self as any).ai &&
-    (self as any).ai.languageModel
-  ) {
-    aiNamespace = (self as any).ai.languageModel
-  } else if (
-    typeof window !== "undefined" &&
-    (window as any).ai &&
-    (window as any).ai.languageModel
-  ) {
-    aiNamespace = (window as any).ai.languageModel
+  interface AIWindowFields {
+    LanguageModel?: typeof LanguageModel
+    ai?: { languageModel?: typeof LanguageModel }
+  }
+
+  const selfObj =
+    typeof self !== "undefined" ? (self as unknown as AIWindowFields) : null
+  const windowObj =
+    typeof window !== "undefined" ? (window as unknown as AIWindowFields) : null
+  const chromeObj =
+    typeof chrome !== "undefined"
+      ? (chrome as unknown as {
+          aiOriginTrial?: { languageModel?: typeof LanguageModel }
+        })
+      : null
+
+  if (selfObj?.LanguageModel) {
+    aiNamespace = selfObj.LanguageModel
+  } else if (windowObj?.LanguageModel) {
+    aiNamespace = windowObj.LanguageModel
+  } else if (chromeObj?.aiOriginTrial?.languageModel) {
+    aiNamespace = chromeObj.aiOriginTrial.languageModel
+  } else if (selfObj?.ai?.languageModel) {
+    aiNamespace = selfObj.ai.languageModel
+  } else if (windowObj?.ai?.languageModel) {
+    aiNamespace = windowObj.ai.languageModel
   }
 
   if (!aiNamespace) {
@@ -331,7 +335,7 @@ async function callChromePrompt(
     } finally {
       session.destroy()
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err)
     throw new Error(
       `Chrome Built-in AI Error: ${msg}. If this is your first time using it, Chrome may still be downloading the Gemini Nano model in the background.`,

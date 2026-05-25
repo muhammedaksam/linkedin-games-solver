@@ -46,14 +46,20 @@ export async function solveWithMultimodalAI(
   const imageBitmap = await dataUrlToImageBitmap(captureRes.dataUrl)
 
   // 3. Detect Chrome's native Multimodal AI session creator
-  let aiNamespace: any = null
-  if (typeof self !== "undefined" && (self as any).ai?.languageModel) {
-    aiNamespace = (self as any).ai.languageModel
-  } else if (
-    typeof window !== "undefined" &&
-    (window as any).ai?.languageModel
-  ) {
-    aiNamespace = (window as any).ai.languageModel
+  let aiNamespace: typeof LanguageModel | null = null
+  const selfObj =
+    typeof self !== "undefined"
+      ? (self as unknown as { ai?: { languageModel?: typeof LanguageModel } })
+      : null
+  const windowObj =
+    typeof window !== "undefined"
+      ? (window as unknown as { ai?: { languageModel?: typeof LanguageModel } })
+      : null
+
+  if (selfObj?.ai?.languageModel) {
+    aiNamespace = selfObj.ai.languageModel
+  } else if (windowObj?.ai?.languageModel) {
+    aiNamespace = windowObj.ai.languageModel
   }
 
   if (!aiNamespace) {

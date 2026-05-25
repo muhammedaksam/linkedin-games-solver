@@ -7,15 +7,19 @@ export const config: PlasmoCSConfig = {
 }
 
 // Check to prevent double-initialization
-if (!(window as any).__SOLVER_LOGGER_INITIALIZED__) {
-  ;(window as any).__SOLVER_LOGGER_INITIALIZED__ = true
+if (
+  !(window as unknown as Record<string, unknown>).__SOLVER_LOGGER_INITIALIZED__
+) {
+  ;(
+    window as unknown as Record<string, unknown>
+  ).__SOLVER_LOGGER_INITIALIZED__ = true
 
   const originalLog = console.log
   const originalError = console.error
   const originalWarn = console.warn
   const originalInfo = console.info
 
-  const sendToIsolated = (type: string, args: any[]) => {
+  const sendToIsolated = (type: string, args: unknown[]) => {
     // Safely serialize arguments to string to avoid circular references and exceptions
     const serialized = args.map((arg) => {
       try {
@@ -28,7 +32,7 @@ if (!(window as any).__SOLVER_LOGGER_INITIALIZED__) {
           return JSON.stringify(arg)
         }
         return String(arg)
-      } catch (e) {
+      } catch {
         return `[Unserializable Object: ${String(arg)}]`
       }
     })

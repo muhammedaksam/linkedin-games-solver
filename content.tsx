@@ -46,7 +46,7 @@ const syncLogsToSession = () => {
 // Initialize session logs on injection
 syncLogsToSession()
 
-const captureIsolatedLog = (type: string, args: any[]) => {
+const captureIsolatedLog = (type: string, args: unknown[]) => {
   const serialized = args.map((arg) => {
     try {
       if (arg === null) return "null"
@@ -55,7 +55,7 @@ const captureIsolatedLog = (type: string, args: any[]) => {
         return `${arg.name}: ${arg.message}\n${arg.stack || ""}`
       if (typeof arg === "object") return JSON.stringify(arg)
       return String(arg)
-    } catch (e) {
+    } catch {
       return String(arg)
     }
   })
@@ -398,7 +398,7 @@ let setReactSuccess: ((val: boolean) => void) | null = null
 const messageListener = (
   message: { action: string },
   _sender: chrome.runtime.MessageSender,
-  sendResponse: (response?: any) => void
+  sendResponse: (response?: unknown) => void
 ) => {
   if (message.action === "getDebugInfo") {
     try {

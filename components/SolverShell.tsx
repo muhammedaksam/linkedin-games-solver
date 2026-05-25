@@ -204,14 +204,24 @@ export function SolverShell({
     setDownloadProgress(null)
 
     try {
-      let aiNamespace: any = null
-      if (typeof self !== "undefined" && (self as any).ai?.languageModel) {
-        aiNamespace = (self as any).ai.languageModel
-      } else if (
-        typeof window !== "undefined" &&
-        (window as any).ai?.languageModel
-      ) {
-        aiNamespace = (window as any).ai.languageModel
+      let aiNamespace: typeof LanguageModel | null = null
+      const selfObj =
+        typeof self !== "undefined"
+          ? (self as unknown as {
+              ai?: { languageModel?: typeof LanguageModel }
+            })
+          : null
+      const windowObj =
+        typeof window !== "undefined"
+          ? (window as unknown as {
+              ai?: { languageModel?: typeof LanguageModel }
+            })
+          : null
+
+      if (selfObj?.ai?.languageModel) {
+        aiNamespace = selfObj.ai.languageModel
+      } else if (windowObj?.ai?.languageModel) {
+        aiNamespace = windowObj.ai.languageModel
       }
 
       if (!aiNamespace) {
@@ -227,9 +237,12 @@ export function SolverShell({
         setNanoStatus("Gemini Nano is supported but needs to be downloaded.")
         try {
           const session = await aiNamespace.create()
-          session.addEventListener("downloadprogress", (e: any) => {
-            if (e.total) {
-              const pct = Math.round((e.loaded / e.total) * 100)
+          session.addEventListener("downloadprogress", (e: unknown) => {
+            const progressEvent = e as { loaded: number; total?: number }
+            if (progressEvent.total) {
+              const pct = Math.round(
+                (progressEvent.loaded / progressEvent.total) * 100
+              )
               setDownloadProgress(pct)
               setNanoStatus(`Downloading local model components: ${pct}%`)
             }
@@ -240,8 +253,9 @@ export function SolverShell({
       } else if (availability === "readily") {
         setNanoStatus("Gemini Nano is fully downloaded and ready locally! 🚀")
       }
-    } catch (e: any) {
-      setNanoStatus(`Detection failed: ${e.message || String(e)}`)
+    } catch (e: unknown) {
+      const errMsg = e instanceof Error ? e.message : String(e)
+      setNanoStatus(`Detection failed: ${errMsg}`)
     } finally {
       setCheckingNano(false)
     }
@@ -581,7 +595,7 @@ export function SolverShell({
       } else {
         setDebugLogs([])
       }
-    } catch (e) {
+    } catch {
       setDebugLogs([])
     }
   }
