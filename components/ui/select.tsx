@@ -135,12 +135,13 @@ export function SelectItem({
   if (!context) throw new Error("SelectItem must be used within a Select")
 
   const isSelected = context.value === value
+  const { setActiveLabel } = context
 
   React.useEffect(() => {
     if (isSelected) {
-      context.setActiveLabel(children)
+      setActiveLabel(children)
     }
-  }, [isSelected, children, context.setActiveLabel])
+  }, [isSelected, children, setActiveLabel])
 
   return (
     <button
