@@ -1,4 +1,5 @@
 import { BaseSolver } from "./base"
+import { fetchReactBoardState } from "./react-bridge"
 
 export class ZipSolver extends BaseSolver {
   readonly name = "Zip"
@@ -14,11 +15,50 @@ export class ZipSolver extends BaseSolver {
   }
 
   async solve(): Promise<void> {
-    const N = this.inferN()
-    console.log(`[Zip] Detected N: ${N}`)
+    let N = 6
+    let checkpoints = new Map<number, number>()
+    let walls = new Set<string>()
+    let reactSuccess = false
 
-    const checkpoints = this.getCheckpoints()
-    const walls = this.getWalls(N)
+    try {
+      console.log("[Zip] Attempting React Fiber state extraction...")
+      const boardState = await fetchReactBoardState("zip")
+      if (boardState && boardState.checkpoints && boardState.checkpoints.length > 0) {
+        N = boardState.size
+        checkpoints = new Map<number, number>()
+        for (const cp of boardState.checkpoints) {
+          checkpoints.set(cp.value, cp.idx)
+        }
+
+        // Walls can be mapped from React if present, otherwise fall back to DOM wall detection
+        if (boardState.walls && boardState.walls.length > 0) {
+          walls = new Set<string>()
+          for (const w of boardState.walls) {
+            const min = Math.min(w.a, w.b)
+            const max = Math.max(w.a, w.b)
+            walls.add(`${min}-${max}`)
+          }
+        } else {
+          walls = this.getWalls(N)
+        }
+
+        reactSuccess = true
+        console.log(
+          `[Zip] React Extraction Successful! N=${N}, checkpoints=${checkpoints.size}, walls=${walls.size}`
+        )
+      }
+    } catch (err: any) {
+      console.warn(
+        "[Zip] React Fiber state extraction failed, falling back to DOM parsing:",
+        err.message || err
+      )
+    }
+
+    if (!reactSuccess) {
+      N = this.inferN()
+      checkpoints = this.getCheckpoints()
+      walls = this.getWalls(N)
+    }
 
     console.log(`[Zip] Checkpoints:`, Array.from(checkpoints.entries()))
     console.log(`[Zip] Walls:`, Array.from(walls))

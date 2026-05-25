@@ -1,4 +1,5 @@
 import { BaseSolver } from "./base"
+import { fetchReactBoardState, type ReactTangoBoard } from "./react-bridge"
 
 interface EdgeConstraint {
   a: number
@@ -26,27 +27,66 @@ export class TangoSolver extends BaseSolver {
   }
 
   async solve(): Promise<void> {
-    const N = this.inferN()
-    if (N % 2 !== 0) {
-      throw new Error(
-        `Tango expects an even board dimension N. Detected N: ${N}`
+    let N = 6
+    let edges: EdgeConstraint[] = []
+    let g: number[][] = []
+    let reactSuccess = false
+
+    try {
+      console.log("[Tango] Attempting React Fiber state extraction...")
+      const boardState: ReactTangoBoard = await fetchReactBoardState("tango")
+      if (
+        boardState &&
+        boardState.cells &&
+        boardState.cells.length > 0 &&
+        boardState.constraints
+      ) {
+        N = boardState.size
+        g = Array.from({ length: N }, () => Array<number>(N).fill(-1))
+
+        // 1. Populate grid values from React
+        for (const cell of boardState.cells) {
+          const r = Math.floor(cell.idx / N)
+          const c = cell.idx % N
+          g[r][c] = cell.value
+        }
+
+        // 2. Populate constraints from React
+        edges = boardState.constraints
+        reactSuccess = true
+        console.log(
+          `[Tango] React Extraction Successful! N=${N}, constraints=${edges.length}`
+        )
+      }
+    } catch (err: any) {
+      console.warn(
+        "[Tango] React Fiber state extraction failed, falling back to layout DOM parsing:",
+        err.message || err
       )
     }
 
-    console.log(`[Tango] Detected ${N}x${N} board`)
+    if (!reactSuccess) {
+      N = this.inferN()
+      if (N % 2 !== 0) {
+        throw new Error(
+          `Tango expects an even board dimension N. Detected N: ${N}`
+        )
+      }
 
-    const edges = this.parseEdges(N)
-    const adj = this.buildAdjMap(N, edges)
+      console.log(`[Tango] Detected ${N}x${N} board`)
 
-    // Read board values
-    const g = Array.from({ length: N }, () => Array<number>(N).fill(-1))
-    for (let idx = 0; idx < N * N; idx++) {
-      const el = this.cellElByIdx(idx)
-      if (!el) continue
-      const r = Math.floor(idx / N)
-      const c = idx % N
-      g[r][c] = this.readCellValue(el)
+      edges = this.parseEdges(N)
+      g = Array.from({ length: N }, () => Array<number>(N).fill(-1))
+      for (let idx = 0; idx < N * N; idx++) {
+        const el = this.cellElByIdx(idx)
+        if (!el) continue
+        const r = Math.floor(idx / N)
+        const c = idx % N
+        g[r][c] = this.readCellValue(el)
+      }
     }
+
+    const adj = this.buildAdjMap(N, edges)
 
     console.log(`[Tango] Edge constraints found: ${edges.length}`)
     console.table(g)

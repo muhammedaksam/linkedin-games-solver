@@ -1,4 +1,5 @@
 import { BaseSolver } from "./base"
+import { fetchReactBoardState, type ReactQueensBoard } from "./react-bridge"
 
 export class QueensSolver extends BaseSolver {
   readonly name = "Queens"
@@ -32,11 +33,55 @@ export class QueensSolver extends BaseSolver {
     // Reset per-board caches
     QueensSolver._commonClasses = null
 
-    const N = this.inferN()
-    const { regionOf, regionCount, givenQueens } = this.buildPuzzle(N)
+    let N = 8
+    let regionOf: number[] = []
+    let regionCount = 0
+    let givenQueens = new Set<number>()
+    let reactSuccess = false
 
-    console.log(`[Queens] Detected: ${N}x${N} board`)
-    console.log(`[Queens] Regions detected: ${regionCount}`)
+    try {
+      console.log("[Queens] Attempting React Fiber state extraction...")
+      const boardState: ReactQueensBoard = await fetchReactBoardState("queens")
+      if (boardState && boardState.cells && boardState.cells.length > 0) {
+        N = boardState.boardSize
+        regionOf = new Array<number>(N * N)
+        const regionsMap = new Map<string | number, number>()
+        let nextRegionId = 0
+
+        for (const cell of boardState.cells) {
+          if (!regionsMap.has(cell.regionId)) {
+            regionsMap.set(cell.regionId, nextRegionId++)
+          }
+          regionOf[cell.idx] = regionsMap.get(cell.regionId)!
+
+          if (cell.state === 1) {
+            givenQueens.add(cell.idx)
+          }
+        }
+
+        regionCount = regionsMap.size
+        reactSuccess = true
+        console.log(
+          `[Queens] React Extraction Successful! N=${N}, regions=${regionCount}`
+        )
+      }
+    } catch (err: any) {
+      console.warn(
+        "[Queens] React Fiber state extraction failed, falling back to DOM parsing:",
+        err.message || err
+      )
+    }
+
+    if (!reactSuccess) {
+      N = this.inferN()
+      const domPuzzle = this.buildPuzzle(N)
+      regionOf = domPuzzle.regionOf
+      regionCount = domPuzzle.regionCount
+      givenQueens = domPuzzle.givenQueens
+    }
+
+    console.log(`[Queens] Grid size: ${N}x${N}`)
+    console.log(`[Queens] Regions count: ${regionCount}`)
     console.log(`[Queens] Given queens: ${givenQueens.size}`)
 
     if (regionCount !== N) {

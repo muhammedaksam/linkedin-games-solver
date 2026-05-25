@@ -1,4 +1,5 @@
 import { BaseSolver } from "./base"
+import { fetchReactBoardState } from "./react-bridge"
 
 interface Clue {
   id: number
@@ -34,14 +35,47 @@ export class PatchesSolver extends BaseSolver {
   }
 
   async solve(): Promise<void> {
-    const parsed = this.parseBoard()
-    if (!parsed) {
-      throw new Error("Could not parse Patches board correctly.")
+    let W = 0
+    let H = 0
+    let clues: Clue[] = []
+    let reactSuccess = false
+
+    try {
+      console.log("[Patches] Attempting React Fiber state extraction...")
+      const boardState = await fetchReactBoardState("patches")
+      if (boardState && boardState.clues && boardState.clues.length > 0) {
+        W = boardState.gridCols
+        H = boardState.gridRows
+        clues = boardState.clues.map((c) => ({
+          id: c.idx,
+          r: c.r,
+          c: c.c,
+          size: c.size,
+          type: c.type
+        }))
+        reactSuccess = true
+        console.log(
+          `[Patches] React Extraction Successful! W=${W}, H=${H}, clues=${clues.length}`
+        )
+      }
+    } catch (err: any) {
+      console.warn(
+        "[Patches] React Fiber state extraction failed, falling back to DOM parsing:",
+        err.message || err
+      )
     }
 
-    const { W, H, clues } = parsed
-    console.log(`[Patches] Board size: ${W}x${H}`)
-    console.log(`[Patches] Clues found:`, clues)
+    if (!reactSuccess) {
+      const parsed = this.parseBoard()
+      if (!parsed) {
+        throw new Error("Could not parse Patches board correctly.")
+      }
+      W = parsed.W
+      H = parsed.H
+      clues = parsed.clues
+      console.log(`[Patches] DOM Board size: ${W}x${H}`)
+      console.log(`[Patches] DOM Clues found:`, clues)
+    }
 
     const solution = this.solvePatches(W, H, clues)
     if (!solution) {
