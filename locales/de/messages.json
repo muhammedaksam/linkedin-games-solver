@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 Öffne das Strecken- & Performance-Dashboard"
+  },
+  "diagnosticsEngine": {
+    "message": "Diagnose-Engine"
+  },
+  "liveInspected": {
+    "message": "Live Inspiziert"
+  },
+  "offline": {
+    "message": "Offline"
+  },
+  "inspectedTab": {
+    "message": "Inspizierter Tab:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Live-Matrix-Gitter-Inspektor"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Warten auf LinkedIn Spielseite"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Navigieren Sie zu einem beliebigen LinkedIn-Spielbrett-Tab (Queens, Sudoku, Tango, Pinpoint), um Einschränkungskoordinaten, Zellzustände und reaktive Strukturen zu erfassen."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Telemetrie-Protokoll-Streamer"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Protokolle durchsuchen..."
+  },
+  "allTypes": {
+    "message": "ALLE TYPEN"
+  },
+  "logsType": {
+    "message": "PROTOKOLLE"
+  },
+  "infoType": {
+    "message": "INFOS"
+  },
+  "warnsType": {
+    "message": "WARNUNGEN"
+  },
+  "errorsType": {
+    "message": "FEHLER"
+  },
+  "selectTypePlaceholder": {
+    "message": "Typ Auswählen"
+  },
+  "consoleStreamEmpty": {
+    "message": "Konsolen-Stream leer"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Keine Protokollausgaben gefunden, die den Filtern entsprechen. Führen Sie Schritte in der Benutzeroberfläche des LinkedIn-Spiele-Solvers aus, um Protokollaktionen hierher zu streamen."
+  },
+  "subscribedToStorageSession": {
+    "message": "Abonniert für storage.session Stream"
+  },
+  "parsingGameGridCells": {
+    "message": "Spielgitterzellen werden analysiert... Stellen Sie sicher, dass auf dem Brett aktive Gitterblöcke sichtbar sind."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "N. v."
+  },
+  "matchesLabel": {
+    "message": "Treffer"
+  },
+  "copiedLabel": {
+    "message": "Kopiert!"
+  },
+  "copyLogsTooltip": {
+    "message": "Protokolle kopieren"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Protokollbereich löschen"
   }
 }

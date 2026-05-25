@@ -9,7 +9,10 @@ if (typeof chrome !== "undefined" && chrome.storage?.session?.setAccessLevel) {
   chrome.storage.session
     .setAccessLevel({ accessLevel: "TRUSTED_AND_UNTRUSTED_CONTEXTS" })
     .catch((err) =>
-      console.error("[Storage] Failed to set session storage access level:", err)
+      console.error(
+        "[Storage] Failed to set session storage access level:",
+        err
+      )
     )
 }
 
@@ -53,10 +56,14 @@ if (typeof chrome !== "undefined" && chrome.sidePanel) {
 
         // Programmatically auto-open the sidebar panel if enabled and page is fully loaded
         if (changeInfo.status === "complete") {
-          const autoOpen = await syncStorage.get<boolean>("autoOpenSidepanel") ?? true
+          const autoOpen =
+            (await syncStorage.get<boolean>("autoOpenSidepanel")) ?? true
           if (autoOpen) {
             await chrome.sidePanel.open({ tabId }).catch((err) => {
-              console.warn("[SidePanel] Failed programmatic open (gesture restriction may apply):", err)
+              console.warn(
+                "[SidePanel] Failed programmatic open (gesture restriction may apply):",
+                err
+              )
             })
           }
         }
@@ -349,4 +356,3 @@ chrome.omnibox.onInputEntered.addListener((text) => {
     }
   })
 })
-

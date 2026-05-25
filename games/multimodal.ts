@@ -15,19 +15,31 @@ async function dataUrlToImageBitmap(dataUrl: string): Promise<ImageBitmap> {
 export async function solveWithMultimodalAI(
   promptText: string
 ): Promise<string> {
-  if (typeof chrome === "undefined" || !chrome.runtime || !chrome.runtime.sendMessage) {
+  if (
+    typeof chrome === "undefined" ||
+    !chrome.runtime ||
+    !chrome.runtime.sendMessage
+  ) {
     throw new Error("Extension environment required for screenshot solving.")
   }
 
   // 1. Capture the tab screen visually using the background service worker
-  const captureRes = await new Promise<{ success: boolean; dataUrl?: string; error?: string }>((resolve) => {
+  const captureRes = await new Promise<{
+    success: boolean
+    dataUrl?: string
+    error?: string
+  }>((resolve) => {
     chrome.runtime.sendMessage({ action: "captureTab" }, (res) => {
-      resolve(res || { success: false, error: "No response from background worker." })
+      resolve(
+        res || { success: false, error: "No response from background worker." }
+      )
     })
   })
 
   if (!captureRes.success || !captureRes.dataUrl) {
-    throw new Error(`Screenshot capture failed: ${captureRes.error || "Unknown error"}`)
+    throw new Error(
+      `Screenshot capture failed: ${captureRes.error || "Unknown error"}`
+    )
   }
 
   // 2. Convert JPEG data URL to Image Bitmap
@@ -37,7 +49,10 @@ export async function solveWithMultimodalAI(
   let aiNamespace: any = null
   if (typeof self !== "undefined" && (self as any).ai?.languageModel) {
     aiNamespace = (self as any).ai.languageModel
-  } else if (typeof window !== "undefined" && (window as any).ai?.languageModel) {
+  } else if (
+    typeof window !== "undefined" &&
+    (window as any).ai?.languageModel
+  ) {
     aiNamespace = (window as any).ai.languageModel
   }
 
@@ -50,7 +65,9 @@ export async function solveWithMultimodalAI(
   // Verify availability
   const availability = await aiNamespace.availability()
   if (availability === "unavailable") {
-    throw new Error("Chrome Built-in Multimodal AI model is unavailable on this device.")
+    throw new Error(
+      "Chrome Built-in Multimodal AI model is unavailable on this device."
+    )
   }
 
   // 4. Create local multimodal Gemini Nano session
@@ -62,13 +79,16 @@ export async function solveWithMultimodalAI(
   try {
     // 5. Query Gemini Nano session with both image and prompt context
     console.log("[Multimodal AI] Initiating on-device visual board analysis...")
-    
+
     // For Chrome's Prompt/LanguageModel API, multimodal inputs are fed as structured lists
     const promptInputs = [
-      { role: "user", content: [
-        { type: "text", value: promptText },
-        { type: "image", value: imageBitmap }
-      ]}
+      {
+        role: "user",
+        content: [
+          { type: "text", value: promptText },
+          { type: "image", value: imageBitmap }
+        ]
+      }
     ]
 
     const response = await session.prompt(promptInputs)

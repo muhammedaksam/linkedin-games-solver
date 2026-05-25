@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 Ouvrir le tableau de bord des séries et des performances"
+  },
+  "diagnosticsEngine": {
+    "message": "Moteur de Diagnostic"
+  },
+  "liveInspected": {
+    "message": "Inspecté en Direct"
+  },
+  "offline": {
+    "message": "Hors ligne"
+  },
+  "inspectedTab": {
+    "message": "Onglet Inspecté:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Inspecteur de Grille Matricielle en Direct"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "En attente de la page de jeu LinkedIn"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Accédez à n'importe quel onglet de plateau de jeu LinkedIn (Queens, Sudoku, Tango, Pinpoint) pour capturer les coordonnées des contraintes, les états des cellules et les structures réactives."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Diffuseur de Journaux de Télémétrie"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Rechercher des journaux..."
+  },
+  "allTypes": {
+    "message": "TOUS LES TYPES"
+  },
+  "logsType": {
+    "message": "JOURNAUX"
+  },
+  "infoType": {
+    "message": "INFOS"
+  },
+  "warnsType": {
+    "message": "AVERTISSEMENTS"
+  },
+  "errorsType": {
+    "message": "ERREURS"
+  },
+  "selectTypePlaceholder": {
+    "message": "Sélectionner le Type"
+  },
+  "consoleStreamEmpty": {
+    "message": "Flux de Console Vide"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Aucune sortie de journal détectée correspondant aux filtres. Exécutez des étapes dans l'interface utilisateur du résolveur de jeux LinkedIn pour diffuser les actions du journal ici."
+  },
+  "subscribedToStorageSession": {
+    "message": "Abonné au flux storage.session"
+  },
+  "parsingGameGridCells": {
+    "message": "Analyse des cellules de la grille de jeu... Assurez-vous que le plateau présente des blocs de grille actifs visibles."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "N/D"
+  },
+  "matchesLabel": {
+    "message": "correspondances"
+  },
+  "copiedLabel": {
+    "message": "Copié !"
+  },
+  "copyLogsTooltip": {
+    "message": "Copier les journaux"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Effacer l'espace des journaux"
   }
 }

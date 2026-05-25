@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 Seriler ve Performans Panelini Aç"
+  },
+  "diagnosticsEngine": {
+    "message": "Tanılama Motoru"
+  },
+  "liveInspected": {
+    "message": "Canlı İnceleniyor"
+  },
+  "offline": {
+    "message": "Çevrimdışı"
+  },
+  "inspectedTab": {
+    "message": "İncelenen Sekme:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Canlı Matris Izgara Denetçisi"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "LinkedIn Oyun Sayfası Bekleniyor"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Kısıt koordinatlarını, hücre durumlarını ve reaktif yapıları yakalamak için herhangi bir LinkedIn Oyun tahtası sekmesine (Queens, Sudoku, Tango, Pinpoint) gidin."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Telemetri Günlükleri Akışçısı"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Günlüklerde ara..."
+  },
+  "allTypes": {
+    "message": "TÜM TÜRLER"
+  },
+  "logsType": {
+    "message": "GÜNLÜKLER"
+  },
+  "infoType": {
+    "message": "BİLGİLER"
+  },
+  "warnsType": {
+    "message": "UYARILAR"
+  },
+  "errorsType": {
+    "message": "HATALAR"
+  },
+  "selectTypePlaceholder": {
+    "message": "Tür Seçin"
+  },
+  "consoleStreamEmpty": {
+    "message": "Konsol Akışı Boş"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Filtrelerle eşleşen günlük çıktısı tespit edilmedi. Günlük eylemlerini buraya akıtmak için LinkedIn Oyunları çözücü arayüzünde adımları çalıştırın."
+  },
+  "subscribedToStorageSession": {
+    "message": "storage.session akışına abone olundu"
+  },
+  "parsingGameGridCells": {
+    "message": "Oyun ızgara hücreleri ayrıştırılıyor... Tahtada aktif ızgara bloklarının görünür olduğundan emin olun."
+  },
+  "urlLabel": {
+    "message": "Adres:"
+  },
+  "notAvailable": {
+    "message": "Yok"
+  },
+  "matchesLabel": {
+    "message": "eşleşme"
+  },
+  "copiedLabel": {
+    "message": "Kopyalandı!"
+  },
+  "copyLogsTooltip": {
+    "message": "Günlükleri Kopyala"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Günlük Alanını Temizle"
   }
 }

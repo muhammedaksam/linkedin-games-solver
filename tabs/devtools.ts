@@ -1,9 +1,16 @@
-if (typeof chrome !== "undefined" && chrome.devtools && chrome.devtools.panels) {
+import iconPath from "url:~assets/icon.svg"
+
+if (
+  typeof chrome !== "undefined" &&
+  chrome.devtools &&
+  chrome.devtools.panels
+) {
   chrome.devtools.panels.create(
-    "LinkedIn Games Solver",
-    "",
+    (chrome.i18n.getMessage("extensionName") || "LinkedIn Games Solver") +
+      " 🧩",
+    iconPath,
     "tabs/devtools-panel.html",
-    (panel) => {
+    (_panel) => {
       console.log("DevTools panel successfully registered!")
     }
   )

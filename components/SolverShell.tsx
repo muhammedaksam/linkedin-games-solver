@@ -92,8 +92,11 @@ export function SolverShell({
   const [solving, setSolving] = useState<boolean>(false)
   const [solveError, setSolveError] = useState<string | null>(null)
   const [solveSuccess, setSolveSuccess] = useState<boolean>(false)
-  const [showPermissionDialog, setShowPermissionDialog] = useState<boolean>(false)
-  const [pendingSolveGameId, setPendingSolveGameId] = useState<string | null>(null)
+  const [showPermissionDialog, setShowPermissionDialog] =
+    useState<boolean>(false)
+  const [pendingSolveGameId, setPendingSolveGameId] = useState<string | null>(
+    null
+  )
 
   // Debug Panel States
   const [debugLogs, setDebugLogs] = useState<
@@ -204,7 +207,10 @@ export function SolverShell({
       let aiNamespace: any = null
       if (typeof self !== "undefined" && (self as any).ai?.languageModel) {
         aiNamespace = (self as any).ai.languageModel
-      } else if (typeof window !== "undefined" && (window as any).ai?.languageModel) {
+      } else if (
+        typeof window !== "undefined" &&
+        (window as any).ai?.languageModel
+      ) {
         aiNamespace = (window as any).ai.languageModel
       }
 
@@ -942,7 +948,9 @@ export function SolverShell({
                       onClick={checkGeminiNano}
                       disabled={checkingNano}
                       className="text-[10px] h-7 bg-transparent hover:bg-blue-500/15 border-blue-500/35 hover:border-blue-500/50 text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1.5 w-full">
-                      <RefreshCw className={`w-3 h-3 ${checkingNano ? "animate-spin" : ""}`} />
+                      <RefreshCw
+                        className={`w-3 h-3 ${checkingNano ? "animate-spin" : ""}`}
+                      />
                       Verify On-Device Gemini Nano
                     </Button>
 

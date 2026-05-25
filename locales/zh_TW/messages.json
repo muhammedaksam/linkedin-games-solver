@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 打開連勝與績效儀表板"
+  },
+  "diagnosticsEngine": {
+    "message": "診斷引擎"
+  },
+  "liveInspected": {
+    "message": "即時審查"
+  },
+  "offline": {
+    "message": "離線"
+  },
+  "inspectedTab": {
+    "message": "被審查標籤頁:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "即時矩陣網格檢測器"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "正在等待領英遊戲頁面"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "導航至任何領英遊戲棋盤標籤頁 (Queens, Sudoku, Tango, Pinpoint) 以捕獲約束座標、單元格狀態和響應式結構。"
+  },
+  "telemetryLogsStreamer": {
+    "message": "遙測日誌流"
+  },
+  "searchLogsPlaceholder": {
+    "message": "搜尋日誌..."
+  },
+  "allTypes": {
+    "message": "所有類型"
+  },
+  "logsType": {
+    "message": "日誌"
+  },
+  "infoType": {
+    "message": "資訊"
+  },
+  "warnsType": {
+    "message": "警告"
+  },
+  "errorsType": {
+    "message": "錯誤"
+  },
+  "selectTypePlaceholder": {
+    "message": "選擇類型"
+  },
+  "consoleStreamEmpty": {
+    "message": "控制台流為空"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "未檢測到符合過濾器的日誌輸出。在領英遊戲求解器介面內運行步驟以將日誌流式傳輸到此處。"
+  },
+  "subscribedToStorageSession": {
+    "message": "已訂閱 storage.session 流"
+  },
+  "parsingGameGridCells": {
+    "message": "正在解析遊戲網格單元...請確保棋盤上有可見的活動網格塊。"
+  },
+  "urlLabel": {
+    "message": "網址:"
+  },
+  "notAvailable": {
+    "message": "無"
+  },
+  "matchesLabel": {
+    "message": "個匹配"
+  },
+  "copiedLabel": {
+    "message": "已複製！"
+  },
+  "copyLogsTooltip": {
+    "message": "複製日誌"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "清空日誌空間"
   }
 }

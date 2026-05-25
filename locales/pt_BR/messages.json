@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 Abrir o painel de ofensivas e desempenho"
+  },
+  "diagnosticsEngine": {
+    "message": "Motor de Diagnóstico"
+  },
+  "liveInspected": {
+    "message": "Inspecionado ao Vivo"
+  },
+  "offline": {
+    "message": "Offline"
+  },
+  "inspectedTab": {
+    "message": "Aba Inspecionada:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Inspetor de Grade Matricial ao Vivo"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Aguardando a página de jogos do LinkedIn"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Navegue para qualquer aba do tabuleiro de jogos do LinkedIn (Queens, Sudoku, Tango, Pinpoint) para capturar coordenadas de restrição, estados das células e estruturas reativas."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Transmissor de Registros de Telemetria"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Pesquisar registros..."
+  },
+  "allTypes": {
+    "message": "TODOS OS TIPOS"
+  },
+  "logsType": {
+    "message": "REGISTROS"
+  },
+  "infoType": {
+    "message": "INFORMAÇÕES"
+  },
+  "warnsType": {
+    "message": "AVISOS"
+  },
+  "errorsType": {
+    "message": "ERROS"
+  },
+  "selectTypePlaceholder": {
+    "message": "Selecionar Tipo"
+  },
+  "consoleStreamEmpty": {
+    "message": "Transmissão do Console Vazia"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Nenhuma saída de registro detectada correspondente aos filtros. Execute etapas na interface do solucionador de jogos do LinkedIn para transmitir as ações de registro aqui."
+  },
+  "subscribedToStorageSession": {
+    "message": "Inscrito na transmissão de storage.session"
+  },
+  "parsingGameGridCells": {
+    "message": "Analisando células da grade do jogo... Certifique-se de que o tabuleiro tenha blocos de grade ativos visíveis."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "N/A"
+  },
+  "matchesLabel": {
+    "message": "correspondências"
+  },
+  "copiedLabel": {
+    "message": "Copiado!"
+  },
+  "copyLogsTooltip": {
+    "message": "Copiar registros"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Limpar espaço de registro"
   }
 }

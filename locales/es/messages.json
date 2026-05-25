@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 Abrir el panel de rachas y rendimiento"
+  },
+  "diagnosticsEngine": {
+    "message": "Motor de Diagnóstico"
+  },
+  "liveInspected": {
+    "message": "Inspección en Vivo"
+  },
+  "offline": {
+    "message": "Fuera de línea"
+  },
+  "inspectedTab": {
+    "message": "Pestaña Inspeccionada:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Inspector de Cuadrícula de Matriz en Vivo"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Esperando la página de juegos de LinkedIn"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Navegue a cualquier pestaña del tablero de juegos de LinkedIn (Queens, Sudoku, Tango, Pinpoint) para capturar las coordenadas de las restricciones, los estados de las celdas y las estructuras reactivas."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Transmisor de Registros de Telemetría"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Buscar registros..."
+  },
+  "allTypes": {
+    "message": "TODOS LOS TIPOS"
+  },
+  "logsType": {
+    "message": "REGISTROS"
+  },
+  "infoType": {
+    "message": "INFORMACIÓN"
+  },
+  "warnsType": {
+    "message": "ADVERTENCIAS"
+  },
+  "errorsType": {
+    "message": "ERRORES"
+  },
+  "selectTypePlaceholder": {
+    "message": "Seleccionar Tipo"
+  },
+  "consoleStreamEmpty": {
+    "message": "Transmisión de Consola Vacía"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "No se detectaron salidas de registro que coincidan con los filtros. Ejecute pasos dentro de la interfaz de usuario del solucionador de juegos de LinkedIn para transmitir las acciones de registro aquí."
+  },
+  "subscribedToStorageSession": {
+    "message": "Suscrito a la transmisión de storage.session"
+  },
+  "parsingGameGridCells": {
+    "message": "Analizando las celdas de la cuadrícula de juego... Asegúrese de que el tablero tenga bloques de cuadrícula activos visibles."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "N/D"
+  },
+  "matchesLabel": {
+    "message": "coincidencias"
+  },
+  "copiedLabel": {
+    "message": "¡Copiado!"
+  },
+  "copyLogsTooltip": {
+    "message": "Copiar registros"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Limpiar espacio de registro"
   }
 }

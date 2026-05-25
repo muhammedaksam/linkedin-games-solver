@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 打开连胜与绩效仪表板"
+  },
+  "diagnosticsEngine": {
+    "message": "诊断引擎"
+  },
+  "liveInspected": {
+    "message": "实时审查"
+  },
+  "offline": {
+    "message": "离线"
+  },
+  "inspectedTab": {
+    "message": "被审查标签页:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "实时矩阵网格检测器"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "正在等待领英游戏页面"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "导航至任何领英游戏棋盘标签页 (Queens, Sudoku, Tango, Pinpoint) 以捕获约束坐标、单元格状态和响应式结构。"
+  },
+  "telemetryLogsStreamer": {
+    "message": "遥测日志流"
+  },
+  "searchLogsPlaceholder": {
+    "message": "搜索日志..."
+  },
+  "allTypes": {
+    "message": "所有类型"
+  },
+  "logsType": {
+    "message": "日志"
+  },
+  "infoType": {
+    "message": "信息"
+  },
+  "warnsType": {
+    "message": "警告"
+  },
+  "errorsType": {
+    "message": "错误"
+  },
+  "selectTypePlaceholder": {
+    "message": "选择类型"
+  },
+  "consoleStreamEmpty": {
+    "message": "控制台流为空"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "未检测到符合过滤器的日志输出。在领英游戏求解器界面内运行步骤以将日志流式传输到此处。"
+  },
+  "subscribedToStorageSession": {
+    "message": "已订阅 storage.session 流"
+  },
+  "parsingGameGridCells": {
+    "message": "正在解析游戏网格单元...请确保棋盘上有可见的活动网格块。"
+  },
+  "urlLabel": {
+    "message": "网址:"
+  },
+  "notAvailable": {
+    "message": "无"
+  },
+  "matchesLabel": {
+    "message": "个匹配"
+  },
+  "copiedLabel": {
+    "message": "已复制！"
+  },
+  "copyLogsTooltip": {
+    "message": "复制日志"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "清空日志空间"
   }
 }

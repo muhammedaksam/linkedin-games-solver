@@ -660,5 +660,80 @@
   },
   "omniboxSuggestionStats": {
     "message": "📊 Open Streaks & Performance Dashboard"
+  },
+  "diagnosticsEngine": {
+    "message": "Diagnostics Engine"
+  },
+  "liveInspected": {
+    "message": "Live Inspected"
+  },
+  "offline": {
+    "message": "Offline"
+  },
+  "inspectedTab": {
+    "message": "Inspected Tab:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Live Matrix Grid Inspector"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Waiting for LinkedIn Game Page"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Navigate to any LinkedIn Game board tab (Queens, Sudoku, Tango, Pinpoint) to capture constraint coordinates, cell states, and reactive structures."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Telemetry Logs Streamer"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Search logs..."
+  },
+  "allTypes": {
+    "message": "ALL TYPES"
+  },
+  "logsType": {
+    "message": "LOGS"
+  },
+  "infoType": {
+    "message": "INFO"
+  },
+  "warnsType": {
+    "message": "WARNS"
+  },
+  "errorsType": {
+    "message": "ERRORS"
+  },
+  "selectTypePlaceholder": {
+    "message": "Select Type"
+  },
+  "consoleStreamEmpty": {
+    "message": "Console Stream Empty"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "No log outputs detected matching filters. Run steps inside LinkedIn Games solver UI to stream log actions here."
+  },
+  "subscribedToStorageSession": {
+    "message": "Subscribed to storage.session stream"
+  },
+  "parsingGameGridCells": {
+    "message": "Parsing game grid cells... Ensure the board has active grid blocks visible."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "N/A"
+  },
+  "matchesLabel": {
+    "message": "matches"
+  },
+  "copiedLabel": {
+    "message": "Copied!"
+  },
+  "copyLogsTooltip": {
+    "message": "Copy Logs"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Clear Log Space"
   }
 }
