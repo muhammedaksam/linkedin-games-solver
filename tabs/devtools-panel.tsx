@@ -34,8 +34,11 @@ interface LogEntry {
 interface CellEntry {
   id: string
   text: string
+  ariaLabel?: string
   disabled: boolean
   color: string
+  constraintRight?: "eq" | "neq"
+  constraintBottom?: "eq" | "neq"
 }
 
 const getTypeLabel = (type: string) => {
@@ -113,8 +116,31 @@ export default function DevToolsPanel() {
     // 2. Evaluate cell details
     const cellInspectScript = `
       (() => {
-        // Intercept cell targets
-        const selectors = [
+        // 1. Locate active board container first to prevent stale matching from other games
+        let boardEl = document.querySelector('[data-testid="interactive-grid"]');
+        if (!boardEl) {
+          const selectors = [
+            '[data-sudoku-grid="true"]',
+            '.crossclimb__grid',
+            '.pinpoint__board',
+            '.game-board',
+            '[data-testid$="-game-board"]',
+            '[data-testid$="-game-container"]',
+            'main'
+          ];
+          for (const sel of selectors) {
+            const el = document.querySelector(sel);
+            if (el) {
+              boardEl = el;
+              break;
+            }
+          }
+        }
+        
+        const root = boardEl || document;
+
+        // 2. Query cells only inside the active board
+        const cellSelectors = [
           '[data-testid^="cell-"]',
           '[id^="tango-cell-"]',
           '[data-cell-idx]',
@@ -122,15 +148,117 @@ export default function DevToolsPanel() {
           '.queens-cell',
           '.sudoku-cell'
         ];
-        const cells = Array.from(document.querySelectorAll(selectors.join(',')));
-        return cells.slice(0, 81).map((cell, idx) => {
+        let cells = Array.from(root.querySelectorAll(cellSelectors.join(',')));
+        
+        // Filter out child icons or auxiliary labels that cause double-matching
+        cells = cells.filter(cell => {
+          const testId = (cell.getAttribute('data-testid') || '').toLowerCase();
+          const id = (cell.id || '').toLowerCase();
+          if (testId === 'cell-zero' || testId === 'cell-one' || testId === 'cell-empty') return false;
+          if (id === 'cell-zero' || id === 'cell-one' || id === 'cell-empty') return false;
+          if (id.includes('position') || id.includes('a11y') || id.includes('text')) return false;
+          if (testId.includes('position') || testId.includes('a11y') || testId.includes('text')) return false;
+          if (testId.includes('clue') || id.includes('clue') || testId.includes('number') || id.includes('number')) return false;
+          return true;
+        });
+
+        const N = Math.round(Math.sqrt(cells.length));
+        const entries = cells.slice(0, 100).map((cell, idx) => {
+          // Clone cell to extract only visually visible text (removing hidden screen-reader elements)
+          let cleanText = '';
+          try {
+            const clone = cell.cloneNode(true);
+            const hidden = clone.querySelectorAll('.visually-hidden, .a11y-text, .visuallyhidden, [class*="hidden"], [class*="a11y"], p[class*="Interactive"], [aria-hidden="true"], [id*="a11y"], [id*="position"]');
+            hidden.forEach(el => el.remove());
+            cleanText = clone.textContent?.trim() || '';
+          } catch (e) {
+            cleanText = cell.textContent?.trim() || '';
+          }
+
+          // Extract aria-label of cell or any inner descendant (like Suns and Moons SVGs)
+          let cellAriaLabel = cell.getAttribute('aria-label') || '';
+          if (!cellAriaLabel) {
+            const childWithLabel = cell.querySelector('[aria-label]');
+            if (childWithLabel) {
+              cellAriaLabel = childWithLabel.getAttribute('aria-label') || '';
+            }
+          }
+
+          // Probe for inner SVGs denoting specific entities
+          const innerSvg = cell.querySelector('svg[data-testid]');
+          if (innerSvg) {
+            const svgTestId = innerSvg.getAttribute('data-testid') || '';
+            if (svgTestId === 'cell-zero') cellAriaLabel += ' sun günes güneş';
+            if (svgTestId === 'cell-one') cellAriaLabel += ' moon ay';
+          }
+
+          const eqSvg = cell.querySelector('svg[data-testid="edge-equal"]');
+          const crossSvg = cell.querySelector('svg[data-testid="edge-cross"]');
+          if (eqSvg) cellAriaLabel += ' equal';
+          if (crossSvg) cellAriaLabel += ' cross';
+
           return {
             id: cell.id || cell.getAttribute('data-testid') || cell.getAttribute('data-cell-idx') || \`cell-\${idx}\`,
-            text: cell.textContent?.trim() || '',
+            text: cleanText,
+            ariaLabel: cellAriaLabel,
             disabled: cell.getAttribute('aria-disabled') === 'true' || cell.hasAttribute('disabled'),
-            color: window.getComputedStyle(cell).backgroundColor || ''
+            color: window.getComputedStyle(cell).backgroundColor || '',
+            constraintRight: undefined,
+            constraintBottom: undefined
           };
         });
+
+        // Second pass: Extract edge constraints and map them between cells
+        cells.slice(0, 100).forEach((cell, idx) => {
+          const eqSvgs = Array.from(cell.querySelectorAll('svg[data-testid="edge-equal"]')).map(s => ({ svg: s, type: 'eq' }));
+          const crossSvgs = Array.from(cell.querySelectorAll('svg[data-testid="edge-cross"]')).map(s => ({ svg: s, type: 'neq' }));
+          const edgeSvgs = [...eqSvgs, ...crossSvgs];
+          if (!edgeSvgs.length) return;
+
+          const cellRect = cell.getBoundingClientRect();
+          const cellCx = cellRect.left + cellRect.width / 2;
+          const cellCy = cellRect.top + cellRect.height / 2;
+
+          const r = Math.floor(idx / N);
+          const c = idx % N;
+
+          edgeSvgs.forEach(({ svg, type }) => {
+            const svgRect = svg.getBoundingClientRect();
+            const svgCx = svgRect.left + svgRect.width / 2;
+            const svgCy = svgRect.top + svgRect.height / 2;
+
+            const dx = svgCx - cellCx;
+            const dy = svgCy - cellCy;
+
+            let nr = r;
+            let nc = c;
+
+            if (Math.abs(dx) >= Math.abs(dy)) {
+              nc = c + (dx >= 0 ? 1 : -1);
+            } else {
+              nr = r + (dy >= 0 ? 1 : -1);
+            }
+
+            if (nr >= 0 && nr < N && nc >= 0 && nc < N) {
+              const neighborIdx = nr * N + nc;
+              if (r === nr) {
+                // Horizontal edge
+                const leftIdx = Math.min(idx, neighborIdx);
+                if (entries[leftIdx]) {
+                  entries[leftIdx].constraintRight = type;
+                }
+              } else if (c === nc) {
+                // Vertical edge
+                const topIdx = Math.min(idx, neighborIdx);
+                if (entries[topIdx]) {
+                  entries[topIdx].constraintBottom = type;
+                }
+              }
+            }
+          });
+        });
+
+        return entries;
       })()
     `
     chrome.devtools.inspectedWindow.eval(
@@ -271,20 +399,109 @@ export default function DevToolsPanel() {
     return matchesSearch && matchesType
   })
 
+  // Helper to extract clean meaningful cell symbols/emojis
+  const getCleanCellSymbol = (cell: CellEntry, game: string | null) => {
+    const label = (cell.ariaLabel || "").toLowerCase()
+    const text = (cell.text || "").toLowerCase()
+
+    // 1. Queens Game - Queen & X Markers
+    if (
+      label.includes("kraliçe") ||
+      label.includes("queen") ||
+      text.includes("queen") ||
+      text.includes("kraliçe") ||
+      text.includes("👑")
+    ) {
+      return "👑"
+    }
+    if (
+      text === "x" ||
+      label.includes("çarpı") ||
+      label.includes("marker") ||
+      label.includes("empty") ||
+      text.includes("empty")
+    ) {
+      if (game === "Queens") return "❌"
+    }
+
+    // 2. Tango Game - Sun & Moon Emojis
+    if (
+      label.includes("güneş") ||
+      label.includes("günes") ||
+      label.includes("sun") ||
+      text.includes("sun") ||
+      text.includes("güneş") ||
+      text.includes("günes") ||
+      text.includes("☀️")
+    ) {
+      return "☀️"
+    }
+    if (
+      label.includes("ay") ||
+      label.includes("moon") ||
+      text.includes("moon") ||
+      text.includes("ay") ||
+      text.includes("🌙")
+    ) {
+      return "🌙"
+    }
+
+    // 2b. Tango Game - Equal & Cross Constraint Overlays
+    if (label.includes("equal")) {
+      return "="
+    }
+    if (label.includes("cross")) {
+      return "x"
+    }
+
+    // 3. Digits/Numbers (Zip, Patches, Sudoku, Pinpoint, Crossclimb)
+    const numbers = text.match(/\d+/) || label.match(/\d+/)
+    if (numbers) {
+      return numbers[0]
+    }
+
+    // 4. Fallback to clean short symbols
+    const clean = cell.text.trim()
+    if (clean.length === 1) {
+      return clean.toUpperCase()
+    }
+
+    return ""
+  }
+
+  // Helper to resolve dynamically computed true background and border color
+  const getCellStyles = (cell: CellEntry) => {
+    const styles: React.CSSProperties = {}
+    const hasColor =
+      cell.color &&
+      cell.color !== "rgba(0, 0, 0, 0)" &&
+      cell.color !== "transparent" &&
+      cell.color !== "rgba(0,0,0,0)"
+
+    if (hasColor) {
+      styles.backgroundColor = cell.color
+      // Sharpen boundary line border color dynamically
+      styles.borderColor = cell.color.replace(/[\d.]+\)$/g, "0.85)")
+    }
+    return styles
+  }
+
   // Format background color styles beautifully
   const getCellClassName = (cell: CellEntry) => {
     const base =
-      "w-full h-auto min-w-0 min-h-0 aspect-square rounded border border-border flex items-center justify-center font-bold text-[10px] sm:text-xs transition-all duration-200 select-none shadow-sm "
-    if (cell.disabled)
-      return base + "bg-muted/30 text-muted-foreground border-dashed"
-    if (cell.text && cell.text !== "👑")
-      return base + "bg-primary/10 text-primary border-primary/20"
-    if (cell.text === "👑")
-      return (
-        base +
-        "bg-amber-500/10 text-amber-500 border-amber-500/30 animate-pulse"
-      )
-    return base + "bg-card hover:bg-muted/10 text-foreground"
+      "w-full h-auto min-w-0 min-h-0 aspect-square rounded-md border flex items-center justify-center font-bold text-[10px] sm:text-xs transition-all duration-200 select-none shadow-sm "
+    if (cell.disabled) {
+      return base + "bg-muted/30 text-muted-foreground border-dashed border-border"
+    }
+    const hasColor =
+      cell.color &&
+      cell.color !== "rgba(0, 0, 0, 0)" &&
+      cell.color !== "transparent" &&
+      cell.color !== "rgba(0,0,0,0)"
+    if (hasColor) {
+      return base + "text-foreground font-black"
+    }
+    return base + "bg-card hover:bg-muted/10 text-foreground border-border"
   }
 
   return (
@@ -349,21 +566,44 @@ export default function DevToolsPanel() {
             </div>
 
             {gameName ? (
-              <div className="flex-1 flex flex-col justify-center items-center overflow-auto min-h-0">
+              <div className="flex-1 flex flex-col justify-center items-center overflow-auto min-h-0 p-4">
                 {gridCells.length > 0 ? (
                   <div
-                    className="grid gap-1 p-1 max-w-[200px] w-full h-fit min-h-fit"
+                    className="grid gap-1.5 p-2 rounded-xl bg-neutral-950/40 border border-border/40 backdrop-blur-sm max-w-[280px] w-full h-fit shadow-inner animate-in fade-in zoom-in-95 duration-300"
                     style={{
-                      gridTemplateColumns: `repeat(${gridCells.length > 64 ? 9 : gridCells.length > 36 ? 8 : 6}, minmax(0, 1fr))`
+                      gridTemplateColumns: `repeat(${Math.round(Math.sqrt(gridCells.length))}, minmax(0, 1fr))`
                     }}>
-                    {gridCells.map((cell) => (
-                      <div
-                        key={cell.id}
-                        className={getCellClassName(cell)}
-                        title={`ID: ${cell.id}\nDisabled: ${cell.disabled}\nCSS Color: ${cell.color}`}>
-                        {cell.text === "👑" ? "👑" : cell.text || ""}
-                      </div>
-                    ))}
+                    {gridCells.map((cell, cellIdx) => {
+                      const cleanSymbol = getCleanCellSymbol(cell, gameName)
+                      const styles = getCellStyles(cell)
+                      const N = Math.round(Math.sqrt(gridCells.length))
+                      const r = Math.floor(cellIdx / N)
+                      const c = cellIdx % N
+                      return (
+                        <div key={cell.id} className="relative w-full aspect-square">
+                          <div
+                            className={getCellClassName(cell)}
+                            style={styles}
+                            title={`ID: ${cell.id}\nDisabled: ${cell.disabled}\nCSS Color: ${cell.color}\nSymbol: ${cleanSymbol}`}>
+                            {cleanSymbol}
+                          </div>
+                          {gameName === "Tango" && c < N - 1 && cell.constraintRight && (
+                            <div
+                              className="absolute top-1/2 left-full -translate-y-1/2 -translate-x-1/2 ml-[3px] z-20 bg-neutral-950/90 text-foreground border border-border/60 w-3.5 h-3.5 flex items-center justify-center rounded text-[8px] font-black shadow-sm select-none pointer-events-none scale-90 backdrop-blur-sm hover:scale-100 transition-transform duration-150"
+                              title={cell.constraintRight === "eq" ? "Equals (=)" : "Opposite (x)"}>
+                              {cell.constraintRight === "eq" ? "=" : "×"}
+                            </div>
+                          )}
+                          {gameName === "Tango" && r < N - 1 && cell.constraintBottom && (
+                            <div
+                              className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2 mt-[3px] z-20 bg-neutral-950/90 text-foreground border border-border/60 w-3.5 h-3.5 flex items-center justify-center rounded text-[8px] font-black shadow-sm select-none pointer-events-none scale-90 backdrop-blur-sm hover:scale-100 transition-transform duration-150"
+                              title={cell.constraintBottom === "eq" ? "Equals (=)" : "Opposite (x)"}>
+                              {cell.constraintBottom === "eq" ? "=" : "×"}
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
                   </div>
                 ) : (
                   <div className="text-[10px] text-muted-foreground italic text-center py-8">
