@@ -486,14 +486,16 @@ The word at the bottom of this middle ladder is "${lastLadderWord}".
 We need to solve the final two words of the ladder: the Top word (guess ID 0) and the Bottom word (guess ID ${numMiddleRows + 1}).
 
 CRITICAL CONSTRAINTS:
-1. The Top word MUST be a valid, common ${wordLength}-letter English word chosen from this exhaustive list of single-letter edits of "${firstLadderWord}":
+1. The Top word MUST be a valid, common ${wordLength}-letter English word chosen from this list of possible single-letter edits of "${firstLadderWord}":
 [${topCandidates.join(", ")}]
+(Note: The list above contains all mathematical letter changes, most of which are complete gibberish. You MUST ignore the gibberish and only consider real, common standard English words!)
 
-2. The Bottom word MUST be a valid, common ${wordLength}-letter English word chosen from this exhaustive list of single-letter edits of "${lastLadderWord}":
+2. The Bottom word MUST be a valid, common ${wordLength}-letter English word chosen from this list of possible single-letter edits of "${lastLadderWord}":
 [${bottomCandidates.join(", ")}]
+(Note: The list above contains all mathematical letter changes, most of which are complete gibberish. You MUST ignore the gibberish and only consider real, common standard English words!)
 
 3. Together, the Top word and the Bottom word must strictly, literally, and obviously satisfy this joint clue: "${topClueText}".
-4. Do not use stretched, metaphorical, or loose associations. (For example, "DICE" and "LIFE" or "DICE" and "FIVE" do NOT satisfy the clue "Two numbers", because "DICE" is not a literal number word. Both chosen words MUST be literal number words, e.g. "NINE" and "FIVE").
+4. The two words form a common two-word phrase, compound word, or direct pair (e.g., "BUSY" and "WORK" for "busy work"). Keep in mind: The first word of the phrase may be at the bottom (e.g. if the phrase is "busy work", and Top differs from BURY and Bottom differs from WORN, then Top="BUSY", Bottom="WORK", satisfying "busy work").
 
 Return a JSON object in this exact format:
 {
@@ -509,8 +511,10 @@ Where "topWord" and "bottomWord" are ${wordLength}-letter words in uppercase. Do
     let bottomWord = ""
     let jointAttempt = 0
     let jointPromptText = jointPrompt
+    const blockedTopBottom = new Set<string>()
+    let topBottomSolved = false
 
-    while (jointAttempt < 3) {
+    while (jointAttempt < 5) {
       jointAttempt++
       console.log(
         `[Crossclimb] Querying Gemini for joint top and bottom answers (Attempt ${jointAttempt})...`
@@ -542,16 +546,66 @@ Where "topWord" and "bottomWord" are ${wordLength}-letter words in uppercase. Do
         middleWords.includes(bottomWord) ||
         topWord === bottomWord
 
-      if (isTopValid && isBottomValid && !isDuplicate) {
+      const comboKey = `${topWord},${bottomWord}`
+      const isBlocked = blockedTopBottom.has(comboKey)
+
+      if (isTopValid && isBottomValid && !isDuplicate && !isBlocked) {
         console.log(
-          "[Crossclimb] ✓ Joint top/bottom answers successfully validated!"
+          `[Crossclimb] ✓ Joint top/bottom answers successfully validated! Typing Top: "${topWord}", Bottom: "${bottomWord}"`
         )
-        break
+
+        // Type the Top word
+        console.log(`[Crossclimb] Typing Top word: "${topWord}"...`)
+        await this.typeWord(0, topWord)
+        await this.sleep(300)
+
+        // Type the Bottom word
+        console.log(`[Crossclimb] Typing Bottom word: "${bottomWord}"...`)
+        const bottomRowId = numMiddleRows + 1
+        await this.typeWord(bottomRowId, bottomWord)
+        await this.sleep(1500) // Wait for board auto-check evaluation
+
+        // Verify if any of them is incorrect in the DOM
+        const topRowEl = this.$('[data-guess-id="0"]')
+        const bottomRowEl = this.$(`[data-guess-id="${bottomRowId}"]`)
+
+        const isTopIncorrect = topRowEl?.classList.contains("crossclimb__guess--incorrect")
+        const isBottomIncorrect = bottomRowEl?.classList.contains("crossclimb__guess--incorrect")
+
+        if (isTopIncorrect || isBottomIncorrect) {
+          console.warn(
+            `[Crossclimb] ❌ Top or Bottom row is incorrect! Top incorrect: ${isTopIncorrect}, Bottom incorrect: ${isBottomIncorrect}`
+          )
+          console.warn(`[Crossclimb] Blocking incorrect joint combination: ${comboKey}`)
+          blockedTopBottom.add(comboKey)
+
+          // Reset the row inputs so we can type again
+          await this.sleep(200)
+
+          const errors: string[] = []
+          if (isTopIncorrect) {
+            errors.push(`- The top word "${topWord}" was marked as INCORRECT by the board.`)
+          }
+          if (isBottomIncorrect) {
+            errors.push(`- The bottom word "${bottomWord}" was marked as INCORRECT by the board.`)
+          }
+
+          jointPromptText = `${jointPrompt}
+
+⚠️ ATTENTION: Your previous combination "${topWord}" and "${bottomWord}" was rejected by the board:
+${errors.join("\n")}
+Please try a DIFFERENT combination of words.`
+          continue
+        } else {
+          console.log("[Crossclimb] ✓ Top and Bottom rows accepted by the board!")
+          topBottomSolved = true
+          break
+        }
       }
 
       // If invalid, construct a correction prompt and retry
       console.warn(
-        `[Crossclimb] Joint words validation failed. Top valid: ${isTopValid}, Bottom valid: ${isBottomValid}, Duplicate: ${isDuplicate}. Retrying...`
+        `[Crossclimb] Joint words validation failed. Top valid: ${isTopValid}, Bottom valid: ${isBottomValid}, Duplicate: ${isDuplicate}, Blocked: ${isBlocked}. Retrying...`
       )
 
       const errors: string[] = []
@@ -570,6 +624,11 @@ Where "topWord" and "bottomWord" are ${wordLength}-letter words in uppercase. Do
           `- You chose words that are already used in the middle ladder or are duplicates of each other. Middle words are: [${middleWords.join(", ")}]. You must choose completely new words that differ by 1 letter and do not duplicate any words.`
         )
       }
+      if (isBlocked) {
+        errors.push(
+          `- The combination "${topWord}" and "${bottomWord}" has already been tried and rejected. Please choose a completely different combination.`
+        )
+      }
 
       jointPromptText = `${jointPrompt}
 
@@ -579,22 +638,11 @@ ${errors.join("\n")}
 Please correct these error(s) and return a new JSON object choosing strictly from the allowed lists above.`
     }
 
-    if (topWord.length !== wordLength || bottomWord.length !== wordLength) {
+    if (!topBottomSolved) {
       throw new Error(
-        `Invalid top/bottom word lengths after retry validation: Top="${topWord}", Bottom="${bottomWord}"`
+        `Failed to solve top/bottom rows after multiple self-healing attempts.`
       )
     }
-
-    // Type the Top word
-    console.log(`[Crossclimb] Typing Top word: "${topWord}"...`)
-    await this.typeWord(0, topWord)
-    await this.sleep(300)
-
-    // Type the Bottom word
-    console.log(`[Crossclimb] Typing Bottom word: "${bottomWord}"...`)
-    const bottomRowId = numMiddleRows + 1
-    await this.typeWord(bottomRowId, bottomWord)
-    await this.sleep(300)
 
     console.log("[Crossclimb] Successfully solved Crossclimb ladder!")
   }
