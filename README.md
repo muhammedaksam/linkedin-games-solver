@@ -13,7 +13,9 @@ An advanced, obfuscation-proof browser extension compatible with Google Chrome�
   </a>
 </p>
 
-> [!IMPORTANT] > **Unofficial Educational Companion**: This is an independent, open-source educational project developed by [Muhammed Mustafa AKŞAM](https://github.com/muhammedaksam). It is **not** affiliated with, sponsored by, or endorsed by LinkedIn Corporation or its subsidiaries.
+> [!IMPORTANT]
+>
+> **Unofficial Educational Companion**: This is an independent, open-source educational project developed by [Muhammed Mustafa AKŞAM](https://github.com/muhammedaksam). It is **not** affiliated with, sponsored by, or endorsed by LinkedIn Corporation or its subsidiaries.
 
 > [!TIP]
 >
