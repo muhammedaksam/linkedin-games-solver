@@ -235,7 +235,7 @@ export class TangoSolver extends BaseSolver {
     return constraints
   }
 
-  private buildAdjMap(
+  public buildAdjMap(
     N: number,
     constraints: EdgeConstraint[]
   ): AdjConstraint[][] {
@@ -500,7 +500,7 @@ export class TangoSolver extends BaseSolver {
     return best
   }
 
-  private solveTango(
+  public solveTango(
     g0: number[][],
     N: number,
     adj: AdjConstraint[][]

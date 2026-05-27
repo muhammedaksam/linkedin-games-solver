@@ -389,7 +389,7 @@ export class QueensSolver extends BaseSolver {
     return { regionOf, regionCount: regions.size, givenQueens }
   }
 
-  private solveQueens(
+  public solveQueens(
     N: number,
     regionOf: number[],
     givenQueens: Set<number>

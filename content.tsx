@@ -408,7 +408,9 @@ function updateSolverStatus(status: "solving" | "idle") {
     chrome.runtime &&
     chrome.runtime.sendMessage
   ) {
-    chrome.runtime.sendMessage({ action: "solverStatus", status }).catch(() => {})
+    chrome.runtime
+      .sendMessage({ action: "solverStatus", status })
+      .catch(() => {})
   }
 }
 

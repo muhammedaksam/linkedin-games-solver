@@ -20,7 +20,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "check": "pnpm format:check && pnpm lint",
-    "fix": "pnpm format && pnpm lint:fix"
+    "fix": "pnpm format && pnpm lint:fix",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@plasmohq/storage": "^1.15.0",
@@ -58,7 +60,8 @@
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.22.3",
     "typescript": "5.3.3",
-    "typescript-eslint": "^8.59.4"
+    "typescript-eslint": "^8.59.4",
+    "vitest": "^4.1.7"
   },
   "manifest": {
     "name": "__MSG_extensionName__",
