@@ -1,7 +1,7 @@
 {
   "name": "linkedin-games-solver",
   "displayName": "__MSG_extensionName__",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "__MSG_extensionDescription__",
   "alias": {
     "node:module": false,
@@ -69,6 +69,9 @@
     "devtools_page": "tabs/devtools.html",
     "optional_host_permissions": [
       "https://*.linkedin.com/games/*"
+    ],
+    "host_permissions": [
+      "https://raw.githubusercontent.com/*"
     ],
     "permissions": [
       "activeTab",
