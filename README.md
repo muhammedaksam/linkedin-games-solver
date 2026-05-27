@@ -13,6 +13,8 @@ An advanced, obfuscation-proof browser extension compatible with Google Chrome�
   </a>
 </p>
 
+> [!IMPORTANT] > **Unofficial Educational Companion**: This is an independent, open-source educational project developed by [Muhammed Mustafa AKŞAM](https://github.com/muhammedaksam). It is **not** affiliated with, sponsored by, or endorsed by LinkedIn Corporation or its subsidiaries.
+
 > [!TIP]
 >
 > **State-of-the-Art Architecture**: This extension features a **Main-World React Fiber State extraction bridge** that reads daily board states directly from LinkedIn's virtual tree, rendering the solver entirely immune to CSS class obfuscations or UI changes.
@@ -158,6 +160,6 @@ Licensed under the terms of the [MIT License](LICENSE).
 
 ### ⚖️ Legal & Trademarks
 
-_LinkedIn™ is a trademark of LinkedIn Corporation and its affiliates in the United States and/or other countries. This extension is an independent project and is not affiliated with, endorsed by, or sponsored by LinkedIn Corporation._
+_LinkedIn® and the [in]® logo are registered trademarks of LinkedIn Corporation and its affiliates in the United States and/or other countries. This extension is an independent, open-source educational project and is not affiliated with, endorsed by, or sponsored by LinkedIn Corporation._
 
 _Google Chrome™, Chrome Web Store™, and Gemini™ are trademarks of Google LLC. Use of these trademarks is subject to [Google Permissions](https://about.google/brand-resource-center/guidance/)._
