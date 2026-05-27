@@ -1510,8 +1510,10 @@ export function SolverShell({
                     <Copy className="w-3.5 h-3.5" />
                   )}
                   {copyRegistrySuccess
-                    ? "Registry JSON Copied!"
-                    : "Copy Today's Registry JSON"}
+                    ? getMessage("debugRegistryCopied") ||
+                      "Registry JSON Copied!"
+                    : getMessage("debugCopyRegistry") ||
+                      "Copy Today's Registry JSON"}
                 </Button>
               </div>
             </div>

@@ -544,6 +544,14 @@
     "message": "複製全部 (HTML 與日誌)",
     "description": "Button label to copy both html and logs"
   },
+  "debugRegistryCopied": {
+    "message": "註冊 JSON 已複製！",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "複製今日註冊 JSON",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
   "debugDomPreview": {
     "message": "DOM 元素預覽",
     "description": "Card title for the captured main outerHTML preview"

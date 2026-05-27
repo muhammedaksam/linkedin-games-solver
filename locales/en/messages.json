@@ -544,6 +544,14 @@
     "message": "Copy Both (HTML & Logs)",
     "description": "Button label to copy both html and logs"
   },
+  "debugRegistryCopied": {
+    "message": "Registry JSON Copied!",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "Copy Today's Registry JSON",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
   "debugDomPreview": {
     "message": "DOM Element Preview",
     "description": "Card title for the captured main outerHTML preview"

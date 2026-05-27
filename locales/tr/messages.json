@@ -544,6 +544,14 @@
     "message": "İkisini de Kopyala (HTML & Günlükler)",
     "description": "Button label to copy both html and logs"
   },
+  "debugRegistryCopied": {
+    "message": "Kayıt JSON'u Kopyalandı!",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "Bugünkü Kayıt JSON'unu Kopyala",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
   "debugDomPreview": {
     "message": "DOM Elementi Önizlemesi",
     "description": "Card title for the captured main outerHTML preview"
