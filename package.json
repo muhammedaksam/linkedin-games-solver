@@ -76,7 +76,8 @@
       "session",
       "sidePanel",
       "alarms",
-      "notifications"
+      "notifications",
+      "contextMenus"
     ],
     "omnibox": {
       "keyword": "solve"
