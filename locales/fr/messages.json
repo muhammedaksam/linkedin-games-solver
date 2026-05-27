@@ -75,6 +75,10 @@
     "message": "Pinpoint",
     "description": "Game name Pinpoint"
   },
+  "bonus": {
+    "message": "Bonus",
+    "description": "Bonus badge next to game name"
+  },
   "titleSolve": {
     "message": "Résoudre $1",
     "description": "Tooltip for active game"

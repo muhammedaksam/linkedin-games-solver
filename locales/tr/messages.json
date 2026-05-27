@@ -75,6 +75,10 @@
     "message": "Pinpoint",
     "description": "Game name Pinpoint"
   },
+  "bonus": {
+    "message": "Bonus",
+    "description": "Bonus badge next to game name"
+  },
   "desc_patches": {
     "message": "Piece it together"
   },

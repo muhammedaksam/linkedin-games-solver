@@ -93,7 +93,8 @@ function formatTime(seconds: number): string {
 
 function formatScore(score: number, gameId?: string): string {
   if (!score || score <= 0) return "--"
-  if (gameId === "pinpoint") {
+  const baseGameId = gameId?.replace("-bonus", "")
+  if (baseGameId === "pinpoint") {
     return score === 1
       ? getMessage("scoreClue")
       : getMessage("scoreClues", String(score))
@@ -728,8 +729,12 @@ export default function Dashboard() {
                             <div className="flex flex-col gap-1 bg-card border border-border rounded-xl p-4 shadow-sm">
                               {Object.keys(dateGames).map((gameId) => {
                                 const record = dateGames[gameId]
+                                const isBonus = gameId.endsWith("-bonus")
+                                const baseGameId = isBonus
+                                  ? gameId.replace("-bonus", "")
+                                  : gameId
                                 const gameConfig = GAMES_CONFIG.find(
-                                  (g) => g.id === gameId
+                                  (g) => g.id === baseGameId
                                 )
                                 if (!record?.solved) return null
                                 return (
@@ -754,10 +759,15 @@ export default function Dashboard() {
                                         </div>
                                       )}
                                       <div className="flex flex-col">
-                                        <span className="text-xs font-bold">
-                                          {getMessage(gameId) ||
+                                        <span className="text-xs font-bold flex items-center gap-1.5">
+                                          {getMessage(baseGameId) ||
                                             gameConfig?.title ||
-                                            gameId}
+                                            baseGameId}
+                                          {isBonus && (
+                                            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-extrabold uppercase bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 tracking-wider border border-amber-500/10 shrink-0">
+                                              {getMessage("bonus") || "Bonus"}
+                                            </span>
+                                          )}
                                         </span>
                                         <span className="text-[9px] text-muted-foreground/80 leading-none">
                                           {gameConfig

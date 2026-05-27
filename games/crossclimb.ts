@@ -413,7 +413,9 @@ Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do 
       console.log("[Crossclimb] Target words:", targetWords)
 
       const isForward = currentWords.every((w, idx) => w === targetWords[idx])
-      const isReversed = currentWords.every((w, idx) => w === targetWords[targetWords.length - 1 - idx])
+      const isReversed = currentWords.every(
+        (w, idx) => w === targetWords[targetWords.length - 1 - idx]
+      )
 
       if (isForward || isReversed) {
         const topRow = this.$('[data-guess-id="0"]')
@@ -510,8 +512,8 @@ Return a JSON object in this exact format:
 Where "topWord" and "bottomWord" are ${wordLength}-letter words in uppercase. Do not include markdown code block syntax outside the JSON.
 `
 
-    let topWord = ""
-    let bottomWord = ""
+    let topWord: string
+    let bottomWord: string
     let jointAttempt = 0
     let jointPromptText = jointPrompt
     const blockedTopBottom = new Set<string>()
@@ -572,14 +574,20 @@ Where "topWord" and "bottomWord" are ${wordLength}-letter words in uppercase. Do
         const topRowEl = this.$('[data-guess-id="0"]')
         const bottomRowEl = this.$(`[data-guess-id="${bottomRowId}"]`)
 
-        const isTopIncorrect = topRowEl?.classList.contains("crossclimb__guess--incorrect")
-        const isBottomIncorrect = bottomRowEl?.classList.contains("crossclimb__guess--incorrect")
+        const isTopIncorrect = topRowEl?.classList.contains(
+          "crossclimb__guess--incorrect"
+        )
+        const isBottomIncorrect = bottomRowEl?.classList.contains(
+          "crossclimb__guess--incorrect"
+        )
 
         if (isTopIncorrect || isBottomIncorrect) {
           console.warn(
             `[Crossclimb] ❌ Top or Bottom row is incorrect! Top incorrect: ${isTopIncorrect}, Bottom incorrect: ${isBottomIncorrect}`
           )
-          console.warn(`[Crossclimb] Blocking incorrect joint combination: ${comboKey}`)
+          console.warn(
+            `[Crossclimb] Blocking incorrect joint combination: ${comboKey}`
+          )
           blockedTopBottom.add(comboKey)
 
           // Reset the row inputs so we can type again
@@ -587,10 +595,14 @@ Where "topWord" and "bottomWord" are ${wordLength}-letter words in uppercase. Do
 
           const errors: string[] = []
           if (isTopIncorrect) {
-            errors.push(`- The top word "${topWord}" was marked as INCORRECT by the board.`)
+            errors.push(
+              `- The top word "${topWord}" was marked as INCORRECT by the board.`
+            )
           }
           if (isBottomIncorrect) {
-            errors.push(`- The bottom word "${bottomWord}" was marked as INCORRECT by the board.`)
+            errors.push(
+              `- The bottom word "${bottomWord}" was marked as INCORRECT by the board.`
+            )
           }
 
           jointPromptText = `${jointPrompt}
@@ -600,7 +612,9 @@ ${errors.join("\n")}
 Please try a DIFFERENT combination of words.`
           continue
         } else {
-          console.log("[Crossclimb] ✓ Top and Bottom rows accepted by the board!")
+          console.log(
+            "[Crossclimb] ✓ Top and Bottom rows accepted by the board!"
+          )
           topBottomSolved = true
           break
         }
