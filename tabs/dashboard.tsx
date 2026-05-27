@@ -25,7 +25,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { DisclaimerFooter } from "~/components/disclaimer-footer"
 import { GAMES_CONFIG } from "~/lib/games-config"
-import { localStorage, syncStorage } from "~/lib/storage"
+import { localStorage, secureStorage, syncStorage } from "~/lib/storage"
 import { cn } from "~/lib/utils"
 
 import { Button } from "../components/ui/button"
@@ -167,7 +167,7 @@ export default function Dashboard() {
   const [aiApiKey, setAiApiKey] = useStorage<string>(
     {
       key: "aiApiKey",
-      instance: localStorage
+      instance: secureStorage
     },
     ""
   )
@@ -221,20 +221,29 @@ export default function Dashboard() {
     true
   )
 
-  const [geminiApiKey, setGeminiApiKey] = useStorage<string>(
-    {
-      key: "geminiApiKey",
-      instance: localStorage
-    },
-    ""
-  )
-
-  // Backward compatibility migration: copy legacy key if set
+  // Backward compatibility migration of unencrypted keys
   useEffect(() => {
-    if (geminiApiKey && !aiApiKey && aiProvider === "gemini") {
-      setAiApiKey(geminiApiKey)
+    const migratePlaintextKeys = async () => {
+      // 1. Check if unencrypted key exists under 'aiApiKey' in unencrypted localStorage
+      const plainKey = await localStorage.get<string>("aiApiKey")
+      if (plainKey) {
+        await secureStorage.set("aiApiKey", plainKey)
+        setAiApiKey(plainKey)
+        await localStorage.remove("aiApiKey")
+      }
+
+      // 2. Check geminiApiKey legacy key
+      const legacyKey = await localStorage.get<string>("geminiApiKey")
+      if (legacyKey) {
+        if (!plainKey && !aiApiKey) {
+          await secureStorage.set("aiApiKey", legacyKey)
+          setAiApiKey(legacyKey)
+        }
+        await localStorage.remove("geminiApiKey")
+      }
     }
-  }, [geminiApiKey, aiApiKey, aiProvider, setAiApiKey])
+    migratePlaintextKeys().catch(console.error)
+  }, [aiApiKey, setAiApiKey])
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
   const [showAllDates, setShowAllDates] = useState(false)
@@ -1003,9 +1012,6 @@ export default function Dashboard() {
                         value={aiApiKey || ""}
                         onChange={(e) => {
                           setAiApiKey(e.target.value)
-                          if (aiProvider === "gemini") {
-                            setGeminiApiKey(e.target.value)
-                          }
                         }}
                         placeholder={
                           aiProvider === "custom"

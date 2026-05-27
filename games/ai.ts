@@ -1,6 +1,8 @@
 /// <reference types="dom-chromium-ai" />
 import { Storage } from "@plasmohq/storage"
 
+import { secureStorage } from "~/lib/storage"
+
 const storage = new Storage({ area: "local" })
 
 export interface AIConfig {
@@ -15,13 +17,23 @@ export async function getAIConfig(): Promise<AIConfig> {
   const model = (await storage.get("aiModel")) || "gemini-2.5-flash"
   const customEndpoint = (await storage.get("aiCustomEndpoint")) || ""
 
-  // Backward compatibility migration: if provider is gemini and aiApiKey is empty, copy geminiApiKey
-  let apiKey = (await storage.get("aiApiKey")) || ""
-  if (!apiKey && provider === "gemini") {
-    const legacyKey = await storage.get("geminiApiKey")
-    if (legacyKey) {
-      apiKey = legacyKey
-      await storage.set("aiApiKey", legacyKey)
+  // Secure storage for AI key retrieval
+  let apiKey = (await secureStorage.get<string>("aiApiKey")) || ""
+
+  // Backward compatibility migration of unencrypted keys
+  if (!apiKey) {
+    const unencryptedKey = await storage.get<string>("aiApiKey")
+    if (unencryptedKey) {
+      apiKey = unencryptedKey
+      await secureStorage.set("aiApiKey", unencryptedKey)
+      await storage.remove("aiApiKey") // Clean up standard local storage
+    } else {
+      const legacyKey = await storage.get<string>("geminiApiKey")
+      if (legacyKey) {
+        apiKey = legacyKey
+        await secureStorage.set("aiApiKey", legacyKey)
+        await storage.remove("geminiApiKey") // Clean up standard local storage
+      }
     }
   }
 

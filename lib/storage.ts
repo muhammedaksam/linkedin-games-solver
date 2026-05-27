@@ -1,4 +1,5 @@
 import { Storage } from "@plasmohq/storage"
+import { SecureStorage } from "@plasmohq/storage/secure"
 
 export const localStorage = new Storage({
   area: "local",
@@ -15,6 +16,20 @@ export const localStorage = new Storage({
     }
   }
 })
+
+export const secureStorage = new SecureStorage({
+  area: "local"
+})
+
+// Set encryption password for secure storage namespace
+secureStorage
+  .setPassword("linkedin-games-solver-secure-storage-password-v1-key")
+  .catch((err) => {
+    console.error(
+      "[Storage] Failed to initialize secure key storage password:",
+      err
+    )
+  })
 
 export const syncStorage = new Storage({
   area: "sync",
