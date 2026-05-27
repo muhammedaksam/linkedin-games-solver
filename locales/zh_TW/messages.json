@@ -739,5 +739,14 @@
   },
   "clearLogSpaceTooltip": {
     "message": "清空日誌空間"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ 自動求解当前 LinkedIn 遊戲"
+  },
+  "contextMenuHint": {
+    "message": "💡 獲取提示"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 查看結果"
   }
 }

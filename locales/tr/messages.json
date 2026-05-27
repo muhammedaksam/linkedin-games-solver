@@ -739,5 +739,14 @@
   },
   "clearLogSpaceTooltip": {
     "message": "Günlük Alanını Temizle"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Aktif LinkedIn Oyununu Çöz"
+  },
+  "contextMenuHint": {
+    "message": "💡 İpucu Al"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Sonuçları Görüntüle"
   }
 }

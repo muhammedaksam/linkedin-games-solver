@@ -1,6 +1,6 @@
 # Privacy Policy — LinkedIn Games Solver
 
-Last updated: 2026-05-24
+Last updated: 2026-05-27
 
 LinkedIn Games Solver provides puzzle-solving helpers for LinkedIn Games pages. This privacy policy explains what data the extension accesses, why, and how that data is used.
 
@@ -25,6 +25,7 @@ The extension does not transmit any data off-device unless you explicitly enable
 - `sidePanel`: used to display a responsive, persistent panel next to the LinkedIn page for a fluid workspace without blocking active game interactions.
 - `alarms`: used to register background alarms in the service worker to perform daily scheduled checks for unsolved games and protect your active streak.
 - `notifications`: used to display native system-level desktop notifications (Streak Protector) if today's games remain unsolved by your chosen alarm time.
+- `contextMenus`: used to add right-click context menu options (`⚡ Solve Active LinkedIn Game`, `💡 Get a Hint`, and `📊 View Results`) to LinkedIn game pages for quick solver accessibility.
 - Optional Host Permission `https://*.linkedin.com/games/*`: we request site permissions on-demand. Access to LinkedIn Game pages is only requested when you first click a solver button or try to run the helper. This ensures you can install the extension with zero initial site-read access, placing privacy and user control first.
 
 ## Data retention and sharing

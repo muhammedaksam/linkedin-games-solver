@@ -2,7 +2,122 @@ import { Storage } from "@plasmohq/storage"
 
 import { askAI } from "~games/ai"
 
+interface SolveRecord {
+  solved: boolean
+  time: number
+  solvedAt?: string
+}
+
 console.log("[LinkedIn Games Solver] Background service worker initialized.")
+
+const syncStorage = new Storage({ area: "sync" })
+
+// Helper to extract game name from a LinkedIn games URL
+function getGameFromUrl(
+  urlStr: string
+): { gameId: string; baseGameId: string; isBonus: boolean } | null {
+  try {
+    const url = new URL(urlStr)
+    if (
+      !url.hostname.includes("linkedin.com") ||
+      !url.pathname.includes("/games/")
+    ) {
+      return null
+    }
+    const parts = url.pathname.split("/").filter(Boolean)
+    const gameIndex = parts.indexOf("games")
+    if (gameIndex === -1 || gameIndex + 1 >= parts.length) {
+      return null
+    }
+    const rawGame = parts[gameIndex + 1]
+    if (rawGame === "results") {
+      return null
+    }
+
+    let baseGameId = ""
+    const isBonus =
+      url.searchParams.get("bonus") === "true" || rawGame.endsWith("-bonus")
+    const rawLower = rawGame.toLowerCase()
+
+    if (rawLower.includes("queens")) {
+      baseGameId = "queens"
+    } else if (rawLower.includes("sudoku")) {
+      baseGameId = "sudoku"
+    } else if (rawLower.includes("tango")) {
+      baseGameId = "tango"
+    } else if (rawLower.includes("zip")) {
+      baseGameId = "zip"
+    } else if (rawLower.includes("patches")) {
+      baseGameId = "patches"
+    } else if (rawLower.includes("crossclimb")) {
+      baseGameId = "crossclimb"
+    } else if (rawLower.includes("pinpoint")) {
+      baseGameId = "pinpoint"
+    } else {
+      return null
+    }
+
+    const gameId = baseGameId + (isBonus ? "-bonus" : "")
+    return { gameId, baseGameId, isBonus }
+  } catch {
+    return null
+  }
+}
+
+// Dynamically updates context menu visibility based on tab URL and solving status
+async function updateContextMenusForTab(tabId: number, urlStr?: string) {
+  if (typeof chrome === "undefined" || !chrome.contextMenus) return
+
+  try {
+    if (!urlStr) {
+      const tab = await chrome.tabs.get(tabId).catch(() => null)
+      urlStr = tab?.url
+    }
+
+    if (!urlStr) {
+      chrome.contextMenus.update("solve-active-game-menu", { visible: false })
+      chrome.contextMenus.update("get-single-hint-menu", { visible: false })
+      chrome.contextMenus.update("view-results-menu", { visible: false })
+      return
+    }
+
+    const gameInfo = getGameFromUrl(urlStr)
+    if (!gameInfo) {
+      chrome.contextMenus.update("solve-active-game-menu", { visible: false })
+      chrome.contextMenus.update("get-single-hint-menu", { visible: false })
+      chrome.contextMenus.update("view-results-menu", { visible: false })
+      return
+    }
+
+    const history =
+      (await syncStorage.get<Record<string, Record<string, SolveRecord>>>(
+        "solveHistory"
+      )) || {}
+
+    const getLocalStr = (d: Date): string => {
+      const year = d.getFullYear()
+      const month = String(d.getMonth() + 1).padStart(2, "0")
+      const day = String(d.getDate()).padStart(2, "0")
+      return `${year}-${month}-${day}`
+    }
+    const todayStr = getLocalStr(new Date())
+    const isSolved = !!history[todayStr]?.[gameInfo.gameId]?.solved
+
+    if (isSolved) {
+      // Already solved today: hide Solve & Hint, show View Results
+      chrome.contextMenus.update("solve-active-game-menu", { visible: false })
+      chrome.contextMenus.update("get-single-hint-menu", { visible: false })
+      chrome.contextMenus.update("view-results-menu", { visible: true })
+    } else {
+      // Not yet solved today: show Solve & Hint, hide View Results
+      chrome.contextMenus.update("solve-active-game-menu", { visible: true })
+      chrome.contextMenus.update("get-single-hint-menu", { visible: true })
+      chrome.contextMenus.update("view-results-menu", { visible: false })
+    }
+  } catch (err) {
+    console.warn("[ContextMenus] Update failed:", err)
+  }
+}
 
 // Allow content scripts to access chrome.storage.session
 if (typeof chrome !== "undefined" && chrome.storage?.session?.setAccessLevel) {
@@ -15,8 +130,6 @@ if (typeof chrome !== "undefined" && chrome.storage?.session?.setAccessLevel) {
       )
     )
 }
-
-const syncStorage = new Storage({ area: "sync" })
 
 // Helper to handle dynamic side panel enablement
 if (typeof chrome !== "undefined" && chrome.sidePanel) {
@@ -41,6 +154,9 @@ if (typeof chrome !== "undefined" && chrome.sidePanel) {
         await chrome.sidePanel.setOptions({ tabId, enabled: false })
         return
       }
+
+      // Update context menu visibility on URL change
+      updateContextMenusForTab(tabId, urlStr).catch(console.error)
 
       const url = new URL(urlStr)
       const isGamesPage =
@@ -124,6 +240,13 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
       const newHistory = changes.solveHistory.newValue || {}
       const streak = calculateStreak(newHistory)
       updateActionBadge(streak).catch(console.error)
+
+      // Update context menus reactively on active tab
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs && tabs[0] && tabs[0].id) {
+          updateContextMenusForTab(tabs[0].id, tabs[0].url).catch(console.error)
+        }
+      })
     }
   }
 })
@@ -137,20 +260,52 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.removeAll(() => {
       chrome.contextMenus.create({
         id: "solve-active-game-menu",
-        title: "⚡ Solve Active LinkedIn Game",
+        title:
+          chrome.i18n.getMessage("contextMenuSolve") ||
+          "⚡ Solve Active LinkedIn Game",
         contexts: ["page"],
         documentUrlPatterns: ["https://*.linkedin.com/games/*"]
       })
 
       chrome.contextMenus.create({
         id: "get-single-hint-menu",
-        title: "💡 Get a Hint",
+        title: chrome.i18n.getMessage("contextMenuHint") || "💡 Get a Hint",
         contexts: ["page"],
         documentUrlPatterns: ["https://*.linkedin.com/games/*"]
+      })
+
+      chrome.contextMenus.create({
+        id: "view-results-menu",
+        title:
+          chrome.i18n.getMessage("contextMenuViewResults") || "📊 View Results",
+        contexts: ["page"],
+        documentUrlPatterns: ["https://*.linkedin.com/games/*"]
+      })
+
+      // Update visibility for any active tab immediately
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs && tabs[0] && tabs[0].id) {
+          updateContextMenusForTab(tabs[0].id, tabs[0].url).catch(console.error)
+        }
       })
     })
   }
 })
+
+// Listen to active tab changes to update context menus
+if (typeof chrome !== "undefined" && chrome.tabs) {
+  chrome.tabs.onActivated.addListener((activeInfo) => {
+    updateContextMenusForTab(activeInfo.tabId).catch(console.error)
+  })
+
+  // Trigger active tab context menu update on service worker wake up
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (tabs && tabs[0] && tabs[0].id) {
+      updateContextMenusForTab(tabs[0].id, tabs[0].url).catch(console.error)
+    }
+  })
+}
+
 chrome.runtime.onStartup.addListener(() => {
   setupStreakAlarm().catch(console.error)
 })
@@ -172,14 +327,16 @@ if (typeof chrome !== "undefined" && chrome.contextMenus) {
       chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "full" })
     } else if (info.menuItemId === "get-single-hint-menu") {
       chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "hint" })
+    } else if (info.menuItemId === "view-results-menu") {
+      const gameInfo = getGameFromUrl(tab.url || "")
+      if (gameInfo) {
+        const gamePath =
+          gameInfo.baseGameId === "sudoku" ? "mini-sudoku" : gameInfo.baseGameId
+        const resultsUrl = `https://www.linkedin.com/games/${gamePath}/results/`
+        chrome.tabs.update(tab.id, { url: resultsUrl })
+      }
     }
   })
-}
-
-interface SolveRecord {
-  solved: boolean
-  time: number
-  solvedAt?: string
 }
 
 const calculateStreak = (

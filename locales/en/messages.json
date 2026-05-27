@@ -739,5 +739,14 @@
   },
   "clearLogSpaceTooltip": {
     "message": "Clear Log Space"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Solve Active LinkedIn Game"
+  },
+  "contextMenuHint": {
+    "message": "💡 Get a Hint"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 View Results"
   }
 }

@@ -739,5 +739,14 @@
   },
   "clearLogSpaceTooltip": {
     "message": "Limpar espaço de registos"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Resolver jogo ativo do LinkedIn"
+  },
+  "contextMenuHint": {
+    "message": "💡 Obter uma dica"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Visualizar resultados"
   }
 }

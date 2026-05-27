@@ -739,5 +739,14 @@
   },
   "clearLogSpaceTooltip": {
     "message": "Protokollbereich löschen"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Aktives LinkedIn-Spiel lösen"
+  },
+  "contextMenuHint": {
+    "message": "💡 Einen Hinweis erhalten"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Ergebnisse anzeigen"
   }
 }
