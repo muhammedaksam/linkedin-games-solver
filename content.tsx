@@ -402,6 +402,16 @@ setInterval(checkVisitedGameSolved, 1500)
 // Global solver state guard
 let globalSolving = false
 
+function updateSolverStatus(status: "solving" | "idle") {
+  if (
+    typeof chrome !== "undefined" &&
+    chrome.runtime &&
+    chrome.runtime.sendMessage
+  ) {
+    chrome.runtime.sendMessage({ action: "solverStatus", status }).catch(() => {})
+  }
+}
+
 // Reactive state bindings for CSUI integration
 let setReactSolving: ((val: boolean) => void) | null = null
 let setReactError: ((err: string | null) => void) | null = null
@@ -481,6 +491,7 @@ const messageListener = (
     setReactSolving?.(true)
     setReactError?.(null)
     setReactSuccess?.(false)
+    updateSolverStatus("solving")
 
     const startTime = Date.now()
     currentActive
@@ -515,6 +526,7 @@ const messageListener = (
       .finally(() => {
         globalSolving = false
         setReactSolving?.(false)
+        updateSolverStatus("idle")
       })
 
     return true
@@ -786,6 +798,7 @@ const GameSolverUI = () => {
     setSolving(true)
     setSolveError(null)
     setSolveSuccess(false)
+    updateSolverStatus("solving")
 
     console.log(
       `[LinkedIn Games Solver UI] Solving active board for: ${currentActive.name} (mode: ${mode})`
@@ -807,6 +820,7 @@ const GameSolverUI = () => {
     } finally {
       globalSolving = false
       setSolving(false)
+      updateSolverStatus("idle")
     }
   }
 

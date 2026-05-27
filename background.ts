@@ -120,12 +120,36 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     if (changes.streakRemindersEnabled || changes.streakReminderTime) {
       setupStreakAlarm().catch(console.error)
     }
+    if (changes.solveHistory) {
+      const newHistory = changes.solveHistory.newValue || {}
+      const streak = calculateStreak(newHistory)
+      updateActionBadge(streak).catch(console.error)
+    }
   }
 })
 
-// Initialize alarm on sw load / startup
+// Initialize alarm and context menus on sw load / startup
 chrome.runtime.onInstalled.addListener(() => {
   setupStreakAlarm().catch(console.error)
+
+  // Context Menu shortcuts for LinkedIn Game Pages
+  if (typeof chrome !== "undefined" && chrome.contextMenus) {
+    chrome.contextMenus.removeAll(() => {
+      chrome.contextMenus.create({
+        id: "solve-active-game-menu",
+        title: "⚡ Solve Active LinkedIn Game",
+        contexts: ["page"],
+        documentUrlPatterns: ["https://*.linkedin.com/games/*"]
+      })
+
+      chrome.contextMenus.create({
+        id: "get-single-hint-menu",
+        title: "💡 Get a Hint",
+        contexts: ["page"],
+        documentUrlPatterns: ["https://*.linkedin.com/games/*"]
+      })
+    })
+  }
 })
 chrome.runtime.onStartup.addListener(() => {
   setupStreakAlarm().catch(console.error)
@@ -139,11 +163,124 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   }
 })
 
+// Handle Context Menu clicks
+if (typeof chrome !== "undefined" && chrome.contextMenus) {
+  chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+    if (!tab || !tab.id) return
+
+    if (info.menuItemId === "solve-active-game-menu") {
+      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "full" })
+    } else if (info.menuItemId === "get-single-hint-menu") {
+      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "hint" })
+    }
+  })
+}
+
 interface SolveRecord {
   solved: boolean
   time: number
   solvedAt?: string
 }
+
+const calculateStreak = (
+  rawHistory: Record<string, Record<string, SolveRecord>>
+): number => {
+  let activeStreak = 0
+  const dateKeys = Object.keys(rawHistory || {}).sort()
+  if (dateKeys.length > 0) {
+    const getLocalStr = (d: Date): string => {
+      const year = d.getFullYear()
+      const month = String(d.getMonth() + 1).padStart(2, "0")
+      const day = String(d.getDate()).padStart(2, "0")
+      return `${year}-${month}-${day}`
+    }
+    const todayStr = getLocalStr(new Date())
+    const yesterday = new Date()
+    yesterday.setDate(yesterday.getDate() - 1)
+    const yesterdayStr = getLocalStr(yesterday)
+
+    const hasRecentActivity = rawHistory[todayStr] || rawHistory[yesterdayStr]
+
+    if (hasRecentActivity) {
+      const currentCheck = new Date()
+      while (true) {
+        const checkStr = getLocalStr(currentCheck)
+        const checkDay = rawHistory[checkStr]
+        const solvedOnDay =
+          checkDay &&
+          Object.values(checkDay).some((g: SolveRecord) => g?.solved)
+
+        if (solvedOnDay) {
+          activeStreak++
+          currentCheck.setDate(currentCheck.getDate() - 1)
+        } else {
+          break
+        }
+      }
+    }
+  }
+  return activeStreak
+}
+
+// Global cached streak value so we can fall back to it when resetting solverStatus
+let cachedStreakValue = 0
+
+const updateActionBadge = async (
+  streakValue?: number,
+  status?: "solving" | "idle",
+  tabId?: number
+) => {
+  if (typeof chrome === "undefined" || !chrome.action) return
+
+  if (streakValue !== undefined) {
+    cachedStreakValue = streakValue
+  }
+
+  if (status === "solving") {
+    await chrome.action.setBadgeText({
+      text: "...",
+      tabId
+    })
+    await chrome.action.setBadgeBackgroundColor({
+      color: "#0a66c2",
+      tabId
+    })
+    return
+  }
+
+  // If status is idle, clear the tab-specific badge to let it inherit the global badge
+  if (status === "idle" && tabId !== undefined) {
+    await chrome.action.setBadgeText({
+      text: "",
+      tabId
+    })
+    return
+  }
+
+  // Update global badge based on streak
+  if (cachedStreakValue > 0) {
+    await chrome.action.setBadgeText({ text: String(cachedStreakValue) })
+    await chrome.action.setBadgeBackgroundColor({ color: "#ffb74d" }) // Warm Orange
+  } else {
+    await chrome.action.setBadgeText({ text: "" })
+  }
+}
+
+// Reactively compute and initialize the badge on SW load
+const initBadge = async () => {
+  try {
+    const history =
+      (await syncStorage.get<Record<string, Record<string, SolveRecord>>>(
+        "solveHistory"
+      )) || {}
+    const streak = calculateStreak(history)
+    await updateActionBadge(streak)
+  } catch (err) {
+    console.error("[Badge] Failed to initialize action badge:", err)
+  }
+}
+
+initBadge().catch(console.error)
 
 const checkAndNotifyStreak = async () => {
   try {
@@ -248,6 +385,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       }
     )
     return true // Keep channel open
+  }
+
+  if (message.action === "solverStatus") {
+    updateActionBadge(undefined, message.status, sender.tab?.id).catch(
+      console.error
+    )
+    sendResponse({ success: true })
+    return true
   }
 })
 
