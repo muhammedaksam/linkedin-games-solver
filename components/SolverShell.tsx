@@ -108,6 +108,7 @@ export function SolverShell({
   const [copyHtmlSuccess, setCopyHtmlSuccess] = useState<boolean>(false)
   const [copyLogsSuccess, setCopyLogsSuccess] = useState<boolean>(false)
   const [copyBothSuccess, setCopyBothSuccess] = useState<boolean>(false)
+  const [copyRegistrySuccess, setCopyRegistrySuccess] = useState<boolean>(false)
 
   // Reactive state hooks synchronized through @plasmohq/storage
   const [theme, setTheme] = useStorage<"light" | "dark">(
@@ -588,6 +589,58 @@ export function SolverShell({
       .catch((err) => console.error("Failed to copy combined info:", err))
   }
 
+  const handleCopyRegistryEntry = async () => {
+    if (typeof chrome === "undefined" || !chrome.tabs) return
+    try {
+      const [tab] = await chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      })
+      if (tab?.id && tab.url?.includes("linkedin.com/games/")) {
+        setDebugError(null)
+        chrome.tabs.sendMessage(
+          tab.id,
+          { action: "extractPuzzleData" },
+          (response) => {
+            if (chrome.runtime.lastError) {
+              setDebugError(
+                "Could not communicate with the game tab. Please make sure the tab is active."
+              )
+              return
+            }
+            if (response?.success) {
+              const puzzleNum = String(response.puzzleNumber)
+              const formattedJSON = JSON.stringify(
+                {
+                  [puzzleNum]: response.data
+                },
+                null,
+                2
+              )
+
+              navigator.clipboard
+                .writeText(formattedJSON)
+                .then(() => {
+                  setCopyRegistrySuccess(true)
+                  setTimeout(() => setCopyRegistrySuccess(false), 2000)
+                })
+                .catch((err) => {
+                  console.error("Clipboard copy failed:", err)
+                  setDebugError("Clipboard write access blocked by browser.")
+                })
+            } else {
+              setDebugError(response?.error || "Failed to extract puzzle data.")
+            }
+          }
+        )
+      } else {
+        setDebugError("Please navigate to an active LinkedIn game tab first.")
+      }
+    } catch (e) {
+      setDebugError(e instanceof Error ? e.message : String(e))
+    }
+  }
+
   const handleClearLogs = async () => {
     if (typeof chrome === "undefined" || !chrome.tabs) return
     try {
@@ -639,16 +692,14 @@ export function SolverShell({
     }
   ]
 
-  // Add the debug item only in the sidepanel
-  if (isSidePanel) {
-    navItems.push({
-      id: "debug",
-      label: getMessage("navDebug") || "Debug",
-      icon: Terminal,
-      active: activeTab === "debug",
-      onClick: () => setActiveTab("debug")
-    })
-  }
+  // Add the debug item to both sidepanel and popup
+  navItems.push({
+    id: "debug",
+    label: getMessage("navDebug") || "Debug",
+    icon: Terminal,
+    active: activeTab === "debug",
+    onClick: () => setActiveTab("debug")
+  })
 
   // Append background statistics and theme toggler
   navItems.push(
@@ -1310,7 +1361,7 @@ export function SolverShell({
         )}
 
         {/* Developer Debug Tools Tab View */}
-        {activeTab === "debug" && isSidePanel && (
+        {activeTab === "debug" && (
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
             {/* Active Game Debug State Card */}
             <div className="bg-card border border-border rounded-xl p-4 shadow-sm space-y-3">
@@ -1438,6 +1489,29 @@ export function SolverShell({
                   {copyBothSuccess
                     ? getMessage("debugBothCopied")
                     : getMessage("debugCopyBoth")}
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  disabled={
+                    activeGame !== "pinpoint" && activeGame !== "crossclimb"
+                  }
+                  onClick={handleCopyRegistryEntry}
+                  className={cn(
+                    "col-span-2 h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5",
+                    copyRegistrySuccess
+                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400"
+                      : "border-border hover:bg-muted/40 text-foreground disabled:opacity-40 disabled:pointer-events-none"
+                  )}>
+                  {copyRegistrySuccess ? (
+                    <Check className="w-3.5 h-3.5" />
+                  ) : (
+                    <Copy className="w-3.5 h-3.5" />
+                  )}
+                  {copyRegistrySuccess
+                    ? "Registry JSON Copied!"
+                    : "Copy Today's Registry JSON"}
                 </Button>
               </div>
             </div>

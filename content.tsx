@@ -19,7 +19,12 @@ import { useStorage } from "@plasmohq/storage/hook"
 import { detectActiveSolver } from "~games"
 import { getMessage } from "~lib/i18n"
 import { syncStorage as storage } from "~lib/storage"
-import { cn, getLocalDateString, type SolveHistory } from "~lib/utils"
+import {
+  cn,
+  getLocalDateString,
+  getPuzzleNumber,
+  type SolveHistory
+} from "~lib/utils"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://*.linkedin.com/games/*"]
@@ -531,6 +536,153 @@ const messageListener = (
         updateSolverStatus("idle")
       })
 
+    return true
+  }
+
+  if (message.action === "extractPuzzleData") {
+    const runExtraction = async () => {
+      try {
+        const currentActive = detectActiveSolver()
+        if (!currentActive) {
+          sendResponse({
+            success: false,
+            error: "No active game board detected."
+          })
+          return
+        }
+
+        const gameName = currentActive.name.toLowerCase()
+        const puzzleNumber = getPuzzleNumber(gameName)
+
+        if (gameName === "pinpoint") {
+          // 1. Gather all flipped card clues
+          const clues: string[] = []
+          for (let j = 0; j < 5; j++) {
+            const card = document.querySelector(
+              `.pinpoint__card__container.pinpoint__card__${j}, .pinpoint__card__${j}`
+            )
+            if (card) {
+              const clueTextEl = card.querySelector(
+                ".pinpoint__card--clue span, .pinpoint__card--clue"
+              )
+              const clueText = clueTextEl
+                ? clueTextEl.textContent?.trim() || ""
+                : ""
+              if (clueText) {
+                clues.push(clueText)
+              }
+            }
+          }
+
+          // 2. Gather correct category answer text
+          const categoryEl = document.querySelector(
+            '.pinpoint__card__answer_text, .pinpoint__card--answer, [class*="answer_text"], [class*="answer-text"]'
+          )
+          const category = categoryEl
+            ? categoryEl.textContent?.trim() || ""
+            : ""
+
+          if (clues.length === 0 && !category) {
+            sendResponse({
+              success: false,
+              error:
+                "No active Pinpoint board data found on page. Make sure the board is loaded/completed."
+            })
+            return
+          }
+
+          sendResponse({
+            success: true,
+            game: "pinpoint",
+            puzzleNumber,
+            data: { category, clues }
+          })
+        } else if (gameName === "crossclimb") {
+          const middleRows = Array.from(
+            document.querySelectorAll(".crossclimb__guess--middle")
+          ) as HTMLElement[]
+
+          if (middleRows.length === 0) {
+            sendResponse({
+              success: false,
+              error:
+                "No Crossclimb middle rows found. Are you on the Crossclimb page?"
+            })
+            return
+          }
+
+          // Visual sort of middle rows (top to bottom)
+          middleRows.sort(
+            (a, b) =>
+              a.getBoundingClientRect().top - b.getBoundingClientRect().top
+          )
+
+          const getRowWord = (row: HTMLElement): string => {
+            const inputs = Array.from(
+              row.querySelectorAll("input")
+            ) as HTMLInputElement[]
+            return inputs
+              .map((input) => input.value || "")
+              .join("")
+              .trim()
+              .toUpperCase()
+          }
+
+          const answers = middleRows.map((row) => getRowWord(row))
+
+          // Sequentially click middle rows to read active trivia clues from the bottom panel
+          const clues: string[] = []
+          for (let i = 0; i < middleRows.length; i++) {
+            const row = middleRows[i]
+            row.click()
+            // Wait 120ms to allow clue transition in the UI
+            await new Promise((resolve) => setTimeout(resolve, 120))
+            const clueEl = document.querySelector(".crossclimb__clue")
+            const clueText = clueEl ? clueEl.textContent?.trim() || "" : ""
+            clues.push(clueText)
+          }
+
+          // Get Top Row (data-guess-id="0") and Bottom Row (data-guess-id="numMiddleRows + 1")
+          const topRow = document.querySelector(
+            '[data-guess-id="0"]'
+          ) as HTMLElement
+          const bottomRow = document.querySelector(
+            `[data-guess-id="${middleRows.length + 1}"]`
+          ) as HTMLElement
+
+          const topWord = topRow ? getRowWord(topRow) : ""
+          const bottomWord = bottomRow ? getRowWord(bottomRow) : ""
+
+          if (answers.some((w) => !w) || !topWord || !bottomWord) {
+            sendResponse({
+              success: false,
+              error:
+                "Some words are blank. Please complete the Crossclimb board before extracting."
+            })
+            return
+          }
+
+          sendResponse({
+            success: true,
+            game: "crossclimb",
+            puzzleNumber,
+            data: { clues, answers, topWord, bottomWord }
+          })
+        } else {
+          sendResponse({
+            success: false,
+            error: `Extraction is not supported for "${currentActive.name}".`
+          })
+        }
+      } catch (err) {
+        sendResponse({
+          success: false,
+          error: err instanceof Error ? err.message : String(err)
+        })
+      }
+    }
+
+    runExtraction()
     return true
   }
 }
