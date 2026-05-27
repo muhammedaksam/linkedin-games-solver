@@ -391,6 +391,7 @@ Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do 
 
     // 5. Sort the middle rows to match the target ladder order using keyboard
     let sortedCorrectly = false
+    let finalBoardWords: string[] = []
     for (let attempt = 0; attempt < 3; attempt++) {
       if (attempt > 0) {
         console.log(
@@ -411,7 +412,10 @@ Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do 
       const targetWords = targetOrder.map((id) => clueWordMap.get(id) || "")
       console.log("[Crossclimb] Target words:", targetWords)
 
-      if (currentWords.every((w, idx) => w === targetWords[idx])) {
+      const isForward = currentWords.every((w, idx) => w === targetWords[idx])
+      const isReversed = currentWords.every((w, idx) => w === targetWords[targetWords.length - 1 - idx])
+
+      if (isForward || isReversed) {
         const topRow = this.$('[data-guess-id="0"]')
         const topInput = topRow
           ? (topRow.querySelector("input") as HTMLInputElement)
@@ -419,8 +423,9 @@ Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do 
         const isLocked = !topInput || topInput.disabled
         if (!isLocked) {
           sortedCorrectly = true
+          finalBoardWords = currentWords
           console.log(
-            "[Crossclimb] ✓ Board accepted the word ladder! Top/bottom rows unlocked."
+            `[Crossclimb] ✓ Board accepted the word ladder (${isForward ? "forward" : "reversed"} order)! Top/bottom rows unlocked.`
           )
           break
         } else {
@@ -431,7 +436,7 @@ Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do 
       }
     }
 
-    if (!sortedCorrectly) {
+    if (!sortedCorrectly || finalBoardWords.length === 0) {
       throw new Error(
         "Failed to sort the middle rows or the answers are incorrect (board remained locked)."
       )
@@ -453,14 +458,12 @@ Where each "words" array has 6-10 UPPERCASE ${wordLength}-letter candidates. Do 
     }
     console.log(`[Crossclimb] Top Clue: "${topClueText}"`)
 
-    const middleLadderChain = targetOrder
-      .map((id) => clueWordMap.get(id) || "")
-      .join(" -> ")
+    const middleLadderChain = finalBoardWords.join(" -> ")
 
-    // The top word connects to the first word in the sorted ladder
-    const firstLadderWord = clueWordMap.get(targetOrder[0]) || ""
-    // The bottom word connects to the last word in the sorted ladder
-    const lastLadderWord = clueWordMap.get(targetOrder[numMiddleRows - 1]) || ""
+    // The top word connects to the first word in the visually sorted ladder on the board
+    const firstLadderWord = finalBoardWords[0] || ""
+    // The bottom word connects to the last word in the visually sorted ladder on the board
+    const lastLadderWord = finalBoardWords[finalBoardWords.length - 1] || ""
 
     console.log(
       `[Crossclimb] Top word must differ by 1 letter from: "${firstLadderWord}"`
