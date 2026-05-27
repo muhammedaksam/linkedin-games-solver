@@ -513,6 +513,26 @@ chrome.notifications.onButtonClicked.addListener((id, index) => {
 })
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "fetchRegistry") {
+    const game = message.game
+    const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${game}.json`
+    fetch(registryUrl)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`)
+        }
+        return res.json()
+      })
+      .then((data) => {
+        sendResponse({ success: true, data })
+      })
+      .catch((error) => {
+        const errMsg = error instanceof Error ? error.message : String(error)
+        sendResponse({ success: false, error: errMsg })
+      })
+    return true // Keep channel open for async response
+  }
+
   if (message.action === "askAI") {
     askAI(message.prompt, message.jsonMode)
       .then((text) => {

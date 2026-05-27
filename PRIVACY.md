@@ -15,7 +15,8 @@ The extension's single purpose is to read the game state and clues from LinkedIn
 
 ## Network requests and AI assistance
 
-The extension does not transmit any data off-device unless you explicitly enable AI assistance and provide an API key or custom endpoint. If AI assistance is enabled, the extension will send only the necessary game content and a generated prompt to the AI provider you configured (for example, OpenAI, Google Gemini, Anthropic, or a custom endpoint) to obtain a suggested solution. API keys you enter are stored locally in your browser storage and are used only to authenticate requests to the provider you chose.
+- **AI Assistance**: The extension does not transmit any data off-device unless you explicitly enable AI assistance and provide an API key or custom endpoint. If AI assistance is enabled, the extension will send only the necessary game content and a generated prompt to the AI provider you configured (for example, OpenAI, Google Gemini, Anthropic, or a custom endpoint) to obtain a suggested solution. API keys you enter are stored locally in your browser storage and are used only to authenticate requests to the provider you chose.
+- **Daily Pre-solved Answers Registry**: To optimize solving speeds, completely eliminate AI token costs, and avoid LLM hallucinations, the extension securely fetches pre-solved daily game answers for Pinpoint and Crossclimb from our public registry hosted on GitHub (`https://raw.githubusercontent.com/*`). This request is strictly a secure download of public answers; no user-identifying data, browser metadata, or game session logs are ever transmitted.
 
 ## Permissions used
 
@@ -26,6 +27,7 @@ The extension does not transmit any data off-device unless you explicitly enable
 - `alarms`: used to register background alarms in the service worker to perform daily scheduled checks for unsolved games and protect your active streak.
 - `notifications`: used to display native system-level desktop notifications (Streak Protector) if today's games remain unsolved by your chosen alarm time.
 - `contextMenus`: used to add right-click context menu options (`⚡ Solve Active LinkedIn Game`, `💡 Get a Hint`, and `📊 View Results`) to LinkedIn game pages for quick solver accessibility.
+- Host Permission `https://raw.githubusercontent.com/*`: used by the background service worker to fetch pre-solved puzzle solutions securely and directly from our public GitHub answers registry.
 - Optional Host Permission `https://*.linkedin.com/games/*`: we request site permissions on-demand. Access to LinkedIn Game pages is only requested when you first click a solver button or try to run the helper. This ensures you can install the extension with zero initial site-read access, placing privacy and user control first.
 
 ## Data retention and sharing

@@ -1,5 +1,6 @@
 import { askAI } from "./ai"
 import { BaseSolver } from "./base"
+import { fetchRegistry, findPinpointAnswer } from "./registry"
 
 export class PinpointSolver extends BaseSolver {
   readonly name = "Pinpoint"
@@ -16,6 +17,22 @@ export class PinpointSolver extends BaseSolver {
 
   async solve(): Promise<void> {
     console.log("[Pinpoint] Starting progressive Pinpoint solver...")
+
+    let registry: Record<string, any> = {}
+    let triedRegistryGuess = false
+
+    try {
+      console.log("[Pinpoint] Loading daily answers registry...")
+      registry = await fetchRegistry("pinpoint")
+      console.log(
+        `[Pinpoint] Registry loaded successfully. Entries: ${Object.keys(registry).length}`
+      )
+    } catch (err) {
+      console.warn(
+        "[Pinpoint] Failed to load registry, falling back to 100% LLM mode:",
+        err
+      )
+    }
 
     for (let i = 0; i < 5; i++) {
       // 1. Gather all currently revealed/flipped clues
@@ -57,9 +74,23 @@ export class PinpointSolver extends BaseSolver {
         }
       }
 
-      // 2. Ask Gemini to guess the common category based on current clues
-      console.log(`[Pinpoint] Querying Gemini with ${clues.length} clue(s)...`)
-      const prompt = `
+      let category: string
+      const matchedPuzzle = triedRegistryGuess
+        ? null
+        : findPinpointAnswer(registry, clues)
+
+      if (matchedPuzzle) {
+        console.log(
+          `[Pinpoint] Found pre-solved category in registry: "${matchedPuzzle.category}"`
+        )
+        category = matchedPuzzle.category
+        triedRegistryGuess = true
+      } else {
+        // 2. Ask Gemini to guess the common category based on current clues
+        console.log(
+          `[Pinpoint] Querying Gemini with ${clues.length} clue(s)...`
+        )
+        const prompt = `
 You are playing the LinkedIn game "Pinpoint".
 We have a set of clues that belong to a single common category.
 Our goal is to guess the exact category using as few clues as possible.
@@ -71,11 +102,12 @@ Return ONLY the single category name (a single word or very short phrase, e.g. "
 Do not include any quotes, periods, punctuation, or explanations.
 `
 
-      const rawCategory = await askAI(prompt)
-      const category = this.cleanCategoryGuess(rawCategory)
-      console.log(
-        `[Pinpoint] Gemini category guess: "${category}" (raw: "${rawCategory.trim()}")`
-      )
+        const rawCategory = await askAI(prompt)
+        category = this.cleanCategoryGuess(rawCategory)
+        console.log(
+          `[Pinpoint] Gemini category guess: "${category}" (raw: "${rawCategory.trim()}")`
+        )
+      }
 
       if (!category) {
         console.warn(
