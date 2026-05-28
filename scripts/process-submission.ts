@@ -178,13 +178,13 @@ function runProcessor() {
     )
 
     const summaryContent =
-      `### 🎉 Submission Successfully Merged!\n\n` +
-      `Validated and automatically appended your **${game}** puzzle **#${puzzleId}** directly to the registry.\n\n` +
-      `#### Added Entry details:\n` +
+      `### 🎉 Submission Successfully Validated!\n\n` +
+      `A Pull Request has been automatically opened to merge your **${game}** puzzle **#${puzzleId}** into the registry.\n\n` +
+      `#### Proposed Entry details:\n` +
       `\`\`\`json\n` +
       `"${puzzleId}": ${JSON.stringify(puzzleData, null, 2)}\n` +
       `\`\`\`\n\n` +
-      `Thank you for your active contribution to the solver community! 🚀`
+      `Once reviewed and approved by the maintainers, it will be merged and deployed instantly. Thank you for your active contribution! 🚀`
 
     fs.writeFileSync("vars.env", `GAME=${game}\nPUZZLE_ID=${puzzleId}\n`)
     writeSummary(summaryContent)
