@@ -2,11 +2,13 @@ name: "Process Daily Puzzle Submission"
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   process-submission:
-    if: contains(github.event.issue.labels.*.name, 'daily-puzzle-submission')
+    if: |
+      contains(github.event.issue.labels.*.name, 'daily-puzzle-submission') ||
+      contains(github.event.issue.body, '### Game Type')
     runs-on: ubuntu-latest
     permissions:
       contents: write
