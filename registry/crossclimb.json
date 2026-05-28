@@ -10,5 +10,17 @@
     "answers": ["POKES", "PORES", "BORES", "BARES", "CARES"],
     "topWord": "POKER",
     "bottomWord": "CARDS"
+  },
+  "758": {
+    "clues": [
+      "Type of bed that has another bed above or below it",
+      "Financial institution",
+      "Musical group that might go on tour",
+      "Very tight connection",
+      "Pleasant, as memories"
+    ],
+    "answers": ["BUNK", "BANK", "BAND", "BOND", "FOND"],
+    "topWord": "JUNK",
+    "bottomWord": "FOOD"
   }
 }
