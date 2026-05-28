@@ -4,6 +4,7 @@ import {
   Check,
   CheckCircle2,
   Copy,
+  ExternalLink,
   Eye,
   EyeOff,
   Gauge,
@@ -11,6 +12,7 @@ import {
   Key,
   Moon,
   RefreshCw,
+  Send,
   Settings,
   Sparkles,
   Sun,
@@ -628,6 +630,70 @@ export function SolverShell({
                   console.error("Clipboard copy failed:", err)
                   setDebugError("Clipboard write access blocked by browser.")
                 })
+            } else {
+              setDebugError(response?.error || "Failed to extract puzzle data.")
+            }
+          }
+        )
+      } else {
+        setDebugError("Please navigate to an active LinkedIn game tab first.")
+      }
+    } catch (e) {
+      setDebugError(e instanceof Error ? e.message : String(e))
+    }
+  }
+
+  const handleSubmitToRegistry = async () => {
+    if (typeof chrome === "undefined" || !chrome.tabs) return
+    try {
+      const [tab] = await chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      })
+      if (tab?.id && tab.url?.includes("linkedin.com/games/")) {
+        setDebugError(null)
+        chrome.tabs.sendMessage(
+          tab.id,
+          { action: "extractPuzzleData" },
+          (response) => {
+            if (chrome.runtime.lastError) {
+              setDebugError(
+                "Could not communicate with the game tab. Please make sure the tab is active."
+              )
+              return
+            }
+            if (response?.success) {
+              const puzzleId = String(response.puzzleNumber)
+              let url = `https://github.com/muhammedaksam/linkedin-games-solver/issues/new?template=add-puzzle.yml`
+
+              if (activeGame === "pinpoint") {
+                const category = encodeURIComponent(
+                  response.data.category || ""
+                )
+                const clues = encodeURIComponent(
+                  (response.data.clues || []).join("\n")
+                )
+                url += `&game=Pinpoint&puzzleId=${puzzleId}&pinpoint_category=${category}&pinpoint_clues=${clues}`
+              } else if (activeGame === "crossclimb") {
+                const topWord = encodeURIComponent(response.data.topWord || "")
+                const bottomWord = encodeURIComponent(
+                  response.data.bottomWord || ""
+                )
+                const clues = encodeURIComponent(
+                  (response.data.clues || []).join("\n")
+                )
+                const answers = encodeURIComponent(
+                  (response.data.answers || []).join("\n")
+                )
+                url += `&game=Crossclimb&puzzleId=${puzzleId}&crossclimb_top=${topWord}&crossclimb_bottom=${bottomWord}&crossclimb_clues=${clues}&crossclimb_answers=${answers}`
+              } else {
+                setDebugError(
+                  "Direct submission is only supported for Pinpoint and Crossclimb."
+                )
+                return
+              }
+
+              window.open(url, "_blank")
             } else {
               setDebugError(response?.error || "Failed to extract puzzle data.")
             }
@@ -1499,7 +1565,7 @@ export function SolverShell({
                   }
                   onClick={handleCopyRegistryEntry}
                   className={cn(
-                    "col-span-2 h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5",
+                    "col-span-1 h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5",
                     copyRegistrySuccess
                       ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400"
                       : "border-border hover:bg-muted/40 text-foreground disabled:opacity-40 disabled:pointer-events-none"
@@ -1510,10 +1576,20 @@ export function SolverShell({
                     <Copy className="w-3.5 h-3.5" />
                   )}
                   {copyRegistrySuccess
-                    ? getMessage("debugRegistryCopied") ||
-                      "Registry JSON Copied!"
-                    : getMessage("debugCopyRegistry") ||
-                      "Copy Today's Registry JSON"}
+                    ? getMessage("debugRegistryCopied") || "Copied JSON!"
+                    : getMessage("debugCopyRegistryShort") || "Copy JSON"}
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  disabled={
+                    activeGame !== "pinpoint" && activeGame !== "crossclimb"
+                  }
+                  onClick={handleSubmitToRegistry}
+                  className="col-span-1 h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5 border-border hover:bg-muted/40 text-foreground disabled:opacity-40 disabled:pointer-events-none">
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  {getMessage("debugSubmitAnswer") || "Submit Answer"}
                 </Button>
               </div>
             </div>
