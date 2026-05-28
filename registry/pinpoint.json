@@ -1,32 +1,14 @@
 {
   "756": {
     "category": "Types of desk",
-    "clues": [
-      "Help",
-      "Check-in",
-      "News",
-      "Rolltop",
-      "Standing"
-    ]
+    "clues": ["Help", "Check-in", "News", "Rolltop", "Standing"]
   },
   "757": {
     "category": "Types of pool",
-    "clues": [
-      "Car",
-      "Dating",
-      "Jury",
-      "Gene",
-      "Swimming"
-    ]
+    "clues": ["Car", "Dating", "Jury", "Gene", "Swimming"]
   },
   "758": {
     "category": "Words that come after \"door\"",
-    "clues": [
-      "Way",
-      "Mat",
-      "Bell",
-      "Jamb",
-      "Knob"
-    ]
+    "clues": ["Way", "Mat", "Bell", "Jamb", "Knob"]
   }
 }

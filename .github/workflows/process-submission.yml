@@ -87,7 +87,9 @@ jobs:
             --title "Update registry: $GAME #$PUZZLE_ID" \
             --body "This PR updates the solver registry based on a verified user submission in issue #${{ github.event.issue.number }}. Closes #${{ github.event.issue.number }}." \
             --base main \
-            --head "$BRANCH_NAME"
+            --head "$BRANCH_NAME" \
+            --assignee "${{ github.event.issue.user.login }},muhammedaksam" \
+            --reviewer "muhammedaksam"
 
       - name: Handle Validation Failure
         if: steps.process.outcome == 'failure'
