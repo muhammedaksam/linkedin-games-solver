@@ -112,15 +112,30 @@ To ensure lightning-fast solving speeds, prevent AI hallucinations on trivia-bas
 }
 ```
 
-### 🤝 Easy 1-Click Contribution
+### 🤝 Easy Contribution (Help Keep Registry Up-to-Date!)
 
-Contributing the daily puzzle to the public registry is incredibly simple:
+We want to make contributing daily puzzles as simple and accessible as possible. There are two easy ways you can contribute to keep the daily registry fully populated:
+
+#### 🌟 Method 1: Submit via GitHub Issue Template (Recommended)
+
+This is the fastest, no-code way to contribute. You just fill out a quick form, and our automated CI/CD pipeline validates the puzzle, stages the changes, and opens a Pull Request automatically!
+
+1. Go to the **Issues** tab on our GitHub repository.
+2. Click **New Issue** and select the **"Submit Daily Puzzle Answers"** template.
+3. Fill out the simple form fields (Game Type, Clues, and Answers) using the board state from today's game.
+4. Submit the issue! Our automated pipeline will do the rest and credit you as a co-author.
+
+#### 🛠️ Method 2: Direct 1-Click Copy & Pull Request
+
+If you prefer opening a manual Pull Request, the extension has built-in features to make formatting effortless:
 
 1. Navigate to the active game on LinkedIn.
 2. Open the extension popup or side panel, and click on the **Debug** tab.
 3. Scroll to the bottom and click **"Copy Today's Registry JSON"**.
-4. The extension extracts the daily board state, formats it to the exact schema, and copies it to your clipboard.
-5. Open a Pull Request on GitHub and paste it into the respective registry file (`registry/pinpoint.json` or `registry/crossclimb.json`).
+4. The extension extracts the daily board state, formats it to the exact schema, and copies the formatted JSON block to your clipboard.
+5. Open a Pull Request on GitHub and paste the JSON block directly into the respective registry file:
+   - **[pinpoint.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/pinpoint.json)**
+   - **[crossclimb.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/crossclimb.json)**
 
 ---
 
@@ -214,7 +229,7 @@ pnpm generate:store-assets
 - [x] **Strict Type-Safety**: Generics-driven IPC messaging constraints.
 - [x] **Localization Overhaul**: Support for multilingual UI strings and layouts.
 - [x] **AI-Assisted Self-Solving Answers Registry**: Secure public pre-cached database for trivia-based games (Pinpoint & Crossclimb).
-- [ ] **Automated Registry Updates Pipeline**: CI/CD integration to auto-validate and append user-submitted daily game pull requests.
+- [x] **Automated Registry Updates Pipeline**: CI/CD integration to auto-validate and append user-submitted daily game pull requests.
 
 ---
 
