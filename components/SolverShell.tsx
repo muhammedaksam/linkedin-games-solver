@@ -673,7 +673,7 @@ export function SolverShell({
                 const clues = encodeURIComponent(
                   (response.data.clues || []).join("\n")
                 )
-                url += `&game=Pinpoint&puzzleId=${puzzleId}&pinpoint_category=${category}&pinpoint_clues=${clues}`
+                url += `&game=0&puzzleId=${puzzleId}&pinpoint_category=${category}&pinpoint_clues=${clues}`
               } else if (activeGame === "crossclimb") {
                 const topWord = encodeURIComponent(response.data.topWord || "")
                 const bottomWord = encodeURIComponent(
@@ -685,7 +685,7 @@ export function SolverShell({
                 const answers = encodeURIComponent(
                   (response.data.answers || []).join("\n")
                 )
-                url += `&game=Crossclimb&puzzleId=${puzzleId}&crossclimb_top=${topWord}&crossclimb_bottom=${bottomWord}&crossclimb_clues=${clues}&crossclimb_answers=${answers}`
+                url += `&game=1&puzzleId=${puzzleId}&crossclimb_top=${topWord}&crossclimb_bottom=${bottomWord}&crossclimb_clues=${clues}&crossclimb_answers=${answers}`
               } else {
                 setDebugError(
                   "Direct submission is only supported for Pinpoint and Crossclimb."
