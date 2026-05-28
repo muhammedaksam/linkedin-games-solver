@@ -7,7 +7,7 @@ on:
 jobs:
   process-submission:
     if: |
-      (github.event.action == 'opened' && contains(github.event.issue.body, '### Game Type')) ||
+      (github.event.action == 'opened' && contains(github.event.issue.body, '### Game Type') && !contains(github.event.issue.labels.*.name, 'daily-puzzle-submission')) ||
       (github.event.action == 'labeled' && github.event.label.name == 'daily-puzzle-submission')
     runs-on: ubuntu-latest
     permissions:
