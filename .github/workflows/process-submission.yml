@@ -1,0 +1,102 @@
+name: "Process Daily Puzzle Submission"
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-submission:
+    if: contains(github.event.issue.labels.*.name, 'daily-puzzle-submission')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Process Submission
+        id: process
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: pnpm exec tsx scripts/process-submission.ts
+        continue-on-error: true
+
+      - name: Handle Validation Success
+        if: steps.process.outcome == 'success'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const summary = fs.readFileSync('submission-summary.md', 'utf8');
+
+            // Add comment on the issue
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: summary
+            });
+
+            // Add success label and close the issue
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['processed-successfully']
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'completed'
+            });
+
+      - name: Commit and Push Changes
+        if: steps.process.outcome == 'success'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add registry/*.json
+          git commit -m "chore: auto-update solver registry [skip ci]" -m "Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.login }}@users.noreply.github.com>" -m "Co-authored-by: Muhammed Mustafa AKŞAM <info@muhammedaksam.com.tr>"
+          git push origin main
+
+      - name: Handle Validation Failure
+        if: steps.process.outcome == 'failure'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const summary = fs.readFileSync('submission-summary.md', 'utf8');
+
+            // Add comment with validation error details
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: summary
+            });
+
+            // Add failure label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['validation-failed']
+            });

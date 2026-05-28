@@ -1,0 +1,112 @@
+name: "Submit Daily Puzzle Answers"
+description: "Submit daily clues and answers for Pinpoint or Crossclimb to auto-update the solver registry."
+title: "[Daily Puzzle] Add answers for Puzzle "
+labels: ["daily-puzzle-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thanks for helping update the LinkedIn Games Solver!
+        Please fill out this form with the clues and answers of today's game. 
+        An automated system will validate your submission, append it to the registry, and deploy it instantly.
+
+  - type: dropdown
+    id: game
+    attributes:
+      label: "Game Type"
+      description: "Which game are you submitting answers for?"
+      options:
+        - "Pinpoint"
+        - "Crossclimb"
+    validations:
+      required: true
+
+  - type: input
+    id: puzzleId
+    attributes:
+      label: "Puzzle Number / Date Identifier"
+      placeholder: "e.g., 759 or 2026-05-28"
+      description: "Enter the puzzle number or today's date in YYYY-MM-DD format."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### 📍 Pinpoint Details (Only fill this if you selected Pinpoint)
+
+  - type: input
+    id: pinpoint_category
+    attributes:
+      label: "Pinpoint Category"
+      placeholder: "e.g., Types of pool"
+      description: "What was the final connection / category of the clues?"
+    validations:
+      required: false
+
+  - type: textarea
+    id: pinpoint_clues
+    attributes:
+      label: "Pinpoint Clues"
+      placeholder: |
+        Car
+        Dating
+        Jury
+        Gene
+        Swimming
+      description: "List the 5 clues revealed during the game, one per line."
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### 🧗 Crossclimb Details (Only fill this if you selected Crossclimb)
+
+  - type: input
+    id: crossclimb_top
+    attributes:
+      label: "Crossclimb Top Word"
+      placeholder: "e.g., JUNK"
+      description: "What was the starting word at the top of the column?"
+    validations:
+      required: false
+
+  - type: input
+    id: crossclimb_bottom
+    attributes:
+      label: "Crossclimb Bottom Word"
+      placeholder: "e.g., FOOD"
+      description: "What was the destination word at the bottom of the column?"
+    validations:
+      required: false
+
+  - type: textarea
+    id: crossclimb_clues
+    attributes:
+      label: "Crossclimb Clues"
+      placeholder: |
+        Type of bed that has another bed above or below it
+        Financial institution
+        Musical group that might go on tour
+        Very tight connection
+        Pleasant, as memories
+      description: "List the 5 clues in top-to-bottom order, one per line."
+    validations:
+      required: false
+
+  - type: textarea
+    id: crossclimb_answers
+    attributes:
+      label: "Crossclimb Answers"
+      placeholder: |
+        BUNK
+        BANK
+        BAND
+        BOND
+        FOND
+      description: "List the 5 answers in top-to-bottom order, one per line (must match top/bottom words in length)."
+    validations:
+      required: false

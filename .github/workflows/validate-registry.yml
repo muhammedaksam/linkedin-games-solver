@@ -1,0 +1,37 @@
+name: "Registry Validation Check"
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "registry/**"
+      - "scripts/validate-registry.ts"
+      - "scripts/validate-registry.test.ts"
+      - ".github/workflows/validate-registry.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run Registry Integrity Validation
+        run: pnpm exec tsx scripts/validate-registry.ts
+
+      - name: Run Validation Unit Tests
+        run: pnpm exec vitest run scripts/validate-registry.test.ts
