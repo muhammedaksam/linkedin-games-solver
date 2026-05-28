@@ -27,7 +27,9 @@ An advanced, obfuscation-proof browser extension compatible with Google Chrome�
 
 - **Instant & Guided Solvers**: Instantly solve puzzles or receive step-by-step hints to learn best practices and strategies.
 - **Obfuscation-Proof Engine**: Pulls board states, region matrices, relational edges, and constraints directly from React Fiber virtual tree properties rather than scraping fragile DOM coordinates.
-- **Multi-Model AI Integration**: Uses advanced LLM reasoning (Gemini, Claude, GPT-4o, DeepSeek, or local Ollama) to answer trivia-based games like Crossclimb and Pinpoint.
+- **Hybrid Registry / AI Solver**: Automatically fetches pre-solved daily trivia answers from a public registry, eliminating API token costs and LLM hallucinations for games like Crossclimb and Pinpoint. Falls back to active AI inference if needed.
+- **Multi-Model AI Integration**: Uses advanced LLM reasoning (Gemini, Claude, GPT-4o, DeepSeek, or local Ollama) to solve new trivia-based games.
+- **One-Click Contribution Engine**: Easily extract today's board states directly from the active game with a single click in the Debug tab, formatting it in clean JSON ready for pull requests.
 - **Human-like Pacing (Stealth Mode)**: Secure your daily streaks with custom pacing controls featuring randomized click delays, mimicking human patterns.
 - **Detailed Activity Stats**: View streaks, average solve metrics, personal records, and visual activity calendar matrices.
 - **Multilingual UI**: Native support for English and Turkish out of the box.
@@ -37,6 +39,8 @@ An advanced, obfuscation-proof browser extension compatible with Google Chrome�
 ## 🛠️ Architecture & Extraction Bridge
 
 The extension injects a Main-World (`logger-main.ts`) script that bypasses isolation sandboxing to query the React component virtual tree properties. When a solver triggers, it executes an asynchronous Promise-based IPC bridge to request and parse the underlying Protobuf schemas.
+
+### React Fiber Bridge Flow
 
 ```mermaid
 sequenceDiagram
@@ -57,27 +61,88 @@ sequenceDiagram
     Note over Solver: Falls back to DOM scraping if bridge fails
 ```
 
+### Hybrid Answers Registry Flow
+
+For trivia-based Ember.js games, the solver optimizes speed and stability through a public answer database, falling back dynamically to active AI models when needed:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User as User Click "Solve"
+    participant Solver as Game Solver (e.g., crossclimb.ts)
+    participant BG as Background Service Worker
+    participant Registry as Public GitHub Answers Registry (raw.githubusercontent.com)
+    participant LLM as Active AI Provider (Gemini / OpenAI / Nano)
+
+    User->>Solver: Initiates Solve
+    Solver->>BG: fetchRegistry(game)
+    BG->>Registry: GET /registry/{game}.json
+    Alt Registry Hit (Puzzle Found)
+        Registry-->>BG: Returns JSON Database
+        BG-->>Solver: Resolves Registry Data
+        Solver->>Solver: Matches current Puzzle Number
+        Note over Solver: Instantly Solves Game (Zero API Cost, 100% Accuracy)
+    Else Registry Miss / Network Offline
+        BG-->>Solver: Fails to load / Entry missing
+        Solver->>LLM: Requests Solver Inference (with clues & framework DOM state)
+        LLM-->>Solver: Returns AI Reasoning Output
+        Solver->>Solver: Applies AI Solution
+    End
+```
+
+---
+
+## 🗃️ Daily Answers Registry & Contribution
+
+To ensure lightning-fast solving speeds, prevent AI hallucinations on trivia-based games, and keep LLM token usage at absolute zero, the extension leverages a public registry database hosted on GitHub under `registry/`.
+
+### Registry File Schemas
+
+- **[crossclimb.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/crossclimb.json)**: Stores five-word ladder steps, starting/ending anchors, and clues mapped by the puzzle number.
+- **[pinpoint.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/pinpoint.json)**: Stores categories and word clues mapped by the puzzle number.
+
+#### Example Entry (`pinpoint.json`)
+
+```json
+{
+  "758": {
+    "category": "Words that come after \"door\"",
+    "clues": ["Way", "Mat", "Bell", "Jamb", "Knob"]
+  }
+}
+```
+
+### 🤝 Easy 1-Click Contribution
+
+Contributing the daily puzzle to the public registry is incredibly simple:
+
+1. Navigate to the active game on LinkedIn.
+2. Open the extension popup or side panel, and click on the **Debug** tab.
+3. Scroll to the bottom and click **"Copy Today's Registry JSON"**.
+4. The extension extracts the daily board state, formats it to the exact schema, and copies it to your clipboard.
+5. Open a Pull Request on GitHub and paste it into the respective registry file (`registry/pinpoint.json` or `registry/crossclimb.json`).
+
 ---
 
 ## 🎯 Supported Games & Capabilities
 
-| Game           | Platform Framework | Extraction Mode |                    State Mapping Depth                     |     Fallback Stability     |
-| :------------- | :----------------: | :-------------: | :--------------------------------------------------------: | :------------------------: |
-| **Queens**     |      ⚛️ React      | ⚡ Fiber Bridge | Complete `colorGrid` region coordinates & existing guesses |   🟢 Active DOM Scraper    |
-| **Tango**      |      ⚛️ React      | ⚡ Fiber Bridge |         Relational edge constraints & lock states          | 🟢 SVG Layout Calculations |
-| **Zip**        |      ⚛️ React      | ⚡ Fiber Bridge |        Grid size checkpoint sequence & wall indices        |   🟢 Active DOM Scraper    |
-| **Patches**    |      ⚛️ React      | ⚡ Fiber Bridge |   Clue sizes, shape bounds, and complete solution paths    |   🟢 Active DOM Scraper    |
-| **Sudoku**     |    🐹 Ember.js     | 👁️ DOM Scraper  |    Direct input read-outs & aria accessibility parsing     |     🟢 Not Applicable      |
-| **Crossclimb** |    🐹 Ember.js     | 👁️ DOM Scraper  |        Active input values & candidate word arrays         |     🟢 Not Applicable      |
-| **Pinpoint**   |    🐹 Ember.js     | 👁️ DOM Scraper  |              Category hints & card text lists              |     🟢 Not Applicable      |
+| Game           | Platform Framework |       Extraction Mode        |                    State Mapping Depth                     |     Fallback Stability     |
+| :------------- | :----------------: | :--------------------------: | :--------------------------------------------------------: | :------------------------: |
+| **Queens**     |      ⚛️ React      |       ⚡ Fiber Bridge        | Complete `colorGrid` region coordinates & existing guesses |   🟢 Active DOM Scraper    |
+| **Tango**      |      ⚛️ React      |       ⚡ Fiber Bridge        |         Relational edge constraints & lock states          | 🟢 SVG Layout Calculations |
+| **Zip**        |      ⚛️ React      |       ⚡ Fiber Bridge        |        Grid size checkpoint sequence & wall indices        |   🟢 Active DOM Scraper    |
+| **Patches**    |      ⚛️ React      |       ⚡ Fiber Bridge        |   Clue sizes, shape bounds, and complete solution paths    |   🟢 Active DOM Scraper    |
+| **Sudoku**     |    🐹 Ember.js     |        👁️ DOM Scraper        |    Direct input read-outs & aria accessibility parsing     |     🟢 Not Applicable      |
+| **Crossclimb** |    🐹 Ember.js     | 👁️ DOM Scraper + 🗃️ Registry |        Active input values & candidate word arrays         | 🟢 100% LLM Reasoning Mode |
+| **Pinpoint**   |    🐹 Ember.js     | 👁️ DOM Scraper + 🗃️ Registry |              Category hints & card text lists              | 🟢 100% LLM Reasoning Mode |
 
 > [!NOTE]
 >
-> **Ember-based Games**: Sudoku, Pinpoint, and Crossclimb are built using Ember.js, which does not feature a virtual React state tree. The extension detects framework contexts automatically, logging descriptive skip events in diagnostics and successfully falling back to DOM scraper pipelines.
+> **Ember-based Games**: Sudoku, Pinpoint, and Crossclimb are built using Ember.js, which does not feature a virtual React state tree. The extension detects framework contexts automatically, logging descriptive skip events in diagnostics and successfully falling back to DOM scraper pipelines. For Pinpoint and Crossclimb, the extension first securely Queries the Public GitHub answers registry.
 
 ---
 
-## 📦 Getting Started
+## 🛠️ Getting Started
 
 <details>
 <summary>📂 Development Installation & Quickstart</summary>
@@ -148,7 +213,8 @@ pnpm generate:store-assets
 - [x] **Dynamic Selector Discovery**: Adaptive page element scanner supporting Ember.js and React contexts gracefully.
 - [x] **Strict Type-Safety**: Generics-driven IPC messaging constraints.
 - [x] **Localization Overhaul**: Support for multilingual UI strings and layouts.
-- [ ] **AI-Assisted Self-Solving Offline Cache**: Pre-cached solutions for trivia-based games.
+- [x] **AI-Assisted Self-Solving Answers Registry**: Secure public pre-cached database for trivia-based games (Pinpoint & Crossclimb).
+- [ ] **Automated Registry Updates Pipeline**: CI/CD integration to auto-validate and append user-submitted daily game pull requests.
 
 ---
 
