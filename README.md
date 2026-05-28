@@ -29,7 +29,7 @@ An advanced, obfuscation-proof browser extension compatible with Google Chrome�
 - **Obfuscation-Proof Engine**: Pulls board states, region matrices, relational edges, and constraints directly from React Fiber virtual tree properties rather than scraping fragile DOM coordinates.
 - **Hybrid Registry / AI Solver**: Automatically fetches pre-solved daily trivia answers from a public registry, eliminating API token costs and LLM hallucinations for games like Crossclimb and Pinpoint. Falls back to active AI inference if needed.
 - **Multi-Model AI Integration**: Uses advanced LLM reasoning (Gemini, Claude, GPT-4o, DeepSeek, or local Ollama) to solve new trivia-based games.
-- **One-Click Contribution Engine**: Easily extract today's board states directly from the active game with a single click in the Debug tab, formatting it in clean JSON ready for pull requests.
+- **One-Click Contribution Engine**: Easily submit today's board states directly to our registry using the automated "Submit Answer" button, or copy the pre-formatted registry JSON in a single click for manual Pull Requests.
 - **Human-like Pacing (Stealth Mode)**: Secure your daily streaks with custom pacing controls featuring randomized click delays, mimicking human patterns.
 - **Detailed Activity Stats**: View streaks, average solve metrics, personal records, and visual activity calendar matrices.
 - **Multilingual UI**: Native support for English and Turkish out of the box.
@@ -114,26 +114,36 @@ To ensure lightning-fast solving speeds, prevent AI hallucinations on trivia-bas
 
 ### 🤝 Easy Contribution (Help Keep Registry Up-to-Date!)
 
-We want to make contributing daily puzzles as simple and accessible as possible. There are two easy ways you can contribute to keep the daily registry fully populated:
+We want to make contributing daily puzzles as simple and accessible as possible. There are three easy ways you can contribute to keep the daily registry fully populated:
 
-#### 🌟 Method 1: Submit via GitHub Issue Template (Recommended)
+#### 🚀 Method 1: 1-Click Submit via Extension Debug Panel (Recommended)
 
-This is the fastest, no-code way to contribute. You just fill out a quick form, and our automated CI/CD pipeline validates the puzzle, stages the changes, and opens a Pull Request automatically!
+This is the fastest, completely automated way to contribute:
+
+1. Navigate to the active game board on LinkedIn (Crossclimb or Pinpoint).
+2. Open the extension popup or side panel, and click on the **Debug** tab.
+3. Scroll to the bottom and click the **"Submit Answer"** button.
+4. This instantly launches a new tab to our GitHub repository's puzzle submission form, fully pre-filled with today's game type, puzzle ID, clues, and answers using URL query parameters!
+5. Simply review the fields and click **"Submit new issue"**! Our automated GitHub Action pipeline will validate the entry, merge it into the registry, and credit you as a contributor automatically.
+
+#### 🌟 Method 2: Manual Issue Template Submission
+
+If you want to manually report a puzzle or type in the fields yourself:
 
 1. Go to the **Issues** tab on our GitHub repository.
 2. Click **New Issue** and select the **"Submit Daily Puzzle Answers"** template.
 3. Fill out the simple form fields (Game Type, Clues, and Answers) using the board state from today's game.
 4. Submit the issue! Our automated pipeline will do the rest and credit you as a co-author.
 
-#### 🛠️ Method 2: Direct 1-Click Copy & Pull Request
+#### 🛠️ Method 3: Direct JSON Copy & Pull Request
 
-If you prefer opening a manual Pull Request, the extension has built-in features to make formatting effortless:
+If you prefer opening a manual Pull Request:
 
 1. Navigate to the active game on LinkedIn.
 2. Open the extension popup or side panel, and click on the **Debug** tab.
-3. Scroll to the bottom and click **"Copy Today's Registry JSON"**.
+3. Scroll to the bottom and click **"Copy JSON"** (under today's registry JSON).
 4. The extension extracts the daily board state, formats it to the exact schema, and copies the formatted JSON block to your clipboard.
-5. Open a Pull Request on GitHub and paste the JSON block directly into the respective registry file:
+5. Paste it directly into the respective registry file:
    - **[pinpoint.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/pinpoint.json)**
    - **[crossclimb.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/crossclimb.json)**
 

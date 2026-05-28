@@ -552,6 +552,14 @@
     "message": "複製今日註冊 JSON",
     "description": "Button label to copy today's daily registry puzzle data"
   },
+  "debugCopyRegistryShort": {
+    "message": "複製 JSON",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "提交答案",
+    "description": "Button to submit active board answers to GitHub"
+  },
   "debugDomPreview": {
     "message": "DOM 元素預覽",
     "description": "Card title for the captured main outerHTML preview"

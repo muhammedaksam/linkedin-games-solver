@@ -552,6 +552,14 @@
     "message": "Bugünkü Kayıt JSON'unu Kopyala",
     "description": "Button label to copy today's daily registry puzzle data"
   },
+  "debugCopyRegistryShort": {
+    "message": "JSON'ı Kopyala",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "Cevabı Gönder",
+    "description": "Button to submit active board answers to GitHub"
+  },
   "debugDomPreview": {
     "message": "DOM Elementi Önizlemesi",
     "description": "Card title for the captured main outerHTML preview"

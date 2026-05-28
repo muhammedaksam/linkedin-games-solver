@@ -552,6 +552,14 @@
     "message": "Copier le JSON du registre d'aujourd'hui",
     "description": "Button label to copy today's daily registry puzzle data"
   },
+  "debugCopyRegistryShort": {
+    "message": "Copier le JSON",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "Soumettre la réponse",
+    "description": "Button to submit active board answers to GitHub"
+  },
   "debugDomPreview": {
     "message": "Aperçu de l'élément DOM",
     "description": "Card title for the captured main outerHTML preview"
