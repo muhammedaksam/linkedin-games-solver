@@ -100,11 +100,17 @@ export function extractPuzzle(sections: Record<string, string>): ParseResult {
     }
   }
 }
+function writeSummary(content: string) {
+  // Always write locally to submission-summary.md so that next steps can read it
+  fs.writeFileSync("submission-summary.md", content)
+  // Also write to GITHUB_STEP_SUMMARY if available to show in Actions run overview
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, content)
+  }
+}
 
 function runProcessor() {
   const issueBody = process.env.ISSUE_BODY
-  const resultFilePath =
-    process.env.GITHUB_STEP_SUMMARY || "submission-summary.md"
 
   if (!issueBody) {
     console.error("Error: ISSUE_BODY environment variable is empty.")
@@ -129,7 +135,7 @@ function runProcessor() {
         validationErrors.map((err) => `- ${err}`).join("\n") +
         "\n\n_Please edit your issue with the correct values to trigger validation again._"
 
-      fs.writeFileSync(resultFilePath, errorMsg)
+      writeSummary(errorMsg)
       console.error("Validation failed:\n", validationErrors.join("\n"))
       process.exit(1)
     }
@@ -180,12 +186,12 @@ function runProcessor() {
       `\`\`\`\n\n` +
       `Thank you for your active contribution to the solver community! 🚀`
 
-    fs.writeFileSync(resultFilePath, summaryContent)
+    writeSummary(summaryContent)
     console.log(`Success: Appended and validated ${game} puzzle #${puzzleId}`)
     process.exit(0)
   } catch (err: any) {
     const errorMsg = `### ❌ Processing Error\n\nAn unexpected error occurred while parsing your submission:\n- **${err.message}**\n\n_Ensure you filled out the form fields correctly._`
-    fs.writeFileSync(resultFilePath, errorMsg)
+    writeSummary(errorMsg)
     console.error("Unexpected processor error:", err)
     process.exit(1)
   }
