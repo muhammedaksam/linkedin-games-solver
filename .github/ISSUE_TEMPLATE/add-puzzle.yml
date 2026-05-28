@@ -10,14 +10,12 @@ body:
         Please fill out this form with the clues and answers of today's game. 
         An automated system will validate your submission, append it to the registry, and deploy it instantly.
 
-  - type: dropdown
+  - type: input
     id: game
     attributes:
       label: "Game Type"
-      description: "Which game are you submitting answers for?"
-      options:
-        - "Pinpoint"
-        - "Crossclimb"
+      placeholder: "e.g., Pinpoint or Crossclimb"
+      description: "Which game are you submitting answers for? (Please type either 'Pinpoint' or 'Crossclimb')"
     validations:
       required: true
 
