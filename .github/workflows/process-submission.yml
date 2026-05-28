@@ -55,29 +55,39 @@ jobs:
               body: summary
             });
 
-            // Add success label and close the issue
+            // Add pending-review label
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              labels: ['processed-successfully']
-            });
-            await github.rest.issues.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              state: 'closed',
-              state_reason: 'completed'
+              labels: ['pending-review']
             });
 
-      - name: Commit and Push Changes
+      - name: Create Pull Request
         if: steps.process.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          source vars.env
+          BRANCH_NAME="update-registry-$GAME-$PUZZLE_ID"
+
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b "$BRANCH_NAME"
           git add registry/*.json
-          git commit -m "chore: auto-update solver registry [skip ci]" -m "Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.login }}@users.noreply.github.com>" -m "Co-authored-by: Muhammed Mustafa AKŞAM <info@muhammedaksam.com.tr>"
-          git push origin main
+          git commit -m "chore: update solver registry [skip ci]" \
+            -m "Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.login }}@users.noreply.github.com>" \
+            -m "Co-authored-by: Muhammed Mustafa AKŞAM <info@muhammedaksam.com.tr>"
+
+          git push origin "$BRANCH_NAME" --force
+
+          gh pr create \
+            --title "Update registry: $GAME #$PUZZLE_ID" \
+            --body "This PR updates the solver registry based on a verified user submission in issue #${{ github.event.issue.number }}. Closes #${{ github.event.issue.number }}." \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --label "daily-puzzle-submission"
 
       - name: Handle Validation Failure
         if: steps.process.outcome == 'failure'

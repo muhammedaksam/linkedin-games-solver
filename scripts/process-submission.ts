@@ -186,6 +186,7 @@ function runProcessor() {
       `\`\`\`\n\n` +
       `Thank you for your active contribution to the solver community! 🚀`
 
+    fs.writeFileSync("vars.env", `GAME=${game}\nPUZZLE_ID=${puzzleId}\n`)
     writeSummary(summaryContent)
     console.log(`Success: Appended and validated ${game} puzzle #${puzzleId}`)
     process.exit(0)

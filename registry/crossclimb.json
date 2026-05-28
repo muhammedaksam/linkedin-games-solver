@@ -7,13 +7,7 @@
       "Sound the alarm",
       "Threadbare; frayed"
     ],
-    "answers": [
-      "BURY",
-      "BURN",
-      "BARN",
-      "WARN",
-      "WORN"
-    ],
+    "answers": ["BURY", "BURN", "BARN", "WARN", "WORN"],
     "topWord": "BUSY",
     "bottomWord": "WORK"
   },
@@ -25,13 +19,7 @@
       "Exposes, as one's emotions or teeth",
       "Is interested"
     ],
-    "answers": [
-      "POKES",
-      "PORES",
-      "BORES",
-      "BARES",
-      "CARES"
-    ],
+    "answers": ["POKES", "PORES", "BORES", "BARES", "CARES"],
     "topWord": "POKER",
     "bottomWord": "CARDS"
   },
@@ -43,13 +31,7 @@
       "Very tight connection",
       "Pleasant, as memories"
     ],
-    "answers": [
-      "BUNK",
-      "BANK",
-      "BAND",
-      "BOND",
-      "FOND"
-    ],
+    "answers": ["BUNK", "BANK", "BAND", "BOND", "FOND"],
     "topWord": "JUNK",
     "bottomWord": "FOOD"
   }
