@@ -42,16 +42,16 @@ jobs:
               }
               
               try {
-                // Add 'merged' label
+                // Add 'processed-successfully' label
                 await github.rest.issues.addLabels({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issueNumber,
-                  labels: ['merged']
+                  labels: ['processed-successfully']
                 });
-                console.log(`Added 'merged' label to issue #${issueNumber}.`);
+                console.log(`Added 'processed-successfully' label to issue #${issueNumber}.`);
               } catch (e) {
-                console.log(`Failed to add 'merged' label: ${e.message}`);
+                console.log(`Failed to add 'processed-successfully' label: ${e.message}`);
               }
             } else {
               console.log("No linked issue found in the Pull Request body.");
