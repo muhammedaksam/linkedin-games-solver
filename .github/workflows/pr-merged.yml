@@ -1,0 +1,58 @@
+name: "Handle PR Merged"
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  label-issue:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: read
+    steps:
+      - name: Update Issue Labels
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const body = pr.body || "";
+
+            // Extract issue number using regex from "Closes #<num>" or "issue #<num>"
+            const match = body.match(/Closes #(\d+)/i) || body.match(/issue #(\d+)/i);
+
+            if (match) {
+              const issueNumber = parseInt(match[1], 10);
+              console.log(`Found linked issue #${issueNumber} in PR body.`);
+              
+              try {
+                // Remove 'pending-review' label if present
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  name: 'pending-review'
+                });
+                console.log(`Removed 'pending-review' label from issue #${issueNumber}.`);
+              } catch (e) {
+                console.log(`'pending-review' label not found or could not be removed: ${e.message}`);
+              }
+              
+              try {
+                // Add 'merged' label
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  labels: ['merged']
+                });
+                console.log(`Added 'merged' label to issue #${issueNumber}.`);
+              } catch (e) {
+                console.log(`Failed to add 'merged' label: ${e.message}`);
+              }
+            } else {
+              console.log("No linked issue found in the Pull Request body.");
+            }
