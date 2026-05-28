@@ -12,7 +12,6 @@ import {
   Key,
   Moon,
   RefreshCw,
-  Send,
   Settings,
   Sparkles,
   Sun,

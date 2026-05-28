@@ -7,7 +7,12 @@ export interface ValidationError {
   message: string
 }
 
-export function validatePinpointPuzzle(key: string, puzzle: any): string[] {
+interface RawPinpointPuzzle {
+  category?: unknown
+  clues?: unknown
+}
+
+export function validatePinpointPuzzle(key: string, puzzle: unknown): string[] {
   const errors: string[] = []
 
   // Validate Key
@@ -22,21 +27,23 @@ export function validatePinpointPuzzle(key: string, puzzle: any): string[] {
     return errors
   }
 
+  const p = puzzle as RawPinpointPuzzle
+
   // Validate category
-  if (typeof puzzle.category !== "string" || puzzle.category.trim() === "") {
+  if (typeof p.category !== "string" || p.category.trim() === "") {
     errors.push("Property 'category' must be a non-empty string.")
   }
 
   // Validate clues
-  if (!Array.isArray(puzzle.clues)) {
+  if (!Array.isArray(p.clues)) {
     errors.push("Property 'clues' must be an array.")
   } else {
-    if (puzzle.clues.length !== 5) {
+    if (p.clues.length !== 5) {
       errors.push(
-        `Property 'clues' must contain exactly 5 clues. Got: ${puzzle.clues.length}`
+        `Property 'clues' must contain exactly 5 clues. Got: ${p.clues.length}`
       )
     }
-    puzzle.clues.forEach((clue: any, index: number) => {
+    p.clues.forEach((clue: unknown, index: number) => {
       if (typeof clue !== "string" || clue.trim() === "") {
         errors.push(`Clue at index ${index} must be a non-empty string.`)
       }
@@ -46,7 +53,17 @@ export function validatePinpointPuzzle(key: string, puzzle: any): string[] {
   return errors
 }
 
-export function validateCrossclimbPuzzle(key: string, puzzle: any): string[] {
+interface RawCrossclimbPuzzle {
+  topWord?: unknown
+  bottomWord?: unknown
+  clues?: unknown
+  answers?: unknown
+}
+
+export function validateCrossclimbPuzzle(
+  key: string,
+  puzzle: unknown
+): string[] {
   const errors: string[] = []
 
   // Validate Key
@@ -61,29 +78,28 @@ export function validateCrossclimbPuzzle(key: string, puzzle: any): string[] {
     return errors
   }
 
+  const p = puzzle as RawCrossclimbPuzzle
+
   // Validate topWord
-  if (typeof puzzle.topWord !== "string" || !/^[A-Z]+$/.test(puzzle.topWord)) {
+  if (typeof p.topWord !== "string" || !/^[A-Z]+$/.test(p.topWord)) {
     errors.push("Property 'topWord' must be an uppercase alphabetic string.")
   }
 
   // Validate bottomWord
-  if (
-    typeof puzzle.bottomWord !== "string" ||
-    !/^[A-Z]+$/.test(puzzle.bottomWord)
-  ) {
+  if (typeof p.bottomWord !== "string" || !/^[A-Z]+$/.test(p.bottomWord)) {
     errors.push("Property 'bottomWord' must be an uppercase alphabetic string.")
   }
 
   // Validate clues
-  if (!Array.isArray(puzzle.clues)) {
+  if (!Array.isArray(p.clues)) {
     errors.push("Property 'clues' must be an array.")
   } else {
-    if (puzzle.clues.length !== 5) {
+    if (p.clues.length !== 5) {
       errors.push(
-        `Property 'clues' must contain exactly 5 clues. Got: ${puzzle.clues.length}`
+        `Property 'clues' must contain exactly 5 clues. Got: ${p.clues.length}`
       )
     }
-    puzzle.clues.forEach((clue: any, index: number) => {
+    p.clues.forEach((clue: unknown, index: number) => {
       if (typeof clue !== "string" || clue.trim() === "") {
         errors.push(`Clue at index ${index} must be a non-empty string.`)
       }
@@ -92,17 +108,17 @@ export function validateCrossclimbPuzzle(key: string, puzzle: any): string[] {
 
   // Validate answers
   let answersValid = true
-  if (!Array.isArray(puzzle.answers)) {
+  if (!Array.isArray(p.answers)) {
     errors.push("Property 'answers' must be an array.")
     answersValid = false
   } else {
-    if (puzzle.answers.length !== 5) {
+    if (p.answers.length !== 5) {
       errors.push(
-        `Property 'answers' must contain exactly 5 answers. Got: ${puzzle.answers.length}`
+        `Property 'answers' must contain exactly 5 answers. Got: ${p.answers.length}`
       )
       answersValid = false
     }
-    puzzle.answers.forEach((ans: any, index: number) => {
+    p.answers.forEach((ans: unknown, index: number) => {
       if (typeof ans !== "string" || !/^[A-Z]+$/.test(ans)) {
         errors.push(
           `Answer at index ${index} must be an uppercase alphabetic string. Got: "${ans}"`
@@ -115,12 +131,12 @@ export function validateCrossclimbPuzzle(key: string, puzzle: any): string[] {
   // Word Ladder Validation
   if (
     answersValid &&
-    typeof puzzle.topWord === "string" &&
-    typeof puzzle.bottomWord === "string"
+    typeof p.topWord === "string" &&
+    typeof p.bottomWord === "string"
   ) {
-    const topWord = puzzle.topWord
-    const bottomWord = puzzle.bottomWord
-    const answers = puzzle.answers as string[]
+    const topWord = p.topWord
+    const bottomWord = p.bottomWord
+    const answers = p.answers as string[]
     const ladder = [topWord, ...answers, bottomWord]
 
     // Check lengths match
@@ -171,9 +187,10 @@ export function checkFileFormat(filePath: string): string[] {
     }
     const rawContent = fs.readFileSync(filePath, "utf8")
     JSON.parse(rawContent)
-  } catch (err: any) {
+  } catch (err) {
+    const errMsg = err instanceof Error ? err.message : String(err)
     errors.push(
-      `JSON structure or parsing error in ${path.basename(filePath)}: ${err.message}`
+      `JSON structure or parsing error in ${path.basename(filePath)}: ${errMsg}`
     )
   }
   return errors

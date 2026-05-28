@@ -13,8 +13,14 @@ export interface CrossclimbPuzzle {
 }
 
 export async function fetchRegistry(
+  game: "pinpoint"
+): Promise<Record<string, PinpointPuzzle>>
+export async function fetchRegistry(
+  game: "crossclimb"
+): Promise<Record<string, CrossclimbPuzzle>>
+export async function fetchRegistry(
   game: "pinpoint" | "crossclimb"
-): Promise<Record<string, any>> {
+): Promise<Record<string, PinpointPuzzle | CrossclimbPuzzle>> {
   if (
     typeof window !== "undefined" &&
     typeof chrome !== "undefined" &&

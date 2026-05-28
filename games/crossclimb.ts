@@ -1,6 +1,10 @@
 import { askAI } from "./ai"
 import { BaseSolver } from "./base"
-import { fetchRegistry, findCrossclimbAnswer } from "./registry"
+import {
+  fetchRegistry,
+  findCrossclimbAnswer,
+  type CrossclimbPuzzle
+} from "./registry"
 
 export class CrossclimbSolver extends BaseSolver {
   readonly name = "Crossclimb"
@@ -17,8 +21,7 @@ export class CrossclimbSolver extends BaseSolver {
   async solve(): Promise<void> {
     console.log("[Crossclimb] Starting Crossclimb solver...")
 
-    let registry: Record<string, any> = {}
-    let matchedPuzzle: any
+    let registry: Record<string, CrossclimbPuzzle> = {}
 
     try {
       console.log("[Crossclimb] Loading daily answers registry...")
@@ -148,7 +151,7 @@ export class CrossclimbSolver extends BaseSolver {
       const maxSolveAttempts = 5
 
       // Check the pre-solved answers registry first
-      matchedPuzzle = findCrossclimbAnswer(registry, clues)
+      const matchedPuzzle = findCrossclimbAnswer(registry, clues)
       let usedRegistry = false
 
       if (

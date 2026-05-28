@@ -1,6 +1,7 @@
 import * as fs from "fs"
 import * as path from "path"
 
+import type { CrossclimbPuzzle, PinpointPuzzle } from "../games/registry"
 import {
   validateCrossclimbPuzzle,
   validatePinpointPuzzle
@@ -9,7 +10,7 @@ import {
 interface ParseResult {
   game: "pinpoint" | "crossclimb"
   puzzleId: string
-  puzzleData: any
+  puzzleData: PinpointPuzzle | CrossclimbPuzzle
 }
 
 export function parseIssueBody(body: string): Record<string, string> {
@@ -148,7 +149,7 @@ function runProcessor() {
       `${game}.json`
     )
 
-    let registry: Record<string, any> = {}
+    let registry: Record<string, PinpointPuzzle | CrossclimbPuzzle> = {}
     if (fs.existsSync(registryFilePath)) {
       registry = JSON.parse(fs.readFileSync(registryFilePath, "utf8"))
     }
@@ -180,7 +181,7 @@ function runProcessor() {
     registry[puzzleId] = puzzleData
 
     // Sort registry keys if they are numeric so the file stays sorted
-    const sortedRegistry: Record<string, any> = {}
+    const sortedRegistry: Record<string, PinpointPuzzle | CrossclimbPuzzle> = {}
     const keys = Object.keys(registry).sort((a, b) => {
       const aNum = parseInt(a, 10)
       const bNum = parseInt(b, 10)
@@ -213,8 +214,9 @@ function runProcessor() {
     writeSummary(summaryContent)
     console.log(`Success: Appended and validated ${game} puzzle #${puzzleId}`)
     process.exit(0)
-  } catch (err: any) {
-    const errorMsg = `### ❌ Processing Error\n\nAn unexpected error occurred while parsing your submission:\n- **${err.message}**\n\n_Ensure you filled out the form fields correctly._`
+  } catch (err) {
+    const errMsg = err instanceof Error ? err.message : String(err)
+    const errorMsg = `### ❌ Processing Error\n\nAn unexpected error occurred while parsing your submission:\n- **${errMsg}**\n\n_Ensure you filled out the form fields correctly._`
     writeSummary(errorMsg)
     console.error("Unexpected processor error:", err)
     process.exit(1)

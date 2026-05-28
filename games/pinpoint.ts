@@ -1,6 +1,10 @@
 import { askAI } from "./ai"
 import { BaseSolver } from "./base"
-import { fetchRegistry, findPinpointAnswer } from "./registry"
+import {
+  fetchRegistry,
+  findPinpointAnswer,
+  type PinpointPuzzle
+} from "./registry"
 
 export class PinpointSolver extends BaseSolver {
   readonly name = "Pinpoint"
@@ -18,7 +22,7 @@ export class PinpointSolver extends BaseSolver {
   async solve(): Promise<void> {
     console.log("[Pinpoint] Starting progressive Pinpoint solver...")
 
-    let registry: Record<string, any> = {}
+    let registry: Record<string, PinpointPuzzle> = {}
     let triedRegistryGuess = false
 
     try {
