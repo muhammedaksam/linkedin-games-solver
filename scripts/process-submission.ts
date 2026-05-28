@@ -153,6 +153,29 @@ function runProcessor() {
       registry = JSON.parse(fs.readFileSync(registryFilePath, "utf8"))
     }
 
+    // Check if the puzzle already exists and matches exactly
+    const exists = registry[puzzleId] !== undefined
+    if (exists) {
+      const existingDataStr = JSON.stringify(registry[puzzleId])
+      const newDataStr = JSON.stringify(puzzleData)
+      if (existingDataStr === newDataStr) {
+        const duplicateMsg =
+          `### ⚠️ Duplicate Submission\n\n` +
+          `The puzzle **${game} #${puzzleId}** is already present in our registry with the exact same clues and answers.\n\n` +
+          `No updates are needed. This submission has been marked as a duplicate and will be closed automatically. Thank you for your support! 🚀`
+
+        fs.writeFileSync(
+          "vars.env",
+          `IS_DUPLICATE=true\nGAME=${game}\nPUZZLE_ID=${puzzleId}\n`
+        )
+        writeSummary(duplicateMsg)
+        console.log(
+          `Duplicate: ${game} puzzle #${puzzleId} is already in the registry with identical content.`
+        )
+        process.exit(0)
+      }
+    }
+
     // Append / overwrite key
     registry[puzzleId] = puzzleData
 

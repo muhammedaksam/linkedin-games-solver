@@ -48,6 +48,14 @@ jobs:
             const fs = require('fs');
             const summary = fs.readFileSync('submission-summary.md', 'utf8');
 
+            let isDuplicate = false;
+            if (fs.existsSync('vars.env')) {
+              const envContent = fs.readFileSync('vars.env', 'utf8');
+              if (envContent.includes('IS_DUPLICATE=true')) {
+                isDuplicate = true;
+              }
+            }
+
             // Add comment on the issue
             await github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -56,13 +64,32 @@ jobs:
               body: summary
             });
 
-            // Add pending-review label
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              labels: ['pending-review']
-            });
+            if (isDuplicate) {
+              // Add duplicate label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['duplicate']
+              });
+
+              // Close the duplicate issue
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                state: 'closed',
+                state_reason: 'not_planned'
+              });
+            } else {
+              // Add pending-review label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['pending-review']
+              });
+            }
 
       - name: Create Pull Request
         if: steps.process.outcome == 'success'
@@ -70,6 +97,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           source vars.env
+          if [ "$IS_DUPLICATE" = "true" ]; then
+            echo "Skipping Pull Request creation for duplicate entry."
+            exit 0
+          fi
           BRANCH_NAME="update-registry-$GAME-$PUZZLE_ID"
 
           git config --global user.name "github-actions[bot]"
