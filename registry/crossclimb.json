@@ -1,4 +1,22 @@
 {
+  "756": {
+    "clues": [
+      "Hide underground, as a dog does with a bone",
+      "Overcook to the point of inedibility",
+      "Where calves might be raised",
+      "Sound the alarm",
+      "Threadbare; frayed"
+    ],
+    "answers": [
+      "BURY",
+      "BURN",
+      "BARN",
+      "WARN",
+      "WORN"
+    ],
+    "topWord": "BUSY",
+    "bottomWord": "WORK"
+  },
   "757": {
     "clues": [
       "Jabs with one's finger",
@@ -7,7 +25,13 @@
       "Exposes, as one's emotions or teeth",
       "Is interested"
     ],
-    "answers": ["POKES", "PORES", "BORES", "BARES", "CARES"],
+    "answers": [
+      "POKES",
+      "PORES",
+      "BORES",
+      "BARES",
+      "CARES"
+    ],
     "topWord": "POKER",
     "bottomWord": "CARDS"
   },
@@ -19,7 +43,13 @@
       "Very tight connection",
       "Pleasant, as memories"
     ],
-    "answers": ["BUNK", "BANK", "BAND", "BOND", "FOND"],
+    "answers": [
+      "BUNK",
+      "BANK",
+      "BAND",
+      "BOND",
+      "FOND"
+    ],
     "topWord": "JUNK",
     "bottomWord": "FOOD"
   }
