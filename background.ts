@@ -337,15 +337,24 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   }
 })
 
+// Safe helper to dispatch messages to content script, catching connection errors gracefully
+async function safeSendMessage(tabId: number, message: unknown) {
+  try {
+    await chrome.tabs.sendMessage(tabId, message)
+  } catch (err) {
+    console.warn("[Messaging] Tab script not ready or responsive:", err)
+  }
+}
+
 // Handle Context Menu clicks
 if (typeof chrome !== "undefined" && chrome.contextMenus) {
   chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     if (!tab || !tab.id) return
 
     if (info.menuItemId === "solve-active-game-menu") {
-      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "full" })
+      await safeSendMessage(tab.id, { action: "solve", mode: "full" })
     } else if (info.menuItemId === "get-single-hint-menu") {
-      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "hint" })
+      await safeSendMessage(tab.id, { action: "solve", mode: "hint" })
     } else if (info.menuItemId === "view-results-menu") {
       const gameInfo = getGameFromUrl(tab.url || "")
       if (gameInfo) {
@@ -552,9 +561,9 @@ chrome.commands.onCommand.addListener(async (command) => {
     if (!tab || !tab.id || !tab.url?.includes("linkedin.com/games/")) return
 
     if (command === "solve-active-game") {
-      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "full" })
+      await safeSendMessage(tab.id, { action: "solve", mode: "full" })
     } else if (command === "get-single-hint") {
-      chrome.tabs.sendMessage(tab.id, { action: "solve", mode: "hint" })
+      await safeSendMessage(tab.id, { action: "solve", mode: "hint" })
     }
   } catch (err) {
     console.error("[Commands] Error dispatching hotkey command message:", err)
