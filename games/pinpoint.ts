@@ -1,10 +1,10 @@
-import { askAI } from "./ai"
-import { BaseSolver } from "./base"
+import { askAI } from "~games/ai"
+import { BaseSolver } from "~games/base"
 import {
   fetchRegistry,
   findPinpointAnswer,
   type PinpointPuzzle
-} from "./registry"
+} from "~games/registry"
 
 export class PinpointSolver extends BaseSolver {
   readonly name = "Pinpoint"

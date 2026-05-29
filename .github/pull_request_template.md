@@ -43,4 +43,4 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 ## 📸 Screenshots or Screen Recordings (Optional)
 
-*If applicable, add screenshots or recordings to help demonstrate your changes visually (highly recommended for UI/UX modifications).*
+_If applicable, add screenshots or recordings to help demonstrate your changes visually (highly recommended for UI/UX modifications)._

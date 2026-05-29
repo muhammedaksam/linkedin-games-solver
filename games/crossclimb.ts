@@ -1,10 +1,10 @@
-import { askAI } from "./ai"
-import { BaseSolver } from "./base"
+import { askAI } from "~games/ai"
+import { BaseSolver } from "~games/base"
 import {
   fetchRegistry,
   findCrossclimbAnswer,
   type CrossclimbPuzzle
-} from "./registry"
+} from "~games/registry"
 
 export class CrossclimbSolver extends BaseSolver {
   readonly name = "Crossclimb"

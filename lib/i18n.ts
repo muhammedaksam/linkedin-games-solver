@@ -11,15 +11,15 @@ import {
   zhTW
 } from "react-day-picker/locale"
 
-import deMessages from "../locales/de/messages.json"
-import enMessages from "../locales/en/messages.json"
-import esMessages from "../locales/es/messages.json"
-import frMessages from "../locales/fr/messages.json"
-import pt_BRMessages from "../locales/pt_BR/messages.json"
-import pt_PTMessages from "../locales/pt_PT/messages.json"
-import trMessages from "../locales/tr/messages.json"
-import zh_CNMessages from "../locales/zh_CN/messages.json"
-import zh_TWMessages from "../locales/zh_TW/messages.json"
+import deMessages from "~locales/de/messages.json"
+import enMessages from "~locales/en/messages.json"
+import esMessages from "~locales/es/messages.json"
+import frMessages from "~locales/fr/messages.json"
+import pt_BRMessages from "~locales/pt_BR/messages.json"
+import pt_PTMessages from "~locales/pt_PT/messages.json"
+import trMessages from "~locales/tr/messages.json"
+import zh_CNMessages from "~locales/zh_CN/messages.json"
+import zh_TWMessages from "~locales/zh_TW/messages.json"
 
 const localesData: Record<string, unknown> = {
   en: enMessages,

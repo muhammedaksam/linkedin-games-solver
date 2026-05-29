@@ -1,7 +1,8 @@
 /// <reference types="dom-chromium-ai" />
+import { sendToBackground } from "@plasmohq/messaging"
 import { Storage } from "@plasmohq/storage"
 
-import { secureStorage } from "~/lib/storage"
+import { secureStorage } from "~lib/storage"
 
 const storage = new Storage({ area: "local" })
 
@@ -48,33 +49,23 @@ export async function getAIConfig(): Promise<AIConfig> {
 export async function askAI(prompt: string, jsonMode = false): Promise<string> {
   // If running inside the Content Script context (which has window/document defined),
   // route the API request safely through the Background SW to bypass LinkedIn's strict CSP.
-  if (
-    typeof window !== "undefined" &&
-    typeof chrome !== "undefined" &&
-    chrome.runtime &&
-    chrome.runtime.sendMessage
-  ) {
-    return new Promise((resolve, reject) => {
-      chrome.runtime.sendMessage(
-        { action: "askAI", prompt, jsonMode },
-        (response) => {
-          if (chrome.runtime.lastError) {
-            reject(new Error(chrome.runtime.lastError.message))
-            return
-          }
-          if (response?.success) {
-            resolve(response.text)
-          } else {
-            reject(
-              new Error(
-                response?.error ||
-                  "AI call from Background SW returned no response."
-              )
-            )
-          }
-        }
-      )
-    })
+  if (typeof window !== "undefined") {
+    try {
+      const response = await sendToBackground({
+        name: "askAI",
+        body: { prompt, jsonMode }
+      })
+      if (response?.success) {
+        return response.text
+      } else {
+        throw new Error(
+          response?.error || "AI call from Background SW returned no response."
+        )
+      }
+    } catch (err: unknown) {
+      const errMsg = err instanceof Error ? err.message : String(err)
+      throw new Error(errMsg, { cause: err })
+    }
   }
 
   const config = await getAIConfig()

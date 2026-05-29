@@ -12,18 +12,18 @@ import {
 } from "lucide-react"
 import React, { useCallback, useEffect, useState } from "react"
 
-import "./dashboard.css"
+import "~tabs/dashboard.css"
 
-import { Button } from "~/components/ui/button"
-import { Input } from "~/components/ui/input"
+import { Button } from "~components/ui/button"
+import { Input } from "~components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "~/components/ui/select"
-import { getMessage } from "~/lib/i18n"
+} from "~components/ui/select"
+import { getMessage } from "~lib/i18n"
 
 interface LogEntry {
   type: string

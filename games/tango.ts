@@ -1,5 +1,5 @@
-import { BaseSolver } from "./base"
-import { fetchReactBoardState, type ReactTangoBoard } from "./react-bridge"
+import { BaseSolver } from "~games/base"
+import { fetchReactBoardState, type ReactTangoBoard } from "~games/react-bridge"
 
 interface EdgeConstraint {
   a: number

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { QueensSolver } from "./queens"
+import { QueensSolver } from "~games/queens"
 
 describe("Queens Solver Engine", () => {
   it("should successfully solve a standard 8x8 Queens board", () => {

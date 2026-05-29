@@ -1,6 +1,5 @@
 import { Storage } from "@plasmohq/storage"
 
-import { askAI } from "~games/ai"
 import { trackEventDirect } from "~lib/analytics"
 
 interface SolveRecord {
@@ -402,7 +401,7 @@ const calculateStreak = (
 // Global cached streak value so we can fall back to it when resetting solverStatus
 let cachedStreakValue = 0
 
-const updateActionBadge = async (
+export const updateActionBadge = async (
   streakValue?: number,
   status?: "solving" | "idle",
   tabId?: number
@@ -529,80 +528,6 @@ chrome.notifications.onClicked.addListener((id) => {
 chrome.notifications.onButtonClicked.addListener((id, index) => {
   if (id === "streak-protector-reminder" && index === 0) {
     handleNotificationClick()
-  }
-})
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === "trackEvent") {
-    const { name, params } = message.event || {}
-    if (name) {
-      trackEventDirect(name, params).catch(console.error)
-    }
-    sendResponse({ success: true })
-    return true
-  }
-
-  if (message.action === "fetchRegistry") {
-    const game = message.game
-    trackEventDirect("fetch_registry", { game }).catch(console.error)
-    const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${game}.json`
-    fetch(registryUrl)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`)
-        }
-        return res.json()
-      })
-      .then((data) => {
-        sendResponse({ success: true, data })
-      })
-      .catch((error) => {
-        const errMsg = error instanceof Error ? error.message : String(error)
-        sendResponse({ success: false, error: errMsg })
-      })
-    return true // Keep channel open for async response
-  }
-
-  if (message.action === "askAI") {
-    trackEventDirect("ask_ai", { promptLength: message.prompt?.length }).catch(
-      console.error
-    )
-    askAI(message.prompt, message.jsonMode)
-      .then((text) => {
-        sendResponse({ success: true, text })
-      })
-      .catch((error) => {
-        const errMsg = error instanceof Error ? error.message : String(error)
-        sendResponse({ success: false, error: errMsg })
-      })
-    return true // Keep channel open for async response
-  }
-
-  if (message.action === "captureTab") {
-    const windowId = sender.tab?.windowId || chrome.windows.WINDOW_ID_CURRENT
-    chrome.tabs.captureVisibleTab(
-      windowId,
-      { format: "jpeg", quality: 85 },
-      (dataUrl) => {
-        if (chrome.runtime.lastError) {
-          sendResponse({
-            success: false,
-            error: chrome.runtime.lastError.message
-          })
-        } else {
-          sendResponse({ success: true, dataUrl })
-        }
-      }
-    )
-    return true // Keep channel open
-  }
-
-  if (message.action === "solverStatus") {
-    updateActionBadge(undefined, message.status, sender.tab?.id).catch(
-      console.error
-    )
-    sendResponse({ success: true })
-    return true
   }
 })
 

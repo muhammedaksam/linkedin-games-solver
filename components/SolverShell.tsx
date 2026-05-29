@@ -23,33 +23,33 @@ import { useCallback, useEffect, useState } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
-import { DisclaimerFooter } from "~/components/disclaimer-footer"
-import { LanguageSwitcher } from "~/components/LanguageSwitcher"
-import { Button } from "~/components/ui/button"
+import { DisclaimerFooter } from "~components/disclaimer-footer"
+import { LanguageSwitcher } from "~components/LanguageSwitcher"
+import { Button } from "~components/ui/button"
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger
-} from "~/components/ui/context-menu"
-import { Input } from "~/components/ui/input"
+} from "~components/ui/context-menu"
+import { Input } from "~components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "~/components/ui/select"
-import { trackEvent } from "~/lib/analytics"
-import { GAMES_CONFIG } from "~/lib/games-config"
-import { localStorage, secureStorage, syncStorage } from "~/lib/storage"
+} from "~components/ui/select"
+import { trackEvent } from "~lib/analytics"
+import { GAMES_CONFIG } from "~lib/games-config"
+import { getMessage } from "~lib/i18n"
+import { localStorage, secureStorage, syncStorage } from "~lib/storage"
 import {
   cn,
   getLocalDateString,
   getPuzzleNumber,
   type SolveHistory
-} from "~/lib/utils"
-import { getMessage } from "~lib/i18n"
+} from "~lib/utils"
 
 const PROVIDER_MODELS: Record<string, { label: string; value: string }[]> = {
   gemini: [

@@ -1,5 +1,8 @@
-import { BaseSolver } from "./base"
-import { fetchReactBoardState, type ReactQueensBoard } from "./react-bridge"
+import { BaseSolver } from "~games/base"
+import {
+  fetchReactBoardState,
+  type ReactQueensBoard
+} from "~games/react-bridge"
 
 export class QueensSolver extends BaseSolver {
   readonly name = "Queens"

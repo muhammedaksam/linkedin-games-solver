@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { TangoSolver } from "./tango"
+import { TangoSolver } from "~games/tango"
 
 describe("Tango Solver Engine", () => {
   it("should successfully solve a standard 6x6 grid with edge constraints", () => {

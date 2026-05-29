@@ -14,9 +14,11 @@ import type {
 } from "plasmo"
 import { useEffect, useState } from "react"
 
+import { sendToBackground } from "@plasmohq/messaging"
 import { useStorage } from "@plasmohq/storage/hook"
 
 import { detectActiveSolver } from "~games"
+import { trackEvent } from "~lib/analytics"
 import { getMessage } from "~lib/i18n"
 import { syncStorage as storage } from "~lib/storage"
 import {
@@ -408,14 +410,11 @@ setInterval(checkVisitedGameSolved, 1500)
 let globalSolving = false
 
 function updateSolverStatus(status: "solving" | "idle") {
-  if (
-    typeof chrome !== "undefined" &&
-    chrome.runtime &&
-    chrome.runtime.sendMessage
-  ) {
-    chrome.runtime
-      .sendMessage({ action: "solverStatus", status })
-      .catch(() => {})
+  if (typeof window !== "undefined") {
+    sendToBackground({
+      name: "solverStatus",
+      body: { status }
+    }).catch(() => {})
   }
 }
 
@@ -508,21 +507,11 @@ const messageListener = (
           `[LinkedIn Games Solver] Solver ${currentActive.name} completed successfully.`
         )
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-        if (typeof chrome !== "undefined" && chrome.runtime?.sendMessage) {
-          chrome.runtime
-            .sendMessage({
-              action: "trackEvent",
-              event: {
-                name: "solve_completed",
-                params: {
-                  game: currentActive.name.toLowerCase(),
-                  mode,
-                  duration_seconds: durationSeconds
-                }
-              }
-            })
-            .catch(() => {})
-        }
+        trackEvent("solve_completed", {
+          game: currentActive.name.toLowerCase(),
+          mode,
+          duration_seconds: durationSeconds
+        }).catch(() => {})
         if (mode !== "hint") {
           await saveGameCompleted(
             currentActive.name.toLowerCase(),

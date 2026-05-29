@@ -1,11 +1,11 @@
-import { BaseSolver } from "./base"
-import { CrossclimbSolver } from "./crossclimb"
-import { PatchesSolver } from "./patches"
-import { PinpointSolver } from "./pinpoint"
-import { QueensSolver } from "./queens"
-import { SudokuSolver } from "./sudoku"
-import { TangoSolver } from "./tango"
-import { ZipSolver } from "./zip"
+import { BaseSolver } from "~games/base"
+import { CrossclimbSolver } from "~games/crossclimb"
+import { PatchesSolver } from "~games/patches"
+import { PinpointSolver } from "~games/pinpoint"
+import { QueensSolver } from "~games/queens"
+import { SudokuSolver } from "~games/sudoku"
+import { TangoSolver } from "~games/tango"
+import { ZipSolver } from "~games/zip"
 
 // List of all solvers adhering to the solver principal
 export const SOLVERS: BaseSolver[] = [

@@ -23,24 +23,23 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
-import { DisclaimerFooter } from "~/components/disclaimer-footer"
-import { GAMES_CONFIG } from "~/lib/games-config"
-import { localStorage, secureStorage, syncStorage } from "~/lib/storage"
-import { cn } from "~/lib/utils"
-
-import { Button } from "../components/ui/button"
-import { Calendar } from "../components/ui/calendar"
-import { Checkbox } from "../components/ui/checkbox"
-import { Input } from "../components/ui/input"
+import { DisclaimerFooter } from "~components/disclaimer-footer"
+import { Button } from "~components/ui/button"
+import { Calendar } from "~components/ui/calendar"
+import { Checkbox } from "~components/ui/checkbox"
+import { Input } from "~components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "../components/ui/select"
+} from "~components/ui/select"
+import { GAMES_CONFIG } from "~lib/games-config"
+import { localStorage, secureStorage, syncStorage } from "~lib/storage"
+import { cn } from "~lib/utils"
 
-import "./dashboard.css"
+import "~tabs/dashboard.css"
 
 import { getMessage, locale } from "~lib/i18n"
 

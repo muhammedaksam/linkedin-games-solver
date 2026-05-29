@@ -1,4 +1,4 @@
-import { BaseSolver } from "./base"
+import { BaseSolver } from "~games/base"
 
 interface RegionInfo {
   map: number[][]

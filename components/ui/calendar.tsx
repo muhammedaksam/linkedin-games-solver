@@ -10,9 +10,9 @@ import {
   type DayButton
 } from "react-day-picker"
 
-import { Button, buttonVariants } from "~/components/ui/button"
-import { getActiveLocale, getDayPickerLocale } from "~/lib/i18n"
-import { cn } from "~/lib/utils"
+import { Button, buttonVariants } from "~components/ui/button"
+import { getActiveLocale, getDayPickerLocale } from "~lib/i18n"
+import { cn } from "~lib/utils"
 
 function Calendar({
   className,

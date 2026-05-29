@@ -1,5 +1,5 @@
-import { BaseSolver } from "./base"
-import { fetchReactBoardState } from "./react-bridge"
+import { BaseSolver } from "~games/base"
+import { fetchReactBoardState } from "~games/react-bridge"
 
 export class ZipSolver extends BaseSolver {
   readonly name = "Zip"

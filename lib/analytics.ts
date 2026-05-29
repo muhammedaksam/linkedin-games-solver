@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { syncStorage } from "./storage"
+import { sendToBackground } from "@plasmohq/messaging"
+
+import { syncStorage } from "~lib/storage"
 
 const GA_ENDPOINT = "https://www.google-analytics.com/mp/collect"
 const gtagId = process.env.PLASMO_PUBLIC_GTAG_ID
@@ -80,7 +81,7 @@ async function getOrCreateSessionId(): Promise<string> {
  */
 export async function trackEventDirect(
   name: string,
-  params: Record<string, any> = {}
+  params: Record<string, unknown> = {}
 ) {
   // Check if environment variables are set
   if (!gtagId || !secretApiKey) {
@@ -131,7 +132,9 @@ export async function trackEventDirect(
       })
     })
 
-    console.log(`[Analytics] GA4 server response status: ${response.status} (${response.statusText})`)
+    console.log(
+      `[Analytics] GA4 server response status: ${response.status} (${response.statusText})`
+    )
   } catch (e) {
     console.error("[Analytics] GA4 event dispatch exception:", e)
   }
@@ -143,19 +146,17 @@ export async function trackEventDirect(
  */
 export async function trackEvent(
   name: string,
-  params: Record<string, any> = {}
+  params: Record<string, unknown> = {}
 ) {
   if (typeof window !== "undefined") {
-    // We are in UI context (Popup/Sidepanel) or Content Script, delegate via chrome messages
-    if (typeof chrome !== "undefined" && chrome.runtime?.sendMessage) {
-      chrome.runtime
-        .sendMessage({
-          action: "trackEvent",
-          event: { name, params }
-        })
-        .catch(() => {
-          // Suppress message channel disconnect errors if background SW is inactive
-        })
+    // We are in UI context (Popup/Sidepanel) or Content Script, delegate via Plasmo Messages
+    try {
+      await sendToBackground({
+        name: "trackEvent",
+        body: { name, params }
+      })
+    } catch {
+      // Suppress background SW inactivity or port errors
     }
   } else {
     // We are in background service worker context, run directly

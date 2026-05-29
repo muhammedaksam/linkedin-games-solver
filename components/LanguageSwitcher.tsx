@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-import { Button } from "~/components/ui/button"
+import { Button } from "~components/ui/button"
 import { getActiveLocale, setActiveLocale, SUPPORTED_LOCALES } from "~lib/i18n"
 import { cn } from "~lib/utils"
 

@@ -1,6 +1,6 @@
 # 🤝 Contributing to LinkedIn Games Solver
 
-First off, thank you for taking the time to contribute! 🎉 
+First off, thank you for taking the time to contribute! 🎉
 
 Projects like this thrive because of people like you. Whether you are fixing a bug, adding support for a new game, optimizing our React Fiber bridge, or simply contributing daily puzzle answers to our registry, your help is incredibly valuable.
 
@@ -33,6 +33,7 @@ For trivia-based Ember.js games like **Pinpoint** and **Crossclimb**, we maintai
 We offer three easy ways to contribute today's answers:
 
 ### 1️⃣ Method 1: 1-Click Submit via Extension (Recommended)
+
 1. Play the game on LinkedIn with the extension active.
 2. Open the extension popup or side panel, and click on the **Debug** tab.
 3. Click the **"Submit Answer"** button under today's puzzle state.
@@ -40,16 +41,20 @@ We offer three easy ways to contribute today's answers:
 5. Our CI/CD pipeline will automatically parse, validate, and merge your submission, crediting you as a contributor.
 
 ### 2️⃣ Method 2: Manual Issue Template
+
 1. Go to our repository's [Issues](../../issues) tab and click **New Issue**.
 2. Select the **"Submit Daily Puzzle Answers"** issue template.
 3. Copy-paste the clues and answers from your daily board and submit.
 
 ### 3️⃣ Method 3: Direct Pull Request (PR)
+
 If you prefer adding the JSON entry directly:
+
 1. Format your entry according to the existing schemas in:
    - **[`registry/crossclimb.json`](registry/crossclimb.json)**
    - **[`registry/pinpoint.json`](registry/pinpoint.json)**
 2. Save the file and validate your changes locally:
+
    ```bash
    # Run the registry integrity validation script
    pnpm exec tsx scripts/validate-registry.ts
@@ -57,6 +62,7 @@ If you prefer adding the JSON entry directly:
    # Run validation unit tests
    pnpm exec vitest run scripts/validate-registry.test.ts
    ```
+
 3. Commit your changes and open a Pull Request.
 
 ---
@@ -66,10 +72,12 @@ If you prefer adding the JSON entry directly:
 To modify code, you'll need to set up the extension on your machine.
 
 ### Prerequisites
+
 - **Node.js** (v20 or higher is recommended)
 - **pnpm** (preferred package manager)
 
 ### 1. Clone & Install
+
 ```bash
 # Clone the repository
 git clone https://github.com/muhammedaksam/linkedin-games-solver.git
@@ -80,19 +88,25 @@ pnpm install
 ```
 
 ### 2. Configure Environment Variables
+
 Copy the template configuration file to `.env.local` to enable local API integrations:
+
 ```bash
 cp .env.example .env.local
 ```
+
 If you are developing telemetry features or AI solvers, populate the environment variables. Otherwise, they will fail safely or skip gracefully during development.
 
 ### 3. Start the Development Server
+
 ```bash
 pnpm dev
 ```
+
 This launches Plasmo's hot-reloading development server.
 
 ### 4. Load the Extension in Chrome
+
 1. Open Google Chrome and navigate to `chrome://extensions/`.
 2. Toggle the **Developer mode** switch in the top-right corner.
 3. Click **Load unpacked** in the top-left corner.
@@ -133,7 +147,9 @@ Familiarize yourself with the project structure before writing code:
 To keep our codebase clean, maintainable, and robust, we enforce a strict linting, formatting, and testing workflow.
 
 ### 💅 Formatting and Linting
+
 We use **Prettier** and **ESLint** to enforce a uniform style.
+
 - **Auto-Fix Style and Lint issues**:
   ```bash
   pnpm fix
@@ -144,7 +160,9 @@ We use **Prettier** and **ESLint** to enforce a uniform style.
   ```
 
 ### 🧪 Writing and Running Tests
+
 We use **Vitest** for running our unit tests.
+
 - **Run all unit tests once**:
   ```bash
   pnpm test
@@ -155,6 +173,7 @@ We use **Vitest** for running our unit tests.
   ```
 
 ### 🧱 Framework Guidelines
+
 - **Chrome APIs**: Always coordinate asynchronous messaging via `chrome.runtime.sendMessage` and execute long-running requests or API operations (like GA4 logs) inside `background.ts` to bypass page CSP restrictions.
 - **React Components**: Leverage tailwind utilities and classes. Follow [shadcn/ui](https://ui.shadcn.com/) guidelines if introducing new interactive primitives.
 - **Strict Typing**: Avoid using `any`. Write robust TypeScript interfaces for both game states and internal runtime communication.

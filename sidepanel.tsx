@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 
-import "./popup.css"
+import "~popup.css"
 
-import { SolverShell } from "~/components/SolverShell"
+import { SolverShell } from "~components/SolverShell"
 
 function IndexSidePanel() {
   useEffect(() => {
