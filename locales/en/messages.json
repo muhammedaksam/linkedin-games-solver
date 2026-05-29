@@ -764,5 +764,17 @@
   },
   "contextMenuViewResults": {
     "message": "📊 View Results"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRY & PRIVACY",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "Send Anonymous Telemetry",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "Help improve the solver by sharing anonymous performance & usage metrics.",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
   }
 }

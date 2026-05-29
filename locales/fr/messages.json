@@ -764,5 +764,17 @@
   },
   "contextMenuViewResults": {
     "message": "📊 Voir les résultats"
+  },
+  "labelTelemetryTitle": {
+    "message": "TÉLÉMÉTRIE ET CONFIDENTIALITÉ",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "Envoyer la télémétrie anonyme",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "Aidez à améliorer le résolveur en partageant des mesures de performance et d'utilisation anonymes.",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
   }
 }

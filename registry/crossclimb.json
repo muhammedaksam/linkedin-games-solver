@@ -7,13 +7,7 @@
       "Put your hands together to show appreciation",
       "Beat, as a bird's wings"
     ],
-    "answers": [
-      "CLAY",
-      "CLAP",
-      "FLAP",
-      "FLOP",
-      "SLOP"
-    ],
+    "answers": ["CLAY", "CLAP", "FLAP", "FLOP", "SLOP"],
     "topWord": "PLAY",
     "bottomWord": "STOP"
   },
@@ -25,13 +19,7 @@
       "Insects that leave their hive to gather pollen",
       "Items in a golf bag"
     ],
-    "answers": [
-      "BETS",
-      "BEES",
-      "TEES",
-      "TENS",
-      "TENT"
-    ],
+    "answers": ["BETS", "BEES", "TEES", "TENS", "TENT"],
     "topWord": "BETA",
     "bottomWord": "TEST"
   },
@@ -43,13 +31,7 @@
       "Reddish-brown color, such as after iron oxidizes",
       "A trick intended to deceive someone"
     ],
-    "answers": [
-      "POST",
-      "LOST",
-      "LUST",
-      "RUST",
-      "RUSE"
-    ],
+    "answers": ["POST", "LOST", "LUST", "RUST", "RUSE"],
     "topWord": "POET",
     "bottomWord": "MUSE"
   },
@@ -61,13 +43,7 @@
       "Play a practical joke on",
       "What a pirate will make you walk"
     ],
-    "answers": [
-      "CRONE",
-      "CRANE",
-      "CRANK",
-      "PRANK",
-      "PLANK"
-    ],
+    "answers": ["CRONE", "CRANE", "CRANK", "PRANK", "PLANK"],
     "topWord": "DRONE",
     "bottomWord": "PLANE"
   },
@@ -79,13 +55,7 @@
       "They can show a tree's age",
       "Steps on a ladder"
     ],
-    "answers": [
-      "SINES",
-      "WINES",
-      "WINGS",
-      "RINGS",
-      "RUNGS"
-    ],
+    "answers": ["SINES", "WINES", "WINGS", "RINGS", "RUNGS"],
     "topWord": "SINUS",
     "bottomWord": "LUNGS"
   },
@@ -97,13 +67,7 @@
       "Emotion indicated by the emoji ❤️",
       "Not prerecorded, as a television program"
     ],
-    "answers": [
-      "NONE",
-      "DONE",
-      "DOVE",
-      "LOVE",
-      "LIVE"
-    ],
+    "answers": ["NONE", "DONE", "DOVE", "LOVE", "LIVE"],
     "topWord": "NINE",
     "bottomWord": "FIVE"
   },
@@ -115,13 +79,7 @@
       "Something that may be raised to ask or answer a question",
       "Spellcasting stick"
     ],
-    "answers": [
-      "NERD",
-      "HERD",
-      "HARD",
-      "HAND",
-      "WAND"
-    ],
+    "answers": ["NERD", "HERD", "HARD", "HAND", "WAND"],
     "topWord": "NEED",
     "bottomWord": "WANT"
   },
@@ -133,13 +91,7 @@
       "Wild pigs",
       "Vehicles that may use engines, sails, or oars to move forward"
     ],
-    "answers": [
-      "SCARE",
-      "SCARS",
-      "SOARS",
-      "BOARS",
-      "BOATS"
-    ],
+    "answers": ["SCARE", "SCARS", "SOARS", "BOARS", "BOATS"],
     "topWord": "SCARF",
     "bottomWord": "BOOTS"
   },
@@ -151,13 +103,7 @@
       "It plugs into your laptop (with \"power\")",
       "Any of the five parts forming a poker hand like a royal flush"
     ],
-    "answers": [
-      "FOOD",
-      "WOOD",
-      "WORD",
-      "CORD",
-      "CARD"
-    ],
+    "answers": ["FOOD", "WOOD", "WORD", "CORD", "CARD"],
     "topWord": "FOOT",
     "bottomWord": "CARE"
   },
@@ -169,13 +115,7 @@
       "Apple leftovers",
       "\"Here ___ the Sun\" by the Beatles, missing a word that means \"shows up"
     ],
-    "answers": [
-      "HONES",
-      "BONES",
-      "BORES",
-      "CORES",
-      "COMES"
-    ],
+    "answers": ["HONES", "BONES", "BORES", "CORES", "COMES"],
     "topWord": "HONEY",
     "bottomWord": "COMBS"
   },
@@ -187,13 +127,7 @@
       "Locations in a mall",
       "Brushes off an insect, like a fly"
     ],
-    "answers": [
-      "SKIES",
-      "SKIPS",
-      "SHIPS",
-      "SHOPS",
-      "SHOOS"
-    ],
+    "answers": ["SKIES", "SKIPS", "SHIPS", "SHOPS", "SHOOS"],
     "topWord": "SKIER",
     "bottomWord": "SHOOT"
   },
@@ -205,13 +139,7 @@
       "Using as a mode of transportation",
       "Doing a circus job training lions to perform"
     ],
-    "answers": [
-      "CASING",
-      "BASING",
-      "BAKING",
-      "TAKING",
-      "TAMING"
-    ],
+    "answers": ["CASING", "BASING", "BAKING", "TAKING", "TAMING"],
     "topWord": "CASINO",
     "bottomWord": "GAMING"
   },
@@ -223,13 +151,7 @@
       "Prepare food in the kitchen",
       "Chess piece that can castle"
     ],
-    "answers": [
-      "PARK",
-      "PORK",
-      "CORK",
-      "COOK",
-      "ROOK"
-    ],
+    "answers": ["PARK", "PORK", "CORK", "COOK", "ROOK"],
     "topWord": "DARK",
     "bottomWord": "ROOM"
   },
@@ -241,13 +163,7 @@
       "Appear on the horizon, perhaps ominously",
       "It's not all ___ and gloom, so stay optimistic you can remember this missing word for a terrible fate"
     ],
-    "answers": [
-      "LACK",
-      "LOCK",
-      "LOOK",
-      "LOOM",
-      "DOOM"
-    ],
+    "answers": ["LACK", "LOCK", "LOOK", "LOOM", "DOOM"],
     "topWord": "BACK",
     "bottomWord": "DOOR"
   },
@@ -259,13 +175,7 @@
       "Bring to an end; stop",
       "Rental agreement"
     ],
-    "answers": [
-      "CHORE",
-      "CHOSE",
-      "CHASE",
-      "CEASE",
-      "LEASE"
-    ],
+    "answers": ["CHORE", "CHOSE", "CHASE", "CEASE", "LEASE"],
     "topWord": "SHORE",
     "bottomWord": "LEAVE"
   },
@@ -277,13 +187,7 @@
       "Tool used for breaking ice or mining for gold",
       "Color that can sometimes be \"hot\" or \"shocking"
     ],
-    "answers": [
-      "BEAK",
-      "BECK",
-      "PECK",
-      "PICK",
-      "PINK"
-    ],
+    "answers": ["BEAK", "BECK", "PECK", "PICK", "PINK"],
     "topWord": "WEAK",
     "bottomWord": "LINK"
   },
@@ -295,13 +199,7 @@
       "Sounds from the dairy barn",
       "Items that help after a spill in the kitchen"
     ],
-    "answers": [
-      "GOAD",
-      "GOOD",
-      "GOOS",
-      "MOOS",
-      "MOPS"
-    ],
+    "answers": ["GOAD", "GOOD", "GOOS", "MOOS", "MOPS"],
     "topWord": "ROAD",
     "bottomWord": "MAPS"
   },
@@ -313,13 +211,7 @@
       "Word that can follow \"punctuation\", \"exclamation\", or \"question",
       "Sound from an excited pup"
     ],
-    "answers": [
-      "WIRE",
-      "MIRE",
-      "MARE",
-      "MARK",
-      "BARK"
-    ],
+    "answers": ["WIRE", "MIRE", "MARE", "MARK", "BARK"],
     "topWord": "WINE",
     "bottomWord": "BARS"
   },
@@ -331,13 +223,7 @@
       "A jury of one's ___ (a legal concept dating to the Magna Carta)",
       "Bell-shaped fruits, including Anjou, Bosc, and Conference varieties"
     ],
-    "answers": [
-      "SEEDS",
-      "SEEPS",
-      "PEEPS",
-      "PEERS",
-      "PEARS"
-    ],
+    "answers": ["SEEDS", "SEEPS", "PEEPS", "PEERS", "PEARS"],
     "topWord": "SHEDS",
     "bottomWord": "TEARS"
   },
@@ -349,13 +235,7 @@
       "Revealed a secret",
       "Croaking animal that might also sometimes be called a frog"
     ],
-    "answers": [
-      "CORK",
-      "CORD",
-      "COLD",
-      "TOLD",
-      "TOAD"
-    ],
+    "answers": ["CORK", "CORD", "COLD", "TOLD", "TOAD"],
     "topWord": "WORK",
     "bottomWord": "LOAD"
   },
@@ -367,13 +247,7 @@
       "Taxis",
       "Leftovers after all the corn has been eaten"
     ],
-    "answers": [
-      "CAST",
-      "CART",
-      "CARS",
-      "CABS",
-      "COBS"
-    ],
+    "answers": ["CAST", "CART", "CARS", "CABS", "COBS"],
     "topWord": "CASH",
     "bottomWord": "COWS"
   },
@@ -385,13 +259,7 @@
       "Metal name (incorrectly) used to describe the part of a pencil that writes",
       "Slender or thin"
     ],
-    "answers": [
-      "MIND",
-      "MEND",
-      "LEND",
-      "LEAD",
-      "LEAN"
-    ],
+    "answers": ["MIND", "MEND", "LEND", "LEAD", "LEAN"],
     "topWord": "KIND",
     "bottomWord": "MEAN"
   },
@@ -403,13 +271,7 @@
       "Poorly behaved child",
       "Actor Pitt who was in \"Se7en\" and \"Ocean's Eleven\""
     ],
-    "answers": [
-      "BERN",
-      "BEAN",
-      "BEAT",
-      "BRAT",
-      "BRAD"
-    ],
+    "answers": ["BERN", "BEAN", "BEAT", "BRAT", "BRAD"],
     "topWord": "BORN",
     "bottomWord": "BRED"
   },
@@ -421,13 +283,7 @@
       "___ of Good Hope",
       "Deal with the stress of a challenging situation"
     ],
-    "answers": [
-      "BARN",
-      "BARE",
-      "CARE",
-      "CAPE",
-      "COPE"
-    ],
+    "answers": ["BARN", "BARE", "CARE", "CAPE", "COPE"],
     "topWord": "YARN",
     "bottomWord": "ROPE"
   },
@@ -439,13 +295,7 @@
       "Look at intently",
       "Extra, like a fifth wheel for an automobile"
     ],
-    "answers": [
-      "HEARS",
-      "SEARS",
-      "STARS",
-      "STARE",
-      "SPARE"
-    ],
+    "answers": ["HEARS", "SEARS", "STARS", "STARE", "SPARE"],
     "topWord": "HEART",
     "bottomWord": "SPADE"
   },
@@ -457,13 +307,7 @@
       "Place to shoot a puck",
       "Pop star Astley, or grandfather of Morty in a cartoon sitcom"
     ],
-    "answers": [
-      "HAND",
-      "HIND",
-      "RIND",
-      "RINK",
-      "RICK"
-    ],
+    "answers": ["HAND", "HIND", "RIND", "RINK", "RICK"],
     "topWord": "HARD",
     "bottomWord": "ROCK"
   },
@@ -475,13 +319,7 @@
       "Feature of the Earth's axis (which is not perpendicular to its orbital plane)",
       "One of many in a game of Scrabble or Settlers of Catan"
     ],
-    "answers": [
-      "TEXT",
-      "TENT",
-      "TINT",
-      "TILT",
-      "TILE"
-    ],
+    "answers": ["TEXT", "TENT", "TINT", "TILT", "TILE"],
     "topWord": "NEXT",
     "bottomWord": "TIME"
   },
@@ -493,13 +331,7 @@
       "___ and replace\" (feature to quickly locate and change text in a document)",
       "Tie up tightly with rope"
     ],
-    "answers": [
-      "PONG",
-      "POND",
-      "FOND",
-      "FIND",
-      "BIND"
-    ],
+    "answers": ["PONG", "POND", "FOND", "FIND", "BIND"],
     "topWord": "SONG",
     "bottomWord": "BIRD"
   },
@@ -511,13 +343,7 @@
       "Prepares to be captured in a photo",
       "Flexible tubes used to spray water on a fire"
     ],
-    "answers": [
-      "PARTS",
-      "PORTS",
-      "POSTS",
-      "POSES",
-      "HOSES"
-    ],
+    "answers": ["PARTS", "PORTS", "POSTS", "POSES", "HOSES"],
     "topWord": "PARTY",
     "bottomWord": "HOSTS"
   },
@@ -529,13 +355,7 @@
       "Piece of paperwork to fill out",
       "The early bird catches the ___"
     ],
-    "answers": [
-      "ROOM",
-      "ROAM",
-      "FOAM",
-      "FORM",
-      "WORM"
-    ],
+    "answers": ["ROOM", "ROAM", "FOAM", "FORM", "WORM"],
     "topWord": "ROOT",
     "bottomWord": "WORD"
   },
@@ -547,13 +367,7 @@
       "Having a healthy mind",
       "Command on the File menu in Word"
     ],
-    "answers": [
-      "WANT",
-      "WAND",
-      "SAND",
-      "SANE",
-      "SAVE"
-    ],
+    "answers": ["WANT", "WAND", "SAND", "SANE", "SAVE"],
     "topWord": "RANT",
     "bottomWord": "RAVE"
   },
@@ -565,13 +379,7 @@
       "Common protein source for a vegetarian",
       "Some healthy cereals"
     ],
-    "answers": [
-      "MORNS",
-      "MOANS",
-      "MEANS",
-      "BEANS",
-      "BRANS"
-    ],
+    "answers": ["MORNS", "MOANS", "MEANS", "BEANS", "BRANS"],
     "topWord": "HORNS",
     "bottomWord": "BRASS"
   },
@@ -583,13 +391,7 @@
       "Fictional character known for her adventures in Wonderland",
       "___ and kicking (full of energy)"
     ],
-    "answers": [
-      "SLACK",
-      "SLICK",
-      "SLICE",
-      "ALICE",
-      "ALIVE"
-    ],
+    "answers": ["SLACK", "SLICK", "SLICE", "ALICE", "ALIVE"],
     "topWord": "BLACK",
     "bottomWord": "OLIVE"
   },
@@ -601,13 +403,7 @@
       "Herb that's also a synonym for \"wise\"",
       "Rescue, or store on a hard drive"
     ],
-    "answers": [
-      "PORE",
-      "PARE",
-      "PAGE",
-      "SAGE",
-      "SAVE"
-    ],
+    "answers": ["PORE", "PARE", "PAGE", "SAGE", "SAVE"],
     "topWord": "POLE",
     "bottomWord": "WAVE"
   },
@@ -619,13 +415,7 @@
       "Part of a running track to which a sprinter is assigned",
       "Touchdown at an airport"
     ],
-    "answers": [
-      "LIFT",
-      "LIFE",
-      "LINE",
-      "LANE",
-      "LAND"
-    ],
+    "answers": ["LIFT", "LIFE", "LINE", "LANE", "LAND"],
     "topWord": "LEFT",
     "bottomWord": "HAND"
   },
@@ -637,13 +427,7 @@
       "Large structure to hold grain",
       "Woven material known for its smoothness that naturally comes from some worm cocoons"
     ],
-    "answers": [
-      "HOLE",
-      "SOLE",
-      "SOLO",
-      "SILO",
-      "SILK"
-    ],
+    "answers": ["HOLE", "SOLE", "SOLO", "SILO", "SILK"],
     "topWord": "HOME",
     "bottomWord": "SICK"
   },
@@ -655,13 +439,7 @@
       "Someone who works in an apron",
       "Bring down in temperature"
     ],
-    "answers": [
-      "GONE",
-      "CONE",
-      "CONK",
-      "COOK",
-      "COOL"
-    ],
+    "answers": ["GONE", "CONE", "CONK", "COOK", "COOL"],
     "topWord": "GENE",
     "bottomWord": "POOL"
   },
@@ -673,13 +451,7 @@
       "A cash penalty, as for a parking ticket",
       "Part of a fork"
     ],
-    "answers": [
-      "WING",
-      "WIND",
-      "FIND",
-      "FINE",
-      "TINE"
-    ],
+    "answers": ["WING", "WIND", "FIND", "FINE", "TINE"],
     "topWord": "RING",
     "bottomWord": "TONE"
   },
@@ -691,13 +463,7 @@
       "A tall, pointed structure at the top of a tower, particularly a church steeple",
       "___ no expense"
     ],
-    "answers": [
-      "WHINE",
-      "SHINE",
-      "SPINE",
-      "SPIRE",
-      "SPARE"
-    ],
+    "answers": ["WHINE", "SHINE", "SPINE", "SPIRE", "SPARE"],
     "topWord": "WHITE",
     "bottomWord": "SPACE"
   },
@@ -709,13 +475,7 @@
       "Beneficial thing",
       "___ with a silver spoon in one's mouth\" (privileged)"
     ],
-    "answers": [
-      "SHOT",
-      "SOOT",
-      "SOON",
-      "BOON",
-      "BORN"
-    ],
+    "answers": ["SHOT", "SOOT", "SOON", "BOON", "BORN"],
     "topWord": "SHOE",
     "bottomWord": "HORN"
   },
@@ -727,13 +487,7 @@
       "Apply with a layer of paint",
       "Have a casual conversation"
     ],
-    "answers": [
-      "MALT",
-      "MOLT",
-      "MOAT",
-      "COAT",
-      "CHAT"
-    ],
+    "answers": ["MALT", "MOLT", "MOAT", "COAT", "CHAT"],
     "topWord": "MALI",
     "bottomWord": "CHAD"
   },
@@ -745,13 +499,7 @@
       "Leak out slowly",
       "One part of a list of instructions"
     ],
-    "answers": [
-      "DOER",
-      "DEER",
-      "DEEP",
-      "SEEP",
-      "STEP"
-    ],
+    "answers": ["DOER", "DEER", "DEEP", "SEEP", "STEP"],
     "topWord": "DOOR",
     "bottomWord": "STOP"
   },
@@ -763,13 +511,7 @@
       "Notable feature of a kangaroo",
       "Piece of furniture for a living room or lounge"
     ],
-    "answers": [
-      "PEACH",
-      "PERCH",
-      "PORCH",
-      "POUCH",
-      "COUCH"
-    ],
+    "answers": ["PEACH", "PERCH", "PORCH", "POUCH", "COUCH"],
     "topWord": "TEACH",
     "bottomWord": "COACH"
   },
@@ -781,13 +523,7 @@
       "Step into some shallow water",
       "Gradually decrease in intensity before disappearing"
     ],
-    "answers": [
-      "TAPE",
-      "TAKE",
-      "WAKE",
-      "WADE",
-      "FADE"
-    ],
+    "answers": ["TAPE", "TAKE", "WAKE", "WADE", "FADE"],
     "topWord": "TYPE",
     "bottomWord": "FACE"
   },
@@ -799,13 +535,7 @@
       "A place in a city that might have lots of trees",
       "Outside covering of a tree"
     ],
-    "answers": [
-      "SORT",
-      "PORT",
-      "PART",
-      "PARK",
-      "BARK"
-    ],
+    "answers": ["SORT", "PORT", "PART", "PARK", "BARK"],
     "topWord": "SORE",
     "bottomWord": "BACK"
   },
@@ -817,13 +547,7 @@
       "Kind of tree known for its needles and its cones",
       "Eat at a restaurant"
     ],
-    "answers": [
-      "WILL",
-      "PILL",
-      "PILE",
-      "PINE",
-      "DINE"
-    ],
+    "answers": ["WILL", "PILL", "PILE", "PINE", "DINE"],
     "topWord": "WELL",
     "bottomWord": "DONE"
   },
@@ -835,13 +559,7 @@
       "Buy in ___ (get large quantities at low prices)",
       "Name for a male bovine that might face off against a matador"
     ],
-    "answers": [
-      "HUSH",
-      "HUSK",
-      "HULK",
-      "BULK",
-      "BULL"
-    ],
+    "answers": ["HUSH", "HUSK", "HULK", "BULK", "BULL"],
     "topWord": "PUSH",
     "bottomWord": "PULL"
   },
@@ -853,13 +571,7 @@
       "Stacks and stacks of paper",
       "Goes from here to there, possibly without purpose"
     ],
-    "answers": [
-      "BEARD",
-      "BEARS",
-      "BEAMS",
-      "REAMS",
-      "ROAMS"
-    ],
+    "answers": ["BEARD", "BEARS", "BEAMS", "REAMS", "ROAMS"],
     "topWord": "BOARD",
     "bottomWord": "ROOMS"
   },
@@ -871,13 +583,7 @@
       "Close an envelope before mailing",
       "Start a card game after shuffling"
     ],
-    "answers": [
-      "SLAY",
-      "SLAM",
-      "SEAM",
-      "SEAL",
-      "DEAL"
-    ],
+    "answers": ["SLAY", "SLAM", "SEAM", "SEAL", "DEAL"],
     "topWord": "PLAY",
     "bottomWord": "DEAD"
   },
@@ -889,13 +595,7 @@
       "Fails to get a trophy",
       "What pairs of glasses rest upon"
     ],
-    "answers": [
-      "LIVER",
-      "LIVES",
-      "LOVES",
-      "LOSES",
-      "NOSES"
-    ],
+    "answers": ["LIVER", "LIVES", "LOVES", "LOSES", "NOSES"],
     "topWord": "LINER",
     "bottomWord": "NOTES"
   },
@@ -907,13 +607,7 @@
       "Energy-efficient bulbs, for short",
       "\"Catch some ___\" (how someone using the British alphabet would describe getting some sleep)"
     ],
-    "answers": [
-      "HERS",
-      "HENS",
-      "LENS",
-      "LEDS",
-      "ZEDS"
-    ],
+    "answers": ["HERS", "HENS", "LENS", "LEDS", "ZEDS"],
     "topWord": "HERA",
     "bottomWord": "ZEUS"
   },
@@ -925,13 +619,7 @@
       "Some AI programs",
       "Little kids, or a small form of fried potato to eat (with \"tater\")"
     ],
-    "answers": [
-      "FEES",
-      "BEES",
-      "BETS",
-      "BOTS",
-      "TOTS"
-    ],
+    "answers": ["FEES", "BEES", "BETS", "BOTS", "TOTS"],
     "topWord": "FEET",
     "bottomWord": "TOES"
   },
@@ -943,13 +631,7 @@
       "Baby horse",
       "Ore that's used for heating"
     ],
-    "answers": [
-      "RAIL",
-      "FAIL",
-      "FOIL",
-      "FOAL",
-      "COAL"
-    ],
+    "answers": ["RAIL", "FAIL", "FOIL", "FOAL", "COAL"],
     "topWord": "RAIN",
     "bottomWord": "COAT"
   },
@@ -961,13 +643,7 @@
       "Invent, as a new word or phrase",
       "Shape of a spring"
     ],
-    "answers": [
-      "CARD",
-      "CORD",
-      "CORN",
-      "COIN",
-      "COIL"
-    ],
+    "answers": ["CARD", "CORD", "CORN", "COIN", "COIL"],
     "topWord": "HARD",
     "bottomWord": "BOIL"
   },
@@ -979,13 +655,7 @@
       "A curve in the road",
       "\"On the ___\" (recovering from an illness)"
     ],
-    "answers": [
-      "HELD",
-      "HEAD",
-      "BEAD",
-      "BEND",
-      "MEND"
-    ],
+    "answers": ["HELD", "HEAD", "BEAD", "BEND", "MEND"],
     "topWord": "HELP",
     "bottomWord": "MENU"
   },
@@ -997,13 +667,7 @@
       "What you might make a birdhouse out of",
       "Sound that a dog makes"
     ],
-    "answers": [
-      "WIRE",
-      "WORE",
-      "WORD",
-      "WOOD",
-      "WOOF"
-    ],
+    "answers": ["WIRE", "WORE", "WORD", "WOOD", "WOOF"],
     "topWord": "DIRE",
     "bottomWord": "WOLF"
   },
@@ -1015,13 +679,7 @@
       "Available inventory of items like paper or pens at an office supply store",
       "Animal credited in lore with delivering human babies"
     ],
-    "answers": [
-      "SHOOT",
-      "SHOOK",
-      "SHOCK",
-      "STOCK",
-      "STORK"
-    ],
+    "answers": ["SHOOT", "SHOOK", "SHOCK", "STOCK", "STORK"],
     "topWord": "SHORT",
     "bottomWord": "STORY"
   },
@@ -1033,13 +691,7 @@
       "Associate who helps in a con game",
       "Get below room temperature"
     ],
-    "answers": [
-      "SMELL",
-      "SPELL",
-      "SPILL",
-      "SHILL",
-      "CHILL"
-    ],
+    "answers": ["SMELL", "SPELL", "SPILL", "SHILL", "CHILL"],
     "topWord": "SMALL",
     "bottomWord": "CHILD"
   },
@@ -1051,13 +703,7 @@
       "Superman has one, Spider-Man doesn't",
       "Handle distress"
     ],
-    "answers": [
-      "WAVE",
-      "WAGE",
-      "CAGE",
-      "CAPE",
-      "COPE"
-    ],
+    "answers": ["WAVE", "WAGE", "CAGE", "CAPE", "COPE"],
     "topWord": "SAVE",
     "bottomWord": "COPY"
   },
@@ -1069,13 +715,7 @@
       "Opposite of \"poorly\"",
       "Tripped and hit the ground"
     ],
-    "answers": [
-      "CALF",
-      "CALL",
-      "WALL",
-      "WELL",
-      "FELL"
-    ],
+    "answers": ["CALF", "CALL", "WALL", "WELL", "FELL"],
     "topWord": "HALF",
     "bottomWord": "FULL"
   },
@@ -1087,13 +727,7 @@
       "Opening in a schedule that could be used for a meeting (with \"time\")",
       "Common amount of espresso or whiskey"
     ],
-    "answers": [
-      "STOW",
-      "STOP",
-      "SLOP",
-      "SLOT",
-      "SHOT"
-    ],
+    "answers": ["STOW", "STOP", "SLOP", "SLOT", "SHOT"],
     "topWord": "SNOW",
     "bottomWord": "SHOE"
   },
@@ -1105,13 +739,7 @@
       "___ point (something no longer relevant in a discussion)",
       "What a chimney sweep gets rid of"
     ],
-    "answers": [
-      "BRAT",
-      "BOAT",
-      "MOAT",
-      "MOOT",
-      "SOOT"
-    ],
+    "answers": ["BRAT", "BOAT", "MOAT", "MOOT", "SOOT"],
     "topWord": "BRIT",
     "bottomWord": "SCOT"
   },
@@ -1123,13 +751,7 @@
       "Fashion item that helps keep a pair of pants on the waist",
       "A stroke of lightning"
     ],
-    "answers": [
-      "WANT",
-      "WENT",
-      "BENT",
-      "BELT",
-      "BOLT"
-    ],
+    "answers": ["WANT", "WENT", "BENT", "BELT", "BOLT"],
     "topWord": "WATT",
     "bottomWord": "VOLT"
   },
@@ -1141,13 +763,7 @@
       "Makes a sound like a dove",
       "Do a job in a restaurant"
     ],
-    "answers": [
-      "PAWS",
-      "CAWS",
-      "COWS",
-      "COOS",
-      "COOK"
-    ],
+    "answers": ["PAWS", "CAWS", "COWS", "COOS", "COOK"],
     "topWord": "PAWN",
     "bottomWord": "ROOK"
   },
@@ -1159,13 +775,7 @@
       "In a more hurried manner",
       "Take a pet in until a permanent home can be found"
     ],
-    "answers": [
-      "BANTER",
-      "BATTER",
-      "FATTER",
-      "FASTER",
-      "FOSTER"
-    ],
+    "answers": ["BANTER", "BATTER", "FATTER", "FASTER", "FOSTER"],
     "topWord": "BANNER",
     "bottomWord": "POSTER"
   },
@@ -1177,13 +787,7 @@
       "Today's is either March 23 or March 24 depending on when you play",
       "Notre ___ (famous cathedral in Paris)"
     ],
-    "answers": [
-      "HARD",
-      "HARE",
-      "HATE",
-      "DATE",
-      "DAME"
-    ],
+    "answers": ["HARD", "HARE", "HATE", "DATE", "DAME"],
     "topWord": "CARD",
     "bottomWord": "GAME"
   },
@@ -1195,13 +799,7 @@
       "Word heard at the end of an auction",
       "Having no partner"
     ],
-    "answers": [
-      "BARD",
-      "BALD",
-      "BOLD",
-      "SOLD",
-      "SOLO"
-    ],
+    "answers": ["BARD", "BALD", "BOLD", "SOLD", "SOLO"],
     "topWord": "BARN",
     "bottomWord": "SILO"
   },
@@ -1213,13 +811,7 @@
       "What a detective might be assigned",
       "Showed up"
     ],
-    "answers": [
-      "LASH",
-      "BASH",
-      "BASE",
-      "CASE",
-      "CAME"
-    ],
+    "answers": ["LASH", "BASH", "BASE", "CASE", "CAME"],
     "topWord": "LAST",
     "bottomWord": "NAME"
   },
@@ -1231,13 +823,7 @@
       "Having little to no color",
       "A large stack, perhaps of money or leaves"
     ],
-    "answers": [
-      "HALT",
-      "SALT",
-      "SALE",
-      "PALE",
-      "PILE"
-    ],
+    "answers": ["HALT", "SALT", "SALE", "PALE", "PILE"],
     "topWord": "HALF",
     "bottomWord": "PIPE"
   },
@@ -1249,13 +835,7 @@
       "Chomp down on",
       "Two-wheeled vehicle"
     ],
-    "answers": [
-      "BOOS",
-      "BIOS",
-      "BITS",
-      "BITE",
-      "BIKE"
-    ],
+    "answers": ["BOOS", "BIOS", "BITS", "BITE", "BIKE"],
     "topWord": "BOOM",
     "bottomWord": "MIKE"
   },
@@ -1267,13 +847,7 @@
       "___ down (loses some weight)",
       "Narrow cuts, as through a dress"
     ],
-    "answers": [
-      "SPICE",
-      "SLICE",
-      "SLIME",
-      "SLIMS",
-      "SLITS"
-    ],
+    "answers": ["SPICE", "SLICE", "SLIME", "SLIMS", "SLITS"],
     "topWord": "SPACE",
     "bottomWord": "SUITS"
   },
@@ -1285,13 +859,7 @@
       "Fish that might be found in a Japanese pond",
       "Bend in a way that inhibits use, particularly from heat or dampness"
     ],
-    "answers": [
-      "CORD",
-      "CORE",
-      "CARE",
-      "CARP",
-      "WARP"
-    ],
+    "answers": ["CORD", "CORE", "CARE", "CARP", "WARP"],
     "topWord": "COLD",
     "bottomWord": "WARM"
   },
@@ -1303,13 +871,7 @@
       "Wriggly thing that might be used as bait when fishing",
       "Way to describe a day that is above average but not too hot"
     ],
-    "answers": [
-      "CORK",
-      "FORK",
-      "FORM",
-      "WORM",
-      "WARM"
-    ],
+    "answers": ["CORK", "FORK", "FORM", "WORM", "WARM"],
     "topWord": "COOK",
     "bottomWord": "WARE"
   },
@@ -1321,13 +883,7 @@
       "Affected by an illness like a cold",
       "Potato ___ race (picnic game with a lot of awkward jumping)"
     ],
-    "answers": [
-      "WING",
-      "WINK",
-      "SINK",
-      "SICK",
-      "SACK"
-    ],
+    "answers": ["WING", "WINK", "SINK", "SICK", "SACK"],
     "topWord": "KING",
     "bottomWord": "JACK"
   },
@@ -1339,13 +895,7 @@
       "When England had its \"Glorious Revolution\" (hint: the first two digits are 2^4, and the remaining two digits are each 2^3)",
       "7 × 800 + 8 × 11"
     ],
-    "answers": [
-      "1284",
-      "1984",
-      "1988",
-      "1688",
-      "5688"
-    ],
+    "answers": ["1284", "1984", "1988", "1688", "5688"],
     "topWord": "1234",
     "bottomWord": "5678"
   },
@@ -1357,13 +907,7 @@
       "Naked or unadorned",
       "Sound heard at a dog park"
     ],
-    "answers": [
-      "TORN",
-      "BORN",
-      "BORE",
-      "BARE",
-      "BARK"
-    ],
+    "answers": ["TORN", "BORN", "BORE", "BARE", "BARK"],
     "topWord": "TURN",
     "bottomWord": "BACK"
   },
@@ -1375,13 +919,7 @@
       "Unsure of one's location",
       "Pirate's plunder"
     ],
-    "answers": [
-      "BEST",
-      "PEST",
-      "POST",
-      "LOST",
-      "LOOT"
-    ],
+    "answers": ["BEST", "PEST", "POST", "LOST", "LOOT"],
     "topWord": "BEET",
     "bottomWord": "ROOT"
   },
@@ -1393,13 +931,7 @@
       "What vaulters use for a track and field event",
       "Features of Swiss cheese"
     ],
-    "answers": [
-      "MODES",
-      "MOSES",
-      "POSES",
-      "POLES",
-      "HOLES"
-    ],
+    "answers": ["MODES", "MOSES", "POSES", "POLES", "HOLES"],
     "topWord": "MODEL",
     "bottomWord": "HOMES"
   },
@@ -1411,13 +943,7 @@
       "Assigned a job to",
       "Got out and enjoyed the sun, or reveled in some praise"
     ],
-    "answers": [
-      "MASTER",
-      "MASTED",
-      "TASTED",
-      "TASKED",
-      "BASKED"
-    ],
+    "answers": ["MASTER", "MASTED", "TASTED", "TASKED", "BASKED"],
     "topWord": "EASTER",
     "bottomWord": "BASKET"
   },
@@ -1429,13 +955,7 @@
       "Having good judgment, knowledge, and experience",
       "Something granted by a genie, according to myth"
     ],
-    "answers": [
-      "HIDE",
-      "HIRE",
-      "WIRE",
-      "WISE",
-      "WISH"
-    ],
+    "answers": ["HIDE", "HIRE", "WIRE", "WISE", "WISH"],
     "topWord": "SIDE",
     "bottomWord": "DISH"
   },
@@ -1447,13 +967,7 @@
       "White bird that symbolizes peace",
       "\"When all's said and ___\" (taking everything into consideration)"
     ],
-    "answers": [
-      "LIME",
-      "LIVE",
-      "LOVE",
-      "DOVE",
-      "DONE"
-    ],
+    "answers": ["LIME", "LIVE", "LOVE", "DOVE", "DONE"],
     "topWord": "TIME",
     "bottomWord": "ZONE"
   },
@@ -1465,13 +979,7 @@
       "Plant that can grow in dense mats or on the sides of trees",
       "High-ranking employee in charge of an organization"
     ],
-    "answers": [
-      "COAT",
-      "COST",
-      "MOST",
-      "MOSS",
-      "BOSS"
-    ],
+    "answers": ["COAT", "COST", "MOST", "MOSS", "BOSS"],
     "topWord": "CHAT",
     "bottomWord": "BOTS"
   },
@@ -1483,13 +991,7 @@
       "Word for what's not yours",
       "Imperial unit of length equal to 5,280 feet or about 1.6 kilometers"
     ],
-    "answers": [
-      "TENT",
-      "TINT",
-      "MINT",
-      "MINE",
-      "MILE"
-    ],
+    "answers": ["TENT", "TINT", "MINT", "MINE", "MILE"],
     "topWord": "TEXT",
     "bottomWord": "FILE"
   },
@@ -1501,13 +1003,7 @@
       "Adjusts a piano",
       "Wedding suits, informally"
     ],
-    "answers": [
-      "TALES",
-      "TILES",
-      "TINES",
-      "TUNES",
-      "TUXES"
-    ],
+    "answers": ["TALES", "TILES", "TINES", "TUNES", "TUXES"],
     "topWord": "SALES",
     "bottomWord": "TAXES"
   },
@@ -1519,13 +1015,7 @@
       "An amoeba has just one",
       "Word that can follow \"roll\", \"close\", or \"curtain\""
     ],
-    "answers": [
-      "KEEL",
-      "FEEL",
-      "FELL",
-      "CELL",
-      "CALL"
-    ],
+    "answers": ["KEEL", "FEEL", "FELL", "CELL", "CALL"],
     "topWord": "KEEP",
     "bottomWord": "CALM"
   },
@@ -1537,13 +1027,7 @@
       "More adorable",
       "Not on the inside"
     ],
-    "answers": [
-      "RIDER",
-      "CIDER",
-      "CITER",
-      "CUTER",
-      "OUTER"
-    ],
+    "answers": ["RIDER", "CIDER", "CITER", "CUTER", "OUTER"],
     "topWord": "RIVER",
     "bottomWord": "OTTER"
   },
@@ -1555,13 +1039,7 @@
       "___ and fortune (widespread recognition and success)",
       "No longer wild, as an animal"
     ],
-    "answers": [
-      "CART",
-      "CARE",
-      "FARE",
-      "FAME",
-      "TAME"
-    ],
+    "answers": ["CART", "CARE", "FARE", "FAME", "TAME"],
     "topWord": "PART",
     "bottomWord": "TIME"
   },
@@ -1573,13 +1051,7 @@
       "A fish or a musical instrument, depending on pronunciation",
       "Huge party, or hit hard"
     ],
-    "answers": [
-      "BIND",
-      "BINS",
-      "BANS",
-      "BASS",
-      "BASH"
-    ],
+    "answers": ["BIND", "BINS", "BANS", "BASS", "BASH"],
     "topWord": "BIRD",
     "bottomWord": "BATH"
   },
@@ -1591,13 +1063,7 @@
       "Automobile manufacturer named after founder Henry who invented the Model T",
       "Thing you pull on to open a parachute"
     ],
-    "answers": [
-      "MILD",
-      "MOLD",
-      "FOLD",
-      "FORD",
-      "CORD"
-    ],
+    "answers": ["MILD", "MOLD", "FOLD", "FORD", "CORD"],
     "topWord": "WILD",
     "bottomWord": "CARD"
   },
@@ -1609,13 +1075,7 @@
       "Explodes, as a balloon",
       "Peas come in these"
     ],
-    "answers": [
-      "NOSE",
-      "POSE",
-      "POPE",
-      "POPS",
-      "PODS"
-    ],
+    "answers": ["NOSE", "POSE", "POPE", "POPS", "PODS"],
     "topWord": "NOTE",
     "bottomWord": "PADS"
   },
@@ -1627,13 +1087,7 @@
       "Something you click to go to another website",
       "One quick taste of a lollipop"
     ],
-    "answers": [
-      "MIME",
-      "MINE",
-      "MINK",
-      "LINK",
-      "LICK"
-    ],
+    "answers": ["MIME", "MINE", "MINK", "LINK", "LICK"],
     "topWord": "TIME",
     "bottomWord": "LOCK"
   },
@@ -1645,13 +1099,7 @@
       "A rod used in a magic performance",
       "Decrease in size, like the moon for half the lunar cycle"
     ],
-    "answers": [
-      "FINE",
-      "FIND",
-      "WIND",
-      "WAND",
-      "WANE"
-    ],
+    "answers": ["FINE", "FIND", "WIND", "WAND", "WANE"],
     "topWord": "SINE",
     "bottomWord": "WAVE"
   },
@@ -1663,13 +1111,7 @@
       "Unit of stock from a corporation",
       "Knocking down all ten pins with two balls, in bowling"
     ],
-    "answers": [
-      "SHELL",
-      "SHALL",
-      "SHALE",
-      "SHARE",
-      "SPARE"
-    ],
+    "answers": ["SHELL", "SHALL", "SHALE", "SHARE", "SPARE"],
     "topWord": "SHELF",
     "bottomWord": "SPACE"
   },
@@ -1681,13 +1123,7 @@
       "Sharpen, as one's skills at a job",
       "___ of the above (option when nothing seems to fit)"
     ],
-    "answers": [
-      "HOOT",
-      "HOST",
-      "HOSE",
-      "HONE",
-      "NONE"
-    ],
+    "answers": ["HOOT", "HOST", "HOSE", "HONE", "NONE"],
     "topWord": "FOOT",
     "bottomWord": "NOTE"
   },
@@ -1699,13 +1135,7 @@
       "Of enormous size and extent, like outer space",
       "Opposite of west"
     ],
-    "answers": [
-      "RENT",
-      "VENT",
-      "VEST",
-      "VAST",
-      "EAST"
-    ],
+    "answers": ["RENT", "VENT", "VEST", "VAST", "EAST"],
     "topWord": "REST",
     "bottomWord": "EASY"
   },
@@ -1717,13 +1147,7 @@
       "It may ring to announce the start of a school day or a religious service",
       "Fashion accessory worn to denote karate ranks, with a black one being the highest"
     ],
-    "answers": [
-      "WAIL",
-      "WALL",
-      "BALL",
-      "BELL",
-      "BELT"
-    ],
+    "answers": ["WAIL", "WALL", "BALL", "BELL", "BELT"],
     "topWord": "NAIL",
     "bottomWord": "BOLT"
   },
@@ -1735,13 +1159,7 @@
       "Fell to the bottom of the ocean",
       "The land along one side of a river"
     ],
-    "answers": [
-      "HAND",
-      "HANG",
-      "SANG",
-      "SANK",
-      "BANK"
-    ],
+    "answers": ["HAND", "HANG", "SANG", "SANK", "BANK"],
     "topWord": "HARD",
     "bottomWord": "BACK"
   },
@@ -1753,13 +1171,7 @@
       "What a hockey goalie wants to catch",
       "Get ready for a trip"
     ],
-    "answers": [
-      "PINE",
-      "PINK",
-      "PUNK",
-      "PUCK",
-      "PACK"
-    ],
+    "answers": ["PINE", "PINK", "PUNK", "PUCK", "PACK"],
     "topWord": "WINE",
     "bottomWord": "RACK"
   },
@@ -1771,13 +1183,7 @@
       "Element of a large stadium, sometimes",
       "Female equivalent of a knight, in the UK"
     ],
-    "answers": [
-      "RAVE",
-      "ROVE",
-      "ROME",
-      "DOME",
-      "DAME"
-    ],
+    "answers": ["RAVE", "ROVE", "ROME", "DOME", "DAME"],
     "topWord": "SAVE",
     "bottomWord": "GAME"
   },
@@ -1789,13 +1195,7 @@
       "Kids that get out of line",
       "There might be four in a measure"
     ],
-    "answers": [
-      "CLASS",
-      "CRASS",
-      "BRASS",
-      "BRATS",
-      "BEATS"
-    ],
+    "answers": ["CLASS", "CRASS", "BRASS", "BRATS", "BEATS"],
     "topWord": "GLASS",
     "bottomWord": "BEADS"
   },
@@ -1807,13 +1207,7 @@
       "Help someone get out of a difficult financial situation, with \"out",
       "Weather phenomenon that can crack a windshield"
     ],
-    "answers": [
-      "COIN",
-      "COIL",
-      "BOIL",
-      "BAIL",
-      "HAIL"
-    ],
+    "answers": ["COIN", "COIL", "BOIL", "BAIL", "HAIL"],
     "topWord": "CHIN",
     "bottomWord": "HAIR"
   },
@@ -1825,13 +1219,7 @@
       "Gentle and caring, or a variety of something",
       "Monarch like Charles III or Felipe VI"
     ],
-    "answers": [
-      "FOOD",
-      "FOND",
-      "FIND",
-      "KIND",
-      "KING"
-    ],
+    "answers": ["FOOD", "FOND", "FIND", "KIND", "KING"],
     "topWord": "MOOD",
     "bottomWord": "RING"
   },
@@ -1843,13 +1231,7 @@
       "Skip a ___ (what the heart may do after a big shock, at least according to an idiom)",
       "Grizzly, for one"
     ],
-    "answers": [
-      "ROUT",
-      "BOUT",
-      "BOAT",
-      "BEAT",
-      "BEAR"
-    ],
+    "answers": ["ROUT", "BOUT", "BOAT", "BEAT", "BEAR"],
     "topWord": "ROOT",
     "bottomWord": "BEER"
   },
@@ -1861,13 +1243,7 @@
       "Argument",
       "What a threatened camel might do"
     ],
-    "answers": [
-      "PENT",
-      "SENT",
-      "SEAT",
-      "SPAT",
-      "SPIT"
-    ],
+    "answers": ["PENT", "SENT", "SEAT", "SPAT", "SPIT"],
     "topWord": "PANT",
     "bottomWord": "SUIT"
   },
@@ -1879,13 +1255,7 @@
       "The \"backbone\" of a book that joins the two covers and is attached to the pages",
       "Rotates, like a fidget toy"
     ],
-    "answers": [
-      "SNARE",
-      "SPARE",
-      "SPIRE",
-      "SPINE",
-      "SPINS"
-    ],
+    "answers": ["SNARE", "SPARE", "SPIRE", "SPINE", "SPINS"],
     "topWord": "SNAKE",
     "bottomWord": "SKINS"
   },
@@ -1897,13 +1267,7 @@
       "Like a room you can't get into without a key",
       "Piece of jewelry that often has a picture inside"
     ],
-    "answers": [
-      "RACKET",
-      "RACKED",
-      "LACKED",
-      "LOCKED",
-      "LOCKET"
-    ],
+    "answers": ["RACKET", "RACKED", "LACKED", "LOCKED", "LOCKET"],
     "topWord": "JACKET",
     "bottomWord": "POCKET"
   },
@@ -1915,13 +1279,7 @@
       "Treasure claimed by a pirate",
       "Red-eyed water bird, also called a diver, that is featured on Canada's dollar coin"
     ],
-    "answers": [
-      "SIFT",
-      "SOFT",
-      "SOOT",
-      "LOOT",
-      "LOON"
-    ],
+    "answers": ["SIFT", "SOFT", "SOOT", "LOOT", "LOON"],
     "topWord": "GIFT",
     "bottomWord": "LOAN"
   },
@@ -1933,13 +1291,7 @@
       "Salmon or tuna",
       "A shallow vessel on which food is served, or a specific preparation of food"
     ],
-    "answers": [
-      "MINT",
-      "MIST",
-      "FIST",
-      "FISH",
-      "DISH"
-    ],
+    "answers": ["MINT", "MIST", "FIST", "FISH", "DISH"],
     "topWord": "HINT",
     "bottomWord": "DASH"
   },
@@ -1951,13 +1303,7 @@
       "Cash register drawer",
       "Item in some board games, such as Scrabble"
     ],
-    "answers": [
-      "GOLD",
-      "TOLD",
-      "TOLL",
-      "TILL",
-      "TILE"
-    ],
+    "answers": ["GOLD", "TOLD", "TOLL", "TILL", "TILE"],
     "topWord": "GOOD",
     "bottomWord": "TIME"
   },
@@ -1969,13 +1315,7 @@
       "Walking aid that often has a curve at the top",
       "Containers that may be recycled"
     ],
-    "answers": [
-      "COPE",
-      "COVE",
-      "CAVE",
-      "CANE",
-      "CANS"
-    ],
+    "answers": ["COPE", "COVE", "CAVE", "CANE", "CANS"],
     "topWord": "COPY",
     "bottomWord": "CATS"
   },
@@ -1987,13 +1327,7 @@
       "Great delight and merriment",
       "Substance that can be used to stick materials together"
     ],
-    "answers": [
-      "TREE",
-      "FREE",
-      "FLEE",
-      "GLEE",
-      "GLUE"
-    ],
+    "answers": ["TREE", "FREE", "FLEE", "GLEE", "GLUE"],
     "topWord": "TRUE",
     "bottomWord": "BLUE"
   },
@@ -2005,13 +1339,7 @@
       "Romantic partners",
       "Alma ___ (a university, to its alumni)"
     ],
-    "answers": [
-      "MOLEY",
-      "MOLES",
-      "MALES",
-      "MATES",
-      "MATER"
-    ],
+    "answers": ["MOLEY", "MOLES", "MALES", "MATES", "MATER"],
     "topWord": "MONEY",
     "bottomWord": "MAKER"
   },
@@ -2023,13 +1351,7 @@
       "Ring, especially at a wedding",
       "Sticky predicament"
     ],
-    "answers": [
-      "BAIL",
-      "BALL",
-      "BALD",
-      "BAND",
-      "BIND"
-    ],
+    "answers": ["BAIL", "BALL", "BALD", "BAND", "BIND"],
     "topWord": "JAIL",
     "bottomWord": "BIRD"
   },
@@ -2041,13 +1363,7 @@
       "Baked dishes with pastry crusts and sweet or savory fillings",
       "Competes in an election or for a prize"
     ],
-    "answers": [
-      "PACK",
-      "PICK",
-      "PICS",
-      "PIES",
-      "VIES"
-    ],
+    "answers": ["PACK", "PICK", "PICS", "PIES", "VIES"],
     "topWord": "PARK",
     "bottomWord": "VIEW"
   },
@@ -2059,13 +1375,7 @@
       "Little Red Riding \"___\" (classic fairy tale)",
       "End of a fishing line"
     ],
-    "answers": [
-      "COOL",
-      "WOOL",
-      "WOOD",
-      "HOOD",
-      "HOOK"
-    ],
+    "answers": ["COOL", "WOOL", "WOOD", "HOOD", "HOOK"],
     "topWord": "COOK",
     "bottomWord": "BOOK"
   },
@@ -2077,13 +1387,7 @@
       "Having minor aches after a workout",
       "Golfer's warning shout that sounds like a number"
     ],
-    "answers": [
-      "CAME",
-      "SAME",
-      "SOME",
-      "SORE",
-      "FORE"
-    ],
+    "answers": ["CAME", "SAME", "SOME", "SORE", "FORE"],
     "topWord": "CAMP",
     "bottomWord": "FIRE"
   },
@@ -2095,13 +1399,7 @@
       "An animal with flippers",
       "Not fake"
     ],
-    "answers": [
-      "FILL",
-      "FELL",
-      "SELL",
-      "SEAL",
-      "REAL"
-    ],
+    "answers": ["FILL", "FELL", "SELL", "SEAL", "REAL"],
     "topWord": "FILM",
     "bottomWord": "REEL"
   },
@@ -2113,13 +1411,7 @@
       "Treat eaten at a birthday party",
       "Setting for an oven"
     ],
-    "answers": [
-      "DATE",
-      "DARE",
-      "CARE",
-      "CAKE",
-      "BAKE"
-    ],
+    "answers": ["DATE", "DARE", "CARE", "CAKE", "BAKE"],
     "topWord": "DATA",
     "bottomWord": "BASE"
   },
@@ -2131,13 +1423,7 @@
       "People from Denmark",
       "Eats an evening meal"
     ],
-    "answers": [
-      "PARTS",
-      "PANTS",
-      "PANES",
-      "DANES",
-      "DINES"
-    ],
+    "answers": ["PARTS", "PANTS", "PANES", "DANES", "DINES"],
     "topWord": "PARTY",
     "bottomWord": "LINES"
   },
@@ -2149,13 +1435,7 @@
       "Waffles are made out of it",
       "Person using the tub"
     ],
-    "answers": [
-      "MISTER",
-      "MASTER",
-      "MATTER",
-      "BATTER",
-      "BATHER"
-    ],
+    "answers": ["MISTER", "MASTER", "MATTER", "BATTER", "BATHER"],
     "topWord": "SISTER",
     "bottomWord": "FATHER"
   },
@@ -2167,13 +1447,7 @@
       "Blends together, like all the ingredients for a cake",
       "Pits dug into the earth to extract ore"
     ],
-    "answers": [
-      "TIDES",
-      "SIDES",
-      "SIXES",
-      "MIXES",
-      "MINES"
-    ],
+    "answers": ["TIDES", "SIDES", "SIXES", "MIXES", "MINES"],
     "topWord": "TIMES",
     "bottomWord": "MINUS"
   },
@@ -2185,13 +1459,7 @@
       "Place to dry dishes in the kitchen",
       "Running competition like a 5k or marathon"
     ],
-    "answers": [
-      "DECK",
-      "DOCK",
-      "ROCK",
-      "RACK",
-      "RACE"
-    ],
+    "answers": ["DECK", "DOCK", "ROCK", "RACK", "RACE"],
     "topWord": "NECK",
     "bottomWord": "LACE"
   },
@@ -2203,13 +1471,7 @@
       "Sign seen in a school crosswalk",
       "Place in an overhead compartment"
     ],
-    "answers": [
-      "SOAP",
-      "SLAP",
-      "SLOP",
-      "SLOW",
-      "STOW"
-    ],
+    "answers": ["SOAP", "SLAP", "SLOP", "SLOW", "STOW"],
     "topWord": "SOUP",
     "bottomWord": "STEW"
   },
@@ -2221,13 +1483,7 @@
       "Second half of a phrase meaning \"exaggerated story",
       "First half of a phrase meaning \"exaggerated story"
     ],
-    "answers": [
-      "FILE",
-      "PILE",
-      "PALE",
-      "TALE",
-      "TALL"
-    ],
+    "answers": ["FILE", "PILE", "PALE", "TALE", "TALL"],
     "topWord": "FIRE",
     "bottomWord": "BALL"
   },
@@ -2239,13 +1495,7 @@
       "Uninteresting or lackluster",
       "A contest between two people"
     ],
-    "answers": [
-      "POLO",
-      "POLL",
-      "PULL",
-      "DULL",
-      "DUEL"
-    ],
+    "answers": ["POLO", "POLL", "PULL", "DULL", "DUEL"],
     "topWord": "SOLO",
     "bottomWord": "DUET"
   },
@@ -2257,13 +1507,7 @@
       "Payment to ride on a bus or plane",
       "What celebrities have"
     ],
-    "answers": [
-      "CORE",
-      "BORE",
-      "BARE",
-      "FARE",
-      "FAME"
-    ],
+    "answers": ["CORE", "BORE", "BARE", "FARE", "FAME"],
     "topWord": "CODE",
     "bottomWord": "NAME"
   },
@@ -2275,13 +1519,7 @@
       "You might get 50% off at one",
       "Container that often has a combination lock"
     ],
-    "answers": [
-      "DALI",
-      "MALI",
-      "MALE",
-      "SALE",
-      "SAFE"
-    ],
+    "answers": ["DALI", "MALI", "MALE", "SALE", "SAFE"],
     "topWord": "DELI",
     "bottomWord": "CAFE"
   },
@@ -2293,13 +1531,7 @@
       "Peppered with insults, in slang",
       "Spread some gossip"
     ],
-    "answers": [
-      "MASHED",
-      "MASSED",
-      "MISSED",
-      "DISSED",
-      "DISHED"
-    ],
+    "answers": ["MASHED", "MASSED", "MISSED", "DISSED", "DISHED"],
     "topWord": "WASHED",
     "bottomWord": "DISHES"
   },
@@ -2311,13 +1543,7 @@
       "Trench dug around a castle",
       "Option that vegetarians don't order"
     ],
-    "answers": [
-      "LOSE",
-      "LOST",
-      "MOST",
-      "MOAT",
-      "MEAT"
-    ],
+    "answers": ["LOSE", "LOST", "MOST", "MOAT", "MEAT"],
     "topWord": "LOVE",
     "bottomWord": "SEAT"
   },
@@ -2329,13 +1555,7 @@
       "Sound the alarm",
       "Threadbare; frayed"
     ],
-    "answers": [
-      "BURY",
-      "BURN",
-      "BARN",
-      "WARN",
-      "WORN"
-    ],
+    "answers": ["BURY", "BURN", "BARN", "WARN", "WORN"],
     "topWord": "BUSY",
     "bottomWord": "WORK"
   },
@@ -2347,13 +1567,7 @@
       "Exposes, as one's emotions or teeth",
       "Is interested"
     ],
-    "answers": [
-      "POKES",
-      "PORES",
-      "BORES",
-      "BARES",
-      "CARES"
-    ],
+    "answers": ["POKES", "PORES", "BORES", "BARES", "CARES"],
     "topWord": "POKER",
     "bottomWord": "CARDS"
   },
@@ -2365,13 +1579,7 @@
       "Very tight connection",
       "Pleasant, as memories"
     ],
-    "answers": [
-      "BUNK",
-      "BANK",
-      "BAND",
-      "BOND",
-      "FOND"
-    ],
+    "answers": ["BUNK", "BANK", "BAND", "BOND", "FOND"],
     "topWord": "JUNK",
     "bottomWord": "FOOD"
   },
@@ -2383,13 +1591,7 @@
       "Line of stitches on clothing",
       "Char the surface of something with intense heat"
     ],
-    "answers": [
-      "GLUM",
-      "GLAM",
-      "SLAM",
-      "SEAM",
-      "SEAR"
-    ],
+    "answers": ["GLUM", "GLAM", "SLAM", "SEAM", "SEAR"],
     "topWord": "PLUM",
     "bottomWord": "PEAR"
   }

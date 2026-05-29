@@ -40,6 +40,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "~/components/ui/select"
+import { trackEvent } from "~/lib/analytics"
 import { GAMES_CONFIG } from "~/lib/games-config"
 import { localStorage, secureStorage, syncStorage } from "~/lib/storage"
 import {
@@ -126,6 +127,14 @@ export function SolverShell({
       instance: syncStorage
     },
     {}
+  )
+
+  const [telemetryEnabled, setTelemetryEnabled] = useStorage<boolean>(
+    {
+      key: "telemetryEnabled",
+      instance: syncStorage
+    },
+    true
   )
 
   // Multi-Provider settings storage hooks
@@ -322,6 +331,11 @@ export function SolverShell({
     return () => clearInterval(checkInterval)
   }, [detectActiveGame])
 
+  // Track active tab views
+  useEffect(() => {
+    trackEvent(`${activeTab}_viewed`).catch(console.error)
+  }, [activeTab])
+
   // Fetch debug logs and main html from content script and storage session
   const fetchDebugInfo = useCallback(async () => {
     if (typeof chrome === "undefined" || !chrome.tabs) return
@@ -407,6 +421,10 @@ export function SolverShell({
   }
 
   const handleSolve = async (gameId: string) => {
+    trackEvent("solve_clicked", { game: gameId, mode: defaultSolveMode }).catch(
+      console.error
+    )
+
     if (typeof chrome === "undefined" || !chrome.tabs) {
       setSolveError(getMessage("errorChromeTabIntegration"))
       return
@@ -533,6 +551,7 @@ export function SolverShell({
   }
 
   const handleMarkNotPlayed = async (gameId: string) => {
+    trackEvent("mark_not_played", { game: gameId }).catch(console.error)
     const dateKey = getLocalDateString()
     const updated = { ...solveHistory }
     if (updated[dateKey]) {
@@ -548,6 +567,7 @@ export function SolverShell({
 
   // Debug copying and cleaning actions
   const handleCopyHtml = () => {
+    trackEvent("copy_html").catch(console.error)
     if (!mainHtml) return
     navigator.clipboard
       .writeText(mainHtml)
@@ -559,6 +579,7 @@ export function SolverShell({
   }
 
   const handleCopyLogs = () => {
+    trackEvent("copy_logs").catch(console.error)
     if (debugLogs.length === 0) return
     const logsText = debugLogs
       .map(
@@ -575,6 +596,7 @@ export function SolverShell({
   }
 
   const handleCopyBoth = () => {
+    trackEvent("copy_both_logs_html").catch(console.error)
     const logsText = debugLogs
       .map(
         (log) => `[${log.timestamp}] [${log.type.toUpperCase()}] ${log.message}`
@@ -591,6 +613,7 @@ export function SolverShell({
   }
 
   const handleCopyRegistryEntry = async () => {
+    trackEvent("copy_registry_entry", { game: activeGame }).catch(console.error)
     if (typeof chrome === "undefined" || !chrome.tabs) return
     try {
       const [tab] = await chrome.tabs.query({
@@ -643,6 +666,7 @@ export function SolverShell({
   }
 
   const handleSubmitToRegistry = async () => {
+    trackEvent("submit_to_registry", { game: activeGame }).catch(console.error)
     if (typeof chrome === "undefined" || !chrome.tabs) return
     try {
       const [tab] = await chrome.tabs.query({
@@ -1196,6 +1220,46 @@ export function SolverShell({
                   {getMessage("settingDefaultSolveModeNotice") ||
                     "Choose whether solver solves entire game or places single item."}
                 </p>
+              </div>
+            </div>
+
+            <div className="h-[1px] bg-border/40 my-2" />
+
+            <div className="space-y-4 pt-1">
+              <div className="flex items-center gap-2 border-b border-border/60 pb-1.5">
+                <RefreshCw className="w-3.5 h-3.5 text-[#0a66c2] dark:text-[#70b5f9]" />
+                <h4 className="text-xs font-bold text-foreground block tracking-wide uppercase">
+                  {getMessage("labelTelemetryTitle") || "TELEMETRY & PRIVACY"}
+                </h4>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-lg border border-border bg-card">
+                <div className="space-y-0.5 max-w-[80%]">
+                  <span className="text-xs font-bold text-foreground block">
+                    {getMessage("telemetryToggleLabel") ||
+                      "Send Anonymous Telemetry"}
+                  </span>
+                  <p className="text-[9px] text-muted-foreground leading-normal">
+                    {getMessage("telemetryToggleDesc") ||
+                      "Help improve the solver by sharing anonymous performance & usage metrics."}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setTelemetryEnabled(!telemetryEnabled)}
+                  className={cn(
+                    "relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-1 focus:ring-[#0a66c2] dark:focus:ring-[#70b5f9]",
+                    telemetryEnabled
+                      ? "bg-[#0a66c2] dark:bg-[#70b5f9]"
+                      : "bg-muted"
+                  )}>
+                  <span
+                    className={cn(
+                      "pointer-events-none inline-block h-4 w-4 transform rounded-full bg-background shadow-lg ring-0 transition duration-200 ease-in-out",
+                      telemetryEnabled ? "translate-x-4" : "translate-x-0"
+                    )}
+                  />
+                </button>
               </div>
             </div>
 

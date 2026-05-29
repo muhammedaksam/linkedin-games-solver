@@ -508,6 +508,21 @@ const messageListener = (
           `[LinkedIn Games Solver] Solver ${currentActive.name} completed successfully.`
         )
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
+        if (typeof chrome !== "undefined" && chrome.runtime?.sendMessage) {
+          chrome.runtime
+            .sendMessage({
+              action: "trackEvent",
+              event: {
+                name: "solve_completed",
+                params: {
+                  game: currentActive.name.toLowerCase(),
+                  mode,
+                  duration_seconds: durationSeconds
+                }
+              }
+            })
+            .catch(() => {})
+        }
         if (mode !== "hint") {
           await saveGameCompleted(
             currentActive.name.toLowerCase(),

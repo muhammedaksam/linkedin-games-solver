@@ -1,6 +1,7 @@
 import { Storage } from "@plasmohq/storage"
 
 import { askAI } from "~games/ai"
+import { trackEventDirect } from "~lib/analytics"
 
 interface SolveRecord {
   solved: boolean
@@ -252,8 +253,27 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 })
 
 // Initialize alarm and context menus on sw load / startup
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((details) => {
   setupStreakAlarm().catch(console.error)
+
+  try {
+    if (details.reason === "install") {
+      chrome.runtime
+        .getPlatformInfo()
+        .then((platform) => {
+          trackEventDirect("new_install", {
+            operating_system: platform.os
+          }).catch(console.error)
+        })
+        .catch(console.error)
+    } else if (details.reason === "update") {
+      trackEventDirect("extension_update", {
+        previous_version: details.previousVersion
+      }).catch(console.error)
+    }
+  } catch (err) {
+    console.warn("[Analytics] Installation track failed:", err)
+  }
 
   // Context Menu shortcuts for LinkedIn Game Pages
   if (typeof chrome !== "undefined" && chrome.contextMenus) {
@@ -513,8 +533,18 @@ chrome.notifications.onButtonClicked.addListener((id, index) => {
 })
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "trackEvent") {
+    const { name, params } = message.event || {}
+    if (name) {
+      trackEventDirect(name, params).catch(console.error)
+    }
+    sendResponse({ success: true })
+    return true
+  }
+
   if (message.action === "fetchRegistry") {
     const game = message.game
+    trackEventDirect("fetch_registry", { game }).catch(console.error)
     const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${game}.json`
     fetch(registryUrl)
       .then((res) => {
@@ -534,6 +564,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message.action === "askAI") {
+    trackEventDirect("ask_ai", { promptLength: message.prompt?.length }).catch(
+      console.error
+    )
     askAI(message.prompt, message.jsonMode)
       .then((text) => {
         sendResponse({ success: true, text })

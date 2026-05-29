@@ -149,6 +149,33 @@ If you prefer opening a manual Pull Request:
 
 ---
 
+## 📊 Anonymous Telemetry & Proxy
+
+To continuously improve solving heuristics and monitor error frequencies on dynamic LinkedIn layouts, the extension contains an anonymous performance telemetry module using **Google Analytics 4 (GA4) Measurement Protocol**.
+
+### Telemetry Architecture & Proxy Flow
+
+To bypass Content Security Policy (CSP) headers on the LinkedIn domain and prevent remotely hosted code executions, the extension proxies all UI and content script events through the Background Service Worker:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant UI as React UI (Popup / Sidepanel)
+    participant CS as Content Script (LinkedIn Games Tab)
+    participant BG as Background Service Worker
+    participant GA as Google Analytics 4 Endpoint (HTTPS)
+
+    UI->>BG: chrome.runtime.sendMessage("trackEvent", eventDetails)
+    CS->>BG: chrome.runtime.sendMessage("trackEvent", eventDetails)
+    Note over BG: Checks if telemetryEnabled in syncStorage is True
+    BG->>GA: POST /mp/collect (with anonymous random UUID clientId & session)
+```
+
+- **100% Opt-Out Enabled**: Users can instantly disable telemetry in the **Settings** panel (Popup or Sidepanel) at any time.
+- **Strictly Privacy-First**: No Personally Identifiable Information (PII), browser metadata, session cookies, LinkedIn accounts, or board credentials are ever collected or sent off-device.
+
+---
+
 ## 🎯 Supported Games & Capabilities
 
 | Game           | Platform Framework |       Extraction Mode        |                    State Mapping Depth                     |     Fallback Stability     |
@@ -185,7 +212,17 @@ cd linkedin-games-solver
 pnpm install
 ```
 
-### 2. Start Development Server
+### 2. Configure Environment Variables
+
+Before starting the dev server or compiling, copy the example environment file and fill in your details:
+
+```bash
+cp .env.example .env.local
+```
+
+Populate the `PLASMO_PUBLIC_GTAG_ID` and `PLASMO_PUBLIC_SECRET_API_KEY` variables in `.env.local` to enable Google Analytics 4 tracking. If left unset, telemetry will gracefully skip.
+
+### 3. Start Development Server
 
 ```bash
 pnpm dev
@@ -193,7 +230,7 @@ pnpm dev
 
 Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, click **Load Unpacked**, and select the `build/chrome-mv3-dev` directory in this workspace.
 
-### 3. Production Compilation
+### 4. Production Compilation
 
 ```bash
 pnpm build

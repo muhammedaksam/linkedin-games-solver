@@ -764,5 +764,17 @@
   },
   "contextMenuViewResults": {
     "message": "📊 查看结果"
+  },
+  "labelTelemetryTitle": {
+    "message": "遥测与隐私",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "发送匿名遥测",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "通过共享匿名性能和使用情况指标来帮助改进求解器。",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
   }
 }

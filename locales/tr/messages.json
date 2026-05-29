@@ -764,5 +764,17 @@
   },
   "contextMenuViewResults": {
     "message": "📊 Sonuçları Görüntüle"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRİ VE GİZLİLİK",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "Anonim Telemetri Gönder",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "Anonim performans ve kullanım metriklerini paylaşarak çözücüyü geliştirmeye yardımcı olun.",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
   }
 }

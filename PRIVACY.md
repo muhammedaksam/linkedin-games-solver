@@ -35,9 +35,22 @@ The extension's single purpose is to read the game state and clues from LinkedIn
 - Settings, solved statistics, and optional API keys remain stored locally in your browser storage (`local` and `sync` spaces) until you remove them or uninstall the extension.
 - Game content and prompts are sent only to the AI provider you configured and only when you request AI assistance. We do not sell or transfer user data for advertising or unrelated purposes.
 
-## No analytics or tracking
+## Anonymous Telemetry & Analytics
 
-This extension does not include analytics, telemetry, or crash-reporting integrations. It does not collect or transmit personal identifiers, location, contacts, browsing history, or keystrokes.
+To help improve the extension, identify bugs, and analyze solver performance on dynamic LinkedIn layouts, we collect anonymous usage telemetry. This analytics system runs via the **Google Analytics 4 (GA4) Measurement Protocol** and is designed with strict privacy-first principles:
+
+- **What is Collected**:
+  - Anonymous usage actions (e.g., loading home, settings, or debug tabs).
+  - Solver metrics (e.g., clicks on "Solve" or "Hint", and the elapsed time taken to solve a board).
+  - General system info (e.g., operating system name and extension version).
+  - Integration events (e.g., public registry fetch attempts, API request token sizes, and issues template submissions).
+- **What is NEVER Collected**:
+  - No Personally Identifiable Information (PII) of any kind (e.g. name, email, credentials).
+  - No LinkedIn account profiles, session cookies, password tokens, or user profiles.
+  - No custom AI API keys or custom endpoint URLs.
+  - No web activity, search history, or pages visited outside of active LinkedIn daily games boards.
+- **Anonymous Identifiers**: Telemetry events use a randomly generated UUID client ID stored in your local synchronized extension settings. It is completely decoupled from your personal IP address, name, or hardware identifiers.
+- **100% Opt-Out Control**: You can disable telemetry at any time by turning off the **"Send Anonymous Telemetry"** switch in the **Settings** panel. If turned off, all telemetry requests are instantly bypassed locally and no network traffic is sent to Google Analytics.
 
 ## Developer contact
 
