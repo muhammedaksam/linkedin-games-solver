@@ -1,6 +1,9 @@
 name: "Handle PR Merged"
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types: [closed]
     branches:
@@ -8,7 +11,6 @@ on:
 
 jobs:
   label-issue:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -18,9 +20,48 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const pr = context.payload.pull_request;
-            const body = pr.body || "";
+            let pr = null;
 
+            if (context.eventName === 'pull_request') {
+              if (context.payload.pull_request && context.payload.pull_request.merged === true) {
+                pr = context.payload.pull_request;
+              } else {
+                console.log("Pull request not merged. Skipping.");
+                return;
+              }
+            } else if (context.eventName === 'push') {
+              const commit_sha = context.sha;
+              console.log(`Triggered by push event. Commit SHA: ${commit_sha}`);
+              
+              try {
+                const pulls = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  commit_sha: commit_sha,
+                });
+
+                if (pulls.data && pulls.data.length > 0) {
+                  // Find the merged PR targeting 'main'
+                  pr = pulls.data.find(p => p.state === 'closed' && p.base.ref === 'main' && p.merged_at);
+                  if (!pr) {
+                    console.log("No merged pull request targeting main found for this commit.");
+                    return;
+                  }
+                  console.log(`Found associated PR #${pr.number}: ${pr.title}`);
+                } else {
+                  console.log("No pull request associated with this commit.");
+                  return;
+                }
+              } catch (err) {
+                console.log(`Failed to list pull requests associated with commit: ${err.message}`);
+                return;
+              }
+            } else {
+              console.log(`Unsupported event: ${context.eventName}`);
+              return;
+            }
+
+            const body = pr.body || "";
             // Extract issue number using regex from "Closes #<num>" or "issue #<num>"
             const match = body.match(/Closes #(\d+)/i) || body.match(/issue #(\d+)/i);
 
