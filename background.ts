@@ -398,9 +398,6 @@ const calculateStreak = (
   return activeStreak
 }
 
-// Global cached streak value so we can fall back to it when resetting solverStatus
-let cachedStreakValue = 0
-
 export const updateActionBadge = async (
   streakValue?: number,
   status?: "solving" | "idle",
@@ -408,8 +405,25 @@ export const updateActionBadge = async (
 ) => {
   if (typeof chrome === "undefined" || !chrome.action) return
 
+  let cachedStreakValue = 0
+  if (typeof chrome !== "undefined" && chrome.storage?.session) {
+    try {
+      const sessionData = await chrome.storage.session.get("cachedStreakValue")
+      cachedStreakValue = sessionData.cachedStreakValue || 0
+    } catch (err) {
+      console.warn("[Badge] Failed to read from session storage:", err)
+    }
+  }
+
   if (streakValue !== undefined) {
     cachedStreakValue = streakValue
+    if (typeof chrome !== "undefined" && chrome.storage?.session) {
+      try {
+        await chrome.storage.session.set({ cachedStreakValue })
+      } catch (err) {
+        console.warn("[Badge] Failed to write to session storage:", err)
+      }
+    }
   }
 
   if (status === "solving") {
