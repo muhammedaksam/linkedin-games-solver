@@ -90,6 +90,31 @@ sequenceDiagram
     End
 ```
 
+### Offscreen Canvas Preprocessing Flow
+
+For visual solvers (like Pinpoint), the extension captures viewport screenshots and processes them entirely on-device using a headless **Chrome Offscreen Document** with HTML5 Canvas before transmitting data to Gemini. This keeps payload sizes under 50KB, dramatically reduces prompt latency, and guarantees user data privacy by stripping all surrounding tabs, taskbars, and personal text locally.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Content as Content Solver (games/multimodal.ts)
+    participant SW as Background Service Worker (captureTab.ts)
+    participant Offscreen as Offscreen Document (tabs/offscreen.tsx)
+    participant Gemini as Multimodal AI (Gemini Nano)
+
+    Content->>SW: sendToBackground("captureTab", cropRect)
+    Note over SW: Capture raw 4K screenshot (Base64)
+    SW->>SW: Create Headless Offscreen Document (tabs/offscreen.html)
+    SW->>Offscreen: sendMessage("preprocess-image", { dataUrl, cropRect })
+    Note over Offscreen: Loads image into hidden <canvas>
+    Note over Offscreen: Crops to board & scales down to 512x512
+    Note over Offscreen: Compresses to 85% JPEG quality
+    Offscreen-->>SW: Resolves compressed base64 JPEG
+    SW->>SW: closeDocument()
+    SW-->>Content: Returns optimized 40KB image
+    Content->>Gemini: Prompts Gemini with tiny optimized image
+```
+
 ---
 
 ## 🗃️ Daily Answers Registry & Contribution

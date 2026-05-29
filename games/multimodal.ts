@@ -1,4 +1,5 @@
 /// <reference types="dom-chromium-ai" />
+import { sendToBackground } from "@plasmohq/messaging"
 
 /**
  * Converts a data URL to an Image Bitmap safely for AI ingestion.
@@ -10,18 +11,45 @@ async function dataUrlToImageBitmap(dataUrl: string): Promise<ImageBitmap> {
 }
 
 /**
+ * Helper to compute the exact bounding box of the active game board scaled by DPR.
+ */
+function getBoardCropRect() {
+  if (typeof document === "undefined" || typeof window === "undefined")
+    return undefined
+
+  const selectors = [
+    '[data-testid="interactive-grid"]',
+    ".game-board",
+    ".pinpoint__board",
+    ".crossclimb__grid",
+    '[data-sudoku-grid="true"]',
+    '[data-testid^="patches-"]',
+    "main"
+  ]
+
+  for (const selector of selectors) {
+    const el = document.querySelector(selector)
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      const dpr = window.devicePixelRatio || 1
+      return {
+        x: Math.round(rect.left * dpr),
+        y: Math.round(rect.top * dpr),
+        width: Math.round(rect.width * dpr),
+        height: Math.round(rect.height * dpr)
+      }
+    }
+  }
+  return undefined
+}
+
+/**
  * Helper to capture the current active board visually and prompt Gemini Multimodal Nano.
  */
 export async function solveWithMultimodalAI(
   promptText: string
 ): Promise<string> {
-  if (
-    typeof chrome === "undefined" ||
-    !chrome.runtime ||
-    !chrome.runtime.sendMessage
-  ) {
-    throw new Error("Extension environment required for screenshot solving.")
-  }
+  const cropRect = getBoardCropRect()
 
   // 1. Capture the tab screen visually using the background service worker
   const captureRes = await new Promise<{
@@ -29,11 +57,29 @@ export async function solveWithMultimodalAI(
     dataUrl?: string
     error?: string
   }>((resolve) => {
-    chrome.runtime.sendMessage({ action: "captureTab" }, (res) => {
-      resolve(
-        res || { success: false, error: "No response from background worker." }
-      )
+    sendToBackground<
+      unknown,
+      { success: boolean; dataUrl?: string; error?: string }
+    >({
+      name: "captureTab",
+      body: {
+        cropRect,
+        targetWidth: 512,
+        targetHeight: 512
+      }
     })
+      .then((res) => {
+        resolve(
+          res || {
+            success: false,
+            error: "No response from background worker."
+          }
+        )
+      })
+      .catch((err: unknown) => {
+        const errMsg = err instanceof Error ? err.message : String(err)
+        resolve({ success: false, error: errMsg })
+      })
   })
 
   if (!captureRes.success || !captureRes.dataUrl) {

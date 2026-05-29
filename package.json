@@ -82,7 +82,8 @@
       "sidePanel",
       "alarms",
       "notifications",
-      "contextMenus"
+      "contextMenus",
+      "offscreen"
     ],
     "omnibox": {
       "keyword": "solve"
