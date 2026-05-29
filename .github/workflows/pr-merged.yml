@@ -13,8 +13,9 @@ jobs:
   label-issue:
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       issues: write
-      pull-requests: read
+      pull-requests: write
     steps:
       - name: Update Issue Labels
         uses: actions/github-script@v6
@@ -61,6 +62,36 @@ jobs:
               return;
             }
 
+            // Delete the head branch of the PR
+            try {
+              if (pr.head.repo.full_name === pr.base.repo.full_name) {
+                const branchRef = `heads/${pr.head.ref}`;
+                await github.rest.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: branchRef,
+                });
+                console.log(`Successfully deleted branch: ${pr.head.ref}`);
+              } else {
+                console.log(`Branch is on a fork (${pr.head.repo.full_name}). Skipping deletion.`);
+              }
+            } catch (err) {
+              console.log(`Failed to delete branch ${pr.head.ref}: ${err.message}`);
+            }
+
+            // Lock the pull request for conversation
+            try {
+              await github.rest.issues.lock({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                lock_reason: 'resolved'
+              });
+              console.log(`Successfully locked PR #${pr.number} for conversation.`);
+            } catch (err) {
+              console.log(`Failed to lock PR #${pr.number}: ${err.message}`);
+            }
+
             const body = pr.body || "";
             // Extract issue number using regex from "Closes #<num>" or "issue #<num>"
             const match = body.match(/Closes #(\d+)/i) || body.match(/issue #(\d+)/i);
@@ -93,6 +124,19 @@ jobs:
                 console.log(`Added 'processed-successfully' label to issue #${issueNumber}.`);
               } catch (e) {
                 console.log(`Failed to add 'processed-successfully' label: ${e.message}`);
+              }
+
+              try {
+                const comment = `### 🎉 Registry Update Completed!\n\nThank you! Your submission has been successfully merged into our solver registry, and the solver database is now updated. This issue is resolved and will now be closed. We appreciate your contribution! 🚀`;
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: comment
+                });
+                console.log(`Successfully added a comment to issue #${issueNumber}.`);
+              } catch (e) {
+                console.log(`Failed to add a comment to issue #${issueNumber}: ${e.message}`);
               }
             } else {
               console.log("No linked issue found in the Pull Request body.");
