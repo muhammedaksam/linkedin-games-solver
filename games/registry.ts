@@ -1,3 +1,5 @@
+import { sendToBackground } from "@plasmohq/messaging"
+
 import { getLocalDateString, getPuzzleNumber } from "~lib/utils"
 
 export interface PinpointPuzzle {
@@ -25,29 +27,25 @@ export async function fetchRegistry(
     typeof window !== "undefined" &&
     typeof chrome !== "undefined" &&
     chrome.runtime &&
-    chrome.runtime.sendMessage
+    chrome.runtime.id
   ) {
-    return new Promise((resolve, reject) => {
-      chrome.runtime.sendMessage(
-        { action: "fetchRegistry", game },
-        (response) => {
-          if (chrome.runtime.lastError) {
-            reject(new Error(chrome.runtime.lastError.message))
-            return
-          }
-          if (response?.success) {
-            resolve(response.data)
-          } else {
-            reject(
-              new Error(
-                response?.error ||
-                  "Registry fetch from Background SW returned no response."
-              )
-            )
-          }
-        }
-      )
-    })
+    try {
+      const response = await sendToBackground({
+        name: "fetchRegistry",
+        body: { game }
+      })
+      if (response?.success) {
+        return response.data
+      } else {
+        throw new Error(
+          response?.error ||
+            "Registry fetch from Background SW returned no response."
+        )
+      }
+    } catch (err: unknown) {
+      const errMsg = err instanceof Error ? err.message : String(err)
+      throw new Error(errMsg, { cause: err })
+    }
   }
 
   // Fallback for tests / non-extension context
