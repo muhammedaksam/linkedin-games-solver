@@ -2410,5 +2410,23 @@
     ],
     "topWord": "PLUM",
     "bottomWord": "PEAR"
+  },
+  "760": {
+    "clues": [
+      "Move like a moth",
+      "___ accompli",
+      "Verifiable piece of information",
+      "Turn to look directly at someone",
+      "Predetermined outcome"
+    ],
+    "answers": [
+      "FLIT",
+      "FAIT",
+      "FACT",
+      "FACE",
+      "FATE"
+    ],
+    "topWord": "FLAT",
+    "bottomWord": "RATE"
   }
 }
