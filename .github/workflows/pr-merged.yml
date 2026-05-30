@@ -18,7 +18,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Update Issue Labels
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             let pr = null;

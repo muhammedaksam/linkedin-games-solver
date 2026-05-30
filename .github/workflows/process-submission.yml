@@ -42,7 +42,7 @@ jobs:
 
       - name: Handle Validation Success
         if: steps.process.outcome == 'success'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
@@ -108,7 +108,7 @@ jobs:
 
           git checkout -b "$BRANCH_NAME"
           git add registry/*.json
-          git commit -m "chore: update solver registry [skip ci]" \
+          git commit -m "chore: update solver registry" \
             -m "Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.login }}@users.noreply.github.com>" \
             -m "Co-authored-by: Muhammed Mustafa AKŞAM <info@muhammedaksam.com.tr>"
 
@@ -124,7 +124,7 @@ jobs:
 
       - name: Handle Validation Failure
         if: steps.process.outcome == 'failure'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
