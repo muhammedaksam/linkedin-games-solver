@@ -100,6 +100,23 @@ jobs:
               const issueNumber = parseInt(match[1], 10);
               console.log(`Found linked issue #${issueNumber} in PR body.`);
               
+              // Check if the issue is already labeled as processed-successfully to prevent double-runs
+              try {
+                const issueObj = await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber
+                });
+                const labels = issueObj.data.labels || [];
+                const alreadyProcessed = labels.some(l => (typeof l === 'string' ? l : l.name) === 'processed-successfully');
+                if (alreadyProcessed) {
+                  console.log(`Issue #${issueNumber} is already labeled 'processed-successfully'. Skipping duplicate run.`);
+                  return;
+                }
+              } catch (e) {
+                console.log(`Could not fetch labels for issue #${issueNumber}: ${e.message}`);
+              }
+              
               try {
                 // Remove 'pending-review' label if present
                 await github.rest.issues.removeLabel({
