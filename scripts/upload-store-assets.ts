@@ -134,12 +134,22 @@ async function getFileInputForSection(
     })
     if (!labelEl) return null
 
-    // Go up parents until we find a parent that has a file input inside it
+    // Walk up to the nearest section-level wrapper, then find its file input
     let current: HTMLElement | null = labelEl as HTMLElement
     while (current) {
       const input = current.querySelector('input[type="file"]')
       if (input) {
-        return input
+        const hasUploadController =
+          current.querySelector('[jscontroller="cuBFtb"]') !== null ||
+          current.getAttribute("jscontroller") === "cuBFtb"
+        // Only return if we're at a section-level container, not a broad parent
+        if (
+          current.classList.contains("TVM7Wc") ||
+          hasUploadController ||
+          current.querySelectorAll('input[type="file"]').length === 1
+        ) {
+          return input
+        }
       }
       current = current.parentElement
     }
@@ -170,8 +180,17 @@ async function clearExistingScreenshots(
 
     let current: HTMLElement | null = labelEl as HTMLElement
     while (current) {
-      const inputs = current.querySelectorAll('input[type="file"]')
-      if (inputs.length > 0) {
+      const hasFileInput =
+        current.querySelectorAll('input[type="file"]').length > 0
+      const hasUploadController =
+        current.querySelector('[jscontroller="cuBFtb"]') !== null ||
+        current.getAttribute("jscontroller") === "cuBFtb"
+      if (
+        hasFileInput &&
+        (current.classList.contains("TVM7Wc") ||
+          hasUploadController ||
+          current.querySelectorAll('input[type="file"]').length === 1)
+      ) {
         return current
       }
       current = current.parentElement
