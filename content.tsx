@@ -118,6 +118,20 @@ window.addEventListener("message", (event) => {
 console.log("[LinkedIn Games Solver] Content Script loaded with CSUI.")
 
 const pageLoadTime = Date.now()
+let lastKnownUrl = window.location.href
+let lastUrlChangeTime = pageLoadTime
+
+// Shared helper to derive the bonus-aware game ID from the current URL and active solver
+function getCurrentGameId(): { gameId: string; baseGameId: string } | null {
+  const active = detectActiveSolver()
+  if (!active) return null
+  const url = new URL(window.location.href)
+  const isBonus =
+    url.searchParams.get("bonus") === "true" || url.pathname.includes("bonus")
+  const baseGameId = active.name.toLowerCase()
+  const gameId = baseGameId + (isBonus ? "-bonus" : "")
+  return { gameId, baseGameId }
+}
 
 // Convert MM:SS or HH:MM:SS stopwatch string to seconds
 function parseTimerToSeconds(timeStr: string): number {
@@ -143,14 +157,10 @@ function parseTimerToSeconds(timeStr: string): number {
 // Read the stopwatch timer directly from the native LinkedIn page or results page
 function detectFinalSolveTime(gameId?: string): number | undefined {
   if (!gameId) {
-    const active = detectActiveSolver()
-    const url = new URL(window.location.href)
-    const isBonus =
-      url.searchParams.get("bonus") === "true" || url.pathname.includes("bonus")
-    gameId = active?.name.toLowerCase() + (isBonus ? "-bonus" : "")
+    gameId = getCurrentGameId()?.gameId
   }
 
-  const baseGameId = gameId.replace("-bonus", "")
+  const baseGameId = gameId?.replace("-bonus", "") ?? ""
 
   if (baseGameId === "pinpoint") {
     // 1. Results page golden chiclet (carousel slide showing e.g. "Solved in 3")
@@ -306,13 +316,17 @@ async function saveGameCompleted(
 
 // Global detection scan to identify if the game is already ended/solved when visited
 async function checkVisitedGameSolved() {
-  const active = detectActiveSolver()
-  if (!active) return
+  // Track URL changes to reset the grace period timer when navigating
+  // between regular and bonus games within the same SPA session
+  const currentUrl = window.location.href
+  if (currentUrl !== lastKnownUrl) {
+    lastKnownUrl = currentUrl
+    lastUrlChangeTime = Date.now()
+  }
 
-  const url = new URL(window.location.href)
-  const isBonus =
-    url.searchParams.get("bonus") === "true" || url.pathname.includes("bonus")
-  const gameId = active.name.toLowerCase() + (isBonus ? "-bonus" : "")
+  const current = getCurrentGameId()
+  if (!current) return
+  const { gameId } = current
   const isResultsUrl = window.location.href.includes("/results")
   const seeResults = document.querySelector(
     'a[href*="/results/"], a[href*="/results"], .games-share-footer'
@@ -341,7 +355,7 @@ async function checkVisitedGameSolved() {
         controlWrappers.length - 1
       ] as HTMLElement
       const hintButton = hintWrapper?.querySelector("button")
-      const baseGameId = gameId.replace("-bonus", "")
+      const baseGameId = current.baseGameId
       if (
         undoButton &&
         hintButton &&
@@ -353,7 +367,8 @@ async function checkVisitedGameSolved() {
         ) {
           // Both disabled at start of game due to empty history & cooldown.
           // Only treat as ended if page was loaded > 15s ago.
-          if (Date.now() - pageLoadTime > 15000) {
+          // Use lastUrlChangeTime to handle SPA navigation between games.
+          if (Date.now() - lastUrlChangeTime > 15000) {
             controlsEnded = true
           }
         }
@@ -490,8 +505,15 @@ const messageListener = (
       return true
     }
 
+    const currentGame = getCurrentGameId()
+    if (!currentGame) {
+      sendResponse({ success: false, error: "Could not determine game." })
+      return true
+    }
+    const { gameId: msgGameId } = currentGame
+
     console.log(
-      `[LinkedIn Games Solver] Executing solver for: ${currentActive.name} (mode: ${mode})`
+      `[LinkedIn Games Solver] Executing solver for: ${msgGameId} (mode: ${mode})`
     )
     globalSolving = true
     setReactSolving?.(true)
@@ -508,15 +530,12 @@ const messageListener = (
         )
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
         trackEvent("solve_completed", {
-          game: currentActive.name.toLowerCase(),
+          game: msgGameId,
           mode,
           duration_seconds: durationSeconds
         }).catch(() => {})
         if (mode !== "hint") {
-          await saveGameCompleted(
-            currentActive.name.toLowerCase(),
-            durationSeconds
-          )
+          await saveGameCompleted(msgGameId, durationSeconds)
         }
         setReactSuccess?.(true)
         sendResponse({ success: true, game: currentActive.name.toLowerCase() })
@@ -857,7 +876,8 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 
 // Generate highly accurate, localized button labels based on active game type
 const getLocalizedStrings = (activeGame: string) => {
-  const isAiGame = activeGame === "crossclimb" || activeGame === "pinpoint"
+  const baseGame = activeGame.replace("-bonus", "")
+  const isAiGame = baseGame === "crossclimb" || baseGame === "pinpoint"
   const hasI18n = typeof chrome !== "undefined" && chrome.i18n
 
   return {
@@ -927,11 +947,11 @@ const GameSolverUI = () => {
     }
   }, [solveError])
 
-  // Periodically check the active game solver
+  // Periodically check the active game solver (with bonus awareness)
   useEffect(() => {
     const check = () => {
-      const active = detectActiveSolver()
-      setActiveGame(active ? active.name.toLowerCase() : null)
+      const current = getCurrentGameId()
+      setActiveGame(current?.gameId ?? null)
     }
     check()
     const interval = setInterval(check, 1000)
@@ -940,6 +960,7 @@ const GameSolverUI = () => {
 
   if (!activeGame) return null
 
+  const baseActiveGame = activeGame.replace("-bonus", "")
   const dateKey = getLocalDateString()
   const isCompleted = !!solveHistory?.[dateKey]?.[activeGame]?.solved
 
@@ -966,10 +987,7 @@ const GameSolverUI = () => {
       await currentActive.solve(mode)
       if (mode !== "hint") {
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-        await saveGameCompleted(
-          currentActive.name.toLowerCase(),
-          durationSeconds
-        )
+        await saveGameCompleted(activeGame, durationSeconds)
       }
       setSolveSuccess(true)
     } catch (err) {
@@ -984,11 +1002,13 @@ const GameSolverUI = () => {
 
   const handleResultsClick = () => {
     const getGamePath = (id: string) => (id === "sudoku" ? "mini-sudoku" : id)
-    const gamePath = getGamePath(activeGame)
-    window.location.href = `https://www.linkedin.com/games/${gamePath}/results/`
+    const gamePath = getGamePath(baseActiveGame)
+    window.location.assign(
+      `https://www.linkedin.com/games/${gamePath}/results/`
+    )
   }
 
-  const strings = getLocalizedStrings(activeGame)
+  const strings = getLocalizedStrings(baseActiveGame)
 
   return (
     <div
@@ -1032,7 +1052,8 @@ const GameSolverUI = () => {
                 className="solver-btn solver-btn-active"
                 style={{ opacity: 0.7 }}
                 title={
-                  activeGame === "crossclimb" || activeGame === "pinpoint"
+                  baseActiveGame === "crossclimb" ||
+                  baseActiveGame === "pinpoint"
                     ? "Solve this puzzle automatically using AI solver."
                     : "Solve this puzzle using algorithmic steps."
                 }>
@@ -1047,7 +1068,8 @@ const GameSolverUI = () => {
                 onClick={() => handleSolve("full")}
                 className="solver-btn solver-btn-active"
                 title={
-                  activeGame === "crossclimb" || activeGame === "pinpoint"
+                  baseActiveGame === "crossclimb" ||
+                  baseActiveGame === "pinpoint"
                     ? "Solve this puzzle automatically using AI solver."
                     : "Solve this puzzle using algorithmic steps."
                 }>
