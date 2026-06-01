@@ -116,7 +116,20 @@
         ],
         "resources": []
       }
-    ]
+    ],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "{58eb90cf-393d-4f9e-a4ab-d159dc88f018}",
+        "data_collection_permissions": {
+          "required": [],
+          "optional": [
+            "technicalAndInteraction",
+            "websiteContent"
+          ]
+        }
+      },
+      "gecko_android": {}
+    }
   },
   "pnpm": {
     "overrides": {
