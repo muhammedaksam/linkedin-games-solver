@@ -830,7 +830,7 @@ export function SolverShell({
         </div>
 
         {/* Right: LinkedIn Global Nav Links */}
-        <div className="flex items-center gap-1.5 h-full">
+        <div className="flex items-center gap-1 h-full">
           {navItems.map((item) => {
             const IconComponent = item.icon
             return (
@@ -840,8 +840,7 @@ export function SolverShell({
                 variant="ghost"
                 onClick={item.onClick}
                 className={cn(
-                  "relative flex flex-col items-center justify-center h-full text-muted-foreground hover:text-foreground hover:bg-transparent transition-all select-none outline-none border-none bg-transparent pt-1 rounded-none",
-                  isSidePanel ? "px-1.5" : "px-1",
+                  "relative flex flex-col items-center justify-center h-full text-muted-foreground hover:text-foreground hover:bg-transparent transition-all select-none outline-none border-none bg-transparent pt-1 rounded-none px-2",
                   item.active && "text-foreground"
                 )}
                 title={item.label}>
@@ -851,7 +850,6 @@ export function SolverShell({
                     item.active && "stroke-[2.2px]"
                   )}
                 />
-                {/* Hiding the long text labels completely in narrow sidepanel to prevent squishing */}
                 {!isSidePanel && (
                   <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight whitespace-nowrap">
                     {item.label}
@@ -863,8 +861,8 @@ export function SolverShell({
               </Button>
             )
           })}
-          <div className="h-4 w-[1px] bg-border mx-0.5 shrink-0" />
-          <LanguageSwitcher align="right" />
+          <div className="h-4 w-[1px] bg-border mx-1 shrink-0" />
+          <LanguageSwitcher align="right" showLabel={!isSidePanel} />
         </div>
       </header>
 

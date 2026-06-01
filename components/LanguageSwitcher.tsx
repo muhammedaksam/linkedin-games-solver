@@ -6,9 +6,13 @@ import { cn } from "~lib/utils"
 
 interface LanguageSwitcherProps {
   align?: "left" | "right"
+  showLabel?: boolean
 }
 
-export function LanguageSwitcher({ align = "right" }: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  align = "right",
+  showLabel = false
+}: LanguageSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false)
   const activeCode = getActiveLocale()
   const activeLocale =
@@ -45,16 +49,33 @@ export function LanguageSwitcher({ align = "right" }: LanguageSwitcherProps) {
         type="button"
         variant="ghost"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-col items-center justify-center h-full px-1 text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent pt-1 relative hover:bg-transparent rounded-none"
+        className={cn(
+          "flex items-center justify-center text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent hover:bg-transparent rounded-full",
+          showLabel
+            ? "flex flex-col h-full px-1 pt-1 rounded-none"
+            : "h-9 w-9 p-0"
+        )}
         title="Change Language">
-        <div className="flex items-center justify-center w-[18px] h-[18px] transition-transform active:scale-95">
-          <span className="text-[12px] leading-none select-none filter drop-shadow-sm mt-0.5">
+        <div
+          className={cn(
+            "flex items-center justify-center transition-transform active:scale-95",
+            showLabel
+              ? "w-[18px] h-[18px]"
+              : "w-[24px] h-[24px] rounded-full overflow-hidden border border-border/80 shadow-sm"
+          )}>
+          <span
+            className={cn(
+              "leading-none select-none filter drop-shadow-sm",
+              showLabel ? "text-[12px] mt-0.5" : "text-base mt-0"
+            )}>
             {activeLocale.flag}
           </span>
         </div>
-        <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight">
-          {activeLocale.label}
-        </span>
+        {showLabel && (
+          <span className="text-[9px] mt-[3px] font-medium leading-none tracking-tight">
+            {activeLocale.label}
+          </span>
+        )}
       </Button>
 
       {isOpen && (
