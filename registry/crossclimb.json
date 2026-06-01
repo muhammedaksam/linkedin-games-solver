@@ -2446,5 +2446,23 @@
     ],
     "topWord": "POWER",
     "bottomWord": "DIVES"
+  },
+  "762": {
+    "clues": [
+      "Town ___ (building for local government offices)",
+      "Bit of raised ground that is not as high as a mountain",
+      "Occupy a vacant position or top off a glass with water",
+      "Manicurist’s tool to shape and smooth the edges of nails",
+      "Piece of porcelain that may be part of a bathroom floor or wall"
+    ],
+    "answers": [
+      "HALL",
+      "HILL",
+      "FILL",
+      "FILE",
+      "TILE"
+    ],
+    "topWord": "HALF",
+    "bottomWord": "TIME"
   }
 }
