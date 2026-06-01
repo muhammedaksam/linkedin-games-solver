@@ -13,7 +13,11 @@
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
+    "build:edge": "pnpm build --target=edge-mv3",
+    "build:firefox": "pnpm build --target=firefox-mv3",
     "package": "plasmo package",
+    "package:edge": "pnpm package --target=edge-mv3",
+    "package:firefox": "pnpm package --target=firefox-mv3",
     "generate:store-assets": "tsx scripts/generate-store-assets.ts",
     "upload:store-assets": "tsx scripts/upload-store-assets.ts",
     "format": "prettier --write .",
@@ -104,7 +108,15 @@
         },
         "description": "__MSG_commandGetSingleHint__"
       }
-    }
+    },
+    "web_accessible_resources": [
+      {
+        "matches": [
+          "https://*.linkedin.com/*"
+        ],
+        "resources": []
+      }
+    ]
   },
   "pnpm": {
     "overrides": {

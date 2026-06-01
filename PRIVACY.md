@@ -1,6 +1,6 @@
 # Privacy Policy — LinkedIn Games Solver
 
-Last updated: 2026-05-27
+Last updated: 2026-06-01
 
 LinkedIn Games Solver provides puzzle-solving helpers for LinkedIn Games pages. This privacy policy explains what data the extension accesses, why, and how that data is used.
 
@@ -22,6 +22,7 @@ The extension's single purpose is to read the game state and clues from LinkedIn
 ## Permissions used
 
 - `storage`: used to store preferences, themes, solving history, streaks, and optional API keys. Non-sensitive settings and solve statistics are synchronized across your logged-in browser profiles using `chrome.storage.sync` to ensure a seamless cross-device dashboard. Sensitive values like AI credentials remain strictly confined to `chrome.storage.local` on your local device.
+- `scripting`: required by the extension framework to register and inject the Main World diagnostics logger script (logger-main.ts). This is used solely to capture game console events and display solving logs/diagnostics, aligning directly with our single purpose of providing interactive solving assistance.
 - `session`: used as high-performance, RAM-only ephemeral storage (`chrome.storage.session`) to cache active debugger logs and solving trace logs. This data lives purely in memory, produces zero disk wear, and is automatically wiped clean when your browser session ends.
 - `activeTab`: used only when you interact with the extension (popup/dashboard) to detect and message the active LinkedIn Games tab.
 - `sidePanel`: used to display a responsive, persistent panel next to the LinkedIn page for a fluid workspace without blocking active game interactions.
