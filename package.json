@@ -15,6 +15,7 @@
     "build": "plasmo build",
     "package": "plasmo package",
     "generate:store-assets": "tsx scripts/generate-store-assets.ts",
+    "upload:store-assets": "tsx scripts/upload-store-assets.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",

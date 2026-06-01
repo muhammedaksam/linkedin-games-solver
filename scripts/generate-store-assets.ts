@@ -19,7 +19,7 @@ const rootDir = path.resolve(__dirname, "..")
 const assetsDir = path.join(rootDir, "assets")
 const localesDir = path.join(rootDir, "locales")
 const outDir = path.join(rootDir, "store-assets")
-const globalScreenshotsDir = path.join(outDir, "global", "screenshots")
+const globalScreenshotsDir = path.join(outDir, "localized", "en", "screenshots")
 const localizedDir = path.join(outDir, "localized")
 const tmpDir = path.join(outDir, ".tmp")
 const buildDir = path.join(rootDir, "build", "chrome-mv3-prod")
@@ -35,7 +35,7 @@ const gameIcons = [
 ] as const
 
 function q(value: string | number | boolean): string {
-  return `'${String(value).replace(/'/g, `'"'"'`)}` + "'"
+  return `'${String(value).replace(/'/g, `'"'"'`)}'`
 }
 
 function run(command: string): void {
@@ -732,10 +732,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     const popupUrl = `chrome-extension://${extensionId}/popup.html`
     const dashboardUrl = `chrome-extension://${extensionId}/tabs/dashboard.html`
 
-    const saveDir =
-      locale === "en"
-        ? globalScreenshotsDir
-        : path.join(localizedDir, locale, "screenshots")
+    const saveDir = path.join(localizedDir, locale, "screenshots")
     ensureDir(saveDir)
 
     const page = await browser.newPage()
@@ -827,7 +824,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
 
       titleWrapper.innerHTML = `
         <h1 style="font-size: 32px; font-weight: 800; margin: 0; letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15);">${extensionNameMap[loc] || "LinkedIn Games Solver"}</h1>
-        <p style="font-size: 15px; color: rgba(255,255,255,0.75); margin: 8px 0 0 0; font-weight: 500;">${subtitleMap[loc] || subtitleMap["en"]}</p>
+        <p style="font-size: 15px; color: rgba(255,255,255,0.75); margin: 8px 0 0 0; font-weight: 500;">${subtitleMap[loc] || subtitleMap.en}</p>
       `
       document.body.appendChild(titleWrapper)
 
@@ -985,7 +982,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
 
       titleWrapper.innerHTML = `
         <span style="font-size: 11px; font-weight: 800; background: rgba(255,255,255,0.12); color: #ffffff; padding: 4px 10px; border-radius: 20px; letter-spacing: 1px; display: inline-block; margin-bottom: 8px;">${tagMap[loc] || "NATIVE INTEGRATION"}</span>
-        <h1 style="font-size: 32px; font-weight: 800; margin: 0; letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15);">${subtitleMap[loc] || subtitleMap["en"]}</h1>
+        <h1 style="font-size: 32px; font-weight: 800; margin: 0; letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15);">${subtitleMap[loc] || subtitleMap.en}</h1>
       `
       document.body.appendChild(titleWrapper)
 
@@ -1258,7 +1255,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
 
       titleWrapper.innerHTML = `
         <span style="font-size: 11px; font-weight: 800; background: rgba(255,255,255,0.12); color: #ffffff; padding: 4px 10px; border-radius: 20px; letter-spacing: 1px; display: inline-block; margin-bottom: 8px;">${tagMap[loc] || "SIDEBAR INTEGRATION"}</span>
-        <h1 style="font-size: 30px; font-weight: 800; margin: 0; letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15);">${subtitleMap[loc] || subtitleMap["en"]}</h1>
+        <h1 style="font-size: 30px; font-weight: 800; margin: 0; letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15);">${subtitleMap[loc] || subtitleMap.en}</h1>
       `
       document.body.appendChild(titleWrapper)
 
@@ -1590,7 +1587,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
 
       titleWrapper.innerHTML = `
         <span style="font-size: 11px; font-weight: 800; background: rgba(255,255,255,0.12); color: #ffffff; padding: 4px 10px; border-radius: 20px; letter-spacing: 1px; display: inline-block; margin-bottom: 8px;">${tagMap[loc] || "DIAGNOSTICS & TELEMETRY"}</span>
-        <h1 style="font-size: 30px; font-weight: 800; margin: 0; letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15);">${subtitleMap[loc] || subtitleMap["en"]}</h1>
+        <h1 style="font-size: 30px; font-weight: 800; margin: 0; letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15);">${subtitleMap[loc] || subtitleMap.en}</h1>
       `
       document.body.appendChild(titleWrapper)
 
@@ -1984,25 +1981,24 @@ LinkedIn 遊戲求解器是您解決每日 LinkedIn 謎題的終極助手。它�
 * 隱私與安全保護: 完全在您的本地瀏覽器中運行。您的 API 金鑰安全保存在本地儲存中，絕對不會被上傳或分享給任何第三方。`
   }
 
-  // Save global/English description
+  // Save global/English description for backward compatibility
   const enMessages = readLocaleMessages("en")
   const enDisclaimer = getMessageValue(enMessages, "disclaimerText")
   const enContent =
     descriptions.en + (enDisclaimer ? `\n\n---\n\n*${enDisclaimer}*` : "")
+  ensureDir(path.join(outDir, "global"))
   writeFileSync(path.join(outDir, "global", "description.md"), enContent)
 
-  // Save localized descriptions
+  // Save localized descriptions (including English)
   for (const [locale, content] of Object.entries(descriptions)) {
-    if (locale !== "en") {
-      const localeMessages = readLocaleMessages(locale)
-      const localeDisclaimer = getMessageValue(localeMessages, "disclaimerText")
-      const localizedContent =
-        content + (localeDisclaimer ? `\n\n---\n\n*${localeDisclaimer}*` : "")
+    const localeMessages = readLocaleMessages(locale)
+    const localeDisclaimer = getMessageValue(localeMessages, "disclaimerText")
+    const localizedContent =
+      content + (localeDisclaimer ? `\n\n---\n\n*${localeDisclaimer}*` : "")
 
-      const localePath = path.join(localizedDir, locale)
-      ensureDir(localePath)
-      writeFileSync(path.join(localePath, "description.md"), localizedContent)
-    }
+    const localePath = path.join(localizedDir, locale)
+    ensureDir(localePath)
+    writeFileSync(path.join(localePath, "description.md"), localizedContent)
   }
   console.log(
     "Store descriptions generated successfully in both global and localized folders!"
