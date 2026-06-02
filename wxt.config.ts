@@ -74,6 +74,13 @@ export default defineConfig({
     }
   },
   vite: () => ({
+    define: {
+      "process.env.PLASMO_PUBLIC_GTAG_ID": JSON.stringify(process.env.PLASMO_PUBLIC_GTAG_ID || ""),
+      "process.env.PLASMO_PUBLIC_SECRET_API_KEY": JSON.stringify(process.env.PLASMO_PUBLIC_SECRET_API_KEY || ""),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
+      "process.env": "({ NODE_ENV: 'development' })",
+      "process": "({ env: { NODE_ENV: 'development' } })"
+    },
     resolve: {
       alias: {
         "@plasmohq/messaging": path.resolve("./lib/plasmo-messaging-shim.ts"),
