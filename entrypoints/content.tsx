@@ -1027,7 +1027,7 @@ export default defineContentScript({
       if (anchorElement) {
         const container = document.createElement("div")
         container.id = "linkedin-games-solver-inline-container"
-        container.className = "flex items-center justify-center h-8 self-center"
+        container.className = "flex items-center justify-center h-8 self-center overflow-hidden"
         anchorElement.appendChild(container)
 
         mountedUi = await createShadowRootUi(ctx, {
@@ -1036,7 +1036,7 @@ export default defineContentScript({
           anchor: container,
           onMount: (shadowContainer) => {
             const app = document.createElement("div")
-            app.className = "w-full"
+            app.className = "w-full overflow-hidden flex items-center justify-center"
             shadowContainer.append(app)
             const root = ReactDOM.createRoot(app)
             root.render(<GameSolverUI />)
