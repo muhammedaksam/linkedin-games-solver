@@ -21,16 +21,21 @@ import trMessages from "~locales/tr/messages.json"
 import zh_CNMessages from "~locales/zh_CN/messages.json"
 import zh_TWMessages from "~locales/zh_TW/messages.json"
 
-const localesData: Record<string, unknown> = {
-  en: enMessages,
-  tr: trMessages,
-  de: deMessages,
-  es: esMessages,
-  fr: frMessages,
-  pt_BR: pt_BRMessages,
-  pt_PT: pt_PTMessages,
-  zh_CN: zh_CNMessages,
-  zh_TW: zh_TWMessages
+interface MessageItem {
+  message: string
+  description?: string
+}
+
+const localesData: Record<string, Record<string, MessageItem>> = {
+  en: enMessages as Record<string, MessageItem>,
+  tr: trMessages as Record<string, MessageItem>,
+  de: deMessages as Record<string, MessageItem>,
+  es: esMessages as Record<string, MessageItem>,
+  fr: frMessages as Record<string, MessageItem>,
+  pt_BR: pt_BRMessages as Record<string, MessageItem>,
+  pt_PT: pt_PTMessages as Record<string, MessageItem>,
+  zh_CN: zh_CNMessages as Record<string, MessageItem>,
+  zh_TW: zh_TWMessages as Record<string, MessageItem>
 }
 
 // Map locale keys to display metadata (labels and flags)

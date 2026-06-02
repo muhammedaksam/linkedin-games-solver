@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-namespace */
 export async function sendToBackground<TReq = any, TRes = any>(message: {
   name: string
   body?: TReq

@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
+import { useEffect, useMemo, useState } from "react"
 
 export class Storage {
   area: "local" | "sync" | "session"
@@ -62,7 +65,7 @@ export class Storage {
 }
 
 export class SecureStorage extends Storage {
-  async setPassword(password: string): Promise<void> {
+  async setPassword(_password: string): Promise<void> {
     // secure storage shim: treat it as standard local storage
   }
 }
@@ -72,7 +75,9 @@ export function useStorage<T = any>(
   defaultValue?: T
 ): [T, (val: T | ((prev: T) => T)) => Promise<void>] {
   const key = typeof options === "string" ? options : options.key
-  const instance = typeof options === "string" ? new Storage() : options.instance || new Storage()
+  const instance = useMemo(() => {
+    return typeof options === "string" ? new Storage() : options.instance || new Storage()
+  }, [options])
 
   const [state, setState] = useState<T>(() => {
     return defaultValue as T
