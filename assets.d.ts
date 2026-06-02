@@ -8,6 +8,11 @@ declare module "*.css" {
   export default content
 }
 
+declare module "*.css?inline" {
+  const content: string
+  export default content
+}
+
 declare namespace NodeJS {
   interface ProcessEnv {
     PLASMO_PUBLIC_GTAG_ID?: string

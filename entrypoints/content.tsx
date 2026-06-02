@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import "../popup.css"
+import styleText from "../popup.css?inline"
 import {
   AlertCircle,
   CheckCircle2,
@@ -984,7 +984,6 @@ const GameSolverUI = () => {
 
 export default defineContentScript({
   matches: ["https://*.linkedin.com/games/*"],
-  cssInjectionMode: "ui",
   async main(ctx) {
     console.log(
       "[LinkedIn Games Solver] Content Script loaded with WXT Shadow Root UI."
@@ -1034,6 +1033,7 @@ export default defineContentScript({
           name: "linkedin-games-solver-ui",
           position: "inline",
           anchor: container,
+          css: styleText.replaceAll(":root", ":host"),
           onMount: (shadowContainer) => {
             const app = document.createElement("div")
             app.className = "w-full overflow-hidden flex items-center justify-center"
