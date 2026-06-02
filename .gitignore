@@ -29,5 +29,9 @@ dist/
 # plasmo
 .plasmo
 
+# wxt
+.wxt
+.output
+
 # typescript
 *.tsbuildinfo

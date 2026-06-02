@@ -11,13 +11,13 @@
   },
   "author": "Muhammed Mustafa AKŞAM <info@muhammedaksam.com.tr>",
   "scripts": {
-    "dev": "plasmo dev",
-    "build": "plasmo build",
-    "build:edge": "pnpm build --target=edge-mv3",
-    "build:firefox": "pnpm build --target=firefox-mv3",
-    "package": "plasmo package",
-    "package:edge": "pnpm package --target=edge-mv3",
-    "package:firefox": "pnpm package --target=firefox-mv3",
+    "dev": "wxt",
+    "build": "wxt build",
+    "build:edge": "wxt build --browser edge",
+    "build:firefox": "wxt build --browser firefox",
+    "package": "wxt zip",
+    "package:edge": "wxt zip --browser edge",
+    "package:firefox": "wxt zip --browser firefox",
     "generate:store-assets": "tsx scripts/generate-store-assets.ts",
     "upload:store-assets": "tsx scripts/upload-store-assets.ts",
     "format": "prettier --write .",
@@ -32,6 +32,7 @@
   "dependencies": {
     "@plasmohq/messaging": "^0.7.2",
     "@plasmohq/storage": "^1.15.0",
+    "@wxt-dev/storage": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "3.6.0",
@@ -52,6 +53,7 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
+    "@wxt-dev/module-react": "^1.2.2",
     "autoprefixer": "^10.5.0",
     "eslint": "^10.4.1",
     "eslint-plugin-react-hooks": "^7.1.1",
@@ -67,7 +69,8 @@
     "tsx": "^4.22.4",
     "typescript": "5.3.3",
     "typescript-eslint": "^8.60.0",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.7",
+    "wxt": "^0.20.26"
   },
   "manifest": {
     "name": "__MSG_extensionName__",

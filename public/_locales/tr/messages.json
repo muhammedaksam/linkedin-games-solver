@@ -1,0 +1,780 @@
+{
+  "extensionName": {
+    "message": "LinkedIn Oyunları Çözücü",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn Oyunları için bir yardımcı.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn Oyunları",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Aktif oyunları tek tıkla çözün",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "$1 moduna geç",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Tarayıcı sekme entegrasyonu yalnızca tarayıcı uzantıları içinde kullanılabilir.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Aktif tarayıcı sekmesi bulunamadı.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "$1 sekmesine otomatik olarak geçiş yapılamadı.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "LinkedIn sayfasına bağlanılamadı. Lütfen sekmeyi yenileyip tekrar deneyin.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Çözücü beklenmedik bir şekilde başarısız oldu.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Çözücü başarıyla başlatıldı! Çalışıyor...",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Çözülüyor...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb",
+    "description": "Game name Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint",
+    "description": "Game name Pinpoint"
+  },
+  "bonus": {
+    "message": "Bonus",
+    "description": "Bonus badge next to game name"
+  },
+  "desc_patches": {
+    "message": "Piece it together"
+  },
+  "desc_zip": {
+    "message": "Complete the path"
+  },
+  "desc_sudoku": {
+    "message": "Klasik oyun artık mini versiyonuyla"
+  },
+  "desc_tango": {
+    "message": "Tabloyu uyumlu hâle getirin"
+  },
+  "desc_queens": {
+    "message": "Her bölgeyi taçlandırın"
+  },
+  "desc_crossclimb": {
+    "message": "Trivia basamaklarının kilidini açın"
+  },
+  "desc_pinpoint": {
+    "message": "Kategoriyi tahmin edin"
+  },
+  "titleSolve": {
+    "message": "$1 Çöz",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Bugün tamamlandı! $1 oyununa gitmek için tıklayın",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Çözmek için $1 oyununu açın",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Mükemmel bir gün! Tüm $1 oyun tamamlandı! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Günlük ilerleme: Bugün $1/$2 oyun tamamlandı",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Geçmiş ve İstatistikler",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "LinkedIn Oyunları çözme geçmişiniz ve istatistikleriniz",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Toplam Çözülen",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Tüm tarihlerde çözülen oyunlar",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Ortalama Süre",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Tüm kaydedilen tamamlamalar arasında",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Aktif Seri",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Ardışık aktif gün sayısı",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 gün",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "En İyi Dereceler",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Henüz çözme kaydı kaydedilmedi.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Çözme Geçmişi",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Aktivite Takvimi",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Filtreyi Temizle",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModel": {
+    "message": "Model",
+    "description": "Label for the settings model selection dropdown"
+  },
+  "settingModelSelect": {
+    "message": "Model Seç",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "Özel Model Adı...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "Özel Model Adı",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "örn. llama3, mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Özel kimlik girin...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "Bağlantı Noktası (Endpoint) URL'si",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "örn. http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Gemini API Anahtarı",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "OpenAI API Anahtarı",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Anthropic API Anahtarı",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "DeepSeek API Anahtarı",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "API Anahtarı (İsteğe Bağlı)",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "İsteğe bağlı kimlik bilgileri...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Kimlik anahtarını girin...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "Seçilen model Crossclimb ve Pinpoint oyunlarını çözer. Uzantı anahtarınızı asla paylaşmaz.",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Eğlenceli günlük oyunlarla bağlantı kurun",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Zihninizi iş gününe hazırlayın ve sonuçları karşılaştırın. Paylaşmadığınız sürece puanlarınız gizlidir.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Kaydet ve Oyunlara Dön",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "Yapay Cihan Çözücü çalışıyor...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Bugün Tamamlandı",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Çözüldü",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "Yapay Zeka Model Yapılandırması",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "YAPAY ZEKA SAĞLAYICISI",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "MODEL KİMLİĞİ",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "ÖZEL MODEL ADI",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "BAĞLANTI NOKTASI URL'Sİ",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API ANAHTARI",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API ANAHTARI",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API ANAHTARI",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API ANAHTARI",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API ANAHTARI (İSTEĞE BAĞLI)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Ana Sayfa",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "Ayarlar / Seçenekler",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "İstatistikler",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Tema",
+    "description": "Theme nav link label"
+  },
+  "navDebug": {
+    "message": "Hata Ayıklama",
+    "description": "Debug nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Günlük İlerleme",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Aktif Tablayı Çöz",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "LinkedIn Oyunlarına Dön",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Panel",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Oyun Çözücü",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Performans metriklerinizi analiz edin, serilerinizi kaydedin ve günlük tamamlanan bulmaca yollarınızı izleyin.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Başarıyla Tamamlandı",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Feragatname: Bu bağımsız, açık kaynaklı ve eğitici bir projedir. LinkedIn Corporation ile hiçbir bağlantısı, sponsorluğu veya onayı yoktur. 'LinkedIn', LinkedIn Corporation'ın tescilli markasıdır.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Kimlik Bilgileri ve Modeller",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Model Rehberi ve Bilgi",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Bağlantı Durumu",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Aktif Çözücü:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Model Tanımlayıcı:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Ayarlar otomatik olarak kaydedildi!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Gelişmiş bulmaca çözme mantığı için yapay zeka entegrasyon uç noktalarını ve kimlik bilgilerini yapılandırın.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Sıfıra yakın maliyetle olağanüstü performans. Harika bir mantıkla Crossclimb ve Pinpoint'i çözer. Önerilen varsayılan: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Genel bilgi kalıplarında hızlı, duyarlı ve son derece güvenilir. Önerilen varsayılan: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Maksimum akıl yürütme kapasitesi. Çok karmaşık kelime ilişkilendirmelerini kusursuz şekilde yönetir. Önerilen varsayılan: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Ollama veya LM Studio gibi yerel LLM çerçevelerine bağlanın. Uç nokta URL'nizi (örn. http://localhost:11434/v1) ve özel model adınızı yönlendirin.",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "Daha fazla tarih göster",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "Daha az göster",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "Yapay Zeka ile Çöz"
+  },
+  "solveBtn_game": {
+    "message": "Oyunu Çöz"
+  },
+  "solveBtn_solving": {
+    "message": "Çözülüyor..."
+  },
+  "solveBtn_solved": {
+    "message": "Çözüldü!"
+  },
+  "scoreClue": {
+    "message": "1 ipucu"
+  },
+  "scoreClues": {
+    "message": "$1 ipucu"
+  },
+  "scoreSeconds": {
+    "message": "$1sn"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1dk $2sn"
+  },
+  "markAsNotPlayed": {
+    "message": "Oynanmadı Olarak İşaretle",
+    "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Çözme Hızı / Gecikme",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Anında (En Hızlı)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Standart)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Gizli Mod (İnsansı gecikmeler)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "ÇÖZME HIZI VE ZAMANLAMA",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Anında modu panoyu milisaniyeler içinde tamamlar. Gizli mod, otomatik tespit işaretlerini önlemek ve serinizi korumak için rastgele zamanlamalı (1-3 saniye) insansı davranışları taklit eder.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "İpucu Al",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Varsayılan Çözme Eylemi",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Tam Otomatik Çözüm",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Eğitici İpucu Modu",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "VARSAYILAN ÇÖZÜCÜ MODU",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Uzantı kartından veya oyun tablalarından çözücüyü tetiklerken varsayılan birincil eylemi seçin. Tam Çözüm oyunu bitirir; İpucu Modu tek bir doğru öğe yerleştirir.",
+    "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Sıfır maliyetli ve tamamen yerel yapay zeka",
+    "description": "Chrome Built-in AI guide title"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Tarayıcınız içinde tamamen cihazınızda yerel olarak çalışır. Sıfır ağ gecikmesi ve Gemini Nano ile %100 ücretsiz.",
+    "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "Oyun Hata Ayıklayıcı & Geliştirici Araçları",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "Çevrimdışı",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "Aktif",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "Tespit Edilen Oyun",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "Tespit Edilmedi",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "Hedef URL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "Aktif Sekme Yok",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML Kopyalandı!",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "<main> HTML Kopyala",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "Günlükler Kopyalandı!",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "Konsol Günlüklerini Kopyala",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "İkisi de Kopyalandı!",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "İkisini de Kopyala (HTML & Günlükler)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugRegistryCopied": {
+    "message": "Kayıt JSON'u Kopyalandı!",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "Bugünkü Kayıt JSON'unu Kopyala",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
+  "debugCopyRegistryShort": {
+    "message": "JSON'ı Kopyala",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "Cevabı Gönder",
+    "description": "Button to submit active board answers to GitHub"
+  },
+  "debugDomPreview": {
+    "message": "DOM Elementi Önizlemesi",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n/* ... [kısaltıldı, toplam karakter: $1] ... */",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Tüm <main> HTML'ini kopyala",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Aktif bir <main> etiketi yakalanamadı. Bir LinkedIn oyunu ekranında olduğunuzdan emin olun.",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "Konsol Çıktısı",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 olay",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Günlükleri yenile",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Günlükleri temizle",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Henüz günlük yakalanmadı. Konsol olaylarını tetiklemek için oyun ekranında işlemler yapın.",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "console.log, console.warn ve console.error olayları dinleniyor...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "LinkedIn Oyun sayfasıyla bağlantı kuruluyor...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Oyun verileri alınamadı.",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Aktif sekme bir LinkedIn Oyunları sayfası değil. Detayları yakalamak için bir oyuna geçin.",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Aktif sekme tanımlanamadı.",
+    "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "GÜNLÜK HATIRLATICILAR & SERİ KORUYUCU",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Günlük Hatırlatıcıları Etkinleştir",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Bugünkü serim dolmadan önce beni uyar.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Hatırlatma Zamanı",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Tamamlanmamış oyunları kontrol etmek için yerel saati seçin.",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Seri Koruyucu 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Çözme serinizi kaybetmeyin! Bugünün LinkedIn oyunlarını henüz çözmediniz.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Şimdi Çöz!",
+    "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Aktif LinkedIn oyununu otomatik olarak çöz."
+  },
+  "commandGetSingleHint": {
+    "message": "Tek adımlı ipucu verin veya hataları kontrol edin."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Oyunlarda Kenar Çubuğunu Otomatik Aç"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "LinkedIn Oyunları sayfasını ziyaret ettiğinizde çözücü kenar çubuğunu otomatik olarak aç."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "KENAR ÇUBUĞUNU OTOMATİK AÇ"
+  },
+  "permissionDialogTitle": {
+    "message": "Sayfa Erişimi Ver"
+  },
+  "permissionDialogDesc": {
+    "message": "Aktif oyun tahtalarını tespit etmek ve bulmacaları çözmek için uzantının LinkedIn Oyunları'nda çalışması için izne ihtiyacı var. Erişim vermek için aşağıya tıklayın."
+  },
+  "permissionDialogButton": {
+    "message": "Erişim Ver"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Bugün Queens Oyna ve Çöz!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Mini Sudoku Çözücüyü Aç"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Seriler ve Performans Panelini Aç"
+  },
+  "diagnosticsEngine": {
+    "message": "Tanılama Motoru"
+  },
+  "liveInspected": {
+    "message": "Canlı İnceleniyor"
+  },
+  "offline": {
+    "message": "Çevrimdışı"
+  },
+  "inspectedTab": {
+    "message": "İncelenen Sekme:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Canlı Matris Izgara Denetçisi"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "LinkedIn Oyun Sayfası Bekleniyor"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Kısıt koordinatlarını, hücre durumlarını ve reaktif yapıları yakalamak için herhangi bir LinkedIn Oyun tahtası sekmesine (Queens, Sudoku, Tango, Pinpoint) gidin."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Telemetri Günlükleri Akışçısı"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Günlüklerde ara..."
+  },
+  "allTypes": {
+    "message": "TÜM TÜRLER"
+  },
+  "logsType": {
+    "message": "GÜNLÜKLER"
+  },
+  "infoType": {
+    "message": "BİLGİLER"
+  },
+  "warnsType": {
+    "message": "UYARILAR"
+  },
+  "errorsType": {
+    "message": "HATALAR"
+  },
+  "selectTypePlaceholder": {
+    "message": "Tür Seçin"
+  },
+  "consoleStreamEmpty": {
+    "message": "Konsol Akışı Boş"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Filtrelerle eşleşen günlük çıktısı tespit edilmedi. Günlük eylemlerini buraya akıtmak için LinkedIn Oyunları çözücü arayüzünde adımları çalıştırın."
+  },
+  "subscribedToStorageSession": {
+    "message": "storage.session akışına abone olundu"
+  },
+  "parsingGameGridCells": {
+    "message": "Oyun ızgara hücreleri ayrıştırılıyor... Tahtada aktif ızgara bloklarının görünür olduğundan emin olun."
+  },
+  "urlLabel": {
+    "message": "Adres:"
+  },
+  "notAvailable": {
+    "message": "Yok"
+  },
+  "matchesLabel": {
+    "message": "eşleşme"
+  },
+  "copiedLabel": {
+    "message": "Kopyalandı!"
+  },
+  "copyLogsTooltip": {
+    "message": "Günlükleri Kopyala"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Günlük Alanını Temizle"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Aktif LinkedIn Oyununu Çöz"
+  },
+  "contextMenuHint": {
+    "message": "💡 İpucu Al"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Sonuçları Görüntüle"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRİ VE GİZLİLİK",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "Anonim Telemetri Gönder",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "Anonim performans ve kullanım metriklerini paylaşarak çözücüyü geliştirmeye yardımcı olun.",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
+  }
+}

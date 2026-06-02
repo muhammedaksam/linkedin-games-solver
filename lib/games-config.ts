@@ -1,10 +1,10 @@
-import crossclimbIcon from "data-base64:~assets/crossclimb.svg"
-import patchesIcon from "data-base64:~assets/patches.svg"
-import pinpointIcon from "data-base64:~assets/pinpoint.svg"
-import queensIcon from "data-base64:~assets/queens.svg"
-import sudokuIcon from "data-base64:~assets/sudoku.svg"
-import tangoIcon from "data-base64:~assets/tango.svg"
-import zipIcon from "data-base64:~assets/zip.svg"
+import crossclimbIcon from "~assets/crossclimb.svg"
+import patchesIcon from "~assets/patches.svg"
+import pinpointIcon from "~assets/pinpoint.svg"
+import queensIcon from "~assets/queens.svg"
+import sudokuIcon from "~assets/sudoku.svg"
+import tangoIcon from "~assets/tango.svg"
+import zipIcon from "~assets/zip.svg"
 
 export interface GameMetadata {
   id: string
