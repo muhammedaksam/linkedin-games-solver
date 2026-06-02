@@ -6,6 +6,7 @@ const config: Config = {
   content: [
     "./popup.tsx",
     "./content.tsx",
+    "./entrypoints/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./tabs/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}"

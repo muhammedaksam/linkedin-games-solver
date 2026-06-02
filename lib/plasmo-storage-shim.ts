@@ -7,7 +7,9 @@ export class Storage {
   area: "local" | "sync" | "session"
   serde: any
 
-  constructor(options: { area?: "local" | "sync" | "session"; serde?: any } = {}) {
+  constructor(
+    options: { area?: "local" | "sync" | "session"; serde?: any } = {}
+  ) {
     this.area = options.area || "local"
     this.serde = options.serde
   }
@@ -17,8 +19,8 @@ export class Storage {
       this.area === "sync"
         ? chrome.storage.sync
         : this.area === "session"
-        ? chrome.storage.session
-        : chrome.storage.local
+          ? chrome.storage.session
+          : chrome.storage.local
     if (!storageArea) return null
     return new Promise((resolve) => {
       storageArea.get(key, (res) => {
@@ -37,10 +39,12 @@ export class Storage {
       this.area === "sync"
         ? chrome.storage.sync
         : this.area === "session"
-        ? chrome.storage.session
-        : chrome.storage.local
+          ? chrome.storage.session
+          : chrome.storage.local
     if (!storageArea) return
-    const serialized = this.serde?.serializer ? this.serde.serializer(value) : value
+    const serialized = this.serde?.serializer
+      ? this.serde.serializer(value)
+      : value
     return new Promise((resolve) => {
       storageArea.set({ [key]: serialized }, () => {
         resolve()
@@ -53,8 +57,8 @@ export class Storage {
       this.area === "sync"
         ? chrome.storage.sync
         : this.area === "session"
-        ? chrome.storage.session
-        : chrome.storage.local
+          ? chrome.storage.session
+          : chrome.storage.local
     if (!storageArea) return
     return new Promise((resolve) => {
       storageArea.remove(key, () => {
@@ -76,7 +80,9 @@ export function useStorage<T = any>(
 ): [T, (val: T | ((prev: T) => T)) => Promise<void>] {
   const key = typeof options === "string" ? options : options.key
   const instance = useMemo(() => {
-    return typeof options === "string" ? new Storage() : options.instance || new Storage()
+    return typeof options === "string"
+      ? new Storage()
+      : options.instance || new Storage()
   }, [options])
 
   const [state, setState] = useState<T>(() => {
@@ -105,7 +111,11 @@ export function useStorage<T = any>(
         const deserialized = instance.serde?.deserializer
           ? instance.serde.deserializer(newVal)
           : newVal
-        setState(deserialized !== undefined && deserialized !== null ? deserialized : (defaultValue as T))
+        setState(
+          deserialized !== undefined && deserialized !== null
+            ? deserialized
+            : (defaultValue as T)
+        )
       }
     }
 

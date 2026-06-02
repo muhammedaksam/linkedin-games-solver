@@ -45,7 +45,9 @@ class WxtSecureStorageWrapper {
 
   async get<T>(key: string): Promise<T | null> {
     try {
-      const rawEncrypted = await storage.getItem<string>((this.prefix + key) as StorageKey)
+      const rawEncrypted = await storage.getItem<string>(
+        (this.prefix + key) as StorageKey
+      )
       if (!rawEncrypted) return null
       const decrypted = this.xor(atob(rawEncrypted))
       return JSON.parse(decrypted) as T

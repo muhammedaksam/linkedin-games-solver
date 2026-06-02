@@ -128,7 +128,8 @@
   justify-content: center !important;
   height: 32px !important;
   padding: 0 12px !important;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, sans-serif !important;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, sans-serif !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   border-radius: 16px !important;
@@ -137,7 +138,9 @@
   cursor: pointer !important;
   user-select: none !important;
   white-space: nowrap !important;
-  transition: background-color 167ms, color 167ms !important;
+  transition:
+    background-color 167ms,
+    color 167ms !important;
 }
 
 /* Light Theme Styles */
@@ -198,7 +201,10 @@
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-

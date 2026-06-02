@@ -460,9 +460,7 @@ export default defineBackground({
           chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             const tab = tabs?.[0]
             if (tab?.id) {
-              updateContextMenusForTab(tab.id, tab.url).catch(
-                console.error
-              )
+              updateContextMenusForTab(tab.id, tab.url).catch(console.error)
             }
           })
         }
@@ -524,9 +522,7 @@ export default defineBackground({
           chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             const tab = tabs?.[0]
             if (tab?.id) {
-              updateContextMenusForTab(tab.id, tab.url).catch(
-                console.error
-              )
+              updateContextMenusForTab(tab.id, tab.url).catch(console.error)
             }
           })
         })
@@ -780,7 +776,10 @@ export default defineBackground({
                     )
                   }
 
-                  if (processedResponse?.success && processedResponse?.dataUrl) {
+                  if (
+                    processedResponse?.success &&
+                    processedResponse?.dataUrl
+                  ) {
                     sendResponse({
                       success: true,
                       dataUrl: processedResponse.dataUrl
@@ -801,7 +800,9 @@ export default defineBackground({
         }
 
         if (name === "fetchRegistry") {
-          trackEventDirect("fetch_registry", { game: body?.game }).catch(() => {})
+          trackEventDirect("fetch_registry", { game: body?.game }).catch(
+            () => {}
+          )
           const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${body?.game}.json`
 
           fetch(registryUrl)

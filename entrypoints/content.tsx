@@ -1,5 +1,4 @@
 /* eslint-disable react-refresh/only-export-components */
-import styleText from "../popup.css?inline"
 import {
   AlertCircle,
   CheckCircle2,
@@ -10,19 +9,18 @@ import {
 import { useEffect, useState } from "react"
 import ReactDOM from "react-dom/client"
 
-import { sendToBackground } from "~lib/plasmo-messaging-shim"
-import { useStorage } from "~lib/storage"
-
 import { detectActiveSolver } from "~games"
 import { trackEvent } from "~lib/analytics"
 import { getMessage } from "~lib/i18n"
-import { syncStorage as storage } from "~lib/storage"
+import { sendToBackground } from "~lib/plasmo-messaging-shim"
+import { syncStorage as storage, useStorage } from "~lib/storage"
 import {
   cn,
   getLocalDateString,
   getPuzzleNumber,
   type SolveHistory
 } from "~lib/utils"
+import "../popup.css"
 
 // Keep track of captured logs globally in content.tsx
 const capturedLogs: Array<{
@@ -772,13 +770,56 @@ const getLocalizedStrings = (activeGame: string) => {
 
 // React component representing our custom solver inline top UI bar button
 const GameSolverUI = () => {
-  const [theme] = useStorage<"light" | "dark">(
+  const [storedTheme] = useStorage<"light" | "dark">(
     {
       key: "theme",
       instance: storage
     },
     "dark"
   )
+
+  const [activeTheme, setActiveTheme] = useState<"light" | "dark">("dark")
+
+  useEffect(() => {
+    // Dynamically detect theme from the LinkedIn page (html/body classes)
+    const detectPageTheme = () => {
+      const hasDarkClass =
+        document.documentElement.classList.contains("theme--dark") ||
+        document.body.classList.contains("theme--dark") ||
+        document.documentElement.getAttribute("data-theme") === "dark" ||
+        document.body.getAttribute("data-theme") === "dark"
+
+      const hasLightClass =
+        document.documentElement.classList.contains("theme--light") ||
+        document.body.classList.contains("theme--light") ||
+        document.documentElement.getAttribute("data-theme") === "light" ||
+        document.body.getAttribute("data-theme") === "light"
+
+      if (hasDarkClass) {
+        setActiveTheme("dark")
+      } else if (hasLightClass) {
+        setActiveTheme("light")
+      } else {
+        // Fallback to user stored preference if no page classes match
+        setActiveTheme(storedTheme || "dark")
+      }
+    }
+
+    detectPageTheme()
+
+    // Setup an observer to watch for theme switches on the main page dynamically
+    const observer = new MutationObserver(detectPageTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme"]
+    })
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme"]
+    })
+
+    return () => observer.disconnect()
+  }, [storedTheme])
 
   const [solveHistory] = useStorage<SolveHistory>(
     {
@@ -893,7 +934,7 @@ const GameSolverUI = () => {
   return (
     <div
       className={cn(
-        theme,
+        activeTheme,
         "relative flex items-center justify-center gap-2 h-8"
       )}>
       {isCompleted ? (
@@ -984,6 +1025,7 @@ const GameSolverUI = () => {
 
 export default defineContentScript({
   matches: ["https://*.linkedin.com/games/*"],
+  cssInjectionMode: "ui",
   async main(ctx) {
     console.log(
       "[LinkedIn Games Solver] Content Script loaded with WXT Shadow Root UI."
@@ -1026,18 +1068,45 @@ export default defineContentScript({
       if (anchorElement) {
         const container = document.createElement("div")
         container.id = "linkedin-games-solver-inline-container"
-        container.className = "flex items-center justify-center h-8 self-center overflow-hidden"
+        // Style container inline to act as a perfect inline-flex container matching LinkedIn's toolbar items
+        container.style.display = "inline-flex"
+        container.style.alignItems = "center"
+        container.style.justifyContent = "center"
+        container.style.height = "32px"
+        container.style.alignSelf = "center"
+        container.style.overflow = "hidden"
+        container.style.margin = "0 8px"
+        container.style.padding = "0"
         anchorElement.appendChild(container)
 
         mountedUi = await createShadowRootUi(ctx, {
           name: "linkedin-games-solver-ui",
           position: "inline",
           anchor: container,
-          css: styleText.replaceAll(":root", ":host"),
           onMount: (shadowContainer) => {
+            // Style the shadowContainer to prevent any extra margins/padding/overflow/scrollbars!
+            shadowContainer.style.display = "flex"
+            shadowContainer.style.alignItems = "center"
+            shadowContainer.style.justifyContent = "center"
+            shadowContainer.style.height = "100%"
+            shadowContainer.style.width = "100%"
+            shadowContainer.style.overflow = "hidden"
+            shadowContainer.style.margin = "0"
+            shadowContainer.style.padding = "0"
+
             const app = document.createElement("div")
-            app.className = "w-full overflow-hidden flex items-center justify-center"
+            app.className =
+              "w-full overflow-hidden flex items-center justify-center"
+            app.style.display = "flex"
+            app.style.alignItems = "center"
+            app.style.justifyContent = "center"
+            app.style.height = "100%"
+            app.style.width = "100%"
+            app.style.overflow = "hidden"
+            app.style.margin = "0"
+            app.style.padding = "0"
             shadowContainer.append(app)
+
             const root = ReactDOM.createRoot(app)
             root.render(<GameSolverUI />)
             return root

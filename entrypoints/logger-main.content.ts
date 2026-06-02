@@ -367,7 +367,11 @@ export default defineContentScript({
 
     const extractReactState = (
       gameName: "queens" | "tango" | "zip" | "patches" | string
-    ): ReactQueensBoard | ReactTangoBoard | ReactZipBoard | ReactPatchesBoard => {
+    ):
+      | ReactQueensBoard
+      | ReactTangoBoard
+      | ReactZipBoard
+      | ReactPatchesBoard => {
       if (
         gameName === "sudoku" ||
         gameName === "pinpoint" ||
@@ -509,7 +513,8 @@ export default defineContentScript({
             return (gameObj.puzzle as Record<string, unknown>)[keyName]
           if (
             gameObj.gameState &&
-            (gameObj.gameState as Record<string, unknown>)[keyName] !== undefined
+            (gameObj.gameState as Record<string, unknown>)[keyName] !==
+              undefined
           )
             return (gameObj.gameState as Record<string, unknown>)[keyName]
           if (
@@ -577,7 +582,10 @@ export default defineContentScript({
           // Nested under puzzle
           if (gameObj.puzzle) {
             if (Array.isArray(gameObj.puzzle.cells)) return gameObj.puzzle.cells
-            if (gameObj.puzzle.board && Array.isArray(gameObj.puzzle.board.cells))
+            if (
+              gameObj.puzzle.board &&
+              Array.isArray(gameObj.puzzle.board.cells)
+            )
               return gameObj.puzzle.board.cells
             if (gameObj.puzzle.grid && Array.isArray(gameObj.puzzle.grid.cells))
               return gameObj.puzzle.grid.cells
@@ -619,10 +627,7 @@ export default defineContentScript({
         const queensState =
           gameObj?.gameState?.mostRecentGameState?.queensGameState
 
-        if (
-          queensPuzzle?.gridSize &&
-          Array.isArray(queensPuzzle.colorGrid)
-        ) {
+        if (queensPuzzle?.gridSize && Array.isArray(queensPuzzle.colorGrid)) {
           boardSize = queensPuzzle.gridSize
           const N = boardSize
           const guesses = queensState?.guesses || []
@@ -712,7 +717,8 @@ export default defineContentScript({
         let solution: number[] | undefined
 
         const lotkaPuzzle = gameObj?.puzzle?.lotkaGamePuzzle
-        const lotkaState = gameObj?.gameState?.mostRecentGameState?.lotkaGameState
+        const lotkaState =
+          gameObj?.gameState?.mostRecentGameState?.lotkaGameState
 
         if (lotkaPuzzle?.gridSize) {
           size = lotkaPuzzle.gridSize
@@ -773,7 +779,8 @@ export default defineContentScript({
                 if (Array.isArray(l.edges)) return l.edges
                 if (l.board && Array.isArray(l.board.constraints))
                   return l.board.constraints as LinkedInRawConstraint[]
-                if (l.board && Array.isArray(l.board.edges)) return l.board.edges
+                if (l.board && Array.isArray(l.board.edges))
+                  return l.board.edges
               }
 
               if (gameObj.puzzle) {
@@ -803,7 +810,8 @@ export default defineContentScript({
 
               if (gameObj.gameState) {
                 if (Array.isArray(gameObj.gameState.constraints))
-                  return gameObj.gameState.constraints as LinkedInRawConstraint[]
+                  return gameObj.gameState
+                    .constraints as LinkedInRawConstraint[]
                 if (Array.isArray(gameObj.gameState.edges))
                   return gameObj.gameState.edges
               }
@@ -978,7 +986,9 @@ export default defineContentScript({
     // Expose direct console test function
     window.testReactExtraction = (gameName: string) => {
       try {
-        console.log(`[Test] Running React Fiber extraction for '${gameName}'...`)
+        console.log(
+          `[Test] Running React Fiber extraction for '${gameName}'...`
+        )
         const state = extractReactState(gameName)
         console.log(`[Test] Extraction Successful:`, state)
         return state
