@@ -7,6 +7,23 @@ interface SolveRecord {
   solvedAt?: string
 }
 
+interface MessageBody {
+  prompt?: string
+  jsonMode?: boolean
+  cropRect?: {
+    x: number
+    y: number
+    width: number
+    height: number
+  }
+  targetWidth?: number
+  targetHeight?: number
+  game?: string
+  status?: string
+  name?: string
+  params?: Record<string, unknown>
+}
+
 console.log("[LinkedIn Games Solver] Background service worker initialized.")
 
 // Helper to extract game name from a LinkedIn games URL
@@ -683,8 +700,7 @@ export default defineBackground({
     // Unified message broker dispatcher supporting standard Plasmo shims
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message && typeof message === "object" && "name" in message) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { name, body } = message as { name: string; body: any }
+        const { name, body } = message as { name: string; body: MessageBody }
 
         if (name === "askAI") {
           import("~games/ai")
@@ -823,8 +839,7 @@ export default defineBackground({
           if (eventName) {
             trackEventDirect(eventName, params)
               .then(() => sendResponse({ success: true }))
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              .catch((err: any) =>
+              .catch((err: unknown) =>
                 sendResponse({
                   success: false,
                   error: err instanceof Error ? err.message : String(err)
