@@ -8,6 +8,20 @@ export default defineConfig({
     description: "__MSG_extensionDescription__",
     default_locale: "en",
     devtools_page: "devtools.html",
+    icons: {
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    action: {
+      default_icon: {
+        "16": "icon.png",
+        "32": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+      }
+    },
     permissions: [
       "activeTab",
       "storage",
