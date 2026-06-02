@@ -322,10 +322,11 @@ async function safeSendMessage(tabId: number, message: unknown) {
 // Handle notification interaction
 const handleNotificationClick = () => {
   chrome.tabs.query({ url: "*://*.linkedin.com/games/*" }, (tabs) => {
-    if (tabs && tabs.length > 0) {
+    const tabId = tabs?.[0]?.id
+    if (tabId !== undefined) {
       // Focus existing tab
-      chrome.tabs.update(tabs[0].id!, { active: true }, (tab) => {
-        if (tab && tab.windowId) {
+      chrome.tabs.update(tabId, { active: true }, (tab) => {
+        if (tab?.windowId) {
           chrome.windows.update(tab.windowId, { focused: true })
         }
       })
@@ -439,8 +440,9 @@ export default defineBackground({
 
           // Update context menus reactively on active tab
           chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            if (tabs && tabs[0] && tabs[0].id) {
-              updateContextMenusForTab(tabs[0].id, tabs[0].url).catch(
+            const tab = tabs?.[0]
+            if (tab?.id) {
+              updateContextMenusForTab(tab.id, tab.url).catch(
                 console.error
               )
             }
@@ -502,8 +504,9 @@ export default defineBackground({
 
           // Update visibility for any active tab immediately
           chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            if (tabs && tabs[0] && tabs[0].id) {
-              updateContextMenusForTab(tabs[0].id, tabs[0].url).catch(
+            const tab = tabs?.[0]
+            if (tab?.id) {
+              updateContextMenusForTab(tab.id, tab.url).catch(
                 console.error
               )
             }
@@ -520,8 +523,9 @@ export default defineBackground({
 
       // Trigger active tab context menu update on service worker wake up
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs && tabs[0] && tabs[0].id) {
-          updateContextMenusForTab(tabs[0].id, tabs[0].url).catch(console.error)
+        const tab = tabs?.[0]
+        if (tab?.id) {
+          updateContextMenusForTab(tab.id, tab.url).catch(console.error)
         }
       })
     }
@@ -667,8 +671,9 @@ export default defineBackground({
       const url = `https://www.linkedin.com/games/${gamePath || ""}`
 
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs && tabs[0] && tabs[0].url?.includes("linkedin.com")) {
-          chrome.tabs.update(tabs[0].id!, { url })
+        const tab = tabs?.[0]
+        if (tab?.url?.includes("linkedin.com") && tab.id !== undefined) {
+          chrome.tabs.update(tab.id, { url })
         } else {
           chrome.tabs.create({ url })
         }
@@ -678,6 +683,7 @@ export default defineBackground({
     // Unified message broker dispatcher supporting standard Plasmo shims
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message && typeof message === "object" && "name" in message) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const { name, body } = message as { name: string; body: any }
 
         if (name === "askAI") {
@@ -817,6 +823,7 @@ export default defineBackground({
           if (eventName) {
             trackEventDirect(eventName, params)
               .then(() => sendResponse({ success: true }))
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               .catch((err: any) =>
                 sendResponse({
                   success: false,

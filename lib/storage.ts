@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react"
 
+type StorageKey = Parameters<typeof storage.getItem>[0]
+
 export class WxtStorageWrapper {
   public prefix: string
 
   constructor(area: "local" | "sync" | "session") {
-    this.prefix = area + ":"
+    this.prefix = `${area}:`
   }
 
   async get<T>(key: string): Promise<T | null> {
-    const val = await storage.getItem<T>((this.prefix + key) as any)
+    const val = await storage.getItem<T>((this.prefix + key) as StorageKey)
     return val ?? null
   }
 
   async set(key: string, value: unknown): Promise<void> {
-    await storage.setItem((this.prefix + key) as any, value)
+    await storage.setItem((this.prefix + key) as StorageKey, value)
   }
 
   async remove(key: string): Promise<void> {
-    await storage.removeItem((this.prefix + key) as any)
+    await storage.removeItem((this.prefix + key) as StorageKey)
   }
 }
 
@@ -43,7 +45,7 @@ class WxtSecureStorageWrapper {
 
   async get<T>(key: string): Promise<T | null> {
     try {
-      const rawEncrypted = await storage.getItem<string>((this.prefix + key) as any)
+      const rawEncrypted = await storage.getItem<string>((this.prefix + key) as StorageKey)
       if (!rawEncrypted) return null
       const decrypted = this.xor(atob(rawEncrypted))
       return JSON.parse(decrypted) as T
@@ -55,11 +57,11 @@ class WxtSecureStorageWrapper {
   async set(key: string, value: unknown): Promise<void> {
     const raw = JSON.stringify(value)
     const encrypted = btoa(this.xor(raw))
-    await storage.setItem((this.prefix + key) as any, encrypted)
+    await storage.setItem((this.prefix + key) as StorageKey, encrypted)
   }
 
   async remove(key: string): Promise<void> {
-    await storage.removeItem((this.prefix + key) as any)
+    await storage.removeItem((this.prefix + key) as StorageKey)
   }
 }
 
@@ -85,14 +87,14 @@ export function useStorage<T>(
 
   useEffect(() => {
     // Load initial value
-    storage.getItem<T>(fullKey as any).then((val) => {
+    storage.getItem<T>(fullKey as StorageKey).then((val) => {
       if (val !== null && val !== undefined) {
         setValue(val)
       }
     })
 
     // Watch for changes
-    const unwatch = storage.watch<T>(fullKey as any, (newVal) => {
+    const unwatch = storage.watch<T>(fullKey as StorageKey, (newVal) => {
       if (newVal !== undefined && newVal !== null) {
         setValue(newVal)
       }
@@ -103,7 +105,7 @@ export function useStorage<T>(
 
   const setStorageValue = async (newValue: T) => {
     setValue(newValue)
-    await storage.setItem(fullKey as any, newValue)
+    await storage.setItem(fullKey as StorageKey, newValue)
   }
 
   return [value, setStorageValue] as const
