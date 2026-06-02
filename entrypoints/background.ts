@@ -1,6 +1,6 @@
+import { askAI } from "~games/ai"
 import { trackEventDirect } from "~lib/analytics"
 import { syncStorage } from "~lib/storage"
-import { askAI } from "~games/ai"
 
 interface SolveRecord {
   solved: boolean

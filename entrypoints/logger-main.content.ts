@@ -436,7 +436,7 @@ export default defineContentScript({
           }
           // Inspect state
           if (curr.memoizedState) {
-            let stateNode = curr.memoizedState
+            let stateNode: ReactFiberStateNode | undefined = curr.memoizedState
             while (stateNode) {
               if (
                 stateNode.memoizedState &&
@@ -457,8 +457,7 @@ export default defineContentScript({
       let gameObj: LinkedInGameObj | null = null
       while (currFiber) {
         if (
-          currFiber.memoizedProps &&
-          currFiber.memoizedProps.game &&
+          currFiber.memoizedProps?.game &&
           typeof currFiber.memoizedProps.game === "object"
         ) {
           gameObj = currFiber.memoizedProps.game
@@ -481,8 +480,7 @@ export default defineContentScript({
 
           // lotkaGamePuzzle
           if (
-            gameObj.puzzle &&
-            gameObj.puzzle.lotkaGamePuzzle &&
+            gameObj.puzzle?.lotkaGamePuzzle &&
             (gameObj.puzzle.lotkaGamePuzzle as Record<string, unknown>)[
               keyName
             ] !== undefined
@@ -494,8 +492,7 @@ export default defineContentScript({
 
           // mostRecentGameState
           if (
-            gameObj.gameState &&
-            gameObj.gameState.mostRecentGameState &&
+            gameObj.gameState?.mostRecentGameState &&
             (gameObj.gameState.mostRecentGameState as Record<string, unknown>)[
               keyName
             ] !== undefined
@@ -564,14 +561,14 @@ export default defineContentScript({
           if (Array.isArray(gameObj.cells)) return gameObj.cells
 
           // Nested under puzzle.lotkaGamePuzzle
-          if (gameObj.puzzle && gameObj.puzzle.lotkaGamePuzzle) {
+          if (gameObj.puzzle?.lotkaGamePuzzle) {
             const l = gameObj.puzzle.lotkaGamePuzzle
             if (l.board && Array.isArray(l.board.cells)) return l.board.cells
             if (l.grid && Array.isArray(l.grid.cells)) return l.grid.cells
           }
 
           // Nested under gameState.mostRecentGameState
-          if (gameObj.gameState && gameObj.gameState.mostRecentGameState) {
+          if (gameObj.gameState?.mostRecentGameState) {
             const m = gameObj.gameState.mostRecentGameState
             if (m.board && Array.isArray(m.board.cells)) return m.board.cells
             if (m.grid && Array.isArray(m.grid.cells)) return m.grid.cells
@@ -616,15 +613,14 @@ export default defineContentScript({
       if (gameName === "queens") {
         let boardSize = getBoardSize()
         let cells: ReactQueensBoard["cells"] | null = null
-        let solution: number[] | undefined = undefined
+        let solution: number[] | undefined
 
         const queensPuzzle = gameObj?.puzzle?.queensGamePuzzle
         const queensState =
           gameObj?.gameState?.mostRecentGameState?.queensGameState
 
         if (
-          queensPuzzle &&
-          queensPuzzle.gridSize &&
+          queensPuzzle?.gridSize &&
           Array.isArray(queensPuzzle.colorGrid)
         ) {
           boardSize = queensPuzzle.gridSize
@@ -713,12 +709,12 @@ export default defineContentScript({
         let size = getBoardSize()
         let cells: ReactTangoBoard["cells"] = null
         let constraints: ReactTangoBoard["constraints"] = null
-        let solution: number[] | undefined = undefined
+        let solution: number[] | undefined
 
         const lotkaPuzzle = gameObj?.puzzle?.lotkaGamePuzzle
         const lotkaState = gameObj?.gameState?.mostRecentGameState?.lotkaGameState
 
-        if (lotkaPuzzle && lotkaPuzzle.gridSize) {
+        if (lotkaPuzzle?.gridSize) {
           size = lotkaPuzzle.gridSize
           const presetCellIdxes = lotkaPuzzle.presetCellIdxes || []
           const cellValues = lotkaState?.cellValues || []
@@ -770,7 +766,7 @@ export default defineContentScript({
               if (Array.isArray(gameObj.constraints)) return gameObj.constraints
               if (Array.isArray(gameObj.edges)) return gameObj.edges
 
-              if (gameObj.puzzle && gameObj.puzzle.lotkaGamePuzzle) {
+              if (gameObj.puzzle?.lotkaGamePuzzle) {
                 const l = gameObj.puzzle.lotkaGamePuzzle
                 if (Array.isArray(l.constraints))
                   return l.constraints as LinkedInRawConstraint[]
@@ -798,7 +794,7 @@ export default defineContentScript({
                   return gameObj.puzzle.board.edges
               }
 
-              if (gameObj.gameState && gameObj.gameState.mostRecentGameState) {
+              if (gameObj.gameState?.mostRecentGameState) {
                 const m = gameObj.gameState.mostRecentGameState
                 if (Array.isArray(m.constraints))
                   return m.constraints as LinkedInRawConstraint[]
@@ -864,11 +860,11 @@ export default defineContentScript({
         let size = getBoardSize()
         let checkpoints: ReactZipBoard["checkpoints"] = []
         let walls: ReactZipBoard["walls"] = []
-        let solution: number[] | undefined = undefined
+        let solution: number[] | undefined
 
         const trailPuzzle = gameObj?.puzzle?.trailGamePuzzle
 
-        if (trailPuzzle && trailPuzzle.gridSize) {
+        if (trailPuzzle?.gridSize) {
           size = trailPuzzle.gridSize
           if (Array.isArray(trailPuzzle.orderedSequence)) {
             checkpoints = trailPuzzle.orderedSequence.map(
