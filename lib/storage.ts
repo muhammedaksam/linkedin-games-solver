@@ -8,16 +8,16 @@ export class WxtStorageWrapper {
   }
 
   async get<T>(key: string): Promise<T | null> {
-    const val = await storage.getItem<T>(this.prefix + key)
+    const val = await storage.getItem<T>((this.prefix + key) as any)
     return val ?? null
   }
 
   async set(key: string, value: unknown): Promise<void> {
-    await storage.setItem(this.prefix + key, value)
+    await storage.setItem((this.prefix + key) as any, value)
   }
 
   async remove(key: string): Promise<void> {
-    await storage.removeItem(this.prefix + key)
+    await storage.removeItem((this.prefix + key) as any)
   }
 }
 
@@ -43,7 +43,7 @@ class WxtSecureStorageWrapper {
 
   async get<T>(key: string): Promise<T | null> {
     try {
-      const rawEncrypted = await storage.getItem<string>(this.prefix + key)
+      const rawEncrypted = await storage.getItem<string>((this.prefix + key) as any)
       if (!rawEncrypted) return null
       const decrypted = this.xor(atob(rawEncrypted))
       return JSON.parse(decrypted) as T
@@ -55,11 +55,11 @@ class WxtSecureStorageWrapper {
   async set(key: string, value: unknown): Promise<void> {
     const raw = JSON.stringify(value)
     const encrypted = btoa(this.xor(raw))
-    await storage.setItem(this.prefix + key, encrypted)
+    await storage.setItem((this.prefix + key) as any, encrypted)
   }
 
   async remove(key: string): Promise<void> {
-    await storage.removeItem(this.prefix + key)
+    await storage.removeItem((this.prefix + key) as any)
   }
 }
 
@@ -85,14 +85,14 @@ export function useStorage<T>(
 
   useEffect(() => {
     // Load initial value
-    storage.getItem<T>(fullKey).then((val) => {
+    storage.getItem<T>(fullKey as any).then((val) => {
       if (val !== null && val !== undefined) {
         setValue(val)
       }
     })
 
     // Watch for changes
-    const unwatch = storage.watch<T>(fullKey, (newVal) => {
+    const unwatch = storage.watch<T>(fullKey as any, (newVal) => {
       if (newVal !== undefined && newVal !== null) {
         setValue(newVal)
       }
@@ -103,7 +103,7 @@ export function useStorage<T>(
 
   const setStorageValue = async (newValue: T) => {
     setValue(newValue)
-    await storage.setItem(fullKey, newValue)
+    await storage.setItem(fullKey as any, newValue)
   }
 
   return [value, setStorageValue] as const
