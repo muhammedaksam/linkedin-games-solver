@@ -5,7 +5,7 @@ import "../popup.css"
 
 import { SolverShell } from "../components/SolverShell"
 
-function IndexPopup() {
+export function IndexPopup() {
   useEffect(() => {
     document.body.classList.remove("is-sidepanel")
     document.body.classList.add("is-popup")
@@ -14,8 +14,11 @@ function IndexPopup() {
   return <SolverShell isSidePanel={false} />
 }
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <IndexPopup />
-  </React.StrictMode>
-)
+const rootEl = document.getElementById("root")
+if (rootEl) {
+  ReactDOM.createRoot(rootEl).render(
+    <React.StrictMode>
+      <IndexPopup />
+    </React.StrictMode>
+  )
+}

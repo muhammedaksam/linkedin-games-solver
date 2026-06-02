@@ -9,19 +9,19 @@ if (
       if (chrome.i18n && typeof chrome.i18n.getMessage === "function") {
         extensionName = chrome.i18n.getMessage("extensionName") || extensionName
       }
-    } catch (err) {
+    } catch {
       // Ignore build-time mock exceptions
     }
 
     chrome.devtools.panels.create(
-      extensionName + " 🧩",
+      `${extensionName} 🧩`,
       "icon.png",
       "devtools-panel.html",
       (_panel) => {
         console.log("DevTools panel successfully registered!")
       }
     )
-  } catch (err) {
+  } catch {
     // Catch any fake-browser throws during WXT static imports
   }
 }

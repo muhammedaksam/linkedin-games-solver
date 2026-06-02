@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import ReactDOM from "react-dom/client"
 
-export interface PreprocessRequest {
+interface PreprocessRequest {
   action: "preprocess-image"
   data: {
     dataUrl: string
@@ -16,13 +16,13 @@ export interface PreprocessRequest {
   }
 }
 
-export interface PreprocessResponse {
+interface PreprocessResponse {
   success: boolean
   dataUrl?: string
   error?: string
 }
 
-function OffscreenPage() {
+export function OffscreenPage() {
   useEffect(() => {
     if (typeof window === "undefined" || typeof chrome === "undefined") return
 

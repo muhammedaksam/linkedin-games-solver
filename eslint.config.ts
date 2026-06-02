@@ -8,10 +8,15 @@ export default tseslint.config(
   {
     ignores: [
       "node_modules/",
-      "build/",
+      ".output/",
+      ".wxt/",
       ".plasmo/",
+      "build/",
       "store-assets/",
-      "postcss.config.js"
+      "postcss.config.js",
+      "content.tsx",
+      "background.ts",
+      "contents/"
     ]
   },
   eslint.configs.recommended,

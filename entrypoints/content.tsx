@@ -1,26 +1,18 @@
-/* eslint-disable react-refresh/only-export-components */
-import {
-  AlertCircle,
-  CheckCircle2,
-  Lightbulb,
-  Loader2,
-  Sparkles
-} from "lucide-react"
-import { useEffect, useState } from "react"
 import ReactDOM from "react-dom/client"
 
 import { detectActiveSolver } from "~games"
 import { trackEvent } from "~lib/analytics"
-import { getMessage } from "~lib/i18n"
 import { sendToBackground } from "~lib/plasmo-messaging-shim"
-import { syncStorage as storage, useStorage } from "~lib/storage"
+import { syncStorage as storage } from "~lib/storage"
 import {
-  cn,
   getLocalDateString,
   getPuzzleNumber,
   type SolveHistory
 } from "~lib/utils"
-import "../popup.css"
+
+import { GameSolverUI } from "../components/GameSolverUI"
+
+import "./solver-ui.css"
 
 // Keep track of captured logs globally in content.tsx
 const capturedLogs: Array<{
@@ -112,7 +104,10 @@ let lastKnownUrl = window.location.href
 let lastUrlChangeTime = pageLoadTime
 
 // Shared helper to derive the bonus-aware game ID from the current URL and active solver
-function getCurrentGameId(): { gameId: string; baseGameId: string } | null {
+export function getCurrentGameId(): {
+  gameId: string
+  baseGameId: string
+} | null {
   const active = detectActiveSolver()
   if (!active) return null
   const url = new URL(window.location.href)
@@ -248,7 +243,7 @@ function detectFinalSolveTime(gameId?: string): number | undefined {
 }
 
 // Save completion status to Chrome Storage
-async function saveGameCompleted(
+export async function saveGameCompleted(
   gameId: string,
   durationSeconds?: number,
   isActualPageTime: boolean = false
@@ -406,7 +401,15 @@ async function checkVisitedGameSolved() {
 // Global solver state guard
 let globalSolving = false
 
-function updateSolverStatus(status: "solving" | "idle") {
+export function isGlobalSolving() {
+  return globalSolving
+}
+
+export function setGlobalSolving(val: boolean) {
+  globalSolving = val
+}
+
+export function updateSolverStatus(status: "solving" | "idle") {
   if (typeof window !== "undefined") {
     sendToBackground({
       name: "solverStatus",
@@ -419,6 +422,24 @@ function updateSolverStatus(status: "solving" | "idle") {
 let setReactSolving: ((val: boolean) => void) | null = null
 let setReactError: ((err: string | null) => void) | null = null
 let setReactSuccess: ((val: boolean) => void) | null = null
+
+export function registerReactCallbacks(
+  callbacks: {
+    setSolving: (val: boolean) => void
+    setError: (err: string | null) => void
+    setSuccess: (val: boolean) => void
+  } | null
+) {
+  if (callbacks) {
+    setReactSolving = callbacks.setSolving
+    setReactError = callbacks.setError
+    setReactSuccess = callbacks.setSuccess
+  } else {
+    setReactSolving = null
+    setReactError = null
+    setReactSuccess = null
+  }
+}
 
 const messageListener = (
   message: unknown,
@@ -752,277 +773,6 @@ const getInlineAnchor = async () => {
   })
 }
 
-// Generate highly accurate, localized button labels based on active game type
-const getLocalizedStrings = (activeGame: string) => {
-  const baseGame = activeGame.replace("-bonus", "")
-  const isAiGame = baseGame === "crossclimb" || baseGame === "pinpoint"
-  const hasI18n = typeof chrome !== "undefined" && chrome.i18n
-
-  return {
-    solve: isAiGame
-      ? (hasI18n ? getMessage("solveBtn_withAi") : "") || "Solve with AI"
-      : (hasI18n ? getMessage("solveBtn_game") : "") || "Solve Game",
-    solving: (hasI18n ? getMessage("solveBtn_solving") : "") || "Solving...",
-    solved: (hasI18n ? getMessage("solveBtn_solved") : "") || "Solved!",
-    hint: (hasI18n ? getMessage("solveBtn_hint") : "") || "Get Hint"
-  }
-}
-
-// React component representing our custom solver inline top UI bar button
-const GameSolverUI = () => {
-  const [storedTheme] = useStorage<"light" | "dark">(
-    {
-      key: "theme",
-      instance: storage
-    },
-    "dark"
-  )
-
-  const [activeTheme, setActiveTheme] = useState<"light" | "dark">("dark")
-
-  useEffect(() => {
-    // Dynamically detect theme from the LinkedIn page (html/body classes)
-    const detectPageTheme = () => {
-      const hasDarkClass =
-        document.documentElement.classList.contains("theme--dark") ||
-        document.body.classList.contains("theme--dark") ||
-        document.documentElement.getAttribute("data-theme") === "dark" ||
-        document.body.getAttribute("data-theme") === "dark"
-
-      const hasLightClass =
-        document.documentElement.classList.contains("theme--light") ||
-        document.body.classList.contains("theme--light") ||
-        document.documentElement.getAttribute("data-theme") === "light" ||
-        document.body.getAttribute("data-theme") === "light"
-
-      if (hasDarkClass) {
-        setActiveTheme("dark")
-      } else if (hasLightClass) {
-        setActiveTheme("light")
-      } else {
-        // Fallback to user stored preference if no page classes match
-        setActiveTheme(storedTheme || "dark")
-      }
-    }
-
-    detectPageTheme()
-
-    // Setup an observer to watch for theme switches on the main page dynamically
-    const observer = new MutationObserver(detectPageTheme)
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class", "data-theme"]
-    })
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class", "data-theme"]
-    })
-
-    return () => observer.disconnect()
-  }, [storedTheme])
-
-  const [solveHistory] = useStorage<SolveHistory>(
-    {
-      key: "solveHistory",
-      instance: storage
-    },
-    {}
-  )
-
-  const [defaultSolveMode] = useStorage<string>(
-    {
-      key: "defaultSolveMode",
-      instance: storage
-    },
-    "full"
-  )
-
-  const [activeGame, setActiveGame] = useState<string | null>(null)
-  const [solving, setSolving] = useState(false)
-  const [solveError, setSolveError] = useState<string | null>(null)
-  const [solveSuccess, setSolveSuccess] = useState(false)
-
-  useEffect(() => {
-    setReactSolving = setSolving
-    setReactError = setSolveError
-    setReactSuccess = setSolveSuccess
-
-    // Auto-dismiss success states
-    if (solveSuccess) {
-      const t = setTimeout(() => setSolveSuccess(false), 3500)
-      return () => clearTimeout(t)
-    }
-
-    return () => {
-      setReactSolving = null
-      setReactError = null
-      setReactSuccess = null
-    }
-  }, [solveSuccess])
-
-  // Auto-dismiss error states
-  useEffect(() => {
-    if (solveError) {
-      const t = setTimeout(() => setSolveError(null), 6000)
-      return () => clearTimeout(t)
-    }
-  }, [solveError])
-
-  // Periodically check the active game solver (with bonus awareness)
-  useEffect(() => {
-    const check = () => {
-      const current = getCurrentGameId()
-      setActiveGame(current?.gameId ?? null)
-    }
-    check()
-    const interval = setInterval(check, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
-  if (!activeGame) return null
-
-  const baseActiveGame = activeGame.replace("-bonus", "")
-  const dateKey = getLocalDateString()
-  const isCompleted = !!solveHistory?.[dateKey]?.[activeGame]?.solved
-
-  const handleSolve = async (mode: "full" | "hint" = "full") => {
-    if (solving) return
-
-    const currentActive = detectActiveSolver()
-    if (!currentActive) {
-      setSolveError("No active game solver detected.")
-      return
-    }
-
-    globalSolving = true
-    setSolving(true)
-    setSolveError(null)
-    setSolveSuccess(false)
-    updateSolverStatus("solving")
-
-    console.log(
-      `[LinkedIn Games Solver UI] Solving active board for: ${currentActive.name} (mode: ${mode})`
-    )
-    const startTime = Date.now()
-    try {
-      await currentActive.solve(mode)
-      if (mode !== "hint") {
-        const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-        await saveGameCompleted(activeGame, durationSeconds)
-      }
-      setSolveSuccess(true)
-    } catch (err) {
-      const errMsg = err instanceof Error ? err.message : String(err)
-      setSolveError(errMsg)
-    } finally {
-      globalSolving = false
-      setSolving(false)
-      updateSolverStatus("idle")
-    }
-  }
-
-  const handleResultsClick = () => {
-    const getGamePath = (id: string) => (id === "sudoku" ? "mini-sudoku" : id)
-    const gamePath = getGamePath(baseActiveGame)
-    window.location.assign(
-      `https://www.linkedin.com/games/${gamePath}/results/`
-    )
-  }
-
-  const strings = getLocalizedStrings(baseActiveGame)
-
-  return (
-    <div
-      className={cn(
-        activeTheme,
-        "relative flex items-center justify-center gap-2 h-8"
-      )}>
-      {isCompleted ? (
-        <button
-          type="button"
-          onClick={handleResultsClick}
-          className="solver-btn solver-btn-solved"
-          title="Game completed! Click to view daily results.">
-          <CheckCircle2 className="solver-icon" />
-          <span>{strings.solved}</span>
-        </button>
-      ) : solving ? (
-        <button
-          type="button"
-          disabled
-          className="solver-btn solver-btn-solving">
-          <Loader2 className="solver-icon solver-icon-spin" />
-          <span>{strings.solving}</span>
-        </button>
-      ) : (
-        <>
-          {defaultSolveMode === "hint" ? (
-            <>
-              <button
-                type="button"
-                onClick={() => handleSolve("hint")}
-                className="solver-btn solver-btn-active"
-                title="Get a hint for the next single move or check for errors.">
-                <Lightbulb className="solver-icon" />
-                <span>{strings.hint}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleSolve("full")}
-                className="solver-btn solver-btn-active"
-                style={{ opacity: 0.7 }}
-                title={
-                  baseActiveGame === "crossclimb" ||
-                  baseActiveGame === "pinpoint"
-                    ? "Solve this puzzle automatically using AI solver."
-                    : "Solve this puzzle using algorithmic steps."
-                }>
-                <Sparkles className="solver-icon" />
-                <span>{strings.solve}</span>
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                type="button"
-                onClick={() => handleSolve("full")}
-                className="solver-btn solver-btn-active"
-                title={
-                  baseActiveGame === "crossclimb" ||
-                  baseActiveGame === "pinpoint"
-                    ? "Solve this puzzle automatically using AI solver."
-                    : "Solve this puzzle using algorithmic steps."
-                }>
-                <Sparkles className="solver-icon" />
-                <span>{strings.solve}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleSolve("hint")}
-                className="solver-btn solver-btn-active"
-                style={{ opacity: 0.7 }}
-                title="Get a hint for the next single move or check for errors.">
-                <Lightbulb className="solver-icon" />
-                <span>{strings.hint}</span>
-              </button>
-            </>
-          )}
-        </>
-      )}
-
-      {/* Elegant absolute-positioned floating error tooltip */}
-      {solveError && (
-        <div className="absolute right-0 bottom-11 z-50 flex w-60 items-start gap-2.5 rounded-lg border border-destructive/20 bg-destructive/15 p-3 text-[10px] font-semibold leading-normal text-destructive shadow-lg backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-300">
-          <AlertCircle className="w-3.5 h-3.5 shrink-0 text-destructive mt-0.5" />
-          <div className="flex-1">{solveError}</div>
-        </div>
-      )}
-    </div>
-  )
-}
-
 export default defineContentScript({
   matches: ["https://*.linkedin.com/games/*"],
   cssInjectionMode: "ui",
@@ -1045,78 +795,90 @@ export default defineContentScript({
     })
 
     // Mount the React-based inline top toolbar solver UI dynamically
-    let mountedUi: any = null
+    let mountedUi: { mount: () => void; remove: () => void } | null = null
+    let mounting = false
 
     const tryMountUi = async () => {
-      const containerExists = document.getElementById(
-        "linkedin-games-solver-inline-container"
-      )
-      if (containerExists) {
-        // If container is in the document but the parent has been detached, let's clean up and recreate
-        if (!containerExists.isConnected) {
-          if (mountedUi) {
-            mountedUi.remove()
-            mountedUi = null
+      if (mounting) return
+      mounting = true
+      try {
+        const containerExists = document.getElementById(
+          "linkedin-games-solver-inline-container"
+        )
+        if (containerExists) {
+          // If container is in the document but the parent has been detached, let's clean up and recreate
+          if (!containerExists.isConnected) {
+            if (mountedUi) {
+              mountedUi.remove()
+              mountedUi = null
+            }
+            containerExists.remove()
+          } else {
+            return
           }
-          containerExists.remove()
-        } else {
-          return
         }
-      }
 
-      const anchorElement = await getInlineAnchor()
-      if (anchorElement) {
-        const container = document.createElement("div")
-        container.id = "linkedin-games-solver-inline-container"
-        // Style container inline to act as a perfect inline-flex container matching LinkedIn's toolbar items
-        container.style.display = "inline-flex"
-        container.style.alignItems = "center"
-        container.style.justifyContent = "center"
-        container.style.height = "32px"
-        container.style.alignSelf = "center"
-        container.style.overflow = "hidden"
-        container.style.margin = "0 8px"
-        container.style.padding = "0"
-        anchorElement.appendChild(container)
-
-        mountedUi = await createShadowRootUi(ctx, {
-          name: "linkedin-games-solver-ui",
-          position: "inline",
-          anchor: container,
-          onMount: (shadowContainer) => {
-            // Style the shadowContainer to prevent any extra margins/padding/overflow/scrollbars!
-            shadowContainer.style.display = "flex"
-            shadowContainer.style.alignItems = "center"
-            shadowContainer.style.justifyContent = "center"
-            shadowContainer.style.height = "100%"
-            shadowContainer.style.width = "100%"
-            shadowContainer.style.overflow = "hidden"
-            shadowContainer.style.margin = "0"
-            shadowContainer.style.padding = "0"
-
-            const app = document.createElement("div")
-            app.className =
-              "w-full overflow-hidden flex items-center justify-center"
-            app.style.display = "flex"
-            app.style.alignItems = "center"
-            app.style.justifyContent = "center"
-            app.style.height = "100%"
-            app.style.width = "100%"
-            app.style.overflow = "hidden"
-            app.style.margin = "0"
-            app.style.padding = "0"
-            shadowContainer.append(app)
-
-            const root = ReactDOM.createRoot(app)
-            root.render(<GameSolverUI />)
-            return root
-          },
-          onRemove: (root) => {
-            root?.unmount()
-            container.remove()
+        const anchorElement = await getInlineAnchor()
+        if (anchorElement) {
+          // Double-check after await — another call may have mounted in the meantime
+          if (
+            document.getElementById("linkedin-games-solver-inline-container")
+          ) {
+            return
           }
-        })
-        mountedUi.mount()
+
+          const container = document.createElement("div")
+          container.id = "linkedin-games-solver-inline-container"
+          // Style container inline to act as a perfect inline-flex container matching LinkedIn's toolbar items
+          container.style.display = "inline-flex"
+          container.style.alignItems = "center"
+          container.style.justifyContent = "center"
+          container.style.height = "32px"
+          container.style.alignSelf = "center"
+          container.style.overflow = "hidden"
+          container.style.margin = "0 8px"
+          container.style.padding = "0"
+          anchorElement.appendChild(container)
+
+          mountedUi = await createShadowRootUi(ctx, {
+            name: "linkedin-games-solver-ui",
+            position: "inline",
+            anchor: container,
+            onMount: (shadowContainer) => {
+              // Style the shadowContainer to prevent any extra margins/padding/overflow/scrollbars!
+              shadowContainer.style.display = "flex"
+              shadowContainer.style.alignItems = "center"
+              shadowContainer.style.justifyContent = "center"
+              shadowContainer.style.height = "100%"
+              shadowContainer.style.width = "100%"
+              shadowContainer.style.overflow = "hidden"
+              shadowContainer.style.margin = "0"
+              shadowContainer.style.padding = "0"
+
+              const app = document.createElement("div")
+              app.style.display = "flex"
+              app.style.alignItems = "center"
+              app.style.justifyContent = "center"
+              app.style.height = "100%"
+              app.style.width = "100%"
+              app.style.overflow = "hidden"
+              app.style.margin = "0"
+              app.style.padding = "0"
+              shadowContainer.append(app)
+
+              const root = ReactDOM.createRoot(app)
+              root.render(<GameSolverUI />)
+              return root
+            },
+            onRemove: (root) => {
+              root?.unmount()
+              container.remove()
+            }
+          })
+          mountedUi.mount()
+        }
+      } finally {
+        mounting = false
       }
     }
 

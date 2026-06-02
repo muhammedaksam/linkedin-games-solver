@@ -1,20 +1,22 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import { useEffect, useMemo, useState } from "react"
+
+export interface StorageSerde {
+  serializer?: (value: unknown) => unknown
+  deserializer?: (value: unknown) => unknown
+}
 
 export class Storage {
   area: "local" | "sync" | "session"
-  serde: any
+  serde?: StorageSerde
 
   constructor(
-    options: { area?: "local" | "sync" | "session"; serde?: any } = {}
+    options: { area?: "local" | "sync" | "session"; serde?: StorageSerde } = {}
   ) {
     this.area = options.area || "local"
     this.serde = options.serde
   }
 
-  async get<T = any>(key: string): Promise<T | null> {
+  async get<T = unknown>(key: string): Promise<T | null> {
     const storageArea =
       this.area === "sync"
         ? chrome.storage.sync
@@ -28,13 +30,15 @@ export class Storage {
         if (val === undefined || val === null) {
           resolve(null)
         } else {
-          resolve(this.serde?.deserializer ? this.serde.deserializer(val) : val)
+          resolve(
+            (this.serde?.deserializer ? this.serde.deserializer(val) : val) as T
+          )
         }
       })
     })
   }
 
-  async set(key: string, value: any): Promise<void> {
+  async set(key: string, value: unknown): Promise<void> {
     const storageArea =
       this.area === "sync"
         ? chrome.storage.sync
@@ -74,7 +78,7 @@ export class SecureStorage extends Storage {
   }
 }
 
-export function useStorage<T = any>(
+export function useStorage<T = unknown>(
   options: string | { key: string; instance?: Storage },
   defaultValue?: T
 ): [T, (val: T | ((prev: T) => T)) => Promise<void>] {
@@ -113,7 +117,7 @@ export function useStorage<T = any>(
           : newVal
         setState(
           deserialized !== undefined && deserialized !== null
-            ? deserialized
+            ? (deserialized as T)
             : (defaultValue as T)
         )
       }
@@ -130,7 +134,9 @@ export function useStorage<T = any>(
     let nextValue: T
     if (typeof val === "function") {
       const current = await instance.get<T>(key)
-      nextValue = (val as Function)(current !== null ? current : defaultValue)
+      nextValue = (val as (prev: T) => T)(
+        current !== null ? current : (defaultValue as T)
+      )
     } else {
       nextValue = val
     }
