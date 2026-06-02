@@ -395,306 +395,468 @@ function generateStoreIcon(): void {
   )
 }
 
+const promoTranslations: Record<
+  string,
+  { title: string; line1: string; line2: string }
+> = {
+  en: {
+    title: "Games Solver",
+    line1: "Auto-solve daily puzzles",
+    line2: "with live stats dashboard"
+  },
+  tr: {
+    title: "Oyun Çözücü",
+    line1: "Günlük bulmacaları otomatik çöz",
+    line2: "canlı istatistik paneli ile"
+  },
+  es: {
+    title: "Games Solver",
+    line1: "Resuelve acertijos diarios",
+    line2: "con panel de estadísticas"
+  },
+  fr: {
+    title: "Games Solver",
+    line1: "Résous les puzzles quotidiens",
+    line2: "avec tableau de bord en direct"
+  },
+  pt_BR: {
+    title: "Games Solver",
+    line1: "Resolva quebra-cabeças diários",
+    line2: "com painel de estatísticas"
+  },
+  pt_PT: {
+    title: "Games Solver",
+    line1: "Resolva quebra-cabeças diários",
+    line2: "com painel de estatísticas"
+  },
+  de: {
+    title: "Games Solver",
+    line1: "Tägliche Rätsel automatisch lösen",
+    line2: "mit Live-Statistik-Dashboard"
+  },
+  zh_CN: {
+    title: "游戏助手",
+    line1: "一键自动解密每日谜题",
+    line2: "配备实时数据统计仪表盘"
+  },
+  zh_TW: {
+    title: "遊戲助手",
+    line1: "一鍵自動解密每日謎題",
+    line2: "配備即時數據統計儀表盤"
+  }
+}
+
+const marqueeTranslations: Record<
+  string,
+  { title: string; line1: string; line2: string }
+> = {
+  en: {
+    title: "LinkedIn Games Solver",
+    line1: "Auto-solve daily puzzles & track your streak with rich analytics",
+    line2:
+      "Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+  },
+  tr: {
+    title: "LinkedIn Oyun Çözücü",
+    line1: "Günlük bulmacaları otomatik çöz & istatistiklerini takip et",
+    line2:
+      "Desteklenenler: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+  },
+  es: {
+    title: "LinkedIn Games Solver",
+    line1: "Resuelve acertijos diarios y sigue tus estadísticas de racha",
+    line2:
+      "Soporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+  },
+  fr: {
+    title: "LinkedIn Games Solver",
+    line1: "Résous les puzzles quotidiens & suis ta série avec des analyses",
+    line2:
+      "Supporte: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+  },
+  pt_BR: {
+    title: "LinkedIn Games Solver",
+    line1: "Resolva quebra-cabeças diários e acompanhe suas estatísticas",
+    line2:
+      "Suporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+  },
+  pt_PT: {
+    title: "LinkedIn Games Solver",
+    line1: "Resolva quebra-cabeças diários e acompanhe suas estatísticas",
+    line2:
+      "Suporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+  },
+  de: {
+    title: "LinkedIn Games Solver",
+    line1: "Tägliche Rätsel automatisch lösen & Statistiken verfolgen",
+    line2:
+      "Unterstützt: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+  },
+  zh_CN: {
+    title: "LinkedIn 游戏解密助手",
+    line1: "一键自动解答每日谜题，配以丰富的通关数据分析与记录",
+    line2:
+      "支持游戏: 迷你数独 • 皇后 • 关联词 • 爬梯词 • 探戈 • 路线 • 碎片拼图"
+  },
+  zh_TW: {
+    title: "LinkedIn 遊戲解密助手",
+    line1: "一鍵自動解答每日謎題，配以豐富的通關數據分析與記錄",
+    line2:
+      "支持遊戲: 迷你數獨 • 皇后 • 關聯詞 • 爬梯詞 • 探戈 • 路線 • 碎片拼圖"
+  }
+}
+
 // Generate 440x280 small promo tile
-function generatePromoSmall(): void {
-  const output = path.join(outDir, "global", "small-promo-440x280.jpg")
-  const screenshotPath = path.join(globalScreenshotsDir, "screenshot-1.jpg")
+function generatePromoSmall(localeCode: string = "global"): void {
+  const isGlobal = localeCode === "global"
+  const actualLocale = isGlobal ? "en" : localeCode
+
+  const targetDir = isGlobal
+    ? path.join(outDir, "global")
+    : path.join(outDir, "localized", actualLocale)
+
+  if (!existsSync(targetDir)) {
+    mkdirSync(targetDir, { recursive: true })
+  }
+
+  const output = path.join(targetDir, "small-promo-440x280.jpg")
+  const outputPng = path.join(targetDir, "small-promo-440x280.png")
+
+  const screenshotPath = isGlobal
+    ? path.join(globalScreenshotsDir, "screenshot-1.jpg")
+    : path.join(
+        outDir,
+        "localized",
+        actualLocale,
+        "screenshots",
+        "screenshot-1.jpg"
+      )
+
+  const translation = promoTranslations[actualLocale] || promoTranslations["en"]
+  const localeFontPath = resolveFontPathForLocale(actualLocale)
 
   if (!existsSync(screenshotPath)) {
     console.log(
-      "Screenshot-1 not found, generating base Small Promo without screenshot..."
+      `Screenshot-1 not found for ${actualLocale}, generating base Small Promo without screenshot...`
     )
-    run(
-      [
-        imageMagickCmd,
-        "-size",
-        "440x280",
-        q("gradient:#0a66c2-#1e3a8a"),
-        "\\(",
-        "-size",
-        "440x280",
-        "xc:none",
-        "-fill",
-        q("rgba(255,255,255,0.07)"),
-        "-draw",
-        q("circle 370,18 560,218"),
-        "\\)",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "icon-170.png")),
-        "\\)",
-        "-gravity",
-        "west",
-        "-geometry",
-        "+34+0",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "tango-120.png")),
-        "\\)",
-        "-gravity",
-        "east",
-        "-geometry",
-        "+30-56",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "queens-120.png")),
-        "\\)",
-        "-gravity",
-        "east",
-        "-geometry",
-        "+90+36",
-        "-composite",
-        "-strip",
-        "-quality",
-        "93",
-        q(output)
-      ].join(" ")
-    )
-    return
-  }
-
-  console.log(
-    "Generating premium Small Promo Tile with embedded browser screenshot..."
-  )
-  run(
-    [
+    const cmdArgs = [
       imageMagickCmd,
       "-size",
       "440x280",
-      q("gradient:#0a66c2-#0f172a"),
-      // Glowing decorative elements
+      q("gradient:#0a66c2-#1e3a8a"),
       "\\(",
       "-size",
       "440x280",
       "xc:none",
       "-fill",
-      q("rgba(255,255,255,0.05)"),
+      q("rgba(255,255,255,0.07)"),
       "-draw",
-      q("circle 380,180 440,240"),
+      q("circle 370,18 560,218"),
       "\\)",
       "-composite",
-      // Embed popup screenshot
       "\\(",
-      q(screenshotPath),
-      "-resize",
-      "166x",
-      "-bordercolor",
-      q("rgba(255,255,255,0.15)"),
-      "-border",
-      "1",
-      "\\)",
-      "-gravity",
-      "east",
-      "-geometry",
-      "+36+0",
-      "-composite",
-      // Embed extension icon logo
-      "\\(",
-      q(path.join(tmpDir, "icon-96.png")),
-      "-resize",
-      "60x60",
+      q(path.join(tmpDir, "icon-170.png")),
       "\\)",
       "-gravity",
       "west",
       "-geometry",
-      "+36-36",
+      "+34+0",
       "-composite",
-      // Render clean, modern typography
-      "-pointsize",
-      "22",
-      "-fill",
-      "white",
+      "\\(",
+      q(path.join(tmpDir, "tango-120.png")),
+      "\\)",
       "-gravity",
-      "northwest",
-      "-annotate",
-      "+36+154",
-      q("Games Solver"),
-      "-pointsize",
-      "11",
-      "-fill",
-      q("#94a3b8"),
-      "-annotate",
-      "+36+186",
-      q("Auto-solve daily puzzles"),
-      "-annotate",
-      "+36+202",
-      q("with live stats dashboard"),
-      "-strip",
-      "-quality",
-      "93",
-      q(output)
-    ].join(" ")
+      "east",
+      "-geometry",
+      "+30-56",
+      "-composite",
+      "\\(",
+      q(path.join(tmpDir, "queens-120.png")),
+      "\\)",
+      "-gravity",
+      "east",
+      "-geometry",
+      "+90+36",
+      "-composite",
+      ...(localeFontPath ? ["-font", q(localeFontPath)] : []),
+      "-strip"
+    ]
+
+    run([...cmdArgs, "-quality", "93", q(output)].join(" "))
+    run([...cmdArgs, q(outputPng)].join(" "))
+    return
+  }
+
+  console.log(
+    `Generating premium Small Promo Tile (${actualLocale}) with embedded browser screenshot...`
   )
+  const premiumArgs = [
+    imageMagickCmd,
+    "-size",
+    "440x280",
+    q("gradient:#0a66c2-#0f172a"),
+    // Glowing decorative elements
+    "\\(",
+    "-size",
+    "440x280",
+    "xc:none",
+    "-fill",
+    q("rgba(255,255,255,0.05)"),
+    "-draw",
+    q("circle 380,180 440,240"),
+    "\\)",
+    "-composite",
+    // Embed popup screenshot
+    "\\(",
+    q(screenshotPath),
+    "-resize",
+    "166x",
+    "-bordercolor",
+    q("rgba(255,255,255,0.15)"),
+    "-border",
+    "1",
+    "\\)",
+    "-gravity",
+    "east",
+    "-geometry",
+    "+36+0",
+    "-composite",
+    // Embed extension icon logo
+    "\\(",
+    q(path.join(tmpDir, "icon-96.png")),
+    "-resize",
+    "60x60",
+    "\\)",
+    "-gravity",
+    "west",
+    "-geometry",
+    "+36-36",
+    "-composite",
+    // Render clean, modern typography
+    ...(localeFontPath ? ["-font", q(localeFontPath)] : []),
+    "-pointsize",
+    "22",
+    "-fill",
+    "white",
+    "-gravity",
+    "northwest",
+    "-annotate",
+    "+36+154",
+    q(translation.title),
+    "-pointsize",
+    "11",
+    "-fill",
+    q("#94a3b8"),
+    "-annotate",
+    "+36+186",
+    q(translation.line1),
+    "-annotate",
+    "+36+202",
+    q(translation.line2),
+    "-strip"
+  ]
+
+  run([...premiumArgs, "-quality", "93", q(output)].join(" "))
+  run([...premiumArgs, q(outputPng)].join(" "))
 }
 
 // Generate 1400x560 marquee promo tile
-function generatePromoMarquee(): void {
-  const output = path.join(outDir, "global", "marquee-promo-1400x560.jpg")
-  const popupPath = path.join(globalScreenshotsDir, "screenshot-1.jpg")
-  const dashboardPath = path.join(globalScreenshotsDir, "screenshot-3.jpg")
+function generatePromoMarquee(localeCode: string = "global"): void {
+  const isGlobal = localeCode === "global"
+  const actualLocale = isGlobal ? "en" : localeCode
+
+  const targetDir = isGlobal
+    ? path.join(outDir, "global")
+    : path.join(outDir, "localized", actualLocale)
+
+  if (!existsSync(targetDir)) {
+    mkdirSync(targetDir, { recursive: true })
+  }
+
+  const output = path.join(targetDir, "marquee-promo-1400x560.jpg")
+  const outputPng = path.join(targetDir, "marquee-promo-1400x560.png")
+
+  const popupPath = isGlobal
+    ? path.join(globalScreenshotsDir, "screenshot-1.jpg")
+    : path.join(
+        outDir,
+        "localized",
+        actualLocale,
+        "screenshots",
+        "screenshot-1.jpg"
+      )
+  const dashboardPath = isGlobal
+    ? path.join(globalScreenshotsDir, "screenshot-3.jpg")
+    : path.join(
+        outDir,
+        "localized",
+        actualLocale,
+        "screenshots",
+        "screenshot-3.jpg"
+      )
+
+  const translation =
+    marqueeTranslations[actualLocale] || marqueeTranslations["en"]
+  const localeFontPath = resolveFontPathForLocale(actualLocale)
 
   if (!existsSync(popupPath) || !existsSync(dashboardPath)) {
     console.log(
-      "Screenshots not found, generating base Marquee Promo without screenshots..."
+      `Screenshots not found for ${actualLocale}, generating base Marquee Promo without screenshots...`
     )
-    run(
-      [
-        imageMagickCmd,
-        "-size",
-        "1400x560",
-        q("gradient:#0a66c2-#0f172a"),
-        "\\(",
-        "-size",
-        "1400x560",
-        "xc:none",
-        "-fill",
-        q("rgba(255,255,255,0.06)"),
-        "-draw",
-        q("circle 1180,-30 1620,420"),
-        "\\)",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "icon-300.png")),
-        "\\)",
-        "-gravity",
-        "west",
-        "-geometry",
-        "+120+0",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "tango-220.png")),
-        "\\)",
-        "-gravity",
-        "east",
-        "-geometry",
-        "+280-120",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "pinpoint-220.png")),
-        "\\)",
-        "-gravity",
-        "east",
-        "-geometry",
-        "+120+0",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "queens-220.png")),
-        "\\)",
-        "-gravity",
-        "east",
-        "-geometry",
-        "+340+140",
-        "-composite",
-        "\\(",
-        q(path.join(tmpDir, "zip-220.png")),
-        "\\)",
-        "-gravity",
-        "east",
-        "-geometry",
-        "+30+150",
-        "-composite",
-        "-strip",
-        "-quality",
-        "93",
-        q(output)
-      ].join(" ")
-    )
-    return
-  }
-
-  console.log(
-    "Generating premium Marquee Promo Tile with layered screenshot mockups..."
-  )
-  run(
-    [
+    const baseArgs = [
       imageMagickCmd,
       "-size",
       "1400x560",
       q("gradient:#0a66c2-#0f172a"),
-      // Glowing decorative circles
       "\\(",
       "-size",
       "1400x560",
       "xc:none",
       "-fill",
-      q("rgba(255,255,255,0.04)"),
+      q("rgba(255,255,255,0.06)"),
       "-draw",
-      q("circle 1150,280 1280,360"),
+      q("circle 1180,-30 1620,420"),
       "\\)",
       "-composite",
-      // Layer the large Dashboard screenshot in the background (center-right)
-      "\\(",
-      q(dashboardPath),
-      "-resize",
-      "560x",
-      "-bordercolor",
-      q("rgba(255,255,255,0.12)"),
-      "-border",
-      "2",
-      "\\)",
-      "-gravity",
-      "east",
-      "-geometry",
-      "+130-10",
-      "-composite",
-      // Layer the smaller Popup screenshot overlapping it in the foreground
-      "\\(",
-      q(popupPath),
-      "-resize",
-      "210x",
-      "-bordercolor",
-      q("rgba(255,255,255,0.2)"),
-      "-border",
-      "2",
-      "\\)",
-      "-gravity",
-      "east",
-      "-geometry",
-      "+64+76",
-      "-composite",
-      // Brand logo icon on the left (shifted slightly up to increase vertical margin)
       "\\(",
       q(path.join(tmpDir, "icon-300.png")),
-      "-resize",
-      "120x120",
       "\\)",
       "-gravity",
       "west",
       "-geometry",
-      "+90-135",
+      "+120+0",
       "-composite",
-      // Premium Titles & Text overlay (shifted slightly down to give breathing room under the logo)
-      "-pointsize",
-      "52",
-      "-fill",
-      "white",
+      "\\(",
+      q(path.join(tmpDir, "tango-220.png")),
+      "\\)",
       "-gravity",
-      "northwest",
-      "-annotate",
-      "+90+245",
-      q("LinkedIn Games Solver"),
-      "-pointsize",
-      "18",
-      "-fill",
-      q("#94a3b8"),
-      "-annotate",
-      "+90+320",
-      q("Auto-solve daily puzzles & track your streak with rich analytics"),
-      "-pointsize",
-      "13",
-      "-fill",
-      q("#38bdf8"),
-      "-annotate",
-      "+90+360",
-      q(
-        "Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
-      ),
-      "-strip",
-      "-quality",
-      "93",
-      q(output)
-    ].join(" ")
+      "east",
+      "-geometry",
+      "+280-120",
+      "-composite",
+      "\\(",
+      q(path.join(tmpDir, "pinpoint-220.png")),
+      "\\)",
+      "-gravity",
+      "east",
+      "-geometry",
+      "+120+0",
+      "-composite",
+      "\\(",
+      q(path.join(tmpDir, "queens-220.png")),
+      "\\)",
+      "-gravity",
+      "east",
+      "-geometry",
+      "+340+140",
+      "-composite",
+      "\\(",
+      q(path.join(tmpDir, "zip-220.png")),
+      "\\)",
+      "-gravity",
+      "east",
+      "-geometry",
+      "+30+150",
+      "-composite",
+      ...(localeFontPath ? ["-font", q(localeFontPath)] : []),
+      "-strip"
+    ]
+
+    run([...baseArgs, "-quality", "93", q(output)].join(" "))
+    run([...baseArgs, q(outputPng)].join(" "))
+    return
+  }
+
+  console.log(
+    `Generating premium Marquee Promo Tile (${actualLocale}) with layered screenshot mockups...`
   )
+  const premiumArgs = [
+    imageMagickCmd,
+    "-size",
+    "1400x560",
+    q("gradient:#0a66c2-#0f172a"),
+    // Glowing decorative circles
+    "\\(",
+    "-size",
+    "1400x560",
+    "xc:none",
+    "-fill",
+    q("rgba(255,255,255,0.04)"),
+    "-draw",
+    q("circle 1150,280 1280,360"),
+    "\\)",
+    "-composite",
+    // Layer the large Dashboard screenshot in the background (center-right)
+    "\\(",
+    q(dashboardPath),
+    "-resize",
+    "560x",
+    "-bordercolor",
+    q("rgba(255,255,255,0.12)"),
+    "-border",
+    "2",
+    "\\)",
+    "-gravity",
+    "east",
+    "-geometry",
+    "+130-10",
+    "-composite",
+    // Layer the smaller Popup screenshot overlapping it in the foreground
+    "\\(",
+    q(popupPath),
+    "-resize",
+    "210x",
+    "-bordercolor",
+    q("rgba(255,255,255,0.2)"),
+    "-border",
+    "2",
+    "\\)",
+    "-gravity",
+    "east",
+    "-geometry",
+    "+64+76",
+    "-composite",
+    // Brand logo icon on the left (shifted slightly up to increase vertical margin)
+    "\\(",
+    q(path.join(tmpDir, "icon-300.png")),
+    "-resize",
+    "120x120",
+    "\\)",
+    "-gravity",
+    "west",
+    "-geometry",
+    "+90-135",
+    "-composite",
+    // Premium Titles & Text overlay (shifted slightly down to give breathing room under the logo)
+    ...(localeFontPath ? ["-font", q(localeFontPath)] : []),
+    "-pointsize",
+    "52",
+    "-fill",
+    "white",
+    "-gravity",
+    "northwest",
+    "-annotate",
+    "+90+245",
+    q(translation.title),
+    "-pointsize",
+    "18",
+    "-fill",
+    q("#94a3b8"),
+    "-annotate",
+    "+90+320",
+    q(translation.line1),
+    "-pointsize",
+    "13",
+    "-fill",
+    q("#38bdf8"),
+    "-annotate",
+    "+90+360",
+    q(translation.line2),
+    "-strip"
+  ]
+
+  run([...premiumArgs, "-quality", "93", q(output)].join(" "))
+  run([...premiumArgs, q(outputPng)].join(" "))
 }
 
 // --- Puppeteer Screenshot Engine ---
@@ -736,6 +898,18 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     ensureDir(saveDir)
 
     const page = await browser.newPage()
+
+    const takeDualScreenshot = async (name: string) => {
+      await page.screenshot({
+        path: path.join(saveDir, `${name}.jpg`),
+        type: "jpeg",
+        quality: 92
+      })
+      await page.screenshot({
+        path: path.join(saveDir, `${name}.png`),
+        type: "png"
+      })
+    }
 
     // ----------------------------------------------------
     // SCENE 1: Popup Showcase - Perfect Day Progress
@@ -871,11 +1045,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     }, locale)
 
     await new Promise((r) => setTimeout(r, 1200))
-    await page.screenshot({
-      path: path.join(saveDir, "screenshot-1.jpg"),
-      type: "jpeg",
-      quality: 92
-    })
+    await takeDualScreenshot("screenshot-1")
 
     // ----------------------------------------------------
     // SCENE 2: Popup Showcase - Active Board Blinking
@@ -1029,11 +1199,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     }, locale)
 
     await new Promise((r) => setTimeout(r, 1200))
-    await page.screenshot({
-      path: path.join(saveDir, "screenshot-2.jpg"),
-      type: "jpeg",
-      quality: 92
-    })
+    await takeDualScreenshot("screenshot-2")
 
     // ----------------------------------------------------
     // SCENE 3: Desktop Dashboard - History & Statistics
@@ -1073,11 +1239,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     await page.setViewport({ width: 1280, height: 800 })
 
     await new Promise((r) => setTimeout(r, 1200))
-    await page.screenshot({
-      path: path.join(saveDir, "screenshot-3.jpg"),
-      type: "jpeg",
-      quality: 92
-    })
+    await takeDualScreenshot("screenshot-3")
 
     // ----------------------------------------------------
     // SCENE 4: Desktop Dashboard - Options AI Config Settings
@@ -1148,11 +1310,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     })
 
     await new Promise((r) => setTimeout(r, 1000))
-    await page.screenshot({
-      path: path.join(saveDir, "screenshot-4.jpg"),
-      type: "jpeg",
-      quality: 92
-    })
+    await takeDualScreenshot("screenshot-4")
 
     // ----------------------------------------------------
     // SCENE 5: Side Panel Showcase
@@ -1438,11 +1596,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     }, locale)
 
     await new Promise((r) => setTimeout(r, 1200))
-    await page.screenshot({
-      path: path.join(saveDir, "screenshot-5.jpg"),
-      type: "jpeg",
-      quality: 92
-    })
+    await takeDualScreenshot("screenshot-5")
 
     // ----------------------------------------------------
     // SCENE 6: DevTools diagnostics and telemetry panel
@@ -1647,11 +1801,7 @@ async function captureScreenshots(locale: string = "en"): Promise<void> {
     }, locale)
 
     await new Promise((r) => setTimeout(r, 1200))
-    await page.screenshot({
-      path: path.join(saveDir, "screenshot-6.jpg"),
-      type: "jpeg",
-      quality: 92
-    })
+    await takeDualScreenshot("screenshot-6")
   } catch (error) {
     console.error(`Error generating screenshots for locale [${locale}]:`, error)
   } finally {
@@ -2051,16 +2201,20 @@ async function main(): Promise<void> {
   // This must run before promo composites so screenshots exist for mockups
   await captureScreenshots("en")
 
-  // Step 4: Compose premium global promo banners and social previews with embedded screenshots
+  // Step 4: Compose premium promo banners and social previews with embedded screenshots
   console.log("Generating premium promo tiles and social previews...")
-  generatePromoSmall()
-  generatePromoMarquee()
+  generatePromoSmall("global")
+  generatePromoMarquee("global")
+  generatePromoSmall("en")
+  generatePromoMarquee("en")
   generateSocialPreviews()
 
-  // Step 5: Capture screenshots for all other localized directories
+  // Step 5: Capture screenshots and generate localized promotional tiles for all other localized directories
   const locales = ["tr", "es", "fr", "pt_BR", "pt_PT", "de", "zh_CN", "zh_TW"]
   for (const locale of locales) {
     await captureScreenshots(locale)
+    generatePromoSmall(locale)
+    generatePromoMarquee(locale)
   }
 
   // Step 5: Render localized social media OG cards using ImageMagick
@@ -2078,9 +2232,11 @@ async function main(): Promise<void> {
   console.log("=======================================================")
   console.log("- Store icon: store-assets/store-icon-128.png")
   console.log("- Global promo tiles: store-assets/global/*.jpg")
-  console.log("- Global screenshots: store-assets/global/screenshots/*.jpg")
   console.log(
-    "- Localized screenshots: store-assets/localized/<locale>/screenshots/*.jpg"
+    "- Global screenshots: store-assets/global/screenshots/*.{jpg,png}"
+  )
+  console.log(
+    "- Localized screenshots: store-assets/localized/<locale>/screenshots/*.{jpg,png}"
   )
   console.log("- Social media card pre-renders: store-assets/social/*.jpg")
   console.log(

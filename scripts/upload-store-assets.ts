@@ -40,10 +40,18 @@ function loadEnv() {
 
 loadEnv()
 
+// Command Line Arguments parsing
+const args = process.argv.slice(2)
+const storeArgIndex = args.indexOf("--store")
+const store =
+  storeArgIndex !== -1 && args[storeArgIndex + 1]
+    ? args[storeArgIndex + 1].toLowerCase()
+    : "chrome"
+
 const CONSOLE_ID = process.env.CWS_CONSOLE_ID
 const ITEM_ID = process.env.CWS_ITEM_ID
 
-if (!CONSOLE_ID || !ITEM_ID) {
+if (store === "chrome" && (!CONSOLE_ID || !ITEM_ID)) {
   console.error(
     "❌ Missing CWS_CONSOLE_ID or CWS_ITEM_ID in environment variables"
   )
@@ -51,6 +59,15 @@ if (!CONSOLE_ID || !ITEM_ID) {
 }
 
 const DEV_CONSOLE_URL = `https://chrome.google.com/webstore/devconsole/${CONSOLE_ID}/${ITEM_ID}/edit?hl=en`
+
+const EDGE_PRODUCT_ID = process.env.EDGE_PRODUCT_ID
+
+if (!EDGE_PRODUCT_ID) {
+  console.error("❌ Missing EDGE_PRODUCT_ID in environment variables")
+  process.exit(1)
+}
+
+const EDGE_DASHBOARD_URL = `https://partner.microsoft.com/en-us/dashboard/microsoftedge/${EDGE_PRODUCT_ID}/listings`
 
 interface LocaleConfig {
   displayName: string
@@ -330,6 +347,25 @@ async function waitForUploadToComplete(
 }
 
 async function main() {
+  let browser: Browser
+  try {
+    browser = await puppeteer.connect({
+      browserURL: "http://127.0.0.1:9222",
+      defaultViewport: null
+    })
+  } catch {
+    console.error(
+      "\n❌ Could not connect to running Chrome instance on port 9222."
+    )
+    console.error("Please launch Chrome with the debugging flag and try again.")
+    process.exit(1)
+  }
+
+  if (store === "edge") {
+    await runEdgeUploader(browser)
+    return
+  }
+
   console.log("\n=======================================================")
   console.log("🚀 CHROME WEB STORE SEMI-AUTOMATED ASSETS UPLOADER")
   console.log("=======================================================")
@@ -345,22 +381,6 @@ async function main() {
   )
   console.log("\nLog in to your developer dashboard, and then run this script.")
   console.log("Connecting to standard debugging port 9222...")
-
-  let browser: Browser
-  try {
-    browser = await puppeteer.connect({
-      browserURL: "http://127.0.0.1:9222",
-      defaultViewport: null
-    })
-  } catch {
-    console.error(
-      "\n❌ Could not connect to running Chrome instance on port 9222."
-    )
-    console.error(
-      "Please launch Chrome with the debugging flag above and try again."
-    )
-    process.exit(1)
-  }
 
   console.log("✅ Successfully connected to Chrome instance!")
   const pages = await browser.pages()
@@ -660,6 +680,991 @@ async function main() {
   console.log(
     "and manually click 'Save draft' or 'Publish' in the developer console."
   )
+  console.log("Disconnecting from browser automation...")
+  await browser.disconnect()
+}
+
+async function getEdgeSectionContainer(
+  page: Page,
+  label: string
+): Promise<ElementHandle<HTMLElement> | null> {
+  const handle = await page.evaluateHandle((sectionLabel) => {
+    const key = sectionLabel.toLowerCase()
+    if (key.includes("logo")) {
+      return document.querySelector("app-logos")
+    }
+    if (key.includes("screenshot")) {
+      return document.querySelector("screenshots")
+    }
+    if (key.includes("small promo") || key.includes("small promotional")) {
+      return (
+        document.querySelector('promo-tiles[size="Small"]') ||
+        document.querySelectorAll("promo-tiles")[0]
+      )
+    }
+    if (key.includes("large promo") || key.includes("large promotional")) {
+      return (
+        document.querySelector('promo-tiles[size="Large"]') ||
+        document.querySelectorAll("promo-tiles")[1]
+      )
+    }
+    return null
+  }, label)
+
+  return handle.asElement() as ElementHandle<HTMLElement> | null
+}
+
+async function ensureEdgeStoreListingsView(page: Page): Promise<void> {
+  const isListingsLoaded = await page.evaluate(() => {
+    const hasEditBtn = !!document.querySelector(
+      'button[aria-label*="Edit"][aria-label*="language"]'
+    )
+    const isDrawerOpen =
+      !!document.querySelector("mat-dialog-container") ||
+      window.location.href.includes("/details/")
+    return hasEditBtn && !isDrawerOpen
+  })
+
+  if (isListingsLoaded) {
+    console.log("Already on the Store listings overview page.")
+    return
+  }
+
+  console.log("Locating 'Store listings' navigation link/button...")
+  const clicked = await page.evaluate(() => {
+    const elements = Array.from(
+      document.querySelectorAll("a, button, div, span")
+    )
+    const navItem = elements.find((el) => {
+      const txt = (el.textContent || "").trim().toLowerCase()
+      return txt === "store listings" || txt === "store listing"
+    }) as HTMLElement
+
+    if (navItem) {
+      navItem.scrollIntoView({ block: "center" })
+      navItem.click()
+      return true
+    }
+    return false
+  })
+
+  if (clicked) {
+    console.log(
+      "👉 Clicked 'Store listings' in sidebar navigation. Waiting for page to load..."
+    )
+    await delay(5000)
+  } else {
+    console.log(
+      "⚠️ Could not find 'Store listings' sidebar navigation item. Navigating via URL..."
+    )
+    await page.goto(EDGE_DASHBOARD_URL, { waitUntil: "networkidle2" })
+    await delay(5000)
+  }
+}
+
+async function getEdgeFileInputForSection(
+  page: Page,
+  sectionLabel: string
+): Promise<ElementHandle<HTMLInputElement> | null> {
+  const container = await getEdgeSectionContainer(page, sectionLabel)
+  if (!container) return null
+
+  const inputHandle = await page.evaluateHandle((el) => {
+    if (!el) return null
+    return el.querySelector('input[type="file"]')
+  }, container)
+
+  return inputHandle.asElement() as ElementHandle<HTMLInputElement> | null
+}
+
+async function clearEdgeExistingImages(
+  page: Page,
+  sectionLabel: string
+): Promise<void> {
+  console.log(`Clearing existing images for Edge section: "${sectionLabel}"...`)
+
+  const container = await getEdgeSectionContainer(page, sectionLabel)
+  if (!container) {
+    console.log(`⚠️ Container for "${sectionLabel}" not found.`)
+    return
+  }
+
+  const deleteButtonsCount = await page.evaluate((el) => {
+    if (!el) return 0
+    const buttons = Array.from(el.querySelectorAll("button, [role='button']"))
+    return buttons.filter((btn) => {
+      const label = btn.getAttribute("aria-label") || ""
+      const text = (btn.textContent || "").trim().toLowerCase()
+      return (
+        label.toLowerCase() === "delete" ||
+        label.toLowerCase().includes("delete") ||
+        text === "delete" ||
+        text.includes("delete")
+      )
+    }).length
+  }, container)
+
+  if (deleteButtonsCount > 0) {
+    console.log(
+      `Found ${deleteButtonsCount} existing image(s) to remove in "${sectionLabel}".`
+    )
+    for (let i = 0; i < deleteButtonsCount; i++) {
+      const clicked = await page.evaluate((el) => {
+        if (!el) return false
+        const buttons = Array.from(
+          el.querySelectorAll("button, [role='button']")
+        )
+        const btn = buttons.find((btn) => {
+          const label = btn.getAttribute("aria-label") || ""
+          const text = (btn.textContent || "").trim().toLowerCase()
+          return (
+            label.toLowerCase() === "delete" ||
+            label.toLowerCase().includes("delete") ||
+            text === "delete" ||
+            text.includes("delete")
+          )
+        }) as HTMLElement
+        if (btn) {
+          btn.scrollIntoView({ block: "center" })
+          btn.click()
+          return true
+        }
+        return false
+      }, container)
+
+      if (clicked) {
+        console.log(`Clicked delete button ${i + 1}/${deleteButtonsCount}.`)
+        await delay(1000)
+        const modalConfirmed = await page.evaluate(() => {
+          const confirmBtn = Array.from(
+            document.querySelectorAll("v6_he-button, button")
+          ).find((b) => {
+            const txt = (b.textContent || "").trim().toLowerCase()
+            const matClose = b.getAttribute("matdialogclose") || ""
+            const l10n = b.getAttribute("data-l10n-key") || ""
+            return (
+              txt === "confirm" ||
+              txt === "delete" ||
+              matClose === "confirm" ||
+              l10n.includes("Confirm") ||
+              l10n.includes("Delete")
+            )
+          }) as HTMLElement
+          if (confirmBtn) {
+            confirmBtn.click()
+            return true
+          }
+          return false
+        })
+        if (modalConfirmed) {
+          console.log("👉 Confirmed the deletion modal dialog.")
+          await delay(2500)
+        } else {
+          await delay(1000)
+        }
+      }
+    }
+  } else {
+    console.log(`No existing images found to clear in "${sectionLabel}".`)
+  }
+}
+
+async function setScreenshotCaptions(
+  page: Page,
+  localeCode: string
+): Promise<void> {
+  console.log("\n⚙️ Setting Screenshot Captions...")
+  const captionsMap: Record<string, string[]> = {
+    en: [
+      "Instantly solve and master all daily LinkedIn games",
+      "Real-time grid detection and interactive solve guides",
+      "Comprehensive performance history and stats tracker",
+      "Configure custom AI providers and model preferences",
+      "Seamless sidebar companion directly beside the puzzle",
+      "Advanced diagnostics and real-time telemetry controls"
+    ],
+    tr: [
+      "Tüm günlük LinkedIn oyunlarını anında ve ustaca çözün",
+      "Gerçek zamanlı tablo algılama ve etkileşimli kılavuzlar",
+      "Ayrıntılı performans geçmişi ve istatistik takipçisi",
+      "Özel yapay zeka sağlayıcılarını ve model tercihlerini yapılandırın",
+      "Bulmacanın hemen yanında kesintisiz yan panel yoldaşı",
+      "Gelişmiş tanılama ve gerçek zamanlı telemetri kontrolleri"
+    ],
+    es: [
+      "Resuelva y domine al instante todos los juegos diarios de LinkedIn",
+      "Detección de cuadrícula en tiempo real y guías de resolución interactivas",
+      "Historial de rendimiento completo y seguimiento de estadísticas",
+      "Configure proveedores de IA y preferencias de modelo personalizados",
+      "Acompañante de panel lateral continuo directamente junto al acertijo",
+      "Diagnósticos avanzados y controles de telemetría en tiempo real"
+    ],
+    pt: [
+      "Resolva e domine instantaneamente todos os jogos diários do LinkedIn",
+      "Detecção de grade em tempo real e guias de resolução interativos",
+      "Histórico de desempenho abrangente e rastreador de estatísticas",
+      "Configure provedores de IA personalizados e preferências de modelo",
+      "Acompanhante de painel lateral integrado diretamente ao lado do jogo",
+      "Diagnósticos avançados e controles de telemetría em tempo real"
+    ],
+    zh: [
+      "即时自动求解并精通所有 LinkedIn 每日游戏",
+      "实时棋盘网格检测与交互式求解引导",
+      "全面的历史求解表现与统计数据追踪",
+      "自定义配置 AI 服务商及偏好的模型设置",
+      "游戏页面侧边栏助手，无缝贴合拼图",
+      "高级开发诊断与实时数据遥测控制"
+    ],
+    fr: [
+      "Résolvez et maîtrisez instantanément tous les jeux LinkedIn quotidiens",
+      "Détection de grille en temps réel et guides de résolution interactifs",
+      "Historique complet des performances et suivi des statistiques",
+      "Configurez des fournisseurs d'IA et préférences de modèles personnalisés",
+      "Compagnon de panneau latéral fluide directement à côté du puzzle",
+      "Diagnostics avancés et contrôles de télémétrie en temps réel"
+    ],
+    de: [
+      "Lösen und meistern Sie alle täglichen LinkedIn-Spiele sofort",
+      "Echtzeit-Rastererkennung und interaktive Lösungshilfen",
+      "Umfassender Leistungsverlauf und Statistik-Tracker",
+      "Konfigurieren Sie benutzerdefinierte KI-Anbieter und Modelloptionen",
+      "Nahtloser Seitenleisten-Begleiter direkt neben dem Rätsel",
+      "Erweiterte Diagnose und Echtzeit-Telemetriekontrollen"
+    ]
+  }
+
+  const normalizedLocale = localeCode.toLowerCase()
+  const matchedLocale =
+    Object.keys(captionsMap).find((k) => normalizedLocale.startsWith(k)) || "en"
+  const captions = captionsMap[matchedLocale]
+
+  const container = await getEdgeSectionContainer(page, "Screenshot/s")
+  if (!container) {
+    console.log("⚠️ Screenshots section container not found.")
+    return
+  }
+
+  const screenshotItemsCount = await page.evaluate((el) => {
+    return el.querySelectorAll("li.imageassetplaceholder").length
+  }, container)
+
+  console.log(
+    `Found ${screenshotItemsCount} uploaded screenshot(s) to add captions to.`
+  )
+
+  for (let i = 0; i < screenshotItemsCount; i++) {
+    const captionText = captions[i] || captions[0]
+    console.log(`Setting caption for screenshot ${i + 1}: "${captionText}"...`)
+
+    const clicked = await page.evaluate(
+      (el, index) => {
+        const items = Array.from(
+          el.querySelectorAll("li.imageassetplaceholder")
+        )
+        const targetItem = items[index]
+        if (!targetItem) return false
+
+        const editButton = targetItem.querySelector(
+          ".caption-edit-container button"
+        ) as HTMLElement | null
+        if (editButton) {
+          editButton.scrollIntoView({ block: "center" })
+          editButton.click()
+          return true
+        }
+        return false
+      },
+      container,
+      i
+    )
+
+    if (!clicked) {
+      console.log(
+        `⚠️ Could not click caption edit button for screenshot ${i + 1}.`
+      )
+      continue
+    }
+
+    await delay(1500) // Wait for modal to render
+
+    const typed = await page.evaluate(async (text) => {
+      const input = document.querySelector(
+        "mat-dialog-container input#titleEdit"
+      ) as HTMLInputElement | null
+      if (input) {
+        input.focus()
+        input.value = ""
+        input.value = text
+        input.dispatchEvent(new Event("input", { bubbles: true }))
+        input.dispatchEvent(new Event("change", { bubbles: true }))
+
+        const dialog = document.querySelector("mat-dialog-container")
+        if (dialog) {
+          const buttons = Array.from(
+            dialog.querySelectorAll("button, v6_he-button")
+          )
+          const confirmBtn = buttons.find((btn) => {
+            const txt = (btn.textContent || "").trim().toLowerCase()
+            return (
+              txt === "confirm" ||
+              txt.includes("confirm") ||
+              btn.getAttribute("matdialogclose") === "confirm"
+            )
+          }) as HTMLElement | undefined
+          if (confirmBtn) {
+            confirmBtn.click()
+            return true
+          }
+        }
+      }
+      return false
+    }, captionText)
+
+    if (typed) {
+      console.log(`✅ Caption set successfully for screenshot ${i + 1}!`)
+    } else {
+      console.log(`⚠️ Failed to set caption for screenshot ${i + 1}.`)
+      await page.evaluate(() => {
+        const dialog = document.querySelector("mat-dialog-container")
+        if (dialog) {
+          const closeBtn = dialog.querySelector(
+            "button.close, [matdialogclose='cancel']"
+          ) as HTMLElement | null
+          if (closeBtn) closeBtn.click()
+        }
+      })
+    }
+    await delay(1500)
+  }
+}
+
+const edgeSearchTerms: Record<string, string[]> = {
+  en: [
+    "linkedin games",
+    "queens solver",
+    "sudoku solver",
+    "tango solver",
+    "crossclimb",
+    "pinpoint",
+    "daily puzzles"
+  ],
+  tr: [
+    "linkedin oyunlari",
+    "queens cozucu",
+    "sudoku cozucu",
+    "tango cozucu",
+    "crossclimb",
+    "pinpoint",
+    "gunluk bulmaca"
+  ],
+  es: [
+    "juegos linkedin",
+    "resolver queens",
+    "resolver sudoku",
+    "resolver tango",
+    "crossclimb",
+    "pinpoint",
+    "acertijos diarios"
+  ],
+  fr: [
+    "jeux linkedin",
+    "solveur queens",
+    "solveur sudoku",
+    "solveur tango",
+    "crossclimb",
+    "pinpoint",
+    "enigmes"
+  ],
+  de: [
+    "linkedin spiele",
+    "queens loesung",
+    "sudoku loesung",
+    "tango loesung",
+    "crossclimb",
+    "pinpoint",
+    "taegliche raetsel"
+  ],
+  pt_BR: [
+    "jogos linkedin",
+    "solucionador queens",
+    "solucionador sudoku",
+    "solucionador tango",
+    "crossclimb",
+    "pinpoint",
+    "enigmas diarios"
+  ],
+  pt_PT: [
+    "jogos linkedin",
+    "solucionador queens",
+    "solucionador sudoku",
+    "solucionador tango",
+    "crossclimb",
+    "pinpoint",
+    "enigmas diarios"
+  ],
+  zh_CN: [
+    "linkedin games",
+    "queens solver",
+    "sudoku solver",
+    "tango solver",
+    "crossclimb",
+    "pinpoint",
+    "games solver"
+  ],
+  zh_TW: [
+    "linkedin games",
+    "queens solver",
+    "sudoku solver",
+    "tango solver",
+    "crossclimb",
+    "pinpoint",
+    "games solver"
+  ]
+}
+
+async function clearEdgeExistingSearchTerms(page: Page): Promise<void> {
+  console.log("Clearing existing search terms...")
+  const deleteCount = await page.evaluate(() => {
+    const container = document.querySelector("app-search-terms")
+    if (!container) return 0
+
+    const allClickables = Array.from(
+      container.querySelectorAll(
+        "button, span, i, mat-icon, a, [role='button']"
+      )
+    )
+    const deleteBtns = allClickables.filter((el) => {
+      const text = (el.textContent || "").trim().toLowerCase()
+      const aria = (el.getAttribute("aria-label") || "").toLowerCase()
+      const cls = (el.className || "").toLowerCase()
+      const id = (el.id || "").toLowerCase()
+
+      if (text === "add term") return false
+
+      return (
+        text === "x" ||
+        aria.includes("delete") ||
+        aria.includes("remove") ||
+        aria.includes("close") ||
+        cls.includes("delete") ||
+        cls.includes("remove") ||
+        cls.includes("close") ||
+        cls.includes("x") ||
+        id.includes("delete") ||
+        id.includes("remove")
+      )
+    })
+    return deleteBtns.length
+  })
+
+  console.log(`Found ${deleteCount} search terms to remove.`)
+
+  for (let i = 0; i < deleteCount; i++) {
+    const clicked = await page.evaluate(() => {
+      const container = document.querySelector("app-search-terms")
+      if (!container) return false
+
+      const allClickables = Array.from(
+        container.querySelectorAll(
+          "button, span, i, mat-icon, a, [role='button']"
+        )
+      )
+      const btn = allClickables.find((el) => {
+        const text = (el.textContent || "").trim().toLowerCase()
+        const aria = (el.getAttribute("aria-label") || "").toLowerCase()
+        const cls = (el.className || "").toLowerCase()
+        const id = (el.id || "").toLowerCase()
+
+        if (text === "add term") return false
+
+        return (
+          text === "x" ||
+          aria.includes("delete") ||
+          aria.includes("remove") ||
+          aria.includes("close") ||
+          cls.includes("delete") ||
+          cls.includes("remove") ||
+          cls.includes("close") ||
+          cls.includes("x") ||
+          id.includes("delete") ||
+          id.includes("remove")
+        )
+      }) as HTMLElement
+
+      if (btn) {
+        btn.scrollIntoView({ block: "center" })
+        btn.click()
+        return true
+      }
+      return false
+    })
+
+    if (clicked) {
+      console.log(`Clicked delete button ${i + 1}/${deleteCount}`)
+      await delay(1000)
+    }
+  }
+}
+
+async function uploadEdgeSearchTerms(
+  page: Page,
+  terms: string[]
+): Promise<void> {
+  console.log(`\n⚙️ Uploading Search Terms:`, terms)
+
+  await clearEdgeExistingSearchTerms(page)
+
+  for (const term of terms) {
+    if (!term.trim()) continue
+    console.log(`Adding search term: "${term}"...`)
+
+    const inputSelector = "app-search-terms input"
+    await page.waitForSelector(inputSelector)
+
+    await page.focus(inputSelector)
+    await page.evaluate((sel) => {
+      const input = document.querySelector(sel) as HTMLInputElement
+      if (input) {
+        input.value = ""
+        input.dispatchEvent(new Event("input", { bubbles: true }))
+      }
+    }, inputSelector)
+
+    await page.keyboard.type(term)
+    await delay(300)
+
+    await page.evaluate((sel) => {
+      const input = document.querySelector(sel) as HTMLInputElement
+      if (input) {
+        input.dispatchEvent(new Event("input", { bubbles: true }))
+      }
+    }, inputSelector)
+    await delay(300)
+
+    const added = await page.evaluate(() => {
+      const btns = Array.from(
+        document.querySelectorAll("app-search-terms button")
+      )
+      const addBtn = btns.find(
+        (b) => (b.textContent || "").trim().toLowerCase() === "add term"
+      ) as HTMLElement
+      if (addBtn) {
+        addBtn.scrollIntoView({ block: "center" })
+        addBtn.click()
+        return true
+      }
+      return false
+    })
+
+    if (added) {
+      console.log(`Successfully added search term: "${term}"`)
+      await delay(1500)
+    } else {
+      console.warn(`⚠️ Could not click 'Add Term' button for "${term}"`)
+    }
+  }
+}
+
+async function runEdgeUploader(browser: Browser) {
+  console.log("\n=======================================================")
+  console.log("🚀 MICROSOFT EDGE DEVELOPER PARTNER CENTER ASSETS UPLOADER")
+  console.log("=======================================================")
+
+  console.log("✅ Successfully connected to Chrome instance!")
+  const pages = await browser.pages()
+  let page = pages.find((p) => p.url().includes("partner.microsoft.com"))
+
+  if (!page) {
+    console.log(`Opening a new tab to Microsoft Edge Partner listings...`)
+    page = await browser.newPage()
+    await page.goto(EDGE_DASHBOARD_URL, { waitUntil: "networkidle2" })
+  } else {
+    console.log(`Using already open Microsoft Edge Developer tab...`)
+    await page.bringToFront()
+  }
+
+  // Start-up safety check: if we are stuck inside a drawer, click 'Close' to go back to the language list overview!
+  const isDrawerOpen = await page.evaluate(() => {
+    const btns = Array.from(document.querySelectorAll("v6_he-button, button"))
+    const closeBtn = btns.find(
+      (b) => (b.textContent || "").trim() === "Close"
+    ) as HTMLElement
+    // Only click close if we are actually stuck inside an overlay/drawer or it's a mat dialog close button
+    if (
+      closeBtn &&
+      (closeBtn.closest("mat-dialog-container") ||
+        closeBtn.getAttribute("matdialogclose") ||
+        document.querySelector("mat-dialog-container"))
+    ) {
+      closeBtn.scrollIntoView({ block: "center" })
+      closeBtn.click()
+      return true
+    }
+    return false
+  })
+  if (isDrawerOpen) {
+    console.log(
+      "Stuck inside a language drawer on startup; clicked Close to go back to listings list."
+    )
+    await delay(4000)
+  }
+
+  await ensureEdgeStoreListingsView(page)
+
+  for (const [localeCode, config] of Object.entries(localeMap)) {
+    console.log(`\n-------------------------------------------------------`)
+    console.log(
+      `🌐 PROCESSING LOCALE: [${localeCode.toUpperCase()}] - ${config.displayName}`
+    )
+    console.log(`-------------------------------------------------------`)
+
+    if (!existsSync(config.descPath)) {
+      console.log(
+        `⚠️ Description file missing at: ${config.descPath}. Skipping...`
+      )
+      continue
+    }
+
+    let descriptionText = readFileSync(config.descPath, "utf-8")
+
+    // EDGE COMPLIANCE SANITIZATION:
+    // Replace references to Chrome with generic terms to prevent Microsoft Store rejections.
+    descriptionText = descriptionText
+      .replace(/Google Chrome's/gi, "the browser's")
+      .replace(/Google Chrome/gi, "the browser")
+      .replace(/Chrome Web Store/gi, "Extension Store")
+      .replace(/Chrome/gi, "browser")
+
+    const currentUrl = page.url()
+    if (
+      !currentUrl.includes("/listings") ||
+      currentUrl.includes("/listings/")
+    ) {
+      console.log("Navigating back to main listings overview...")
+      await ensureEdgeStoreListingsView(page)
+    }
+
+    console.log(`Clicking "Edit details" button for ${config.subStr}...`)
+    const editClicked = await page.evaluate((subStr) => {
+      const buttons = Array.from(document.querySelectorAll("button"))
+      const btn = buttons.find((b) => {
+        const label = b.getAttribute("aria-label") || ""
+        return label.includes(`Edit ${subStr} language`)
+      }) as HTMLElement
+      if (btn) {
+        btn.scrollIntoView({ block: "center" })
+        btn.click()
+        return true
+      }
+      return false
+    }, config.subStr)
+
+    if (!editClicked) {
+      console.log(
+        `⚠️ Could not find "Edit details" button for ${config.subStr}. Skipping...`
+      )
+      continue
+    }
+
+    console.log("Waiting for listing form to load...")
+    await page.waitForSelector('textarea[aria-label^="Description"]', {
+      timeout: 15000
+    })
+
+    console.log("Updating description text...")
+    const descTextarea = await page.$('textarea[aria-label^="Description"]')
+    if (descTextarea) {
+      await descTextarea.focus()
+      await page.keyboard.down("Control")
+      await page.keyboard.press("KeyA")
+      await page.keyboard.up("Control")
+      await page.keyboard.press("Backspace")
+
+      console.log(
+        `Typing description (${descriptionText.length} characters)...`
+      )
+      await page.evaluate(
+        (el, text) => {
+          ;(el as HTMLTextAreaElement).value = text
+          el.dispatchEvent(new Event("input", { bubbles: true }))
+          el.dispatchEvent(new Event("change", { bubbles: true }))
+        },
+        descTextarea,
+        descriptionText
+      )
+      await delay(1000)
+    } else {
+      console.log("❌ Could not locate the description input field.")
+    }
+
+    if (existsSync(config.screenshotDir)) {
+      const allScreens = readdirSync(config.screenshotDir)
+        .filter((f) => f.endsWith(".png") || f.endsWith(".jpg"))
+        .sort()
+
+      const pngScreens = allScreens.filter((f) => f.endsWith(".png"))
+      const targetScreens = (pngScreens.length > 0 ? pngScreens : allScreens)
+        .filter((f) =>
+          [
+            "screenshot-1.png",
+            "screenshot-1.jpg",
+            "screenshot-2.png",
+            "screenshot-2.jpg",
+            "screenshot-3.png",
+            "screenshot-3.jpg",
+            "screenshot-4.png",
+            "screenshot-4.jpg",
+            "screenshot-5.png",
+            "screenshot-5.jpg",
+            "screenshot-6.png",
+            "screenshot-6.jpg"
+          ].some((p) => f.endsWith(p))
+        )
+        .map((f) => path.join(config.screenshotDir, f))
+        .slice(0, 6)
+
+      if (targetScreens.length > 0) {
+        await clearEdgeExistingImages(page, "Screenshot/s")
+
+        console.log(`Locating "Screenshot/s" upload section...`)
+        console.log(
+          `Uploading ${targetScreens.length} screenshot files sequentially with upload verification...`
+        )
+        for (let i = 0; i < targetScreens.length; i++) {
+          const screenPath = targetScreens[i]
+
+          const container = await getEdgeSectionContainer(page, "Screenshot/s")
+          const startCount = container
+            ? await page.evaluate((el) => {
+                const buttons = Array.from(
+                  el.querySelectorAll("button, [role='button']")
+                )
+                return buttons.filter((btn) => {
+                  const label = btn.getAttribute("aria-label") || ""
+                  const text = (btn.textContent || "").trim().toLowerCase()
+                  return (
+                    label.toLowerCase() === "delete" ||
+                    label.toLowerCase().includes("delete") ||
+                    text === "delete" ||
+                    text.includes("delete")
+                  )
+                }).length
+              }, container)
+            : 0
+
+          console.log(
+            `Uploading screenshot ${i + 1}/${targetScreens.length}: ${path.basename(screenPath)}...`
+          )
+
+          const screenshotInput = await getEdgeFileInputForSection(
+            page,
+            "Screenshot/s"
+          )
+          if (screenshotInput) {
+            await screenshotInput.uploadFile(screenPath)
+
+            console.log(
+              `Waiting for upload to complete and render (start count: ${startCount})...`
+            )
+            let uploaded = false
+            for (let attempt = 0; attempt < 30; attempt++) {
+              await delay(1000)
+              const freshContainer = await getEdgeSectionContainer(
+                page,
+                "Screenshot/s"
+              )
+              const currentCount = freshContainer
+                ? await page.evaluate((el) => {
+                    const buttons = Array.from(
+                      el.querySelectorAll("button, [role='button']")
+                    )
+                    return buttons.filter((btn) => {
+                      const label = btn.getAttribute("aria-label") || ""
+                      const text = (btn.textContent || "").trim().toLowerCase()
+                      return (
+                        label.toLowerCase() === "delete" ||
+                        label.toLowerCase().includes("delete") ||
+                        text === "delete" ||
+                        text.includes("delete")
+                      )
+                    }).length
+                  }, freshContainer)
+                : 0
+
+              if (currentCount > startCount) {
+                console.log(
+                  `✅ Upload of ${path.basename(screenPath)} completed successfully (current count: ${currentCount})!`
+                )
+                uploaded = true
+                break
+              }
+            }
+            if (!uploaded) {
+              console.log(
+                `⚠️ Warning: Upload of ${path.basename(screenPath)} did not confirm within 30s. Moving on...`
+              )
+            }
+            await delay(2000)
+          } else {
+            console.log(
+              `⚠️ Screenshot/s input element not found for ${path.basename(screenPath)}.`
+            )
+          }
+        }
+
+        // Add localized captions/titles to each uploaded screenshot
+        await setScreenshotCaptions(page, localeCode)
+      }
+    }
+
+    console.log("\n⚙️ Uploading Extension Logo...")
+
+    const iconFile = path.join(outDir, "store-icon-128.png")
+    if (existsSync(iconFile)) {
+      await clearEdgeExistingImages(page, "Extension logo")
+      await delay(2500) // Delay to ensure DOM settled after delete click confirm!
+      const iconInput = await getEdgeFileInputForSection(page, "Extension logo")
+      if (iconInput) {
+        console.log("Uploading Extension logo...")
+        await iconInput.uploadFile(iconFile)
+        await delay(6000)
+      }
+    }
+
+    console.log(
+      `\n⚙️ Uploading Promotional Banners for ${config.displayName}...`
+    )
+
+    let smallPromoFile = path.join(
+      outDir,
+      "localized",
+      localeCode,
+      "small-promo-440x280.png"
+    )
+    if (!existsSync(smallPromoFile)) {
+      smallPromoFile = path.join(
+        outDir,
+        "localized",
+        localeCode,
+        "small-promo-440x280.jpg"
+      )
+    }
+    if (!existsSync(smallPromoFile)) {
+      smallPromoFile = path.join(outDir, "global", "small-promo-440x280.png")
+    }
+    if (!existsSync(smallPromoFile)) {
+      smallPromoFile = path.join(outDir, "global", "small-promo-440x280.jpg")
+    }
+
+    if (existsSync(smallPromoFile)) {
+      await clearEdgeExistingImages(page, "Small promotional tile")
+      await delay(2500)
+      const smallPromoInput = await getEdgeFileInputForSection(
+        page,
+        "Small promotional tile"
+      )
+      if (smallPromoInput) {
+        console.log("Uploading Small promotional tile...")
+        await smallPromoInput.uploadFile(smallPromoFile)
+        await delay(6000)
+      }
+    }
+
+    let marqueePromoFile = path.join(
+      outDir,
+      "localized",
+      localeCode,
+      "marquee-promo-1400x560.png"
+    )
+    if (!existsSync(marqueePromoFile)) {
+      marqueePromoFile = path.join(
+        outDir,
+        "localized",
+        localeCode,
+        "marquee-promo-1400x560.jpg"
+      )
+    }
+    if (!existsSync(marqueePromoFile)) {
+      marqueePromoFile = path.join(
+        outDir,
+        "global",
+        "marquee-promo-1400x560.png"
+      )
+    }
+    if (!existsSync(marqueePromoFile)) {
+      marqueePromoFile = path.join(
+        outDir,
+        "global",
+        "marquee-promo-1400x560.jpg"
+      )
+    }
+
+    if (existsSync(marqueePromoFile)) {
+      await clearEdgeExistingImages(page, "Large promotional tile")
+      await delay(2500)
+      const marqueePromoInput = await getEdgeFileInputForSection(
+        page,
+        "Large promotional tile"
+      )
+      if (marqueePromoInput) {
+        console.log("Uploading Large promotional tile...")
+        await marqueePromoInput.uploadFile(marqueePromoFile)
+        await delay(6000)
+      }
+    }
+
+    // Upload search terms!
+    const terms = edgeSearchTerms[localeCode] || edgeSearchTerms.en
+    await uploadEdgeSearchTerms(page, terms)
+
+    console.log("Clicking 'Save draft'...")
+    const saveBtnClicked = await page.evaluate(() => {
+      const btns = Array.from(document.querySelectorAll("v6_he-button, button"))
+      const btn = btns.find(
+        (b) => (b.textContent || "").trim() === "Save draft"
+      ) as HTMLElement
+      if (btn) {
+        btn.scrollIntoView({ block: "center" })
+        btn.click()
+        return true
+      }
+      return false
+    })
+
+    if (saveBtnClicked) {
+      console.log("Waiting for draft to save...")
+      await delay(5000)
+    }
+
+    console.log("Clicking 'Close'...")
+    const closeBtnClicked = await page.evaluate(() => {
+      const btns = Array.from(document.querySelectorAll("v6_he-button, button"))
+      const btn = btns.find(
+        (b) => (b.textContent || "").trim() === "Close"
+      ) as HTMLElement
+      if (btn) {
+        btn.scrollIntoView({ block: "center" })
+        btn.click()
+        return true
+      }
+      return false
+    })
+
+    if (closeBtnClicked) {
+      console.log("Returning to Listings overview page...")
+      await delay(4000)
+    }
+
+    console.log(`✅ Completed actions for locale: ${config.displayName}`)
+  }
+
+  console.log("\n=======================================================")
+  console.log("🎉 ALL MICROSOFT EDGE ASSETS UPLOADED AND SAVED!")
+  console.log("=======================================================")
+  console.log(
+    "Please review the changes on the browser tab, make sure they are correct,"
+  )
+  console.log("and click 'Publish' in the partner center dashboard.")
   console.log("Disconnecting from browser automation...")
   await browser.disconnect()
 }

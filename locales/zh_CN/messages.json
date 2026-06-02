@@ -20,7 +20,7 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "Chrome 标签页集成功能仅在浏览器扩展中可用。",
+    "message": "浏览器标签页集成功能仅在浏览器扩展中可用。",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
@@ -489,7 +489,7 @@
     "description": "Chrome Built-in AI guide title"
   },
   "settingsChromeBuiltInGuideDesc": {
-    "message": "完全在您的设备上通过 Google Chrome 本地运行。零网络延迟，借助 Gemini Nano 100% 免费。",
+    "message": "完全在您的设备上通过浏览器本地运行。零网络延迟，借助 Gemini Nano 100% 免费。",
     "description": "Chrome Built-in AI guide text"
   },
   "debugHeaderTitle": {

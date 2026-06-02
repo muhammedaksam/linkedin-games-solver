@@ -20,7 +20,7 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "A integração de guias do Chrome só está disponível em extensões do navegador.",
+    "message": "A integração de guias do navegador só está disponível em extensões do navegador.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
@@ -489,7 +489,7 @@
     "description": "Chrome Built-in AI guide title"
   },
   "settingsChromeBuiltInGuideDesc": {
-    "message": "Corre inteiramente localmente no seu dispositivo dentro do Google Chrome. Zero latência de rede e 100% gratuito com o Gemini Nano.",
+    "message": "Corre inteiramente localmente no seu dispositivo dentro do navegador. Zero latência de rede e 100% gratuito com o Gemini Nano.",
     "description": "Chrome Built-in AI guide text"
   },
   "debugHeaderTitle": {

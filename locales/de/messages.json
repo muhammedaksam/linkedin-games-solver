@@ -20,7 +20,7 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "Die Chrome-Tab-Integration ist nur in Browser-Erweiterungen verfügbar.",
+    "message": "Die Browser-Tab-Integration ist nur in Browser-Erweiterungen verfügbar.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
@@ -489,7 +489,7 @@
     "description": "Chrome Built-in AI guide title"
   },
   "settingsChromeBuiltInGuideDesc": {
-    "message": "Läuft vollständig lokal auf Ihrem Gerät in Google Chrome. Keine Netzwerklatenz und 100 % kostenlos mit Gemini Nano.",
+    "message": "Läuft vollständig lokal auf Ihrem Gerät im Browser. Keine Netzwerklatenz und 100 % kostenlos mit Gemini Nano.",
     "description": "Chrome Built-in AI guide text"
   },
   "debugHeaderTitle": {

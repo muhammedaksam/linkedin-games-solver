@@ -20,7 +20,7 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "La integración de pestañas de Chrome solo está disponible dentro de las extensiones del navegador.",
+    "message": "La integración de pestañas solo está disponible dentro de las extensiones del navegador.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
@@ -489,7 +489,7 @@
     "description": "Chrome Built-in AI guide title"
   },
   "settingsChromeBuiltInGuideDesc": {
-    "message": "Se ejecuta de forma completamente local en tu dispositivo dentro de Google Chrome. Sin latencia de red y 100% gratis con Gemini Nano.",
+    "message": "Se ejecuta de forma completamente local en tu dispositivo dentro del navegador. Sin latencia de red y 100% gratis con Gemini Nano.",
     "description": "Chrome Built-in AI guide text"
   },
   "debugHeaderTitle": {

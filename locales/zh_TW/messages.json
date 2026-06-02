@@ -20,7 +20,7 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "Chrome 標籤頁整合功能僅在瀏覽器擴充功能中可用。",
+    "message": "瀏覽器標籤頁整合功能僅在瀏覽器擴充功能中可用。",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
@@ -489,7 +489,7 @@
     "description": "Chrome Built-in AI guide title"
   },
   "settingsChromeBuiltInGuideDesc": {
-    "message": "完全在您的裝置上透過 Google Chrome 本機執行。零網路延遲，並可搭配 Gemini Nano 100% 免費使用。",
+    "message": "完全在您的裝置上透過瀏覽器本機執行。零網路延遲，並可搭配 Gemini Nano 100% 免費使用。",
     "description": "Chrome Built-in AI guide text"
   },
   "debugHeaderTitle": {

@@ -20,7 +20,7 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "L'intégration d'onglets Chrome est disponible uniquement dans les extensions de navigateur.",
+    "message": "L'intégration d'onglets ést disponible uniquement dans les extensions de navigateur.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
@@ -489,7 +489,7 @@
     "description": "Chrome Built-in AI guide title"
   },
   "settingsChromeBuiltInGuideDesc": {
-    "message": "S'exécute entièrement localement sur votre appareil dans Google Chrome. Zéro latence réseau et 100% gratuit avec Gemini Nano.",
+    "message": "S'exécute entièrement localement sur votre appareil dans le navigateur. Zéro latence réseau et 100% gratuit avec Gemini Nano.",
     "description": "Chrome Built-in AI guide text"
   },
   "debugHeaderTitle": {

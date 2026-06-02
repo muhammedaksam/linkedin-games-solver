@@ -20,7 +20,7 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "Chrome sekme entegrasyonu yalnızca tarayıcı uzantıları içinde kullanılabilir.",
+    "message": "Tarayıcı sekme entegrasyonu yalnızca tarayıcı uzantıları içinde kullanılabilir.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
@@ -489,7 +489,7 @@
     "description": "Chrome Built-in AI guide title"
   },
   "settingsChromeBuiltInGuideDesc": {
-    "message": "Google Chrome içinde cihazınızda tamamen yerel olarak çalışır. Sıfır ağ gecikmesi ve Gemini Nano ile %100 ücretsizdir.",
+    "message": "Tarayıcınız içinde tamamen cihazınızda yerel olarak çalışır. Sıfır ağ gecikmesi ve Gemini Nano ile %100 ücretsiz.",
     "description": "Chrome Built-in AI guide text"
   },
   "debugHeaderTitle": {
