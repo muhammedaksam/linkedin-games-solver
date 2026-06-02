@@ -19,7 +19,7 @@ interface MessageBody {
   targetWidth?: number
   targetHeight?: number
   game?: string
-  status?: string
+  status?: "solving" | "idle"
   name?: string
   params?: Record<string, unknown>
 }
@@ -708,7 +708,7 @@ export default defineBackground({
               trackEventDirect("ask_ai", {
                 promptLength: body?.prompt?.length || 0
               }).catch(() => {})
-              return askAI(body.prompt, body.jsonMode)
+              return askAI(body.prompt || "", body.jsonMode)
             })
             .then((text) => sendResponse({ success: true, text }))
             .catch((err) =>
