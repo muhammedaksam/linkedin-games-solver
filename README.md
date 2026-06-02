@@ -3,13 +3,19 @@
 [![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/jnhgapnkejaijibcdhcldhdfikjmdaph?style=for-the-badge&color=blue&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/linkedin-games-solver/jnhgapnkejaijibcdhcldhdfikjmdaph)
 [![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/jnhgapnkejaijibcdhcldhdfikjmdaph?style=for-the-badge&color=orange)](https://chromewebstore.google.com/detail/linkedin-games-solver/jnhgapnkejaijibcdhcldhdfikjmdaph)
 [![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/jnhgapnkejaijibcdhcldhdfikjmdaph?style=for-the-badge&color=green)](https://chromewebstore.google.com/detail/linkedin-games-solver/jnhgapnkejaijibcdhcldhdfikjmdaph)
+[![Edge Add-ons Version](https://img.shields.io/badge/dynamic/json?label=Edge%20Add-on&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnkhdnmbjhgfkgjjilkmemedcpfebfmkh&style=for-the-badge&color=blue&logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh)
+[![Edge Add-ons Users](https://img.shields.io/badge/dynamic/json?label=Edge%20Users&query=%24.activeInstallCount&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnkhdnmbjhgfkgjjilkmemedcpfebfmkh&style=for-the-badge&color=orange&logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh)
+[![Edge Add-ons Rating](https://img.shields.io/badge/dynamic/json?label=Edge%20Rating&suffix=%2F5&query=%24.averageRating&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnkhdnmbjhgfkgjjilkmemedcpfebfmkh&style=for-the-badge&color=green&logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-An advanced, obfuscation-proof browser extension compatible with Google Chrome™ built with **React**, **TypeScript**, and **Plasmo** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
+An advanced, obfuscation-proof browser extension compatible with Google Chrome™ and Microsoft Edge™ built with **React**, **TypeScript**, and **Plasmo** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
 
 <p align="left">
-  <a href="https://chromewebstore.google.com/detail/linkedin-games-solver/jnhgapnkejaijibcdhcldhdfikjmdaph">
+  <a href="https://chromewebstore.google.com/detail/linkedin-games-solver/jnhgapnkejaijibcdhcldhdfikjmdaph" target="_blank">
     <img src="https://developer.chrome.com/static/docs/webstore/branding/image/tbyBjqi7Zu733AAKA5n4.png" alt="Available in the Chrome Web Store" height="58" />
+  </a>
+  <a href="https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh" target="_blank">
+    <img src="https://img.shields.io/badge/Microsoft_Edge_Add--ons-0078D7?style=for-the-badge&logo=microsoft-edge&logoColor=white" alt="Get it from Microsoft Edge" height="58" />
   </a>
 </p>
 
@@ -318,3 +324,5 @@ Licensed under the terms of the [MIT License](LICENSE).
 _LinkedIn® and the [in]® logo are registered trademarks of LinkedIn Corporation and its affiliates in the United States and/or other countries. This extension is an independent, open-source educational project and is not affiliated with, endorsed by, or sponsored by LinkedIn Corporation._
 
 _Google Chrome™, Chrome Web Store™, and Gemini™ are trademarks of Google LLC. Use of these trademarks is subject to [Google Permissions](https://about.google/brand-resource-center/guidance/)._
+
+_Microsoft Edge™ and Microsoft Edge Add-ons™ are trademarks of Microsoft Corporation in the United States and/or other countries._
