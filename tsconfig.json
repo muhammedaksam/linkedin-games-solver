@@ -2,15 +2,18 @@
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "~*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "~lib/*": ["./lib/*"],
+      "~games/*": ["./games/*"],
+      "~assets/*": ["./assets/*"],
+      "~locales/*": ["./public/_locales/*"],
+      "~tabs/*": ["./tabs/*"],
+      "~components/*": ["./components/*"],
+      "~lib": ["./lib"],
+      "~games": ["./games"],
+      "~assets": ["./assets"],
+      "~locales": ["./public/_locales"],
+      "~tabs": ["./tabs"],
+      "~components": ["./components"]
     }
-  },
-  "include": [
-    ".plasmo/index.d.ts"
-  ]
+  }
 }

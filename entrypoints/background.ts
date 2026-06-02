@@ -285,7 +285,8 @@ const checkAndNotifyStreak = async () => {
 
     const checkDay = history[todayStr]
     const solvedToday =
-      checkDay && Object.values(checkDay).some((g: SolveRecord) => g?.solved)
+      checkDay &&
+      (Object.values(checkDay) as SolveRecord[]).some((g) => g?.solved)
 
     if (!solvedToday) {
       chrome.notifications.create("streak-protector-reminder", {
@@ -816,7 +817,7 @@ export default defineBackground({
           if (eventName) {
             trackEventDirect(eventName, params)
               .then(() => sendResponse({ success: true }))
-              .catch((err) =>
+              .catch((err: any) =>
                 sendResponse({
                   success: false,
                   error: err instanceof Error ? err.message : String(err)

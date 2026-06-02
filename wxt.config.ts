@@ -66,6 +66,12 @@ export default defineConfig({
         "@plasmohq/storage/secure": path.resolve("./lib/plasmo-storage-shim.ts"),
         "@plasmohq/storage/hook": path.resolve("./lib/plasmo-storage-shim.ts"),
         "@plasmohq/storage": path.resolve("./lib/plasmo-storage-shim.ts"),
+        "~lib": path.resolve("./lib"),
+        "~games": path.resolve("./games"),
+        "~assets": path.resolve("./assets"),
+        "~locales": path.resolve("./public/_locales"),
+        "~tabs": path.resolve("./tabs"),
+        "~components": path.resolve("./components"),
         "~": path.resolve("./"),
         "@": path.resolve("./")
       }
