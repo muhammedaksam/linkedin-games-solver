@@ -1,5 +1,6 @@
 import { trackEventDirect } from "~lib/analytics"
 import { syncStorage } from "~lib/storage"
+import { askAI } from "~games/ai"
 
 interface SolveRecord {
   solved: boolean
@@ -703,15 +704,13 @@ export default defineBackground({
         const { name, body } = message as { name: string; body: MessageBody }
 
         if (name === "askAI") {
-          import("~games/ai")
-            .then(({ askAI }) => {
-              trackEventDirect("ask_ai", {
-                promptLength: body?.prompt?.length || 0
-              }).catch(() => {})
-              return askAI(body.prompt || "", body.jsonMode)
-            })
+          trackEventDirect("ask_ai", {
+            promptLength: body?.prompt?.length || 0
+          }).catch(() => {})
+
+          askAI(body.prompt || "", body.jsonMode)
             .then((text) => sendResponse({ success: true, text }))
-            .catch((err) =>
+            .catch((err: unknown) =>
               sendResponse({
                 success: false,
                 error: err instanceof Error ? err.message : String(err)
