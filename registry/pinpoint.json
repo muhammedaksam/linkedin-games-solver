@@ -2068,5 +2068,15 @@
       "Charcoal",
       "Asphalt"
     ]
+  },
+  "764": {
+    "category": "Desserts (all with many layers)",
+    "clues": [
+      "Trifle",
+      "Parfait",
+      "Tiramisu",
+      "Baklava",
+      "Seven-layer Cake"
+    ]
   }
 }
