@@ -1654,5 +1654,23 @@
     "answers": ["TUNE", "TINE", "WINE", "WISE", "WISH"],
     "topWord": "TUNA",
     "bottomWord": "FISH"
+  },
+  "764": {
+    "clues": [
+      "Traveled by vehicle and not by foot",
+      "Long poles used for fishing",
+      "Uses an oar in a boat",
+      "Hooks up to a truck and hauls along",
+      "It's typically smaller than a city and larger than a village"
+    ],
+    "answers": [
+      "RODE",
+      "RODS",
+      "ROWS",
+      "TOWS",
+      "TOWN"
+    ],
+    "topWord": "ROBE",
+    "bottomWord": "GOWN"
   }
 }
