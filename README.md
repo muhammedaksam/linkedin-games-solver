@@ -8,7 +8,7 @@
 [![Edge Add-ons Rating](https://img.shields.io/badge/dynamic/json?label=Edge%20Rating&suffix=%2F5&query=%24.averageRating&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnkhdnmbjhgfkgjjilkmemedcpfebfmkh&style=for-the-badge&color=green&logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-An advanced, obfuscation-proof browser extension compatible with Google Chrome™ and Microsoft Edge™ built with **React**, **TypeScript**, and **Plasmo** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
+An advanced, obfuscation-proof browser extension compatible with Google Chrome™ and Microsoft Edge™ built with **React, TypeScript, and WXT** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
 
 <p align="left">
   <a href="https://chromewebstore.google.com/detail/linkedin-games-solver/jnhgapnkejaijibcdhcldhdfikjmdaph" target="_blank">
@@ -259,7 +259,7 @@ Populate the `PLASMO_PUBLIC_GTAG_ID` and `PLASMO_PUBLIC_SECRET_API_KEY` variable
 pnpm dev
 ```
 
-Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, click **Load Unpacked**, and select the `build/chrome-mv3-dev` directory in this workspace.
+Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, click **Load Unpacked**, and select the `.output/chrome-mv3` directory in this workspace.
 
 ### 4. Production Compilation
 
@@ -267,7 +267,7 @@ Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, cl
 pnpm build
 ```
 
-The output will compile cleanly into the `build/chrome-mv3-prod` folder, ready for packing and uploading.
+The output will compile cleanly into the `.output/chrome-mv3` folder, ready for packing and uploading.
 
 </details>
 
