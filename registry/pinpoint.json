@@ -1318,5 +1318,9 @@
   "763": {
     "category": "Things that are black",
     "clues": ["Crows", "Ebony", "Ripe olives", "Charcoal", "Asphalt"]
+  },
+  "764": {
+    "category": "Desserts (all with many layers)",
+    "clues": ["Trifle", "Parfait", "Tiramisu", "Baklava", "Seven-layer Cake"]
   }
 }
