@@ -1322,5 +1322,9 @@
   "764": {
     "category": "Desserts (all with many layers)",
     "clues": ["Trifle", "Parfait", "Tiramisu", "Baklava", "Seven-layer Cake"]
+  },
+  "765": {
+    "category": "Words that come before “flag”",
+    "clues": ["White", "Pirate", "National", "Checkered", "Capture the"]
   }
 }
