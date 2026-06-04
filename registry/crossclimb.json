@@ -2500,5 +2500,23 @@
     ],
     "topWord": "ROBE",
     "bottomWord": "GOWN"
+  },
+  "765": {
+    "clues": [
+      "Valuable metal whose atomic symbol is Au",
+      "Better than average, but not yet great",
+      "Sticky substances",
+      "“Here ___ nothing!” (take a chance on something but expect to fail)",
+      "Parts of a footprint"
+    ],
+    "answers": [
+      "GOLD",
+      "GOOD",
+      "GOOS",
+      "GOES",
+      "TOES"
+    ],
+    "topWord": "GOLF",
+    "bottomWord": "TEES"
   }
 }
