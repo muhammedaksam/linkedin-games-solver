@@ -107,16 +107,34 @@ describe("Crossclimb Registry Validation", () => {
     ).toBe(true)
   })
 
-  it("should fail if answers contain non-alphabetic characters", () => {
+  it("should fail if answers contain invalid special characters", () => {
     const badPuzzle = {
       clues: ["Jabs", "Holes", "Makes yawn", "Exposes", "Is interested"],
-      answers: ["POK1S", "PORES", "BORES", "BARES", "CARES"],
+      answers: ["POK@S", "PORES", "BORES", "BARES", "CARES"],
       topWord: "POKER",
       bottomWord: "CARDS"
     }
     const errors = validateCrossclimbPuzzle("757", badPuzzle)
-    expect(errors.some((e) => e.includes("uppercase alphabetic string"))).toBe(
+    expect(errors.some((e) => e.includes("uppercase alphanumeric string"))).toBe(
       true
     )
   })
+
+  it("should pass validation for a valid crossclimb puzzle entry with numbers (e.g. Orwell 1984 puzzle)", () => {
+    const validPuzzle = {
+      clues: [
+        "Answer that can be formed from homophones of \"Won\", \"Too\", \"Ate\", and \"For\" in order",
+        "George Orwell novel that includes the concepts of Big Brother, Newspeak, and \"2 + 2 = 5",
+        "Year that Seoul, South Korea hosted the Summer Olympics (officially the Games of the XXIV Olympiad); the Games of the XXXIV Olympiad will be in Los Angeles in 2028.",
+        "When England had its \"Glorious Revolution\" (hint: the first two digits are 2^4, and the remaining two digits are each 2^3)",
+        "7 × 800 + 8 × 11"
+      ],
+      answers: ["1284", "1984", "1988", "1688", "5688"],
+      topWord: "1234",
+      bottomWord: "5678"
+    }
+    const errors = validateCrossclimbPuzzle("701", validPuzzle)
+    expect(errors).toEqual([])
+  })
 })
+
