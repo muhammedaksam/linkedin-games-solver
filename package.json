@@ -135,13 +135,5 @@
       },
       "gecko_android": {}
     }
-  },
-  "pnpm": {
-    "overrides": {
-      "date-fns": "3.6.0"
-    },
-    "onlyBuiltDependencies": [
-      "puppeteer"
-    ]
   }
 }
