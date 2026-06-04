@@ -1663,7 +1663,13 @@
       "Hooks up to a truck and hauls along",
       "It's typically smaller than a city and larger than a village"
     ],
-    "answers": ["RODE", "RODS", "ROWS", "TOWS", "TOWN"],
+    "answers": [
+      "RODE",
+      "RODS",
+      "ROWS",
+      "TOWS",
+      "TOWN"
+    ],
     "topWord": "ROBE",
     "bottomWord": "GOWN"
   },
@@ -1675,7 +1681,13 @@
       "“Here ___ nothing!” (take a chance on something but expect to fail)",
       "Parts of a footprint"
     ],
-    "answers": ["GOLD", "GOOD", "GOOS", "GOES", "TOES"],
+    "answers": [
+      "GOLD",
+      "GOOD",
+      "GOOS",
+      "GOES",
+      "TOES"
+    ],
     "topWord": "GOLF",
     "bottomWord": "TEES"
   }
