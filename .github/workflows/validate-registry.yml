@@ -30,8 +30,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Prepare WXT Types
+        run: pnpm exec wxt prepare
+
       - name: Run Registry Integrity Validation
         run: pnpm exec tsx scripts/validate-registry.ts
 
       - name: Run Validation Unit Tests
         run: pnpm exec vitest run scripts/validate-registry.test.ts
+
