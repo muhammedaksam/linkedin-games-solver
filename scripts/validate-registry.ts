@@ -87,7 +87,9 @@ export function validateCrossclimbPuzzle(
 
   // Validate bottomWord
   if (typeof p.bottomWord !== "string" || !/^[A-Z0-9]+$/.test(p.bottomWord)) {
-    errors.push("Property 'bottomWord' must be an uppercase alphanumeric string.")
+    errors.push(
+      "Property 'bottomWord' must be an uppercase alphanumeric string."
+    )
   }
 
   // Validate clues

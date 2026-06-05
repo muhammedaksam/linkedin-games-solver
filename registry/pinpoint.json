@@ -1317,33 +1317,15 @@
   },
   "763": {
     "category": "Things that are black",
-    "clues": [
-      "Crows",
-      "Ebony",
-      "Ripe olives",
-      "Charcoal",
-      "Asphalt"
-    ]
+    "clues": ["Crows", "Ebony", "Ripe olives", "Charcoal", "Asphalt"]
   },
   "764": {
     "category": "Desserts (all with many layers)",
-    "clues": [
-      "Trifle",
-      "Parfait",
-      "Tiramisu",
-      "Baklava",
-      "Seven-layer Cake"
-    ]
+    "clues": ["Trifle", "Parfait", "Tiramisu", "Baklava", "Seven-layer Cake"]
   },
   "765": {
     "category": "Words that come before “flag”",
-    "clues": [
-      "White",
-      "Pirate",
-      "National",
-      "Checkered",
-      "Capture the"
-    ]
+    "clues": ["White", "Pirate", "National", "Checkered", "Capture the"]
   },
   "766": {
     "category": "Things associated with Germany 🇩🇪",

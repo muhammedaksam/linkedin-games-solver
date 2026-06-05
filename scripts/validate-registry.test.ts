@@ -115,18 +115,18 @@ describe("Crossclimb Registry Validation", () => {
       bottomWord: "CARDS"
     }
     const errors = validateCrossclimbPuzzle("757", badPuzzle)
-    expect(errors.some((e) => e.includes("uppercase alphanumeric string"))).toBe(
-      true
-    )
+    expect(
+      errors.some((e) => e.includes("uppercase alphanumeric string"))
+    ).toBe(true)
   })
 
   it("should pass validation for a valid crossclimb puzzle entry with numbers (e.g. Orwell 1984 puzzle)", () => {
     const validPuzzle = {
       clues: [
-        "Answer that can be formed from homophones of \"Won\", \"Too\", \"Ate\", and \"For\" in order",
-        "George Orwell novel that includes the concepts of Big Brother, Newspeak, and \"2 + 2 = 5",
+        'Answer that can be formed from homophones of "Won", "Too", "Ate", and "For" in order',
+        'George Orwell novel that includes the concepts of Big Brother, Newspeak, and "2 + 2 = 5',
         "Year that Seoul, South Korea hosted the Summer Olympics (officially the Games of the XXIV Olympiad); the Games of the XXXIV Olympiad will be in Los Angeles in 2028.",
-        "When England had its \"Glorious Revolution\" (hint: the first two digits are 2^4, and the remaining two digits are each 2^3)",
+        'When England had its "Glorious Revolution" (hint: the first two digits are 2^4, and the remaining two digits are each 2^3)',
         "7 × 800 + 8 × 11"
       ],
       answers: ["1284", "1984", "1988", "1688", "5688"],
@@ -137,4 +137,3 @@ describe("Crossclimb Registry Validation", () => {
     expect(errors).toEqual([])
   })
 })
-

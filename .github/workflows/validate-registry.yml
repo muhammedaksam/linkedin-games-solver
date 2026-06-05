@@ -38,4 +38,3 @@ jobs:
 
       - name: Run Validation Unit Tests
         run: pnpm exec vitest run scripts/validate-registry.test.ts
-
