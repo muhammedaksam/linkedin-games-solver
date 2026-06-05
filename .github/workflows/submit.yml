@@ -2,12 +2,33 @@ name: "Submit to Web Store"
 
 on:
   workflow_dispatch:
+    inputs:
+      dryRun:
+        description: "Skip submission and perform a dry run"
+        required: false
+        type: boolean
+        default: false
+      bumpType:
+        description: "Force bump type (or leave 'default' to let conventional commits decide)"
+        required: false
+        type: choice
+        options:
+          - default
+          - patch
+          - minor
+          - major
+        default: default
+
+permissions:
+  contents: write
 
 jobs:
   submit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
 
@@ -16,20 +37,81 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
+      - name: Configure Git
+        run: |
+          git config user.email "github-actions@users.noreply.github.com"
+          git config user.name "GitHub Actions"
+
       - name: Install dependencies
         run: pnpm install
+
+      - name: Run checks and tests
+        run: |
+          pnpm check
+          pnpm test
+
+      - name: Bump Version
+        id: version
+        run: |
+          BUMP_ARG=""
+          if [ "${{ inputs.bumpType }}" = "patch" ]; then
+            BUMP_ARG="--patch"
+          elif [ "${{ inputs.bumpType }}" = "minor" ]; then
+            BUMP_ARG="--minor"
+          elif [ "${{ inputs.bumpType }}" = "major" ]; then
+            BUMP_ARG="--major"
+          fi
+          pnpm dlx changelogen@latest --bump $BUMP_ARG
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "newVersion=$NEW_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Zip extensions
         run: |
           pnpm zip
           pnpm zip:firefox
 
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: .output/*.zip
+          if-no-files-found: error
+          include-hidden-files: true
+
+      - name: Commit and Push
+        if: ${{ !inputs.dryRun }}
+        run: |
+          git add package.json CHANGELOG.md
+          git commit -m "chore(release): v$NEW_VERSION"
+          git tag v$NEW_VERSION
+          git push origin HEAD:main
+          git push origin v$NEW_VERSION
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.newVersion }}
+
+      - name: Create Release
+        if: ${{ !inputs.dryRun }}
+        run: pnpm dlx changelogen@latest gh release ${{ steps.version.outputs.newVersion }} --token ${{ github.token }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      # Don't upload sources zip - it can contain .env files, which may include secrets
+      - name: Upload ZIPs
+        if: ${{ !inputs.dryRun }}
+        run: gh release upload v${{ steps.version.outputs.newVersion }} .output/*-chrome.zip .output/*-firefox.zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Submit to stores
         run: |
+          DRY_RUN_ARG=""
+          if [ "${{ inputs.dryRun }}" = "true" ]; then
+            DRY_RUN_ARG="--dry-run"
+          fi
           pnpm wxt submit \
             --chrome-zip .output/*-chrome.zip \
             --firefox-zip .output/*-firefox.zip --firefox-sources-zip .output/*-sources.zip \
-            --edge-zip .output/*-chrome.zip
+            --edge-zip .output/*-chrome.zip \
+            $DRY_RUN_ARG
         env:
           CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
