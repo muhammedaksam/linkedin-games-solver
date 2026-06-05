@@ -2518,5 +2518,23 @@
     ],
     "topWord": "GOLF",
     "bottomWord": "TEES"
+  },
+  "766": {
+    "clues": [
+      "Chess piece that only moves vertically or horizontally",
+      "“You ___ the words out of my mouth”",
+      "Hammer or screwdriver",
+      "Easily duped person",
+      "Something an Olympic basketballer cannot get six times in a game, but an NBA player might (if playing too aggressively)"
+    ],
+    "answers": [
+      "ROOK",
+      "TOOK",
+      "TOOL",
+      "FOOL",
+      "FOUL"
+    ],
+    "topWord": "ROCK",
+    "bottomWord": "SOUL"
   }
 }
