@@ -6,9 +6,12 @@
 [![Edge Add-ons Version](https://img.shields.io/badge/dynamic/json?label=Edge%20Add-on&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnkhdnmbjhgfkgjjilkmemedcpfebfmkh&style=for-the-badge&color=blue&logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh)
 [![Edge Add-ons Users](https://img.shields.io/badge/dynamic/json?label=Edge%20Users&query=%24.activeInstallCount&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnkhdnmbjhgfkgjjilkmemedcpfebfmkh&style=for-the-badge&color=orange&logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh)
 [![Edge Add-ons Rating](https://img.shields.io/badge/dynamic/json?label=Edge%20Rating&suffix=%2F5&query=%24.averageRating&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnkhdnmbjhgfkgjjilkmemedcpfebfmkh&style=for-the-badge&color=green&logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh)
+[![Firefox Add-on Version](https://img.shields.io/amo/v/linkedin-games-solver-addon?style=for-the-badge&color=blue&logo=firefox&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/linkedin-games-solver-addon/)
+[![Firefox Add-on Users](https://img.shields.io/amo/users/linkedin-games-solver-addon?style=for-the-badge&color=orange)](https://addons.mozilla.org/en-US/firefox/addon/linkedin-games-solver-addon/)
+[![Firefox Add-on Rating](https://img.shields.io/amo/rating/linkedin-games-solver-addon?style=for-the-badge&color=green)](https://addons.mozilla.org/en-US/firefox/addon/linkedin-games-solver-addon/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-An advanced, obfuscation-proof browser extension compatible with Google Chrome™ and Microsoft Edge™ built with **React**, **TypeScript**, and **Plasmo** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
+An advanced, obfuscation-proof browser extension compatible with Google Chrome™, Microsoft Edge™, and Mozilla Firefox™ built with **React, TypeScript, and WXT** that provides interactive overlays, education-centric helpers, and automated solvers for LinkedIn's daily games catalog.
 
 <p align="left">
   <a href="https://chromewebstore.google.com/detail/linkedin-games-solver/jnhgapnkejaijibcdhcldhdfikjmdaph" target="_blank">
@@ -16,6 +19,9 @@ An advanced, obfuscation-proof browser extension compatible with Google Chrome�
   </a>
   <a href="https://microsoftedge.microsoft.com/addons/detail/nkhdnmbjhgfkgjjilkmemedcpfebfmkh" target="_blank">
     <img src="https://img.shields.io/badge/Microsoft_Edge_Add--ons-0078D7?style=for-the-badge&logo=microsoft-edge&logoColor=white" alt="Get it from Microsoft Edge" height="58" />
+  </a>
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/linkedin-games-solver-addon/" target="_blank">
+    <img src="https://img.shields.io/badge/Firefox_Add--ons-FF7139?style=for-the-badge&logo=firefox&logoColor=white" alt="Get it from Firefox" height="58" />
   </a>
 </p>
 
@@ -259,7 +265,7 @@ Populate the `PLASMO_PUBLIC_GTAG_ID` and `PLASMO_PUBLIC_SECRET_API_KEY` variable
 pnpm dev
 ```
 
-Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, click **Load Unpacked**, and select the `build/chrome-mv3-dev` directory in this workspace.
+Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, click **Load Unpacked**, and select the `.output/chrome-mv3` directory in this workspace.
 
 ### 4. Production Compilation
 
@@ -267,7 +273,7 @@ Open Chrome and navigate to `chrome://extensions`. Enable **Developer Mode**, cl
 pnpm build
 ```
 
-The output will compile cleanly into the `build/chrome-mv3-prod` folder, ready for packing and uploading.
+The output will compile cleanly into the `.output/chrome-mv3` folder, ready for packing and uploading.
 
 </details>
 
@@ -326,3 +332,5 @@ _LinkedIn® and the [in]® logo are registered trademarks of LinkedIn Corporatio
 _Google Chrome™, Chrome Web Store™, and Gemini™ are trademarks of Google LLC. Use of these trademarks is subject to [Google Permissions](https://about.google/brand-resource-center/guidance/)._
 
 _Microsoft Edge™ and Microsoft Edge Add-ons™ are trademarks of Microsoft Corporation in the United States and/or other countries._
+
+_Firefox™ and Mozilla Firefox™ are trademarks of the Mozilla Foundation in the United States and/or other countries._

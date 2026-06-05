@@ -7,3 +7,7 @@ allowBuilds:
   msw: true
   puppeteer: true
   sharp: true
+  spawn-sync: false
+
+overrides:
+  date-fns: "3.6.0"

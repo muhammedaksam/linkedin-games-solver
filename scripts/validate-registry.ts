@@ -81,13 +81,15 @@ export function validateCrossclimbPuzzle(
   const p = puzzle as RawCrossclimbPuzzle
 
   // Validate topWord
-  if (typeof p.topWord !== "string" || !/^[A-Z]+$/.test(p.topWord)) {
-    errors.push("Property 'topWord' must be an uppercase alphabetic string.")
+  if (typeof p.topWord !== "string" || !/^[A-Z0-9]+$/.test(p.topWord)) {
+    errors.push("Property 'topWord' must be an uppercase alphanumeric string.")
   }
 
   // Validate bottomWord
-  if (typeof p.bottomWord !== "string" || !/^[A-Z]+$/.test(p.bottomWord)) {
-    errors.push("Property 'bottomWord' must be an uppercase alphabetic string.")
+  if (typeof p.bottomWord !== "string" || !/^[A-Z0-9]+$/.test(p.bottomWord)) {
+    errors.push(
+      "Property 'bottomWord' must be an uppercase alphanumeric string."
+    )
   }
 
   // Validate clues
@@ -119,9 +121,9 @@ export function validateCrossclimbPuzzle(
       answersValid = false
     }
     p.answers.forEach((ans: unknown, index: number) => {
-      if (typeof ans !== "string" || !/^[A-Z]+$/.test(ans)) {
+      if (typeof ans !== "string" || !/^[A-Z0-9]+$/.test(ans)) {
         errors.push(
-          `Answer at index ${index} must be an uppercase alphabetic string. Got: "${ans}"`
+          `Answer at index ${index} must be an uppercase alphanumeric string. Got: "${ans}"`
         )
         answersValid = false
       }

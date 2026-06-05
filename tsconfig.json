@@ -1,18 +1,24 @@
 {
-  "extends": "plasmo/templates/tsconfig.base",
-  "exclude": ["node_modules"],
-  "include": [
-    ".plasmo/index.d.ts",
-    ".plasmo/**/*.d.ts",
-    "./**/*.ts",
-    "./**/*.tsx"
-  ],
+  "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
-    "ignoreDeprecations": "5.0",
+    "jsx": "react-jsx",
     "paths": {
-      "~*": ["./*"],
-      "@/*": ["./*"]
-    },
-    "baseUrl": "."
+      "@plasmohq/messaging": ["./lib/plasmo-messaging-shim.ts"],
+      "@plasmohq/storage": ["./lib/plasmo-storage-shim.ts"],
+      "@plasmohq/storage/secure": ["./lib/plasmo-storage-shim.ts"],
+      "@plasmohq/storage/hook": ["./lib/plasmo-storage-shim.ts"],
+      "~lib/*": ["./lib/*"],
+      "~games/*": ["./games/*"],
+      "~assets/*": ["./assets/*"],
+      "~locales/*": ["./public/_locales/*"],
+      "~tabs/*": ["./tabs/*"],
+      "~components/*": ["./components/*"],
+      "~lib": ["./lib"],
+      "~games": ["./games"],
+      "~assets": ["./assets"],
+      "~locales": ["./public/_locales"],
+      "~tabs": ["./tabs"],
+      "~components": ["./components"]
+    }
   }
 }

@@ -21,8 +21,6 @@ import {
 } from "lucide-react"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
-import { useStorage } from "@plasmohq/storage/hook"
-
 import { DisclaimerFooter } from "~components/disclaimer-footer"
 import { Button } from "~components/ui/button"
 import { Calendar } from "~components/ui/calendar"
@@ -36,7 +34,12 @@ import {
   SelectValue
 } from "~components/ui/select"
 import { GAMES_CONFIG } from "~lib/games-config"
-import { localStorage, secureStorage, syncStorage } from "~lib/storage"
+import {
+  localStorage,
+  secureStorage,
+  syncStorage,
+  useStorage
+} from "~lib/storage"
 import { cn } from "~lib/utils"
 
 import "~tabs/dashboard.css"
@@ -269,6 +272,20 @@ export default function Dashboard() {
 
   // Track settings modification to trigger auto-saved notification
   useEffect(() => {
+    // Reference settings parameters to justify their inclusion in dependency array
+    if (
+      aiProvider !== undefined ||
+      aiModel !== undefined ||
+      aiApiKey !== undefined ||
+      aiCustomEndpoint !== undefined ||
+      solveSpeed !== undefined ||
+      defaultSolveMode !== undefined ||
+      streakRemindersEnabled !== undefined ||
+      streakReminderTime !== undefined ||
+      autoOpenSidepanel !== undefined
+    ) {
+      // No-op reference
+    }
     return showSaveNotification()
   }, [
     showSaveNotification,
