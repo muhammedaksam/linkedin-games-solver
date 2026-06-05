@@ -3,6 +3,18 @@ import { defineConfig } from "wxt"
 
 export default defineConfig({
   modules: ["@wxt-dev/module-react"],
+  hooks: {
+    "entrypoints:found": (wxt, entrypointInfos) => {
+      entrypointInfos.push({
+        name: "tabs/dashboard",
+        inputPath: path.resolve(
+          wxt.config.srcDir,
+          "entrypoints/tabs/dashboard.html"
+        ),
+        type: "unlisted-page"
+      })
+    }
+  },
   manifest: {
     name: "__MSG_extensionName__",
     description: "__MSG_extensionDescription__",

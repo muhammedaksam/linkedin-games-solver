@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import ReactDOM from "react-dom/client"
 
-import "../popup.css"
+import "~tabs/dashboard.css"
 
 import { SolverShell } from "../components/SolverShell"
 
