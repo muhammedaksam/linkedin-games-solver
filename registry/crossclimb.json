@@ -1690,5 +1690,17 @@
     "answers": ["ROOK", "TOOK", "TOOL", "FOOL", "FOUL"],
     "topWord": "ROCK",
     "bottomWord": "SOUL"
+  },
+  "767": {
+    "clues": [
+      "Sleeveless garment",
+      "Organism that might cause property damage, like a termite or mouse",
+      "Vertical support that is driven into the ground to help hold up a fence",
+      "Emcee of a television show",
+      "Fire truck fixture"
+    ],
+    "answers": ["VEST", "PEST", "POST", "HOST", "HOSE"],
+    "topWord": "VENT",
+    "bottomWord": "HOLE"
   }
 }
