@@ -1,10 +1,10 @@
 {
   "extensionName": {
-    "message": "LinkedIn-Spielelöser",
+    "message": "LinkedIn-Spiele-Löser",
     "description": "The name of the extension."
   },
   "extensionDescription": {
-    "message": "Eine Hilfsanwendung für LinkedIn-Spiele.",
+    "message": "Ein Helfer für LinkedIn-Spiele. Tägliche Rätsel (Queens, Sudoku, Pinpoint, Crossclimb) automatisch lösen mit Serien und Statistiken.",
     "description": "The description of the extension."
   },
   "title": {
@@ -12,7 +12,7 @@
     "description": "Header title of the popup"
   },
   "subtitle": {
-    "message": "Aktive Spielbretter mit einem Klick lösen",
+    "message": "Lösen Sie Ihre täglichen Rätsel mit Premium-KI-Logik",
     "description": "Header subtitle of the popup"
   },
   "switchThemeTitle": {
@@ -20,40 +20,32 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "Die Browser-Tab-Integration ist nur in Browser-Erweiterungen verfügbar.",
+    "message": "Die Chrome-Tab-Integration ist erforderlich.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
-    "message": "Der aktive Browser-Tab konnte nicht gefunden werden.",
+    "message": "Der aktive Tab wurde nicht gefunden.",
     "description": "Error shown if tab is not found"
   },
   "errorNavigationFailed": {
-    "message": "Automatische Navigation zum $1-Spielbrett fehlgeschlagen.",
+    "message": "Der Aufruf von $1 ist fehlgeschlagen.",
     "description": "Error shown if tab switching fails"
   },
   "errorConnectionFailed": {
-    "message": "Keine Verbindung zur LinkedIn-Seite möglich. Bitte laden Sie den Tab neu und versuchen Sie es erneut.",
+    "message": "Verbindung fehlgeschlagen.",
     "description": "Error shown if content script is unresponsive"
   },
   "errorExecutionFailedDefault": {
-    "message": "Die Ausführung des Lösers ist unerwartet fehlgeschlagen.",
+    "message": "Beim Ausführen des Lösers ist ein Fehler aufgetreten.",
     "description": "Fallback solver error"
   },
   "successSolverStarted": {
-    "message": "Löser erfolgreich gestartet! Läuft...",
+    "message": "Löser gestartet.",
     "description": "Toast message for successful solve start"
   },
   "solvingStatus": {
     "message": "Wird gelöst...",
     "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
   },
   "queens": {
     "message": "Queens",
@@ -74,10 +66,6 @@
   "pinpoint": {
     "message": "Pinpoint",
     "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "Bonus",
-    "description": "Bonus badge next to game name"
   },
   "titleSolve": {
     "message": "$1 lösen",
@@ -299,10 +287,6 @@
     "message": "Design",
     "description": "Theme nav link label"
   },
-  "navDebug": {
-    "message": "Debug",
-    "description": "Debug nav link label"
-  },
   "dailyProgressLabel": {
     "message": "Täglicher Fortschritt",
     "description": "Daily progress label"
@@ -314,10 +298,6 @@
   "backToGames": {
     "message": "Zurück zu LinkedIn-Spielen",
     "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "Dashboard",
-    "description": "Dashboard brand badge label"
   },
   "gamesSolverTitle": {
     "message": "Spiele-Löser",
@@ -332,7 +312,7 @@
     "description": "Success dot tooltip on solved timeline row"
   },
   "disclaimerText": {
-    "message": "Haftungsausschluss: Dies ist ein unabhängiges, quelloffenes Bildungsprojekt. Es steht in keiner Verbindung zu LinkedIn Corporation, wird nicht von ihr gesponsert oder unterstützt. 'LinkedIn' ist eine eingetragene Marke der LinkedIn Corporation.",
+    "message": "Haftungsausschluss: Dies ist ein unabhängiges, quelloffenes Bildungsprojekt. Es ist nicht mit der LinkedIn Corporation verbunden, wird von ihr gesponsert oder unterstützt. „LinkedIn“ ist eine eingetragene Marke der LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
   },
   "settingsCredentialsTitle": {
@@ -400,10 +380,10 @@
     "message": "Gelöst!"
   },
   "desc_patches": {
-    "message": "Piece it together"
+    "message": "Setze die Teile zusammen"
   },
   "desc_zip": {
-    "message": "Complete the path"
+    "message": "Vervollständige den Pfad"
   },
   "desc_sudoku": {
     "message": "Der Klassiker unter den Mini-Spielen."
@@ -426,12 +406,6 @@
   "scoreClues": {
     "message": "$1 Hinweise"
   },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
   "markAsNotPlayed": {
     "message": "Als nicht gespielt markieren",
     "description": "Context menu option to undo a completed game for today"
@@ -443,10 +417,6 @@
   "solveSpeed_instant": {
     "message": "Sofort (Am schnellsten)",
     "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "Normal (Standard)",
-    "description": "Normal speed mode option"
   },
   "solveSpeed_stealth": {
     "message": "Stealth-Modus (Menschliche Verzögerungen)",
@@ -496,12 +466,8 @@
     "message": "Spiel-Debugger & Entwicklertools",
     "description": "Header title for the debugger and dev tools tab"
   },
-  "debugStatusOffline": {
-    "message": "Offline",
-    "description": "Debug offline status indicator label"
-  },
   "debugStatusLive": {
-    "message": "Live",
+    "message": "Online",
     "description": "Debug live status indicator label"
   },
   "debugDetectedGame": {
@@ -565,7 +531,7 @@
     "description": "Card title for the captured main outerHTML preview"
   },
   "debugHtmlTruncated": {
-    "message": "\n\n/* ... [abgeschnitten, Gesamtlänge: $1 Zeichen] ... */",
+    "message": "\n\n[ ... [abgeschnitten, Gesamtlänge: $1 Zeichen] ... ]",
     "description": "Truncation note inside the main outerHTML preview"
   },
   "debugCopyCompleteHtmlTooltip": {
@@ -687,9 +653,6 @@
   "liveInspected": {
     "message": "Live Inspiziert"
   },
-  "offline": {
-    "message": "Offline"
-  },
   "inspectedTab": {
     "message": "Inspizierter Tab:"
   },
@@ -739,7 +702,7 @@
     "message": "Spielgitterzellen werden analysiert... Stellen Sie sicher, dass auf dem Brett aktive Gitterblöcke sichtbar sind."
   },
   "urlLabel": {
-    "message": "Url:"
+    "message": "URL"
   },
   "notAvailable": {
     "message": "N. v."
@@ -776,5 +739,35 @@
   "telemetryToggleDesc": {
     "message": "Helfen Sie mit, den Solver zu verbessern, indem Sie anonyme Leistungs- und Nutzungsdaten teilen.",
     "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "bonus": {
+    "message": "Bonus"
+  },
+  "navDebug": {
+    "message": "Debuggen"
+  },
+  "dashboardLabel": {
+    "message": "Dashboard"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Standard)"
+  },
+  "debugStatusOffline": {
+    "message": "Offline"
+  },
+  "offline": {
+    "message": "Offline"
   }
 }

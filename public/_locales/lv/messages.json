@@ -1,0 +1,646 @@
+{
+  "extensionName": {
+    "message": "LinkedIn spēļu risinātājs",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Palīgs LinkedIn Games spēlēm. Automātiski atrisina ikdienas mīklas (Queens, Sudoku, Pinpoint, Crossclimb), sekojot sērijām un analītikai.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn spēles",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Atrisini aktīvās galdiņus ar vienu klikšķi",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Nepieciešama Chrome cilnes integrācija.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Aktīvā cilne netika atrasta.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Neizdevās pāriet uz $1.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Savienojums neizdevās.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Palaižot risinātāju, radās problēma.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Risinātājs ir palaists.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "Vēsture un statistika",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Jūsu LinkedIn Games risināšanas vēsture un statistika",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Kopā atrisināts",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Spēles atrisinātas visos datumos",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Vidējais laiks",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Pēc visiem reģistrētajiem pabeigumiem",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Aktīva sērija",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Nepārtrauktas aktīvas dienas",
+    "description": "Description for the active streak card"
+  },
+  "dashboardDescText": {
+    "message": "Analizējiet savus veiktspējas rādītājus, reģistrējiet sērijas un sekojiet savām ikdienas atrisināto mīklu gaitām.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "Atruna: šis ir neatkarīgs, atvērtā koda izglītojošs projekts. Tas nav saistīts ar LinkedIn Corporation, kā arī to nesponsorē un neapstiprina. „LinkedIn” ir LinkedIn Corporation reģistrēta prečzīme.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "switchThemeTitle": {
+    "message": "Pārslēgties uz $1 režīmu"
+  },
+  "solvingStatus": {
+    "message": "Risināšana..."
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "queens": {
+    "message": "Queens"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "Bonuss"
+  },
+  "desc_patches": {
+    "message": "Sastādīt kopā"
+  },
+  "desc_zip": {
+    "message": "Pabeidziet ceļu"
+  },
+  "desc_sudoku": {
+    "message": "Klasiskā spēle, padarīta par mini"
+  },
+  "desc_tango": {
+    "message": "Saskaņot tīklu"
+  },
+  "desc_queens": {
+    "message": "Kronējiet katru reģionu"
+  },
+  "desc_crossclimb": {
+    "message": "Atbloķēt viktorīnas kāpnes"
+  },
+  "desc_pinpoint": {
+    "message": "Uzmini kategoriju"
+  },
+  "titleSolve": {
+    "message": "Atrisināt $1"
+  },
+  "titleCompleted": {
+    "message": "Pabeigts šodien! Noklikšķiniet, lai pārietu uz $1"
+  },
+  "titleOpen": {
+    "message": "Atveriet $1, lai atrisinātu"
+  },
+  "perfectDay": {
+    "message": "Lieliska diena! Visi $1 spēles pabeigtas! 🎉"
+  },
+  "dailyProgress": {
+    "message": "Ikdienas progress: $1 no $2 spēlēm pabeigtas šodien"
+  },
+  "statStreakDays": {
+    "message": "$1 dienas"
+  },
+  "personalBests": {
+    "message": "Personīgie rekordi"
+  },
+  "noRecordsYet": {
+    "message": "Vēl nav reģistrēti nekādi risinājumu ieraksti."
+  },
+  "solvingHistory": {
+    "message": "Vēstures risināšana"
+  },
+  "activityCalendar": {
+    "message": "Aktivitāšu kalendārs"
+  },
+  "clearFilter": {
+    "message": "Notīrīt filtru"
+  },
+  "settingModel": {
+    "message": "Modelis"
+  },
+  "settingModelSelect": {
+    "message": "Izvēlieties modeli"
+  },
+  "settingModelCustomOption": {
+    "message": "Pielāgota modeļa nosaukums..."
+  },
+  "settingModelCustomLabel": {
+    "message": "Pielāgota modeļa nosaukums"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "piemēram, llama3, mistral"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Ievadiet pielāgotu identifikatoru..."
+  },
+  "settingEndpointLabel": {
+    "message": "Beigu punkta URL"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "piem. http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "Gemini API atslēga"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "OpenAI API atslēga"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Anthropic API atslēga"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "DeepSeek API atslēga"
+  },
+  "settingApiKeyCustom": {
+    "message": "API atslēga (pēc izvēles)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Papildu akreditācijas..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Ievadiet akreditācijas atslēgu..."
+  },
+  "settingApiKeyNotice": {
+    "message": "Izvēlētais modelis risina Crossclimb un Pinpoint. Pagarinājums nekad neizdala jūsu atslēgu."
+  },
+  "popupCardTitle": {
+    "message": "Sazinieties, spēlējot jautras ikdienas spēles"
+  },
+  "popupCardDesc": {
+    "message": "Sagatavojiet savu prātu darba dienai un salīdziniet rezultātus. Jūsu rezultāti ir privāti, ja vien jūs tos neizpaužat."
+  },
+  "saveAndBack": {
+    "message": "Saglabāt un atpakaļ uz spēlēm"
+  },
+  "solvingWorking": {
+    "message": "AI risinātājs strādā..."
+  },
+  "completedToday": {
+    "message": "Pabeigts šodien"
+  },
+  "solvedCountSuffix": {
+    "message": "Atrisināts"
+  },
+  "settingsHeaderTitle": {
+    "message": "AI modeļa konfigurācija"
+  },
+  "labelAiProvider": {
+    "message": "AI PIEDĀVĀTĀJS"
+  },
+  "labelModelIdentifier": {
+    "message": "MODEĻA IDENTIFIKATORS"
+  },
+  "labelCustomModel": {
+    "message": "Pielāgota modeļa nosaukums"
+  },
+  "labelEndpointUrl": {
+    "message": "GALAPUNKTA URL"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API ATSLĒGA"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API ATSLĒGA"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API ATSLĒGA"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API ATSLĒGA"
+  },
+  "labelCustomKey": {
+    "message": "API ATSLĒGA (PAPILDU)"
+  },
+  "navHome": {
+    "message": "Mājas"
+  },
+  "navAiConfig": {
+    "message": "Iestatījumi / Opcijas"
+  },
+  "navStats": {
+    "message": "Statistika"
+  },
+  "navTheme": {
+    "message": "Tēma"
+  },
+  "navDebug": {
+    "message": "Kļūdu labošana"
+  },
+  "dailyProgressLabel": {
+    "message": "Ikdienas progress"
+  },
+  "solveActiveBoard": {
+    "message": "Atrisināt Aktīvo Dēli"
+  },
+  "backToGames": {
+    "message": "Atpakaļ pie LinkedIn spēlēm"
+  },
+  "dashboardLabel": {
+    "message": "Vadības panelis"
+  },
+  "gamesSolverTitle": {
+    "message": "Spēļu risinātājs"
+  },
+  "completedSuccessfully": {
+    "message": "Veiksmīgi pabeigts"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Akreditācijas un modeļi"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Modeļa ceļvedis un informācija"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Savienojuma statuss"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Aktīvais risinātājs:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Modeļa identifikators:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Iestatījumi automātiski saglabāti!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Konfigurējiet AI modeļa integrācijas galapunktus un akreditācijas datus uzlabotai mīklu risināšanas loģikai."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Izcila veiktspēja gandrīz nulles izmaksās. Risinājumi Crossclimb un Pinpoint ar izcilu loģiku. Ieteicamais noklusējums: gemini-2.5-flash."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Ātrs, reaģējošs un ārkārtīgi uzticams ar vispārējās zināšanas modeļiem. Ieteicamais noklusējums: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Maksimālā racionālo spēju kapacitāte. Neatlaidīgi apstrādā ļoti sarežģītas vārdu asociācijas. Ieteicamais noklusējums: claude-3-5-haiku."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Savienojiet ar vietējiem LLM ietvariem, piemēram, Ollama vai LM Studio. Norādiet savu gala punkta URL (piemēram, http://localhost:11434/v1) un pielāgoto modeļa nosaukumu."
+  },
+  "showMoreDates": {
+    "message": "Rādīt vairāk datumus"
+  },
+  "showLessDates": {
+    "message": "Rādīt mazāk"
+  },
+  "solveBtn_withAi": {
+    "message": "Atrisināt ar AI"
+  },
+  "solveBtn_game": {
+    "message": "Atrisināt spēli"
+  },
+  "solveBtn_solving": {
+    "message": "Risināšana..."
+  },
+  "solveBtn_solved": {
+    "message": "Atrisināts!"
+  },
+  "scoreClue": {
+    "message": "1 norāde"
+  },
+  "scoreClues": {
+    "message": "$1 norādes"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "markAsNotPlayed": {
+    "message": "Atzīmēt kā neizspēlēts"
+  },
+  "settingSolveSpeed": {
+    "message": "Risināšanas ātrums / Aizkavēšanās"
+  },
+  "solveSpeed_instant": {
+    "message": "Tūlītēja (Ātrākā)"
+  },
+  "solveSpeed_normal": {
+    "message": "Normāls (standarts)"
+  },
+  "solveSpeed_stealth": {
+    "message": "Slepenais režīms (cilvēka līdzīgi aizkavējumi)"
+  },
+  "labelSolveSpeed": {
+    "message": "Risināšanas ātrums un temps"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Instantā režīms pabeidz dēli milisekundēs. Slepenais režīms atdarina cilvēku uzvedību ar nejaušu tempu (1–3 sekundes), lai nodrošinātu secības pret automatizētu noteikšanu."
+  },
+  "solveBtn_hint": {
+    "message": "Saņemt norādi"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Noklusējuma risinātāja darbība"
+  },
+  "solveMode_full": {
+    "message": "Pilna automātiskā risināšana"
+  },
+  "solveMode_hint": {
+    "message": "Izglītojošā padoma režīms"
+  },
+  "labelDefaultSolveMode": {
+    "message": "NOKLĀJUMA RISINĀTĀJA REŽĪMS"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Izvēlieties galveno darbību, kad aktivizējat risinātāju no cilnes skata vai dēļiem. Pilna risināšana pabeidz spēli; Ieteikumu režīms novieto vienu pareizu objektu."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Nulles izmaksas un pilnīgi vietējā mākslīgā intelekta"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Darbojas pilnīgi lokāli uz jūsu ierīces pārlūkprogrammā. Nulles tīkla latentums un 100% bezmaksas ar Gemini Nano."
+  },
+  "debugHeaderTitle": {
+    "message": "Spēļu atkļūdošanas rīki un izstrādātāju rīki"
+  },
+  "debugStatusOffline": {
+    "message": "Bezsaistē"
+  },
+  "debugStatusLive": {
+    "message": "Dzīvot"
+  },
+  "debugDetectedGame": {
+    "message": "Atklātā spēle"
+  },
+  "debugNoneDetected": {
+    "message": "Nav konstatēts"
+  },
+  "debugTargetUrl": {
+    "message": "Mērķa URL"
+  },
+  "debugNoActiveTab": {
+    "message": "Nav aktīvās cilnes"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML kopēts!"
+  },
+  "debugCopyHtml": {
+    "message": "Kopēt <main> HTML"
+  },
+  "debugLogsCopied": {
+    "message": "Logs kopēts!"
+  },
+  "debugCopyLogs": {
+    "message": "Kopēt konsoles žurnālus"
+  },
+  "debugBothCopied": {
+    "message": "Abi kopēti!"
+  },
+  "debugCopyBoth": {
+    "message": "Kopēt abus (HTML un žurnālus)"
+  },
+  "debugRegistryCopied": {
+    "message": "Reģistra JSON kopēts!"
+  },
+  "debugCopyRegistry": {
+    "message": "Kopēt šodienas reģistra JSON"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Kopēt JSON"
+  },
+  "debugSubmitAnswer": {
+    "message": "Iesniegt atbildi"
+  },
+  "debugDomPreview": {
+    "message": "DOM elementa priekšskatījums"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [truncated, total characters: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Kopēt pabeigto <main> HTML"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Nav aktivizēta <main> taga. Pārliecinieties, ka esat LinkedIn spēles ekrānā."
+  },
+  "debugConsoleOutput": {
+    "message": "Konsoles izvade"
+  },
+  "debugEventsCount": {
+    "message": "$1 pasākumi"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Atjaunot žurnālus"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Notīrīt žurnālus"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Vēl nav ierakstīti žurnāli. Veiciet darbības spēles ekrānā, lai izsauktu konsoles notikumus."
+  },
+  "debugListeningEvents": {
+    "message": "Klausoties uz console.log, console.warn un console.error notikumiem..."
+  },
+  "debugErrorInitializing": {
+    "message": "Savienojums ar LinkedIn spēles lapu tiek inicializēts..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Nevarēja iegūt spēles datus."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Aktīvā cilne nav LinkedIn spēļu lapa. Pārejiet uz spēli, lai iegūtu detaļas."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Neizdevās identificēt aktīvo cilni."
+  },
+  "labelDailyReminders": {
+    "message": "IKDIENAS ATGĀDINĀJUMI UN SĒRIJAS AIZSARGĀTĀJS"
+  },
+  "settingEnableReminders": {
+    "message": "Iespējot ikdienas atgādinājumus"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Brīdiniet mani pirms šodienas sērijas beigu termiņa."
+  },
+  "settingReminderTime": {
+    "message": "Atgādinājuma laiks"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Izvēlieties vietējo laiku, lai pārbaudītu neizšķirtās spēles."
+  },
+  "notificationTitle": {
+    "message": "Svītru aizsargs 🚀"
+  },
+  "notificationMessage": {
+    "message": "Nepazaudē savu risināšanas sēriju! Tu vēl neesi atrisinājis šodienas LinkedIn spēles."
+  },
+  "notificationButton": {
+    "message": "Risiniet tagad!"
+  },
+  "commandSolveActiveGame": {
+    "message": "Automātiski atrisiniet aktīvo LinkedIn spēli."
+  },
+  "commandGetSingleHint": {
+    "message": "Sniedziet vienas darbības padomu vai pārbaudiet kļūdas."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Automātiski atvērt sānu joslu spēlēs"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Automātiski atveriet risinātāja sānu paneli, apmeklējot LinkedIn spēles."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "AUTOMĀKŠANAS RISEKLA MALAS JOSLA"
+  },
+  "permissionDialogTitle": {
+    "message": "Piešķirt lapas piekļuvi"
+  },
+  "permissionDialogDesc": {
+    "message": "Lai noteiktu aktīvās spēļu dēļus un risinātu mīklas, paplašinājumam ir nepieciešamas atļaujas darboties LinkedIn spēlēs. Noklikšķiniet zemāk, lai piešķirtu piekļuvi."
+  },
+  "permissionDialogButton": {
+    "message": "Piešķirt piekļuvi"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Spēlē un risini Karalienes šodien!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Atver mini-Sudoku risinātāju"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Atvērt Streaks un Veiktspējas Paneļa"
+  },
+  "diagnosticsEngine": {
+    "message": "Diagnostikas dzinējs"
+  },
+  "liveInspected": {
+    "message": "Dzīvi pārbaudīts"
+  },
+  "offline": {
+    "message": "Bezsaistē"
+  },
+  "inspectedTab": {
+    "message": "Pārbaudītā cilne:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Dzīvais Matricas Tīkla Inspektors"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Gaidīšana uz LinkedIn spēles lapu"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Pārejiet uz jebkuru LinkedIn spēļu dēļa cilni (Queens, Sudoku, Tango, Pinpoint), lai iegūtu ierobežojumu koordinātas, šūnu stāvokļus un reaktīvās struktūras."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Telemetrijas žurnālu straumētājs"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Meklēt žurnālus..."
+  },
+  "allTypes": {
+    "message": "VISI TIPI"
+  },
+  "logsType": {
+    "message": "LOGS"
+  },
+  "infoType": {
+    "message": "INFO"
+  },
+  "warnsType": {
+    "message": "BRĪDINA"
+  },
+  "errorsType": {
+    "message": "KĻŪDAS"
+  },
+  "selectTypePlaceholder": {
+    "message": "Izvēlieties veidu"
+  },
+  "consoleStreamEmpty": {
+    "message": "Konsoles straume ir tukša"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Nav atrasti logu izvadi, kas atbilst filtriem. Veiciet soļus LinkedIn Games risinātāja lietotāja saskarnē, lai šeit straumētu logu darbības."
+  },
+  "subscribedToStorageSession": {
+    "message": "Abonēts uz storage.session straumi"
+  },
+  "parsingGameGridCells": {
+    "message": "Analizēju spēles režģa šūnas... Pārliecinieties, ka dēlī ir redzami aktīvi režģa bloki."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "N/A"
+  },
+  "matchesLabel": {
+    "message": "sērkociņi"
+  },
+  "copiedLabel": {
+    "message": "Kopēts!"
+  },
+  "copyLogsTooltip": {
+    "message": "Kopēt žurnālus"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Notīrīt žurnāla vietu"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Atrisināt Aktīvo LinkedIn Spēli"
+  },
+  "contextMenuHint": {
+    "message": "💡 Iegūstiet norādi"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Skatīt rezultātus"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRIJA UN PRIVĀTUMS"
+  },
+  "telemetryToggleLabel": {
+    "message": "Sūtīt anonīmus telemetrijas datus"
+  },
+  "telemetryToggleDesc": {
+    "message": "Palīdziet uzlabot risinātāju, daloties ar anonīmiem snieguma un lietošanas rādītājiem."
+  }
+}

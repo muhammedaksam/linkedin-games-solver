@@ -1,10 +1,10 @@
 {
   "extensionName": {
-    "message": "LinkedIn 游戏助手",
+    "message": "LinkedIn 游戏求解器",
     "description": "The name of the extension."
   },
   "extensionDescription": {
-    "message": "LinkedIn 游戏的辅助工具。",
+    "message": "LinkedIn 游戏的帮手。自动求解每日谜题（Queens，Sudoku，Pinpoint，Crossclimb），提供连胜纪录和数据分析。",
     "description": "The description of the extension."
   },
   "title": {
@@ -12,7 +12,7 @@
     "description": "Header title of the popup"
   },
   "subtitle": {
-    "message": "一键自动求解当前游戏",
+    "message": "借助优质人工智能推理能力，轻松解决每日难题",
     "description": "Header subtitle of the popup"
   },
   "switchThemeTitle": {
@@ -20,27 +20,27 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "浏览器标签页集成功能仅在浏览器扩展中可用。",
+    "message": "需要 Chrome 标签页集成。",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
-    "message": "无法找到活动的浏览器标签页。",
+    "message": "未找到活动标签页。",
     "description": "Error shown if tab is not found"
   },
   "errorNavigationFailed": {
-    "message": "自动跳转至 $1 游戏板失败。",
+    "message": "无法跳转到 $1。",
     "description": "Error shown if tab switching fails"
   },
   "errorConnectionFailed": {
-    "message": "无法连接到 LinkedIn 页面。请重新加载标签页并重试。",
+    "message": "连接失败。",
     "description": "Error shown if content script is unresponsive"
   },
   "errorExecutionFailedDefault": {
-    "message": "求解器执行意外失败。",
+    "message": "运行求解器时出现问题。",
     "description": "Fallback solver error"
   },
   "successSolverStarted": {
-    "message": "求解器启动成功！正在运行中...",
+    "message": "求解器已启动。",
     "description": "Toast message for successful solve start"
   },
   "solvingStatus": {
@@ -48,15 +48,15 @@
     "description": "Overlay label during solver run"
   },
   "sudoku": {
-    "message": "数独 (Sudoku)",
+    "message": "Sudoku",
     "description": "Game name Sudoku"
   },
   "tango": {
-    "message": "探戈 (Tango)",
+    "message": "Tango",
     "description": "Game name Tango"
   },
   "queens": {
-    "message": "皇后 (Queens)",
+    "message": "Queens",
     "description": "Game name Queens"
   },
   "zip": {
@@ -332,7 +332,7 @@
     "description": "Success dot tooltip on solved timeline row"
   },
   "disclaimerText": {
-    "message": "免责声明：这是一个独立的、开源的教育项目。它与 LinkedIn Corporation 没有任何关联、赞助或认可。'LinkedIn' 是 LinkedIn Corporation 的注册商标。",
+    "message": "免责声明：这是一个独立的开源教育项目。与 LinkedIn Corporation 无关，亦未获得其资助或认可。“LinkedIn”是 LinkedIn Corporation 的注册商标。",
     "description": "Compliance footer disclaimer text"
   },
   "settingsCredentialsTitle": {
@@ -400,10 +400,10 @@
     "message": "已完成求解！"
   },
   "desc_patches": {
-    "message": "Piece it together"
+    "message": "将补丁连接在一起"
   },
   "desc_zip": {
-    "message": "Complete the path"
+    "message": "完成路径"
   },
   "desc_sudoku": {
     "message": "经典游戏迷你版"
@@ -565,7 +565,7 @@
     "description": "Card title for the captured main outerHTML preview"
   },
   "debugHtmlTruncated": {
-    "message": "\n\n/* ... [已截断，总字符数：$1] ... */",
+    "message": "\n\n[ ... [已截断，总字符数：$1] ... ]",
     "description": "Truncation note inside the main outerHTML preview"
   },
   "debugCopyCompleteHtmlTooltip": {

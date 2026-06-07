@@ -1,0 +1,774 @@
+{
+  "extensionName": {
+    "message": "Solucionador de jocs de LinkedIn",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Un assistent per als jocs de LinkedIn. Resol automàticament els trencaclosques diaris (Queens, Sudoku, Pinpoint, Crossclimb) com ratxes i analítiques.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "Jocs de LinkedIn",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Resol els taulers actius amb un sol clic",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "Canvia a mode $1",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Cal la integració amb la pestanya de Chrome.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "No s'ha trobat la pestanya activa.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "No s'ha pogut anar a $1.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "La connexió ha fallat.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "S'ha produït un problema en executar el solucionador.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "S'ha iniciat el solucionador.",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Resolent...",
+    "description": "Overlay label during solver run"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "bonus": {
+    "message": "Boni",
+    "description": "Bonus badge next to game name"
+  },
+  "desc_patches": {
+    "message": "Uneix les peces"
+  },
+  "desc_zip": {
+    "message": "Completa el camí"
+  },
+  "desc_sudoku": {
+    "message": "El joc clàssic, en miniatura"
+  },
+  "desc_tango": {
+    "message": "Harmonitza la quadrícula"
+  },
+  "desc_queens": {
+    "message": "Corona cada regió"
+  },
+  "desc_crossclimb": {
+    "message": "Desbloqueja una escala de trivialitats"
+  },
+  "desc_pinpoint": {
+    "message": "Endevina la categoria"
+  },
+  "titleSolve": {
+    "message": "Resol $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Completat avui! Fes clic per navegar a $1",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Obre $1 per resoldre",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Dia perfecte! Tots els jocs $1 completats! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Progrés diari: $1 de $2 jocs completats avui",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Historial i estadístiques",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "El teu historial i estadístiques de resolució de LinkedIn Games",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Total resolt",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Jocs resolts en totes les dates",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Temps mitjà",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "A totes les finalitzacions registrades",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Ratxa activa",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Dies actius consecutius",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 dies",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "Millors personals",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Encara no hi ha registres de resolució.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Historial de resolucions",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Calendari d'activitat",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Neteja filtre",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModelSelect": {
+    "message": "Selecciona model",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "Nom de model personalitzat...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "Nom de model personalitzat",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "p. ex. llama3, mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Introdueix identificador personalitzat...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "URL de l'endpoint",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "p. ex. http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Clau Gemini API",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "Clau OpenAI API",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Clau Anthropic API",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "Clau DeepSeek API",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "Clau API (opcional)",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Credencials opcionals...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Introdueix la clau de credencials...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "El model seleccionat soluciona Crossclimb i Pinpoint. L'extensió mai comparteix la teva clau.",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Connecta amb jocs diaris divertits",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Prepara la teva ment per a la jornada laboral i compara resultats. Les teves puntuacions són privades tret que les comparteixis.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Desa i torna als jocs",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "Resolutor AI treballant...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Completat avui",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Resolts",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "Configuració del model AI",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "PROVEÏDOR AI",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "IDENTIFICADOR DE MODEL",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "NOM PERSONALITZAT DEL MODEL",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "URL D'ENDPOINT",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "CLAU GEMINI",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "CLAU OPENAI",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "CLAU ANTHROPIC",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "CLAU DEEPSEEK",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "CLAU API (OPCIONAL)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Inici",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "Configuració / Opcions",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "Estadístiques",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Tema",
+    "description": "Theme nav link label"
+  },
+  "navDebug": {
+    "message": "Depuració",
+    "description": "Debug nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Progrés diari",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Resol tauler actiu",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "Torna a LinkedIn Games",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Panell",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Resolutor de jocs",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Analitza les teves mètriques, registra ratxes i segueix els camins de trencaclosques completats.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Completat amb èxit",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Avís legal: aquest és un projecte educatiu independent i de codi obert. No està afiliat, patrocinat ni avalat per LinkedIn Corporation. «LinkedIn» és una marca comercial registrada de LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Credencials i models",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Guia i informació del model",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Estat de connexió",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Resolutor actiu:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Identificador del model:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Configuració desada automàticament!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Configura endpoints i credencials per a la integració de models AI avançats.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Rendiment excepcional amb cost gairebé zero. Resol Crossclimb i Pinpoint amb excel·lent lògica. Recomanat: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Ràpid, reactiu i molt fiable amb patrons de coneixement general. Recomanat: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Màxima capacitat de raonament. Gestiona associacions de paraules molt complexes. Recomanat: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Connecta amb frameworks LLM locals com Ollama o LM Studio. Apunta l'endpoint i el nom de model personalitzat.",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "Mostra més dates",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "Mostra menys dates",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "Resol amb AI"
+  },
+  "solveBtn_game": {
+    "message": "Resol el joc"
+  },
+  "solveBtn_solving": {
+    "message": "Resolent..."
+  },
+  "solveBtn_solved": {
+    "message": "Resolts!"
+  },
+  "scoreClue": {
+    "message": "1 pista"
+  },
+  "scoreClues": {
+    "message": "$1 pistes"
+  },
+  "markAsNotPlayed": {
+    "message": "Marca com no jugat",
+    "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Velocitat de resolució / Retard",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Instantani (Màxim ràpid)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Estàndard)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Mode sigilós (Retards humans)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "VELOCITAT & RITME DE RESOLUCIÓ",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "El mode instantani completa la taula en mil·lisegons. El mode sigilós simula comportament humà amb temps aleatoris (1–3s).",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Obté pista",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Acció per defecte del resolutor",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Resoldre automàticament complet",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Mode pista educatiu",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "MODE DEFAULT DE RESOLUCIÓ",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Selecciona l'acció principal quan s'activa el resolutor des de la vista de pestanya o taulers.",
+    "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Zero cost & AI completament local",
+    "description": "Chrome Built-in AI guide title"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "S'executa completament local al teu dispositiu dins del navegador. Latència de xarxa zero i 100% gratuït amb Gemini Nano.",
+    "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "Depurador de jocs & eines dev",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "Desconnectat",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "En directe",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "Joc detectat",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "Cap detectat",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "URL objectiu",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "No hi ha pestanya activa",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML copiat!",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "Copia HTML de <main>",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "Registres copiats!",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "Copia registres de consola",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "Ambdós copiats!",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "Copia ambdós (HTML & registres)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugRegistryCopied": {
+    "message": "JSON del registre copiat!",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "Copia el JSON del registre d'avui",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Copia JSON",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "Envia resposta",
+    "description": "Button to submit active board answers to GitHub"
+  },
+  "debugDomPreview": {
+    "message": "Previsualització d'element DOM",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[ ... [caràcters totals: $1] ... ]",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Copia HTML complet de <main>",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "No s'ha capturat cap etiqueta <main> activa. Assegura't que estàs a la pantalla del joc de LinkedIn.",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "Sortida de consola",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 esdeveniments",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Refresca registres",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Neteja registres",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "No s'han capturat registres encara. Realitza accions a la pantalla del joc per generar esdeveniments.",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "Escoltant console.log, console.warn i console.error...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "S'està inicialitzant la connexió amb la pàgina de LinkedIn Games...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "No s'han pogut recuperar dades del joc.",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Aquesta funcionalitat només està disponible a linkedin.com/games",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "No es pot accedir a la pestanya activa. Revisa els permisos de l'extensió.",
+    "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "Recordatoris diaris",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Activar recordatoris diaris",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Rep una notificació quan LinkedIn Games estigui disponible",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Hora del recordatori",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Personalitza quan reps recordatoris diaris",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Recordatori diari de LinkedIn Games",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "El teu trencaclosques diari està llest! Fes clic per jugar.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Juga ara",
+    "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Resol el joc actiu"
+  },
+  "commandGetSingleHint": {
+    "message": "Obté pista per al joc actual"
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Obrir panell lateral automàticament"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Obre automàticament el panell del resolutor quan visites LinkedIn Games"
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "OBRIR AUTOMÀTICAMENT PANELL LATERAL"
+  },
+  "permissionDialogTitle": {
+    "message": "Permisos de l'extensió"
+  },
+  "permissionDialogDesc": {
+    "message": "Aquesta extensió necessita permís per accedir al contingut de LinkedIn Games"
+  },
+  "permissionDialogButton": {
+    "message": "Concedir permís"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "Resol trencaclosques de Queens"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "Resol trencaclosques de Sudoku"
+  },
+  "omniboxSuggestionStats": {
+    "message": "Veure estadístiques del joc"
+  },
+  "diagnosticsEngine": {
+    "message": "Motor de diagnòstic"
+  },
+  "liveInspected": {
+    "message": "Inspecció en directe"
+  },
+  "offline": {
+    "message": "Desconnectat"
+  },
+  "inspectedTab": {
+    "message": "Pestanya inspeccionada"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Inspector de graella matriu en viu"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Esperant la pàgina de LinkedIn Games..."
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Navega a linkedin.com/games per veure dades del trencaclosques"
+  },
+  "telemetryLogsStreamer": {
+    "message": "Flux de registres de telemetria"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Cerca als registres..."
+  },
+  "allTypes": {
+    "message": "Tots els tipus"
+  },
+  "logsType": {
+    "message": "Registres"
+  },
+  "infoType": {
+    "message": "Info"
+  },
+  "warnsType": {
+    "message": "Alertes"
+  },
+  "errorsType": {
+    "message": "Errors"
+  },
+  "selectTypePlaceholder": {
+    "message": "Selecciona tipus de registre"
+  },
+  "consoleStreamEmpty": {
+    "message": "No hi ha registres"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Comença a resoldre per capturar telemetria"
+  },
+  "subscribedToStorageSession": {
+    "message": "Subscrits a la sessió d'emmagatzematge"
+  },
+  "parsingGameGridCells": {
+    "message": "Analitzant cel·les de la graella del joc"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "notAvailable": {
+    "message": "No disponible"
+  },
+  "matchesLabel": {
+    "message": "Partits"
+  },
+  "copiedLabel": {
+    "message": "Copiat!"
+  },
+  "copyLogsTooltip": {
+    "message": "Copia els registres al porta-retalls"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Neteja l'espai de registres"
+  },
+  "contextMenuSolve": {
+    "message": "Resol amb LinkedIn Games Solver"
+  },
+  "contextMenuHint": {
+    "message": "Obté una pista per aquest trencaclosques"
+  },
+  "contextMenuViewResults": {
+    "message": "Veure resultats de la resolució"
+  },
+  "labelTelemetryTitle": {
+    "message": "Telemetria anònima & Analítiques",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "Activa la recollida d'analítiques",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "Ajuda a millorar l'extensió compartint dades d'ús anònimes",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "settingModel": {
+    "message": "Model"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  }
+}

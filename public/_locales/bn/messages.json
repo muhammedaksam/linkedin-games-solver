@@ -1,0 +1,780 @@
+{
+  "extensionName": {
+    "message": "লিংকডইন গেমস সলভার",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn গেমস-এর জন্য একটি সহায়ক টুল। দৈনিক পাজল (Queens, Sudoku, Pinpoint, Crossclimb) স্বয়ংক্রিয়ভাবে সমাধান করুন, সাথে থাকুক স্ট্রিক ও অ্যানালিটিক্স।",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "লিংকডইন গেমস",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "এক ক্লিকেই সক্রিয় বোর্ড সমাধান করুন",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "$1 মোডে সুইচ করুন",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome ট্যাব ইন্টিগ্রেশন প্রয়োজন।",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "সক্রিয় ট্যাব খুঁজে পাওয়া যায়নি।",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "$1-এ যেতে ব্যর্থ হয়েছে।",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "সংযোগ ব্যর্থ হয়েছে।",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "সলভার চালানোর সময় একটি সমস্যা হয়েছে।",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "সলভার শুরু হয়েছে।",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "সমাধান করা হচ্ছে...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb",
+    "description": "Game name Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint",
+    "description": "Game name Pinpoint"
+  },
+  "bonus": {
+    "message": "বোনাস",
+    "description": "Bonus badge next to game name"
+  },
+  "desc_patches": {
+    "message": "টুকরোগুলো জোড়া লাগাও"
+  },
+  "desc_zip": {
+    "message": "পথ সম্পূর্ণ কর"
+  },
+  "desc_sudoku": {
+    "message": "ক্লাসিক খেলা, ছোট"
+  },
+  "desc_tango": {
+    "message": "গ্রিডটি সুর করুন"
+  },
+  "desc_queens": {
+    "message": "প্রতিটি অঞ্চলকে ক্রাউন করুন"
+  },
+  "desc_crossclimb": {
+    "message": "একটি ট্রিভিয়া সিঁড়ি আনলক করুন"
+  },
+  "desc_pinpoint": {
+    "message": "বর্গটি অনুমান করুন"
+  },
+  "titleSolve": {
+    "message": "$1 সমাধান করুন",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "আজ সমাপ্ত! $1 এ নেভিগেট করতে ক্লিক করুন",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "$1 খুলে সমাধান করুন",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "পারফেক্ট দিবস! সব $1 গেম সম্পন্ন! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "দৈনন্দিন অগ্রগতি: আজ $2-র মধ্যে $1 গেম সমাধান করা হয়েছে",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "ইতিহাস ও পরিসংখ্যান",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "আপনার LinkedIn Games সমাধানের সম্পূর্ণ ইতিহাস ও পরিসংখ্যান",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "মোট সমাধান",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "সব তারিখে সমাধান করা গেমস",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "গড় সময়",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "নথিভুক্ত সব সম্পন্নকরণের উপর",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "সক্রিয় স্ট্রিক",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "একটানা সক্রিয় দিন",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 দিন",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "ব্যক্তিগত সেরা",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "এখনো কোনও রেকর্ড নেই।",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "সমাধানের ইতিহাস",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "একটিভিটি ক্যালেন্ডার",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "ফিল্টার পরিষ্কার করুন",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModel": {
+    "message": "মডেল",
+    "description": "Label for the settings model selection dropdown"
+  },
+  "settingModelSelect": {
+    "message": "মডেল নির্বাচন করুন",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "কাস্টম মডেল নাম...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "কাস্টম মডেল নাম",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "উদাহরণ: llama3, mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "কাস্টম পরিচয় লিখুন...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "এন্ডপয়েন্ট URL",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "উদাহরণ: http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Gemini API কী",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "OpenAI API কী",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Anthropic API কী",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "DeepSeek API কী",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "API কী (ঐচ্ছিক)",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "ঐচ্ছিক ক্রেডেনশিয়াল...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "ক্রেডেনশিয়াল কী লিখুন...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "নির্বাচিত মডেল Crossclimb & Pinpoint সমাধান করে। এক্সটেনশন আপনার কী শেয়ার করে না।",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "মজাদার দৈনিক গেমের মাধ্যমে সংযোগ করুন",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "আপনার মন কর্মদিবসের জন্য প্রস্তুত করুন এবং ফলাফল তুলনা করুন। আপনার স্কোর ব্যক্তিগত যদি না আপনি তা শেয়ার করেন।",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "সংরক্ষণ করে গেমস এ ফিরে যান",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "AI সলভার কাজ করছে...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "আজ সমাপ্ত",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "সমাধান করা হয়েছে",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "AI মডেল কনফিগারেশন",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "AI প্রদানকারী",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "মডেল শনাক্তকারী",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "কাস্টম মডেল নাম",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "এন্ডপয়েন্ট URL",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API কী",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API কী",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API কী",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API কী",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API কী (ঐচ্ছিক)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "হোম",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "সেটিংস / অপশন",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "পরিসংখ্যান",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "থিম",
+    "description": "Theme nav link label"
+  },
+  "navDebug": {
+    "message": "ডিবাগ",
+    "description": "Debug nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "দৈনিক অগ্রগতি",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "সক্রিয় বোর্ড সমাধান করুন",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "LinkedIn গেমসে ফিরে যান",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "ড্যাশবোর্ড",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "গেম সলভার",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "আপনার কর্মক্ষমতা বিশ্লেষণ করুন, স্ট্রিকস রেকর্ড করুন, এবং দৈনিক সমাপ্ত পাজল পথ ট্রেস করুন।",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "সফলভাবে সম্পন্ন",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "অস্বীকৃতি: এটি একটি স্বাধীন, ওপেন-সোর্স শিক্ষামূলক প্রজেক্ট। এটি LinkedIn Corporation-এর সঙ্গে সংশ্লিষ্ট, স্পন্সরকৃত বা অনুমোদিত নয়। ‘LinkedIn’ হল LinkedIn Corporation-এর নিবন্ধিত ট্রেডমার্ক।",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "ক্রেডেনশিয়াল & মডেল",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "মডেল গাইড & তথ্য",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "কনেকশন স্ট্যাটাস",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "সক্রিয় সলভার:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "মডেল শনাক্তকারী:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "সেটিংস স্বয়ংক্রিয়ভাবে সংরক্ষিত হয়েছে!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "উন্নত ধাঁধা সমাধানের জন্য AI মডেল ইন্টিগ্রেশন এন্ডপয়েন্ট এবং ক্রেডেনশিয়াল কনফিগার করুন।",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "খরচে প্রায় শূন্যে চমৎকার পারফরম্যান্স। Crossclimb এবং Pinpoint দুর্দান্ত যুক্তি দিয়ে সমাধান করে। সুপারিশ: gemini-2.5-flash।",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "দ্রুত, প্রতিক্রিয়াশীল এবং সাধারণ জ্ঞান ক্ষেত্রে অত্যন্ত নির্ভরযোগ্য। সুপারিশ: gpt-4o-mini।",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "সর্বাধিক যুক্তি সক্ষমতা। জটিল শব্দ সংযোগ দক্ষভাবে হ্যান্ডেল করে। সুপারিশ: claude-3-5-haiku।",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Ollama বা LM Studio এর মতো লোকাল LLM-এ সংযুক্ত করুন। আপনার endpoint URL এবং কাস্টম মডেল নাম নির্দেশ করুন।",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "আরও তারিখ দেখান",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "কম তারিখ দেখান",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "AI দিয়ে সমাধান করুন"
+  },
+  "solveBtn_game": {
+    "message": "গেম সমাধান করুন"
+  },
+  "solveBtn_solving": {
+    "message": "সমাধান চলছে..."
+  },
+  "solveBtn_solved": {
+    "message": "সমাধান করা হয়েছে!"
+  },
+  "scoreClue": {
+    "message": "1 ক্লু"
+  },
+  "scoreClues": {
+    "message": "$1 ক্লু"
+  },
+  "scoreSeconds": {
+    "message": "$1স"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1ম $2স"
+  },
+  "markAsNotPlayed": {
+    "message": "খেলা হয়নি হিসেবে মার্ক করুন",
+    "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "সমাধান গতি / বিলম্ব",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "তাত্ক্ষণিক (সবচেয়ে দ্রুত)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "সাধারণ (মানক)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "স্টেলথ মোড (মানুষ-সদৃশ বিলম্ব)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "সমাধান গতি এবং টাইমিং",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "ইনস্ট্যান্ট মোড বোর্ড মিলিসেকেন্ডে শেষ করে। স্টেলথ মোড মানবসদৃশ আচরণ অনুকরণ করে (1–3 সেকেন্ড)।",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "হিন্ট পান",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "ডিফল্ট সলভার একশন",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "ফুল অটো-সল্ভ",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "শিক্ষামূলক হিন্ট মোড",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "ডিফল্ট সলভার মোড",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "ট্যাব ভিউ বা বোর্ড থেকে সলভার ট্রিগার করার সময় প্রধান অ্যাকশন নির্বাচন করুন।",
+    "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "শূন্য খরচ & পুরোপুরি লোকাল AI",
+    "description": "Chrome Built-in AI guide title"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "ব্রাউজারে আপনার ডিভাইসে সম্পূর্ণ লোকালি চলে। নেটওয়ার্ক ল্যটেন্সি শূন্য এবং Gemini Nano-র সাথে 100% বিনামূল্যে।",
+    "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "গেম ডিবাগার & ডেভ টুলস",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "অফলাইন",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "লাইভ",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "ডিটেক্ট করা গেম",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "কিছুই পাওয়া যায়নি",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "টার্গেট URL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "কোন সক্রিয় ট্যাব নেই",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML কপি করা হয়েছে!",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "কপি করুন <main> HTML",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "লগ কপি করা হয়েছে!",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "কপি কনসোল লগ",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "দুটি কপি করা হয়েছে!",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "দুইটিই কপি করুন (HTML & লগ)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugRegistryCopied": {
+    "message": "রেজিস্ট্রি JSON কপি করা হয়েছে!",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "আজকের রেজিস্ট্রি JSON কপি করুন",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
+  "debugCopyRegistryShort": {
+    "message": "JSON কপি",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "উত্তর জমা করুন",
+    "description": "Button to submit active board answers to GitHub"
+  },
+  "debugDomPreview": {
+    "message": "DOM উপাদান প্রিভিউ",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[ ... [কُل অক্ষর: $1] ... ]",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "সম্পূর্ণ <main> HTML কপি করুন",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "কোনো সক্রিয় <main> ট্যাগ ধরা পড়েনি। নিশ্চিত করুন আপনি LinkedIn গেম স্ক্রীনে আছেন।",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "কনসোল আউটপুট",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 ইভেন্ট",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "লগ রিফ্রেশ করুন",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "লগ ক্লিয়ার করুন",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "এখনও কোনো লগ ধারণ করা হয়নি। ইভেন্ট ট্রিগার করতে গেম স্ক্রিনে কাজ করুন।",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "console.log, console.warn, এবং console.error শুনছে...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "LinkedIn Game পেজের সাথে সংযোগ আরম্ভ হচ্ছে...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "গেম ডেটা পুনরুদ্ধার ব্যর্থ হয়েছে।",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "এই ফিচারটি কেবল linkedin.com/games-এ উপলব্ধ",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "সক্রিয় ট্যাবে অ্যাক্সেস করা যাচ্ছে না। এক্সটেনশন অনুমতিগুলি চেক করুন।",
+    "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "দৈনিক রিমাইন্ডার",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "দৈনিক রিমাইন্ডার সক্ষম করুন",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "LinkedIn গেমস উপলব্ধ হলে নোটিফিকেশন পান",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "রিমাইন্ডার সময়",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "কখন দৈনিক পাজল রিমাইন্ডার পাবেন তা কাস্টমাইজ করুন",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "LinkedIn গেমস দৈনিক রিমাইন্ডার",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "আপনার দৈনিক পাজল প্রস্তুত! খেলতে ক্লিক করুন।",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "এখন খেলুন",
+    "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "সক্রিয় গেম সমাধান করুন"
+  },
+  "commandGetSingleHint": {
+    "message": "বর্তমান গেমের জন্য হিন্ট নিন"
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "অটোমেটিক সাইডপ্যানেল খোলা"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "LinkedIn গেমস পরিদর্শন করলে স্বয়ংক্রিয়ভাবে সলভার প্যানেল খুলুন"
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "অটো-খোলা সাইডপ্যানেল"
+  },
+  "permissionDialogTitle": {
+    "message": "এক্সটেনশন অনুমতিগুলি"
+  },
+  "permissionDialogDesc": {
+    "message": "এই এক্সটেনশনের LinkedIn গেমস বিষয়বস্তুকে অ্যাক্সেস করতে অনুমতি প্রয়োজন"
+  },
+  "permissionDialogButton": {
+    "message": "অনুমতি দিন"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "Queens পাজেল সমাধান করুন"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "Sudoku পাজেল সমাধান করুন"
+  },
+  "omniboxSuggestionStats": {
+    "message": "গেম পরিসংখ্যান দেখুন"
+  },
+  "diagnosticsEngine": {
+    "message": "ডায়াগনস্টিক ইঞ্জিন"
+  },
+  "liveInspected": {
+    "message": "লাইভ ইন্সপেক্ট"
+  },
+  "offline": {
+    "message": "অফলাইন"
+  },
+  "inspectedTab": {
+    "message": "ইনস্পেক্ট করা ট্যাব"
+  },
+  "liveMatrixGridInspector": {
+    "message": "লাইভ ম্যাট্রিক্স গ্রিড ইনস্পেক্টর"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "LinkedIn Games পৃষ্ঠার জন্য অপেক্ষা করছি..."
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "পাজল ডেটা দেখতে linkedin.com/games-এ নেভিগেট করুন"
+  },
+  "telemetryLogsStreamer": {
+    "message": "টেলিমেট্রি লগ স্ট্রিমার"
+  },
+  "searchLogsPlaceholder": {
+    "message": "লগ সার্চ করুন..."
+  },
+  "allTypes": {
+    "message": "সকল টাইপ"
+  },
+  "logsType": {
+    "message": "লগ"
+  },
+  "infoType": {
+    "message": "তথ্য"
+  },
+  "warnsType": {
+    "message": "সতর্কতা"
+  },
+  "errorsType": {
+    "message": "ত্রুটি"
+  },
+  "selectTypePlaceholder": {
+    "message": "লগ টাইপ নির্বাচন করুন"
+  },
+  "consoleStreamEmpty": {
+    "message": "কোনো লগ রেকর্ড নেই"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "টেলিমেট্রি ক্যাপচার করার জন্য সমাধান শুরু করুন"
+  },
+  "subscribedToStorageSession": {
+    "message": "স্টোরেজ সেশনে সাবস্ক্রাইব করা হয়েছে"
+  },
+  "parsingGameGridCells": {
+    "message": "গেম গ্রিড সেল বিশ্লেষণ করা হচ্ছে"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "matchesLabel": {
+    "message": "ম্যাচেস"
+  },
+  "copiedLabel": {
+    "message": "কপি করা হয়েছে!"
+  },
+  "copyLogsTooltip": {
+    "message": "ক্লিপবোর্ডে লগ কপি করুন"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "লগ স্পেস ক্লিয়ার করুন"
+  },
+  "contextMenuSolve": {
+    "message": "LinkedIn Games Solver দিয়ে সমাধান করুন"
+  },
+  "contextMenuHint": {
+    "message": "এই পাজেলের জন্য হিন্ট নিন"
+  },
+  "contextMenuViewResults": {
+    "message": "সমাধানের ফলাফল দেখুন"
+  },
+  "labelTelemetryTitle": {
+    "message": "অননুমোদিত টেলিমেট্রি & অ্যানালিটিক্স",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "অ্যানালিটিক্স সংগ্রহ সক্ষম করুন",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "অজানা ব্যবহার তথ্য শেয়ার করে এক্সটেনশন উন্নত করতে সাহায্য করুন",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "notAvailable": {
+    "message": "প্রযোজ্য নয়"
+  }
+}

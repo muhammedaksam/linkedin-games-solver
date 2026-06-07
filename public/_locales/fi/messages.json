@@ -1,0 +1,772 @@
+{
+  "extensionName": {
+    "message": "LinkedIn-pelien ratkoja",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Apuri LinkedIn-peleihin. Ratkoo päivittäiset pulmat automaattisesti (Queens, Sudoku, Pinpoint, Crossclimb) ja seuraa putkia sekä tarjoaa analytiikkaa.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn-pelit",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Ratkaise aktiiviset pelilaudat yhdellä klikkauksella",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "Vaihda $1-tilaan",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome-välilehden integrointi vaaditaan.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Aktiivista välilehteä ei löytynyt.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Siirtyminen kohteeseen $1 epäonnistui.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Yhteys epäonnistui.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Ratkaisijan suorittamisessa ilmeni ongelma.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Ratkaisija käynnistyi.",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Ratkaiseminen...",
+    "description": "Overlay label during solver run"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "desc_patches": {
+    "message": "Koota paloista"
+  },
+  "desc_zip": {
+    "message": "Täydennä polku"
+  },
+  "desc_sudoku": {
+    "message": "Klassinen peli, pienoisessa"
+  },
+  "desc_tango": {
+    "message": "Harmonisoida ruudukko"
+  },
+  "desc_queens": {
+    "message": "Kruunaa jokainen alue"
+  },
+  "desc_crossclimb": {
+    "message": "Avaa tietokilta"
+  },
+  "desc_pinpoint": {
+    "message": "Arvaile kategoria"
+  },
+  "titleSolve": {
+    "message": "Ratkaise $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Valmis tänään! Siirry kuin $1:een",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Avaa $1 ratkaistavaksi",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Täydellinen päivä! Kaikki $1 peliä suoritettu! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Päivittäinen edistyminen: $1 / $2 peliä suoritettu tänään",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Historia & Tilastot",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Täydellinen LinkedIn Games -ratkaisuhistoriasi ja tilastot",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Yhteensä ratkaistu",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Pelit ratkaistu kaikilta päivämääriltä",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Keskiarvoaika",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Kaikkien kirjattujen loppuistusten perusteella",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Aktiivinen putki",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Peräkkäiset aktiiviset päivät",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 päivää",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "Henkilökohtaiset ennätykset",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Mitään ratkaisutietoja ei ole tallennettu vielä.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Ratkaisun historia",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Aktiivisuuskalenteri",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Poista suodatin",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModel": {
+    "message": "Malli",
+    "description": "Label for the settings model selection dropdown"
+  },
+  "settingModelSelect": {
+    "message": "Valitse malli",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "Mukautettu mallin nimi...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "Mukautetun mallin nimi",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "esim. llama3, mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Syötä mukautettu tunniste...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "Päätepisteen URL",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "esim. http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Gemini API-avain",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "OpenAI API-avain",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Anthropic API-avain",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "DeepSeek API-avain",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "API-avain (valinnainen)",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Voimassa olevat tunnistetiedot...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Syötä tunnistetietojen avain...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "Valittu malli ratkaisee Crossclambin ja Pinpointin. Laajennus ei koskaan jaa avaintasi.",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Yhdistä hauskoilla päivittäisillä peleillä",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Valmistele mielesi työpäivälle ja vertaa tuloksia. Pisteet ovat yksityisiä, ellei jaa niitä.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Tallenna ja palaa peleihin",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "AI-ratkaisija työskentelee...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Valmis tänään",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Ratkaistu",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "AI-mallin kokoonpano",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "AI-palveluntarjoaja",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "Mallin tunniste",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "Mukautetun mallin nimi",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "Päätepisteen URL",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API-AVAIN",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API-AVAIN",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API-AVAIN",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API-AVAIN",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API-AVAIN (VALINNAINEN)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Koti",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "Asetukset / Vaihtoehdot",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "Tilastot",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Teema",
+    "description": "Theme nav link label"
+  },
+  "navDebug": {
+    "message": "Virheenkorjaus",
+    "description": "Debug nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Päivittäinen edistyminen",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Ratkaise aktiivinen alusta",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "Palaa LinkedIn-peleihin",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Kojelauta",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Pelien ratkaisija",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Analysoi suoritusmittareitasi, kirjaa putket ja seuraa päivittäin ratkaistujen pulmapolkujen etenemistä.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Suoritettu onnistuneesti",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Vastuuvapauslauseke: Tämä on itsenäinen, avoimen lähdekoodin opetushanke. Sillä ei ole yhteyttä LinkedIn Corporationiin, eikä se ole tämän sponsoroima tai hyväksymä. ”LinkedIn” on LinkedIn Corporationin rekisteröity tavaramerkki.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Tunnistetiedot ja mallit",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Mallin opas ja tiedot",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Yhteyden tila",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Aktiivinen ratkaisija:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Mallin tunniste:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Asetukset tallennettu automaattisesti!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Määritä AI-mallin integrointiportaalit ja tunnistetiedot edistyneelle pulmien ratkaisun päättelylle.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Erinomainen suorituskyky lähes nollakustannuksella. Ratkaisee Crossclambin ja Pinpointin erinomaisella logiikalla. Suositeltu oletus: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Nopea, reagoiva ja erittäin luotettava yleisen tiedon mallien kanssa. Suositeltu oletus: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Suurin päättely kapasiteetti. Käsittelee hyvin monimutkaisia ​​sanayhtymiä moitteettomasti. Suositeltu oletus: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Yhdistä paikallisiin LLM-kehyksiin, kuten Ollama tai LM Studio. Osoita päätepiste-URL (esim. http://localhost:11434/v1) ja mukautettu mallin nimi.",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "Näytä lisää päivämääriä",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "Näytä vähemmän",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "Ratkaise tekoälyllä"
+  },
+  "solveBtn_game": {
+    "message": "Ratkaise peli"
+  },
+  "solveBtn_solving": {
+    "message": "Ratkaiseminen..."
+  },
+  "solveBtn_solved": {
+    "message": "Ratkaistu!"
+  },
+  "scoreClue": {
+    "message": "1 vihje"
+  },
+  "scoreClues": {
+    "message": "$1 vihjettä"
+  },
+  "markAsNotPlayed": {
+    "message": "Merkitse pelaamattomaksi",
+    "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Ratkaisun nopeus / viive",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Välitön (nopein)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Normaali (standardi)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Salaa-tila (ihmiset kaltaiset viiveet)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "RATKAISUN NOPEUS JA TAHTIAIKA",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Välitön tila täydentää levyn millisekunteissa. Salaa-tila jäljittelee ihmisten käyttäytymistä satunnaisilla aikaväleillä (1-3 sekuntia) sarjojen turvaamiseksi automatisoitua havaitsemista vastaan.",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Hanki vihje",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Ratkaisijan oletustoiminto",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Täysin automaattinen ratkaisu",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Opetuksellinen vihjetila",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "RATKAISIJAN OLETUSTILA",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Valitse ensisijainen toiminto ratkaisijaa käynnistettäessä välilehden näkymästä tai alustoista. Täysi ratkaisu lopettaa pelin; Vihjetila asettaa yhden oikean kohteen.",
+    "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Nolla kustannukset ja täysin paikallinen tekoäly",
+    "description": "Chrome Built-in AI guide title"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Toimii kokonaan paikallisesti laitteellasi selaimen sisällä. Nolla verkkohidasteen ja 100% ilmainen Gemini Nanon kanssa.",
+    "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "Pelien virheenkorjain ja kehitystyökalut",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugDetectedGame": {
+    "message": "Havaittu peli",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "Ei havaitsemista",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "Kohde-URL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "Ei aktiivista välilehteä",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML kopioitu!",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "Kopioi <main> HTML",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "Lokitiedot kopioitu!",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "Kopioi konsolin lokit",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "Molemmat kopioitu!",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "Kopioi molemmat (HTML ja lokit)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugRegistryCopied": {
+    "message": "Rekisteri JSON kopioitu!",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "Kopioi tämän päivän rekisteri JSON",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Kopioi JSON",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "Lähetä vastaus",
+    "description": "Button to submit active board answers to GitHub"
+  },
+  "debugDomPreview": {
+    "message": "DOM-elementin esikatselu",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[ ... [lyhyytetty, yhteensä merkkejä: $1] ... ]",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Kopioi täydellinen <main> HTML",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Yhtään aktiivista <main>-tunnisteita ei tallennettu. Varmista, että olet LinkedIn-pelisivulla.",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "Konsolin tuloste",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 tapahtumaa",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Päivitä lokit",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Tyhjennä lokit",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Mitään lokeja ei ole tallennettu vielä. Suorita peliruudussa olevia toimintoja konsolin tapahtumien käynnistämiseksi.",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "Kuunnellaan console.log-, console.warn- ja console.error-tapahtumia...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "LinkedIn-pelisivun yhteys alustetaan...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Pelitietoja ei voitu noutaa.",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Aktiivinen välilehti ei ole LinkedIn-pelusivulla. Siirry peliin tiedot ottaa talteen.",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Aktiivista välilehteä ei voitu tunnistaa.",
+    "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "PÄIVITTÄISET MUISTUTUKSET JA SARJAN SUOJAUS",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Ota päivittäiset muistutukset käyttöön",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Varoita ennen kuin tämän päivän sarja vanhenee.",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Muistutuksen aika",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Valitse paikallinen aika ratkaisemattomien pelien tarkistamiseksi.",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Sarjan suojaus 🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Älä menetä ratkaisusarjaasi! Et ole vielä ratkaissut tämän päivän LinkedIn-pelejä.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Ratkaise nyt!",
+    "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Ratkaise aktiivinen LinkedIn-peli automaattisesti."
+  },
+  "commandGetSingleHint": {
+    "message": "Anna yksivaiheinen vihje tai tarkista virheet."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Auto-avaa sivupalkki peleissä"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Avaa ratkaisijan sivupaneeli automaattisesti LinkedIn Games -sivustolla käynnissä."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "AUTO-AVAA RATKAISIJAN SIVUPALKKI"
+  },
+  "permissionDialogTitle": {
+    "message": "Myönnä sivun käyttöoikeus"
+  },
+  "permissionDialogDesc": {
+    "message": "Aktiivisten pelilaudan havaitsemiseksi ja pulmien ratkaisemiseksi laajennus tarvitsee oikeuden toimia LinkedIn Games -sivuilla. Myönnä käyttöoikeus napsauttamalla alla."
+  },
+  "permissionDialogButton": {
+    "message": "Myönnä käyttöoikeus"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Pelaa ja ratkaise kuningattaret tänään!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Avaa mini-Sudoku-ratkaisija"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Avaa sarjat ja suorituskyvyn kojelauta"
+  },
+  "diagnosticsEngine": {
+    "message": "Diagnostiikkamoottori"
+  },
+  "liveInspected": {
+    "message": "Tarkastettu live"
+  },
+  "inspectedTab": {
+    "message": "Tarkastettu välilehti:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Live-matriisiruudukon tarkastaja"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Odotetaan LinkedIn-pelusivua"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Siirry mihin tahansa LinkedIn-pelilaudan välilehteen (Queens, Sudoku, Tango, Pinpoint) rajoituskeskuksien, kennosolujen tilojen ja reaktiivisten rakenteiden sieppaamista."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Telemetrian lokien suoratoisto"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Hae lokeista..."
+  },
+  "allTypes": {
+    "message": "KAIKKI TYYPIT"
+  },
+  "logsType": {
+    "message": "LOKIT"
+  },
+  "infoType": {
+    "message": "TIETO"
+  },
+  "warnsType": {
+    "message": "VAROITUKSET"
+  },
+  "errorsType": {
+    "message": "VIRHEET"
+  },
+  "selectTypePlaceholder": {
+    "message": "Valitse tyyppi"
+  },
+  "consoleStreamEmpty": {
+    "message": "Konsolin virta tyhjä"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Mitään suodattimiin vastaavia lokitulosteita ei havaittu. Suorita vaiheita LinkedIn Games -ratkaisimen sisällä virta lokeille."
+  },
+  "subscribedToStorageSession": {
+    "message": "Tilattu storage.session -virtaan"
+  },
+  "parsingGameGridCells": {
+    "message": "Pelilaudan ruudukon solujen jäsennys... Varmista, että laudalla on näkyviä aktiivisia ruudukon lohkoja."
+  },
+  "matchesLabel": {
+    "message": "osumaa"
+  },
+  "copiedLabel": {
+    "message": "Kopioitu!"
+  },
+  "copyLogsTooltip": {
+    "message": "Kopioi lokit"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Tyhjennä lokitila"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Ratkaise aktiivinen LinkedIn-peli"
+  },
+  "contextMenuHint": {
+    "message": "💡 Hanki vihje"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Näytä tulokset"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRIA JA YKSITYISYYS",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "Lähetä anonyymiä telemetriaa",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "Auta parantamaan ratkaisijaa jakamalla anonyymiä suorituskyvyn ja käytön mittareita.",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "Bonus"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "debugStatusOffline": {
+    "message": "Offline"
+  },
+  "debugStatusLive": {
+    "message": "Elää"
+  },
+  "offline": {
+    "message": "Offline"
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "Ei sovellettavissa"
+  }
+}

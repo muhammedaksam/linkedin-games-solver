@@ -1,0 +1,646 @@
+{
+  "extensionName": {
+    "message": "LinkedIn ഗെയിംസ് സോൾവർ",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn Games നുള്ള ഒരു ഹെൽപ്പർ. ദിവസേനയുള്ള പസിലുകൾ (Queens, Sudoku, Pinpoint, Crossclimb) സ്വയം പരിഹരിക്കുക, സ്റ്റ്രീക്കുകളും വിശകലനവും സഹിതം.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn ഗെയിംസ്",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "സജീവ ബോർഡുകൾ ഒരു ക്ലിക്കിൽ പരിഹരിക്കുക",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome ടാബ് ഇന്റഗ്രേഷൻ ആവശ്യമാണ്.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "സജീവ ടാബ് കണ്ടെത്താനായില്ല.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "$1 ലേക്ക് പോകാൻ കഴിഞ്ഞില്ല.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "കണക്ഷൻ പരാജയപ്പെട്ടു.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "സോൾവർ പ്രവർത്തിപ്പിക്കുന്നതിനിടെ ഒരു പ്രശ്നം ഉണ്ടായി.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "സോൾവർ ആരംഭിച്ചു.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "ചരിത്രം & സ്റ്റാറ്റിസ്റ്റിക്സ്",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "നിങ്ങളുടെ LinkedIn Games പരിഹാര ചരിത്രവും സ്റ്റാറ്റിസ്റ്റിക്സും",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "മൊത്തം പരിഹരിച്ചത്",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "എല്ലാ തിയ്യതികളിലുമുള്ള പരിഹരിച്ച ഗെയിമുകൾ",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "ശരാശരി സമയം",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "എല്ലാ രേഖകളിലുമായി",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "സജീവ സ്ട്രീക്ക്",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "സജീവ ദിനങ്ങൾ",
+    "description": "Description for the active streak card"
+  },
+  "dashboardDescText": {
+    "message": "നിങ്ങളുടെ പ്രകടന സൂചകങ്ങൾ വിശകലനം ചെയ്യുക, തുടർച്ചകൾ രേഖപ്പെടുത്തുക, കൂടാതെ ദിവസേന പൂർത്തിയാക്കിയ പസിലുകളുടെ വഴികൾ പിന്തുടരുക.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "ഡിസ്ക്ലെയിമർ: ഇത് സ്വതന്ത്രമായ, ഓപ്പൺ സോഴ്സ് വിദ്യാഭ്യാസ പ്രോജക്ട് ആണ്. ഇത് LinkedIn Corporation-നുമായി ബന്ധപ്പെട്ടതല്ല, അതിന്റെ സ്പോൺസർഷിപ്പും അംഗീകാരവും ഇല്ല. ‘LinkedIn’ LinkedIn Corporation-ന്റെ രജിസ്റ്റേർഡ് ട്രേഡ് മാർക്കാണ്.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "switchThemeTitle": {
+    "message": "$1 മോഡിലേക്ക് മാറുക"
+  },
+  "solvingStatus": {
+    "message": "പരിഹരിക്കുന്നു..."
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "queens": {
+    "message": "Queens"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "ബോണസ്"
+  },
+  "desc_patches": {
+    "message": "ഇത് ഒന്നിച്ച് ചേര്ക്കുക"
+  },
+  "desc_zip": {
+    "message": "പാത പൂർത്തിയാക്കുക"
+  },
+  "desc_sudoku": {
+    "message": "ക്ലാസിക് ഗെയിം, മിനി രൂപത്തിൽ"
+  },
+  "desc_tango": {
+    "message": "ഗ്രിഡ് സമന്വയിപ്പിക്കുക"
+  },
+  "desc_queens": {
+    "message": "പ്രതീകമായി ഓരോ മേഖലയിലും മുടി കിരീടം ഇടുക"
+  },
+  "desc_crossclimb": {
+    "message": "ട്രിവിയ ലാഡർ തുറക്കുക"
+  },
+  "desc_pinpoint": {
+    "message": "വിഭാഗം അനുമാനിക്കുക"
+  },
+  "titleSolve": {
+    "message": "$1 പരിഹരിക്കുക"
+  },
+  "titleCompleted": {
+    "message": "ഇന്ന് പൂർത്തിയായി! $1-ലേക്ക് പോകാൻ ക്ലിക്ക് ചെയ്യുക"
+  },
+  "titleOpen": {
+    "message": "$1 തുറക്കുക പ്രശ്നം പരിഹരിക്കാൻ"
+  },
+  "perfectDay": {
+    "message": "ശ്രേഷ്ഠമായ ദിവസം! എല്ലാ $1 കളികളും പൂർത്തിയായി! 🎉"
+  },
+  "dailyProgress": {
+    "message": "ദിവസത്തെ പുരോഗതി: $1 of $2 ഗെയിമുകൾ ഇന്ന് പൂർത്തിയാക്കി"
+  },
+  "statStreakDays": {
+    "message": "$1 ദിവസം"
+  },
+  "personalBests": {
+    "message": "വ്യക്തിഗത മികച്ചത്"
+  },
+  "noRecordsYet": {
+    "message": "ഇന്നുവരെ പരിഹാര രേഖകൾ രേഖപ്പെടുത്തിയിട്ടില്ല."
+  },
+  "solvingHistory": {
+    "message": "ചരിത്രം പരിഹരിക്കൽ"
+  },
+  "activityCalendar": {
+    "message": "പ്രവൃത്തി കലണ്ടർ"
+  },
+  "clearFilter": {
+    "message": "സ്പഷ്ടമായ ഫിൽട്ടർ"
+  },
+  "settingModel": {
+    "message": "മോഡൽ"
+  },
+  "settingModelSelect": {
+    "message": "മോഡൽ തിരഞ്ഞെടുക്കുക"
+  },
+  "settingModelCustomOption": {
+    "message": "കസ്റ്റം മോഡൽ നാമം..."
+  },
+  "settingModelCustomLabel": {
+    "message": "കസ്റ്റം മോഡൽ നാമം"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "ഉദാഹരണത്തിന്: ല്ലാമ 3, മിസ്ട്രാൽ"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "കസ്റ്റം തിരിച്ചറിയൽ നമ്പർ നൽകുക..."
+  },
+  "settingEndpointLabel": {
+    "message": "എൻഡ്‌പോയിന്റ് URL"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "ഉദാഹരണം: http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "ജെമിനി എപി ഐ കീ"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "ഓപ്പൺഎഐ എപി ഐ കീ"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "ആൻത്രോപിക് എപി ഐ കീ"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "ഡീപ്‌സീക് എപി ഐ കീ"
+  },
+  "settingApiKeyCustom": {
+    "message": "API കീ (ഐച്ഛികം)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "ഐച്ഛിക ക്രെഡൻഷ്യലുകൾ..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "പ്രവേശന ക്രെഡൻഷ്യൽ കീ..."
+  },
+  "settingApiKeyNotice": {
+    "message": "തിരഞ്ഞെടുക്കപ്പെട്ട മോഡൽ ക്രോസ്‌ക്ലൈംബ് & പിന്‍പോയിന്റ് പരിഹരിക്കുന്നു. ഈ വിപുലീകരണം നിങ്ങളുടെ കീ പങ്കിടുന്നില്ല."
+  },
+  "popupCardTitle": {
+    "message": "സന്തോഷകരമായ, ദിവസേന കളികളിലൂടെ ബന്ധപ്പെടുക"
+  },
+  "popupCardDesc": {
+    "message": "നിങ്ങളുടെ മനസ്സ് ജോലി ദിനത്തിനായി തയ്യാറാക്കുക, ഫലങ്ങൾ താരതമ്യം ചെയ്യുക. നിങ്ങളുടെ സ്കോറുകൾ നിങ്ങൾ പങ്കുവെച്ചില്ലെങ്കിൽ സ്വകാര്യമാണ്."
+  },
+  "saveAndBack": {
+    "message": "സേവ് & ഗെയിമിലേക്ക് മടങ്ങുക"
+  },
+  "solvingWorking": {
+    "message": "എഐ സോൾവർ പ്രവർത്തിക്കുന്നു..."
+  },
+  "completedToday": {
+    "message": "ഇന്ന് പൂർത്തിയായി"
+  },
+  "solvedCountSuffix": {
+    "message": "പരിഹരിച്ചിരിക്കുന്നു"
+  },
+  "settingsHeaderTitle": {
+    "message": "എഐ മോഡൽ കോൺഫിഗറേഷൻ"
+  },
+  "labelAiProvider": {
+    "message": "എഐ പ്രൊവൈഡർ"
+  },
+  "labelModelIdentifier": {
+    "message": "മോഡൽ ഐഡന്റിഫയർ"
+  },
+  "labelCustomModel": {
+    "message": "കസ്റ്റം മോഡൽ നാമം"
+  },
+  "labelEndpointUrl": {
+    "message": "എൻഡ്‌പോയിന്റ് യു ആർ എൽ"
+  },
+  "labelGeminiKey": {
+    "message": "ജെമിനി എപി ഐ കീ"
+  },
+  "labelOpenAiKey": {
+    "message": "ഓപ്പൺഎഐ എപി ഐ കീ"
+  },
+  "labelAnthropicKey": {
+    "message": "ആൻത്രോപിക് എപി ഐ കീ"
+  },
+  "labelDeepSeekKey": {
+    "message": "ഡീപ്സീക് എപി ഐ കീ"
+  },
+  "labelCustomKey": {
+    "message": "എപി ഐ കീ (ഐച്ഛികം)"
+  },
+  "navHome": {
+    "message": "വീട്"
+  },
+  "navAiConfig": {
+    "message": "സജ്ജീകരണങ്ങൾ / ഓപ്ഷനുകൾ"
+  },
+  "navStats": {
+    "message": "സംഖ്യാശാസ്ത്രം"
+  },
+  "navTheme": {
+    "message": "തീം"
+  },
+  "navDebug": {
+    "message": "ഡീബഗ്"
+  },
+  "dailyProgressLabel": {
+    "message": "ദൈനംദിന പുരോഗതി"
+  },
+  "solveActiveBoard": {
+    "message": "സോൾവ് ആക്ടീവ് ബോർഡ്"
+  },
+  "backToGames": {
+    "message": "ലിങ്ക്ഡ്ഇൻ ഗെയിംസിലേക്ക് മടങ്ങുന്നു"
+  },
+  "dashboardLabel": {
+    "message": "ഡാഷ്ബോർഡ്"
+  },
+  "gamesSolverTitle": {
+    "message": "ഗെയിംസ് സോൾവർ"
+  },
+  "completedSuccessfully": {
+    "message": "വിജയകരമായി പൂർത്തിയായി"
+  },
+  "settingsCredentialsTitle": {
+    "message": "പ്രമാണങ്ങൾ & മോഡലുകൾ"
+  },
+  "settingsModelGuideTitle": {
+    "message": "മോഡൽ ഗൈഡ് & വിവരങ്ങൾ"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "കണക്ഷൻ നില"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "സജീവ പരിഹാരകൻ:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "മോഡൽ തിരിച്ചറിയുന്നവ:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "സജ്ജീകരണങ്ങൾ സ്വയം സംരക്ഷിക്കപ്പെട്ടു!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "അവസാന പസൽ-പരിഹാര ചിന്തനത്തിനായി എഐ മോഡൽ ഇന്റഗ്രേഷൻ എന്റ്പോയിന്റുകളും ക്രെഡൻഷ്യലുകളും ക്രമീകരിക്കുക."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "ശ്രേഷ്ഠമായ പ്രകടനം ഏകദേശം ശൂന്യമായ ചെലവിൽ. മികച്ച തർക്കം ഉപയോഗിച്ച് Crossclimbയും Pinpointയും പരിഹരിക്കുന്നു. ശുപാർശ ചെയ്യുന്ന ഡിഫോൾട്ട്: gemini-2.5-flash."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "വേഗതയുള്ള, പ്രതികരണശീലമുള്ള, പൊതുവായ അറിവിന്റെ മാതൃകകളുമായി വളരെ വിശ്വസനീയമായത്. ശുപാർശ ചെയ്യുന്ന ഡിഫോൾട്ട്: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "മാക്സിമം തർക്ക ശേഷി. വളരെ സങ്കീർണ്ണമായ വാക്കുകളുടെ ബന്ധങ്ങൾ പൂർണ്ണമായും കൈകാര്യം ചെയ്യുന്നു. ശുപാർശ ചെയ്യപ്പെടുന്ന ഡിഫോൾട്ട്: ക്ലോഡ്-3-5-ഹൈക്കു."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "ഓല്ലാമ അല്ലെങ്കിൽ LM സ്റ്റുഡിയോ പോലുള്ള പ്രാദേശിക LLM ഫ്രെയിംവർക്കുകളുമായി ബന്ധിപ്പിക്കുക. നിങ്ങളുടെ എൻഡ്‌പോയിന്റ് URL (ഉദാഹരണത്തിന്, http://localhost:11434/v1) மற்றும் ഇഷ്ടാനുസൃത മോഡൽ നാമം സൂചിപ്പിക്കുക."
+  },
+  "showMoreDates": {
+    "message": "കൂടുതൽ തീയതികൾ കാണിക്കുക"
+  },
+  "showLessDates": {
+    "message": "കുറച്ച് കുറിക്കുക"
+  },
+  "solveBtn_withAi": {
+    "message": "എഐയുമായി പരിഹരിക്കുക"
+  },
+  "solveBtn_game": {
+    "message": "ഗെയിം പരിഹരിക്കുക"
+  },
+  "solveBtn_solving": {
+    "message": "പരിഹരിക്കുന്നു..."
+  },
+  "solveBtn_solved": {
+    "message": "പരിഹരിച്ചിരിക്കുന്നു!"
+  },
+  "scoreClue": {
+    "message": "1 സൂചന"
+  },
+  "scoreClues": {
+    "message": "$1 സൂചനകൾ"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "markAsNotPlayed": {
+    "message": "അവലംബമായി അടയാളപ്പെടുത്തുക"
+  },
+  "settingSolveSpeed": {
+    "message": "വേഗം / വൈകിയതിന്റെ പരിഹാരം"
+  },
+  "solveSpeed_instant": {
+    "message": "തത്സമയം (വേഗത്തിൽ)"
+  },
+  "solveSpeed_normal": {
+    "message": "സാധാരണ (സ്റ്റാൻഡേർഡ്)"
+  },
+  "solveSpeed_stealth": {
+    "message": "സ്റ്റൽത്ത് മോഡ് (മനുഷ്യസദൃശമായ വൈകിയുള്ളതുകൾ)"
+  },
+  "labelSolveSpeed": {
+    "message": "പരിഹാരത്തിന്റെ വേഗവും പെയ്സിംഗും"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "ഇൻസ്റ്റന്റ് മോഡ് ബോർഡിനെ മില്ലിസെക്കൻഡുകളിൽ പൂർത്തിയാക്കുന്നു. സ്റ്റൽത്ത് മോഡ് ഓട്ടോമേറ്റഡ് ഡിറ്റക്ഷനോട് എതിരായ സ്ട്രീക്കുകൾ ഉറപ്പാക്കാൻ 1–3 സെക്കൻഡ് വ്യത്യാസത്തിൽ മനുഷ്യന്റെ പെരുമാറ്റത്തെ അനുകരിക്കുന്നു."
+  },
+  "solveBtn_hint": {
+    "message": "സൂചന നേടുക"
+  },
+  "settingDefaultSolveMode": {
+    "message": "ഡിഫോൾട്ട് സോൾവർ പ്രവർത്തനം"
+  },
+  "solveMode_full": {
+    "message": "പൂർണ്ണ ഓട്ടോ-പരിഹാരം"
+  },
+  "solveMode_hint": {
+    "message": "ശിക്ഷണ സൂചന മോഡ്"
+  },
+  "labelDefaultSolveMode": {
+    "message": "ഡിഫോൾട്ട് സോൾവർ മോഡ്"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "ടാബ് കാഴ്ചയിലോ ബോർഡുകളിലോ നിന്ന് സോൾവർ പ്രേരിപ്പിക്കുമ്പോൾ പ്രാഥമിക പ്രവർത്തനം തിരഞ്ഞെടുക്കുക. ഫുൾ സോൾവ് ഗെയിം പൂർത്തിയാക്കുന്നു; ഹിന്റ് മോഡ് ഒരു ശരിയായ ഇനം വയ്ക്കുന്നു."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "സീറോ കോസ്റ്റ് & പൂര്‍ണമായും പ്രാദേശികമായ എഐ"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "നിങ്ങളുടെ ഉപകരണത്തിൽ ബ്രൗസർ അകത്ത് പൂർണ്ണമായും പ്രാദേശികമായി പ്രവർത്തിക്കുന്നു. ശൂന്യമായ നെറ്റ്‌വർക്കിന്റെ വൈകീട്ട്, ജെമിനി നാനോയുമായി 100% സൗജന്യമാണ്."
+  },
+  "debugHeaderTitle": {
+    "message": "ഗെയിം ഡിബഗർ & ഡെവ് ടൂൾസ്"
+  },
+  "debugStatusOffline": {
+    "message": "ഓഫ്‌ലൈൻ"
+  },
+  "debugStatusLive": {
+    "message": "ജീവിക്കുക"
+  },
+  "debugDetectedGame": {
+    "message": "ശേഖരിച്ച ഗെയിം"
+  },
+  "debugNoneDetected": {
+    "message": "ഏതും കണ്ടെത്തിയില്ല"
+  },
+  "debugTargetUrl": {
+    "message": "ലക്ഷ്യ URL"
+  },
+  "debugNoActiveTab": {
+    "message": "സജീവമായ ടാബ് ഇല്ല"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML പകർത്തി!"
+  },
+  "debugCopyHtml": {
+    "message": "കോപ്പി <main> HTML"
+  },
+  "debugLogsCopied": {
+    "message": "ലോഗുകൾ പകർന്നെടുത്തു!"
+  },
+  "debugCopyLogs": {
+    "message": "കോപ്പി കൺസോൾ ലോഗുകൾ"
+  },
+  "debugBothCopied": {
+    "message": "ഇരുവരും പകർന്നത്!"
+  },
+  "debugCopyBoth": {
+    "message": "എല്ലാം (HTML & ലോഗുകൾ) പകർപ്പിക്കുക"
+  },
+  "debugRegistryCopied": {
+    "message": "റെജിസ്ട്രി ജെഎസ്ഒഎൻ കോപ്പി ചെയ്തു!"
+  },
+  "debugCopyRegistry": {
+    "message": "ഇന്നത്തെ രജിസ്ട്രി ജെസൺ പകർപ്പ് ചെയ്യുക"
+  },
+  "debugCopyRegistryShort": {
+    "message": "ജേസൺ പകർപ്പ്"
+  },
+  "debugSubmitAnswer": {
+    "message": "ഉത്തരം സമർപ്പിക്കുക"
+  },
+  "debugDomPreview": {
+    "message": "DOM ഘടകം പ്രിവ്യൂ"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [truncated, total characters: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "കോപ്പി പൂർത്തിയാക്കി <main> HTML"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "സജീവമായ <main> ടാഗ് പിടിച്ചെടുത്തിട്ടില്ല. നിങ്ങൾ LinkedIn ഗെയിം സ്ക്രീനിൽ ആണെന്ന് ഉറപ്പാക്കുക."
+  },
+  "debugConsoleOutput": {
+    "message": "കോൺസോൾ ഔട്ട്പുട്ട്"
+  },
+  "debugEventsCount": {
+    "message": "$1 ഇവന്റുകൾ"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "പുതുക്കുക ലോഗുകൾ"
+  },
+  "debugClearLogsTooltip": {
+    "message": "ശുദ്ധമായ ലോഗുകൾ"
+  },
+  "debugNoLogsCaptured": {
+    "message": "ഇന്നുവരെ ലോഗുകൾ പിടിച്ചെടുക്കപ്പെട്ടിട്ടില്ല. കോൺസോൾ ഇവന്റുകൾ പ്രേരിപ്പിക്കാൻ ഗെയിം സ്ക്രീനിൽ പ്രവർത്തനങ്ങൾ നടത്തുക."
+  },
+  "debugListeningEvents": {
+    "message": "console.log, console.warn, and console.error ഇവന്റുകൾക്കായി കേൾക്കുന്നു..."
+  },
+  "debugErrorInitializing": {
+    "message": "ലിങ്ക്ഡ്ഇൻ ഗെയിം പേജുമായി ബന്ധം ആരംഭിക്കുന്നു..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "ഗെയിം ഡാറ്റ ലഭ്യമല്ല."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "സജീവമായ ടാബ് ഒരു LinkedIn ഗെയിംസ് പേജ് അല്ല. വിവരങ്ങൾ പിടിക്കാൻ ഒരു ഗെയിമിലേക്ക് പോവുക."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "സജീവമായ ടാബ് തിരിച്ചറിയാൻ സാധിച്ചില്ല."
+  },
+  "labelDailyReminders": {
+    "message": "ദൈനംദിന ഓർമ്മപ്പെടുത്തലുകൾ & സ്ട്രീക്ക് പ്രൊട്ടക്ടർ"
+  },
+  "settingEnableReminders": {
+    "message": "ദൈനംദിന ഓർമ്മപ്പെടുത്തലുകൾ സജീവമാക്കുക"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "ഇന്നത്തെ സ്ട്രിക്ക് കാലഹരണപ്പെടുന്നതിന് മുമ്പ് എനിക്ക് അറിയിക്കുക."
+  },
+  "settingReminderTime": {
+    "message": "അവസാന സമയം"
+  },
+  "settingReminderTimeNotice": {
+    "message": "അപരിഹരിച്ച ഗെയിമുകൾ പരിശോധിക്കാൻ പ്രാദേശിക സമയം തിരഞ്ഞെടുക്കുക."
+  },
+  "notificationTitle": {
+    "message": "സ്റ്റ്രീക്ക് പ്രൊട്ടക്ടർ 🚀"
+  },
+  "notificationMessage": {
+    "message": "നിങ്ങളുടെ പരിഹാര ശ്രേണിയെ നഷ്ടപ്പെടുത്തരുത്! നിങ്ങൾ ഇന്നത്തെ ലിങ്ക്ഡിൻ ഗെയിമുകൾ ഇതുവരെ പരിഹരിച്ചിട്ടില്ല."
+  },
+  "notificationButton": {
+    "message": "ഇപ്പോൾ പരിഹരിക്കുക!"
+  },
+  "commandSolveActiveGame": {
+    "message": "സജീവമായ LinkedIn ഗെയിം സ്വയം പരിഹരിക്കുക."
+  },
+  "commandGetSingleHint": {
+    "message": "ഒരു ഏകപടി സൂചന നൽകുക അല്ലെങ്കിൽ പിഴവുകൾ പരിശോധിക്കുക."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "ഗെയിമുകളിൽ ഓട്ടോ-ഓപ്പൺ സൈഡ്‌ബാർ"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "ലിങ്ക്ഡിൻ ഗെയിമുകൾ സന്ദർശിക്കുമ്പോൾ സ്വയം പരിഹാരത്തിന്റെ സൈഡ് പാനൽ തുറക്കുക."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "ഓട്ടോ-ഓപ്പൺ സോൾവർ സൈഡ്‌ബാർ"
+  },
+  "permissionDialogTitle": {
+    "message": "പേജ് ആക്‌സസ് അനുവദിക്കുക"
+  },
+  "permissionDialogDesc": {
+    "message": "സജീവ ഗെയിം ബോർഡുകൾ കണ്ടെത്താനും പസിലുകൾ പരിഹരിക്കാനും, ഈ വിപുലീകരണം LinkedIn Games-ൽ പ്രവർത്തിക്കാൻ അനുമതി ആവശ്യമാണ്. പ്രവേശനം നൽകാൻ താഴെ ക്ലിക്ക് ചെയ്യുക."
+  },
+  "permissionDialogButton": {
+    "message": "അനുമതി നൽകുക"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 ഇന്ന് ക്വീൻസുകൾ കളിക്കൂ & പരിഹരിക്കൂ!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 മിനി-സുഡോക്കു പരിഹാരകർത്താവ് തുറക്കുക"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 ഓപ്പൺ സ്ട്രീക്കുകളും പ്രകടന ഡാഷ്ബോർഡും"
+  },
+  "diagnosticsEngine": {
+    "message": "ഡയഗ്നോസ്റ്റിക്‌സ് എഞ്ചിൻ"
+  },
+  "liveInspected": {
+    "message": "ജീവിതം നിരീക്ഷിച്ചു"
+  },
+  "offline": {
+    "message": "ഓഫ്ലൈൻ"
+  },
+  "inspectedTab": {
+    "message": "പരിശോധിച്ച ടാബ്:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "ലൈവ് മാട്രിക്‌സ് ഗ്രിഡ് ഇൻസ്പെക്ടർ"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "ലിങ്ക്ഡ്ഇൻ ഗെയിം പേജിന് കാത്തിരിക്കുന്നു"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "ലിങ്ക്ഡ്ഇൻ ഗെയിം ബോർഡ് ടാബുകളിലേക്കു (ക്വീൻസ്, സുഡോകു, ടാങോ, പിൻപോയിന്റ്) പോകുക, നിയന്ത്രണ കോഓർഡിനേറ്റുകൾ, സെൽ സ്റ്റേറ്റുകൾ, പ്രതികരണ ഘടനകൾ പിടിക്കാൻ."
+  },
+  "telemetryLogsStreamer": {
+    "message": "ടെലിമെട്രി ലോഗ്‌സ് സ്ട്രീമർ"
+  },
+  "searchLogsPlaceholder": {
+    "message": "ശോധന രേഖകൾ..."
+  },
+  "allTypes": {
+    "message": "എല്ലാ തരങ്ങൾ"
+  },
+  "logsType": {
+    "message": "ലോഗുകൾ"
+  },
+  "infoType": {
+    "message": "വിവരം"
+  },
+  "warnsType": {
+    "message": "എറിയുന്നു"
+  },
+  "errorsType": {
+    "message": "തെറ്റുകൾ"
+  },
+  "selectTypePlaceholder": {
+    "message": "തരം തിരഞ്ഞെടുക്കുക"
+  },
+  "consoleStreamEmpty": {
+    "message": "കൺസോൾ സ്ട്രീം ശൂന്യമാണ്"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "ഫിൽട്ടറുകൾക്ക് അനുയോജ്യമായ ലോഗ് ഔട്ട്‌പുട്ടുകൾ കണ്ടെത്തിയില്ല. ഇവിടെ ലോഗ് പ്രവർത്തനങ്ങൾ സ്ട്രീം ചെയ്യാൻ LinkedIn Games solver UI-ൽ ഘട്ടങ്ങൾ പ്രവർത്തിപ്പിക്കുക."
+  },
+  "subscribedToStorageSession": {
+    "message": "സ്ടോറേജ്.സെഷൻ സ്ട്രീമിലേക്ക് സബ്സ്ക്രൈബ് ചെയ്തു"
+  },
+  "parsingGameGridCells": {
+    "message": "ഗെയിം ഗ്രിഡ് സെല്ലുകൾ പാഴ്സിംഗ് ചെയ്യുന്നു... ബോർഡിൽ സജീവമായ ഗ്രിഡ് ബ്ലോക്കുകൾ ദൃശ്യമായിരിക്കണമെന്ന് ഉറപ്പാക്കുക."
+  },
+  "urlLabel": {
+    "message": "യു ആർ എൽ:"
+  },
+  "notAvailable": {
+    "message": "എന്തെങ്കിലും ലഭ്യമല്ല."
+  },
+  "matchesLabel": {
+    "message": "മാച്ചുകൾ"
+  },
+  "copiedLabel": {
+    "message": "പകർന്നെടുത്തു!"
+  },
+  "copyLogsTooltip": {
+    "message": "കോപ്പി ലോഗുകൾ"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "ക്ലിയർ ലോഗ് സ്പേസ്"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ സജീവമായ LinkedIn ഗെയിം പരിഹരിക്കുക"
+  },
+  "contextMenuHint": {
+    "message": "💡 ഒരു സൂചന നേടുക"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 ഫലങ്ങൾ കാണുക"
+  },
+  "labelTelemetryTitle": {
+    "message": "ടെലിമെട്രി & സ്വകാര്യത"
+  },
+  "telemetryToggleLabel": {
+    "message": "അനാമിക ടെലിമെട്രി അയക്കുക"
+  },
+  "telemetryToggleDesc": {
+    "message": "അനാമികമായ പ്രകടനവും ഉപയോഗ മെട്രിക്‌സും പങ്കുവെച്ച് സോൾവറെ മെച്ചപ്പെടുത്താൻ സഹായിക്കുക."
+  }
+}

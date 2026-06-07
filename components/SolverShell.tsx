@@ -42,7 +42,7 @@ import {
 } from "~components/ui/select"
 import { trackEvent } from "~lib/analytics"
 import { GAMES_CONFIG } from "~lib/games-config"
-import { getMessage } from "~lib/i18n"
+import { getActiveLocale, getLocaleDirection, getMessage } from "~lib/i18n"
 import { localStorage, secureStorage, syncStorage } from "~lib/storage"
 import {
   cn,
@@ -320,9 +320,12 @@ export function SolverShell({
     }
   }, [])
 
-  // Sync active game on mount
+  // Sync active game and set document direction on mount
   useEffect(() => {
     detectActiveGame()
+    const activeLoc = getActiveLocale()
+    document.documentElement.dir = getLocaleDirection(activeLoc)
+    document.documentElement.lang = activeLoc
   }, [detectActiveGame])
 
   // Periodic active game detection

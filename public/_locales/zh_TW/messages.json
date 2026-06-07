@@ -4,7 +4,7 @@
     "description": "The name of the extension."
   },
   "extensionDescription": {
-    "message": "LinkedIn 遊戲的輔助工具。",
+    "message": "LinkedIn 遊戲的幫手。自動求解每日謎題（Queens，Sudoku，Pinpoint，Crossclimb），提供連勝紀錄和數據分析。",
     "description": "The description of the extension."
   },
   "title": {
@@ -12,7 +12,7 @@
     "description": "Header title of the popup"
   },
   "subtitle": {
-    "message": "一鍵自動求解當前遊戲",
+    "message": "一鍵自動求解當前 LinkedIn 遊戲",
     "description": "Header subtitle of the popup"
   },
   "switchThemeTitle": {
@@ -20,27 +20,27 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "瀏覽器標籤頁整合功能僅在瀏覽器擴充功能中可用。",
+    "message": "需要 Chrome 分頁整合。",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
-    "message": "無法找到活動的瀏覽器標籤頁。",
+    "message": "找不到目前作用中的分頁。",
     "description": "Error shown if tab is not found"
   },
   "errorNavigationFailed": {
-    "message": "自動跳转至 $1 遊戲板失敗。",
+    "message": "無法前往 $1。",
     "description": "Error shown if tab switching fails"
   },
   "errorConnectionFailed": {
-    "message": "無法連線到 LinkedIn 頁面。請重新整理標籤頁並重試。",
+    "message": "連線失敗。",
     "description": "Error shown if content script is unresponsive"
   },
   "errorExecutionFailedDefault": {
-    "message": "求解器執行意外失敗。",
+    "message": "執行解題器時發生問題。",
     "description": "Fallback solver error"
   },
   "successSolverStarted": {
-    "message": "求解器啟動成功！正在執行中...",
+    "message": "解題器已啟動。",
     "description": "Toast message for successful solve start"
   },
   "solvingStatus": {
@@ -48,15 +48,15 @@
     "description": "Overlay label during solver run"
   },
   "sudoku": {
-    "message": "數獨 (Sudoku)",
+    "message": "Sudoku",
     "description": "Game name Sudoku"
   },
   "tango": {
-    "message": "探戈 (Tango)",
+    "message": "Tango",
     "description": "Game name Tango"
   },
   "queens": {
-    "message": "皇后 (Queens)",
+    "message": "Queens",
     "description": "Game name Queens"
   },
   "zip": {
@@ -332,7 +332,7 @@
     "description": "Success dot tooltip on solved timeline row"
   },
   "disclaimerText": {
-    "message": "免責聲明：這是一個獨立的、開源的教育專案。它與 LinkedIn Corporation 没有任何關聯、贊助或認可。'LinkedIn' 是 LinkedIn Corporation 的註冊商標。",
+    "message": "免責聲明：這是一個獨立的開源教育專案。與 LinkedIn Corporation 無關，亦未獲得其資助或認可。“LinkedIn”是 LinkedIn Corporation 的註冊商標。",
     "description": "Compliance footer disclaimer text"
   },
   "settingsCredentialsTitle": {
@@ -398,12 +398,6 @@
   },
   "solveBtn_solved": {
     "message": "已完成求解！"
-  },
-  "desc_patches": {
-    "message": "Piece it together"
-  },
-  "desc_zip": {
-    "message": "Complete the path"
   },
   "desc_sudoku": {
     "message": "經典遊戲迷你版"
@@ -565,7 +559,7 @@
     "description": "Card title for the captured main outerHTML preview"
   },
   "debugHtmlTruncated": {
-    "message": "\n\n/* ... [已截斷，總字元數：$1] ... */",
+    "message": "\n\n[ ... [已截斷，總字元數：$1] ... ]",
     "description": "Truncation note inside the main outerHTML preview"
   },
   "debugCopyCompleteHtmlTooltip": {
@@ -776,5 +770,11 @@
   "telemetryToggleDesc": {
     "message": "透過共享匿名效能和使用情況指標來幫助改進求解器。",
     "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "desc_patches": {
+    "message": "拼湊起來"
+  },
+  "desc_zip": {
+    "message": "完成這條路徑"
   }
 }

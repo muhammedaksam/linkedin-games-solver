@@ -1,10 +1,10 @@
 {
   "extensionName": {
-    "message": "LinkedIn Oyunları Çözücü",
+    "message": "LinkedIn Oyun Çözücü",
     "description": "The name of the extension."
   },
   "extensionDescription": {
-    "message": "LinkedIn Oyunları için bir yardımcı.",
+    "message": "LinkedIn Oyunları için bir yardımcı. Günlük bulmacaları otomatik çöz (Queens, Sudoku, Pinpoint, Crossclimb) ile seriler ve analizler.",
     "description": "The description of the extension."
   },
   "title": {
@@ -12,7 +12,7 @@
     "description": "Header title of the popup"
   },
   "subtitle": {
-    "message": "Aktif oyunları tek tıkla çözün",
+    "message": "Gelişmiş yapay zeka ile günlük bulmacalarınızı tek tıkla çözün",
     "description": "Header subtitle of the popup"
   },
   "switchThemeTitle": {
@@ -20,70 +20,32 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "Tarayıcı sekme entegrasyonu yalnızca tarayıcı uzantıları içinde kullanılabilir.",
+    "message": "Chrome sekmesi entegrasyonu gerekiyor.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
-    "message": "Aktif tarayıcı sekmesi bulunamadı.",
+    "message": "Etkin sekme bulunamadı.",
     "description": "Error shown if tab is not found"
   },
   "errorNavigationFailed": {
-    "message": "$1 sekmesine otomatik olarak geçiş yapılamadı.",
+    "message": "$1 konumuna gidilemedi.",
     "description": "Error shown if tab switching fails"
   },
   "errorConnectionFailed": {
-    "message": "LinkedIn sayfasına bağlanılamadı. Lütfen sekmeyi yenileyip tekrar deneyin.",
+    "message": "Bağlantı başarısız oldu.",
     "description": "Error shown if content script is unresponsive"
   },
   "errorExecutionFailedDefault": {
-    "message": "Çözücü beklenmedik bir şekilde başarısız oldu.",
+    "message": "Çözücü çalıştırılırken bir sorun oluştu.",
     "description": "Fallback solver error"
   },
   "successSolverStarted": {
-    "message": "Çözücü başarıyla başlatıldı! Çalışıyor...",
+    "message": "Çözücü başlatıldı.",
     "description": "Toast message for successful solve start"
   },
   "solvingStatus": {
     "message": "Çözülüyor...",
     "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "Bonus",
-    "description": "Bonus badge next to game name"
-  },
-  "desc_patches": {
-    "message": "Piece it together"
-  },
-  "desc_zip": {
-    "message": "Complete the path"
   },
   "desc_sudoku": {
     "message": "Klasik oyun artık mini versiyonuyla"
@@ -175,10 +137,6 @@
   "clearFilter": {
     "message": "Filtreyi Temizle",
     "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "Model",
-    "description": "Label for the settings model selection dropdown"
   },
   "settingModelSelect": {
     "message": "Model Seç",
@@ -565,7 +523,7 @@
     "description": "Card title for the captured main outerHTML preview"
   },
   "debugHtmlTruncated": {
-    "message": "\n\n/* ... [kısaltıldı, toplam karakter: $1] ... */",
+    "message": "\n\n[ ... [kısaltıldı, toplam karakter: $1] ... ]",
     "description": "Truncation note inside the main outerHTML preview"
   },
   "debugCopyCompleteHtmlTooltip": {
@@ -776,5 +734,38 @@
   "telemetryToggleDesc": {
     "message": "Anonim performans ve kullanım metriklerini paylaşarak çözücüyü geliştirmeye yardımcı olun.",
     "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "queens": {
+    "message": "Queens"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "Bonus"
+  },
+  "desc_patches": {
+    "message": "Bir araya getir."
+  },
+  "desc_zip": {
+    "message": "Yolu tamamla"
+  },
+  "settingModel": {
+    "message": "Model"
   }
 }

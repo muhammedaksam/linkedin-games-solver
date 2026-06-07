@@ -1,0 +1,646 @@
+{
+  "extensionName": {
+    "message": "Penyelesai Permainan LinkedIn",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Pembantu untuk LinkedIn Games. Menyelesaikan teka-teki harian secara automatik (Queens, Sudoku, Pinpoint, Crossclimb) dengan rekod streak dan analitik.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "Permainan LinkedIn",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Selesaikan papan aktif dengan satu klik",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Penyepaduan tab Chrome diperlukan.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Tab aktif tidak ditemui.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Gagal pergi ke $1.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Sambungan gagal.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Berlaku masalah semasa menjalankan penyelesai.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Penyelesai telah dimulakan.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "Sejarah & Statistik",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Sejarah dan statistik penyelesaian LinkedIn Games anda",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Jumlah Diselesaikan",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Permainan diselesaikan untuk semua tarikh",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Masa purata",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Merentasi semua penyelesaian yang direkodkan",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Rentetan aktif",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Hari aktif berturut‑turut",
+    "description": "Description for the active streak card"
+  },
+  "dashboardDescText": {
+    "message": "Analisis metrik prestasi anda, rekodkan streak, dan jejak laluan teka-teki harian yang telah anda selesaikan.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "Penafian: Ini ialah projek pendidikan sumber terbuka yang bebas. Ia tidak mempunyai kaitan, tidak ditaja dan tidak disokong oleh LinkedIn Corporation. 'LinkedIn' ialah tanda dagangan berdaftar milik LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "switchThemeTitle": {
+    "message": "Tukar ke mod $1"
+  },
+  "solvingStatus": {
+    "message": "Menyelesaikan..."
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "queens": {
+    "message": "Queens"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "Bonus"
+  },
+  "desc_patches": {
+    "message": "Satukan ia bersama"
+  },
+  "desc_zip": {
+    "message": "Lengkapkan laluan"
+  },
+  "desc_sudoku": {
+    "message": "Permainan klasik, dibuat mini"
+  },
+  "desc_tango": {
+    "message": "Harmoni grid"
+  },
+  "desc_queens": {
+    "message": "Kawal setiap wilayah"
+  },
+  "desc_crossclimb": {
+    "message": "Buka tangga trivia"
+  },
+  "desc_pinpoint": {
+    "message": "Tebak kategori"
+  },
+  "titleSolve": {
+    "message": "Selesaikan $1"
+  },
+  "titleCompleted": {
+    "message": "Selesai hari ini! Klik untuk pergi ke $1"
+  },
+  "titleOpen": {
+    "message": "Buka $1 untuk menyelesaikan"
+  },
+  "perfectDay": {
+    "message": "Hari yang sempurna! Semua permainan $1 telah selesai! 🎉"
+  },
+  "dailyProgress": {
+    "message": "Kemajuan harian: $1 daripada $2 permainan telah diselesaikan hari ini"
+  },
+  "statStreakDays": {
+    "message": "$1 hari"
+  },
+  "personalBests": {
+    "message": "Rekod Peribadi"
+  },
+  "noRecordsYet": {
+    "message": "Tiada rekod penyelesaian yang direkodkan lagi."
+  },
+  "solvingHistory": {
+    "message": "Menyelesaikan Sejarah"
+  },
+  "activityCalendar": {
+    "message": "Kalendar Aktiviti"
+  },
+  "clearFilter": {
+    "message": "Tapis Jelas"
+  },
+  "settingModel": {
+    "message": "Model"
+  },
+  "settingModelSelect": {
+    "message": "Pilih Model"
+  },
+  "settingModelCustomOption": {
+    "message": "Nama Model Kustom..."
+  },
+  "settingModelCustomLabel": {
+    "message": "Nama Model Kustom"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "contoh: llama3, mistral"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Masukkan pengenalan tersuai..."
+  },
+  "settingEndpointLabel": {
+    "message": "URL Titik Akhir"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "contoh: http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "Kunci API Gemini"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "Kunci API OpenAI"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Kunci API Anthropic"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "Kunci API DeepSeek"
+  },
+  "settingApiKeyCustom": {
+    "message": "Kunci API (Pilihan)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Kelayakan pilihan..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Masukkan kunci kelayakan..."
+  },
+  "settingApiKeyNotice": {
+    "message": "Model terpilih menyelesaikan Crossclimb & Pinpoint. Sambungan tidak pernah berkongsi kunci anda."
+  },
+  "popupCardTitle": {
+    "message": "Sambungkan melalui permainan harian yang menyeronokkan"
+  },
+  "popupCardDesc": {
+    "message": "Sediakan minda anda untuk hari bekerja dan bandingkan keputusan. Skor anda adalah peribadi kecuali anda berkongsi."
+  },
+  "saveAndBack": {
+    "message": "Simpan & Kembali ke Permainan"
+  },
+  "solvingWorking": {
+    "message": "AI Solver sedang berfungsi..."
+  },
+  "completedToday": {
+    "message": "Selesai Hari Ini"
+  },
+  "solvedCountSuffix": {
+    "message": "Diselesaikan"
+  },
+  "settingsHeaderTitle": {
+    "message": "Konfigurasi Model AI"
+  },
+  "labelAiProvider": {
+    "message": "PENYEDIA AI"
+  },
+  "labelModelIdentifier": {
+    "message": "PENGENAL MODEL"
+  },
+  "labelCustomModel": {
+    "message": "NAMA MODEL KUSTOM"
+  },
+  "labelEndpointUrl": {
+    "message": "URL TITIK AKHIR"
+  },
+  "labelGeminiKey": {
+    "message": "KUNCI API GEMINI"
+  },
+  "labelOpenAiKey": {
+    "message": "KUNCI API OPENAI"
+  },
+  "labelAnthropicKey": {
+    "message": "KUNCI API ANTHROPIC"
+  },
+  "labelDeepSeekKey": {
+    "message": "KUNCI API DEEPSEEK"
+  },
+  "labelCustomKey": {
+    "message": "KUNCI API (OPTIONAL)"
+  },
+  "navHome": {
+    "message": "Rumah"
+  },
+  "navAiConfig": {
+    "message": "Tetapan / Pilihan"
+  },
+  "navStats": {
+    "message": "Statistik"
+  },
+  "navTheme": {
+    "message": "Tema"
+  },
+  "navDebug": {
+    "message": "Menyahpepijat"
+  },
+  "dailyProgressLabel": {
+    "message": "Kemajuan Harian"
+  },
+  "solveActiveBoard": {
+    "message": "Selesaikan Papan Aktif"
+  },
+  "backToGames": {
+    "message": "Kembali ke Permainan LinkedIn"
+  },
+  "dashboardLabel": {
+    "message": "Papan Pemuka"
+  },
+  "gamesSolverTitle": {
+    "message": "Penyelesai Permainan"
+  },
+  "completedSuccessfully": {
+    "message": "Selesai dengan jayanya"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Kelayakan & Model"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Panduan & Info Model"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Status Sambungan"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Penyelesai Aktif:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Pengenal Model:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Tetapan disimpan secara automatik!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Konfigurasikan titik akhir dan kelayakan integrasi model AI untuk penalaran penyelesaian teka-teki yang canggih."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Prestasi cemerlang dengan kos hampir sifar. Menyelesaikan Crossclimb dan Pinpoint dengan logik yang cemerlang. Disyorkan sebagai lalai: gemini-2.5-flash."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Cepat, responsif, dan sangat boleh dipercayai dengan corak pengetahuan umum. Disyorkan lalai: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Kapasiti penaakulan maksimum. Mengendalikan persatuan kata yang sangat kompleks dengan sempurna. Disyorkan lalai: claude-3-5-haiku."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Sambungkan ke rangka kerja LLM tempatan seperti Ollama atau LM Studio. Arahkan URL titik akhir anda (contohnya, http://localhost:11434/v1) dan nama model khusus."
+  },
+  "showMoreDates": {
+    "message": "Tunjukkan lebih banyak tarikh"
+  },
+  "showLessDates": {
+    "message": "Tunjukkan kurang"
+  },
+  "solveBtn_withAi": {
+    "message": "Selesaikan dengan AI"
+  },
+  "solveBtn_game": {
+    "message": "Selesaikan Permainan"
+  },
+  "solveBtn_solving": {
+    "message": "Menyelesaikan..."
+  },
+  "solveBtn_solved": {
+    "message": "Diselesaikan!"
+  },
+  "scoreClue": {
+    "message": "1 petunjuk"
+  },
+  "scoreClues": {
+    "message": "$1 petunjuk"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "markAsNotPlayed": {
+    "message": "Tandakan sebagai Tidak Dimainkan"
+  },
+  "settingSolveSpeed": {
+    "message": "Menyelesaikan Kelajuan / Kelewatan"
+  },
+  "solveSpeed_instant": {
+    "message": "Segera (Paling Pantas)"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Standard)"
+  },
+  "solveSpeed_stealth": {
+    "message": "Mod Senyap (Kelewatan seperti Manusia)"
+  },
+  "labelSolveSpeed": {
+    "message": "MENYELESAIKAN KECEPATAN & PACE"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Mod segera menyelesaikan papan dalam milisaat. Mod senyap meniru tingkah laku manusia dengan kelajuan rawak (1–3 saat) untuk memastikan rentetan tidak dikesan secara automatik."
+  },
+  "solveBtn_hint": {
+    "message": "Dapatkan Petunjuk"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Tindakan Penyelesai Lalai"
+  },
+  "solveMode_full": {
+    "message": "Penyelesaian Automatik Penuh"
+  },
+  "solveMode_hint": {
+    "message": "Mod Petunjuk Pendidikan"
+  },
+  "labelDefaultSolveMode": {
+    "message": "MODUS PENYELESAI DEFAULT"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Pilih tindakan utama apabila mencetuskan penyelesai dari pandangan tab atau papan. Penyelesaian Penuh mengakhiri permainan; Mod Petunjuk meletakkan satu item yang betul."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Kos Sifar & AI Sepenuhnya Tempatan"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Berfungsi sepenuhnya secara tempatan di peranti anda dalam pelayar. Tiada latensi rangkaian dan 100% percuma dengan Gemini Nano."
+  },
+  "debugHeaderTitle": {
+    "message": "Debugger Permainan & Alat Pembangunan"
+  },
+  "debugStatusOffline": {
+    "message": "Luar talian"
+  },
+  "debugStatusLive": {
+    "message": "Hidup"
+  },
+  "debugDetectedGame": {
+    "message": "Permainan Dikesan"
+  },
+  "debugNoneDetected": {
+    "message": "Tiada Dikesan"
+  },
+  "debugTargetUrl": {
+    "message": "URL Sasaran"
+  },
+  "debugNoActiveTab": {
+    "message": "Tiada Tab Aktif"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML Disalin!"
+  },
+  "debugCopyHtml": {
+    "message": "Salin HTML <main>"
+  },
+  "debugLogsCopied": {
+    "message": "Log Disalin!"
+  },
+  "debugCopyLogs": {
+    "message": "Salin Log Konsol"
+  },
+  "debugBothCopied": {
+    "message": "Kedua-duanya Disalin!"
+  },
+  "debugCopyBoth": {
+    "message": "Salin Kedua (HTML & Log)"
+  },
+  "debugRegistryCopied": {
+    "message": "JSON Pendaftaran Disalin!"
+  },
+  "debugCopyRegistry": {
+    "message": "Salin JSON Pendaftaran Hari Ini"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Salin JSON"
+  },
+  "debugSubmitAnswer": {
+    "message": "Hantar Jawapan"
+  },
+  "debugDomPreview": {
+    "message": "Pratonton Elemen DOM"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [truncated, total characters: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Salin HTML <main> lengkap"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Tiada tag <main> aktif yang ditangkap. Pastikan anda berada di skrin permainan LinkedIn."
+  },
+  "debugConsoleOutput": {
+    "message": "Keluaran Konsol"
+  },
+  "debugEventsCount": {
+    "message": "$1 acara"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Segarkan log"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Bersihkan log"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Tiada log yang ditangkap lagi. Lakukan tindakan pada skrin permainan untuk mencetuskan acara konsol."
+  },
+  "debugListeningEvents": {
+    "message": "Mendengar untuk acara console.log, console.warn, dan console.error..."
+  },
+  "debugErrorInitializing": {
+    "message": "Sambungan dengan halaman permainan LinkedIn sedang dimulakan..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Tidak dapat mengambil data permainan."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Tab aktif bukan halaman Permainan LinkedIn. Navigasi ke permainan untuk menangkap butiran."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Tidak dapat mengenal pasti tab yang aktif."
+  },
+  "labelDailyReminders": {
+    "message": "PENGINGAT HARIAN & PENJAGA RENTAK"
+  },
+  "settingEnableReminders": {
+    "message": "Aktifkan Peringatan Harian"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Beritahu saya sebelum rentetan hari ini tamat."
+  },
+  "settingReminderTime": {
+    "message": "Masa Peringatan"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Pilih waktu tempatan untuk memeriksa permainan yang belum diselesaikan."
+  },
+  "notificationTitle": {
+    "message": "Pelindung Jalur 🚀"
+  },
+  "notificationMessage": {
+    "message": "Jangan hilang rentak penyelesaian anda! Anda belum menyelesaikan permainan LinkedIn hari ini."
+  },
+  "notificationButton": {
+    "message": "Selesaikan Sekarang!"
+  },
+  "commandSolveActiveGame": {
+    "message": "Selesaikan permainan LinkedIn yang aktif secara automatik."
+  },
+  "commandGetSingleHint": {
+    "message": "Berikan petunjuk satu langkah atau semak untuk kesilapan."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Sidebar Auto-Buka pada Permainan"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Secara automatik membuka panel sisi penyelesai apabila melawat Permainan LinkedIn."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "AUTO-BUKA PENGGANTI SIDEBAR"
+  },
+  "permissionDialogTitle": {
+    "message": "Berikan Akses Halaman"
+  },
+  "permissionDialogDesc": {
+    "message": "Untuk mengesan papan permainan aktif dan menyelesaikan teka-teki, sambungan ini memerlukan kebenaran untuk dijalankan di LinkedIn Games. Klik di bawah untuk memberikan akses."
+  },
+  "permissionDialogButton": {
+    "message": "Berikan Akses"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Main & Selesaikan Ratu hari ini!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Buka Penyelesai mini-Sudoku"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Buka Streaks & Papan Pemuka Prestasi"
+  },
+  "diagnosticsEngine": {
+    "message": "Enjin Diagnostik"
+  },
+  "liveInspected": {
+    "message": "Diperiksa Secara Langsung"
+  },
+  "offline": {
+    "message": "Luar talian"
+  },
+  "inspectedTab": {
+    "message": "Tab Diperiksa:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Pemeriksa Grid Matriks Langsung"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Menunggu Halaman Permainan LinkedIn"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Navigasi ke mana-mana tab papan Permainan LinkedIn (Ratu, Sudoku, Tango, Pinpoint) untuk menangkap koordinat kekangan, keadaan sel, dan struktur reaktif."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Penyiar Log Telemetri"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Cari log..."
+  },
+  "allTypes": {
+    "message": "SEMUA JENIS"
+  },
+  "logsType": {
+    "message": "REKOD"
+  },
+  "infoType": {
+    "message": "INFO"
+  },
+  "warnsType": {
+    "message": "AMARAN"
+  },
+  "errorsType": {
+    "message": "KESILAPAN"
+  },
+  "selectTypePlaceholder": {
+    "message": "Pilih Jenis"
+  },
+  "consoleStreamEmpty": {
+    "message": "Aliran Konsol Kosong"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Tiada output log yang dikesan yang sepadan dengan penapis. Jalankan langkah-langkah di dalam antaramuka penyelesai Permainan LinkedIn untuk menstrim tindakan log di sini."
+  },
+  "subscribedToStorageSession": {
+    "message": "Melanggan aliran storage.session"
+  },
+  "parsingGameGridCells": {
+    "message": "Memproses sel grid permainan... Pastikan papan mempunyai blok grid aktif yang terlihat."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "Tidak berkenaan"
+  },
+  "matchesLabel": {
+    "message": "perlawanan"
+  },
+  "copiedLabel": {
+    "message": "Disalin!"
+  },
+  "copyLogsTooltip": {
+    "message": "Salin Log"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Bersihkan Ruang Log"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Selesaikan Permainan LinkedIn Aktif"
+  },
+  "contextMenuHint": {
+    "message": "💡 Dapatkan Petunjuk"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Lihat Keputusan"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRI & PRIVASI"
+  },
+  "telemetryToggleLabel": {
+    "message": "Hantar Telemetri Tanpa Nama"
+  },
+  "telemetryToggleDesc": {
+    "message": "Bantu tingkatkan penyelesai dengan berkongsi metrik prestasi dan penggunaan secara tanpa nama."
+  }
+}

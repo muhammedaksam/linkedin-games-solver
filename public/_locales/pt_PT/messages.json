@@ -4,7 +4,7 @@
     "description": "The name of the extension."
   },
   "extensionDescription": {
-    "message": "Um assistente para jogos do LinkedIn.",
+    "message": "Um ajudante para LinkedIn Games. Resolve quebra-cabeças diários (Queens, Sudoku, Pinpoint, Crossclimb) com sequências e análises.",
     "description": "The description of the extension."
   },
   "title": {
@@ -12,7 +12,7 @@
     "description": "Header title of the popup"
   },
   "subtitle": {
-    "message": "Resolva tabuleiros ativos com um único clique",
+    "message": "Resolva os seus quebra-cabeças diários com IA premium",
     "description": "Header subtitle of the popup"
   },
   "switchThemeTitle": {
@@ -20,60 +20,36 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "A integração de guias do navegador só está disponível em extensões do navegador.",
+    "message": "A integração com o separador do Chrome é obrigatória.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
-    "message": "Não foi possível encontrar a guia ativa do navegador.",
+    "message": "Não foi possível encontrar o separador ativo.",
     "description": "Error shown if tab is not found"
   },
   "errorNavigationFailed": {
-    "message": "Falha ao navegar automaticamente para o tabuleiro do $1.",
+    "message": "Falha ao navegar para $1.",
     "description": "Error shown if tab switching fails"
   },
   "errorConnectionFailed": {
-    "message": "Não foi possível conectar à página do LinkedIn. Recarregue a guia e tente novamente.",
+    "message": "A ligação falhou.",
     "description": "Error shown if content script is unresponsive"
   },
   "errorExecutionFailedDefault": {
-    "message": "A execução do solucionador falhou inesperadamente.",
+    "message": "Ocorreu um problema ao executar o resolvedor.",
     "description": "Fallback solver error"
   },
   "successSolverStarted": {
-    "message": "Solucionador iniciado com sucesso! Executando...",
+    "message": "O resolvedor foi iniciado.",
     "description": "Toast message for successful solve start"
   },
   "solvingStatus": {
     "message": "Resolvendo...",
     "description": "Overlay label during solver run"
   },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
   "queens": {
     "message": "Queens",
     "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
   },
   "bonus": {
     "message": "Bónus",
@@ -291,10 +267,6 @@
     "message": "Configurações / Opções",
     "description": "AI Config settings nav link label"
   },
-  "navStats": {
-    "message": "Stats",
-    "description": "Stats nav link label"
-  },
   "navTheme": {
     "message": "Tema",
     "description": "Theme nav link label"
@@ -332,7 +304,7 @@
     "description": "Success dot tooltip on solved timeline row"
   },
   "disclaimerText": {
-    "message": "Aviso Legal: Este é um projeto educacional de código aberto independente. Não é afiliado, patrocinado ou endossado pela LinkedIn Corporation. 'LinkedIn' é uma marca registrada da LinkedIn Corporation.",
+    "message": "Aviso de responsabilidade: Este é um projeto educacional independente e de código aberto. Não é afiliado, patrocinado ou endossado pela LinkedIn Corporation. 'LinkedIn' é uma marca registrada da LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
   },
   "settingsCredentialsTitle": {
@@ -399,12 +371,6 @@
   "solveBtn_solved": {
     "message": "Resolvido!"
   },
-  "desc_patches": {
-    "message": "Piece it together"
-  },
-  "desc_zip": {
-    "message": "Complete the path"
-  },
   "desc_sudoku": {
     "message": "Um jogo clássico, em formato mini"
   },
@@ -425,12 +391,6 @@
   },
   "scoreClues": {
     "message": "$1 pistas"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
   },
   "markAsNotPlayed": {
     "message": "Marcar como não jogado",
@@ -495,10 +455,6 @@
   "debugHeaderTitle": {
     "message": "Depurador de jogo e ferramentas de desenvolvimento",
     "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "Offline",
-    "description": "Debug offline status indicator label"
   },
   "debugStatusLive": {
     "message": "Direto",
@@ -565,7 +521,7 @@
     "description": "Card title for the captured main outerHTML preview"
   },
   "debugHtmlTruncated": {
-    "message": "\n\n/* ... [truncado, total de caracteres: $1] ... */",
+    "message": "\n\n[ ... [truncado, total de caracteres: $1] ... ]",
     "description": "Truncation note inside the main outerHTML preview"
   },
   "debugCopyCompleteHtmlTooltip": {
@@ -687,9 +643,6 @@
   "liveInspected": {
     "message": "Inspecionado ao Vivo"
   },
-  "offline": {
-    "message": "Offline"
-  },
   "inspectedTab": {
     "message": "Separador Inspecionado:"
   },
@@ -738,11 +691,8 @@
   "parsingGameGridCells": {
     "message": "Analisando células da grelha do jogo... Certifique-se de que o tabuleiro tenha blocos de grelha ativos visíveis."
   },
-  "urlLabel": {
-    "message": "Url:"
-  },
   "notAvailable": {
-    "message": "N/A"
+    "message": "Não disponível"
   },
   "matchesLabel": {
     "message": "correspondências"
@@ -776,5 +726,47 @@
   "telemetryToggleDesc": {
     "message": "Ajude a melhorar o solucionador partilhando métricas anónimas de desempenho e utilização.",
     "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "desc_patches": {
+    "message": "Junta as peças."
+  },
+  "desc_zip": {
+    "message": "Complete o caminho"
+  },
+  "navStats": {
+    "message": "Estatísticas"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "debugStatusOffline": {
+    "message": "Offline"
+  },
+  "offline": {
+    "message": "Offline"
+  },
+  "urlLabel": {
+    "message": "Url:"
   }
 }

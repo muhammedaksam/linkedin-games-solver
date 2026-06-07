@@ -1,6 +1,6 @@
 # LinkedIn Oyun Çözücü
 
-LinkedIn Oyun Çözücü, günlük LinkedIn bulmacalarınız için mükemmel bir yardımcıdır. En sevdiğiniz oyun tahtalarını doğrudan sayfa üzerinde anında tarar ve çözer. Google Gemini, OpenAI ve Anthropic gibi gelişmiş yapay zeka modelleri ve ultra hızlı Uzak Cevap Kayıt Defteri entegrasyonu sayesinde karmaşık bilgi yarışmalarını ve kelime ilişkilendirmelerini göz açıp kapayıncaya kadar çözer.
+LinkedIn Oyunları için bir yardımcı. Günlük bulmacaları otomatik çöz (Queens, Sudoku, Pinpoint, Crossclimb) ile seriler ve analizler.
 
 ## Neden Yüklemelisiniz?
 

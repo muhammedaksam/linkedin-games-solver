@@ -1,0 +1,624 @@
+{
+  "extensionName": {
+    "message": "Kitatua cha Michezo ya LinkedIn",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Msaidizi wa LinkedIn Games. Tatua kiotomatiki mafumbo ya kila siku (Queens, Sudoku, Pinpoint, Crossclimb) pamoja na mfululizo na takwimu za uchanganuzi.",
+    "description": "The description of the extension."
+  },
+  "subtitle": {
+    "message": "Tatuasuluhisha bodi zinazochezwa kwa kubofya mara moja",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Ujumuishaji wa kichupo cha Chrome unahitajika.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Kichupo amilifu hakijapatikana.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Imeshindikana kuelekea $1.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Muunganisho umeshindikana.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Kulikuwa na tatizo wakati wa kuendesha kijibu.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Kijibu kimeanza.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "Historia & Takwimu",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Historia yako na takwimu za kutatua LinkedIn Games",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Jumla Iliyosuluhishwa",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Michezo iliyosuluhishwa kwa tarehe zote",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Wakati wa wastani",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Kuzingatia maliza yote yaliyorekodiwa",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Msururu wa shughuli",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Siku za shughuli mfululizo",
+    "description": "Description for the active streak card"
+  },
+  "dashboardDescText": {
+    "message": "Changanua vipimo vyako vya utendaji, rekodi mfululizo, na fuatilia njia za mafumbo uliyokamilisha kila siku.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "Kanusho: Huu ni mradi huru wa kielimu wa chanzo huria. Haujaunganishwa, kudhaminiwa, wala kuidhinishwa na LinkedIn Corporation. ‘LinkedIn’ ni alama ya biashara iliyosajiliwa ya LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "title": {
+    "message": "Michezo ya LinkedIn"
+  },
+  "switchThemeTitle": {
+    "message": "Badilisha kuwa hali ya $1"
+  },
+  "solvingStatus": {
+    "message": "Kutatua..."
+  },
+  "bonus": {
+    "message": "Zawadi"
+  },
+  "desc_patches": {
+    "message": "Panga pamoja"
+  },
+  "desc_zip": {
+    "message": "Kamilisha njia"
+  },
+  "desc_sudoku": {
+    "message": "Mchezo wa jadi, uliofanywa kuwa mdogo"
+  },
+  "desc_tango": {
+    "message": "Patanisha gridi"
+  },
+  "desc_queens": {
+    "message": "Taji kila eneo"
+  },
+  "desc_crossclimb": {
+    "message": "fungua ngazi ya maswali ya trivia"
+  },
+  "desc_pinpoint": {
+    "message": "Kisia kundi"
+  },
+  "titleSolve": {
+    "message": "Suluhisha $1"
+  },
+  "titleCompleted": {
+    "message": "Imekamilika leo! Bonyeza ili kuhamasisha kwenda $1"
+  },
+  "titleOpen": {
+    "message": "Fungua $1 kutatua"
+  },
+  "perfectDay": {
+    "message": "Siku bora! Michezo yote ya $1 imekamilika! 🎉"
+  },
+  "dailyProgress": {
+    "message": "Maendeleo ya kila siku: $1 ya $2 michezo iliyokamilishwa leo"
+  },
+  "statStreakDays": {
+    "message": "$1 siku"
+  },
+  "personalBests": {
+    "message": "Mizani ya Kibinafsi"
+  },
+  "noRecordsYet": {
+    "message": "Hakuna rekodi za kutatua zilizorekodiwa bado."
+  },
+  "solvingHistory": {
+    "message": "Kutatua Historia"
+  },
+  "activityCalendar": {
+    "message": "Kalenda ya Shughuli"
+  },
+  "clearFilter": {
+    "message": "Futa Kichujio"
+  },
+  "settingModel": {
+    "message": "Mfano"
+  },
+  "settingModelSelect": {
+    "message": "Chagua Mfano"
+  },
+  "settingModelCustomOption": {
+    "message": "Jina la Mfano wa Kawaida..."
+  },
+  "settingModelCustomLabel": {
+    "message": "Jina la Mfano wa Kijadi"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "mfano: llama3, mistral"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Ingiza kitambulisho cha kawaida..."
+  },
+  "settingEndpointLabel": {
+    "message": "URL ya Kiwango cha Mwisho"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "mfano: http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "Funguo la API la Gemini"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "Funguo la API la OpenAI"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Funguo la API ya Anthropic"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "Funguo la API la DeepSeek"
+  },
+  "settingApiKeyCustom": {
+    "message": "Funguo la API (Hiari)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Vithibitisho vya hiari..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Ingiza funguo za kitambulisho..."
+  },
+  "settingApiKeyNotice": {
+    "message": "Mfano uliochaguliwa unatatua Crossclimb na Pinpoint. Kipanzi hakishiriki funguo yako kamwe."
+  },
+  "popupCardTitle": {
+    "message": "Ungana kupitia michezo ya furaha ya kila siku"
+  },
+  "popupCardDesc": {
+    "message": "Andaa akili yako kwa ajili ya siku ya kazi na linganisha matokeo. Alama zako ni za faragha isipokuwa ukizishiriki."
+  },
+  "saveAndBack": {
+    "message": "Hifadhi na Rudi kwa Michezo"
+  },
+  "solvingWorking": {
+    "message": "Mfumo wa AI unafanya kazi..."
+  },
+  "completedToday": {
+    "message": "Imekamilika Leo"
+  },
+  "solvedCountSuffix": {
+    "message": "Imetatuliwa"
+  },
+  "settingsHeaderTitle": {
+    "message": "Mikakati ya Mfano wa AI"
+  },
+  "labelAiProvider": {
+    "message": "MTOA WA AI"
+  },
+  "labelModelIdentifier": {
+    "message": "KITAMBULISHO CHA MFANO"
+  },
+  "labelCustomModel": {
+    "message": "JINA LA MFANO WA KUBUNI"
+  },
+  "labelEndpointUrl": {
+    "message": "URL YA KIWANGO CHA MWISHO"
+  },
+  "labelGeminiKey": {
+    "message": "UFUNGuo WA API WA GEMINI"
+  },
+  "labelOpenAiKey": {
+    "message": "UFUNGULIO WA API YA OPENAI"
+  },
+  "labelAnthropicKey": {
+    "message": "KEYI YA ANTHROPIC"
+  },
+  "labelDeepSeekKey": {
+    "message": "KEY YA DEEPSEEK"
+  },
+  "labelCustomKey": {
+    "message": "KEY YA API (HIARI)"
+  },
+  "navHome": {
+    "message": "Nyumbani"
+  },
+  "navAiConfig": {
+    "message": "Mipangilio / Chaguzi"
+  },
+  "navStats": {
+    "message": "Takwimu"
+  },
+  "navTheme": {
+    "message": "Kichwa"
+  },
+  "navDebug": {
+    "message": "Kurekebisha makosa"
+  },
+  "dailyProgressLabel": {
+    "message": "Maendeleo ya Kila Siku"
+  },
+  "solveActiveBoard": {
+    "message": "Suluisha Bodi ya Kazi"
+  },
+  "backToGames": {
+    "message": "Rudi kwenye Michezo ya LinkedIn"
+  },
+  "dashboardLabel": {
+    "message": "Dashibodi"
+  },
+  "gamesSolverTitle": {
+    "message": "Mchezaji wa Michezo"
+  },
+  "completedSuccessfully": {
+    "message": "Imekamilika kwa Mafanikio"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Vyeti na Mifano"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Mwongozo wa Mfano na Taarifa"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Hali ya Muunganisho"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Mtatibu Aktif:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Kitambulisho cha Mfano:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Mipangilio imehifadhiwa kiotomatiki!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Sanidi viunganishi vya ujumuishaji wa modeli ya AI na akreditivu kwa ajili ya mantiki ya kutatua fumbo ya hali ya juu."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Utendaji bora kwa gharama karibu sifuri. Inatatua Crossclimb na Pinpoint kwa mantiki bora. Mapendekezo ya chaguo-msingi: gemini-2.5-flash."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Haraka, inayoitikia, na yenye kuaminika sana kwa mifumo ya maarifa ya jumla. Mapendekezo ya chaguo-msingi: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Uwezo wa kufikiri wa juu. Inashughulikia uhusiano wa maneno wenye ugumu mkubwa bila dosari. Mapendekezo ya msingi: claude-3-5-haiku."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Unganisha na mifumo ya LLM ya ndani kama Ollama au LM Studio. Elekeza URL yako ya mwisho (mfano, http://localhost:11434/v1) na jina la mfano wa kawaida."
+  },
+  "showMoreDates": {
+    "message": "Onyesha tarehe zaidi"
+  },
+  "showLessDates": {
+    "message": "Onyesha kidogo"
+  },
+  "solveBtn_withAi": {
+    "message": "Tatuza na AI"
+  },
+  "solveBtn_game": {
+    "message": "Suluhi Mchezo"
+  },
+  "solveBtn_solving": {
+    "message": "Kutatua..."
+  },
+  "solveBtn_solved": {
+    "message": "Imepatikana!"
+  },
+  "scoreClue": {
+    "message": "1 kidokezo"
+  },
+  "scoreClues": {
+    "message": "$1 vidokezo"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "markAsNotPlayed": {
+    "message": "Tandaza kama Hujacheza"
+  },
+  "settingSolveSpeed": {
+    "message": "Kutatua Kasi / Kuchelewesha"
+  },
+  "solveSpeed_instant": {
+    "message": "Haraka (Kasi zaidi)"
+  },
+  "solveSpeed_normal": {
+    "message": "Kawaida (Kiwango)"
+  },
+  "solveSpeed_stealth": {
+    "message": "Hali ya Kujificha (Muda wa kuchelewesha kama binadamu)"
+  },
+  "labelSolveSpeed": {
+    "message": "KUTATUA KASI NA MPANGILIO"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Mode ya papo hapo inakamilisha bodi katika milisekunde. Mode ya siri inafanana na tabia ya kibinadamu kwa kasi isiyo na mpangilio (sekunde 1–3) ili kulinda mfuatano dhidi ya kugunduliwa na automatiska."
+  },
+  "solveBtn_hint": {
+    "message": "Pata Kidokezo"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Kitendo cha Kutatua Kimewekwa Kwanza"
+  },
+  "solveMode_full": {
+    "message": "Kujibu Moja kwa Moja Kamili"
+  },
+  "solveMode_hint": {
+    "message": "Njia ya Kidokezo cha Kitaaluma"
+  },
+  "labelDefaultSolveMode": {
+    "message": "MODI YA KUTATUA YA KAWAIDA"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Chagua hatua kuu unapopiga mbizi kwenye mtazamo wa tab au bodi. Kutatua Kamili kumaliza mchezo; Mode ya Kidokezo inaweka kipengee kimoja sahihi."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Gharama Sifuri na AI Kamili ya Mitaa"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Inafanya kazi kabisa kwenye kifaa chako ndani ya kivinjari. Hakuna ucheleweshaji wa mtandao na bure kabisa na Gemini Nano."
+  },
+  "debugHeaderTitle": {
+    "message": "Kikaguzi cha Michezo na Zana za Uendelezaji"
+  },
+  "debugStatusOffline": {
+    "message": "Bila mtandao"
+  },
+  "debugStatusLive": {
+    "message": "ishi"
+  },
+  "debugDetectedGame": {
+    "message": "Mchezo Uliogunduliwa"
+  },
+  "debugNoneDetected": {
+    "message": "Hakuna Kilichogunduliwa"
+  },
+  "debugTargetUrl": {
+    "message": "URL ya Malengo"
+  },
+  "debugNoActiveTab": {
+    "message": "Hakuna Tab Inayoendelea"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML Imekopi!"
+  },
+  "debugCopyHtml": {
+    "message": "Nakili HTML <main>"
+  },
+  "debugLogsCopied": {
+    "message": "Makaratasi Yamekopi!"
+  },
+  "debugCopyLogs": {
+    "message": "Nakili Kumbukumbu za Console"
+  },
+  "debugBothCopied": {
+    "message": "Zote zimekopi!"
+  },
+  "debugCopyBoth": {
+    "message": "Nakili Zote (HTML na Makaratasi)"
+  },
+  "debugRegistryCopied": {
+    "message": "Rejista ya JSON Imehamasishwa!"
+  },
+  "debugCopyRegistry": {
+    "message": "Nakili JSON ya Usajili wa Leo"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Nakili JSON"
+  },
+  "debugSubmitAnswer": {
+    "message": "Wasilisha Jibu"
+  },
+  "debugDomPreview": {
+    "message": "Muonekano wa Kipengele cha DOM"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [imekatwa, jumla ya wahusika: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Nakili kamili <main> HTML"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Hakuna tag ya <main> inayofanya kazi iliyorekodiwa. Hakikisha uko kwenye skrini ya mchezo wa LinkedIn."
+  },
+  "debugConsoleOutput": {
+    "message": "Matokeo ya Konga"
+  },
+  "debugEventsCount": {
+    "message": "$1 matukio"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Fanya upya kumbukumbu"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Futa kumbukumbu"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Hakuna kumbukumbu zilizorekodiwa bado. Fanya vitendo kwenye skrini ya mchezo ili kuanzisha matukio ya console."
+  },
+  "debugListeningEvents": {
+    "message": "Sikiliza matukio ya console.log, console.warn, na console.error..."
+  },
+  "debugErrorInitializing": {
+    "message": "Muunganisho na ukurasa wa mchezo wa LinkedIn unaanza..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Haiwezekani kupata data ya mchezo."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Tab ya sasa si ukurasa wa Michezo ya LinkedIn. Tembelea mchezo ili kupata maelezo."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Haikuweza kubaini kichupo kilichokuwa hai."
+  },
+  "labelDailyReminders": {
+    "message": "KUMBUSHO ZA KILA SIKU & MLINZI WA MTAZAMO"
+  },
+  "settingEnableReminders": {
+    "message": "wezesha Kumbukumbu za Kila Siku"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Nijulishe kabla ya mfululizo wa leo kumalizika."
+  },
+  "settingReminderTime": {
+    "message": "Kumbusho la Wakati"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Chagua muda wa hapa ili kuangalia michezo isiyokuwa na ufumbuzi."
+  },
+  "notificationTitle": {
+    "message": "Mlinzi wa Mstari 🚀"
+  },
+  "notificationMessage": {
+    "message": "Usipoteze mfululizo wako wa kutatua! Haujaweza kutatua michezo ya LinkedIn ya leo bado."
+  },
+  "notificationButton": {
+    "message": "Suluhisha Sasa!"
+  },
+  "commandSolveActiveGame": {
+    "message": "Suluisha mchezo wa LinkedIn ulio hai kiotomatiki."
+  },
+  "commandGetSingleHint": {
+    "message": "Toa kidokezo kimoja au angalia makosa."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Kipande cha Kando Kinachofunguka Kiotomatiki kwenye Michezo"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Fungua upande wa suluhishi kiotomatiki unapotembelea Michezo ya LinkedIn."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "KIDHI CHA KUTATUWA KILICHOFUNGULIWA KIAUTOMATIKI"
+  },
+  "permissionDialogTitle": {
+    "message": "Patia Ukurasa Ufikiaji"
+  },
+  "permissionDialogDesc": {
+    "message": "Ili kugundua bodi za michezo zinazofanya kazi na kutatua mafumbo, nyongeza inahitaji ruhusa ya kufanya kazi kwenye Michezo ya LinkedIn. Bonyeza hapa chini kutoa ufikiaji."
+  },
+  "permissionDialogButton": {
+    "message": "Pata Ufikiaji"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Cheza na Kutatua Malkia leo!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Fungua msaidizi wa mini-Sudoku"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Fungua Msururu na Dashibodi ya Utendaji"
+  },
+  "diagnosticsEngine": {
+    "message": "Injini ya Uchambuzi"
+  },
+  "liveInspected": {
+    "message": "Iliyo Hai Imeangaliwa"
+  },
+  "offline": {
+    "message": "Bila mtandao"
+  },
+  "inspectedTab": {
+    "message": "Kichupo kilichokaguliwa"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Mchambuzi wa Gridi ya Matrix ya Moja kwa Moja"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Kusubiri Ukurasa wa Mchezo wa LinkedIn"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Nenda kwenye kichupo chochote cha Bodi ya Mchezo ya LinkedIn (Malkia, Sudoku, Tango, Pinpoint) ili kupata viwango vya vizuizi, hali za seli, na miundo inayojibu."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Mchambuzi wa Kumbukumbu za Telemetry"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Tafuta kumbukumbu..."
+  },
+  "allTypes": {
+    "message": "AINA ZOTE"
+  },
+  "logsType": {
+    "message": "MIFUNGO"
+  },
+  "infoType": {
+    "message": "TAARIFA"
+  },
+  "warnsType": {
+    "message": "ONYO"
+  },
+  "errorsType": {
+    "message": "KOSA"
+  },
+  "selectTypePlaceholder": {
+    "message": "Chagua Aina"
+  },
+  "consoleStreamEmpty": {
+    "message": "Konsoli ya Msimu Haina Maudhui"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Hakuna matokeo ya kumbukumbu yaliyogunduliwa yanayolingana na vichujio. Endesha hatua ndani ya kiolesura cha mtandao wa LinkedIn Games ili kutiririsha vitendo vya kumbukumbu hapa."
+  },
+  "subscribedToStorageSession": {
+    "message": "Imesajiliwa kwenye mtiririko wa storage.session"
+  },
+  "parsingGameGridCells": {
+    "message": "Kuchambua seli za gridi ya mchezo... Hakikisha bodi ina vizuizi vya gridi vilivyo hai vinavyoonekana."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "Siyo ya kutumika"
+  },
+  "matchesLabel": {
+    "message": "mechi"
+  },
+  "copiedLabel": {
+    "message": "Imepigwa!"
+  },
+  "copyLogsTooltip": {
+    "message": "Nakili Rekodi"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Futa Nafasi ya Kumbukumbu"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Tatuza Mchezo wa LinkedIn ulio hai"
+  },
+  "contextMenuHint": {
+    "message": "💡 Pata Kidokezo"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Tazama Matokeo"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRIA NA FARAGHA"
+  },
+  "telemetryToggleLabel": {
+    "message": "Tuma Telemetry Isiyo Na Jina"
+  },
+  "telemetryToggleDesc": {
+    "message": "Saidia kuboresha msolver kwa kushiriki takwimu za utendaji na matumizi bila majina."
+  }
+}

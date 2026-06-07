@@ -1,10 +1,10 @@
 {
   "extensionName": {
-    "message": "Resolutor de Juegos de LinkedIn",
+    "message": "Solucionador de Juegos de LinkedIn",
     "description": "The name of the extension."
   },
   "extensionDescription": {
-    "message": "Un ayudante para los juegos de LinkedIn.",
+    "message": "Un ayudante para LinkedIn Games. Resuelve acertijos diarios (Queens, Sudoku, Pinpoint, Crossclimb) con rachas y análisis.",
     "description": "The description of the extension."
   },
   "title": {
@@ -12,7 +12,7 @@
     "description": "Header title of the popup"
   },
   "subtitle": {
-    "message": "Resuelve tableros activos en un solo clic",
+    "message": "Resuelva sus acertijos diarios con IA de primera calidad",
     "description": "Header subtitle of the popup"
   },
   "switchThemeTitle": {
@@ -20,27 +20,27 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "La integración de pestañas solo está disponible dentro de las extensiones del navegador.",
+    "message": "Se requiere la integración con la pestaña de Chrome.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
-    "message": "No se pudo encontrar la pestaña activa del navegador.",
+    "message": "No se encontró la pestaña activa.",
     "description": "Error shown if tab is not found"
   },
   "errorNavigationFailed": {
-    "message": "Error al navegar al tablero de $1 automáticamente.",
+    "message": "No se pudo ir a $1.",
     "description": "Error shown if tab switching fails"
   },
   "errorConnectionFailed": {
-    "message": "No se pudo conectar con la página de LinkedIn. Por favor, recarga la pestaña e inténtalo de nuevo.",
+    "message": "La conexión falló.",
     "description": "Error shown if content script is unresponsive"
   },
   "errorExecutionFailedDefault": {
-    "message": "La ejecución del resolutor falló inesperadamente.",
+    "message": "Se produjo un problema al ejecutar el solucionador.",
     "description": "Fallback solver error"
   },
   "successSolverStarted": {
-    "message": "¡Resolutor iniciado con éxito! Ejecutando...",
+    "message": "El solucionador se inició.",
     "description": "Toast message for successful solve start"
   },
   "solvingStatus": {
@@ -51,17 +51,9 @@
     "message": "Sudoku",
     "description": "Game name Sudoku"
   },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
   "queens": {
     "message": "Queens",
     "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
   },
   "patches": {
     "message": "Patches",
@@ -71,12 +63,8 @@
     "message": "Crossclimb",
     "description": "Game name Crossclimb"
   },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
   "bonus": {
-    "message": "Bonus",
+    "message": "Bono",
     "description": "Bonus badge next to game name"
   },
   "titleSolve": {
@@ -332,7 +320,7 @@
     "description": "Success dot tooltip on solved timeline row"
   },
   "disclaimerText": {
-    "message": "Descargo de responsabilidad: Este es un proyecto educativo independiente de código abierto. No está afiliado, patrocinado ni respaldado por LinkedIn Corporation. 'LinkedIn' es una marca comercial registrada de LinkedIn Corporation.",
+    "message": "Exención de responsabilidad: Este es un proyecto educativo independiente de código abierto. No está afiliado, patrocinado ni respaldado por LinkedIn Corporation. 'LinkedIn' es una marca registrada de LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
   },
   "settingsCredentialsTitle": {
@@ -400,10 +388,10 @@
     "message": "¡Resuelto!"
   },
   "desc_patches": {
-    "message": "Piece it together"
+    "message": "Ensambla las piezas"
   },
   "desc_zip": {
-    "message": "Complete the path"
+    "message": "Completa el camino"
   },
   "desc_sudoku": {
     "message": "El clásico juego, en versión mini."
@@ -425,12 +413,6 @@
   },
   "scoreClues": {
     "message": "$1 pistas"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
   },
   "markAsNotPlayed": {
     "message": "Marcar como no jugado",
@@ -565,7 +547,7 @@
     "description": "Card title for the captured main outerHTML preview"
   },
   "debugHtmlTruncated": {
-    "message": "\n\n/* ... [truncado, caracteres totales: $1] ... */",
+    "message": "\n\n[ ... [truncado, caracteres totales: $1] ... ]",
     "description": "Truncation note inside the main outerHTML preview"
   },
   "debugCopyCompleteHtmlTooltip": {
@@ -739,7 +721,7 @@
     "message": "Analizando las celdas de la cuadrícula de juego... Asegúrese de que el tablero tenga bloques de cuadrícula activos visibles."
   },
   "urlLabel": {
-    "message": "Url:"
+    "message": "URL"
   },
   "notAvailable": {
     "message": "N/D"
@@ -776,5 +758,20 @@
   "telemetryToggleDesc": {
     "message": "Ayude a mejorar el solucionador compartiendo métricas de rendimiento y uso anónimas.",
     "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
   }
 }

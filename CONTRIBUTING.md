@@ -131,7 +131,7 @@ Familiarize yourself with the project structure before writing code:
 ├── lib/                  # Shared analytical, storage, and telemetry utility functions
 │   ├── analytics.ts      # Anonymous GA4 event measurement proxy
 │   └── ...
-├── locales/              # Multilingual JSON translation files (en, tr)
+├── public/_locales/      # Multilingual JSON translation files (en, tr)
 ├── registry/             # Database for offline puzzles (Pinpoint & Crossclimb)
 ├── scripts/              # Codebase scripts (store asset generation, registry validations)
 ├── background.ts         # Extension Background Service Worker (manages storage, API calls, telemetry)

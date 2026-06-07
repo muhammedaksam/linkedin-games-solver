@@ -12,7 +12,7 @@
     "description": "Header title of the popup"
   },
   "subtitle": {
-    "message": "Résolvez les plateaux actifs en un seul clic",
+    "message": "Résolvez vos puzzles quotidiens avec une IA premium",
     "description": "Header subtitle of the popup"
   },
   "switchThemeTitle": {
@@ -20,40 +20,32 @@
     "description": "Tooltip to switch theme"
   },
   "errorChromeTabIntegration": {
-    "message": "L'intégration d'onglets ést disponible uniquement dans les extensions de navigateur.",
+    "message": "L'intégration de l'onglet Chrome est requise.",
     "description": "Error shown if not running in extension context"
   },
   "errorActiveTabNotFound": {
-    "message": "Impossible de trouver l'onglet actif du navigateur.",
+    "message": "Impossible de trouver l'onglet actif.",
     "description": "Error shown if tab is not found"
   },
   "errorNavigationFailed": {
-    "message": "Échec de la navigation automatique vers le plateau de $1.",
+    "message": "Échec de la navigation vers $1.",
     "description": "Error shown if tab switching fails"
   },
   "errorConnectionFailed": {
-    "message": "Impossible de se connecter à la page LinkedIn. Veuillez recharger l'onglet et réessayer.",
+    "message": "La connexion a échoué.",
     "description": "Error shown if content script is unresponsive"
   },
   "errorExecutionFailedDefault": {
-    "message": "L'exécution du résolveur a échoué de manière inattendue.",
+    "message": "Un problème est survenu lors de l'exécution du solveur.",
     "description": "Fallback solver error"
   },
   "successSolverStarted": {
-    "message": "Le résolveur a démarré avec succès ! En cours d'exécution...",
+    "message": "Le solveur a démarré.",
     "description": "Toast message for successful solve start"
   },
   "solvingStatus": {
     "message": "Résolution...",
     "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
   },
   "queens": {
     "message": "Queens",
@@ -74,10 +66,6 @@
   "pinpoint": {
     "message": "Pinpoint",
     "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "Bonus",
-    "description": "Bonus badge next to game name"
   },
   "titleSolve": {
     "message": "Résoudre $1",
@@ -292,7 +280,7 @@
     "description": "AI Config settings nav link label"
   },
   "navStats": {
-    "message": "Stats",
+    "message": "Statistiques",
     "description": "Stats nav link label"
   },
   "navTheme": {
@@ -332,7 +320,7 @@
     "description": "Success dot tooltip on solved timeline row"
   },
   "disclaimerText": {
-    "message": "Clause de Non-Responsabilité : Il s'agit d'un projet éducatif indépendant et open-source. Il n'est pas affilié, sponsorisé ou approuvé par LinkedIn Corporation. 'LinkedIn' est une marque déposée de LinkedIn Corporation.",
+    "message": "Clause de Non-Responsabilité : Il s'agit d'un projet éducatif indépendant et open-source. Il n'est pas affilié, sponsorisé ou approuvé par LinkedIn Corporation. 'LinkedIn' ést une marque déposée de LinkedIn Corporation.",
     "description": "Compliance footer disclaimer text"
   },
   "settingsCredentialsTitle": {
@@ -400,10 +388,10 @@
     "message": "Résolu !"
   },
   "desc_patches": {
-    "message": "Piece it together"
+    "message": "Connecter les correctifs ensemble"
   },
   "desc_zip": {
-    "message": "Complete the path"
+    "message": "Compléter le chemin"
   },
   "desc_sudoku": {
     "message": "Le jeu classique, en version mini"
@@ -426,12 +414,6 @@
   "scoreClues": {
     "message": "$1 indices"
   },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
   "markAsNotPlayed": {
     "message": "Marquer comme non joué",
     "description": "Context menu option to undo a completed game for today"
@@ -445,7 +427,7 @@
     "description": "Instant speed mode option"
   },
   "solveSpeed_normal": {
-    "message": "Normal (Standard)",
+    "message": "Normal (standard)",
     "description": "Normal speed mode option"
   },
   "solveSpeed_stealth": {
@@ -565,7 +547,7 @@
     "description": "Card title for the captured main outerHTML preview"
   },
   "debugHtmlTruncated": {
-    "message": "\n\n/* ... [tronqué, caractères totaux : $1] ... */",
+    "message": "\n\n[ ... [tronqué, caractères totaux : $1] ... ]",
     "description": "Truncation note inside the main outerHTML preview"
   },
   "debugCopyCompleteHtmlTooltip": {
@@ -739,7 +721,7 @@
     "message": "Analyse des cellules de la grille de jeu... Assurez-vous que le plateau présente des blocs de grille actifs visibles."
   },
   "urlLabel": {
-    "message": "Url:"
+    "message": "URL :"
   },
   "notAvailable": {
     "message": "N/D"
@@ -776,5 +758,20 @@
   "telemetryToggleDesc": {
     "message": "Aidez à améliorer le résolveur en partageant des mesures de performance et d'utilisation anonymes.",
     "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "bonus": {
+    "message": "Bonus"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
   }
 }

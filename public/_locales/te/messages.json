@@ -1,0 +1,624 @@
+{
+  "extensionName": {
+    "message": "LinkedIn గేమ్స్ సాల్వర్",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn Games కోసం ఒక సహాయకుడు. స్ట్రీక్స్ మరియు అనలిటిక్స్‌తో రోజువారీ పజిల్స్‌ (Queens, Sudoku, Pinpoint, Crossclimb) ను ఆటోమేటిక్‌గా పరిష్కరిస్తుంది.",
+    "description": "The description of the extension."
+  },
+  "subtitle": {
+    "message": "ఒక క్లిక్‌తో యాక్టివ్ బోర్డులను సాల్వ్ చేయండి",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome ట్యాబ్ సమీకరణ అవసరం.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "క్రియాశీల ట్యాబ్ కనుగొనబడలేదు.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "$1 కు వెళ్లడం విఫలమైంది.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "కనెక్షన్ విఫలమైంది.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "సాల్వర్‌ను నడుపుతుండగా ఒక సమస్య వచ్చింది.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "సాల్వర్ ప్రారంభమైంది.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "చరిత్ర & గణాంకాలు",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "మీ LinkedIn Games పరిష్కార చరిత్ర మరియు గణాంకాలు",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "మొత్తం పరిష్కరించినవి",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "అన్ని తేదీలలో పరిష్కరించిన ఆటలు",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "సగటు సమయం",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "నమోదైన అన్ని పూర్తి చేయడాలపై",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "సక్రియ శ్రేణి",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "సక్రియ రోజులు",
+    "description": "Description for the active streak card"
+  },
+  "dashboardDescText": {
+    "message": "మీ పనితీరు మెట్రిక్‌లను విశ్లేషించండి, స్ట్రీక్‌లను నమోదు చేయండి, మరియు రోజూ పూర్తి చేసిన పజిల్స్ మార్గాలను అనుసరించండి.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "డిస్క్లెయిమర్: ఇది స్వతంత్ర, ఓపెన్ సోర్స్ విద్యా ప్రాజెక్ట్. ఇది LinkedIn Corporation తో ఎటువంటి అనుబంధం, స్పాన్సర్‌షిప్ లేదా ఆమోదం పొందింది కాదు. 'LinkedIn' అనేది LinkedIn Corporation యొక్క రిజిస్టర్డ్ ట్రేడ్మార్క్.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "title": {
+    "message": "లింక్డ్‌ఇన్ గేమ్స్"
+  },
+  "switchThemeTitle": {
+    "message": "$1 మోడ్‌కు మారండి"
+  },
+  "solvingStatus": {
+    "message": "పరిష్కరించడం..."
+  },
+  "bonus": {
+    "message": "బోనస్"
+  },
+  "desc_patches": {
+    "message": "ఇది కలుపు"
+  },
+  "desc_zip": {
+    "message": "మార్గాన్ని పూర్తి చేయండి"
+  },
+  "desc_sudoku": {
+    "message": "క్లాసిక్ ఆట, మినీగా తయారు చేయబడింది"
+  },
+  "desc_tango": {
+    "message": "గ్రిడ్‌ను సమన్వయించండి"
+  },
+  "desc_queens": {
+    "message": "ప్రతి ప్రాంతానికి కిరీటాన్ని పెట్టండి"
+  },
+  "desc_crossclimb": {
+    "message": "ట్రివియా లాడ్డర్‌ను అన్లాక్ చేయండి"
+  },
+  "desc_pinpoint": {
+    "message": "వర్గాన్ని ఊహించండి"
+  },
+  "titleSolve": {
+    "message": "$1 ను పరిష్కరించండి"
+  },
+  "titleCompleted": {
+    "message": "ఈ రోజు పూర్తయింది! $1 కు వెళ్లడానికి క్లిక్ చేయండి."
+  },
+  "titleOpen": {
+    "message": "$1 ను పరిష్కరించడానికి తెరవండి"
+  },
+  "perfectDay": {
+    "message": "అద్భుతమైన రోజు! అన్ని $1 ఆటలు పూర్తయ్యాయి! 🎉"
+  },
+  "dailyProgress": {
+    "message": "ప్రతి రోజు పురోగతి: $1 లో $2 ఆటలు పూర్తయ్యాయి."
+  },
+  "statStreakDays": {
+    "message": "$1 రోజులు"
+  },
+  "personalBests": {
+    "message": "వ్యక్తిగత ఉత్తమాలు"
+  },
+  "noRecordsYet": {
+    "message": "ఇప్పటివరకు ఎలాంటి పరిష్కార రికార్డులు నమోదు చేయబడలేదు."
+  },
+  "solvingHistory": {
+    "message": "చరిత్రను పరిష్కరించడం"
+  },
+  "activityCalendar": {
+    "message": "చర్య క్యాలెండర్"
+  },
+  "clearFilter": {
+    "message": "ఫిల్టర్ క్లియర్ చేయండి"
+  },
+  "settingModel": {
+    "message": "మోడల్"
+  },
+  "settingModelSelect": {
+    "message": "మోడల్ ఎంచుకోండి"
+  },
+  "settingModelCustomOption": {
+    "message": "కస్టమ్ మోడల్ పేరు..."
+  },
+  "settingModelCustomLabel": {
+    "message": "కస్టమ్ మోడల్ పేరు"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "ఉదాహరణకు: లామా3, మిస్ట్రాల్"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "కస్టమ్ గుర్తింపు నమోదు చేయండి..."
+  },
+  "settingEndpointLabel": {
+    "message": "ఎండ్‌పాయింట్ URL"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "ఉదాహరణకు: http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "జెమిని API కీ"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "ఓపెన్‌ఏఐ API కీ"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "అంత్రోపిక్ API కీ"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "డీప్‌సీక్ API కీ"
+  },
+  "settingApiKeyCustom": {
+    "message": "API కీ (ఐచిక)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "ఐచ్ఛిక ప్రమాణాలు..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "ప్రవేశ పత్రాల కీ నమోదు చేయండి..."
+  },
+  "settingApiKeyNotice": {
+    "message": "ఎంచుకున్న మోడల్ క్రాస్‌క్లైంబ్ మరియు పిన్‌పాయింట్‌ను పరిష్కరిస్తుంది. ఈ విస్తరణ మీ కీని ఎప్పుడూ పంచుకోదు."
+  },
+  "popupCardTitle": {
+    "message": "ఫన్, రోజువారీ ఆటలపై కనెక్ట్ అవ్వండి"
+  },
+  "popupCardDesc": {
+    "message": "మీ పని దినానికి మీ మనసును సిద్ధం చేసుకోండి మరియు ఫలితాలను పోల్చండి. మీరు వాటిని పంచుకోని ఉంటే, మీ స్కోర్లు గోప్యంగా ఉంటాయి."
+  },
+  "saveAndBack": {
+    "message": "సేవ్ & గేమ్స్‌కు తిరిగి వెళ్లండి"
+  },
+  "solvingWorking": {
+    "message": "ఏఐ సాల్వర్ పనిచేస్తోంది..."
+  },
+  "completedToday": {
+    "message": "ఈ రోజు పూర్తయింది"
+  },
+  "solvedCountSuffix": {
+    "message": "పరిష్కరించబడింది"
+  },
+  "settingsHeaderTitle": {
+    "message": "ఏఐ మోడల్ కాన్ఫిగరేషన్"
+  },
+  "labelAiProvider": {
+    "message": "ఏఐ ప్రొవైడర్"
+  },
+  "labelModelIdentifier": {
+    "message": "మోడల్ గుర్తింపు"
+  },
+  "labelCustomModel": {
+    "message": "కస్టమ్ మోడల్ పేరు"
+  },
+  "labelEndpointUrl": {
+    "message": "ఎండ్‌పాయింట్ URL"
+  },
+  "labelGeminiKey": {
+    "message": "జెమినీ API కీ"
+  },
+  "labelOpenAiKey": {
+    "message": "ఓపెన్‌ఏఐ API కీ"
+  },
+  "labelAnthropicKey": {
+    "message": "అంత్రోపిక్ API కీ"
+  },
+  "labelDeepSeekKey": {
+    "message": "డీప్‌సీక్ API కీ"
+  },
+  "labelCustomKey": {
+    "message": "API కీ (ఐచ్ఛికం)"
+  },
+  "navHome": {
+    "message": "ఇల్లు"
+  },
+  "navAiConfig": {
+    "message": "సెట్టింగ్స్ / ఎంపికలు"
+  },
+  "navStats": {
+    "message": "సంఖ్యాశాస్త్రం"
+  },
+  "navTheme": {
+    "message": "థీమ్"
+  },
+  "navDebug": {
+    "message": "డీబగ్"
+  },
+  "dailyProgressLabel": {
+    "message": "ప్రతిరోజు పురోగతి"
+  },
+  "solveActiveBoard": {
+    "message": "సాధించు యాక్టివ్ బోర్డు"
+  },
+  "backToGames": {
+    "message": "లింక్డ్‌ఇన్ ఆటలకు తిరిగి"
+  },
+  "dashboardLabel": {
+    "message": "డాష్‌బోర్డ్"
+  },
+  "gamesSolverTitle": {
+    "message": "గేమ్స్ సాల్వర్"
+  },
+  "completedSuccessfully": {
+    "message": "సంపూర్ణంగా విజయవంతంగా జరిగింది"
+  },
+  "settingsCredentialsTitle": {
+    "message": "అర్హతలు & నమూనాలు"
+  },
+  "settingsModelGuideTitle": {
+    "message": "మోడల్ గైడ్ & సమాచారం"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "సంబంధ స్థితి"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "సక్రియ పరిష్కర్త:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "మోడల్ గుర్తింపు:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "సెట్టింగ్స్ ఆటో-సేవ్ అయ్యాయి!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "అధిక స్థాయి పజిల్-పరిష్కార తర్కానికి AI మోడల్ సమీకరణ ఎండ్‌పాయింట్లు మరియు క్రెడెన్షియల్స్‌ను కాన్ఫిగర్ చేయండి."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "సున్నా ఖర్చుల వద్ద అద్భుతమైన ప్రదర్శన. అద్భుతమైన తర్కంతో క్రాస్‌క్లైమ్ మరియు పిన్‌పాయింట్‌ను పరిష్కరిస్తుంది. సిఫారసు చేసిన డిఫాల్ట్: జెమినీ-2.5-ఫ్లాష్."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "త్వరిత, స్పందనశీలమైన మరియు సాధారణ జ్ఞాన నమూనాలతో అత్యంత నమ్మదగినది. సిఫారసు చేసిన డిఫాల్ట్: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "గరిష్టమైన తర్క సామర్థ్యం. చాలా సంక్లిష్టమైన పద సంబంధాలను తప్పులేకుండా నిర్వహిస్తుంది. సిఫారసు చేసిన డిఫాల్ట్: క్లాడ్-3-5-హైకూ."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "ఒల్లమా లేదా ఎల్‌ఎమ్ స్టూడియో వంటి స్థానిక LLM ఫ్రేమ్‌వర్క్‌లతో కనెక్ట్ అవ్వండి. మీ ఎండ్‌పాయింట్ URL (ఉదాహరణకు, http://localhost:11434/v1) మరియు అనుకూల మోడల్ పేరును సూచించండి."
+  },
+  "showMoreDates": {
+    "message": "మరింత తేదీలు చూపించు"
+  },
+  "showLessDates": {
+    "message": "తక్కువ చూపించు"
+  },
+  "solveBtn_withAi": {
+    "message": "ఏఐతో పరిష్కరించండి"
+  },
+  "solveBtn_game": {
+    "message": "గేమ్ పరిష్కరించండి"
+  },
+  "solveBtn_solving": {
+    "message": "పరిష్కరించడం..."
+  },
+  "solveBtn_solved": {
+    "message": "పరిష్కరించబడింది!"
+  },
+  "scoreClue": {
+    "message": "1 సంకేతం"
+  },
+  "scoreClues": {
+    "message": "$1 సంకేతాలు"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1మి $2స"
+  },
+  "markAsNotPlayed": {
+    "message": "చేయని ఆటగా గుర్తించు"
+  },
+  "settingSolveSpeed": {
+    "message": "సమస్య పరిష్కారం / ఆలస్యం"
+  },
+  "solveSpeed_instant": {
+    "message": "తక్షణ (అత్యంత వేగంగా)"
+  },
+  "solveSpeed_normal": {
+    "message": "సాధారణ (స్టాండర్డ్)"
+  },
+  "solveSpeed_stealth": {
+    "message": "స్టెల్త్ మోడ్ (మనిషి వంటి ఆలస్యం)"
+  },
+  "labelSolveSpeed": {
+    "message": "సమస్యలు పరిష్కరించడం & వేగం నియంత్రించడం"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "ఇన్‌స్టంట్ మోడ్ బోర్డును మిల్లీసెకండ్లలో పూర్తి చేస్తుంది. స్టెల్త్ మోడ్ ఆటోమేటెడ్ డిటెక్షన్‌కు వ్యతిరేకంగా స్ట్రీక్స్‌ను సురక్షితంగా ఉంచడానికి యాదృచ్ఛికంగా 1–3 సెకన్ల పేసింగ్‌తో మానవ ప్రవర్తనను అనుకరిస్తుంది."
+  },
+  "solveBtn_hint": {
+    "message": "సూచన పొందండి"
+  },
+  "settingDefaultSolveMode": {
+    "message": "డిఫాల్ట్ సాల్వర్ చర్య"
+  },
+  "solveMode_full": {
+    "message": "పూర్తి ఆటో-సాల్వ్"
+  },
+  "solveMode_hint": {
+    "message": "శిక్షణ సూచన మోడ్"
+  },
+  "labelDefaultSolveMode": {
+    "message": "డిఫాల్ట్ సాల్వర్ మోడ్"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "టాబ్ వీక్షణ లేదా బోర్డుల నుండి సాల్వర్‌ను ప్రారంభించినప్పుడు ప్రాథమిక చర్యను ఎంచుకోండి. పూర్తి పరిష్కారం ఆటను ముగిస్తుంది; సూచన మోడ్ ఒక సరైన అంశాన్ని ఉంచుతుంది."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "జీరో ఖర్చు & పూర్తిగా స్థానిక AI"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "మీ పరికరంలో బ్రౌజర్‌లో పూర్తిగా స్థానికంగా నడుస్తుంది. నెట్‌వర్క్ ఆలస్యం లేదు మరియు జెమినీ నానోతో 100% ఉచితం."
+  },
+  "debugHeaderTitle": {
+    "message": "గేమ్ డీబగ్గర్ & డెవ్ టూల్స్"
+  },
+  "debugStatusOffline": {
+    "message": "ఆఫ్‌లైన్"
+  },
+  "debugStatusLive": {
+    "message": "జీవితం"
+  },
+  "debugDetectedGame": {
+    "message": "గేమ్ గుర్తించబడింది"
+  },
+  "debugNoneDetected": {
+    "message": "ఏమీ గుర్తించబడలేదు"
+  },
+  "debugTargetUrl": {
+    "message": "లక్ష్య URL"
+  },
+  "debugNoActiveTab": {
+    "message": "సక్రియమైన ట్యాబ్ లేదు"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML కాపీ చేయబడింది!"
+  },
+  "debugCopyHtml": {
+    "message": "కాపీ <main> HTML"
+  },
+  "debugLogsCopied": {
+    "message": "లాగ్‌లు కాపీ చేయబడ్డాయి!"
+  },
+  "debugCopyLogs": {
+    "message": "కాపీ కన్‌సోల్ లాగ్స్"
+  },
+  "debugBothCopied": {
+    "message": "రెండు కాపీ చేసారు!"
+  },
+  "debugCopyBoth": {
+    "message": "రెండు కాపీ (HTML & లాగ్స్)"
+  },
+  "debugRegistryCopied": {
+    "message": "రిజిస్ట్రి JSON కాపీ చేయబడింది!"
+  },
+  "debugCopyRegistry": {
+    "message": "ఈ రోజు యొక్క రిజిస్ట్రీ JSON కాపీ చేయండి"
+  },
+  "debugCopyRegistryShort": {
+    "message": "జేఎస్ఎన్ కాపీ చేయండి"
+  },
+  "debugSubmitAnswer": {
+    "message": "సమాధానం సమర్పించండి"
+  },
+  "debugDomPreview": {
+    "message": "DOM అంశం ప్రివ్యూ"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [truncated, total characters: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "కాపీ పూర్తి <main> HTML"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "సక్రియమైన <main> ట్యాగ్ పట్టుబడలేదు. మీరు LinkedIn గేమ్ స్క్రీన్‌లో ఉన్నారని నిర్ధారించుకోండి."
+  },
+  "debugConsoleOutput": {
+    "message": "కన్సోల్ అవుట్‌పుట్"
+  },
+  "debugEventsCount": {
+    "message": "$1 ఈవెంట్స్"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "లాగ్‌లను నవీకరించు"
+  },
+  "debugClearLogsTooltip": {
+    "message": "స్పష్టమైన లాగ్‌లు"
+  },
+  "debugNoLogsCaptured": {
+    "message": "ఇంతవరకు ఎలాంటి లాగులు పట్టుబడలేదు. కాన్సోల్ ఈవెంట్స్‌ను ప్రారంభించడానికి గేమ్ స్క్రీన్‌పై చర్యలు చేయండి."
+  },
+  "debugListeningEvents": {
+    "message": "console.log, console.warn, మరియు console.error ఈవెంట్ల కోసం వినడం..."
+  },
+  "debugErrorInitializing": {
+    "message": "లింక్డ్‌ఇన్ గేమ్ పేజీతో కనెక్షన్ ప్రారంభమవుతోంది..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "గేమ్ డేటా పొందడం సాధ్యం కాదు."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "సక్రియమైన ట్యాబ్ LinkedIn గేమ్స్ పేజీ కాదు. వివరాలను పొందడానికి ఒక గేమ్‌కు వెళ్లండి."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "సక్రియమైన ట్యాబ్‌ను గుర్తించలేకపోయాం."
+  },
+  "labelDailyReminders": {
+    "message": "ప్రతిరోజు గుర్తింపులు & స్ట్రీక్ రక్షకుడు"
+  },
+  "settingEnableReminders": {
+    "message": "ప్రతిరోజు గుర్తింపులను ప్రారంభించండి"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "ఈ రోజు స్ట్రీక్ ముగిసే ముందు నన్ను హెచ్చరించు."
+  },
+  "settingReminderTime": {
+    "message": "స్మరణ సమయం"
+  },
+  "settingReminderTimeNotice": {
+    "message": "అనవసరమైన ఆటలను తనిఖీ చేయడానికి స్థానిక సమయాన్ని ఎంచుకోండి."
+  },
+  "notificationTitle": {
+    "message": "స్ట్రీక్ ప్రొటెక్టర్ 🚀"
+  },
+  "notificationMessage": {
+    "message": "మీ పరిష్కార శ్రేణిని కోల్పోకండి! మీరు ఈ రోజు LinkedIn ఆటలు ఇంకా పరిష్కరించలేదు."
+  },
+  "notificationButton": {
+    "message": "ఇప్పుడు పరిష్కరించండి!"
+  },
+  "commandSolveActiveGame": {
+    "message": "సక్రియమైన LinkedIn ఆటను ఆటోమేటిక్‌గా పరిష్కరించండి."
+  },
+  "commandGetSingleHint": {
+    "message": "ఒకే దశలో సూచన ఇవ్వండి లేదా తప్పులను తనిఖీ చేయండి."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "గేమ్స్‌లో ఆటో-ఓపెన్ సైడ్‌బార్"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "LinkedIn గేమ్స్ సందర్శించినప్పుడు ఆటగాడి పక్క ప్యానెల్ స్వయంచాలకంగా తెరుస్తుంది."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "ఆటో-ఓపెన్ సాల్వర్ సైడ్‌బార్"
+  },
+  "permissionDialogTitle": {
+    "message": "పేజీ యాక్సెస్‌ను అనుమతించండి"
+  },
+  "permissionDialogDesc": {
+    "message": "సక్రియమైన ఆట బోర్డులను గుర్తించడానికి మరియు పజిల్స్‌ను పరిష్కరించడానికి, ఈ విస్తరణ LinkedIn Games పై నడవడానికి అనుమతి అవసరం. యాక్సెస్ ఇవ్వడానికి క్రింద క్లిక్ చేయండి."
+  },
+  "permissionDialogButton": {
+    "message": "ప్రవేశం అనుమతించండి"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 ఈ రోజు క్వీన్స్‌ను ఆడండి మరియు పరిష్కరించండి!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 మినీ-సుడోకూ పరిష్కర్తను తెరవండి"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 ఓపెన్ స్ట్రీక్స్ & పనితీరు డాష్‌బోర్డ్"
+  },
+  "diagnosticsEngine": {
+    "message": "డయాగ్నోస్టిక్స్ ఇంజిన్"
+  },
+  "liveInspected": {
+    "message": "ప్రత్యక్షంగా తనిఖీ చేయబడింది"
+  },
+  "offline": {
+    "message": "ఆఫ్‌లైన్"
+  },
+  "inspectedTab": {
+    "message": "తనిఖీ చేసిన ట్యాబ్:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "లైవ్ మేట్రిక్స్ గ్రిడ్ ఇన్‌స్పెక్టర్"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "లింక్డ్‌ఇన్ గేమ్ పేజీ కోసం వేచి ఉన్నాం"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "లింక్డ్‌ఇన్ గేమ్ బోర్డు ట్యాబ్ (క్వీన్స్, సుడోకు, టాంగో, పిన్‌పాయింట్) కి వెళ్లి పరిమితి సమన్వయాలను, కణ స్థితులను మరియు ప్రతిస్పందన నిర్మాణాలను పట్టించుకోండి."
+  },
+  "telemetryLogsStreamer": {
+    "message": "టెలిమెట్రీ లాగ్స్ స్ట్రీమర్"
+  },
+  "searchLogsPlaceholder": {
+    "message": "శోధన లాగ్‌లు..."
+  },
+  "allTypes": {
+    "message": "అన్ని రకాల"
+  },
+  "logsType": {
+    "message": "లాగ్స్"
+  },
+  "infoType": {
+    "message": "సమాచారం"
+  },
+  "warnsType": {
+    "message": "చెప్పిస్తుంది"
+  },
+  "errorsType": {
+    "message": "తప్పులు"
+  },
+  "selectTypePlaceholder": {
+    "message": "రకం ఎంచుకోండి"
+  },
+  "consoleStreamEmpty": {
+    "message": "కాన్సోల్ స్ట్రీమ్ ఖాళీగా ఉంది"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "ఫిల్టర్లను సరిపోయేలా లాగ్ అవుట్‌పుట్‌లు గుర్తించబడలేదు. ఇక్కడ లాగ్ చర్యలను స్ట్రీమ్ చేయడానికి LinkedIn గేమ్స్ సాల్వర్ UI లో దశలను నడపండి."
+  },
+  "subscribedToStorageSession": {
+    "message": "స్టోరేజ్.సెషన్ స్ట్రీమ్‌కు సబ్‌స్క్రైబ్ చేయబడింది"
+  },
+  "parsingGameGridCells": {
+    "message": "గేమ్ గ్రిడ్ సెల్స్‌ను పార్సింగ్ చేస్తున్నాం... బోర్డులో చురుకైన గ్రిడ్ బ్లాక్స్ కనిపిస్తున్నాయా అని నిర్ధారించుకోండి."
+  },
+  "urlLabel": {
+    "message": "యూరల్:"
+  },
+  "notAvailable": {
+    "message": "అందుబాటులో లేదు"
+  },
+  "matchesLabel": {
+    "message": "మ్యాచ్లు"
+  },
+  "copiedLabel": {
+    "message": "కాపీ చేసారు!"
+  },
+  "copyLogsTooltip": {
+    "message": "కాపీ లాగ్స్"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "స్పష్టమైన లాగ్ స్థలం"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ చురుకైన లింక్డ్ఇన్ గేమ్‌ను పరిష్కరించండి"
+  },
+  "contextMenuHint": {
+    "message": "💡 ఒక సూచన పొందండి"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 ఫలితాలను చూడండి"
+  },
+  "labelTelemetryTitle": {
+    "message": "టెలిమెట్రీ & గోప్యత"
+  },
+  "telemetryToggleLabel": {
+    "message": "అజ్ఞాత టెలిమెట్రీ పంపండి"
+  },
+  "telemetryToggleDesc": {
+    "message": "పరిష్కారాన్ని మెరుగుపరచడానికి గోప్యమైన పనితీరు మరియు వినియోగ మేట్రిక్‌లను పంచుకోండి."
+  }
+}

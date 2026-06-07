@@ -1,0 +1,776 @@
+{
+  "extensionName": {
+    "message": "Επίλυση παιχνιδιών LinkedIn",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Ένα βοηθητικό εργαλείο για τα παιχνίδια του LinkedIn. Αυτόματη επίλυση των καθημερινών γρίφων (Queens, Sudoku, Pinpoint, Crossclimb) με σερί και αναλύσεις.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "Παιχνίδια LinkedIn",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "Λύστε τα ενεργά ταμπλό με ένα μόνο κλικ",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "Μετάβαση σε λειτουργία $1",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Απαιτείται ενσωμάτωση με καρτέλα του Chrome.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Δεν βρέθηκε η ενεργή καρτέλα.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Η μετάβαση στο $1 απέτυχε.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Η σύνδεση απέτυχε.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Παρουσιάστηκε πρόβλημα κατά την εκτέλεση του λύτη.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Ο λύτης ξεκίνησε.",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "Επίλυση...",
+    "description": "Overlay label during solver run"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "bonus": {
+    "message": "Μπόνους",
+    "description": "Bonus badge next to game name"
+  },
+  "desc_patches": {
+    "message": "Συναρμολόγησε τα κομμάτια"
+  },
+  "desc_zip": {
+    "message": "Ολοκλήρωσε τη διαδρομή"
+  },
+  "desc_sudoku": {
+    "message": "Το κλασικό παιχνίδι, μικρό"
+  },
+  "desc_tango": {
+    "message": "Εναρμόνισε το πλέγμα"
+  },
+  "desc_queens": {
+    "message": "Στέψε κάθε περιοχή"
+  },
+  "desc_crossclimb": {
+    "message": "Ξεκλείδωσε μια κλίμακα trivia"
+  },
+  "desc_pinpoint": {
+    "message": "Μάντεψε την κατηγορία"
+  },
+  "titleSolve": {
+    "message": "Επίλυση $1",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "Ολοκληρώθηκε σήμερα! Κάνε κλικ για μετάβαση σε $1",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "Άνοιξε $1 για επίλυση",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "Τέλεια μέρα! Όλα τα παιχνίδια $1 ολοκληρώθηκαν! 🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "Ημερήσια πρόοδος: $1 από $2 παιχνίδια ολοκληρώθηκαν σήμερα",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "Ιστορικό & Στατιστικά",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Το ιστορικό και τα στατιστικά σας για τα LinkedIn Games",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Σύνολο επιλυθέντων",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Παιχνίδια επιλυμένα σε όλες τις ημερομηνίες",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Μέσος χρόνος",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Σε όλες τις καταγεγραμμένες ολοκληρώσεις",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Ενεργή σειρά",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Συνεχόμενες ενεργές ημέρες",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1 ημέρες",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "Προσωπικά ρεκόρ",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "Δεν υπάρχουν καταγεγραμμένα αποτελέσματα ακόμη.",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "Ιστορικό επιλύσεων",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "Ημερολόγιο δραστηριότητας",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "Καθαρισμός φίλτρου",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModel": {
+    "message": "Μοντέλο",
+    "description": "Label for the settings model selection dropdown"
+  },
+  "settingModelSelect": {
+    "message": "Επίλεξε μοντέλο",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "Προσαρμοσμένο όνομα μοντέλου...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "Προσαρμοσμένο όνομα μοντέλου",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "π.χ. llama3, mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Εισάγετε προσαρμοσμένο αναγνωριστικό...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "URL Endpoint",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "π.χ. http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Κλειδί Gemini API",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "Κλειδί OpenAI API",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Κλειδί Anthropic API",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "Κλειδί DeepSeek API",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "API Κλειδί (Προαιρετικό)",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Προαιρετικά διαπιστευτήρια...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Εισάγετε το κλειδί διαπιστευτηρίων...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "Το επιλεγμένο μοντέλο επιλύει Crossclimb & Pinpoint. Η επέκταση δεν κοινοποιεί ποτέ το κλειδί σας.",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "Συνδέστε μέσω διασκεδαστικών καθημερινών παιχνιδιών",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Προετοιμάστε το μυαλό σας για την εργάσιμη ημέρα και συγκρίνετε τα αποτελέσματα. Τα σκορ σας είναι ιδιωτικά εκτός αν τα μοιράζεστε.",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "Αποθήκευση & Επιστροφή στα Παιχνίδια",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "Ο AI επιλύτης δουλεύει...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "Ολοκληρώθηκε σήμερα",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "Επιλυμένο",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "Ρύθμιση μοντέλου AI",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "ΠΑΡΟΧΟΣ AI",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "ΑΝΑΓΝΩΡΙΣΤΙΚΟ ΜΟΝΤΕΛΟΥ",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "ΠΡΟΣΑΡΜΟΣΜΕΝΟ ΟΝΟΜΑ ΜΟΝΤΕΛΟΥ",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "URL ENDPOINT",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI API ΚΛΕΙΔΙ",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI API ΚΛΕΙΔΙ",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API ΚΛΕΙΔΙ",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API ΚΛΕΙΔΙ",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "API ΚΛΕΙΔΙ (ΠΡΟΑΙΡΕΤΙΚΟ)",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "Αρχική",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "Ρυθμίσεις / Επιλογές",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "Στατιστικά",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "Θέμα",
+    "description": "Theme nav link label"
+  },
+  "navDebug": {
+    "message": "Αποσφαλμάτωση",
+    "description": "Debug nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "Ημερήσια πρόοδος",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "Επίλυση ενεργής πλάκας",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "Επιστροφή στα LinkedIn Games",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "Πίνακας ελέγχου",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "Επιλύτης παιχνιδιών",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "Ανάλυσε τις μετρήσεις σου, καταχώρησε σειρές και εντόπισε τις ημερήσιες διαδρομές ολοκληρωμένων παζλ.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "Ολοκληρώθηκε επιτυχώς",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "Αποποίηση ευθύνης: Αυτό είναι ένα ανεξάρτητο, εκπαιδευτικό έργο ανοικτού κώδικα. Δεν συνδέεται, δεν χρηματοδοτείται και δεν εγκρίνεται από την LinkedIn Corporation. Το «LinkedIn» είναι καταχωρημένο εμπορικό σήμα της LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Διαπιστευτήρια & Μοντέλα",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Οδηγός μοντέλου & πληροφορίες",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Κατάσταση σύνδεσης",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Ενεργός επιλύτης:",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Αναγνωριστικό μοντέλου:",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Οι ρυθμίσεις αποθηκεύτηκαν αυτόματα!",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Ρυθμίστε endpoints και διαπιστευτήρια ενσωμάτωσης AI μοντέλων για προηγμένη επίλυση παζλ.",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Εξαιρετική απόδοση με σχεδόν μηδενικό κόστος. Λύνει Crossclimb και Pinpoint με εξαιρετική λογική. Συνιστάται: gemini-2.5-flash.",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Γρήγορο, ανταποκρινόμενο και εξαιρετικά αξιόπιστο με γενικά μοτίβα γνώσης. Συνιστάται: gpt-4o-mini.",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Μέγιστη ικανότητα συλλογισμού. Διαχειρίζεται πολύπλοκους συνειρμούς λέξεων άψογα. Συνιστάται: claude-3-5-haiku.",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Συνδέσου με τοπικά πλαίσια LLM όπως Ollama ή LM Studio. Δώσε το endpoint URL και το προσαρμοσμένο όνομα μοντέλου.",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "Εμφάνιση περισσότερων ημερομηνιών",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "Εμφάνιση λιγότερων ημερομηνιών",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "Επίλυση με AI"
+  },
+  "solveBtn_game": {
+    "message": "Επίλυση παιχνιδιού"
+  },
+  "solveBtn_solving": {
+    "message": "Επιλύεται..."
+  },
+  "solveBtn_solved": {
+    "message": "Επιλύθηκε!"
+  },
+  "scoreClue": {
+    "message": "1 ένδειξη"
+  },
+  "scoreClues": {
+    "message": "$1 ενδείξεις"
+  },
+  "scoreSeconds": {
+    "message": "$1δ"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1λ $2δ"
+  },
+  "markAsNotPlayed": {
+    "message": "Σήμανση ως μη παιγμένο",
+    "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "Ταχύτητα επίλυσης / Καθυστέρηση",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "Άμεση (Ταχύτερη)",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "Κανονική (Πρότυπο)",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "Λειτουργία απόκρυψης (ανθρώπινες καθυστερήσεις)",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "ΤΑΧΥΤΗΤΑ & ΡΥΘΜΟΣ ΕΠΙΛΥΣΗΣ",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Η άμεση λειτουργία ολοκληρώνει την πλάκα σε χιλιοστά του δευτερολέπτου. Η λειτουργία απόκρυψης μιμείται ανθρώπινη συμπεριφορά με τυχαίο ρυθμό (1–3 δευτ.).",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "Πάρε ένδειξη",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Προεπιλεγμένη ενέργεια επιλύτη",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "Πλήρης αυτόματη επίλυση",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "Εκπαιδευτική λειτουργία ένδειξης",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "ΠΡΟΕΠΙΛΕΓΜΕΝΗ ΛΕΙΤΟΥΡΓΙΑ ΕΠΙΛΥΤΗ",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Επίλεξε την κύρια ενέργεια κατά την ενεργοποίηση του επιλύτη από προβολή καρτέλας ή πίνακες.",
+    "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Χωρίς κόστος & πλήρως τοπικό AI",
+    "description": "Chrome Built-in AI guide title"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Τρέχει πλήρως τοπικά στη συσκευή σου μέσα στον περιηγητή. Μηδενική καθυστέρηση δικτύου και 100% δωρεάν με Gemini Nano.",
+    "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "Αποσφαλματωτής παιχνιδιών & εργαλεία dev",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "Εκτός σύνδεσης",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "Σε ζωντανή μετάδοση",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "Εντοπισμένο παιχνίδι",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "Κανένα εντοπισμένο",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "Στόχος URL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "Καμία ενεργή καρτέλα",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML αντιγράφηκε!",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "Αντιγραφή HTML του <main>",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "Καταγραφές αντιγράφηκαν!",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "Αντιγραφή κονσολικών καταγραφών",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "Και τα δύο αντιγράφηκαν!",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "Αντιγραφή και των δύο (HTML & καταγραφές)",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugRegistryCopied": {
+    "message": "Registry JSON αντιγράφηκε!",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "Αντιγραφή του σημερινού registry JSON",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Αντιγραφή JSON",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "Υποβολή απάντησης",
+    "description": "Button to submit active board answers to GitHub"
+  },
+  "debugDomPreview": {
+    "message": "Προεπισκόπηση DOM στοιχείου",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[ ... [συνολικά χαρακτήρες: $1] ... ]",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Αντιγραφή πλήρους <main> HTML",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Δεν εντοπίστηκε ενεργή ετικέτα <main>. Βεβαιωθείτε ότι βρίσκεστε στην οθόνη παιχνιδιού LinkedIn.",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "Έξοδος κονσόλας",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1 εκδηλώσεις",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Ανανέωση καταγραφών",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Καθαρισμός καταγραφών",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Δεν έχουν καταγραφεί ακόμη καταγραφές. Εκτελέστε ενέργειες στην οθόνη παιχνιδιού για να προκληθούν εκδηλώσεις.",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "Ακούει console.log, console.warn και console.error...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "Αρχικοποίηση σύνδεσης με τη σελίδα LinkedIn Games...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Απέτυχε η ανάκτηση δεδομένων παιχνιδιού.",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Αυτή η δυνατότητα είναι διαθέσιμη μόνο στο linkedin.com/games",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Δεν είναι δυνατή η πρόσβαση στην ενεργή καρτέλα. Ελέγξτε τα δικαιώματα της επέκτασης.",
+    "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "Ημερήσιες υπενθυμίσεις",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "Ενεργοποίηση ημερήσιων υπενθυμίσεων",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Λάβε ειδοποίηση όταν είναι διαθέσιμα τα LinkedIn Games",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "Ώρα υπενθύμισης",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Προσαρμόστε πότε λαμβάνετε καθημερινές υπενθυμίσεις για παζλ",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "Ημερήσια υπενθύμιση LinkedIn Games",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "Το ημερήσιο παζλ σου είναι έτοιμο! Κάνε κλικ για να παίξεις.",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "Παίξε τώρα",
+    "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "Επίλυση ενεργού παιχνιδιού"
+  },
+  "commandGetSingleHint": {
+    "message": "Πάρε ένδειξη για το τρέχον παιχνίδι"
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Αυτοματοποιημένο άνοιγμα πλαϊνού πάνελ"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Αυτόματο άνοιγμα του πάνελ επιλύτη όταν επισκέπτεσαι LinkedIn Games"
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "ΑΥΤΟΜΑΤΟ ΑΝΟΙΓΜΑ ΠΛΑΙΣΙΟΥ"
+  },
+  "permissionDialogTitle": {
+    "message": "Δικαιώματα επέκτασης"
+  },
+  "permissionDialogDesc": {
+    "message": "Αυτή η επέκταση χρειάζεται δικαίωμα πρόσβασης στο περιεχόμενο των LinkedIn Games"
+  },
+  "permissionDialogButton": {
+    "message": "Παρέχει δικαίωμα"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "Επίλυση Queens παζλ"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "Επίλυση Sudoku παζλ"
+  },
+  "omniboxSuggestionStats": {
+    "message": "Δες στατιστικά παιχνιδιού"
+  },
+  "diagnosticsEngine": {
+    "message": "Μηχανή διαγνωστικών"
+  },
+  "liveInspected": {
+    "message": "Επιθεώρηση σε ζωντανή μετάδοση"
+  },
+  "offline": {
+    "message": "Εκτός σύνδεσης"
+  },
+  "inspectedTab": {
+    "message": "Επιθεωρούμενη καρτέλα"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Αναμονή για τη σελίδα LinkedIn Games..."
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Πλοηγήσου στο linkedin.com/games για να δεις δεδομένα παζλ"
+  },
+  "telemetryLogsStreamer": {
+    "message": "Streaming τηλεμετρικών καταγραφών"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Αναζήτηση καταγραφών..."
+  },
+  "allTypes": {
+    "message": "Όλοι οι τύποι"
+  },
+  "logsType": {
+    "message": "Καταγραφές"
+  },
+  "infoType": {
+    "message": "Πληροφορία"
+  },
+  "warnsType": {
+    "message": "Προειδοποιήσεις"
+  },
+  "errorsType": {
+    "message": "Σφάλματα"
+  },
+  "selectTypePlaceholder": {
+    "message": "Επίλεξε τύπο καταγραφής"
+  },
+  "consoleStreamEmpty": {
+    "message": "Δεν καταγράφηκαν καταγραφές"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Ξεκίνα να λύνεις για να καταγράψεις τηλεμετρία"
+  },
+  "subscribedToStorageSession": {
+    "message": "Εγγραφή στην συνεδρία αποθήκευσης"
+  },
+  "parsingGameGridCells": {
+    "message": "Ανάλυση κελιών πλέγματος παιχνιδιού"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "notAvailable": {
+    "message": "Μη διαθέσιμο"
+  },
+  "matchesLabel": {
+    "message": "Αντιστοιχίσεις"
+  },
+  "copiedLabel": {
+    "message": "Αντιγράφηκε!"
+  },
+  "copyLogsTooltip": {
+    "message": "Αντιγραφή καταγραφών στο πρόχειρο"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Καθαρισμός χώρου καταγραφών"
+  },
+  "contextMenuSolve": {
+    "message": "Λύσε με LinkedIn Games Solver"
+  },
+  "contextMenuHint": {
+    "message": "Πάρε ένδειξη για αυτό το παζλ"
+  },
+  "contextMenuViewResults": {
+    "message": "Δες αποτελέσματα επίλυσης"
+  },
+  "labelTelemetryTitle": {
+    "message": "Ανώνυμη τηλεμετρία & analytics",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "Ενεργοποίηση συλλογής analytics",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "Βοήθησε να βελτιώσουμε την επέκταση μοιράζοντας ανώνυμα δεδομένα χρήσης",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Ζωντανός Επιθεωρητής Πλέγματος Matrix"
+  }
+}

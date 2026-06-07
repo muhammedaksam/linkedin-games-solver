@@ -1,6 +1,6 @@
 # LinkedIn Games Solver
 
-LinkedIn Games Solver is the ultimate companion for your daily LinkedIn puzzles. It instantly scans and solves your favorite daily puzzle boards directly on the page. Powered by advanced local and cloud AI models (like Google Gemini, OpenAI, and Anthropic), combined with an ultra-fast Remote Answers Registry, it cracks complex trivia challenges and word associations in a blink.
+A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
 
 ## Why Install It?
 

@@ -1,0 +1,648 @@
+{
+  "extensionName": {
+    "message": "LinkedIn ಆಟಗಳ ಪರಿಹಾರಕ",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn ಆಟಗಳಿಗಾಗಿ ಸಹಾಯಕ. ದಿನನಿತ್ಯದ পಝಲ್‌ಗಳನ್ನು (Queens, Sudoku, Pinpoint, Crossclimb) ಸ್ವಯಂಚಾಲিতವಾಗಿ ಪರಿಹರಿಸಿ, ಸ್ಟ್ರೀಕ್‌ಗಳು ಮತ್ತು ವಿಶ್ಲೇಷಣೆಯೊಂದಿಗೆ.",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn ಆಟಗಳು",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "ಸಕ್ರಿಯ ಬೋರ್ಡ್‌ಗಳನ್ನು ಒಂದೇ ಕ್ಲಿಕ್‌ನಲ್ಲಿ ಪರಿಹರಿಸಿ",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome ಟ್ಯಾಬ್ ಏಕೀಕರಣ ಅಗತ್ಯವಿದೆ.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "ಸಕ್ರಿಯ ಟ್ಯಾಬ್ ಕಂಡುಬಂದಿಲ್ಲ.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "$1 ಗೆ ತೆರಳಲು ವಿಫಲವಾಗಿದೆ.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "ಸಂಪರ್ಕ ವಿಫಲವಾಗಿದೆ.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "ಸಾಲ್ವರ್ ಅನ್ನು ಚಲಾಯಿಸುವಾಗ ಸಮಸ್ಯೆ ಎದುರಾಯಿತು.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "ಸಾಲ್ವರ್ ಆರಂಭಿಸಲಾಗಿದೆ.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "ಇತಿಹಾಸ ಮತ್ತು ಅಂಕಿಅಂಶಗಳು",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "ನಿಮ್ಮ LinkedIn Games ಪರಿಹಾರ ಇತಿಹಾಸ ಮತ್ತು ಅಂಕಿಅಂಶಗಳು",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "ಒಟ್ಟು ಪರಿಹರಿಸಲಾಗಿದ",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "ಎಲ್ಲಾ ದಿನಾಂಕಗಳಲ್ಲಿ ಪರಿಹರಿಸಲ್ಪಟ್ಟ ಗೇಮ್ಸ್",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "ಸರಾಸರಿ ಸಮಯ",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "ಎಲ್ಲಾ ದಾಖಲಾಗಿರುವ ಪೂರ್ಣಗೊಳಿಸುವಿಕೆಗಳ ಮೇಲೆ",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "ಸಕ್ರಿಯ ಸ್ಟ್ರೀಕ್",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "ಸಕ್ರಿಯ ದಿನಗಳು",
+    "description": "Description for the active streak card"
+  },
+  "popupCardTitle": {
+    "message": "ಮಜೆದಾರ ದೈನಿಕ ಗೇಮ್‌ಗಳ ಮೂಲಕ ಸಂಪರ್ಕ ಸಾಧಿಸಿ",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "ಕೆಲಸದ ದಿನಕ್ಕಾಗಿ ನಿಮ್ಮ ಮನ ಸಿದ್ಧಪಡಿಸಿ ಮತ್ತು ಫಲಿತಾಂಶಗಳನ್ನು ಹೋಲಿಸಿ. ನಿಮ್ಮ ಸ್ಕೋರ್ ಖಾಸಗಿ ಹೊರತು ನೀವು ಅವುಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳದ ಹೊರತು.",
+    "description": "Description of the card feed in popup"
+  },
+  "dashboardDescText": {
+    "message": "ನಿಮ್ಮ ಕಾರ್ಯಕ್ಷಮತಾ ಅಳತೆಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಿ, ಸ್ಟ್ರೀಕ್‌ಗಳನ್ನು ದಾಖಲಿಸಿ, ಮತ್ತು ನೀವು ಪ್ರತಿದಿನ ಪೂರ್ಣಗೊಳಿಸಿದ ಪಜಲ್‌ಗಳ ಹಾದಿಯನ್ನು ಅನುಸರಿಸಿ.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "ಅಸ್ವೀಕರಣ: ಇದು ಸ್ವತಂತ್ರ, ಮುಕ್ತ-ಮೂಲದ ಶೈಕ್ಷಣಿಕ ಯೋಜನೆ. ಇದು LinkedIn Corporation ಜೊತೆಗೆ ಯಾವುದೇ ರೀತಿಯ ಸಂಬಂಧ ಹೊಂದಿಲ್ಲ, ಪ್ರಾಯೋಜಿತವಾಗಿಲ್ಲ ಅಥವಾ ಅದರ ಮನ್ನಣೆ ಪಡೆದಿಲ್ಲ. 'LinkedIn' LinkedIn Corporation ನ ನೋಂದಾಯಿತ ಟ್ರೇಡ್‌ಮಾರ್ಕ್ ಆಗಿದೆ.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "switchThemeTitle": {
+    "message": "$1 ಮೋಡ್ ಗೆ ಬದಲಾಯಿಸಿ"
+  },
+  "solvingStatus": {
+    "message": "ಹೆಚ್ಚು..."
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "queens": {
+    "message": "Queens"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "ಬೋನಸ್"
+  },
+  "desc_patches": {
+    "message": "ಒಟ್ಟುಗೂಡಿಸಿ"
+  },
+  "desc_zip": {
+    "message": "ಮಾರ್ಗವನ್ನು ಸಂಪೂರ್ಣಗೊಳಿಸಿ"
+  },
+  "desc_sudoku": {
+    "message": "ಕ್ಲಾಸಿಕ್ ಆಟ, ಮಿನಿ ರೂಪದಲ್ಲಿ"
+  },
+  "desc_tango": {
+    "message": "ಜಾಲವನ್ನು ಸಮನ್ವಯಗೊಳಿಸಿ"
+  },
+  "desc_queens": {
+    "message": "ಪ್ರತಿ ಪ್ರದೇಶವನ್ನು ಕಿರೀಟ ಹಾಕಿ"
+  },
+  "desc_crossclimb": {
+    "message": "ಟ್ರಿವಿಯಾ ಹೀಗೆ ತೆರೆಯಿರಿ"
+  },
+  "desc_pinpoint": {
+    "message": "ವರ್ಗವನ್ನು ಊಹಿಸಿ"
+  },
+  "titleSolve": {
+    "message": "$1 ಅನ್ನು ಪರಿಹರಿಸಿ"
+  },
+  "titleCompleted": {
+    "message": "ಇಂದು ಸಂಪೂರ್ಣವಾಗಿದೆ! $1 ಗೆ ನಾವಿಗೇಟ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
+  },
+  "titleOpen": {
+    "message": "$1 ಅನ್ನು ಪರಿಹರಿಸಲು ತೆರೆಯಿರಿ"
+  },
+  "perfectDay": {
+    "message": "ಪೂರ್ಣ ದಿನ! ಎಲ್ಲಾ $1 ಆಟಗಳು ಸಂಪೂರ್ಣಗೊಂಡಿವೆ! 🎉"
+  },
+  "dailyProgress": {
+    "message": "ದೈನಂದಿನ ಪ್ರಗತಿ: $1 ನಲ್ಲಿ $2 ಆಟಗಳು ಇಂದು ಪೂರ್ಣಗೊಂಡವು"
+  },
+  "statStreakDays": {
+    "message": "$1 ದಿನಗಳು"
+  },
+  "personalBests": {
+    "message": "ವೈಯುಕ್ತಿಕ ಉತ್ತಮಗಳು"
+  },
+  "noRecordsYet": {
+    "message": "ಇನ್ನೂ ಯಾವುದೇ ಪರಿಹಾರ ದಾಖಲೆಗಳು ದಾಖಲಿಸಲಾಗಿಲ್ಲ."
+  },
+  "solvingHistory": {
+    "message": "ಇತಿಹಾಸವನ್ನು ಪರಿಹರಿಸುವುದು"
+  },
+  "activityCalendar": {
+    "message": "ಚಟುವಟಿಕೆ ಕ್ಯಾಲೆಂಡರ್"
+  },
+  "clearFilter": {
+    "message": "ಶುದ್ಧೀಕರಿಸಿ ಫಿಲ್ಟರ್"
+  },
+  "settingModel": {
+    "message": "ಮಾದರಿ"
+  },
+  "settingModelSelect": {
+    "message": "ಮಾದರಿ ಆಯ್ಕೆ ಮಾಡಿ"
+  },
+  "settingModelCustomOption": {
+    "message": "ಕಸ್ಟಮ್ ಮಾದರಿ ಹೆಸರು..."
+  },
+  "settingModelCustomLabel": {
+    "message": "ಕಸ್ಟಮ್ ಮಾದರಿ ಹೆಸರು"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "ಉದಾಹರಣೆಗೆ: ಲ್ಲಾಮಾ3, ಮಿಸ್ಟ್ರಲ್"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "ಕಸ್ಟಮ್ ಗುರುತಿನ ಚಿಹ್ನೆ ನಮೂದಿಸಿ..."
+  },
+  "settingEndpointLabel": {
+    "message": "ಎಂಡ್ಪಾಯಿಂಟ್ URL"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "ಉದಾಹರಣೆಗೆ: http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "ಜ್ಯೋತಿಷಿ ಎಪಿಐ ಕೀ"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "ಓಪನ್‌ಎಐ ಎಪಿಐ ಕೀ"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "ಆಂಥ್ರೋಪಿಕ್ ಎಪಿಐ ಕೀ"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "ಡೀಪ್‌ಸೀಕ್ ಎಪಿಐ ಕೀ"
+  },
+  "settingApiKeyCustom": {
+    "message": "ಎಪಿಐ ಕೀ (ಐಚ್ಛಿಕ)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "ಐಚ್ಛಿಕ ಪ್ರಮಾಣಪತ್ರಗಳು..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "ಪ್ರವೇಶದ ಪ್ರಮಾಣಪತ್ರ ಕೀ ನಮೂದಿಸಿ..."
+  },
+  "settingApiKeyNotice": {
+    "message": "ಚಯನ ಮಾಡಲಾದ ಮಾದರಿ ಕ್ರಾಸ್‌ಕ್ಲೈಮ್ ಮತ್ತು ಪಿನ್‌ಪಾಯಿಂಟ್ ಅನ್ನು ಪರಿಹರಿಸುತ್ತದೆ. ವಿಸ್ತರಣೆ ನಿಮ್ಮ ಕೀ ಅನ್ನು ಹಂಚುವುದಿಲ್ಲ."
+  },
+  "saveAndBack": {
+    "message": "ಉಳಿಸಿ ಮತ್ತು ಆಟಗಳಿಗೆ ಹಿಂತಿರುಗಿ"
+  },
+  "solvingWorking": {
+    "message": "ಎಐ ಪರಿಹಾರಕ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿದೆ..."
+  },
+  "completedToday": {
+    "message": "ಇಂದು ಸಂಪೂರ್ಣವಾಗಿದೆ"
+  },
+  "solvedCountSuffix": {
+    "message": "ಪರಿಹಾರಿಸಲಾಗಿದೆ"
+  },
+  "settingsHeaderTitle": {
+    "message": "ಎಐ ಮಾದರಿ ಸಂರಚನೆ"
+  },
+  "labelAiProvider": {
+    "message": "ಎಐ ಒದಗಿಸುವವರು"
+  },
+  "labelModelIdentifier": {
+    "message": "ಮಾದರಿ ಗುರುತಿಸುವಿಕೆ"
+  },
+  "labelCustomModel": {
+    "message": "ಕಸ್ಟಮ್ ಮಾದರಿ ಹೆಸರು"
+  },
+  "labelEndpointUrl": {
+    "message": "ಎಂಡ್ಪಾಯಿಂಟ್ URL"
+  },
+  "labelGeminiKey": {
+    "message": "ಜೆಮಿನಿ ಎಪಿಐ ಕೀ"
+  },
+  "labelOpenAiKey": {
+    "message": "ಓಪನ್‌ಎಐ ಎಪಿಐ ಕೀ"
+  },
+  "labelAnthropicKey": {
+    "message": "ಆಂಟ್ರೋಪಿಕ್ ಎಪಿಐ ಕೀ"
+  },
+  "labelDeepSeekKey": {
+    "message": "ಡೀಪ್‌ಸೀಕ್ ಎಪಿಐ ಕೀ"
+  },
+  "labelCustomKey": {
+    "message": "ಎಪಿಐ ಕೀ (ಐಚ್ಛಿಕ)"
+  },
+  "navHome": {
+    "message": "ಮನೆ"
+  },
+  "navAiConfig": {
+    "message": "ಸೆಟಿಂಗ್‌ಗಳು / ಆಯ್ಕೆಗಳು"
+  },
+  "navStats": {
+    "message": "ಸಂಖ್ಯೆಗಳು"
+  },
+  "navTheme": {
+    "message": "ಥೀಮ್"
+  },
+  "navDebug": {
+    "message": "ಡಿಬಗ್"
+  },
+  "dailyProgressLabel": {
+    "message": "ದೈನಂದಿನ ಪ್ರಗತಿ"
+  },
+  "solveActiveBoard": {
+    "message": "ಸಕ್ರಿಯ ಬೋರ್ಡ್ ಪರಿಹರಿಸಿ"
+  },
+  "backToGames": {
+    "message": "ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟಗಳಿಗೆ ಹಿಂತಿರುಗಿ"
+  },
+  "dashboardLabel": {
+    "message": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+  },
+  "gamesSolverTitle": {
+    "message": "ಗೇಮ್‌ಗಳ ಪರಿಹಾರಕರ್"
+  },
+  "completedSuccessfully": {
+    "message": "ಸಂಪೂರ್ಣವಾಗಿ ಯಶಸ್ವಿಯಾಗಿ"
+  },
+  "settingsCredentialsTitle": {
+    "message": "ಪ್ರಮಾಣಪತ್ರಗಳು ಮತ್ತು ಮಾದರಿಗಳು"
+  },
+  "settingsModelGuideTitle": {
+    "message": "ಮಾದರಿ ಮಾರ್ಗದರ್ಶಿ ಮತ್ತು ಮಾಹಿತಿ"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "ಸಂಪರ್ಕ ಸ್ಥಿತಿ"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "ಸಕ್ರಿಯ ಪರಿಹಾರಕ:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "ಮಾದರಿ ಗುರುತಿನ ಸಂಖ್ಯೆ:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "ಸೆಟಿಂಗ್‌ಗಳು ಸ್ವಯಂ-ಉಳಿಸಲಾಗಿದೆ!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "ಅತ್ಯಾಧುನಿಕ ಪಜಲ್-ಸೋಲ್ವಿಂಗ್ ತರ್ಕಕ್ಕಾಗಿ ಏಐ ಮಾದರಿ ಸಮೀಕರಣ ಎಂಡ್ಪಾಯಿಂಟ್ಗಳನ್ನು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರಗಳನ್ನು ಕಾನ್ಫಿಗರ್ ಮಾಡಿ."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "ಅತ್ಯುತ್ತಮ ಕಾರ್ಯಕ್ಷಮತೆ ಹತ್ತಿರ-ಶೂನ್ಯ ವೆಚ್ಚದಲ್ಲಿ. ಕ್ರಾಸ್‌ಕ್ಲೈಮ್ ಮತ್ತು ಪಿನ್‌ಪಾಯಿಂಟ್ ಅನ್ನು ಶ್ರೇಷ್ಠ ತರ್ಕದೊಂದಿಗೆ ಪರಿಹರಿಸುತ್ತದೆ. ಶಿಫಾರಸು ಮಾಡಿದ ಡೀಫಾಲ್ಟ್: ಜೆಮಿನಿ-2.5-ಫ್ಲ್ಯಾಶ್."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "ವೇಗವಾದ, ಪ್ರತಿಕ್ರಿಯಾತ್ಮಕ ಮತ್ತು ಸಾಮಾನ್ಯ ಜ್ಞಾನ ಮಾದರಿಗಳೊಂದಿಗೆ ಅತ್ಯಂತ ನಂಬಿಕೆಾರ್ಹವಾಗಿದೆ. ಶಿಫಾರಸು ಮಾಡಿದ ಡೀಫಾಲ್ಟ್: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "ಗರಿಷ್ಠ ತರ್ಕ ಸಾಮರ್ಥ್ಯ. ಅತ್ಯಂತ ಸಂಕೀರ್ಣ ಶಬ್ದ ಸಂಬಂಧಗಳನ್ನು ದೋಷರಹಿತವಾಗಿ ನಿರ್ವಹಿಸುತ್ತದೆ. ಶಿಫಾರಸು ಮಾಡಿದ ಡೀಫಾಲ್ಟ್: ಕ್ಲಾಡ್-3-5-ಹೈಕು."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "ಸ್ಥಳೀಯ LLM ಫ್ರೇಮ್‌ವರ್ಕ್‌ಗಳಿಗೆ ಒಲಾಮಾ ಅಥವಾ LM ಸ್ಟುಡಿಯೋಗೆ ಸಂಪರ್ಕಿಸಿ. ನಿಮ್ಮ ಎಂಡ್ಪಾಯಿಂಟ್ URL (ಉದಾಹರಣೆಗೆ, http://localhost:11434/v1) ಮತ್ತು ಕಸ್ಟಮ್ ಮಾದರಿ ಹೆಸರನ್ನು ಸೂಚಿಸಿ."
+  },
+  "showMoreDates": {
+    "message": "ಹೆಚ್ಚಿನ ದಿನಾಂಕಗಳನ್ನು ತೋರಿಸಿ"
+  },
+  "showLessDates": {
+    "message": "ಕಡಿಮೆ ತೋರಿಸಿ"
+  },
+  "solveBtn_withAi": {
+    "message": "ಎಐ ಮೂಲಕ ಪರಿಹರಿಸಿ"
+  },
+  "solveBtn_game": {
+    "message": "ಆಟವನ್ನು ಪರಿಹರಿಸಿ"
+  },
+  "solveBtn_solving": {
+    "message": "ಹೆಚ್ಚು..."
+  },
+  "solveBtn_solved": {
+    "message": "ಹೆಚ್ಚುಗೊಳಿಸಲಾಗಿದೆ!"
+  },
+  "scoreClue": {
+    "message": "1 ಸೂಚನೆ"
+  },
+  "scoreClues": {
+    "message": "$1 ಸೂಚನೆಗಳು"
+  },
+  "scoreSeconds": {
+    "message": "$1ಗಳು"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "markAsNotPlayed": {
+    "message": "ಆಡಲಿಲ್ಲ ಎಂದು ಗುರುತಿಸಿ"
+  },
+  "settingSolveSpeed": {
+    "message": "ವೇಗ / ವಿಳಂಬವನ್ನು ಪರಿಹರಿಸುತ್ತಿರುವುದು"
+  },
+  "solveSpeed_instant": {
+    "message": "ತಕ್ಷಣ (ಅತ್ಯಂತ ವೇಗವಾದ)"
+  },
+  "solveSpeed_normal": {
+    "message": "ಸಾಮಾನ್ಯ (ಮಟ್ಟದ)"
+  },
+  "solveSpeed_stealth": {
+    "message": "ಗೂಡು ಮೋಡ್ (ಮಾನವದಂತೆ ವಿಳಂಬಗಳು)"
+  },
+  "labelSolveSpeed": {
+    "message": "ಸಮಸ್ಯೆ ಪರಿಹಾರ ಮತ್ತು ವೇಗ ನಿಯಂತ್ರಣ"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "ತಕ್ಷಣದ ಮೋಡ್ ಮಂಡಲವನ್ನು ಮಿಲಿಸೆಕೆಂಡುಗಳಲ್ಲಿ ಪೂರ್ಣಗೊಳಿಸುತ್ತದೆ. ಸ್ಟೆಲ್ತ್ ಮೋಡ್ ಸ್ವಯಂಕ್ರಿಯ ಪತ್ತೆಗೆ ವಿರುದ್ಧದ ಸ್ಟ್ರೀಕ್ಸ್ ಅನ್ನು ಭದ್ರಪಡಿಸಲು ಯಾದೃಚ್ಛಿಕ ವೇಗದೊಂದಿಗೆ (1–3 ಸೆಕೆಂಡುಗಳು) ಮಾನವ ವರ್ತನೆಯನ್ನು ಅನುಕರಿಸುತ್ತದೆ."
+  },
+  "solveBtn_hint": {
+    "message": "ಸೂಚನೆ ಪಡೆಯಿರಿ"
+  },
+  "settingDefaultSolveMode": {
+    "message": "ಡೀಫಾಲ್ಟ್ ಸಲ್ವರ್ ಕ್ರಿಯೆ"
+  },
+  "solveMode_full": {
+    "message": "ಪೂರ್ಣ ಸ್ವಯಂ-ಪರಿಹಾರ"
+  },
+  "solveMode_hint": {
+    "message": "ಶಿಕ್ಷಣ ಸೂಚನೆ ಮೋಡ್"
+  },
+  "labelDefaultSolveMode": {
+    "message": "ಡೀಫಾಲ್ಟ್ ಸೋಲ್ವರ್ ಮೋಡ್"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "ಟ್ಯಾಬ್ ವೀಕ್ಷಣೆ ಅಥವಾ ಬೋರ್ಡ್‌ಗಳಿಂದ ಸೊಲ್ವರ್ ಅನ್ನು ಪ್ರೇರಿತ ಮಾಡುವಾಗ ಪ್ರಾಥಮಿಕ ಕ್ರಿಯೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಸಂಪೂರ್ಣ ಪರಿಹಾರವು ಆಟವನ್ನು ಮುಗಿಸುತ್ತದೆ; ಸೂಚನೆ ಮೋಡ್ ಒಂದು ಸರಿಯಾದ ಐಟಂ ಅನ್ನು ಹಾಕುತ್ತದೆ."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "ಶೂನ್ಯ ವೆಚ್ಚ ಮತ್ತು ಸಂಪೂರ್ಣ ಸ್ಥಳೀಯ ಎಐ"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಬ್ರೌಸರ್ ಒಳಗೆ ಸಂಪೂರ್ಣವಾಗಿ ಸ್ಥಳೀಯವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ. ಶೂನ್ಯ ನೆಟ್‌ವರ್ಕ್ ವಿಳಂಬ ಮತ್ತು ಜೆಮಿನಿ ನಾನೊೊಂದಿಗೆ 100% ಉಚಿತ."
+  },
+  "debugHeaderTitle": {
+    "message": "ಗೇಮ್ ಡಿಬಗರ್ ಮತ್ತು ಡೆವ್ ಟೂಲ್ಸ್"
+  },
+  "debugStatusOffline": {
+    "message": "ಆಫ್‌ಲೈನ್"
+  },
+  "debugStatusLive": {
+    "message": "ಜೀವಿತ"
+  },
+  "debugDetectedGame": {
+    "message": "ಪತ್ತೆಯಾದ ಆಟ"
+  },
+  "debugNoneDetected": {
+    "message": "ಯಾವುದೇ ಗುರುತಿಸಲಾಗಿಲ್ಲ"
+  },
+  "debugTargetUrl": {
+    "message": "ಗುರಿ URL"
+  },
+  "debugNoActiveTab": {
+    "message": "ಯಾವುದೇ ಸಕ್ರಿಯ ಟ್ಯಾಬ್ ಇಲ್ಲ"
+  },
+  "debugHtmlCopied": {
+    "message": "ಎಚ್‌ಟಿಎಂಎಲ್ ನಕಲಿಸಲಾಗಿದೆ!"
+  },
+  "debugCopyHtml": {
+    "message": "ಕಾಪಿ <main> HTML"
+  },
+  "debugLogsCopied": {
+    "message": "ಲಾಗ್‌ಗಳನ್ನು ನಕಲಿಸಲಾಗಿದೆ!"
+  },
+  "debugCopyLogs": {
+    "message": "ಕಾಪಿ ಕಾನ್ಸೋಲ್ ಲಾಗ್‌ಗಳು"
+  },
+  "debugBothCopied": {
+    "message": "ಎರಡು ನಕಲಿಸಲಾಗಿದೆ!"
+  },
+  "debugCopyBoth": {
+    "message": "ಎಲ್ಲಾ (HTML ಮತ್ತು ಲಾಗ್‌ಗಳನ್ನು) ನಕಲಿಸಿ"
+  },
+  "debugRegistryCopied": {
+    "message": "ರಿಜಿಸ್ಟ್ರಿ JSON ನಕಲಿಸಲಾಗಿದೆ!"
+  },
+  "debugCopyRegistry": {
+    "message": "ಇಂದುದಿನದ ನೋಂದಣಿ JSON ನಕಲಿಸಿ"
+  },
+  "debugCopyRegistryShort": {
+    "message": "ಜೇಸನ್ ನಕಲು ಮಾಡಿ"
+  },
+  "debugSubmitAnswer": {
+    "message": "ಉತ್ತರ ಸಲ್ಲಿಸಿ"
+  },
+  "debugDomPreview": {
+    "message": "ಡೋಮ್ ಅಂಶದ ಪೂರ್ವದರ್ಶನ"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [truncated, total characters: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "ಕಾಪಿ ಸಂಪೂರ್ಣ <main> HTML"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "ಚಾಲನೆಯಲ್ಲಿರುವ <main> ಟ್ಯಾಗ್ ಹಿಡಿದಿಲ್ಲ. ನೀವು ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟದ ಪರದೆ ಮೇಲೆ ಇದ್ದೀರಾ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."
+  },
+  "debugConsoleOutput": {
+    "message": "ಕೋನ್ಸೋಲ್ ಔಟ್‌ಪುಟ್"
+  },
+  "debugEventsCount": {
+    "message": "$1 ಘಟನೆಗಳು"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "ಲಾಗ್‌ಗಳನ್ನು ಪುನಃ ತಾಜಾ ಮಾಡಿ"
+  },
+  "debugClearLogsTooltip": {
+    "message": "ಸ್ಪಷ್ಟ ಲಾಗ್‌ಗಳು"
+  },
+  "debugNoLogsCaptured": {
+    "message": "ಇನ್ನೂ ಯಾವುದೇ ಲಾಗ್‌ಗಳನ್ನು ಹಿಡಿದಿಲ್ಲ. ಕಾನ್ಸೋಲ್ ಘಟನೆಗಳನ್ನು ಪ್ರೇರಿತ ಮಾಡಲು ಆಟದ ಪರದೆ ಮೇಲೆ ಕ್ರಿಯೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ."
+  },
+  "debugListeningEvents": {
+    "message": "console.log, console.warn, ಮತ್ತು console.error ಘಟನೆಗಳನ್ನು ಕೇಳುತ್ತಿದೆ..."
+  },
+  "debugErrorInitializing": {
+    "message": "ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟ ಪುಟದೊಂದಿಗೆ ಸಂಪರ್ಕ ಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "ಗೇಮ್ ಡೇಟಾ ಪಡೆಯಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "ಚಾಲಿತ ಟ್ಯಾಬ್ ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟಗಳ ಪುಟವಲ್ಲ. ವಿವರಗಳನ್ನು ಹಿಡಿಯಲು ಆಟಕ್ಕೆ ಹೋಗಿ."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "ಸಕ್ರಿಯ ಟ್ಯಾಬ್ ಅನ್ನು ಗುರುತಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
+  },
+  "labelDailyReminders": {
+    "message": "ದೈನಂದಿನ ನೆನಪುಗಳು ಮತ್ತು ಸ್ಟ್ರೀಕ್ ರಕ್ಷಕ"
+  },
+  "settingEnableReminders": {
+    "message": "ದೈನಂದಿನ ನೆನಪುಗೊಯ್ಯುವಿಕೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "ಇಂದುದಿನದ ಶ್ರೇಣಿಯ ಅವಧಿ ಮುಗಿಯುವ ಮೊದಲು ನನಗೆ ಎಚ್ಚರಿಕೆ ನೀಡಿ."
+  },
+  "settingReminderTime": {
+    "message": "ಸ್ಮರಣೆ ಸಮಯ"
+  },
+  "settingReminderTimeNotice": {
+    "message": "ಅನ್ವೇಷಣೆಯಲ್ಲದ ಆಟಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ಸ್ಥಳೀಯ ಸಮಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ."
+  },
+  "notificationTitle": {
+    "message": "ಸ್ಟ್ರೀಕ್ ಪ್ರೊಟೆಕ್ಟರ್ 🚀"
+  },
+  "notificationMessage": {
+    "message": "ನಿಮ್ಮ ಸಮಸ್ಯೆ ಪರಿಹಾರ ಶ್ರೇಣಿಯನ್ನು ಕಳೆದುಕೊಳ್ಳಬೇಡಿ! ನೀವು ಇಂದು ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟಗಳನ್ನು ಇನ್ನೂ ಪರಿಹರಿಸಿಲ್ಲ."
+  },
+  "notificationButton": {
+    "message": "ಈಗ ಪರಿಹರಿಸಿ!"
+  },
+  "commandSolveActiveGame": {
+    "message": "ಸಕ್ರಿಯ ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪರಿಹರಿಸಿ."
+  },
+  "commandGetSingleHint": {
+    "message": "ಒಂದು ಹಂತದ ಸೂಚನೆ ಅಥವಾ ತಪ್ಪುಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ಒದಗಿಸಿ."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "ಗೇಮ್ಸ್‌ನಲ್ಲಿ ಸ್ವಯಂ-ಊರೆಯ ಪಕ್ಕದ ಮೆನು"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟಗಳನ್ನು ಭೇಟಿ ಮಾಡುವಾಗ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪರಿಹಾರಕರ ಬದಿಯ ಪ್ಯಾನೆಲ್ ತೆರೆಯಿರಿ."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "ಆಟೋ-ಓಪನ್ ಸೋಲ್ವರ್ ಸೈಡ್‌ಬಾರ್"
+  },
+  "permissionDialogTitle": {
+    "message": "ಪೇಜ್ ಪ್ರವೇಶವನ್ನು ನೀಡು"
+  },
+  "permissionDialogDesc": {
+    "message": "ಸಕ್ರಿಯ ಆಟದ ಬೋರ್ಡ್‌ಗಳನ್ನು ಗುರುತಿಸಲು ಮತ್ತು ಪಜಲ್‌ಗಳನ್ನು ಪರಿಹರಿಸಲು, ವಿಸ್ತರಣೆ ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟಗಳಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಅನುಮತಿ ಅಗತ್ಯವಿದೆ. ಪ್ರವೇಶ ನೀಡಲು ಕೆಳಗೆ ಕ್ಲಿಕ್ ಮಾಡಿ."
+  },
+  "permissionDialogButton": {
+    "message": "ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಿ"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 ಇಂದು ಕ್ವೀನ್‌ಗಳನ್ನು ಆಡಿರಿ ಮತ್ತು ಪರಿಹರಿಸಿ!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 ಮಿನಿ-ಸುಡೋಕು ಪರಿಹಾರಕವನ್ನು ತೆರೆಯಿರಿ"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 ಓಪನ್ ಸ್ಟ್ರೀಕ್ಸ್ ಮತ್ತು ಕಾರ್ಯಕ್ಷಮತೆ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+  },
+  "diagnosticsEngine": {
+    "message": "ನಿರ್ಣಾಯಕ ಇಂಜಿನ್"
+  },
+  "liveInspected": {
+    "message": "ಜೀವಂತ ಪರಿಶೀಲಿತ"
+  },
+  "offline": {
+    "message": "ಆಫ್‌ಲೈನ್"
+  },
+  "inspectedTab": {
+    "message": "ಪರೀಕ್ಷಿತ ಟ್ಯಾಬ್:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "ಲೈವ್ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ಗ್ರಿಡ್ ಇನ್ಸ್‌ಪೆಕ್ಟರ್"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟ ಪುಟಕ್ಕಾಗಿ ಕಾಯುತ್ತಿದೆ"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "ಯಾವುದೇ ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟದ ಬೋರ್ಡ್ ಟ್ಯಾಬ್ (ಕ್ವೀನ್‌ಗಳು, ಸುಡೋಕು, ಟ್ಯಾಂಗೋ, ಪಿನ್‌ಪಾಯಿಂಟ್) ಗೆ ಹೋಗಿ ನಿರ್ಬಂಧದ ಸಮನ್ವಯಗಳು, ಕೋಶದ ಸ್ಥಿತಿಗಳು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಾತ್ಮಕ ರಚನೆಗಳನ್ನು ಹಿಡಿಯಿರಿ."
+  },
+  "telemetryLogsStreamer": {
+    "message": "ಟೆಲೆಮೆಟ್ರಿ ಲಾಗ್ಸ್ ಸ್ಟ್ರೀಮರ್"
+  },
+  "searchLogsPlaceholder": {
+    "message": "ಶೋಧ ಲಾಗ್‌ಗಳು..."
+  },
+  "allTypes": {
+    "message": "ಎಲ್ಲಾ ಪ್ರಕಾರಗಳು"
+  },
+  "logsType": {
+    "message": "ಲಾಗ್‌ಗಳು"
+  },
+  "infoType": {
+    "message": "ಮಾಹಿತಿ"
+  },
+  "warnsType": {
+    "message": "ಎಚ್ಚರಿಕೆ ನೀಡುತ್ತದೆ"
+  },
+  "errorsType": {
+    "message": "ದೋಷಗಳು"
+  },
+  "selectTypePlaceholder": {
+    "message": "ಆಕಾರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ"
+  },
+  "consoleStreamEmpty": {
+    "message": "ಕಾನ್ಸೋಲ್ ಸ್ಟ್ರೀಮ್ ಖಾಲಿ"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "ಫಿಲ್ಟರ್‌ಗಳಿಗೆ ಹೊಂದುವ ಯಾವುದೇ ಲಾಗ್ ಔಟ್‌ಪುಟ್‌ಗಳನ್ನು ಕಂಡುಹಿಡಿಯಲಾಗಿಲ್ಲ. ಇಲ್ಲಿ ಲಾಗ್ ಕ್ರಿಯೆಗಳನ್ನು ಸ್ಟ್ರೀಮ್ ಮಾಡಲು ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟಗಳ ಪರಿಹಾರ UI ಒಳಗೆ ಹಂತಗಳನ್ನು ನಿರ್ವಹಿಸಿ."
+  },
+  "subscribedToStorageSession": {
+    "message": "ಸ್ಟೋರೆಜ್.ಸೆಷನ್ ಸ್ಟ್ರೀಮ್‌ಗೆ ಚಂದಾದಾರರಾಗಿದ್ದಾರೆ"
+  },
+  "parsingGameGridCells": {
+    "message": "ಗೇಮ್ ಗ್ರಿಡ್ ಕೋಶಗಳನ್ನು ವಿಶ್ಲೇಷಿಸುತ್ತಿದೆ... ಬೋರ್ಡ್‌ನಲ್ಲಿ ಸಕ್ರಿಯ ಗ್ರಿಡ್ ಬ್ಲಾಕ್‌ಗಳನ್ನು ದೃಶ್ಯಮಾಡಲು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."
+  },
+  "urlLabel": {
+    "message": "ಯುಆರ್‌ಎಲ್:"
+  },
+  "notAvailable": {
+    "message": "ಅರ್ಹತೆ ಇಲ್ಲ"
+  },
+  "matchesLabel": {
+    "message": "ಮ್ಯಾಚ್‌ಗಳು"
+  },
+  "copiedLabel": {
+    "message": "ಕಾಪಿ ಮಾಡಲಾಗಿದೆ!"
+  },
+  "copyLogsTooltip": {
+    "message": "ಕಾಪಿ ಲಾಗ್‌ಗಳು"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "ಸ್ಪಷ್ಟ ಲಾಗ್ ಸ್ಥಳ"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ ಸಕ್ರಿಯ ಲಿಂಕ್ಡ್‌ಇನ್ ಆಟವನ್ನು ಪರಿಹರಿಸಿ"
+  },
+  "contextMenuHint": {
+    "message": "💡 ಸೂಚನೆ ಪಡೆಯಿರಿ"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 ಫಲಿತಾಂಶಗಳನ್ನು ನೋಡಿ"
+  },
+  "labelTelemetryTitle": {
+    "message": "ಟೆಲಿಮೆಟ್ರಿ ಮತ್ತು ಗೌಪ್ಯತೆ"
+  },
+  "telemetryToggleLabel": {
+    "message": "ಅಜ್ಞಾತ ಟೆಲಿಮೆಟ್ರಿ ಕಳುಹಿಸಿ"
+  },
+  "telemetryToggleDesc": {
+    "message": "ಅನಾಮಿಕ ಕಾರ್ಯಕ್ಷಮತೆ ಮತ್ತು ಬಳಕೆ ಮೆಟ್ರಿಕ್‌ಗಳನ್ನು ಹಂಚಿಕೊಂಡು ಪರಿಹಾರವನ್ನು ಸುಧಾರಿಸಲು ಸಹಾಯ ಮಾಡಿ."
+  }
+}

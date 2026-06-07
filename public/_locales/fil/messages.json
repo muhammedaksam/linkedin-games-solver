@@ -1,0 +1,646 @@
+{
+  "extensionDescription": {
+    "message": "Isang helper para sa LinkedIn Games. Awtomatikong nilulutas ang daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) na may streaks at analytics.",
+    "description": "The description of the extension."
+  },
+  "subtitle": {
+    "message": "Lutasin ang mga aktibong board sa isang click",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Kailangan ang integrasyon ng tab ng Chrome.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Hindi nahanap ang aktibong tab.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Nabigo ang pagpunta sa $1.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Nabigo ang koneksyon.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Nagkaroon ng problema habang pinapatakbo ang solver.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Nagsimula na ang solver.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "Kasaysayan at Estadistika",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Buong kasaysayan at estadistika ng paglutas ng LinkedIn Games mo",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Kabuuang nasolusyunan",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Mga larong nasolusyunan sa lahat ng petsa",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Karaniwang oras",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "Sa lahat ng naitalang kompletong paglutas",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Aktibong streak",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Magkasunod na aktibong araw",
+    "description": "Description for the active streak card"
+  },
+  "popupCardTitle": {
+    "message": "Kumonekta sa pamamagitan ng masasayang pang-araw-araw na laro",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "Ihanda ang iyong isip para sa araw ng trabaho at ihambing ang mga resulta. Ang iyong mga puntos ay pribado maliban kung ibinabahagi mo ito.",
+    "description": "Description of the card feed in popup"
+  },
+  "dashboardDescText": {
+    "message": "Suriin ang iyong performance metrics, itala ang mga streak, at subaybayan ang mga landas ng mga puzzle na natapos mo araw-araw.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "Paunawa: Isa itong independent, open-source na educational project. Hindi ito kaanib, sinusuportahan, o ineendorso ng LinkedIn Corporation. Ang “LinkedIn” ay isang rehistradong trademark ng LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "extensionName": {
+    "message": "LinkedIn Lutas ng Laro"
+  },
+  "title": {
+    "message": "Mga Laro sa LinkedIn"
+  },
+  "switchThemeTitle": {
+    "message": "Lumipat sa $1 mode"
+  },
+  "solvingStatus": {
+    "message": "Nagsusolusyon..."
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "queens": {
+    "message": "Queens"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "Bonus"
+  },
+  "desc_patches": {
+    "message": "Pagsama-samahin ito"
+  },
+  "desc_zip": {
+    "message": "Kumpletuhin ang landas"
+  },
+  "desc_sudoku": {
+    "message": "Ang klasikong laro, ginawang mini"
+  },
+  "desc_tango": {
+    "message": "Iharmony ang grid"
+  },
+  "desc_queens": {
+    "message": "Koronahan ang bawat rehiyon"
+  },
+  "desc_crossclimb": {
+    "message": "Buksan ang isang hagdang-trivia"
+  },
+  "desc_pinpoint": {
+    "message": "Hulaan ang kategorya"
+  },
+  "titleSolve": {
+    "message": "Lutasin ang $1"
+  },
+  "titleCompleted": {
+    "message": "Natapos na ngayon! I-click upang mag-navigate sa $1"
+  },
+  "titleOpen": {
+    "message": "Buksan ang $1 upang malutas"
+  },
+  "perfectDay": {
+    "message": "Perpektong araw! Lahat ng $1 na laro ay natapos na! 🎉"
+  },
+  "dailyProgress": {
+    "message": "Araw-araw na progreso: $1 ng $2 na laro ang natapos ngayon"
+  },
+  "statStreakDays": {
+    "message": "$1 na araw"
+  },
+  "personalBests": {
+    "message": "Personal na Pinakamahusay"
+  },
+  "noRecordsYet": {
+    "message": "Walang naitalang tala ng solusyon."
+  },
+  "solvingHistory": {
+    "message": "Paglutas sa Kasaysayan"
+  },
+  "activityCalendar": {
+    "message": "Kalendaryo ng Aktibidad"
+  },
+  "clearFilter": {
+    "message": "Linisin ang Filter"
+  },
+  "settingModel": {
+    "message": "Modelo"
+  },
+  "settingModelSelect": {
+    "message": "Pumili ng Modelo"
+  },
+  "settingModelCustomOption": {
+    "message": "Pasadyang Pangalan ng Modelo..."
+  },
+  "settingModelCustomLabel": {
+    "message": "Pasadyang Pangalan ng Modelo"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "hal. llama3, mistral"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Ilagay ang pasadyang pagkakakilanlan..."
+  },
+  "settingEndpointLabel": {
+    "message": "URL ng Endpoint"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "hal. http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "Gemini API Key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "OpenAI API Key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Susi ng Anthropic API"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "DeepSeek API Key"
+  },
+  "settingApiKeyCustom": {
+    "message": "API Key (Opsyonal)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Opsyonal na kredensyal..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Ilagay ang susi ng kredensyal..."
+  },
+  "settingApiKeyNotice": {
+    "message": "Napiling modelo ang naglutas sa Crossclimb at Pinpoint. Ang extension ay hindi kailanman nagbabahagi ng iyong susi."
+  },
+  "saveAndBack": {
+    "message": "I-save at Bumalik sa mga Laro"
+  },
+  "solvingWorking": {
+    "message": "Nagtatrabaho ang AI Solver..."
+  },
+  "completedToday": {
+    "message": "Nakatapos Ngayon"
+  },
+  "solvedCountSuffix": {
+    "message": "Nasolusyunan"
+  },
+  "settingsHeaderTitle": {
+    "message": "Konfigurasyon ng AI Model"
+  },
+  "labelAiProvider": {
+    "message": "TAGAPAGBIGAY NG AI"
+  },
+  "labelModelIdentifier": {
+    "message": "TANDA NG MODELO"
+  },
+  "labelCustomModel": {
+    "message": "PANGALAN NG CUSTOM NA MODELO"
+  },
+  "labelEndpointUrl": {
+    "message": "URL NG ENDPOINT"
+  },
+  "labelGeminiKey": {
+    "message": "SUSI NG GEMINI API"
+  },
+  "labelOpenAiKey": {
+    "message": "SUSI NG OPENAI API"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC API KEY"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK API KEY"
+  },
+  "labelCustomKey": {
+    "message": "API KEY (OPSYONAL)"
+  },
+  "navHome": {
+    "message": "Bahay"
+  },
+  "navAiConfig": {
+    "message": "Mga Setting / Mga Opsyon"
+  },
+  "navStats": {
+    "message": "Istatsistika"
+  },
+  "navTheme": {
+    "message": "Tema"
+  },
+  "navDebug": {
+    "message": "I-debug"
+  },
+  "dailyProgressLabel": {
+    "message": "Araw-araw na Pag-unlad"
+  },
+  "solveActiveBoard": {
+    "message": "Lutasin ang Aktibong Lupon"
+  },
+  "backToGames": {
+    "message": "Bumalik sa mga Laro sa LinkedIn"
+  },
+  "dashboardLabel": {
+    "message": "Dashboard"
+  },
+  "gamesSolverTitle": {
+    "message": "Lutasin ang mga Laro"
+  },
+  "completedSuccessfully": {
+    "message": "Matagumpay na Nakumpleto"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Mga Kredensyal at Modelo"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Gabay at Impormasyon sa Modelo"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Katayuan ng Koneksyon"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Aktibong Tagalutas:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Tanda ng Modelo:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Naka-auto-save ang mga setting!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "I-configure ang mga endpoint at kredensyal ng integrasyon ng AI model para sa advanced na pag-resolba ng palaisipan."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Kahanga-hangang pagganap sa halos zero na gastos. Lutasin ang Crossclimb at Pinpoint gamit ang mahusay na lohika. Inirerekomendang default: gemini-2.5-flash."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Mabilis, tumutugon, at lubos na maaasahan na may pangkalahatang kaalaman sa mga pattern. Inirerekomendang default: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Maksimum na kapasidad sa pangangatwiran. Walang kapantay na humahawak ng napakakomplikadong ugnayan ng mga salita. Inirerekomendang default: claude-3-5-haiku."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Ikonekta sa mga lokal na LLM framework tulad ng Ollama o LM Studio. Ituro ang iyong endpoint URL (hal., http://localhost:11434/v1) at pasadyang pangalan ng modelo."
+  },
+  "showMoreDates": {
+    "message": "Ipakita ang higit pang mga petsa"
+  },
+  "showLessDates": {
+    "message": "Ipakita ang mas kaunti"
+  },
+  "solveBtn_withAi": {
+    "message": "Lutasin gamit ang AI"
+  },
+  "solveBtn_game": {
+    "message": "Lutasin ang Laro"
+  },
+  "solveBtn_solving": {
+    "message": "Nagsusolusyon..."
+  },
+  "solveBtn_solved": {
+    "message": "Nasolusyunan!"
+  },
+  "scoreClue": {
+    "message": "1 pahiwatig"
+  },
+  "scoreClues": {
+    "message": "$1 mga pahiwatig"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1m $2s"
+  },
+  "markAsNotPlayed": {
+    "message": "Tandaan bilang Hindi Nilaro"
+  },
+  "settingSolveSpeed": {
+    "message": "Paglutas ng Bilis / Pagkaantala"
+  },
+  "solveSpeed_instant": {
+    "message": "Agad (Pinakamabilis)"
+  },
+  "solveSpeed_normal": {
+    "message": "Normal (Pamantayan)"
+  },
+  "solveSpeed_stealth": {
+    "message": "Mode ng Pagtatago (Tulad ng tao na pagkaantala)"
+  },
+  "labelSolveSpeed": {
+    "message": "PAGLUTAS NG BILIS AT PAGSUSUNOD"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Ang instant mode ay kumukumpleto ng board sa loob ng milisegundo. Ang stealth mode ay ginagaya ang pag-uugali ng tao na may random na bilis (1–3 segundo) upang mapanatili ang mga streak laban sa automated detection."
+  },
+  "solveBtn_hint": {
+    "message": "Kumuha ng Susi"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Default na Aksyon ng Solver"
+  },
+  "solveMode_full": {
+    "message": "Buong Auto-Solve"
+  },
+  "solveMode_hint": {
+    "message": "Mode ng Pagtuturo"
+  },
+  "labelDefaultSolveMode": {
+    "message": "DEFAULT NA MODE NG SOLVER"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Pumili ng pangunahing aksyon kapag nag-trigger ng solver mula sa tab view o boards. Ang Full Solve ay nagtatapos ng laro; ang Hint Mode ay naglalagay ng isang tamang item."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Walang Gastos at Ganap na Lokal na AI"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Tumatakbo nang buo sa lokal sa iyong aparato sa loob ng browser. Walang latency sa network at 100% libre gamit ang Gemini Nano."
+  },
+  "debugHeaderTitle": {
+    "message": "Game Debugger at Mga Kasangkapan sa Pagbuo"
+  },
+  "debugStatusOffline": {
+    "message": "Offline"
+  },
+  "debugStatusLive": {
+    "message": "Buhay"
+  },
+  "debugDetectedGame": {
+    "message": "Nalaman na Laro"
+  },
+  "debugNoneDetected": {
+    "message": "Walang Natagpuan"
+  },
+  "debugTargetUrl": {
+    "message": "Target na URL"
+  },
+  "debugNoActiveTab": {
+    "message": "Walang Aktibong Tab"
+  },
+  "debugHtmlCopied": {
+    "message": "Naka-copy ang HTML!"
+  },
+  "debugCopyHtml": {
+    "message": "Kopyahin ang <main> HTML"
+  },
+  "debugLogsCopied": {
+    "message": "Naka-kopya ang mga log!"
+  },
+  "debugCopyLogs": {
+    "message": "Kopyahin ang mga Console Logs"
+  },
+  "debugBothCopied": {
+    "message": "Parehong Kinopya!"
+  },
+  "debugCopyBoth": {
+    "message": "Kopyahin Pareho (HTML at Mga Log)"
+  },
+  "debugRegistryCopied": {
+    "message": "Nakopya ang Registry JSON!"
+  },
+  "debugCopyRegistry": {
+    "message": "Kopyahin ang JSON ng Rehistro Ngayon"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Kopyahin ang JSON"
+  },
+  "debugSubmitAnswer": {
+    "message": "I-submit ang Sagot"
+  },
+  "debugDomPreview": {
+    "message": "Pagsusuri ng DOM Element"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [truncated, total characters: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Kumpletuhin ang pagkopya ng <main> HTML"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Walang aktibong <main> tag na nahuli. Tiyakin na ikaw ay nasa screen ng laro ng LinkedIn."
+  },
+  "debugConsoleOutput": {
+    "message": "Output ng Console"
+  },
+  "debugEventsCount": {
+    "message": "$1 mga kaganapan"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "I-refresh ang mga tala"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Linisin ang mga tala"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Walang naitalang log. Gumawa ng mga aksyon sa screen ng laro upang mag-trigger ng mga kaganapan sa console."
+  },
+  "debugListeningEvents": {
+    "message": "Nakikinig para sa mga kaganapan ng console.log, console.warn, at console.error..."
+  },
+  "debugErrorInitializing": {
+    "message": "Nagsisimula ang koneksyon sa LinkedIn Game page..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Hindi makuha ang datos ng laro."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Ang aktibong tab ay hindi isang pahina ng LinkedIn Games. Mag-navigate sa isang laro upang makuha ang mga detalye."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Hindi matukoy ang aktibong tab."
+  },
+  "labelDailyReminders": {
+    "message": "ARAW-ARAW NA PAALALA AT TAGAPAGTANGGAL NG SUNOD-SUNOD NA GAWAIN"
+  },
+  "settingEnableReminders": {
+    "message": "I-enable ang Araw-araw na Paalala"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Balaan mo ako bago matapos ang sunod-sunod na ito ngayong araw."
+  },
+  "settingReminderTime": {
+    "message": "Paalala ng Oras"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Pumili ng lokal na oras upang suriin ang mga hindi nalutas na laro."
+  },
+  "notificationTitle": {
+    "message": "Protektor ng Sunod-sunod na Panalo 🚀"
+  },
+  "notificationMessage": {
+    "message": "Huwag mong sayangin ang iyong streak sa pagsagot! Hindi mo pa nasosolusyunan ang mga laro sa LinkedIn ngayon."
+  },
+  "notificationButton": {
+    "message": "Lutasin Ngayon!"
+  },
+  "commandSolveActiveGame": {
+    "message": "Awtomatikong lutasin ang aktibong laro sa LinkedIn."
+  },
+  "commandGetSingleHint": {
+    "message": "Magbigay ng isang hakbang na pahiwatig o suriin ang mga pagkakamali."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Auto-Bukas na Sidebar sa Mga Laro"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Awtomatikong buksan ang side panel ng solver kapag bumibisita sa LinkedIn Games."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "AUTO-OPEN SOLVER SIDEBAR"
+  },
+  "permissionDialogTitle": {
+    "message": "Bigyan ng Access sa Pahina"
+  },
+  "permissionDialogDesc": {
+    "message": "Upang matukoy ang mga aktibong board ng laro at lutasin ang mga palaisipan, kinakailangan ng extension ang pahintulot upang tumakbo sa LinkedIn Games. I-click ang ibaba upang bigyan ng access."
+  },
+  "permissionDialogButton": {
+    "message": "Bigyan ng Access"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Maglaro at Lutasin ang Queens ngayon!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Buksan ang mini-Sudoku Solver"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Buksan ang Streaks at Dashboard ng Pagganap"
+  },
+  "diagnosticsEngine": {
+    "message": "Makina ng Pagsusuri"
+  },
+  "liveInspected": {
+    "message": "Nabuhay na Sinusuri"
+  },
+  "offline": {
+    "message": "Offline"
+  },
+  "inspectedTab": {
+    "message": "Sinusuring Tab:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Live Matrix Grid Inspector"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Naghihintay para sa LinkedIn Game Page"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Pumunta sa anumang tab ng LinkedIn Game board (Queens, Sudoku, Tango, Pinpoint) upang makuha ang mga coordinate ng constraint, estado ng cell, at mga reactive na estruktura."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Telemetry Logs Streamer"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Maghanap ng mga tala..."
+  },
+  "allTypes": {
+    "message": "LAHAT NG URI"
+  },
+  "logsType": {
+    "message": "TALAHIB"
+  },
+  "infoType": {
+    "message": "IMPORMASYON"
+  },
+  "warnsType": {
+    "message": "NAGBIBIGAY-BABALA"
+  },
+  "errorsType": {
+    "message": "MGA PAGKAKAMALI"
+  },
+  "selectTypePlaceholder": {
+    "message": "Pumili ng Uri"
+  },
+  "consoleStreamEmpty": {
+    "message": "Walang Nilalaman sa Console Stream"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Walang na-detect na log outputs na tumutugma sa mga filter. Patakbuhin ang mga hakbang sa loob ng LinkedIn Games solver UI upang i-stream ang mga log actions dito."
+  },
+  "subscribedToStorageSession": {
+    "message": "Naka-subscribe sa storage.session stream"
+  },
+  "parsingGameGridCells": {
+    "message": "Nagsasagawa ng pagsusuri sa mga cell ng laro... Tiyaking ang board ay may mga aktibong grid block na nakikita."
+  },
+  "urlLabel": {
+    "message": "Url:"
+  },
+  "notAvailable": {
+    "message": "Wala sa Aking Kaalaman"
+  },
+  "matchesLabel": {
+    "message": "mga posporo"
+  },
+  "copiedLabel": {
+    "message": "Nakopya!"
+  },
+  "copyLogsTooltip": {
+    "message": "Kopyahin ang mga Log"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Linisin ang Log Space"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Lutasin ang Aktibong Laro sa LinkedIn"
+  },
+  "contextMenuHint": {
+    "message": "💡 Kumuha ng Pahiwatig"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Tingnan ang Mga Resulta"
+  },
+  "labelTelemetryTitle": {
+    "message": "TELEMETRY AT PRIBADO"
+  },
+  "telemetryToggleLabel": {
+    "message": "Magpadala ng Walang Pangalan na Telemetry"
+  },
+  "telemetryToggleDesc": {
+    "message": "Tumulong na mapabuti ang solver sa pamamagitan ng pagbabahagi ng mga hindi nagpapakilalang sukatan ng pagganap at paggamit."
+  }
+}

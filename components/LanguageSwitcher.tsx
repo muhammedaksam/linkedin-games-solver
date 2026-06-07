@@ -50,7 +50,7 @@ export function LanguageSwitcher({
         variant="ghost"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex items-center justify-center text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent hover:bg-transparent rounded-full",
+          "flex items-center justify-center text-muted-foreground hover:text-foreground transition-all select-none outline-none border-none bg-transparent hover:bg-muted/60 rounded-full shadow-none focus-visible:border-transparent focus-visible:ring-0 focus-visible:ring-transparent",
           showLabel
             ? "flex flex-col h-full px-1 pt-1 rounded-none"
             : "h-9 w-9 p-0"
@@ -61,11 +61,11 @@ export function LanguageSwitcher({
             "flex items-center justify-center transition-transform active:scale-95",
             showLabel
               ? "w-[18px] h-[18px]"
-              : "w-[24px] h-[24px] rounded-full overflow-hidden border border-border/80 shadow-sm"
+              : "w-[24px] h-[24px] rounded-full overflow-hidden"
           )}>
           <span
             className={cn(
-              "leading-none select-none filter drop-shadow-sm",
+              "leading-none select-none",
               showLabel ? "text-[12px] mt-0.5" : "text-base mt-0"
             )}>
             {activeLocale.flag}
@@ -84,7 +84,7 @@ export function LanguageSwitcher({
             "absolute z-[100] mt-1.5 w-36 rounded-xl border border-border/80 bg-card/95 backdrop-blur-md p-1.5 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 select-none",
             align === "right" ? "right-0" : "left-0"
           )}>
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-0.5 max-h-72 overflow-y-auto">
             {SUPPORTED_LOCALES.map((loc) => {
               const isActive = loc.code === activeCode
               return (
@@ -99,7 +99,7 @@ export function LanguageSwitcher({
                       ? "bg-[#0a66c2]/10 dark:bg-[#70b5f9]/15 text-[#0a66c2] dark:text-[#70b5f9] hover:bg-[#0a66c2]/10 dark:hover:bg-[#70b5f9]/15 hover:text-[#0a66c2] dark:hover:text-[#70b5f9]"
                       : "hover:bg-muted/60 dark:hover:bg-[#222a30] text-foreground/80 hover:text-foreground"
                   )}>
-                  <span className="text-sm filter drop-shadow-sm leading-none shrink-0">
+                  <span className="text-sm leading-none shrink-0">
                     {loc.flag}
                   </span>
                   <span className="truncate flex-1">{loc.label}</span>

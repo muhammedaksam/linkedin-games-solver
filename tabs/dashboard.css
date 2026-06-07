@@ -106,12 +106,6 @@ a {
   cursor: pointer;
 }
 
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
-}
-
 /* Custom scrollbars for clean scrollable panels */
 ::-webkit-scrollbar {
   width: 8px;

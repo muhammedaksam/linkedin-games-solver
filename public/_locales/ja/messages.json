@@ -1,0 +1,780 @@
+{
+  "extensionName": {
+    "message": "LinkedIn ゲームソルバー",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "LinkedIn Games 用のヘルパーです。デイリーパズル（Queens、数独、Pinpoint、Crossclimb）を自動解答し、連勝記録と分析を表示します。",
+    "description": "The description of the extension."
+  },
+  "title": {
+    "message": "LinkedIn ゲーム",
+    "description": "Header title of the popup"
+  },
+  "subtitle": {
+    "message": "アクティブなボードをワンクリックで解く",
+    "description": "Header subtitle of the popup"
+  },
+  "switchThemeTitle": {
+    "message": "$1モードに切り替える",
+    "description": "Tooltip to switch theme"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Chrome タブとの統合が必要です。",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "アクティブなタブが見つかりません。",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "$1 への移動に失敗しました。",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "接続に失敗しました。",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "ソルバーの実行中に問題が発生しました。",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "ソルバーを開始しました。",
+    "description": "Toast message for successful solve start"
+  },
+  "solvingStatus": {
+    "message": "解いています...",
+    "description": "Overlay label during solver run"
+  },
+  "sudoku": {
+    "message": "Sudoku",
+    "description": "Game name Sudoku"
+  },
+  "tango": {
+    "message": "Tango",
+    "description": "Game name Tango"
+  },
+  "queens": {
+    "message": "Queens",
+    "description": "Game name Queens"
+  },
+  "zip": {
+    "message": "Zip",
+    "description": "Game name Zip"
+  },
+  "patches": {
+    "message": "Patches",
+    "description": "Game name Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb",
+    "description": "Game name Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint",
+    "description": "Game name Pinpoint"
+  },
+  "bonus": {
+    "message": "ボーナス",
+    "description": "Bonus badge next to game name"
+  },
+  "desc_patches": {
+    "message": "パッチをつなぎ合わせる"
+  },
+  "desc_zip": {
+    "message": "パスを完成させる"
+  },
+  "desc_sudoku": {
+    "message": "クラシックゲーム、ミニ版"
+  },
+  "desc_tango": {
+    "message": "グリッドを調和させる"
+  },
+  "desc_queens": {
+    "message": "各領域をクラウンする"
+  },
+  "desc_crossclimb": {
+    "message": "スタディクライマーを開く"
+  },
+  "desc_pinpoint": {
+    "message": "カテゴリーを推測する"
+  },
+  "titleSolve": {
+    "message": "$1を解く",
+    "description": "Tooltip for active game"
+  },
+  "titleCompleted": {
+    "message": "今日完了！$1に行くをクリック",
+    "description": "Tooltip for completed game"
+  },
+  "titleOpen": {
+    "message": "解くために$1を開く",
+    "description": "Tooltip for locked/unopened game"
+  },
+  "perfectDay": {
+    "message": "完璧な日！すべての$1ゲームが完了しました！🎉",
+    "description": "Congratulatory message when all games are solved"
+  },
+  "dailyProgress": {
+    "message": "毎日の進捗：$2のうち$1ゲーム完了",
+    "description": "Standard daily status footer"
+  },
+  "dashboardTitle": {
+    "message": "履歴と統計",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "LinkedIn Games の解答履歴と統計",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "合計解決数",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "すべての日付で解決されたゲーム",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "平均時間",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "記録されたすべての完了に対して",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "アクティブ連続記録",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "連続したアクティブ日数",
+    "description": "Description for the active streak card"
+  },
+  "statStreakDays": {
+    "message": "$1日",
+    "description": "Pluralized count of consecutive active days"
+  },
+  "personalBests": {
+    "message": "個人最高記録",
+    "description": "Label for personal best records list"
+  },
+  "noRecordsYet": {
+    "message": "まだ解く記録が記録されていません。",
+    "description": "Message shown when there are no historical entries"
+  },
+  "solvingHistory": {
+    "message": "解く履歴",
+    "description": "Label for historical chronological log"
+  },
+  "activityCalendar": {
+    "message": "アクティビティカレンダー",
+    "description": "Label for calendar activity card"
+  },
+  "clearFilter": {
+    "message": "フィルターをクリア",
+    "description": "Button to clear selected date filter"
+  },
+  "settingModel": {
+    "message": "モデル",
+    "description": "Label for the settings model selection dropdown"
+  },
+  "settingModelSelect": {
+    "message": "モデルを選択",
+    "placeholder": "Placeholder text for model selection trigger"
+  },
+  "settingModelCustomOption": {
+    "message": "カスタムモデル名...",
+    "description": "Select item option for custom model name"
+  },
+  "settingModelCustomLabel": {
+    "message": "カスタムモデル名",
+    "description": "Label for custom model name text input"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "例: llama3、mistral",
+    "description": "Placeholder for local custom models"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "カスタムIDを入力...",
+    "description": "Placeholder for other provider custom models"
+  },
+  "settingEndpointLabel": {
+    "message": "エンドポイントURL",
+    "description": "Label for custom endpoint input"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "例: http://localhost:11434/v1",
+    "description": "Placeholder for custom endpoint input"
+  },
+  "settingApiKeyGemini": {
+    "message": "Gemini APIキー",
+    "description": "Label for Gemini API key"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "OpenAI APIキー",
+    "description": "Label for OpenAI API key"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Anthropic APIキー",
+    "description": "Label for Anthropic API key"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "DeepSeek APIキー",
+    "description": "Label for DeepSeek API key"
+  },
+  "settingApiKeyCustom": {
+    "message": "APIキー（オプション）",
+    "description": "Label for custom API key"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "認証情報（オプション）...",
+    "description": "Placeholder for custom API key credentials"
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "認証情報キーを入力...",
+    "description": "Placeholder for default provider API key credentials"
+  },
+  "settingApiKeyNotice": {
+    "message": "選択されたモデルはクロスクライムとピンポイントを解きます。拡張機能はあなたのキーを共有しません。",
+    "description": "Notice under API key inputs in settings panel"
+  },
+  "popupCardTitle": {
+    "message": "楽しい毎日のゲームでつながろう",
+    "description": "Title of the card feed in popup"
+  },
+  "popupCardDesc": {
+    "message": "仕事の日のために心を準備し、結果を比較してください。あなたのスコアは共有しない限り非公開です。",
+    "description": "Description of the card feed in popup"
+  },
+  "saveAndBack": {
+    "message": "保存してゲームに戻る",
+    "description": "Save button text in AI Config settings"
+  },
+  "solvingWorking": {
+    "message": "AIソルバーが作動中...",
+    "description": "Label for active solving state"
+  },
+  "completedToday": {
+    "message": "今日完了",
+    "description": "Completed today badge"
+  },
+  "solvedCountSuffix": {
+    "message": "解きました",
+    "description": "Solved count label suffix"
+  },
+  "settingsHeaderTitle": {
+    "message": "AIモデル設定",
+    "description": "AI model configuration title"
+  },
+  "labelAiProvider": {
+    "message": "AIプロバイダー",
+    "description": "AI Provider select block label"
+  },
+  "labelModelIdentifier": {
+    "message": "モデル識別子",
+    "description": "Model Identifier select block label"
+  },
+  "labelCustomModel": {
+    "message": "カスタムモデル名",
+    "description": "Custom Model Name input block label"
+  },
+  "labelEndpointUrl": {
+    "message": "エンドポイントURL",
+    "description": "Endpoint URL input block label"
+  },
+  "labelGeminiKey": {
+    "message": "GEMINI APIキー",
+    "description": "Gemini API key label in uppercase"
+  },
+  "labelOpenAiKey": {
+    "message": "OPENAI APIキー",
+    "description": "OpenAI API key label in uppercase"
+  },
+  "labelAnthropicKey": {
+    "message": "ANTHROPIC APIキー",
+    "description": "Anthropic API key label in uppercase"
+  },
+  "labelDeepSeekKey": {
+    "message": "DEEPSEEK APIキー",
+    "description": "DeepSeek API key label in uppercase"
+  },
+  "labelCustomKey": {
+    "message": "APIキー（オプション）",
+    "description": "Custom API key label in uppercase"
+  },
+  "navHome": {
+    "message": "ホーム",
+    "description": "Home nav link label"
+  },
+  "navAiConfig": {
+    "message": "設定/オプション",
+    "description": "AI Config settings nav link label"
+  },
+  "navStats": {
+    "message": "統計",
+    "description": "Stats nav link label"
+  },
+  "navTheme": {
+    "message": "テーマ",
+    "description": "Theme nav link label"
+  },
+  "navDebug": {
+    "message": "デバッグ",
+    "description": "Debug nav link label"
+  },
+  "dailyProgressLabel": {
+    "message": "毎日の進捗",
+    "description": "Daily progress label"
+  },
+  "solveActiveBoard": {
+    "message": "アクティブなボードを解く",
+    "description": "Active board solve label"
+  },
+  "backToGames": {
+    "message": "LinkedInゲームに戻る",
+    "description": "Text for the link back to games tab"
+  },
+  "dashboardLabel": {
+    "message": "ダッシュボード",
+    "description": "Dashboard brand badge label"
+  },
+  "gamesSolverTitle": {
+    "message": "ゲームソルバー",
+    "description": "Brand header title text"
+  },
+  "dashboardDescText": {
+    "message": "パフォーマンス指標を分析し、連勝記録を残し、毎日完了したパズルの軌跡を追跡します。",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "completedSuccessfully": {
+    "message": "正常に完了",
+    "description": "Success dot tooltip on solved timeline row"
+  },
+  "disclaimerText": {
+    "message": "免責事項: これは独立したオープンソースの教育プロジェクトです。LinkedIn Corporation と提携・支援・認可されたものではありません。「LinkedIn」は LinkedIn Corporation の登録商標です。",
+    "description": "Compliance footer disclaimer text"
+  },
+  "settingsCredentialsTitle": {
+    "message": "認証情報とモデル",
+    "description": "Title for settings credentials block"
+  },
+  "settingsModelGuideTitle": {
+    "message": "モデルガイドと情報",
+    "description": "Title for settings model guide block"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "接続状態",
+    "description": "Title for connection status block"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "アクティブなソルバー：",
+    "description": "Label for active solver status field"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "モデル識別子：",
+    "description": "Label for model identifier status field"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "設定が自動保存されました！",
+    "description": "Toast message when settings are saved"
+  },
+  "settingsSubtitleDesc": {
+    "message": "高度なパズル推論ソルバーのためにAIモデルエンドポイントと認証情報を設定します。",
+    "description": "Subtitle description under settings tab header"
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "優れたパフォーマンス、ほぼゼロコスト。優れた論理でクロスクライムとピンポイントを解きます。推奨：gemini-2.5-flash。",
+    "description": "Gemini guide text"
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "高速、応答性が高く、一般知識モデルで非常に信頼性があります。推奨：gpt-4o-mini。",
+    "description": "OpenAI guide text"
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "最大の推論能力。複雑なクロスワードを完璧に処理します。推奨：claude-3-5-haiku。",
+    "description": "Anthropic guide text"
+  },
+  "settingsCustomGuideDesc": {
+    "message": "OllamaまたはLM StudioなどのローカルLLMフレームワークに接続します。エンドポイントURL（例：http://localhost:11434/v1）とカスタムモデル名を指定します。",
+    "description": "Custom guide text"
+  },
+  "showMoreDates": {
+    "message": "もっと日付を表示",
+    "description": "Button to expand the list of historical puzzle logs"
+  },
+  "showLessDates": {
+    "message": "少なく表示",
+    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
+  },
+  "solveBtn_withAi": {
+    "message": "AIで解く"
+  },
+  "solveBtn_game": {
+    "message": "ゲームを解く"
+  },
+  "solveBtn_solving": {
+    "message": "解いています..."
+  },
+  "solveBtn_solved": {
+    "message": "解きました！"
+  },
+  "scoreClue": {
+    "message": "1つのヒント"
+  },
+  "scoreClues": {
+    "message": "$1ヒント"
+  },
+  "scoreSeconds": {
+    "message": "$1秒"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1分$2秒"
+  },
+  "markAsNotPlayed": {
+    "message": "プレイなしとしてマーク",
+    "description": "Context menu option to undo a completed game for today"
+  },
+  "settingSolveSpeed": {
+    "message": "解く速度/遅延",
+    "description": "Label for solving speed mode in settings"
+  },
+  "solveSpeed_instant": {
+    "message": "インスタント（最速）",
+    "description": "Instant speed mode option"
+  },
+  "solveSpeed_normal": {
+    "message": "通常（標準）",
+    "description": "Normal speed mode option"
+  },
+  "solveSpeed_stealth": {
+    "message": "ステルスモード（人間的な遅延）",
+    "description": "Stealth speed mode option with human paced delays"
+  },
+  "labelSolveSpeed": {
+    "message": "解く速度とペーシング",
+    "description": "Section header for solving speed settings"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "インスタントモードはボードをミリ秒で完成させます。ステルスモードはランダムな遅延（1～3秒）で人間の動作を模倣し、自動検出から保護します。",
+    "description": "Help message for solving speed modes"
+  },
+  "solveBtn_hint": {
+    "message": "ヒントを取得",
+    "description": "Text for get hint button on active board top toolbar"
+  },
+  "settingDefaultSolveMode": {
+    "message": "ソルバーのデフォルトアクション",
+    "description": "Label for default solving action in settings"
+  },
+  "solveMode_full": {
+    "message": "完全自動解決",
+    "description": "Solve everything automatically option label"
+  },
+  "solveMode_hint": {
+    "message": "教育的ヒントモード",
+    "description": "Educational hint step solving option label"
+  },
+  "labelDefaultSolveMode": {
+    "message": "ソルバーのデフォルトモード",
+    "description": "Section header label for solver action settings"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "タブビューまたはボードからソルバーを起動するときに主要なアクションを選択します。完全解決はゲームを完了します。ヒントモードは1つの正しいピースを配置します。",
+    "description": "Notice for solver action mode choices"
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "ゼロコストで完全にローカルなAI",
+    "description": "Chrome Built-in AI guide title"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "デバイス上で完全にローカルで実行、ブラウザ内。Gemini Nanoでゼロネットワーク遅延、100%無料。",
+    "description": "Chrome Built-in AI guide text"
+  },
+  "debugHeaderTitle": {
+    "message": "ゲームデバッガーと開発ツール",
+    "description": "Header title for the debugger and dev tools tab"
+  },
+  "debugStatusOffline": {
+    "message": "オフライン",
+    "description": "Debug offline status indicator label"
+  },
+  "debugStatusLive": {
+    "message": "ライブ",
+    "description": "Debug live status indicator label"
+  },
+  "debugDetectedGame": {
+    "message": "検出されたゲーム",
+    "description": "Debug label for active game name detection"
+  },
+  "debugNoneDetected": {
+    "message": "検出されなし",
+    "description": "Debug label when no game is active or detected"
+  },
+  "debugTargetUrl": {
+    "message": "ターゲットURL",
+    "description": "Debug label for the active browser tab url"
+  },
+  "debugNoActiveTab": {
+    "message": "アクティブなタブはありません",
+    "description": "Debug label when there is no active browser tab"
+  },
+  "debugHtmlCopied": {
+    "message": "HTMLがコピーされました！",
+    "description": "Toast message after copying main tag outerHTML"
+  },
+  "debugCopyHtml": {
+    "message": "<main> HTMLをコピー",
+    "description": "Button label to copy main tag outerHTML"
+  },
+  "debugLogsCopied": {
+    "message": "ログがコピーされました！",
+    "description": "Toast message after copying active console logs"
+  },
+  "debugCopyLogs": {
+    "message": "コンソールログをコピー",
+    "description": "Button label to copy active console logs"
+  },
+  "debugBothCopied": {
+    "message": "両方ともコピーされました！",
+    "description": "Toast message after copying both html and logs"
+  },
+  "debugCopyBoth": {
+    "message": "両方をコピー（HTMLとログ）",
+    "description": "Button label to copy both html and logs"
+  },
+  "debugRegistryCopied": {
+    "message": "レジストリJSONがコピーされました！",
+    "description": "Toast message after copying today's daily registry puzzle data"
+  },
+  "debugCopyRegistry": {
+    "message": "本日のレジストリJSONをコピー",
+    "description": "Button label to copy today's daily registry puzzle data"
+  },
+  "debugCopyRegistryShort": {
+    "message": "JSONをコピー",
+    "description": "Short copy button label"
+  },
+  "debugSubmitAnswer": {
+    "message": "回答を送信",
+    "description": "Button to submit active board answers to GitHub"
+  },
+  "debugDomPreview": {
+    "message": "DOM要素プレビュー",
+    "description": "Card title for the captured main outerHTML preview"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[ ... [切り詰められた、合計文字：$1] ... ]",
+    "description": "Truncation note inside the main outerHTML preview"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "完全な<main> HTMLをコピー",
+    "description": "Tooltip/title for main HTML copy button"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "アクティブな<main>タグはキャプチャされていません。LinkedInゲームページにいることを確認してください。",
+    "description": "Placeholder text when no outerHTML is captured"
+  },
+  "debugConsoleOutput": {
+    "message": "コンソール出力",
+    "description": "Card title for captured console logs feed"
+  },
+  "debugEventsCount": {
+    "message": "$1イベント",
+    "description": "Count of captured console events badge"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "ログを更新",
+    "description": "Tooltip for refresh logs button"
+  },
+  "debugClearLogsTooltip": {
+    "message": "ログをクリア",
+    "description": "Tooltip for clear logs button"
+  },
+  "debugNoLogsCaptured": {
+    "message": "まだログはキャプチャされていません。ゲームボード上でアクションを実行してコンソールイベントをトリガーします。",
+    "description": "Placeholder text when console logs feed is empty"
+  },
+  "debugListeningEvents": {
+    "message": "console.log、console.warn、console.errorイベントをリッスン中...",
+    "description": "Footer indicator of the active log listener"
+  },
+  "debugErrorInitializing": {
+    "message": "LinkedInゲームページへの接続を初期化中...",
+    "description": "Error string when SW connection is pending"
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "ゲームデータを取得できませんでした。",
+    "description": "Error string when content script response is invalid"
+  },
+  "debugErrorNotGamesPage": {
+    "message": "アクティブなタブはLinkedInゲームページではありません。詳細を取得するゲームに移動します。",
+    "description": "Error string when active tab is not on linkedin.com/games"
+  },
+  "debugErrorNoActiveTab": {
+    "message": "アクティブなタブを識別できませんでした。",
+    "description": "Error string when active tab query fails"
+  },
+  "labelDailyReminders": {
+    "message": "毎日のリマインダーとストリーク保護",
+    "description": "Daily reminders settings card heading"
+  },
+  "settingEnableReminders": {
+    "message": "毎日のリマインダーを有効にする",
+    "description": "Toggle daily reminders label"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "今日のストリーク有効期限前に警告します。",
+    "description": "Toggle daily reminders description"
+  },
+  "settingReminderTime": {
+    "message": "リマインダー時間",
+    "description": "Input for reminder time label"
+  },
+  "settingReminderTimeNotice": {
+    "message": "未解決のゲームを確認するローカル時刻を選択します。",
+    "description": "Daily reminders time picker notice"
+  },
+  "notificationTitle": {
+    "message": "ストリーク保護🚀",
+    "description": "Desktop notification title"
+  },
+  "notificationMessage": {
+    "message": "解くストリークを失わないでください！まだ今日のLinkedInゲームを解いていません。",
+    "description": "Desktop notification body message"
+  },
+  "notificationButton": {
+    "message": "今すぐ解く！",
+    "description": "Desktop notification button text"
+  },
+  "commandSolveActiveGame": {
+    "message": "アクティブなLinkedInゲームを自動的に解きます。"
+  },
+  "commandGetSingleHint": {
+    "message": "単一ステップのヒントを提供するか、エラーを確認します。"
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "ゲーム内のサイドパネルを自動開く"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "LinkedInゲームページにアクセスするとき、ソルバーサイドパネルを自動的に開きます。"
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "ソルバーサイドパネルを自動開く"
+  },
+  "permissionDialogTitle": {
+    "message": "ページ権限を付与"
+  },
+  "permissionDialogDesc": {
+    "message": "アクティブなゲームボードを検出し、パズルを解くには、拡張機能がLinkedInゲームページで実行される権限が必要です。下をクリックしてアクセス権を付与します。"
+  },
+  "permissionDialogButton": {
+    "message": "権限を付与"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 今日クイーンズをプレイして解く！"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 ミニ数独ソルバーを開く"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 ストリークとパフォーマンスダッシュボードを開く"
+  },
+  "diagnosticsEngine": {
+    "message": "診断エンジン"
+  },
+  "liveInspected": {
+    "message": "ライブ検査"
+  },
+  "offline": {
+    "message": "オフライン"
+  },
+  "inspectedTab": {
+    "message": "検査されたタブ："
+  },
+  "liveMatrixGridInspector": {
+    "message": "ライブマトリックスグリッドインスペクタ"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "LinkedInゲームページを待機中"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "任意のLinkedInゲームボードタブ（クイーン、数独、タンゴ、ピンポイント）に移動して、制約センター、セルの状態、反応型構造をキャプチャします。"
+  },
+  "telemetryLogsStreamer": {
+    "message": "遠隔測定ログストリーム"
+  },
+  "searchLogsPlaceholder": {
+    "message": "ログを検索..."
+  },
+  "allTypes": {
+    "message": "すべてのタイプ"
+  },
+  "logsType": {
+    "message": "ログ"
+  },
+  "infoType": {
+    "message": "情報"
+  },
+  "warnsType": {
+    "message": "警告"
+  },
+  "errorsType": {
+    "message": "エラー"
+  },
+  "selectTypePlaceholder": {
+    "message": "タイプを選択"
+  },
+  "consoleStreamEmpty": {
+    "message": "コンソールストリームは空です"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "フィルターに一致するログ出力は検出されていません。LinkedInゲームソルバー環境内でステップを実行してログをストリーミングします。"
+  },
+  "subscribedToStorageSession": {
+    "message": "storage.sessionストリームに購読"
+  },
+  "parsingGameGridCells": {
+    "message": "ゲームグリッドセルを解析中...ボードに表示されるアクティブなグリッドブロックがあることを確認します。"
+  },
+  "urlLabel": {
+    "message": "URL："
+  },
+  "notAvailable": {
+    "message": "利用不可"
+  },
+  "matchesLabel": {
+    "message": "マッチ"
+  },
+  "copiedLabel": {
+    "message": "コピーされました！"
+  },
+  "copyLogsTooltip": {
+    "message": "ログをコピー"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "ログスペースをクリア"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ アクティブなLinkedInゲームを解く"
+  },
+  "contextMenuHint": {
+    "message": "💡 ヒントを取得"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 結果を表示"
+  },
+  "labelTelemetryTitle": {
+    "message": "遠隔測定とプライバシー",
+    "description": "Section header for telemetry and privacy settings"
+  },
+  "telemetryToggleLabel": {
+    "message": "匿名テレメトリを送信",
+    "description": "Toggle label for telemetry consent"
+  },
+  "telemetryToggleDesc": {
+    "message": "匿名のパフォーマンスと使用メトリックを共有してソルバーの改善を支援します。",
+    "description": "Toggle description explaining what telemetry tracks anonymously"
+  }
+}

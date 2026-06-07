@@ -76,60 +76,83 @@ interface LocaleConfig {
   screenshotDir: string
 }
 
-const localeMap: Record<string, LocaleConfig> = {
-  en: {
-    displayName: "English (Default)",
-    subStr: "English",
-    descPath: path.join(outDir, "localized", "en", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "en", "screenshots")
+const ALL_LOCALES_RAW: { code: string; name: string; subStr: string }[] = [
+  { code: "ar", name: "Arabic", subStr: "Arabic" },
+  { code: "am", name: "Amharic", subStr: "Amharic" },
+  { code: "bg", name: "Bulgarian", subStr: "Bulgarian" },
+  { code: "bn", name: "Bengali", subStr: "Bengali" },
+  { code: "ca", name: "Catalan", subStr: "Catalan" },
+  { code: "cs", name: "Czech", subStr: "Czech" },
+  { code: "da", name: "Danish", subStr: "Danish" },
+  { code: "de", name: "German", subStr: "German" },
+  { code: "el", name: "Greek", subStr: "Greek" },
+  { code: "en", name: "English (Default)", subStr: "English" },
+  { code: "en_AU", name: "English (Australia)", subStr: "English (Australia)" },
+  {
+    code: "en_GB",
+    name: "English (Great Britain)",
+    subStr: "English (Great Britain)"
   },
-  tr: {
-    displayName: "Turkish",
-    subStr: "Turkish",
-    descPath: path.join(outDir, "localized", "tr", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "tr", "screenshots")
+  { code: "en_US", name: "English (USA)", subStr: "English (USA)" },
+  { code: "es", name: "Spanish", subStr: "Spanish" },
+  {
+    code: "es_419",
+    name: "Spanish (Latin America and Caribbean)",
+    subStr: "Spanish (Latin America and Caribbean)"
   },
-  es: {
-    displayName: "Spanish",
-    subStr: "Spanish",
-    descPath: path.join(outDir, "localized", "es", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "es", "screenshots")
+  { code: "et", name: "Estonian", subStr: "Estonian" },
+  { code: "fa", name: "Persian", subStr: "Persian" },
+  { code: "fi", name: "Finnish", subStr: "Finnish" },
+  { code: "fil", name: "Filipino", subStr: "Filipino" },
+  { code: "fr", name: "French", subStr: "French" },
+  { code: "gu", name: "Gujarati", subStr: "Gujarati" },
+  { code: "he", name: "Hebrew", subStr: "Hebrew" },
+  { code: "hi", name: "Hindi", subStr: "Hindi" },
+  { code: "hr", name: "Croatian", subStr: "Croatian" },
+  { code: "hu", name: "Hungarian", subStr: "Hungarian" },
+  { code: "id", name: "Indonesian", subStr: "Indonesian" },
+  { code: "it", name: "Italian", subStr: "Italian" },
+  { code: "ja", name: "Japanese", subStr: "Japanese" },
+  { code: "kn", name: "Kannada", subStr: "Kannada" },
+  { code: "ko", name: "Korean", subStr: "Korean" },
+  { code: "lt", name: "Lithuanian", subStr: "Lithuanian" },
+  { code: "lv", name: "Latvian", subStr: "Latvian" },
+  { code: "ml", name: "Malayalam", subStr: "Malayalam" },
+  { code: "mr", name: "Marathi", subStr: "Marathi" },
+  { code: "ms", name: "Malay", subStr: "Malay" },
+  { code: "nl", name: "Dutch", subStr: "Dutch" },
+  { code: "no", name: "Norwegian", subStr: "Norwegian" },
+  { code: "pl", name: "Polish", subStr: "Polish" },
+  { code: "pt_BR", name: "Portuguese (Brazil)", subStr: "Portuguese (Brazil)" },
+  {
+    code: "pt_PT",
+    name: "Portuguese (Portugal)",
+    subStr: "Portuguese (Portugal)"
   },
-  fr: {
-    displayName: "French",
-    subStr: "French",
-    descPath: path.join(outDir, "localized", "fr", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "fr", "screenshots")
-  },
-  pt_BR: {
-    displayName: "Portuguese (Brazil)",
-    subStr: "Portuguese (Brazil)",
-    descPath: path.join(outDir, "localized", "pt_BR", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "pt_BR", "screenshots")
-  },
-  pt_PT: {
-    displayName: "Portuguese (Portugal)",
-    subStr: "Portuguese (Portugal)",
-    descPath: path.join(outDir, "localized", "pt_PT", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "pt_PT", "screenshots")
-  },
-  de: {
-    displayName: "German",
-    subStr: "German",
-    descPath: path.join(outDir, "localized", "de", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "de", "screenshots")
-  },
-  zh_CN: {
-    displayName: "Chinese (China)",
-    subStr: "Chinese (China)",
-    descPath: path.join(outDir, "localized", "zh_CN", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "zh_CN", "screenshots")
-  },
-  zh_TW: {
-    displayName: "Chinese (Taiwan)",
-    subStr: "Chinese (Taiwan)",
-    descPath: path.join(outDir, "localized", "zh_TW", "description.md"),
-    screenshotDir: path.join(outDir, "localized", "zh_TW", "screenshots")
+  { code: "ro", name: "Romanian", subStr: "Romanian" },
+  { code: "ru", name: "Russian", subStr: "Russian" },
+  { code: "sk", name: "Slovak", subStr: "Slovak" },
+  { code: "sl", name: "Slovenian", subStr: "Slovenian" },
+  { code: "sr", name: "Serbian", subStr: "Serbian" },
+  { code: "sv", name: "Swedish", subStr: "Swedish" },
+  { code: "sw", name: "Swahili", subStr: "Swahili" },
+  { code: "ta", name: "Tamil", subStr: "Tamil" },
+  { code: "te", name: "Telugu", subStr: "Telugu" },
+  { code: "th", name: "Thai", subStr: "Thai" },
+  { code: "tr", name: "Turkish", subStr: "Turkish" },
+  { code: "uk", name: "Ukrainian", subStr: "Ukrainian" },
+  { code: "vi", name: "Vietnamese", subStr: "Vietnamese" },
+  { code: "zh_CN", name: "Chinese (China)", subStr: "Chinese (China)" },
+  { code: "zh_TW", name: "Chinese (Taiwan)", subStr: "Chinese (Taiwan)" }
+]
+
+const localeMap: Record<string, LocaleConfig> = {}
+for (const loc of ALL_LOCALES_RAW) {
+  localeMap[loc.code] = {
+    displayName: loc.name,
+    subStr: loc.subStr,
+    descPath: path.join(outDir, "localized", loc.code, "description.md"),
+    screenshotDir: path.join(outDir, "localized", loc.code, "screenshots")
   }
 }
 

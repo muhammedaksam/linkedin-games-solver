@@ -1,0 +1,895 @@
+{
+  "promoTranslations": {
+    "ar": {
+      "title": "أداة حل الألعاب",
+      "line1": "حل تلقائي للألغاز اليومية",
+      "line2": "مع لوحة تحكم لإحصاءات مباشرة"
+    },
+    "am": {
+      "title": "ጨዋታ መፍቻ",
+      "line1": "ዕለታዊ ጥያቄዎችን በራስ-ሰር መፍትಹೆ",
+      "line2": "ከቀጥታ የስታትስტიკስ ዳሽቦर्ड ጋር"
+    },
+    "bg": {
+      "title": "Решаване на игри",
+      "line1": "Автоматично решаване на ежедневни пъзели",
+      "line2": "с табло с live статистика"
+    },
+    "bn": {
+      "title": "গেমস সলভার",
+      "line1": "দৈনিক পাজল স্বয়ংক্রিয়ভাবে সমাধান",
+      "line2": "লাইভ স্ট্যাট ড্যাশবোর্ডসহ"
+    },
+    "ca": {
+      "title": "Solucionador de jocs",
+      "line1": "Resolució automàtica de trencaclosques diaris",
+      "line2": "amb quadre de comandament d’estadístiques en directe"
+    },
+    "cs": {
+      "title": "Řešitel her",
+      "line1": "Automatické řešení denních hádanek",
+      "line2": "s přehledem živých statistik"
+    },
+    "da": {
+      "title": "Games Solver",
+      "line1": "Auto-løs daglige puslespil",
+      "line2": "med live statistik-dashboard"
+    },
+    "de": {
+      "title": "Games Solver",
+      "line1": "Tägliche Rätsel automatisch lösen",
+      "line2": "mit Live-Statistik-Dashboard"
+    },
+    "el": {
+      "title": "Επίλυση παιχνιδιών",
+      "line1": "Αυτόματη επίλυση καθημερινών γρίφων",
+      "line2": "με πίνακα ζωντανών στατιστικών"
+    },
+    "en": {
+      "title": "Games Solver",
+      "line1": "Auto-solve daily puzzles",
+      "line2": "with live stats dashboard"
+    },
+    "en_AU": {
+      "title": "Games Solver",
+      "line1": "Auto-solve daily puzzles",
+      "line2": "with live stats dashboard"
+    },
+    "en_GB": {
+      "title": "Games Solver",
+      "line1": "Auto-solve daily puzzles",
+      "line2": "with live stats dashboard"
+    },
+    "en_US": {
+      "title": "Games Solver",
+      "line1": "Auto-solve daily puzzles",
+      "line2": "with live stats dashboard"
+    },
+    "es": {
+      "title": "Games Solver",
+      "line1": "Resuelve acertijos diarios",
+      "line2": "con panel de estadísticas"
+    },
+    "es_419": {
+      "title": "Games Solver",
+      "line1": "Resuelve acertijos diarios",
+      "line2": "con panel de estadísticas"
+    },
+    "et": {
+      "title": "Mängude lahendaja",
+      "line1": "Igapäevaste mõistatuste automaatne lahendamine",
+      "line2": "realtime statistika armatuurlauaga"
+    },
+    "fa": {
+      "title": "حل‌گر بازی‌ها",
+      "line1": "حل خودکار معماهای روزانه",
+      "line2": "به همراه داشبورد آمار زنده"
+    },
+    "fi": {
+      "title": "Pelien ratkoja",
+      "line1": "Päivittäisten pulmien automaattinen ratkominen",
+      "line2": "live-tilastojen hallintapaneelin kanssa"
+    },
+    "fil": {
+      "title": "Games Solver",
+      "line1": "Auto-solve ng mga daily puzzle",
+      "line2": "na may live stats dashboard"
+    },
+    "fr": {
+      "title": "Games Solver",
+      "line1": "Résous les puzzles quotidiens",
+      "line2": "avec tableau de bord en direct"
+    },
+    "gu": {
+      "title": "ગેમ્સ સોલ્વર",
+      "line1": "દૈનિક પઝલનું ઓટો-સોલ્યુશન",
+      "line2": "લાઇવ સ્ટેટ્સ ડેશબોર્ડ સાથે"
+    },
+    "he": {
+      "title": "פותר משחקים",
+      "line1": "פתרון אוטומטי של חידות יומיות",
+      "line2": "עם לוח מחוונים לסטטיסטיקות חיות"
+    },
+    "hi": {
+      "title": "गेम्स सॉल्वर",
+      "line1": "रोज़ाना पहेलियाँ अपने‑आप हल करें",
+      "line2": "लाइव आँकड़ों वाले डैशबोर्ड के साथ"
+    },
+    "hr": {
+      "title": "Rješavač igara",
+      "line1": "Automatsko rješavanje dnevnih zagonetki",
+      "line2": "s nadzornom pločom za statistiku u stvarnom vremenu"
+    },
+    "hu": {
+      "title": "Játékmegoldó",
+      "line1": "Napi rejtvények automatikus megoldása",
+      "line2": "élő statisztikai irányítópulttal"
+    },
+    "id": {
+      "title": "Games Solver",
+      "line1": "Otomatis selesaikan teka-teki harian",
+      "line2": "dengan dasbor statistik langsung"
+    },
+    "it": {
+      "title": "Risolutore di giochi",
+      "line1": "Risoluzione automatica dei puzzle giornalieri",
+      "line2": "con dashboard di statistiche in tempo reale"
+    },
+    "ja": {
+      "title": "ゲームソルバー",
+      "line1": "デイリーパズルを自動で解答",
+      "line2": "リアルタイム統計ダッシュボード付き"
+    },
+    "kn": {
+      "title": "ಆಟಗಳ ಪರಿಹಾರಕ",
+      "line1": "ದಿನನಿತ್ಯದ ಪಝಲ್‌ಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪರಿಹರಿಸಿ",
+      "line2": "ಲೈವ್ ಅಂಕಿಅಂಶಗಳ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಜೊತೆಗೆ"
+    },
+    "ko": {
+      "title": "게임 솔버",
+      "line1": "일일 퍼즐 자동 해결",
+      "line2": "실시간 통계 대시보드 포함"
+    },
+    "lt": {
+      "title": "Žaidimų sprendiklis",
+      "line1": "Automatinis kasdienių galvosūkių sprendimas",
+      "line2": "su tiesioginės statistikos suvestine"
+    },
+    "lv": {
+      "title": "Spēļu risinātājs",
+      "line1": "Automātiska ikdienas mīklu atrisināšana",
+      "line2": "ar tiešsaistes statistikas paneli"
+    },
+    "ml": {
+      "title": "ഗെയിംസ് സോൾവർ",
+      "line1": "ദൈനംദിന പസിലുകൾ ഓട്ടോ-സോൾവ് ചെയ്യുക",
+      "line2": "ലൈവ് സ്റ്റാറ്റ്സ് ഡാഷ്‌ബോർഡോടൊപ്പം"
+    },
+    "mr": {
+      "title": "गेम्स सॉल्वर",
+      "line1": "दररोजची पझल्स ऑटो‑सॉल्व करा",
+      "line2": "लाइव्ह स्टॅट्स डॅशबोर्डसह"
+    },
+    "ms": {
+      "title": "Penyelesai Permainan",
+      "line1": "Selesaikan teka-teki harian secara automatik",
+      "line2": "dengan papan pemuka statistik langsung"
+    },
+    "nl": {
+      "title": "Games-oplosser",
+      "line1": "Los dagelijkse puzzels automatisch op",
+      "line2": "met een live statistiekendashboard"
+    },
+    "no": {
+      "title": "Games-løser",
+      "line1": "Løs dagens puslespill automatisk",
+      "line2": "med sanntids statistikkdashboard"
+    },
+    "pl": {
+      "title": "Games Solver",
+      "line1": "Automatyczne rozwiązywanie codziennych łamigłówek",
+      "line2": "z panelem statystyk na żywo"
+    },
+    "pt_BR": {
+      "title": "Games Solver",
+      "line1": "Resolva quebra-cabeças diários",
+      "line2": "com painel de estatísticas"
+    },
+    "pt_PT": {
+      "title": "Games Solver",
+      "line1": "Resolva quebra-cabeças diários",
+      "line2": "com painel de estatísticas"
+    },
+    "ro": {
+      "title": "Games Solver",
+      "line1": "Rezolvă automat puzzle-urile zilnice",
+      "line2": "cu un tablou de bord cu statistici în timp real"
+    },
+    "ru": {
+      "title": "Решатель игр",
+      "line1": "Автоматическое решение ежедневных головоломок",
+      "line2": "с панелью статистики в реальном времени"
+    },
+    "tr": {
+      "title": "Oyun Çözücü",
+      "line1": "Günlük bulmacaları otomatik çöz",
+      "line2": "canlı istatistik paneli ile"
+    },
+    "zh_CN": {
+      "title": "游戏助手",
+      "line1": "一键自动解密每日谜题",
+      "line2": "配备实时数据统计仪表盘"
+    },
+    "zh_TW": {
+      "title": "遊戲助手",
+      "line1": "一鍵自動解密每日謎題",
+      "line2": "配備即時數據統計儀表盤"
+    }
+  },
+  "marqueeTranslations": {
+    "ar": {
+      "title": "أداة حل ألعاب لينكدإن",
+      "line1": "حل الألغاز اليومية تلقائيًا وتتبع سلسلتك بتحليلات غنية",
+      "line2": "يدعم: السودوكو • الملكات • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "am": {
+      "title": "LinkedIn ጨዋታዎች መፍቻ",
+      "line1": "ዕለታዊ ጥያቄዎችን በራስ-ಸር ፍታ እና ሰርጦትን በሃብታም ትንતાኔዎች አስተካክል",
+      "line2": "የሚደግፉት፡ Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "bg": {
+      "title": "Помощник за игрите на LinkedIn",
+      "line1": "Автоматично решавайте ежедневни пъзели и следете поредицата си с подробна аналитика",
+      "line2": "Поддържа: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "bn": {
+      "title": "লিংকডইন গেমস সলভার",
+      "line1": "দৈনিক পাজল অটো-সল্ভ করুন এবং সমৃদ্ধ অ্যানালিটিক্স দিয়ে স্ট্রিক ট্র্যাক করুন",
+      "line2": "সমর্থিত: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "ca": {
+      "title": "Solucionador de jocs de LinkedIn",
+      "line1": "Resol automàticament els trencaclosques diaris i fes seguiment de la teva ratxa amb analítiques avançades",
+      "line2": "Compatible amb: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "cs": {
+      "title": "Řešitel her LinkedIn",
+      "line1": "Automaticky řešte denní hádanky a sledujte svou šňůru pomocí podrobné analytiky",
+      "line2": "Podporuje: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "da": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Auto-løs daglige puslespil og spor din streak med omfattende analyser",
+      "line2": "Understøtter: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "de": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Tägliche Rätsel automatisch lösen & Statistiken verfolgen",
+      "line2": "Unterstützt: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "el": {
+      "title": "Επίλυση παιχνιδιών LinkedIn",
+      "line1": "Λύστε αυτόματα τους καθημερινούς γρίφους και παρακολουθήστε το σερί σας με πλούσια αναλυτικά στοιχεία",
+      "line2": "Υποστηρίζει: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "en": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Auto-solve daily puzzles & track your streak with rich analytics",
+      "line2": "Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "en_AU": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Auto-solve daily puzzles & track your streak with rich analytics",
+      "line2": "Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "en_GB": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Auto-solve daily puzzles & track your streak with rich analytics",
+      "line2": "Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "en_US": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Auto-solve daily puzzles & track your streak with rich analytics",
+      "line2": "Supports: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "es": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Resuelve acertijos diarios y sigue tus estadísticas de racha",
+      "line2": "Soporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "es_419": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Resuelve acertijos diarios y sigue tus estadísticas de racha",
+      "line2": "Soporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "et": {
+      "title": "LinkedIni mängude lahendaja",
+      "line1": "Lahenda igapäevased mõistatused automaatselt ja jälgi oma seeriat põhjaliku analüütikaga",
+      "line2": "Toetab: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "fa": {
+      "title": "حل‌گر بازی‌های لینکدین",
+      "line1": "معماهای روزانه را به‌صورت خودکار حل کنید و استریک خود را با تحلیل‌های پیشرفته دنبال کنید",
+      "line2": "پشتیبانی از: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "fi": {
+      "title": "LinkedIn-pelien ratkoja",
+      "line1": "Ratko päivittäiset pulmat automaattisesti ja seuraa putkeasi kattavan analytiikan avulla",
+      "line2": "Tuki peleille: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "fil": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Auto-solve ng daily puzzles at i-track ang iyong streak gamit ang rich analytics",
+      "line2": "Sumusuporta sa: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "fr": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Résous les puzzles quotidiens & suis ta série avec des analyses",
+      "line2": "Supporte: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "gu": {
+      "title": "LinkedIn ગેમ્સ સોલ્વર",
+      "line1": "દૈનિક પઝલ આપોઆપ સોલ્વ કરો અને સમૃદ્ધ એનાલિટિક્સ સાથે તમારો સ્ટ્રીક ટ્રેક કરો",
+      "line2": "સપોર્ટેડ: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "he": {
+      "title": "פותר המשחקים של LinkedIn",
+      "line1": "פתרו חידות יומיות באופן אוטומטי ועקבו אחרי הרצף שלכם בעזרת אנליטיקה עשירה",
+      "line2": "תומך ב: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "hi": {
+      "title": "LinkedIn गेम्स सॉल्वर",
+      "line1": "रोज़ाना पहेलियाँ अपने‑आप हल करें और रिच एनालिटिक्स के साथ अपना स्ट्रीक ट्रैक करें",
+      "line2": "समर्थन: सुडोकू • क्वीन • पिनपॉइंट • क्रॉसक्लाइंब • टैंगो • ज़िप • पैचेस"
+    },
+    "hr": {
+      "title": "Rješavač igara za LinkedIn",
+      "line1": "Automatski rješavajte dnevne zagonetke i pratite svoj niz uz detaljnu analitiku",
+      "line2": "Podržano: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "hu": {
+      "title": "LinkedIn játékmegoldó",
+      "line1": "Oldd meg automatikusan a napi rejtvényeket, és kövesd a szériádat részletes analitikával",
+      "line2": "Támogatott: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "id": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Otomatis selesaikan teka-teki harian & lacak streak Anda dengan analitik mendalam",
+      "line2": "Mendukung: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "it": {
+      "title": "Risolutore per LinkedIn Games",
+      "line1": "Risolvi automaticamente i puzzle giornalieri e traccia le tue serie con analisi dettagliate",
+      "line2": "Supporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "ja": {
+      "title": "LinkedIn ゲームソルバー",
+      "line1": "デイリーパズルを自動解答し、詳細な分析で連勝記録を追跡",
+      "line2": "対応ゲーム: 数独 • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "kn": {
+      "title": "LinkedIn ಆಟಗಳ ಪರಿಹಾರಕ",
+      "line1": "ದಿನನಿತ್ಯದ ಪಝಲ್‌ಗಳನ್ನು ಸ್ವಯಂ ಪರಿಹರಿಸಿ ಮತ್ತು ಸಮೃದ್ಧ ವಿಶ್ಲೇಷಣೆ ಮೂಲಕ ನಿಮ್ಮ ಸ್ಟ್ರೀಕ್ ಅನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ",
+      "line2": "ಬೆಂಬಲಿತ: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "ko": {
+      "title": "LinkedIn 게임 솔버",
+      "line1": "일일 퍼즐을 자동으로 해결하고 풍부한 분석으로 연속 기록을 추적하세요",
+      "line2": "지원: 스도쿠 • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "lt": {
+      "title": "„LinkedIn“ žaidimų sprendiklis",
+      "line1": "Automatiškai spręskite kasdienius galvosūkius ir sekite savo seriją su išsamia analitika",
+      "line2": "Palaiko: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "lv": {
+      "title": "LinkedIn spēļu risinātājs",
+      "line1": "Automātiski atrisini ikdienas mīklas un seko savai sērijai ar detalizētu analītiku",
+      "line2": "Atbalsta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "ml": {
+      "title": "LinkedIn ഗെയിംസ് സോൾവർ",
+      "line1": "ദൈനംദിന പസിലുകൾ സ്വയം പരിഹരിക്കുകയും സമൃദ്ധമായ അനലിറ്റിക്സ് ഉപയോഗിച്ച് നിങ്ങളുടെ സ്റ്റ്രീക്ക് ട്രാക്ക് ചെയ്യുകയും ചെയ്യുക",
+      "line2": "സപ്പോർട്ട് ചെയ്യുന്ന ഗെയിമുകൾ: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "mr": {
+      "title": "LinkedIn गेम्स सॉल्वर",
+      "line1": "दररोजची पझल्स आपोआप सोडवा आणि समृद्ध अॅनालिटिक्ससह तुमचा स्ट्रीक ट्रॅक करा",
+      "line2": "सपोर्ट: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "ms": {
+      "title": "Penyelesai Permainan LinkedIn",
+      "line1": "Selesaikan teka-teki harian secara automatik & jejaki streak anda dengan analitik terperinci",
+      "line2": "Menyokong: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "nl": {
+      "title": "LinkedIn Games-oplosser",
+      "line1": "Los dagelijkse puzzels automatisch op en volg je streak met uitgebreide analytics",
+      "line2": "Ondersteunt: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "no": {
+      "title": "LinkedIn Games-løser",
+      "line1": "Løs dagens puslespill automatisk og følg rekka di med rike analyser",
+      "line2": "Støtter: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "pl": {
+      "title": "Solver gier LinkedIn",
+      "line1": "Automatycznie rozwiązuj codzienne łamigłówki i śledź swoją serię dzięki rozbudowanej analityce",
+      "line2": "Obsługa: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "pt_BR": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Resolva quebra-cabeças diários e acompanhe suas estatísticas",
+      "line2": "Suporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "pt_PT": {
+      "title": "LinkedIn Games Solver",
+      "line1": "Resolva quebra-cabeças diários e acompanhe suas estatísticas",
+      "line2": "Suporta: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "ro": {
+      "title": "Solver pentru LinkedIn Games",
+      "line1": "Rezolvă automat puzzle-urile zilnice și urmărește-ți seria cu analize detaliate",
+      "line2": "Suportă: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "ru": {
+      "title": "Решатель игр LinkedIn",
+      "line1": "Автоматически решайте ежедневные головоломки и отслеживайте свою серию с подробной аналитикой",
+      "line2": "Поддерживает: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "tr": {
+      "title": "LinkedIn Oyun Çözücü",
+      "line1": "Günlük bulmacaları otomatik çöz & istatistiklerini takip et",
+      "line2": "Desteklenenler: Sudoku • Queens • Pinpoint • Crossclimb • Tango • Zip • Patches"
+    },
+    "zh_CN": {
+      "title": "LinkedIn 游戏解密助手",
+      "line1": "一键自动解答每日谜题，配以丰富的通关数据分析与记录",
+      "line2": "支持游戏: 迷你数独 • 皇后 • 关联词 • 爬梯词 • 探戈 • 路线 • 碎片拼图"
+    },
+    "zh_TW": {
+      "title": "LinkedIn 遊戲解密助手",
+      "line1": "一鍵自動解答每日謎題，配以豐富的通關數據分析與記錄",
+      "line2": "支持遊戲: 迷你數獨 • 皇后 • 關聯詞 • 爬梯詞 • 探戈 • 路線 • 碎片拼圖"
+    }
+  },
+  "extensionNameMap": {
+    "ar": "أداة حل ألعاب لينكدإن",
+    "am": "LinkedIn ጨዋತಾዎች መፍቻ",
+    "bg": "Помощник за игрите на LinkedIn",
+    "bn": "লিংকডইন গেমস সলভার",
+    "ca": "Solucionador de jocs de LinkedIn",
+    "cs": "Řešitel her LinkedIn",
+    "da": "LinkedIn Games Solver",
+    "de": "LinkedIn-Spiele-Löser",
+    "el": "Επίλυση παιχνιδιών LinkedIn",
+    "en": "LinkedIn Games Solver",
+    "en_AU": "LinkedIn Games Solver",
+    "en_GB": "LinkedIn Games Solver",
+    "en_US": "LinkedIn Games Solver",
+    "es": "Solucionador de Juegos de LinkedIn",
+    "es_419": "Solucionador de Juegos de LinkedIn",
+    "et": "LinkedIni mängude lahendaja",
+    "fa": "حل‌گر بازی‌های لینکدین",
+    "fi": "LinkedIn-pelien ratkoja",
+    "fil": "LinkedIn Games Solver",
+    "fr": "Résolveur de Jeux LinkedIn",
+    "gu": "LinkedIn ગેમ્સ સોલ્વર",
+    "he": "פותר המשחקים של LinkedIn",
+    "hi": "LinkedIn गेम्स सॉल्वर",
+    "hr": "Rješavač igara za LinkedIn",
+    "hu": "LinkedIn játékmegoldó",
+    "id": "LinkedIn Games Solver",
+    "it": "Risolutore per LinkedIn Games",
+    "ja": "LinkedIn ゲームソルバー",
+    "kn": "LinkedIn ಆಟಗಳ ಪರಿಹಾರಕ",
+    "ko": "LinkedIn 게임 솔버",
+    "lt": "„LinkedIn“ žaidimų sprendiklis",
+    "lv": "LinkedIn spēļu risinātājs",
+    "ml": "LinkedIn ഗെയിംസ് സോൾവർ",
+    "mr": "LinkedIn गेम्स सॉल्वर",
+    "ms": "Penyelesai Permainan LinkedIn",
+    "nl": "LinkedIn Games-oplosser",
+    "no": "LinkedIn Games-løser",
+    "pl": "Solver gier LinkedIn",
+    "pt_BR": "Solucionador de Jogos do LinkedIn",
+    "pt_PT": "Solucionador de Jogos do LinkedIn",
+    "ro": "Solver pentru LinkedIn Games",
+    "ru": "Решатель игр LinkedIn",
+    "tr": "LinkedIn Oyun Çözücü",
+    "zh_CN": "LinkedIn 游戏求解器",
+    "zh_TW": "LinkedIn 遊戲助手"
+  },
+  "subtitleMap": {
+    "ar": "حل اللوحات النشطة بنقرة واحدة",
+    "am": "ንቁ ቦርዶችን በአንድ ጠቅታ ተፍት",
+    "bg": "Решавайте активните дъски с едно кликване",
+    "bn": "এক ক্লিকেই সক্রিয় বোর্ড সমাধান করুন",
+    "ca": "Resol els taulers actius amb un sol clic",
+    "cs": "Vyřešte aktivní desky jedním kliknutím",
+    "da": "Løs aktive brætter med ét klik",
+    "de": "Lösen Sie Ihre täglichen Rätsel mit Premium-KI-Logik",
+    "el": "Λύστε τα ενεργά ταμπλό με ένα μόνο κλικ",
+    "en": "Power up your workday puzzles with premium AI reasoning",
+    "en_AU": "Power up your workday puzzles with premium AI reasoning",
+    "en_GB": "Power up your workday puzzles with premium AI reasoning",
+    "en_US": "Power up your workday puzzles with premium AI reasoning",
+    "es": "Resuelva sus acertijos diarios con IA de primera calidad",
+    "es_419": "Resuelva sus acertijos diarios con IA de primera calidad",
+    "et": "Lahenda aktiivsed lauad ühe klõpsuga",
+    "fa": "حل صفحه‌های فعال تنها با یک کلیک",
+    "fi": "Ratkaise aktiiviset pelilaudat yhdellä klikkauksella",
+    "fil": "Lutasin ang mga aktibong board sa isang click",
+    "fr": "Résolvez vos puzzles quotidiens avec une IA premium",
+    "gu": "એક જ ક્લિકમાં એક્ટિવ બોર્ડ્સ સોલ્વ કરો",
+    "he": "פתרו לוחות פעילים בלחיצה אחת",
+    "hi": "सक्रिय बोर्ड को एक क्लिक में हल करें",
+    "hr": "Riješite aktivne ploče jednim klikom",
+    "hu": "Aktív táblák megoldása egyetlen kattintással",
+    "id": "Selesaikan papan aktif dengan sekali klik",
+    "it": "Risolvi le board attive con un solo clic",
+    "ja": "アクティブなボードをワンクリックで解く",
+    "kn": "ಸಕ್ರಿಯ ಬೋರ್ಡ್‌ಗಳನ್ನು ಒಂದೇ ಕ್ಲಿಕ್‌ನಲ್ಲಿ ಪರಿಹರಿಸಿ",
+    "ko": "활성 보드를 한 번의 클릭으로 해결",
+    "lt": "Išspręskite aktyvias lentas vienu paspaudimu",
+    "lv": "Atrisini aktīvās galdiņus ar vienu klikšķi",
+    "ml": "സജീവ ബോർഡുകൾ ഒരു ക്ലിക്കിൽ പരിഹരിക്കുക",
+    "mr": "फक्त एकाクリックमध्ये सक्रिय बोर्ड सोडवा",
+    "ms": "Selesaikan papan aktif dengan satu klik",
+    "nl": "Los actieve borden op met één klik",
+    "no": "Løs aktive brett med ett klikk",
+    "pl": "Rozwiązuj aktywne plansze jednym kliknięciem",
+    "pt_BR": "Resolva seus quebra-cabeças diários com IA premium",
+    "pt_PT": "Resolva os seus quebra-cabeças diários com IA premium",
+    "ro": "Rezolvă tablele active cu un singur clic",
+    "ru": "Решайте активные доски одним кликом",
+    "tr": "Gelişmiş yapay zeka ile günlük bulmacalarınızı tek tıkla çözün",
+    "zh_CN": "借助优质人工智能推理能力，轻松解决每日难题",
+    "zh_TW": "一鍵自動求解當前 LinkedIn 遊戲"
+  },
+  "scene3": {
+    "tagMap": {
+      "ar": "تكامل أصلي",
+      "am": "ተፈጥሯዊ ማካተት",
+      "bg": "НАТИВНА ИНТЕГРАЦИЯ",
+      "bn": "নেটিভ ইন্টিগ্রেশন",
+      "ca": "INTEGRACIÓ NATIVA",
+      "cs": "NATIVNÍ INTEGRACE",
+      "da": "NATIV INTEGRATION",
+      "de": "NATIVE INTEGRATION",
+      "el": "ΕΓΓΕΝΗΣ ΕΝΣΩΜΑΤΩΣΗ",
+      "en": "NATIVE INTEGRATION",
+      "en_AU": "NATIVE INTEGRATION",
+      "en_GB": "NATIVE INTEGRATION",
+      "en_US": "NATIVE INTEGRATION",
+      "es": "INTEGRACIÓN NATIVA",
+      "es_419": "INTEGRACIÓN NATIVA",
+      "et": "NATIIVNE INTEGRATSIOON",
+      "fa": "یکپارچگی بومی",
+      "fi": "NATIIVI INTEGROINTI",
+      "fil": "NATIVE INTEGRATION",
+      "fr": "INTÉGRATION NATIVE",
+      "gu": "મૂલભૂત એકીકરણ",
+      "he": "אינטגרציה מקורית",
+      "hi": "नेेटिव इंटीग्रेशन",
+      "hr": "IZVORNA INTEGRACIJA",
+      "hu": "NATÍV INTEGRÁCIÓ",
+      "id": "INTEGRASI NATIVE",
+      "it": "INTEGRAZIONE NATIVA",
+      "ja": "ネイティブ統合",
+      "kn": "ನೆಟಿವ್ ಇಂಟಿಗ್ರೇಷನ್",
+      "ko": "네이티브 통합",
+      "lt": "VIETINĖ INTEGRACIJA",
+      "lv": "VIETĒJĀ INTEGRĀCIJA",
+      "ml": "നേറ്റീവ് ഇന്റഗ്രേഷന്‍",
+      "mr": "नेेटिव इंटिग्रेशन",
+      "ms": "INTEGRASI NATIVE",
+      "nl": "NATIEVE INTEGRATIE",
+      "no": "NATIV INTEGRASJON",
+      "pl": "NATYWNA INTEGRACJA",
+      "pt_BR": "INTEGRAÇÃO NATIVA",
+      "pt_PT": "INTEGRAÇÃO NATIVA",
+      "ro": "INTEGRARE NATIVĂ",
+      "ru": "НАТИВНАЯ ИНТЕГРАЦИЯ",
+      "tr": "DOĞAL ENTEGRASYON",
+      "zh_CN": "原生集成",
+      "zh_TW": "原生內嵌整合"
+    },
+    "subtitleMap": {
+      "ar": "يكتشف لوحات لينكدإن المفتوحة ويحلها مباشرة على الشاشة",
+      "am": "የተከፈቱ የLinkedIn ቦርዶችን ይገነባል እና በቀጥታ በስክሪኑ ላይ ይፍታቸዋል",
+      "bg": "Открива отворени дъски в LinkedIn и ги решава директно на екрана",
+      "bn": "ওপেন থাকা LinkedIn বোর্ড শনাক্ত করে এবং সরাসরি স্ক্রিনে সেগুলো সমাধান করে",
+      "ca": "Detecta els taulers oberts de LinkedIn i els resol directament a la pantalla",
+      "cs": "Detekuje otevřené desky LinkedIn a řeší je přímo na obrazovce",
+      "da": "Finder åbne LinkedIn-brætter og løser dem direkte på skærmen",
+      "de": "Erkennt geöffnete LinkedIn-Spiele und löst sie direkt auf dem Bildschirm",
+      "el": "Εντοπίζει ανοιχτά ταμπλό LinkedIn και τα λύνει απευθείας στην οθόνη",
+      "en": "Detects open LinkedIn boards and solves them right on the screen",
+      "en_AU": "Detects open LinkedIn boards and solves them right on the screen",
+      "en_GB": "Detects open LinkedIn boards and solves them right on the screen",
+      "en_US": "Detects open LinkedIn boards and solves them right on the screen",
+      "es": "Detecta los tableros de LinkedIn abiertos y los resuelve directamente",
+      "es_419": "Detecta los tableros de LinkedIn abiertos y los resuelve directamente",
+      "et": "Tuvastab avatud LinkedIni mängulauad ja lahendab need otse ekraanil",
+      "fa": "صفحه‌های باز بازی لینکدین را شناسایی می‌کند و آن‌ها را مستقیماً روی صفحه نمایش حل می‌کند",
+      "fi": "Tunnistaa avoimet LinkedIn-pelilaudat ja ratkoo ne suoraan näytöllä",
+      "fil": "Awtomatikong dini-detect ang bukas na LinkedIn boards at nilulutas ito mismo sa screen",
+      "fr": "Detecte les plateaux LinkedIn ouverts et les résout sur l'écran",
+      "gu": "ખુલ્લા LinkedIn બોર્ડ્સ શોધે છે અને તેમને સીધા સ્ક્રીન પર સોલ્વ કરે છે",
+      "he": "מזהה לוחות LinkedIn פתוחים ופותר אותם ישירות על המסך",
+      "hi": "खुले हुए LinkedIn बोर्ड का पता लगाता है और उन्हें सीधे स्क्रीन पर हल करता है",
+      "hr": "Otkriva otvorene LinkedIn ploče i rješava ih izravno na ekranu",
+      "hu": "Felismeri a nyitott LinkedIn táblákat, és közvetlenül a képernyőn megoldja őket",
+      "id": "Mendeteksi papan LinkedIn yang terbuka dan menyelesaikannya langsung di layar",
+      "it": "Rileva le board LinkedIn aperte e le risolve direttamente sullo schermo",
+      "ja": "開いている LinkedIn のボードを検出し、その場で自動的に解きます",
+      "kn": "ತೆರೆದಿರುವ LinkedIn ಬೋರ್ಡ್‌ಗಳನ್ನು ಪತ್ತೆ ಮಾಡಿ ಅವುಗಳನ್ನು ನೇರವಾಗಿ ಪರದೆಯಲ್ಲೇ ಪರಿಹರಿಸುತ್ತದೆ",
+      "ko": "열려 있는 LinkedIn 보드를 감지하여 화면에서 바로 해결합니다",
+      "lt": "Aptinka atidarytas „LinkedIn“ lentas ir išsprendžia jas tiesiog ekrane",
+      "lv": "Atpazīst atvērtos LinkedIn galdiņus un atrisina tos tieši ekrānā",
+      "ml": "തുറന്നിരിക്കുന്ന LinkedIn ബോർഡുകൾ കണ്ടെത്തി സ്ക്രീനിൽ നേരിട്ട് പരിഹരിക്കുന്നു",
+      "mr": "उघडे असलेले LinkedIn बोर्ड ओळखते आणि त्यांनाच स्क्रीनवर सोडवते",
+      "ms": "Mengesan papan LinkedIn yang terbuka dan menyelesaikannya terus pada skrin",
+      "nl": "Detecteert geopende LinkedIn-borden en lost ze direct op het scherm op",
+      "no": "Oppdager åpne LinkedIn-brett og løser dem direkte på skjermen",
+      "pl": "Wykrywa otwarte plansze LinkedIn i rozwiązuje je bezpośrednio na ekranie",
+      "pt_BR": "Detecta tabuleiros abertos do LinkedIn e os resolve diretamente na tela",
+      "pt_PT": "Deteta tabuleiros abertos do LinkedIn e resolve-os diretamente no ecrã",
+      "ro": "Detectează tablele LinkedIn deschise și le rezolvă direct pe ecran",
+      "ru": "Обнаруживает открытые доски LinkedIn и решает их прямо на экране",
+      "tr": "Açık olan LinkedIn panolarını anında tespit eder ve ekranda çözer",
+      "zh_CN": "自动检测已打开的 LinkedIn 游戏盘并直接在屏幕上求解",
+      "zh_TW": "自動偵測開啟的 LinkedIn 棋盤並直接在螢幕上求解"
+    }
+  },
+  "scene4": {
+    "tagMap": {
+      "ar": "تكامل الشريط الجانبي",
+      "am": "የጎን አমোሌ ማካተት",
+      "bg": "ИНТЕГРАЦИЯ В СТРАНИЧЕН ПАНЕЛ",
+      "bn": "সাইডবার ইন্টিগ্রেশন",
+      "ca": "INTEGRACIÓ A LA BARRA LATERAL",
+      "cs": "INTEGRACE POSTRANNÍHO PANELU",
+      "da": "SIDEBAR-INTEGRATION",
+      "de": "SEITENLEISTEN-INTEGRATION",
+      "el": "ΕΝΣΩΜΑΤΩΣΗ ΠΛΑΪΝΗΣ ΜΠΑΡΑΣ",
+      "en": "SIDEBAR INTEGRATION",
+      "en_AU": "SIDEBAR INTEGRATION",
+      "en_GB": "SIDEBAR INTEGRATION",
+      "en_US": "SIDEBAR INTEGRATION",
+      "es": "INTEGRACIÓN DE PANEL LATERAL",
+      "es_419": "INTEGRACIÓN DE PANEL LATERAL",
+      "et": "KÜLGRIBA INTEGRATSIOON",
+      "fa": "یکپارچگی نوار کناری",
+      "fi": "SIVUPALKIN INTEGROINTI",
+      "fil": "SIDEBAR INTEGRATION",
+      "fr": "INTEGRATION PANNEAU LATÉRAL",
+      "gu": "સાઇડબાર ઇન્ટિગ્રેશન",
+      "he": "אינטגרציית סרגל צด",
+      "hi": "साइडबार इंटीग्रेशन",
+      "hr": "INTEGRACIJA U BOČNU TRAKU",
+      "hu": "OLDALPANEL INTEGRÁCIÓ",
+      "id": "INTEGRASI BILAH SAMPING",
+      "it": "INTEGRAZIONE BARRA LATERALE",
+      "ja": "サイドバー統合",
+      "kn": "ಸೈಡ್‌ಬาร์ ಇಂಟಿಗ್ರೇಷನ್",
+      "ko": "사이드바 통합",
+      "lt": "ŠONINĖS JUOSTOS INTEGRACIJA",
+      "lv": "SĀNJUJOSLAS INTEGRĀCIJA",
+      "ml": "സൈഡ്ബาร์ ഇന്റഗ്രേഷന്‍",
+      "mr": "साइडबार इंटिग्रेशन",
+      "ms": "INTEGRASI BAR SISI",
+      "nl": "SIDEBAR-INTEGRATIE",
+      "no": "SIDEPANELINTEGRASJON",
+      "pl": "INTEGRACJA W PANELU BOCZNYM",
+      "pt_BR": "INTEGRAÇÃO DO PAINEL LATERAL",
+      "pt_PT": "INTEGRAÇÃO DO PAINEL LATERAL",
+      "ro": "INTEGRARE ÎN BARA LATERALĂ",
+      "ru": "ИНТЕГРАЦИЯ БОКОВОЙ ПАНЕЛИ",
+      "tr": "YAN PANEL ENTEGRASYONU",
+      "zh_CN": "侧边栏原生集成",
+      "zh_TW": "側邊欄原生整合"
+    },
+    "subtitleMap": {
+      "ar": "أبقِ أداة الحل مفتوحة في اللوحة الجانبية بينما تلعب على الشاشة الرئيسية",
+      "am": "በዋናው ስክሪን ላይ ሲጫወቱ መፍቻውን በጎን አሞሌዎ ውስጥ ክፍት ያድርጉ",
+      "bg": "Дръжте решателя отворен в страничния панел, докато играете на основния екран",
+      "bn": "মেইন স্ক্রিনে খেলতে খেলতে সাইড প্যানেলে সলভারটি খোলা রাখুন",
+      "ca": "Mantén el solucionador obert al panell lateral mentre jugues a la pantalla principal",
+      "cs": "Mějte řešitel otevřený v postranním panelu, zatímco hrajete na hlavní obrazovce",
+      "da": "Hold løseren åben i din sidepanel, mens du spiller på hovedskærmen",
+      "de": "Halten Sie den Löser an der Seite geöffnet, während Sie auf dem Hauptbildschirm spielen",
+      "el": "Κρατήστε τον επιλυτή ανοιχτό στο πλαϊνό πάνελ όσο παίζετε στην κύρια οθόνη",
+      "en": "Keep your solver open on the side while playing on the main screen",
+      "en_AU": "Keep your solver open on the side while playing on the main screen",
+      "en_GB": "Keep your solver open on the side while playing on the main screen",
+      "en_US": "Keep your solver open on the side while playing on the main screen",
+      "es": "Mantenga el solucionador abierto a un lado mientras juega en la pantalla principal",
+      "es_419": "Mantenga el solucionador abierto a un lado mientras juega en la pantalla principal",
+      "et": "Hoia lahendajat avatuna külgpaneelis, samal ajal kui mängid põhiekraanil",
+      "fa": "در حالی که روی صفحه اصلی بازی می‌کنید، حل‌گر را در پنل کناری باز نگه دارید",
+      "fi": "Pidä ratkoja avoinna sivupaneelissa samalla kun pelaat pääruudulla",
+      "fil": "Panatilihing bukas ang solver sa side panel habang naglalaro ka sa main screen",
+      "fr": "Gardez le résolveur ouvert sur le côté tout en jouant sur l'écran principal",
+      "gu": "મેઈન સ્ક્રીન પર રમતાં રમતાં સાઇડ પેનલમાં સોલ્વર ખુલ્લું રાખો",
+      "he": "השאירו את הפותר פתוח בلوח הצד בזמן שאתם משחקים במסך הראשי",
+      "hi": "जब आप मुख्य स्क्रीन पर खेलें, सॉल्वर को अपने साइड पैनल में खुला रखें",
+      "hr": "Držite rješavač otvoren u bočnoj ploči dok igrate na glavnom ekranu",
+      "hu": "Tartsd nyitva a megoldót az oldalsávban, miközben a főképernyőn játszol",
+      "id": "Biarkan solver tetap terbuka di panel samping saat Anda bermain di layar utama",
+      "it": "Tieni il risolutore aperto nel pannello laterale mentre giochi sulla schermata principale",
+      "ja": "メイン画面でプレイしながら、サイドパネルにソルバーを表示したままにできます",
+      "kn": "ನೀವು ಮುಖ್ಯ ಪರದೆಯಲ್ಲಿ ಆಟ ಆಡುತ್ತಿರುವಾಗ, ಬದಿಪ್ಯಾನಲ್‌ನಲ್ಲಿ ಪರಿಹಾರಕವನ್ನು ತೆರೆಯिಟ್ಟುಕೊಳ್ಳಿ",
+      "ko": "메인 화면에서 플레이하는 동안 사이드 패널에 솔버를 띄워 두세요",
+      "lt": "Laikykite sprendiklį atidarytą šoniniame skydelyje, kol žaidžiate pagrindiniame ekrane",
+      "lv": "Turiet risinātāju atvērtu sānjoslas panelī, kamēr spēlējat galvenajā ekrānā",
+      "ml": "പ്രധാന സ്ക്രീനിൽ നിങ്ങൾ കളിക്കുമ്പോൾ, സോൾവർ സൈഡ് പാനലിൽ തുറന്ന നിലയിൽ വച്ചിരിക്കുക",
+      "mr": "तुम्ही मुख्य स्क्रीनवर खेळत असताना साइड पॅनेलमध्ये सॉल्वर उघडे ठेवा",
+      "ms": "Biarkan penyelesai terbuka di panel sisi semasa anda bermain pada skrin utama",
+      "nl": "Houd de oplosser open in je zijpaneel terwijl je op het hoofdscherm speelt",
+      "no": "Hold løseren åpen i sidepanelet mens du spiller på hovedskjermen",
+      "pl": "Trzymaj solver otwarty w panelu bocznym, grając na głównym ekranie",
+      "pt_BR": "Mantenha o solucionador aberto na lateral enquanto joga na tela principal",
+      "pt_PT": "Mantenha o solucionador aberto na lateral enquanto joga no ecrã principal",
+      "ro": "Ține solverul deschis în panoul lateral în timp ce joci pe ecranul principal",
+      "ru": "Держите решатель открытым в боковой панели, пока играете на главном экране",
+      "tr": "Ana ekranda oynarken çözücüyü yan panelde açık tutun",
+      "zh_CN": "在主屏幕游戏时，可在侧边栏保持求解器常驻开启",
+      "zh_TW": "在主畫面遊戲時，可在側邊欄保持求解器常駐開啟"
+    }
+  },
+  "scene6": {
+    "tagMap": {
+      "ar": "التشخيص والقياس عن بُعد",
+      "am": "ምርመራ እና ቴሌሜትሪ",
+      "bg": "ДИАГНОСТИКА И ТЕЛЕМЕТРИЯ",
+      "bn": "ডায়াগনস্টিক ও টেলেমেট্রি",
+      "ca": "DIAGNÒSTIC I TELEMETRIA",
+      "cs": "DIAGNOSTIKA A TELEMETRIE",
+      "da": "DIAGNOSTIK & TELEMETRI",
+      "de": "DIAGNOSE & TELEMETRIE",
+      "el": "ΔΙΑΓΝΩΣΤΙΚΑ & ΤΗΛΕΜΕΤΡΙΑ",
+      "en": "DIAGNOSTICS & TELEMETRY",
+      "en_AU": "DIAGNOSTICS & TELEMETRY",
+      "en_GB": "DIAGNOSTICS & TELEMETRY",
+      "en_US": "DIAGNOSTICS & TELEMETRY",
+      "es": "DIAGNÓSTICOS Y TELEMETRÍA",
+      "es_419": "DIAGNÓSTICOS Y TELEMETRÍA",
+      "et": "DIAGNOSTIKA JA TELEMEETRIA",
+      "fa": "عیب‌یابی و تله‌متری",
+      "fi": "DIAGNOSTIIKKA JA TELEMETRIA",
+      "fil": "DIAGNOSTICS & TELEMETRY",
+      "fr": "DIAGNOSTICS & TÉLÉMÉTRIE",
+      "gu": "ડાયગ્નોસ્ટિક્સ અને ટેલિમેટ્રી",
+      "he": "אבחון וטֶלֶمֶטְרִיָה",
+      "hi": "डायग्नोस्टिक्स और टेलीमेट्री",
+      "hr": "DIJAGNOSTIKA I TELEMETRIJA",
+      "hu": "DIAGNOSZTIKA ÉS TELEMETRIA",
+      "id": "DIAGNOSTIK & TELEMETRI",
+      "it": "DIAGNOSTICA E TELEMETRIA",
+      "ja": "診断 & テレメトリ",
+      "kn": "ಡಯಾಗ್ನೋಸ್ಟಿಕ್ಸ್ ಮತ್ತು ಟೆಲಿಮೆಟ್ರಿ",
+      "ko": "진단 및 텔레메트리",
+      "lt": "DIAGNOSTIKA IR TELEMETRIJA",
+      "lv": "DIAGNOSTIKA UN TELEMETRIJA",
+      "ml": "ഡയഗ്നോസ്റ്റിക്‌സ് & ടെലിമെട്രി",
+      "mr": "डायग्नॉस्टिक्स आणि टेलीमेट्री",
+      "ms": "DIAGNOSTIK & TELEMETRI",
+      "nl": "DIAGNOSTIEK & TELEMETRIE",
+      "no": "DIAGNOSTIKK OG TELEMETRI",
+      "pl": "DIAGNOSTYKA I TELEMETRIA",
+      "pt_BR": "DIAGNÓSTICOS E TELEMETRIA",
+      "pt_PT": "DIAGNÓSTICOS E TELEMETRIA",
+      "ro": "DIAGNOSTIC ȘI TELEMETRIE",
+      "ru": "ДИАГНОСТИКА И ТЕЛЕМЕТРИЯ",
+      "tr": "TEŞHİS VE TELEMETRİ",
+      "zh_CN": "开发者调试与遥测面板",
+      "zh_TW": "開發者調試與遙測面板"
+    },
+    "subtitleMap": {
+      "ar": "اعرض خصائص خلايا اللوحة، وحالات القيود، وسجلات التصحيح الحية في أدوات المطوّر F12",
+      "am": "በF12 DevTools ውስጥ የቦርድ ሴሎች ባህሪያat፣ የገደቦች ሁኔታዎች እና ቀጥತಾ የዲበግ መዝገቦችን ይመልከቱ",
+      "bg": "Вижте свойствата на клетките, състоянието на ограниченията и live debug логовете в F12 DevTools",
+      "bn": "F12 DevTools-এ বোর্ড সেল প্রপার্টি, কনস্ট্রেইন্ট স্টেট এবং লাইভ ডিবাগ লগ দেখুন",
+      "ca": "Visualitza propietats de les cel·les del tauler, estats de restriccions i registres de depuració en directe a les F12 DevTools",
+      "cs": "Zobrazte vlastnosti buněk desky, stavy omezení a živé ladicí logy v nástroji F12 DevTools",
+      "da": "Se bræt-cellernes egenskaber, constraint-tilstande og live debug-logge i F12 DevTools",
+      "de": "Überwachen Sie Koordinaten, Zellen und Bedingungen live in den DevTools",
+      "el": "Δείτε ιδιότητες κελιών του ταμπλό, καταστάσεις περιορισμών και ζωντανά debug logs στα F12 DevTools",
+      "en": "Inspect live grid coordinates, cells, and constraint state in DevTools",
+      "en_AU": "Inspect live grid coordinates, cells, and constraint state in DevTools",
+      "en_GB": "Inspect live grid coordinates, cells, and constraint state in DevTools",
+      "en_US": "Inspect live grid coordinates, cells, and constraint state in DevTools",
+      "es": "Inspeccione coordenadas, celdas y estados de restricciones en vivo en DevTools",
+      "es_419": "Inspeccione coordenadas, celdas y estados de restricciones en vivo en DevTools",
+      "et": "Vaata laua lahtrite omadusi, piirangute olekuid ja live debug-logisid F12 DevToolsis",
+      "fa": "ویژگی‌های خانه‌های صفحه، وضعیت محدودیت‌ها و گزارش‌های زنده دیباگ را در F12 DevTools مشاهده کنید",
+      "fi": "Näytä laudan solujen ominaisuudet, rajoitteiden tilat ja live-debug-lokit F12 DevToolsissa",
+      "fil": "Tingnan ang board cell properties, constraint states, at live debug logs sa F12 DevTools",
+      "fr": "Inspectez les coordonnées de la grille, les cellules et les contraintes en direct dans DevTools",
+      "gu": "F12 DevTools માં બોર્ડ સેલ પ્રોપર્ટીઝ, કન્સ્ટ્રેંટ સ્ટેટ્સ અને લાઇવ ડિબગ લોગ્સ જુઓ",
+      "he": "צפו במאפייני התאים של הלוח, במצבי המגבלות ובלוגי דיבוג חיים ב־F12 DevTools",
+      "hi": "F12 DevTools में बोर्ड सेल गुण, कॉन्स्ट्रेंट स्टेट्स, और लाइव डिबग लॉग देखें",
+      "hr": "Pregledajte svojstva ćelija ploče, stanja ograničenja i žive debug zapise u F12 DevTools",
+      "hu": "Tekintsd meg a mezőtulajdonságokat, a korlátok állapotát és az élő debug naplókat az F12 DevTools-ban",
+      "id": "Lihat properti sel papan, status constraint, dan log debug langsung di F12 DevTools",
+      "it": "Visualizza proprietà delle celle, stato dei vincoli e log di debug in tempo reale negli strumenti di sviluppo F12",
+      "ja": "F12 DevTools でマスのプロパティ、制約状態、ライブデバッグログを表示",
+      "kn": "F12 DevTools‌ನಲ್ಲಿ ಬೋರ್ಡ್ ಸೆಲ್ ಗುಣಗಳು, ನಿಬಂಧನೆಗಳ ಸ್ಥಿತಿ, ಮತ್ತು ಲೈವ್ ಡಿಬಗ್ ಲಾಗ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+      "ko": "F12 개발자 도구에서 보드 셀 속성, 제약 조건 상태 및 실시간 디버그 로그를 확인하세요",
+      "lt": "Peržiūrėkite lentos langelių savybes, apribojimų būsenas ir tiesioginius derinimo žurnalus F12 kūrėjo įrankiuose",
+      "lv": "Skatiet galdiņa šūnu īpašības, ierobežojumu stāvokļus un reāllaika atkļūdošanas žurnālus F12 izstrādes rīkos",
+      "ml": "F12 DevTools ഉപയോഗിച്ച് ബോർഡ് സെൽ പ്രോപ്പർട്ടികൾ, കണ്ട്സ്ട്രെയിന്റ് സ്റ്റേറ്റുകൾ, ലൈവ് ഡീബഗ് ലോഗുകൾ എന്നിവ കാണുക",
+      "mr": "F12 DevTools मध्ये बोर्ड सेल गुणधर्म, constraint स्टेट्स आणि लाइव्ह डिबग लॉग्स पाहा",
+      "ms": "Lihat sifat sel papan, status kekangan dan log debug langsung dalam F12 DevTools",
+      "nl": "Bekijk vakeigenschappen, constraint-statussen en live debug-logs in F12 DevTools",
+      "no": "Vis celleegenskaper, begrensningstilstand og levende feilsøkingslogger i F12 DevTools",
+      "pl": "Przeglądaj właściwości komórek, stany ograniczeń i logi debugowania na żywo w narzędziach deweloperskich F12",
+      "pt_BR": "Inspecione coordenadas, células e restrições em tempo real no DevTools",
+      "pt_PT": "Inspecione coordenadas, células e restrições em tempo real no DevTools",
+      "ro": "Vezi proprietățile celulelor, stările constrângerilor și logurile de debug în timp real în F12 DevTools",
+      "ru": "Просматривайте свойства ячеек доски, состояния ограничений и отладочные логи в реальном времени в F12 DevTools",
+      "tr": "Geliştirici Araçları'nda canlı hücre koordinatlarını ve kısıtlama durumlarını izleyin",
+      "zh_CN": "在 F12 开发者工具中实时查看棋盘单元格属性、条件状态和调试日志",
+      "zh_TW": "在 F12 開發者工具中即時查看棋盤儲存格屬性、條件狀態與偵錯日誌"
+    }
+  },
+  "descriptions": {
+    "ar": "# أداة حل ألعاب لينكدإن\n\nمساعد لألعاب لينكدإن. يحل الألغاز اليومية تلقائيًا (الملكات، السودوكو، Pinpoint، Crossclimb) مع تتبع السلاسل وتحليلات مفصلة.\n\n## لماذا التثبيت؟\n* لا تفقد السلسلة أبدًا: حافظ على زخمك اليومي وضمن استمرار سلسلتك حتى في أصعب الأيام أو عندما تكون مضغوطًا بالوقت.\n* أتقن أسئلة المعلومات العامة وألغاز الكلمات: الألعاب مثل Crossclimb وPinpoint تتطلب معرفة عميقة في المعلومات العامة وربطًا سريعًا. يقوم الذكاء الاصطناعي المدمج بحلها بدقة عالية.\n* سجل إجابات هجين: حل ألغاز Crossclimb وPinpoint فورًا دون أي تكلفة على واجهات برمجة التطبيقات باستخدام قاعدة بيانات الإجابات البعيدة لدينا، دون الحاجة إلى مفاتيح ذكاء اصطناعي شخصية.\n* دعم كامل لألعاب المكافأة: حل بسلاسة كلًا من الألغاز اليومية القياسية والمستويات الإضافية المحلية (Queens، سودوكو، إلخ) مع تتبع مستقل للسلسلة وشارة \"Bonus\" مخصصة في لوحة التحكم.\n* تكامل أصيل بالكامل: تظهر طبقة أداة الحل مباشرة على علامة تبويب لعبتك النشطة. بنقرة واحدة، ترى اللوحة المحلولة مباشرة على الشاشة.\n* وضع التلميح التعليمي: تعلّم كيفية حل الألغاز بشكل طبيعي. بدلاً من الإكمال التلقائي، احصل على خطوة منطقية واحدة مقترحة، واكتشف الأخطاء فورًا باستخدام تظليل أحمر على الشاشة.\n* سرعة الحل الخفي (وضع التخفي): قم بمحاكاة سلوك نقرات البشر بتأخيرات عشوائية وطبيعية (من 1 إلى 3 ثوانٍ) لحماية سلسلة الحل اليومية الخاصة بك من إشارات اكتشاف الروبوتات.\n* اختصارات تراعي السياق: استمتع بخيارات قائمة النقر بزر الفأرة الأيمن مثل \"وضع علامة كغير مُلعب\" أو \"حل\" أو \"الحصول على تلميح\" مباشرة من بطاقات اللعبة.\n* الذكاء الاصطناعي المدمج محليًا في Chrome: وصّل نموذج Gemini Nano المدمج في Google Chrome لتجربة حل ألغاز مجانية تمامًا، محلية بالكامل وخاصة.\n* لوحة تحكم تحليلات جميلة: تتبع سجل الحل الخاص بك، ومتوسط الأوقات، والسلاسل، وأفضل نتائجك الشخصية باستخدام لوحة تحكم تقويمية حديثة ومميزة.\n* خاص وآمن: يعمل بالكامل داخل متصفحك. يتم تشفير مفاتيح واجهة برمجة التطبيقات الخاصة بك محليًا باستخدام AES-256 ولا يتم مشاركتها أبدًا مع أي خادم. يمكنك الاشتراك أو إيقاف الاشتراك في القياسات المجهولة في أي وقت.",
+    "am": "# LinkedIn ጨዋತಾዎች መፍቻ\n\nየLinkedIn ጨዋታዎች እርዳታ። ዕለታዊ መረጃ ጥያቄዎችን (Queens፣ Sudoku፣ Pinpoint፣ Crossclimb) በራስ-ሰር ይፍታል እና ሰርጦችን እና ትንታኔዎችን ይከታተላል።\n\n## ለምን እንዲጫን?\n* ስትሪክ አትጡ: ዕለታዊ ጉርምስናህን ቀጥል እና በበጣም ከባድ ቀናት ወይም ጊዜ ሲጐድልህም ድርሻህን አትቆም.\n* የትሪቪያ እና የቃል ፓዝሎችን ይቆጣጠሩ: Crossclimb እና Pinpoint እንደሚሉ ጨዋታዎች ጥልቅ የትምህርታዊ መረጃ እውቀት እና ፈጣን ግንኙነት ይፈልጋሉ። የተገናኘው ኤ.አይ. እጅግ ትክክለኛ በሆነ መጠን ይፈታቸዋል።\n* የተዋሃደ መልሶች መዝገብ: Crossclimb እና Pinpointን በወቅቱ ማቆም ያለ የAPI ወጪ በርቀት ያለውን የመልሶች ዳታቤዝ በመጠቀም ፈትታቸው፣ የግል የኤ.አይ. ቁልፎች አያስፈልጉም።\n* ሙሉ የቦነስ ጨዋታዎች ድጋፍ: መደበኛ ዕለታዊ እንቆቅልሾችን እና የአካባቢ ተጨማሪ ደረጃዎችን (Queens፣ Sudoku፣ ወዘተ) በማጣመር በቀላሉ ፈትታቸው ፣ በነፃ የሚቆጠር የስትሪክ መከታተያና ልዩ የ\"Bonus\" መለያ ያለው ዳሽቦርድ ይዘው።\n* ሙሉ በሙሉ ተፈጥሯዊ ውህደት: የፈቺው ኦቨርሌይ በቀጥታ በሚጫወቱበት ጨዋታ ታብ ላይ ይታያል። አንድ ጊዜ ብቻ ይጫኑ እና የተፈቱትን ገበታ በቀጥታ በመመልከቻው ላይ ታዩታላችሁ።\n* ትምህርታዊ ፍንጭ ሁኔታ: እንቆቅልሾችን በተፈጥሯዊ መንገድ መፍታትን ይማሩ። ፈጣን ሙሉ መሙላት ፈጽሞ እንጂ ፣ አንድ ብቻ ብሎ እንዲወጣ የተመከረ አመንዝር እርምጃ ይቀበሉ እና ስህተቶችን በእንቁላል ቀይ ብለው በማብራት ወዲያውኑ ይያዙ።\n* የስውር መፍታት ፍጥነት (ስውር ሁኔታ): ሰው የመሰለ የመጫኛ ባህሪዎችን በተዘዋዋሪ እና ተፈጥሯዊ መዘግየቶች (1–3 ሰከንዶች) ይገልብጡ ፣ የቀን ቀን የመፍታት ስትሪክዎን ከቦት መለያየት ምልክቶች ይጠብቁ።\n* ከአውድ ጋር የሚዛመዱ አቋራጮች: ከጨዋታ ካርዶች በቀጥታ እንደ \"እንዳልተጫወተ\" ምልክት መስጠት፣ \"መፍታት\" ወይም \"ምክር መቀበል\" ያሉ የቀኝ-ጠቅ ዳሰሳ ምናሌ አማራጮችን ይው享ዱ።\n* የChrome አብሮ የተሰራ አይአይ: ዜሮ ወጪ ፣ ሙሉ በሙሉ የአካባቢ እና ግል የእንቆቅልሽ መፍትሄ ተሞክሮ ለማግኘት በGoogle Chrome ውስጥ የተገናኘውን Gemini Nano ሞዴል ያገናኙ።\n* ውብ የትንታኔ ዳሽቦርድ: የመፍታት ታሪክዎን፣ አማካይ ጊዜዎችን፣ ስትሪክዎችን እና የግል ምርጥ ውጤቶችን በዘመናዊ ፣ በሙሉ የተሻሻለ የቀን መቁጠሪያ ዳሽቦርድ ይከታተሉ።\n* የግል እና ደህንነቱ የተጠበቀ: ፕሮግራሙ ሙሉ በሙሉ በአሳሽህ ውስጥ ይሰራል። የAPI ቁልፎችህ በአካባቢ በAES-256 ይመሰጠናሉ እና በማንኛውም አገልጋይ ጋር ፈጽሞ አይጋለጡም። በማንኛውም ጊዜ ከስም ያልተጠቃሚ ቴሌሜትሪ ጋር መቀላቀል ወይም መለያየት ይችላሉ።",
+    "bg": "# Помощник за игрите на LinkedIn\n\nПомощник за игрите на LinkedIn. Автоматично решава ежедневни пъзели (Queens, Sudoku, Pinpoint, Crossclimb) с поредици и анализи.\n\n## Защо да инсталирате?\n* Никога не губете серията си: Запазете ежедневния си импулс и не прекъсвайте серията си дори в най-трудните дни или когато нямате достатъчно време.\n* Овладейте викторини и пъзели с думи: Игри като Crossclimb и Pinpoint изискват задълбочени познания по обща култура и бързи асоциации. Вграденият ИИ ги решава с висока точност.\n* Хибриден регистър на отговорите: Решавайте Crossclimb и Pinpoint мигновено без никакви API разходи, като използвате нашата отдалечена база данни с отговори, без нужда от лични AI ключове.\n* Пълна поддръжка на бонус игри: Решавайте безпроблемно както стандартните дневни пъзели, така и локализираните бонус нива (Queens, Судоку и др.) с независимо проследяване на серията и специален значка „Bonus“ в таблото.\n* Напълно нативна интеграция: Овърлеят на решаващия се появява директно в активния ви раздел с играта. С едно кликване виждате решената дъска направо на екрана.\n* Образователен режим на подсказки: Научете се да решавате пъзели по естествен начин. Вместо автоматично попълване получавайте предложение за един логичен ход и хващайте грешките моментално с червени подсветки на екрана.\n* Скорост на тихо решаване (Stealth режим): Имитирайте човешко поведение при кликане със случайни, естествени закъснения (1–3 секунди), за да защитите дневната си серия от флагове за откриване на ботове.\n* Пряк път, съобразен с контекста: Използвайте опциите в контекстното меню с десен клик, като „Маркирай като неиграна“, „Реши“ или „Вземи подсказка“, директно от картите на игрите.\n* Локален вграден AI на Chrome: Свържете вградения модел Gemini Nano на Google Chrome за напълно безплатно, изцяло локално и частно преживяване при решаване на пъзели.\n* Красиво табло за анализи: Проследявайте историята на решаванията си, средните времена, сериите и личните рекорди чрез нашето модерно премиум табло с календар.\n* Поверително и сигурно: Работи изцяло в браузъра ви. Вашите API ключове се шифроват локално с AES-256 и никога не се споделят с никакъв сървър. По всяко време можете да включвате или изключвате анонимна телеметрия.",
+    "bn": "# লিংকডইন গেমস সলভার\n\nLinkedIn গেমস-এর জন্য একটি সহায়ক টুল। দৈনিক পাজল (Queens, Sudoku, Pinpoint, Crossclimb) স্বয়ংক্রিয়ভাবে সমাধান করুন, সাথে থাকুক স্ট্রিক ও অ্যানালিটিক্স।\n\n## কেন ইনস্টল করবেন?\n* স্ট্রিক কখনও হারাবেন না: আপনার দৈনন্দিন গতি ধরে রাখুন এবং সবচেয়ে কঠিন দিনগুলোতেও বা যখন সময় কম থাকে তখনও আপনার স্ট্রিকটি সুরক্ষিত রাখুন।\n* ট্রিভিয়া ও শব্দ ধাঁধায় দক্ষ হন: Crossclimb এবং Pinpoint-এর মতো গেমগুলোতে গভীর সাধারণ জ্ঞান এবং দ্রুত সংযোগ করার ক্ষমতা লাগে। বিল্ট-ইন এআই এগুলো খুব উচ্চ নির্ভুলতায় সমাধান করে।\n* হাইব্রিড উত্তর নিবন্ধন: আমাদের রিমোট উত্তর ডাটাবেস ব্যবহার করে শূন্য API খরচে Crossclimb এবং Pinpoint সঙ্গে সঙ্গে সমাধান করুন, কোনো ব্যক্তিগত এআই কী প্রয়োজন নেই।\n* বোনাস গেমের পূর্ণ সমর্থন: স্ট্যান্ডার্ড দৈনিক পাজল এবং লোকালাইজড বোনাস লেভেল (Queens, Sudoku ইত্যাদি) দুটোই নির্বিঘ্নে সমাধান করুন, স্বাধীন স্ট্রিক ট্র্যাকিং এবং ড্যাশবোর্ডে আলাদা \"Bonus\" ব্যাজসহ।\n* সম্পূর্ণ নেটিভ ইন্টিগ্রেশন: সলভার ওভারলে সরাসরি আপনার সক্রিয় গেম ট্যাবেই দেখা যায়। এক ক্লিকেই আপনি স্ক্রিনে সমাধান করা বোর্ডটি দেখতে পাবেন।\n* শিক্ষামূলক হিন্ট মোড: স্বাভাবিকভাবে কীভাবে পাজল সমাধান করতে হয় তা শিখুন। অটো-কমপ্লিটের বদলে একবারে একটি যৌক্তিক চালের পরামর্শ নিন, এবং স্ক্রিনে লাল হাইলাইটের মাধ্যমে সঙ্গে সঙ্গে ভুল ধরুন।\n* গোপন সমাধানের গতি (স্টিলথ মোড): ১–৩ সেকেন্ডের এলোমেলো, স্বাভাবিক বিরতি সহ মানব-ক্লিকের আচরণ অনুকরণ করুন, যাতে আপনার দৈনিক সমাধানের স্ট্রিক বট-ডিটেকশন ফ্ল্যাগ থেকে সুরক্ষিত থাকে।\n* প্রসঙ্গ-সচেতন শর্টকাট: গেম কার্ড থেকেই সরাসরি \"Mark as Not Played\", \"Solve\" বা \"Get Hint\" এর মতো রাইট-ক্লিক কনটেক্সট মেনু অপশন ব্যবহার করুন।\n* লোকাল Chrome বিল্ট-ইন AI: শূন্য খরচে, সম্পূর্ণ লোকাল ও গোপনীয় পাজল-সমাধানের অভিজ্ঞতার জন্য Google Chrome-এর বিল্ট-ইন Gemini Nano মডেল যুক্ত করুন।\n* সুন্দর অ্যানালিটিক্স ড্যাশবোর্ড: আমাদের প্রিমিয়াম, আধুনিক ক্যালেন্ডার ড্যাশবোর্ড দিয়ে আপনার সমাধানের ইতিহাস, গড় সময়, স্ট্রিক এবং ব্যক্তিগত সেরা ফলাফল ট্র্যাক করুন।\n* ব্যক্তিগত ও সুরক্ষিত: পুরোটাই আপনার ব্রাউজারে চলে। আপনার API কী গুলো লোকালভাবে AES-256 দিয়ে এনক্রিপ্ট করা হয় এবং কখনোই কোনো সার্ভারের সঙ্গে শেয়ার করা হয় না। আপনি চাইলে যেকোনো সময় বেনামী টেলিমেট্রি চালু বা বন্ধ করতে পারেন।",
+    "ca": "# Solucionador de jocs de LinkedIn\n\nUn assistent per als jocs de LinkedIn. Resol automàticament els trencaclosques diaris (Queens, Sudoku, Pinpoint, Crossclimb) com ratxes i analítiques.\n\n## Per què instal·lar-ho?\n* No perdis mai una ratxa: Mantén el teu impuls diari i assegura la teva ratxa fins i tot en els dies més difícils o quan vagis curt de temps.\n* Domina els concursos i els puzles de paraules: Jocs com Crossclimb i Pinpoint requereixen un coneixement profund de trivia i una associació ràpida. La IA integrada els resol amb una alta precisió.\n* Registre híbrid de respostes: Resol Crossclimb i Pinpoint a l’instant sense cap cost d’API utilitzant la nostra base de dades remota de respostes, sense claus d’IA personals.\n* Suport complet per a jocs de bonus: Resol sense interrupcions tant els trencaclosques diaris estàndard com els nivells de bonificació localitzats (Queens, Sudoku, etc.) amb un seguiment de ratxa independent i una insígnia \"Bonus\" dedicada al tauler.\n* Integració completament nativa: La superposició del solucionador apareix directament a la pestanya activa del joc. Amb un sol clic, veus el tauler resolt directament a la pantalla.\n* Mode d'ajuda educatiu: Aprèn a resoldre trencaclosques de manera natural. En lloc de completar-los automàticament, obtén una única jugada lògica suggerida i detecta els errors a l’instant amb ressaltats vermells a la pantalla.\n* Velocitat de resolució sigil·losa (mode sigil): Emula el comportament de clic humà amb retards aleatoris i naturals (d’1 a 3 segons) per protegir la teva ratxa diària de resolució dels sistemes de detecció de bots.\n* Dreceres conscients del context: Gaudeix d’opcions al menú contextual del botó dret com \"Marca com a no jugat\", \"Resol\" o \"Obtén una pista\" directament des de les targetes del joc.\n* IA integrada local de Chrome: Connecta el model Gemini Nano integrat a Google Chrome per gaudir d’una experiència de resolució de trencaclosques sense cost, totalment local i privada.\n* Panell d'analítica bonic: Fes un seguiment de l’historial de resolució, els temps mitjans, les ratxes i les millors marques personals amb el nostre tauler de calendari modern i premium.\n* Privat i segur: S’executa completament al teu navegador. Les teves claus d’API s’encripten localment amb AES-256 i mai no es comparteixen amb cap servidor. Pots activar o desactivar la telemetria anònima en qualsevol moment.",
+    "cs": "# Řešitel her LinkedIn\n\nPomocník pro hry na LinkedIn. Automaticky řeší denní hádanky (Queens, Sudoku, Pinpoint, Crossclimb) s postupkami a analytikou.\n\n## Proč instalovat?\n* Nikdy nepřijít o sérii: Udržujte si každodenní tempo a zajistěte si sérii i v těch nejtěžších dnech nebo když máte málo času.\n* Ovládněte kvízy a slovní hádanky: Hry jako Crossclimb a Pinpoint vyžadují hluboké znalosti kvízů a rychlé asociace. Vestavěná AI je řeší s vysokou přesností.\n* Hybridní registr odpovědí: Vyřešte Crossclimb a Pinpoint okamžitě bez jakýchkoli nákladů na API pomocí naší vzdálené databáze odpovědí, bez nutnosti osobních AI klíčů.\n* Plná podpora bonusových her: Plynule řešte jak standardní denní hlavolamy, tak lokalizované bonusové úrovně (Queens, Sudoku atd.) s nezávislým sledováním série a speciálním odznakem „Bonus“ v přehledu.\n* Úplně nativní integrace: Překryvná vrstva řešiče se zobrazí přímo na vaší aktivní kartě s hrou. Jedním kliknutím uvidíte vyřešenou desku přímo na obrazovce.\n* Vzdělávací režim nápovědy: Naučte se řešit hlavolamy přirozeně. Místo automatického doplnění získáte návrh jednoho logického tahu a chyby odhalíte okamžitě díky červenému zvýraznění na obrazovce.\n* Rychlost nenápadného řešení (režim Stealth): Napodobujte lidské chování při klikání s náhodnými, přirozenými prodlevami (1–3 sekundy), abyste svou denní sérii řešení ochránili před systémy pro detekci botů.\n* Zkratky s ohledem na kontext: Využívejte možnosti kontextové nabídky po kliknutí pravým tlačítkem, jako „Označit jako nehrané“, „Vyřešit“ nebo „Získat nápovědu“ přímo z karet her.\n* Lokální vestavěná AI v Chromu: Připojte vestavěný model Gemini Nano v Google Chrome pro zcela bezplatné, plně lokální a soukromé řešení hlavolamů.\n* Krásný analytický panel: Sledujte svou historii řešení, průměrné časy, série a osobní rekordy pomocí našeho moderního prémiového kalendářového panelu.\n* Soukromé a bezpečné: Běží zcela ve vašem prohlížeči. Vaše API klíče jsou lokálně šifrovány pomocí AES-256 a nikdy nejsou sdíleny se žádným serverem. Kdykoli můžete zapnout nebo vypnout anonymní telemetrii.",
+    "da": "# LinkedIn Games Solver\n\nEn hjælper til LinkedIn Games. Løser daglige puslespil automatisk (Queens, Sudoku, Pinpoint, Crossclimb) med streaks og analyser.\n\n## Hvorfor installere?\n* Mist aldrig en stime: Hold dit daglige momentum kørende, og sikr din streak selv på de hårdeste dage eller når du er presset på tid.\n* Mestre trivia og ordgåder: Spil som Crossclimb og Pinpoint kræver dyb trivia‑viden og hurtige associationer. Den indbyggede AI løser dem med høj nøjagtighed.\n* Hybridt svarregister: Løs Crossclimb og Pinpoint øjeblikkeligt uden nogen API‑omkostninger ved at bruge vores eksterne svar­database – ingen personlige AI‑nøgler er påkrævet.\n* Fuld understøttelse af bonusspil: Løs problemfrit både standard daglige puslespil og lokaliserede bonusniveauer (Queens, Sudoku osv.) med uafhængig streak‑sporing og et dedikeret \"Bonus\"‑badge i dashboardet.\n* Helt indbygget integration: Solver‑overlayet vises direkte på din aktive spilfane. Med ét klik ser du det løste bræt direkte på skærmen.\n* Læringsbaseret hinttilstand: Lær at løse puslespil på en naturlig måde. I stedet for automatisk at fuldføre får du foreslået ét logisk træk og fanger fejl med det samme via røde markeringer på skærmen.\n* Stealth-løsningshastighed (stealth-tilstand): Efterlign menneskelige klikmønstre med tilfældige, naturlige forsinkelser (1–3 sekunder) for at beskytte din daglige løsnings‑streak mod bot‑detektionsflag.\n* Kontekstbevidste genveje: Brug højreklik‑kontekstmenuen med valg som \"Markér som ikke spillet\", \"Løs\" eller \"Få hint\" direkte fra spilkortene.\n* Lokal indbygget AI i Chrome: Tilslut Google Chromes indbyggede Gemini Nano‑model for en omkostningsfri, fuldt lokal og privat puslespilsoplevelse.\n* Smukt analyse-dashboard: Følg din løsningshistorik, gennemsnitstider, streaks og personlige rekorder med vores moderne premium kalender‑dashboard.\n* Privat og sikkert: Kører helt i din browser. Dine API‑nøgler krypteres lokalt med AES‑256 og deles aldrig med nogen server. Du kan når som helst til- eller fravælge anonym telemetri.",
+    "de": "# LinkedIn-Spiele-Löser\n\nEin Helfer für LinkedIn-Spiele. Tägliche Rätsel (Queens, Sudoku, Pinpoint, Crossclimb) automatisch lösen mit Serien und Statistiken.\n\n## Warum installieren?\n* Verlieren Sie nie Ihre Serie: Halten Sie Ihre tägliche Serie aufrecht, selbst an den stressigsten Tagen oder wenn die Rätsel besonders knifflig sind.\n* Meistern Sie Quiz- und Worträtsel: Spiele wie Crossclimb und Pinpoint erfordern tiefes Allgemeinwissen und schnelle Assoziationen. Die integrierte KI löst diese mit herausragender Präzision.\n* Hybride Antwortdatenbank: Lösen Sie Crossclimb und Pinpoint sofort und ohne API-Kosten über unsere Remote-Datenbank – ganz ohne persönliche KI-Schlüssel.\n* Volle Unterstützung für Bonusspiele: Lösen Sie sowohl Standardrätsel als auch spezielle Bonus-Herausforderungen (Queens, Sudoku usw.) nahtlos mit separater Serienverfolgung und einem dedizierten \"Bonus\"-Abzeichen auf dem Dashboard.\n* Nahtlose native Integration: Das Lösungs-Overlay erscheint direkt auf Ihrem aktiven Spiele-Tab. Ein Klick genügt, und das gelöste Spielfeld wird auf dem Bildschirm angezeigt.\n* Pädagogischer Hinweis-Modus (Hint Mode): Lernen Sie, Rätsel auf natürliche Weise zu lösen. Erhalten Sie Vorschläge für einzelne logische Züge, statt das Spielfeld automatisch komplett auszufüllen, und erkennen Sie Fehler sofort durch rote Markierungen auf dem Bildschirm.\n* Getarnte Lösungsgeschwindigkeit (Stealth Mode): Ahmen Sie menschliches Klickverhalten mit zufälligen, natürlichen Verzögerungen (1–3 Sekunden) nach, um Ihre tägliche Löseserie vor Bot-Erkennungs-Systemen zu schützen.\n* Kontextbezogene Tastenkombinationen: Nutzen Sie praktische Rechtsklick-Aktionen wie \"Als nicht gespielt markieren\", \"Lösen\" oder \"Hinweis holen\" direkt auf den Spielkarten.\n* Lokale integrierte Chrome-KI: Verbinden Sie das integrierte Gemini Nano-Modell von Google Chrome für eine kostenlose, vollständig lokale und private Lösungserfahrung.\n* Modernes Statistik-Dashboard: Verfolgen Sie Ihren Löseverlauf, Ihre Durchschnittszeiten, Ihre aktuellen Serien und Ihre persönlichen Bestleistungen auf einem modernen Aktivitätskalender.\n* Privat und Sicher: Läuft vollständig lokal in Ihrem Browser. Ihre API-Schlüssel werden lokal mit AES-256 verschlüsselt und niemals übertragen. Die anonyme Telemetrie kann jederzeit ein- oder ausgeschaltet werden.",
+    "el": "# Επίλυση παιχνιδιών LinkedIn\n\nΈνα βοηθητικό εργαλείο για τα παιχνίδια του LinkedIn. Αυτόματη επίλυση των καθημερινών γρίφων (Queens, Sudoku, Pinpoint, Crossclimb) με σερί και αναλύσεις.\n\n## Γιατί να το εγκαταστήσετε;\n* Μην χάνετε ποτέ ένα σερί: Κρατήστε τη καθημερινή σας ορμή και διασφαλίστε το σερί σας ακόμη και στις πιο δύσκολες μέρες ή όταν δεν έχετε χρόνο.\n* Κατακτήστε τα κουίζ γνώσεων και τα παζλ λέξεων: Παιχνίδια όπως τα Crossclimb και Pinpoint απαιτούν βαθιά γνώση trivia και γρήγορες συνδέσεις. Η ενσωματωμένη ΤΝ τα λύνει με υψηλή ακρίβεια.\n* Υβριδικό μητρώο απαντήσεων: Λύστε τα Crossclimb και Pinpoint ακαριαία χωρίς κανένα κόστος API, χρησιμοποιώντας την απομακρυσμένη βάση δεδομένων απαντήσεων μας, χωρίς να χρειάζονται προσωπικά κλειδιά ΤΝ.\n* Πλήρης υποστήριξη για μπόνους παιχνίδια: Λύστε απρόσκοπτα τόσο τα τυπικά καθημερινά παζλ όσο και τα τοπικά bonus επίπεδα (Queens, Sudoku κ.λπ.) με ανεξάρτητη παρακολούθηση σερί και ειδικό σήμα \"Bonus\" στο ταμπλό.\n* Πλήρως εγγενής ενσωμάτωση: Το overlay του λύτη εμφανίζεται απευθείας στην ενεργή καρτέλα του παιχνιδιού σας. Με ένα κλικ, βλέπετε τον λυμένο πίνακα στην οθόνη.\n* Εκπαιδευτική λειτουργία υπόδειξης: Μάθετε να λύνεις παζλ φυσικά. Αντί για αυτόματη ολοκλήρωση, λάβετε πρόταση για μία λογική κίνηση και εντοπίστε άμεσα τα λάθη με κόκκινη επισήμανση στην οθόνη.\n* Ταχύτητα μυστικής λύσης (λειτουργία stealth): Προσομοιώστε ανθρώπινες συμπεριφορές κλικ με τυχαίες, φυσικές καθυστερήσεις (1–3 δευτερόλεπτα) για να προστατεύσετε το καθημερινό σας σερί από συστήματα ανίχνευσης bot.\n* Συντομεύσεις με επίγνωση συμφραζομένων: Απολαύστε επιλογές στο μενού δεξιού κλικ όπως \"Σήμανση ως μη παιγμένο\", \"Λύση\" ή \"Λήψη υπόδειξης\" απευθείας από τις κάρτες του παιχνιδιού.\n* Τοπικό ενσωματωμένο AI του Chrome: Συνδέστε το ενσωματωμένο μοντέλο Gemini Nano του Google Chrome για μια δωρεάν, πλήρως τοπική και ιδιωτική εμπειρία επίλυσης παζλ.\n* Όμορφος πίνακας αναλυτικών στοιχείων: Παρακολουθήστε το ιστορικό επίλυσης, τους μέσους χρόνους, τα σερί και τα προσωπικά ρεκόρ σας μέσω του σύγχρονου premium ημερολογιακού πίνακα ελέγχου μας.\n* Ιδιωτικό και ασφαλές: Λειτουργεί εξ ολοκλήρου στο πρόγραμμα περιήγησής σας. Τα κλειδιά API σας κρυπτογραφούνται τοπικά με AES-256 και δεν κοινοποιούνται ποτέ σε κανέναν διακομιστή. Μπορείτε οποιαδήποτε στιγμή να επιλέγετε ή να απενεργοποιείτε την ανώνυμη τηλεμετρία.",
+    "en": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "en_AU": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "en_GB": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "en_US": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "es": "# Solucionador de Juegos de LinkedIn\n\nUn ayudante para LinkedIn Games. Resuelve acertijos diarios (Queens, Sudoku, Pinpoint, Crossclimb) con rachas y análisis.\n\n## ¿Por qué instalarlo?\n* Nunca pierda su racha: Mantenga su impulso diario y asegure su racha de juego incluso en los días más difíciles o cuando tenga poco tiempo.\n* Domine los juegos de palabras y preguntas: Juegos como Crossclimb y Pinpoint requieren conocimientos profundos y asociaciones rápidas. La IA integrada los resuelve con una precisión asombrosa.\n* Registro de Respuestas Híbrido: Resuelva Crossclimb y Pinpoint al instante con costo de API cero utilizando nuestra base de datos remota de respuestas, sin necesidad de claves de IA personales.\n* Soporte Completo para Juegos Bonus: Resuelva sin problemas tanto los rompecabezas diarios estándar como los niveles especiales de bonificación (Queens, Sudoku, etc.) con seguimiento de rachas independiente y una etiqueta \"Bonus\" dedicada en el panel.\n* Integración totalmente nativa: El solucionador aparece directamente en la pestaña del juego activo. Con un solo clic, verá el tablero resuelto directamente en su pantalla.\n* Modo de sugerencia educativo (Hint Mode): Aprenda a resolver acertijos de forma natural. En lugar de autocompletar el tablero, reciba sugerencias de movimientos lógicos individuales y detecte errores al instante con resaltados en rojo en la pantalla.\n* Velocidad de resolución sigilosa (Stealth Mode): Emule el comportamiento de clics humanos con retrasos aleatorios y naturales (1–3 segundos) para proteger su racha diaria de resolución de los sistemas de detección de bots.\n* Accesos Directos según el Contexto: Disfrute de opciones en el menú contextual con clic derecho como \"Marcar como no jugado\", \"Resolver\" o \"Obtener pista\" directamente desde las tarjetas de juego.\n* IA integrada de Google Chrome: Conecte el modelo local Gemini Nano integrado en Google Chrome para una experiencia de resolución de rompecabezas privada, local y completamente gratuita.\n* Panel de estadísticas prémium: Realice un seguimiento de su historial de resolución, tiempos promedio, rachas y récords personales con nuestro moderno calendario y panel analítico.\n* Privado y seguro: Se ejecuta completamente en su navegador. Sus claves de API se cifra localmente mediante AES-256 y nunca se comparten. Active o desactive la telemetría anónima en cualquier momento.",
+    "es_419": "# Solucionador de Juegos de LinkedIn\n\nUn ayudante para LinkedIn Games. Resuelve acertijos diarios (Queens, Sudoku, Pinpoint, Crossclimb) con rachas y análisis.\n\n## ¿Por qué instalarlo?\n* Nunca pierda su racha: Mantenga su impulso diario y asegure su racha de juego incluso en los días más difíciles o cuando tenga poco tiempo.\n* Domine los juegos de palabras y preguntas: Juegos como Crossclimb y Pinpoint requieren conocimientos profundos y asociaciones rápidas. La IA integrada los resuelve con una precisión asombrosa.\n* Registro de Respuestas Híbrido: Resuelva Crossclimb y Pinpoint al instante con costo de API cero utilizando nuestra base de datos remota de respuestas, sin necesidad de claves de IA personales.\n* Soporte Completo para Juegos Bonus: Resuelva sin problemas tanto los rompecabezas diarios estándar como los niveles especiales de bonificación (Queens, Sudoku, etc.) con seguimiento de rachas independiente y una etiqueta \"Bonus\" dedicada en el panel.\n* Integración totalmente nativa: El solucionador aparece directamente en la pestaña del juego activo. Con un solo clic, verá el tablero resuelto directamente en su pantalla.\n* Modo de sugerencia educativo (Hint Mode): Aprenda a resolver acertijos de forma natural. En lugar de autocompletar el tablero, reciba sugerencias de movimientos lógicos individuales y detecte errores al instante con resaltados en rojo en la pantalla.\n* Velocidad de resolución sigilosa (Stealth Mode): Emule el comportamiento de clics humanos con retrasos aleatorios y naturales (1–3 segundos) para proteger su racha diaria de resolución de los sistemas de detección de bots.\n* Accesos Directos según el Contexto: Disfrute de opciones en el menú contextual con clic derecho como \"Marcar como no jugado\", \"Resolver\" o \"Obtener pista\" directamente desde las tarjetas de juego.\n* IA integrada de Google Chrome: Conecte el modelo local Gemini Nano integrado en Google Chrome para una experiencia de resolución de rompecabezas privada, local y completamente gratuita.\n* Panel de estadísticas prémium: Realice un seguimiento de su historial de resolución, tiempos promedio, rachas y récords personales con nuestro moderno calendario y panel analítico.\n* Privado y seguro: Se ejecuta completamente en su navegador. Sus claves de API se cifra localmente mediante AES-256 y nunca se comparten. Active o desactive la telemetría anónima en cualquier momento.",
+    "et": "# LinkedIni mängude lahendaja\n\nAbiline LinkedIni mängude jaoks. Lahendab automaatselt igapäevased mõistatused (Queens, Sudoku, Pinpoint, Crossclimb), jälgides järjestusi ja pakkudes analüütikat.\n\n## Miks installida?\n* Ära kunagi kaota seeriat: Hoia oma igapäevast hoogu ja kindlusta oma seeria isegi kõige raskematel päevadel või siis, kui sul on vähe aega.\n* Valda mälumängud ja sõnamõistatused: Mängud nagu Crossclimb ja Pinpoint nõuavad sügavaid trivia‑teadmisi ja kiiret seostamist. Sisseehitatud tehisaru lahendab need suure täpsusega.\n* Hübriidvastuste register: Lahenda Crossclimb ja Pinpoint koheselt ilma ühegi API‑kuluta, kasutades meie kaugvastuste andmebaasi – isiklikke AI‑võtmeid pole vaja.\n* Täielik boonust mängude tugi: Lahenda sujuvalt nii standardsed igapäevamõistatused kui ka lokaliseeritud boonustasemed (Queens, Sudoku jne) eraldi seeriajälgimise ja spetsiaalse \"Bonus\" märgisega juhtpaneelil.\n* Täielikult natiivne integratsioon: Lahendaja ülekate ilmub otse sinu aktiivsele mängukaardile. Ühe klõpsuga näed lahendatud lauda otse ekraanil.\n* Hariv vihjevõte: Õpi mõistatusi loomulikul viisil lahendama. Automaatse täitmise asemel saad soovituse ühe loogilise käigu kohta ja tabad vead hetkega tänu punastele esiletõstetele ekraanil.\n* Varjatud lahendamise kiirus (Stealth-režiim): Jäljenda inimlikku klõpsamiskäitumist juhuslike, loomulike viivitustega (1–3 sekundit), et kaitsta oma igapäevast lahendusseeriat botituvastuse lipikute eest.\n* Kontekstitundlikud otseteed: Kasuta paremklõpsu kontekstimenüü valikuid, nagu \"Märgi kui mängimata\", \"Lahenda\" või \"Vihje\", otse mängukaartidelt.\n* Kohalik Chrome'i sisseehitatud AI: Ühenda Google Chrome’i sisseehitatud Gemini Nano mudel, et saada nullkuluga, täielikult lokaalset ja privaatselt toimivat mõistatuste lahendamise kogemust.\n* Kaunis analüütika juhtpaneel: Jälgi oma lahendusajalugu, keskmisi aegu, seeriaid ja isiklikke rekordeid meie moodsal, premium‑kalendri juhtpaneelil.\n* Privaatne ja turvaline: Töötab täielikult sinu brauseris. Sinu API‑võtmed krüpteeritakse lokaalselt AES-256 abil ja neid ei jagata kunagi ühegi serveriga. Anonüümse telemeetria saad igal ajal sisse või välja lülitada.",
+    "fa": "# حل‌گر بازی‌های لینکدین\n\nیک دستیار برای بازی‌های لینکدین. حل خودکار معماهای روزانه (Queens، Sudoku، Pinpoint، Crossclimb) همراه با ردیابی استریک و تحلیل‌ها.\n\n## چرا نصب کنیم؟\n* هرگز زنجیره را از دست ندهید: شتاب روزانه‌تان را حفظ کنید و حتی در سخت‌ترین روزها یا وقتی وقتتان کم است، نگذارید زنجیره موفقیتتان قطع شود.\n* بر مسابقات دانستنی‌ها و معماهای کلمه‌ای مسلط شوید: بازی‌هایی مثل Crossclimb و Pinpoint به دانش عمیق اطلاعات عمومی و ایجاد ارتباط سریع نیاز دارند. هوش مصنوعی داخلی آن‌ها را با دقت بالا حل می‌کند.\n* ثبت پاسخ‌های هیبریدی: با استفاده از پایگاه داده راه‌حل‌های ابری ما، Crossclimb و Pinpoint را فوراً و بدون هیچ هزینه API حل کنید؛ بدون نیاز به کلیدهای هوش مصنوعی شخصی.\n* پشتیبانی کامل از بازی‌های جایزه: هم معماهای روزانه استاندارد و هم مراحل جایزه بومی‌سازی‌شده (Queens، سودوکو و غیره) را بدون وقفه حل کنید، با ردیابی مستقل زنجیره و نشان «Bonus» اختصاصی در داشبورد.\n* یکپارچه‌سازی کاملاً بومی: لایه حل‌کننده مستقیماً روی تب فعال بازی شما ظاهر می‌شود. با یک کلیک، صفحه حل‌شده را همان‌جا روی نمایشگر می‌بینید.\n* حالت راهنمای آموزشی: یاد بگیرید به شکل طبیعی معماها را حل کنید. به‌جای تکمیل خودکار، یک حرکت منطقی پیشنهاد می‌شود و خطاها را فوراً با هایلایت قرمز روی صفحه می‌بینید.\n* سرعت حل مخفیانه (حالت مخفی): با تأخیرهای تصادفی و طبیعی (۱ تا ۳ ثانیه)، رفتار کلیک انسانی را شبیه‌سازی کنید تا زنجیره حل روزانه خود را از پرچم‌های تشخیص ربات محافظت کنید.\n* میانبرهای آگاه از زمینه: از منوی زمینه‌ای کلیک راست لذت ببرید؛ گزینه‌هایی مثل «علامت‌گذاری به‌عنوان بازی‌نشده»، «حل کردن» یا «گرفتن راهنما» مستقیماً از کارت‌های بازی در دسترس هستند.\n* هوش مصنوعی داخلی محلی Chrome: مدل داخلی Gemini Nano در Google Chrome را متصل کنید تا یک تجربه حل معما کاملاً محلی، خصوصی و بدون هزینه داشته باشید.\n* داشبورد تحلیلی زیبا: تاریخچه حل شما، زمان‌های متوسط، زنجیره‌ها و بهترین رکوردهای شخصی‌تان را با داشبورد تقویمی مدرن و پریمیوم ما پیگیری کنید.\n* خصوصی و امن: کاملاً در مرورگر شما اجرا می‌شود. کلیدهای API شما به‌صورت محلی با AES-256 رمزگذاری شده و هرگز با هیچ سروری به‌اشتراک گذاشته نمی‌شوند. می‌توانید هر زمان که خواستید، تلمتری ناشناس را فعال یا غیرفعال کنید.",
+    "fi": "# LinkedIn-pelien ratkoja\n\nApuri LinkedIn-peleihin. Ratkoo päivittäiset pulmat automaattisesti (Queens, Sudoku, Pinpoint, Crossclimb) ja seuraa putkia sekä tarjoaa analytiikkaa.\n\n## Miksi asentaa?\n* Älä koskaan menetä putkea: Pidä päivittäinen vauhtisi yllä ja varmista putkesi jatkuminen jopa kaikkein vaikeimpina päivinä tai silloin, kun aikaa on vähän.\n* Hallitse tietovisa- ja sanapulmat: Pelit kuten Crossclimb ja Pinpoint vaativat syvällistä tietovisatietoa ja nopeaa assosiointia. Sisäänrakennettu AI ratkaisee ne erittäin tarkasti.\n* Hybridivastausten rekisteri: Ratkaise Crossclimb ja Pinpoint välittömästi ilman API‑kustannuksia käyttämällä etä­vastaustietokantaamme – yhtään henkilökohtaista AI‑avainta ei tarvita.\n* Täysi tuki bonuspeleille: Ratkaise saumattomasti sekä tavalliset päivittäiset pulmat että lokalisoidut bonus­tasot (Queens, Sudoku jne.) erillisellä putken seurannalla ja omalla \"Bonus\"‑merkillä kojelaudalla.\n* Täysin natiivi integrointi: Ratkaisijan overlay ilmestyy suoraan aktiiviseen pelivälilehteesi. Yhdellä klikkauksella näet ratkaistun pelilaudan suoraan näytöllä.\n* Opettava vihjetila: Opi ratkaisemaan pulmia luonnollisesti. Automaattisen täydennyksen sijaan saat ehdotuksen yhdestä loogisesta siirrosta ja havaitset virheet heti punaisilla korostuksilla ruudulla.\n* Häiveen ratkaisunopeus (Stealth-tila): Jäljitä ihmismäistä klikkauskäyttäytymistä satunnaisilla, luonnollisilla viiveillä (1–3 sekuntia) suojataksesi päivittäisen ratkaisupolkusi botin­tunnistus­lipuilta.\n* Kontekstitietoiset pikanäppäimet: Hyödynnä hiiren oikean painikkeen kontekstivalikkoa, jossa on vaihtoehtoja kuten \"Merkitse pelaamattomaksi\", \"Ratkaise\" tai \"Hanki vihje\" suoraan pelikorteista.\n* Paikallinen Chromen sisäänrakennettu AI: Yhdistä Google Chromen sisäänrakennettu Gemini Nano ‑malli nollakustanteiseen, täysin paikalliseen ja yksityiseen pulmanratkaisu­kokemukseen.\n* Kaunis analytiikkapaneeli: Seuraa ratkaisuhistoriaasi, keskimääräisiä aikoja, putkia ja omia ennätyksiäsi modernin premium‑kalenteri­kojelaudan avulla.\n* Yksityinen ja turvallinen: Toimii täysin selaimessasi. API‑avaimesi salataan paikallisesti AES-256:lla eikä niitä koskaan jaeta millekään palvelimelle. Voit milloin tahansa ottaa anonyymin telemetrian käyttöön tai poistaa sen käytöstä.",
+    "fil": "# LinkedIn Games Solver\n\nIsang helper para sa LinkedIn Games. Awtomatikong nilulutas ang daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) na may streaks at analytics.\n\n## Bakit mag-install?\n* Huwag kailanman mawala ang streak: Panatilihin ang iyong araw‑araw na momentum at siguraduhing hindi napuputol ang streak mo kahit sa pinakamahihirap na araw o kapag kapos ka sa oras.\n* Pag-aralan ang trivia at mga word puzzle: Ang mga laro tulad ng Crossclimb at Pinpoint ay nangangailangan ng malalim na kaalaman sa trivia at mabilis na pag-uugnay. Nalulutas ito ng built‑in na AI nang may mataas na accuracy.\n* Hibridong rehistro ng mga sagot: I-solve ang Crossclimb at Pinpoint kaagad nang walang kahit anong gastos sa API gamit ang remote answers database namin, walang kailangang personal na AI keys.\n* Buong suporta sa bonus games: Makinis na i-solve ang parehong standard na daily puzzles at mga localized bonus level (Queens, Sudoku, atbp.) na may hiwalay na streak tracking at dedikadong \"Bonus\" badge sa dashboard.\n* Ganap na katutubong integrasyon: Direktang lumalabas ang solver overlay sa aktibo mong game tab. Isang click lang at makikita mo na ang na‑solve na board sa screen.\n* Pang-edukasyong hint mode: Matutong mag-solve ng puzzles nang natural. Sa halip na auto‑complete, makakakuha ka ng isang logical na galaw na iminumungkahi, at agad mong makikita ang mga mali sa pulang highlight sa screen.\n* Bilís ng lihim na pagsagot (Stealth mode): Gayahin ang kilos ng tunay na human clicks gamit ang random at natural na delays (1–3 segundo) para protektahan ang daily solving streak mo laban sa bot‑detection flags.\n* Mga shortcut na naaayon sa konteksto: Gamitin ang right‑click context menu options tulad ng \"Mark as Not Played\", \"Solve\", o \"Get Hint\" direkta mula sa game cards.\n* Lokal na built-in AI ng Chrome: Ikonekta ang built‑in na Gemini Nano model ng Google Chrome para sa zero‑cost, fully local, at pribadong puzzle‑solving experience.\n* Magandang analytics dashboard: Subaybayan ang solving history mo, average times, streaks, at personal bests gamit ang modern at premium na calendar dashboard namin.\n* Pribado at ligtas: Tumatakbo ito nang buo sa iyong browser. Ang mga API keys mo ay naka‑encrypt nang lokal gamit ang AES‑256 at hindi kailanman sine-share sa anumang server. Maaari kang mag opt‑in o opt‑out sa anonymous telemetry anumang oras.",
+    "fr": "# Résolveur de Jeux LinkedIn\n\nUn assistant pour les jeux LinkedIn.\n\n## Pourquoi l'installer ?\n* Ne perdez jamais votre série: Gardez votre élan quotidien et sécurisez votre série de victoires, même les jours les plus difficiles ou lorsque vous manquez de temps.\n* Maîtrisez les jeux de lettres et de culture: Des jeux comme Crossclimb et Pinpoint exigent une grande culture générale et des associations d'idées rapides. L'IA intégrée les résout avec une haute précision.\n* Registre de Réponses Hybride: Résolvez Crossclimb et Pinpoint instantanément et sans coût d'API grâce à notre base de données de réponses à distance, sans clé API personnelle requise.\n* Support Complet des Jeux Bonus: Résolvez en toute fluidité les puzzles quotidiens standard ainsi que les niveaux de bonus (Queens, Sudoku, etc.) avec suivi indépendant des séries et un badge \"Bonus\" dédié dans le tableau de bord.\n* Intégration 100 % native: L'interface du résolveur s'affiche directement sur l'onglet de votre jeu actif. En un clic, le tableau résolu apparaît à l'écran.\n* Mode indice éducatif (Hint Mode): Apprenez à résoudre les énigmes naturellement. Au lieu de compléter automatiquement, obtenez une suggestion de coup logique et repérez instantanément les erreurs grâce aux surbrillances rouges à l'écran.\n* Vitesse de résolution furtive (Stealth Mode): Émulez les comportements de clics humains avec des délais aléatoires et naturels (1 à 3 secondes) pour protéger votre série de résolutions quotidiennes contre la détection de bots.\n* Raccourcis Contextuels Dynamiques: Accédez aux options via clic droit comme \"Marquer comme non joué\", \"Résoudre\" ou \"Obtenir un indice\" directement depuis les cartes de jeu.\n* IA intégrée de Google Chrome: Connectez le modèle local Gemini Nano intégré à Google Chrome pour une expérience de résolution 100% locale, privée et gratuite.\n* Tableau de bord analytique moderne: Suivez votre historique de résolution, vos temps moyens, vos séries et vos records personnels grâce à notre calendrier interactif haut de gamme.\n* Privé et sécurisé: Fonctionne entièrement dans votre navigateur. Vos clés API sont chiffrées localement en AES-256 et ne sont jamais partagées. Activez ou désactivez la télémétrie anonyme à tout moment.",
+    "gu": "# LinkedIn ગેમ્સ સોલ્વર\n\nLinkedIn ગેમ્સ માટે એક સહાયક. દૈનિક પઝલ (Queens, Sudoku, Pinpoint, Crossclimb) આપોઆપ ઉકેલો, સાથે સ્ટ્રીક અને એનાલિટિક્સ ટ્રેકિંગ.\n\n## શા માટે ઇન્સ્ટોલ કરવું?\n* સ્ટ્રીક ક્યારેય ન ગુમાવો: તમારું દૈનિક momentum જાળવો અને સૌથી કઠિન દિવસોમાં અથવા જ્યારે સમય ઓછો હોય ત્યારે પણ તમારી સ્ટ્રીક સુરક્ષિત રાખો.\n* ટ્રિવિયા અને શબ્દ પઝલમાં નિપુણ બનો: Crossclimb અને Pinpoint જેવી રમતો માટે ઊંડું સામાન્ય જ્ઞાન અને ઝડપી association જરૂરી છે. બિલ્ટ‑ઈન AI તેને ઊંચી ચોકસાઈ સાથે હલ કરે છે.\n* હાઇબ્રિડ જવાબોનું રજિસ્ટ્રી: અમારા રિમોટ answers ડેટાબેસનો ઉપયોગ કરીને કોઈપણ API ખર્ચ વગર Crossclimb અને Pinpoint તરત જ સોલ્વ કરો, કોઈ વ્યક્તિગત AI કી જરૂરી નથી.\n* બોનસ ગેમ્સ માટે સંપૂર્ણ સપોર્ટ: સ્ટાન્ડર્ડ દૈનિક પઝલ્સ અને લોકલાઇઝ્ડ બોનસ લેવલ્સ (Queens, Sudoku, વગેરે) બંનેને સરળતાથી સોલ્વ કરો, સ્વતંત્ર સ્ટ્રીક ટ્રેકિંગ અને ડેશબોર્ડમાં સમર્પિત \"Bonus\" બેજ સાથે.\n* સંપૂર્ણપણે નેટિવ ઇન્ટિગ્રેશન: સોલ્વર ઓવરલે સીધા તમારા સક્રિય ગેમ ટૅબ પર દેખાય છે. એક ક્લિકમાં, તમે સ્ક્રીન પર જ સોલ્વ થયેલું બોર્ડ જોઈ શકો છો.\n* શૈક્ષણિક હિન્ટ મોડ: પઝલ્સને સ્વાભાવિક રીતે કેવી રીતે સોલ્વ કરવી તે શીખો. ઓટો‑કમ્પ્લીટની જગ્યાએ, એક જ તાર્કિક move માટે સૂચન મેળવો અને સ્ક્રીન પર લાલ હાઇલાઇટથી તરત જ ભૂલો પકડી લો.\n* ચોરીછૂપી સોલ્વ ગતિ (સ્ટેલ્થ મોડ): 1–3 સેકન્ડની રૅન્ડમ, સ્વાભાવિક વિલંબ સાથે માનવીય ક્લિક વર્તનનું અનુસરણ કરો, જેથી તમારી દૈનિક સોલ્વિંગ સ્ટ્રીક બોટ‑ડિટેક્શન ફ્લેગ્સથી સુરક્ષિત રહે.\n* સંદર્ભ-જાગૃત શોર્ટકટ્સ: ગેમ કાર્ડમાંથી સીધા \"Mark as Not Played\", \"Solve\" અથવા \"Get Hint\" જેવી રાઈટ‑ક્લિક કોન્ટેક્સ્ટ મેનૂ વિકલ્પોનો આનંદ લો.\n* સ્થાનિક Chrome બિલ્ટ-ઇન AI: શૂન્ય ખર્ચ, સંપૂર્ણ સ્થાનિક અને ખાનગી પઝલ‑સોલ્વિંગ અનુભવ માટે Google Chrome ના બિલ્ટ‑ઈન Gemini Nano મોડલને કનેક્ટ કરો.\n* સુંદર એનાલિટિક્સ ડેશબોર્ડ: તમારી સોલ્વિંગ history, સરેરાશ સમય, સ્ટ્રીક્સ અને વ્યક્તિગત શ્રેષ્ઠોને અમારા પ્રીમિયમ, આધુનિક કેલેન્ડર ડેશબોર્ડ સાથે ટ્રૅક કરો.\n* ખાનગી અને સુરક્ષિત: પુરેપૂરી રીતે તમારા બ્રાઉઝરમાં ચલાવે છે. તમારી API કીઓ સ્થાનિક સ્તરે AES-256 વડે એન્ક્રિપ્ટ થાય છે અને ક્યારેય કોઈ સર્વર સાથે શેર થતી નથી. તમે કોઈપણ સમયે anonymous telemetry માટે opt‑in અથવા opt‑out કરી શકો છો.",
+    "he": "# פותר המשחקים של LinkedIn\n\nעוזר למשחקי LinkedIn. פתרון אוטומטי של חידות יומיות (Queens, Sudoku, Pinpoint, Crossclimb) עם רצפים וניתוח נתונים.\n\n## למה להתקין?\n* לעולם אל תאבדו רצף: שמרו על המומנטום היומי שלכם והבטיחו שהרצף לא יישבר, גם בימים הקשים ביותר או כשאתם קצרים בזמן.\n* שלוטו בחידונים ובחידות מילים: משחקים כמו Crossclimb ו‑Pinpoint דורשים ידע טריוויה עמוק וקישור מהיר. ה‑AI המובנה פותר אותם בדיוק גבוה.\n* רישום תשובות היברידי: פתרו את Crossclimb ו‑Pinpoint מיידית ללא כל עלות API באמצעות מאגר התשובות המרוחק שלנו, ללא צורך במפתחות AI אישיים.\n* תמיכה מלאה במשחקי בונוס: פתרו בצורה חלקה גם חידות יומיות סטנדרטיות וגם שלבי בונוס מקומיים (Queens, סודוקו וכו׳) עם מעקב רצף נפרד וסמל \"Bonus\" ייעודי בלוח הבקרה.\n* אינטגרציה מקורית לחלוטין: שכבת הפותר מופיעה ישירות בלשונית המשחק הפעילה שלכם. בלחיצה אחת תראו את הלוח הפתור ישירות על המסך.\n* מצב רמז חינוכי: למדו לפתור חידות בצורה טבעית. במקום השלמה אוטומטית, קבלו הצעה למסע לוגי אחד, וגילו טעויות מיידית באמצעות סימון אדום על המסך.\n* מהירות פתרון סמויה (מצב Stealth): הדמו התנהגות קליקים אנושית עם עיכובים אקראיים וטבעיים (1–3 שניות) כדי להגן על רצף הפתרון היומי שלכם מפני מנגנוני זיהוי בוטים.\n* קיצורי דרך מודעי-הקשר: השתמשו באפשרויות תפריט ההקשר בלחיצה ימנית כמו \"סמן כלא שוחק\", \"פתור\" או \"קבל רמז\" ישירות מכרטיסי המשחק.\n* בינה מלאכותית מובנית מקומית של Chrome: חברו את מודל Gemini Nano המובנה ב‑Google Chrome לחוויית פתרון חידות מקומית לחלוטין, פרטית וללא עלות.\n* לוח בקרה אנליטי יפה: עקבו אחר היסטוריית הפתרון, זמני הממוצע, הרצפים והשיאים האישיים שלכם באמצעות לוח מחוונים מודרני ומתקדם המבוסס על לוח שנה.\n* פרטי ומאובטח: פועל כולו בתוך הדפדפן שלכם. מפתחות ה‑API שלכם מוצפנים מקומית באמצעות AES-256 ואינם משותפים לעולם עם שום שרת. ניתן בכל עת להצטרף או לבטל השתתפות בטלמטריה אנונימית.",
+    "hi": "# LinkedIn गेम्स सॉल्वर\n\nLinkedIn गेम्स के लिए एक सहायक। रोज़ाना पहेलियाँ (क्वीन, सुडोकू, पिनपॉइंट, क्रॉसक्लाइंब) अपने‑आप हल करें, स्ट्रीक और विश्लेषण के साथ।\n\n## इंस्टॉल क्यों करें?\n* अपनी स्ट्रीक कभी न खोएँ: अपने रोज़ाना के मोमेंटम को बनाए रखें और सबसे मुश्किल दिनों में या जब आपके पास समय कम हो तब भी अपनी स्ट्रीक को सुरक्षित रखें।\n* ट्रिविया और शब्द पहेलियों में महारत हासिल करें: Crossclimb और Pinpoint जैसे गेम्स के लिए गहरी ट्रिविया नॉलेज और तेज़ एसोसिएशन की ज़रूरत होती है। इन‑बिल्ट AI इन्हें बहुत अधिक सटीकता के साथ हल करता है।\n* हाइब्रिड उत्तर रजिस्ट्री: हमारे रिमोट answers डेटाबेस का इस्तेमाल करके बिना किसी API कॉस्ट के Crossclimb और Pinpoint तुरंत सॉल्व करें, किसी भी पर्सनल AI की की ज़रूरत नहीं।\n* बोनस गेम्स के लिए पूर्ण समर्थन: स्टैंडर्ड डेली पज़ल्स और लोकलाइज़्ड बोनस लेवल्स (Queens, Sudoku आदि) दोनों को बिना रुकावट सॉल्व करें, अलग‑अलग स्ट्रीक ट्रैकिंग और डैशबोर्ड पर समर्पित \"Bonus\" बैज के साथ।\n* पूरी तरह से नेटिव इंटीग्रेशन: सॉल्वर ओवरले सीधे आपकी एक्टिव गेम टैब पर दिखाई देता है। एक क्लिक में आप स्क्रीन पर ही सॉल्व की हुई बोर्ड देख लेते हैं।\n* शैक्षिक हिंट मोड: पज़ल्स को नैचुरली हल करना सीखें। ऑटो‑कंप्लीट की जगह एक लॉजिकल मूव का सुझाव लें, और स्क्रीन पर लाल हाइलाइट की मदद से तुरंत गलती पकड़ें।\n* स्टेल्थ सॉल्व स्पीड (स्टेल्थ मोड): 1–3 सेकंड की रैंडम, नैचुरल डिले के साथ इंसानी क्लिक बिहेवियर की नकल करें, ताकि आपकी डेली सॉल्विंग स्ट्रीक बॉट‑डिटेक्शन फ्लैग्स से सुरक्षित रहे।\n* संदर्भ-जागरूक शॉर्टकट्स: गेम कार्ड्स से सीधे \"Mark as Not Played\", \"Solve\" या \"Get Hint\" जैसे राइट‑क्लिक कॉन्टेक्स्ट मेनू ऑप्शन का मज़ा लें।\n* स्थानीय Chrome बिल्ट-इन AI: ज़ीरो कॉस्ट, पूरी तरह लोकल और प्राइवेट पज़ल‑सॉल्विंग अनुभव के लिए Google Chrome के इन‑बिल्ट Gemini Nano मॉडल को कनेक्ट करें।\n* सुंदर एनालिटिक्स डैशबोर्ड: हमारे प्रीमियम, मॉडर्न कैलेंडर डैशबोर्ड के साथ अपनी सॉल्विंग हिस्ट्री, औसत समय, स्ट्रीक्स और पर्सनल बेस्ट को ट्रैक करें।\n* निजी और सुरक्षित: पूरी तरह से आपके ब्राउज़र के अंदर चलता है। आपकी API कीज़ लोकली AES-256 से एन्क्रिप्ट होती हैं और कभी भी किसी सर्वर के साथ शेयर नहीं की जातीं। आप किसी भी समय anonymous telemetry को ऑन या ऑफ कर सकते हैं।",
+    "hr": "# Rješavač igara za LinkedIn\n\nPomoćnik za LinkedIn Games. Automatski rješava dnevne zagonetke (Queens, Sudoku, Pinpoint, Crossclimb) s nizovima i analitikom.\n\n## Zašto instalirati?\n* Nikad ne izgubi niz: Održi svoj dnevni zamah i osiguraj da tvoj niz ne pukne čak i u najtežim danima ili kad imaš malo vremena.\n* Ovladajte kvizovima i slagalicama riječi: Igre poput Crossclimb i Pinpoint zahtijevaju duboko znanje trivije i brze asocijacije. Ugrađeni AI ih rješava s visokom točnošću.\n* Hibridni registar odgovora: Riješi Crossclimb i Pinpoint trenutno bez ikakvog API troška koristeći našu udaljenu bazu odgovora, bez potrebe za osobnim AI ključevima.\n* Potpuna podrška za bonus igre: Bez problema rješavaj i standardne dnevne zagonetke i lokalizirane bonus razine (Queens, Sudoku itd.) uz neovisno praćenje niza i posebnu \"Bonus\" značku na nadzornoj ploči.\n* Potpuna izvorna integracija: Preklopnik rješavača pojavljuje se izravno na tvojoj aktivnoj kartici s igrom. Jedan klik i vidiš riješenu ploču odmah na ekranu.\n* Obrazovni način savjeta: Nauči prirodno rješavati zagonetke. Umjesto automatskog dovršavanja, dobivaš prijedlog jednog logičnog poteza i odmah uočavaš pogreške zahvaljujući crvenim isticanjima na ekranu.\n* Brzina potajnog rješavanja (Stealth način): Oponašaj ljudsko ponašanje klikanja uz nasumična, prirodna kašnjenja (1–3 sekunde) kako bi zaštitio svoj dnevni niz rješavanja od označavanja kao bot.\n* Prečaci svjesni konteksta: Iskoristi opcije kontekstnog izbornika desnim klikom kao što su \"Označi kao neodigrano\", \"Riješi\" ili \"Dohvati savjet\" izravno s kartica igara.\n* Lokalni Chrome ugrađeni AI: Poveži ugrađeni Gemini Nano model u Google Chromeu za iskustvo rješavanja zagonetki bez troška, potpuno lokalno i privatno.\n* Prekrasna nadzorna ploča analitike: Prati svoju povijest rješavanja, prosječna vremena, nizove i osobne rekorde pomoću naše moderne premium nadzorne ploče s kalendarom.\n* Privatno i sigurno: Radi potpuno u tvom pregledniku. Tvoji API ključevi lokalno se šifriraju pomoću AES-256 i nikada se ne dijele ni s jednim poslužiteljem. U bilo kojem trenutku možeš uključiti ili isključiti anonimnu telemetriju.",
+    "hu": "# LinkedIn játékmegoldó\n\nSegéd a LinkedIn Games-hez. Napi rejtvények (Queens, Sudoku, Pinpoint, Crossclimb) automatikus megoldása szériakövetéssel és analitikával.\n\n## Miért telepítse?\n* Soha ne veszítsd el a sorozatod: Tartsd meg a napi lendületed, és őrizd meg a sorozatodat még a legnehezebb napokon is, vagy amikor kevés időd van.\n* Sajátítsd el a kvízeket és szórejtvényeket: A Crossclimb és a Pinpoint jellegű játékok mély trivia‑tudást és gyors asszociációt igényelnek. A beépített MI ezeket nagy pontossággal oldja meg.\n* Hibrid válasznyilvántartás: Oldd meg a Crossclimb és Pinpoint feladványokat azonnal, API‑költség nélkül, a távoli válasz‑adatbázisunkkal – személyes MI‑kulcsokra nincs szükség.\n* Teljes támogatás a bónuszjátékokhoz: Zökkenőmentesen oldd meg a standard napi rejtvényeket és a lokalizált bónuszszinteket (Queens, Sudoku stb.) is, önálló sorozatkövetéssel és külön \"Bonus\" jelvénnyel a vezérlőpulton.\n* Teljesen natív integráció: A megoldó átfedése közvetlenül az aktív játékfülön jelenik meg. Egy kattintás, és a megoldott táblát azonnal látod a képernyőn.\n* Oktató célú tipp mód: Tanulj meg természetes módon rejtvényt fejteni. Az automatikus kitöltés helyett egyetlen logikus lépésre kapsz javaslatot, és a hibákat azonnal, piros kiemeléssel látod a képernyőn.\n* Rejtett megoldási sebesség (Stealth mód): Utánozd az emberi kattintási viselkedést véletlenszerű, természetes késleltetésekkel (1–3 másodperc), hogy megóvd a napi megoldási sorozatodat a bot‑észlelési jelzésektől.\n* Kontextusérzékeny gyorsbillentyűk: Használd a jobb gombos helyi menü opcióit, mint például „Jelölés nem játszottként”, „Megoldás” vagy „Tipp kérése” közvetlenül a játék­kártyákról.\n* Helyi Chrome beépített AI: Csatlakoztasd a Google Chrome beépített Gemini Nano modelljét a teljesen helyi, privát és költségmentes rejtvénymegoldó élményhez.\n* Gyönyörű analitikai irányítópult: Kövesd nyomon megoldási előzményeidet, átlagos időidet, sorozataidat és egyéni rekordjaidat a modern, prémium naptár‑irányítópultunkkal.\n* Privát és biztonságos: Teljes egészében a böngésződben fut. Az API‑kulcsaid helyben, AES-256‑tal vannak titkosítva, és soha nem kerülnek megosztásra egyetlen szerverrel sem. Bármikor be‑ vagy kikapcsolhatod az anonim telemetriát.",
+    "id": "# LinkedIn Games Solver\n\nAsisten untuk LinkedIn Games. Otomatis menyelesaikan teka-teki harian (Queens, Sudoku, Pinpoint, Crossclimb) dengan streak dan analitik.\n\n## Mengapa memasang?\n* Jangan pernah kehilangan streak: Jaga momentum harianmu dan pastikan streak tetap aman bahkan di hari-hari tersulit atau saat waktu kamu sangat terbatas.\n* Kuasai trivia & teka-teki kata: Game seperti Crossclimb dan Pinpoint membutuhkan pengetahuan trivia yang mendalam dan asosiasi yang cepat. AI bawaan menyelesaikannya dengan akurasi tinggi.\n* Registri jawaban hibrida: Selesaikan Crossclimb dan Pinpoint seketika tanpa biaya API apa pun dengan menggunakan database jawaban jarak jauh kami, tanpa perlu kunci AI pribadi.\n* Dukungan penuh untuk game bonus: Selesaikan dengan mulus baik teka-teki harian standar maupun level bonus terlokalisasi (Queens, Sudoku, dll.) dengan pelacakan streak terpisah dan lencana \"Bonus\" khusus di dasbor.\n* Integrasi native sepenuhnya: Lapisan overlay solver muncul langsung di tab game aktifmu. Satu klik, dan kamu melihat papan yang sudah terpecahkan tepat di layar.\n* Mode petunjuk edukatif: Pelajari cara menyelesaikan teka-teki secara natural. Alih-alih menyelesaikan otomatis, kamu mendapatkan saran satu langkah logis, dan langsung menangkap kesalahan dengan highlight merah di layar.\n* Kecepatan solusi diam-diam (Mode Stealth): Tiru perilaku klik manusia dengan jeda acak yang alami (1–3 detik) untuk melindungi streak penyelesaian harianmu dari penanda deteksi bot.\n* Pintasan yang sadar konteks: Nikmati opsi menu konteks klik kanan seperti \"Mark as Not Played\", \"Solve\", atau \"Get Hint\" langsung dari kartu game.\n* AI bawaan Chrome lokal: Hubungkan model Gemini Nano bawaan Google Chrome untuk pengalaman menyelesaikan teka-teki yang tanpa biaya, sepenuhnya lokal, dan privat.\n* Dasbor analitik yang indah: Lacak riwayat penyelesaianmu, waktu rata-rata, streak, dan rekor pribadi dengan dasbor kalender modern premium kami.\n* Pribadi & aman: Berjalan sepenuhnya di browser-mu. Kunci API-mu dienkripsi secara lokal menggunakan AES-256 dan tidak pernah dibagikan ke server mana pun. Kamu bisa kapan saja memilih ikut serta atau keluar dari telemetri anonim.",
+    "it": "# Risolutore per LinkedIn Games\n\nUn assistente per LinkedIn Games. Risolve automaticamente i puzzle giornalieri (Queens, Sudoku, Pinpoint, Crossclimb) con serie e analisi.\n\n## Perché installarlo?\n* Non perdere mai una serie: Mantieni il tuo slancio quotidiano e proteggi la tua serie anche nei giorni più difficili o quando hai poco tempo.\n* Padroneggia quiz e rompicapi di parole: Giochi come Crossclimb e Pinpoint richiedono una profonda conoscenza di trivia e associazioni rapide. L’IA integrata li risolve con elevata precisione.\n* Registro ibrido delle risposte: Risolvi Crossclimb e Pinpoint all’istante senza alcun costo API utilizzando il nostro database remoto di risposte, senza bisogno di chiavi IA personali.\n* Supporto completo ai giochi bonus: Risolvi senza interruzioni sia i puzzle giornalieri standard che i livelli bonus localizzati (Queens, Sudoku, ecc.) con tracciamento indipendente della serie e un badge \"Bonus\" dedicato nella dashboard.\n* Integrazione completamente nativa: La sovrapposizione del solver appare direttamente sulla scheda di gioco attiva. Un clic e vedi la griglia risolta direttamente sullo schermo.\n* Modalità suggerimento educativa: Impara a risolvere i puzzle in modo naturale. Invece del completamento automatico, ricevi il suggerimento di una singola mossa logica e individua subito gli errori con evidenziazioni rosse sullo schermo.\n* Velocità di soluzione stealth (modalità Stealth): Emula il comportamento di clic umano con ritardi casuali e naturali (da 1 a 3 secondi) per proteggere la tua serie quotidiana di soluzioni dai sistemi di rilevamento bot.\n* Scorciatoie consapevoli del contesto: Sfrutta le opzioni del menu contestuale con il tasto destro, come \"Segna come non giocato\", \"Risolvi\" o \"Ottieni suggerimento\" direttamente dalle schede di gioco.\n* AI integrata locale di Chrome: Collega il modello Gemini Nano integrato in Google Chrome per un’esperienza di risoluzione dei puzzle a costo zero, completamente locale e privata.\n* Splendida dashboard di analisi: Tieni traccia della cronologia delle soluzioni, dei tempi medi, delle serie e dei tuoi record personali con la nostra dashboard calendario moderna e premium.\n* Privato e sicuro: Funziona interamente nel tuo browser. Le tue chiavi API sono crittografate localmente con AES-256 e non vengono mai condivise con alcun server. Puoi attivare o disattivare la telemetria anonima in qualsiasi momento.",
+    "ja": "# LinkedIn ゲームソルバー\n\nLinkedIn Games 用のヘルパーです。デイリーパズル（Queens、数独、Pinpoint、Crossclimb）を自動解答し、連勝記録と分析を表示します。\n\n## なぜインストールするのか？\n* 連勝を絶やさない: 毎日の勢いをキープして、時間がない日やどんなに大変な日でも連勝記録を途切れさせないようにしましょう。\n* クイズとワードパズルを極める: Crossclimb や Pinpoint のようなゲームには、深い雑学知識と素早い連想力が求められます。内蔵 AI が高い精度でこれらを解きます。\n* ハイブリッド回答レジストリ: リモートの解答データベースを使って、API コストゼロで Crossclimb と Pinpoint を即座に解答できます。個人の AI キーは不要です。\n* ボーナスゲームを完全サポート: 標準のデイリーパズルだけでなく、ローカライズされたボーナスレベル（Queens、数独など）もシームレスに解けます。連勝は個別にトラッキングされ、ダッシュボードには専用の「Bonus」バッジが表示されます。\n* 完全にネイティブな統合: ソルバーのオーバーレイは、プレイ中のゲームタブ上に直接表示されます。ワンクリックで、解かれた盤面をそのまま画面上に確認できます。\n* 教育的ヒントモード: 自然なかたちでパズルの解き方を学べます。自動で全て埋めるのではなく、論理的な一手だけが提案され、誤りは画面上で赤くハイライトされてすぐに気付けます。\n* ステルス解答速度（ステルスモード）: 1〜3 秒のランダムで自然な待ち時間を入れることで、人間らしいクリック動作を再現し、デイリーストリークがボット検出フラグに引っかからないよう守ります。\n* 文脈対応ショートカット: ゲームカード上の右クリックメニューから、そのまま「未プレイにする」「自動解答」「ヒントを表示」などのオプションを利用できます。\n* Chromeのローカル内蔵AI: Google Chrome に組み込まれている Gemini Nano モデルと接続し、コストゼロ・完全ローカル・プライベートなパズル解答体験を実現します。\n* 美しい分析ダッシュボード: プレイ履歴、平均タイム、連勝記録、自己ベストを、モダンでプレミアムなカレンダーダッシュボードで確認・管理できます。\n* プライベートで安全: 完全にブラウザ内で動作します。API キーは AES-256 によってローカルで暗号化され、いかなるサーバーとも共有されません。匿名テレメトリは、いつでもオプトイン／オプトアウトできます。",
+    "kn": "# LinkedIn ಆಟಗಳ ಪರಿಹಾರಕ\n\nLinkedIn ಆಟಗಳಿಗಾಗಿ ಸಹಾಯಕ. ದಿನನಿತ್ಯದ পಝಲ್‌ಗಳನ್ನು (Queens, Sudoku, Pinpoint, Crossclimb) ಸ್ವಯಂಚಾಲিতವಾಗಿ ಪರಿಹರಿಸಿ, ಸ್ಟ್ರೀಕ್‌ಗಳು ಮತ್ತು ವಿಶ್ಲೇಷಣೆಯೊಂದಿಗೆ.\n\n## ಏಕೆ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಬೇಕು?\n* ಸ್ಟ್ರೀಕ್ ಅನ್ನು ಎಂದಿಗೂ ಕಳೆದುಕೊಳ್ಳಬೇಡಿ: ನಿಮ್ಮ ದೈನಂದಿನ ವೇಗವನ್ನು ಮುಂದುವರಿಸಿ ಮತ್ತು ಅತ್ಯಂತ ಕಷ್ಟದ ದಿನಗಳಲ್ಲಿಯೂ ಅಥವಾ ಸಮಯ ಕಡಿಮೆ ಇದ್ದಾಗಲೂ ನಿಮ್ಮ ಸ್ಟ್ರೀಕ್‌ನ್ನು ಸುರಕ್ಷಿತವಾಗಿಟ್ಟುಕೊಳ್ಳಿ.\n* ಟ್ರಿವಿಯಾ ಮತ್ತು ಪದ ಪಜಲ್‌ಗಳಲ್ಲಿ ನಿಪುಣರಾಗಿ: Crossclimb ಮತ್ತು Pinpoint போன்ற ಆಟಗಳಿಗೆ ಆಳವಾದ ಪ್ರಶ್ನೋತ್ತರ ಜ್ಞಾನ ಹಾಗೂ ವೇಗವಾದ ಸಂಬಂಧಿಸಲು ಸಾಧ್ಯವಾಗುವ ಸಾಮರ್ಥ್ಯ ಬೇಕಾಗುತ್ತದೆ. ಒಳನಿರ್ಮಿತ AI ಅವನ್ನು ಅತ್ಯಧಿಕ ನಿಖರತೆಯಿಂದ ಪರಿಹರಿಸುತ್ತದೆ.\n* ಹೈಬ್ರಿಡ್ ಉತ್ತರಗಳ ರಿಜಿಸ್ಟ್ರಿ: ನಮ್ಮ ರಿಮೋಟ್ ಉತ್ತರಗಳ ಡೇಟಾಬೇಸ್ ಬಳಸಿ ಯಾವುದೇ API ವೆಚ್ಚವಿಲ್ಲದೇ Crossclimb ಮತ್ತು Pinpoint ಅನ್ನು ತಕ್ಷಣವೇ ಪರಿಹರಿಸಿ; ಯಾವುದೇ ವೈಯಕ್ತಿಕ AI ಕೀಲಿಗಳು ಅಗತ್ಯವಿಲ್ಲ.\n* ಬೋನಸ್ ಆಟಗಳಿಗೆ ಸಂಪೂರ್ಣ ಬೆಂಬಲ: ಸ್ಟ್ಯಾಂಡರ್ಡ್ ದೈನಂದಿನ ಪಜಲ್‌ಗಳು ಮತ್ತು ಸ್ಥಳೀಯೀಕೃತ ಬೋನಸ್ ಲೆವೆಲ್‌ಗಳು (Queens, Sudoku ಇತ್ಯಾದಿ) ಎರಡನ್ನೂ ಯಾವುದೇ ಅಡಚಣೆ ಇಲ್ಲದೇ ಪರಿಹರಿಸಿ, ಸ್ವತಂತ್ರ ಸ್ಟ್ರೀಕ್ ಟ್ರಾಕಿಂಗ್ ಮತ್ತು ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಮೀಸಲಾದ \"Bonus\" ಬ್ಯಾಡ್ಜ್‌ನೊಂದಿಗೆ.\n* ಪೂರ್ಣವಾಗಿ ನೇಟಿವ್ ಏಕೀಕರಣ: ಸಾಲ್ವರ್ ಓವರ್‌ಲೇ ನೇರವಾಗಿ ನಿಮ್ಮ ಸಕ್ರಿಯ ಗೇಮ್ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ. ಒಂದೇ ಕ್ಲಿಕ್ಕಿನಲ್ಲಿ, ಪರದೆಯಲ್ಲೇ ಪರಿಹರಿಸಲಾದ ಬೋರ್ಡ್ ಅನ್ನು ನೀವು ಕಾಣಬಹುದು.\n* ಶೈಕ್ಷಣಿಕ ಹಿಂಟ್ ಮೋಡ್: ಪಜಲ್‌ಗಳನ್ನು ಸಹಜವಾಗಿ ಹೇಗೆ ಪರಿಹರಿಸಬೇಕು ಎಂಬುದನ್ನು ಕಲಿಯಿರಿ. ಸ್ವಯಂ‑ಪೂರ್ತಿಗೊಳಿಸುವುದರ ಬದಲು, ಒಂದೇ ತಾರ್ಕಿಕ ಚಲನೆಯ ಸಲಹೆಯನ್ನು ಪಡೆಯಿರಿ ಮತ್ತು ಪರದೆಯ ಮೇಲಿನ ಕೆಂಪು ಹೈಲೈಟ್‌ಗಳ ಮೂಲಕ ತಪ್ಪುಗಳನ್ನು ತಕ್ಷಣವೇ ಹಿಡಿಯಿರಿ.\n* ಸ್ಟೆಲ್ತ್ ಪರಿಹಾರ ವೇಗ (ಸ್ಟೆಲ್ತ್ ಮೋಡ್): 1–3 ಸೆಕೆಂಡ್‌ಗಳ ಅಸೆಮಿತ, ಸಹಜ ವಿರಾಮಗಳೊಂದಿಗೆ ಮಾನವೀಯ ಕ್ಲಿಕ್ ವರ್ತನೆಯನ್ನು ಅನುಕರಿಸಿ, ನಿಮ್ಮ ದೈನಂದಿನ ಸಾಲ್ವಿಂಗ್ ಸ್ಟ್ರೀಕ್ ಅನ್ನು ಬಾಟ್‑ಡಿಟೆಕ್ಷನ್ ಫ್ಲ್ಯಾಗ್‌ಗಳಿಂದ ರಕ್ಷಿಸಿ.\n* ಸಂದರ್ಭ-ಜಾಗೃತ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳು: ಗೇಮ್ ಕಾರ್ಡ್‌ಗಳಿಂದ ನೇರವಾಗಿ \"Mark as Not Played\", \"Solve\" ಅಥವಾ \"Get Hint\" ಹಕ್ಕು‑ಕ್ಲಿಕ್ ಕಾನ್ಟೆಕ್ಸ್ಟ್ ಮೆನು ಆಯ್ಕೆಗಳನ್ನು ಆನಂದಿಸಿ.\n* ಸ್ಥಳೀಯ Chrome ಅಂತರ್ನಿರ್ಮಿತ AI: ಶೂನ್ಯ ವೆಚ್ಚದ, ಸಂಪೂರ್ಣ ಸ್ಥಳೀಯ ಮತ್ತು ಖಾಸಗಿ ಪಜಲ್‑ಸಾಲ್ವಿಂಗ್ ಅನುಭವಕ್ಕಾಗಿ Google Chrome ನ ಒಳನಿರ್ಮಿತ Gemini Nano ಮಾದರಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.\n* ಸುಂದರ ಅನಲಿಟಿಕ್ಸ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್: ನಮ್ಮ ಪ್ರೀಮಿಯಂ, ಆಧುನಿಕ ಕ್ಯಾಲೆಂಡರ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಬಳಸಿ ನಿಮ್ಮ ಸಾಲ್ವಿಂಗ್ ಇತಿಹಾಸ, ಸರಾಸರಿ ಸಮಯಗಳು, ಸ್ಟ್ರೀಕ್‌ಗಳು ಮತ್ತು ವೈಯಕ್ತಿಕ ಅತ್ಯುತ್ತಮ ಫಲಿತಾಂಶಗಳನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ.\n* ಖಾಸಗಿ ಮತ್ತು ಸುರಕ್ಷಿತ: ಪೂರ್ಣವಾಗಿ ನಿಮ್ಮ ಬ್ರೌಸರ್‌ನಲ್ಲೇ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ. ನಿಮ್ಮ API ಕೀಗಳನ್ನು ಸ್ಥಳೀಯವಾಗಿ AES-256 ಬಳಸಿ ಎನ್ಕ್ರಿಪ್ಟ್ ಮಾಡಲಾಗುತ್ತದೆ ಮತ್ತು ಯಾವ ಸರ್ವರ್‌ನೊಂದಿಗೆ ಸಹ ಹಂಚಿಕೊಳ್ಳಲಾಗುವುದಿಲ್ಲ. ನೀವು ಯಾವಾಗ ಬೇಕಾದರೂ anonymous telemetry ಗೆ opt‑in ಅಥವಾ opt‑out ಮಾಡಬಹುದು.",
+    "ko": "# LinkedIn 게임 솔버\n\nLinkedIn 게임을 위한 도우미입니다. 일일 퍼즐(Queens, 스도쿠, Pinpoint, Crossclimb)을 자동으로 해결하고 연속 기록과 분석을 제공합니다.\n\n## 왜 설치해야 하나요?\n* 연승을 절대 놓치지 마세요: 가장 힘든 날이거나 시간이 부족할 때에도 매일의 흐름을 이어 가며 연속 기록을 안전하게 지키세요.\n* 상식 퀴즈와 단어 퍼즐을 마스터하세요: Crossclimb과 Pinpoint 같은 게임은 깊은 상식과 빠른 연상이 필요합니다. 내장된 AI가 높은 정확도로 이를 해결합니다.\n* 하이브리드 답변 레지스트리: 원격 정답 데이터베이스를 사용해 개인 AI 키 없이도 API 비용 0으로 Crossclimb과 Pinpoint를 즉시 해결하세요.\n* 보너스 게임 완전 지원: 표준 데일리 퍼즐과 현지화된 보너스 레벨(Queens, Sudoku 등)을 모두 자연스럽게 해결하고, 독립적인 연속 기록 추적과 전용 대시보드의 \"Bonus\" 배지도 제공합니다.\n* 완전한 네이티브 통합: 해결 오버레이가 활성 게임 탭에 바로 표시됩니다. 한 번만 클릭하면 해결된 보드를 화면에서 바로 확인할 수 있습니다.\n* 교육용 힌트 모드: 퍼즐을 자연스럽게 푸는 방법을 배워 보세요. 자동 완성 대신 한 번에 하나의 논리적인 수를 제안받고, 화면의 빨간 하이라이트로 실수를 즉시 확인하세요.\n* 스텔스 해결 속도 (스텔스 모드): 1–3초 사이의 무작위 자연 지연을 포함한 사람과 같은 클릭 동작을 모방하여, 데일리 연속 해결 기록이 봇 감지 플래그로부터 보호되도록 합니다.\n* 문맥 인식 단축키: \"플레이 안 함으로 표시\", \"풀기\", \"힌트 받기\"와 같은 오른쪽 클릭 컨텍스트 메뉴 옵션을 게임 카드에서 바로 이용하세요.\n* 로컬 Chrome 내장 AI: Google Chrome의 내장 Gemini Nano 모델을 연결하여 비용 0의 완전 로컬·개인 퍼즐 풀이 환경을 제공받으세요.\n* 아름다운 분석 대시보드: 프리미엄 현대식 캘린더 대시보드로 해결 기록, 평균 시간, 연속 기록, 개인 최고 기록을 추적하세요.\n* 개인적이고 안전함: 완전히 브라우저 안에서만 실행됩니다. API 키는 AES-256으로 로컬에서 암호화되며 어떤 서버와도 공유되지 않습니다. 익명 텔레메트리는 언제든지 옵트인 또는 옵트아웃할 수 있습니다.",
+    "lt": "# „LinkedIn“ žaidimų sprendiklis\n\nPagalbininkas „LinkedIn Games“. Automatiškai sprendžia kasdienius galvosūkius (Queens, Sudoku, Pinpoint, Crossclimb), stebi serijas ir pateikia analitiką.\n\n## Kodėl įdiegti?\n* Niekada nepraraskite serijos: Išlaikykite kasdienį pagreitį ir išsaugokite savo seriją net sunkiausiomis dienomis ar kai trūksta laiko.\n* Įvaldykite viktorinas ir žodžių galvosūkius: Žaidimai, tokie kaip Crossclimb ir Pinpoint, reikalauja gilių žinių ir greitų asociacijų. Įdiegtas dirbtinis intelektas juos išsprendžia labai tiksliai.\n* Hibridinis atsakymų registras: Akimirksniu išspręskite Crossclimb ir Pinpoint be jokios API kainos naudodami mūsų nuotolinę atsakymų duomenų bazę – asmeniniai AI raktai nereikalingi.\n* Visas papildomų žaidimų palaikymas: Sklandžiai spręskite tiek standartinius kasdienius galvosūkius, tiek lokalizuotus bonusinius lygius (Queens, Sudoku ir kt.) su atskiru serijos sekimu ir specialiu „Bonus“ ženkleliu valdymo skydelyje.\n* Visiškai natūrali integracija: Sprendimo perdanga pasirodo tiesiai jūsų aktyvioje žaidimo kortelėje. Vienas paspaudimas – ir matote išspręstą lentą ekrane.\n* Mokomasis užuominų režimas: Išmokite natūraliai spręsti galvosūkius. Vietoj automatinio užpildymo gaukite vieną logišką ėjimo pasiūlymą ir akimirksniu pastebėkite klaidas dėl raudonų paryškinimų ekrane.\n* Slapto sprendimo greitis („Stealth“ režimas): Imituokite žmogaus paspaudimų elgseną su atsitiktiniais, natūraliais delsos intervalais (1–3 sekundės), kad apsaugotumėte savo kasdienę seriją nuo botų aptikimo žymų.\n* Kontekstą suvokiantys spartieji klavišai: Naudokitės dešinio pelės mygtuko kontekstinio meniu parinktimis, tokiomis kaip „Žymėti kaip nežaista“, „Išspręsti“ ar „Gauti patarimą“, tiesiai iš žaidimų kortelių.\n* Vietinis „Chrome“ integruotas DI: Prijunkite įdiegtą Google Chrome Gemini Nano modelį ir mėgaukitės visiškai vietiniu, privačiu bei be jokių kaštų galvosūkių sprendimu.\n* Graži analizės valdymo panelė: Sekite savo sprendimo istoriją, vidutinius laikus, serijas ir asmeninius rekordus mūsų moderniame, aukščiausios kokybės kalendoriaus skydelyje.\n* Privatu ir saugu: Veikia visiškai jūsų naršyklėje. Jūsų API raktai lokaliai šifruojami naudojant AES-256 ir niekada nebendrinami su jokiu serveriu. Bet kada galite sutikti ar atsisakyti anoniminės telemetrijos.",
+    "lv": "# LinkedIn spēļu risinātājs\n\nPalīgs LinkedIn Games spēlēm. Automātiski atrisina ikdienas mīklas (Queens, Sudoku, Pinpoint, Crossclimb), sekojot sērijām un analītikai.\n\n## Kāpēc instalēt?\n* Nekad nezaudē sēriju: Uzturiet savu ikdienas tempu un saglabājiet uzvaru sēriju pat visgrūtākajās dienās vai kad trūkst laika.\n* Apgūstiet viktorīnas un vārdu mīklas: Tādām spēlēm kā Crossclimb un Pinpoint ir nepieciešamas plašas zināšanas un ātras asociācijas. Iebūvētais mākslīgais intelekts tās atrisina ar augstu precizitāti.\n* Hibrīds atbilžu reģistrs: Atribiniet Crossclimb un Pinpoint uzreiz bez jebkādām API izmaksām, izmantojot mūsu tālo atbilžu datubāzi – personīgie AI atslēgas nav nepieciešamas.\n* Pilns bonusa spēļu atbalsts: Plūdeni atrisiniet gan standarta ikdienas mīklas, gan lokalizētus bonusu līmeņus (Queens, Sudoku u.c.) ar neatkarīgu sērijas izsekošanu un īpašu \"Bonus\" nozīmīti informācijas panelī.\n* Pilnīgi vietēja integrācija: Risinājuma pārklājums parādās tieši jūsu aktīvajā spēles cilnē. Viens klikšķis – un jūs redzat atrisināto dēli uz ekrāna.\n* Izglītojošs padomu režīms: Apgūstiet, kā dabiskā veidā risināt mīklas. Tā vietā, lai viss tiktu aizpildīts automātiski, saņemiet vienu loģisku gājienu kā ieteikumu un uzreiz pamaniet kļūdas ar sarkaniem iezīmējumiem uz ekrāna.\n* Slepenas risināšanas ātrums (Stealth režīms): Imitējiet cilvēka klikšķu uzvedību ar nejaušām, dabiskām aizturēm (1–3 sekundes), lai pasargātu savu ikdienas sēriju no bota noteikšanas karogiem.\n* Kontekstu apzinoši saīsnes taustiņi: Izmantojiet labo peles taustiņu konteksta izvēlni ar tādām opcijām kā \"Atzīmēt kā nespēlētu\", \"Atrisināt\" vai \"Saņemt padomu\" tieši no spēļu kartītēm.\n* Lokālais Chrome iebūvētais MI: Pieslēdziet Google Chrome iebūvēto Gemini Nano modeli, lai iegūtu pilnīgi vietēju, privātu un bezmaksas mīklu risināšanas pieredzi.\n* Skaists analītikas vadības panelis: Izsekojiet savu risinājumu vēsturi, vidējos laikus, sērijas un personīgos rekordus mūsu mūsdienīgajā, augstākās klases kalendāra informācijas panelī.\n* Privāts un drošs: Darbojas pilnībā jūsu pārlūkā. Jūsu API atslēgas tiek lokāli šifrētas, izmantojot AES-256, un nekad netiek kopīgotas ar nevienu serveri. Jebkurā laikā varat piekrist vai atteikties no anonīmās telemetrijas.",
+    "ml": "# LinkedIn ഗെയിംസ് സോൾവർ\n\nLinkedIn Games നുള്ള ഒരു ഹെൽപ്പർ. ദിവസേനയുള്ള പസിലുകൾ (Queens, Sudoku, Pinpoint, Crossclimb) സ്വയം പരിഹരിക്കുക, സ്റ്റ്രീക്കുകളും വിശകലനവും സഹിതം.\n\n## എന്തിന് ഇൻസ്റ്റാൾ ചെയ്യണം?\n* സ്റ്റ്രീക്ക് ഒരിക്കലും നഷ്ടപ്പെടരുത്: ഏറ്റവും പ്രയാസകരമായ ദിവസങ്ങളിലും സമയം കുറവായിരിക്കുമ്പോഴും നിങ്ങളുടെ പ്രതിദിന ഗതി തുടരുകയും സ്റ്റ്രീക്ക് സുരക്ഷിതമായി നിലനിർത്തുകയും ചെയ്യൂ.\n* ട്രിവിയയും വാക്ക് പസിലുകളും കൈവശപ്പെടുത്തുക: Crossclimb, Pinpoint പോലുള്ള ഗെയിമുകൾക്ക് ആഴത്തിലുള്ള ട്രിവിയ അറിവും വേഗത്തിലുള്ള ബന്ധിപ്പിക്കലും ആവശ്യമാണ്. ഉൾനിറഞ്ഞ AI ഇവയെ ഉയർന്ന കൃത്യതയിൽ പരിഹരിക്കുന്നു.\n* ഹൈബ്രിഡ് ഉത്തരങ്ങളുടെ രജിസ്റ്റർ: ഞങ്ങളുടെ റിമോട്ട് ആൻസേഴ്സ് ഡേറ്റാബേസ് ഉപയോഗിച്ച്, യാതൊരു API ചിലവുമില്ലാതെ, വ്യക്തിഗത AI കീകളില്ലാതെ തന്നെ Crossclimb, Pinpoint എന്നിവ തൽക്ഷണം പരിഹരിക്കൂ.\n* ബോണസ് ഗെയിമുകൾക്ക് പൂർണ്ണ പിന്തുണ: സ്റ്റാൻഡേർഡ് ഡെയിലി പസിലുകളും ലൊക്കലൈസ്ഡ് ബോണസ് ലെവലുകളും (Queens, Sudoku മുതലായവ) മിനുസാമയമായി പരിഹരിച്ച്, സ്വതന്ത്ര സ്റ്റ്രീക്ക് ട്രാക്കിംഗും പ്രത്യേക \"Bonus\" ഡാഷ്ബോർഡ് ബാഡ്ജും നേടൂ.\n* പൂർണ്ണമായും നേറ്റീവ് ഇന്റഗ്രേഷൻ: സോൾവർ ഓവർലെ നിങ്ങളുടെ ആക്ടീവ് ഗെയിം ടാബിൽ നേരിട്ട് പ്രത്യക്ഷപ്പെടും. ഒരു ക്ലിക്ക് മതി – പരിഹരിച്ച ബോർഡ് സ്ക്രീനിൽ തന്നെ കാണാം.\n* വിദ്യാഭ്യാസപരമായ ഹിന്റ് മോഡ്: പ്രകൃതിസഹജമായി പസിലുകൾ എങ്ങനെ പരിഹരിക്കാമെന്ന് പഠിക്കൂ. ഓട്ടോ-കമ്പ്ലീറ്റ് ചെയ്യുന്നതിന് പകരം, ഓരോ ഘട്ടവും ഒരു ലോജിക്കൽ മൂവ് നിർദ്ദേശമായി ലഭിക്കും, സ്ക്രീനിലുള്ള ചുവപ്പ് ഹൈലൈറ്റുകളിലൂടെ പിശകുകൾ ഉടനെ പിടികൂടാം.\n* സ്റ്റെൽത്ത് പരിഹാര വേഗം (സ്റ്റെൽത്ത് മോഡ്): 1–3 സെക്കന്റ് വരെയുള്ള റാൻഡം, സ്വാഭാവിക വൈകലുകൾ ഉൾപ്പെടുത്തി മനുഷ്യരുടെ ക്ലിക്ക് പെരുമാറ്റം അനുകരിച്ച്, ബോട്ട് ഡിറ്റക്ഷൻ ഫ്ലാഗുകളിൽ നിന്ന് നിങ്ങളുടെ ഡെയിലി സ്റ്റ്രീക്കിനെ സംരക്ഷിക്കൂ.\n* സന്ദർഭ-ബോധമുള്ള ഷോർട്ട്കട്ടുകൾ: \"Mark as Not Played\", \"Solve\", \"Get Hint\" പോലുള്ള റൈറ്റ്-ക്ലിക്ക് കോൺടെക്സ്റ്റ് മെനു ഓപ്ഷനുകൾ ഗെയിം കാർഡുകളിൽ നിന്ന് നേരിട്ട് ഉപയോഗിക്കൂ.\n* ലോകൽ Chrome ബിൽറ്റ്-ഇൻ AI: Google Chrome-ന്റെ ഇൻബിൽറ്റ് Gemini Nano മോഡൽ കണക്റ്റ് ചെയ്ത്, മുഴുവൻ ലോക്കലായ, സ്വകാര്യമായ, ചിലവില്ലാത്ത പസിൽ-സോൾവിംഗ് അനുഭവം നേടൂ.\n* സുന്ദരമായ അനലിറ്റിക്സ് ഡാഷ്ബോർഡ്: നിങ്ങളുടെ പരിഹാര ചരിത്രം, ശരാശരി സമയം, സ്റ്റ്രീക്കുകൾ, വ്യക്തിഗത മികച്ച പ്രകടനങ്ങൾ എന്നിവ ഞങ്ങളുടെ പ്രീമിയം, ആധുനിക കാലണ്ടർ ഡാഷ്ബോർഡിൽ ട്രാക്ക് ചെയ്യൂ.\n* സ്വകാര്യവും സുരക്ഷിതവും: മുഴുവനായും നിങ്ങളുടെ ബ്രൗസറിൽ തന്നെ പ്രവർത്തിക്കുന്നു. നിങ്ങളുടെ API കീകൾ AES-256 ഉപയോഗിച്ച് ലോക്കലായി എൻക്രിപ്റ്റ് ചെയ്യപ്പെടുകയും ഒരിക്കലും ഏതെങ്കിലും സർവറുമായി പങ്കിടപ്പെടുകയുമില്ല. അനോണിമസ് ടെലിമെട്രിക്ക് നിങ്ങൾക്ക് ഏത് സമയത്തും ഓപ്റ്റ്-ഇൻ ചെയ്യുകയോ ഓപ്റ്റ്-ഔട്ട് ചെയ്യുകയോ ചെയ്യാം.",
+    "mr": "# LinkedIn गेम्स सॉल्वर\n\nLinkedIn Games साठी एक सहाय्यक. दररोजचे पझल्स (Queens, Sudoku, Pinpoint, Crossclimb) आपोआप सोडवा, स्ट्रीक आणि अॅनालिटिक्ससह.\n\n## इंस्टॉल का करावे?\n* तुमची स्ट्रीक कधीही गमावू नका: तुमचा दैनंदिन वेग टिकवा आणि अगदी कठीण दिवसांमध्ये किंवा वेळ कमी असताना देखील तुमची स्ट्रीक सुरक्षित ठेवा.\n* ट्रिव्हिया आणि शब्दकोडींवर प्रभुत्व मिळवा: Crossclimb आणि Pinpoint सारख्या खेळांसाठी सखोल माहिती आणि झटपट संबंध जोडण्याची क्षमता लागते. अंगभूत AI हे खेळ अत्यंत अचूकतेने सोडवते.\n* हायब्रिड उत्तरांची नोंदणी: आमच्या रिमोट answers डेटाबेसच्या मदतीने, कोणताही API खर्च न होता आणि वैयक्तिक AI कळांचा वापर न करता Crossclimb आणि Pinpoint क्षणार्धात सोडवा.\n* बोनस गेम्ससाठी पूर्ण समर्थन: स्टँडर्ड डेली पझल्स आणि स्थानिक बोनस लेव्हल्स (Queens, Sudoku इ.) दोन्ही सहजतेने सोडवा, स्वतंत्र स्ट्रीक ट्रॅकिंग आणि डॅशबोर्डवरील समर्पित \"Bonus\" बॅजसह.\n* पूर्णपणे नेटिव्ह एकत्रीकरण: सोल्व्हर ओव्हरले थेट तुमच्या अॅक्टिव्ह गेम टॅबवर दिसते. एका क्लिकवर तुम्हाला सोडवलेला बोर्ड स्क्रीनवरच दिसतो.\n* शैक्षणिक हिंट मोड: पझल्स नैसर्गिकरीत्या कसे सोडवायचे ते शिका. ऑटो-कम्प्लीट करण्याऐवजी, एक वेळेस एक तर्कशुद्ध चाल सुचवली जाते आणि स्क्रीनवरील लाल हायलाइट्समुळे चुका लगेच पकडता येतात.\n* स्टेल्थ सॉल्व स्पीड (स्टेल्थ मोड): १–३ सेकंदांच्या यादृच्छिक, नैसर्गिक विलंबासह मानवी क्लिक वर्तनाची नक्कल करा, त्यामुळे तुमची दैनंदिन स्ट्रीक बॉट-डिटेक्शन फ्लॅग्सपासून सुरक्षित राहते.\n* संदर्भ-जाणणारे शॉर्टकट्स: \"Mark as Not Played\", \"Solve\" किंवा \"Get Hint\" सारखे right-click कॉन्टेक्स्ट मेनू पर्याय थेट गेम कार्ड्सवरून वापरा.\n* स्थानिक Chrome बिल्ट-इन AI: Google Chrome मधील अंगभूत Gemini Nano मॉडेल जोडा आणि पूर्णपणे स्थानिक, खाजगी आणि पूर्णपणे विनाखर्च पझल-सोल्व्हिंग अनुभव मिळवा.\n* सुंदर अ‍ॅनालिटिक्स डॅशबोर्ड: तुमचा सोडवण्याचा इतिहास, सरासरी वेळ, स्ट्रीक्स आणि वैयक्तिक सर्वोत्तम रेकॉर्ड आमच्या आधुनिक, प्रीमियम कॅलेंडर डॅशबोर्डद्वारे ट्रॅक करा.\n* खाजगी आणि सुरक्षित: संपूर्ण विस्तार तुमच्या ब्राउझरमध्येच चालतो. तुमचे API keys स्थानिक पातळीवर AES-256 वापरून एनक्रिप्ट केले जातात आणि कधीही कोणत्याही सर्व्हरसह शेअर केले जात नाहीत. अनामिक टेलिमेट्रीसाठी तुम्ही कधीही opt-in किंवा opt-out करू शकता.",
+    "ms": "# Penyelesai Permainan LinkedIn\n\nPembantu untuk LinkedIn Games. Menyelesaikan teka-teki harian secara automatik (Queens, Sudoku, Pinpoint, Crossclimb) dengan rekod streak dan analitik.\n\n## Mengapa pasang?\n* Jangan sekali-kali hilangkan streak: Kekalkan momentum harian anda dan pastikan streak anda terpelihara walaupun pada hari paling sukar atau ketika anda kekurangan masa.\n* Kuasi trivia dan teka-teki kata: Permainan seperti Crossclimb dan Pinpoint memerlukan pengetahuan trivia yang mendalam dan keupayaan mengait dengan pantas. AI terbina dalam menyelesaikannya dengan ketepatan yang tinggi.\n* Daftar jawapan hibrid: Selesaikan Crossclimb dan Pinpoint serta-merta tanpa sebarang kos API menggunakan pangkalan data jawapan jauh kami, tanpa memerlukan kunci AI peribadi.\n* Sokongan penuh untuk permainan bonus: Selesaikan kedua-dua teka-teki harian standard dan tahap bonus berlokal (Queens, Sudoku dan lain-lain) dengan lancar, dengan penjejakan streak yang berasingan dan lencana \"Bonus\" khusus pada papan pemuka.\n* Integrasi asli sepenuhnya: Lapisan penyelesai muncul terus pada tab permainan aktif anda. Satu klik, dan anda akan melihat papan yang telah diselesaikan terus pada skrin.\n* Mod petunjuk pendidikan: Pelajari cara menyelesaikan teka-teki secara semula jadi. Daripada melengkapkan secara automatik, dapatkan satu gerakan logik yang disyorkan, dan kesan kesilapan serta-merta dengan sorotan merah pada skrin.\n* Kelajuan penyelesaian tersembunyi (Mod Stealth): Tiru tingkah laku klik manusia dengan sela rawak dan semula jadi (1–3 saat) untuk melindungi streak penyelesaian harian anda daripada penandaan pengesanan bot.\n* Pintasan yang sedar konteks: Nikmati pilihan menu konteks klik kanan seperti \"Mark as Not Played\", \"Solve\" atau \"Get Hint\" terus daripada kad permainan.\n* AI terbina dalam Chrome tempatan: Sambungkan model Gemini Nano terbina dalam Google Chrome untuk pengalaman menyelesaikan teka-teki yang sepenuhnya setempat, peribadi dan tanpa kos.\n* Papan pemuka analitik yang cantik: Jejaki sejarah penyelesaian anda, masa purata, streak dan rekod peribadi dengan papan pemuka kalendar premium dan moden kami.\n* Peribadi & selamat: Berjalan sepenuhnya dalam pelayar anda. Kunci API anda disulitkan secara setempat menggunakan AES-256 dan tidak pernah dikongsi dengan mana-mana pelayan. Anda boleh memilih untuk mengaktifkan atau menyahaktifkan telemetri tanpa nama pada bila-bila masa.",
+    "nl": "# LinkedIn Games-oplosser\n\nEen hulpje voor LinkedIn Games. Los dagelijkse puzzels (Queens, Sudoku, Pinpoint, Crossclimb) automatisch op, met reeksen en analytics.\n\n## Waarom installeren?\n* Verlies nooit een streak: Houd je dagelijkse momentum vast en behoud je streak, zelfs op de zwaarste dagen of wanneer je weinig tijd hebt.\n* Beheers trivia- en woordpuzzels: Spellen zoals Crossclimb en Pinpoint vragen om diepe trivia-kennis en snelle associatie. De ingebouwde AI lost ze op met hoge nauwkeurigheid.\n* Hybride antwoordenregister: Los Crossclimb en Pinpoint direct op zonder API-kosten met onze externe antwoorden­database, helemaal zonder persoonlijke AI-sleutels.\n* Volledige ondersteuning voor bonusspellen: Los zowel standaard dagelijkse puzzels als gelokaliseerde bonuslevels (Queens, Sudoku, enz.) naadloos op, met onafhankelijke streak-tracking en een speciale \"Bonus\"-badge in het dashboard.\n* Volledig native integratie: De solver-overlay verschijnt direct op je actieve speltabblad. Eén klik en je ziet het opgeloste bord meteen op het scherm.\n* Educatieve hintmodus: Leer puzzels op een natuurlijke manier oplossen. In plaats van automatisch in te vullen krijg je één logische zet als suggestie en zie je fouten direct met rode markeringen op het scherm.\n* Stealth-oplossnelheid (Stealth-modus): Imiteer menselijk klikgedrag met willekeurige, natuurlijke vertragingen (1–3 seconden) om je dagelijkse streak te beschermen tegen botdetectie-flags.\n* Contextbewuste sneltoetsen: Gebruik het rechtermuisknop-contextmenu met opties zoals \"Markeren als niet gespeeld\", \"Oplossen\" of \"Hint aanvragen\" direct vanaf de spelkaarten.\n* Lokale ingebouwde AI van Chrome: Verbind het ingebouwde Gemini Nano-model van Google Chrome voor een kosteloze, volledig lokale en privé puzzeloplossingservaring.\n* Mooi analysetabblad: Volg je oplosgeschiedenis, gemiddelde tijden, streaks en persoonlijke records met ons moderne, premium kalenderdashboard.\n* Privé en veilig: Draait volledig in je browser. Je API-sleutels worden lokaal versleuteld met AES-256 en nooit met een server gedeeld. Je kunt anonieme telemetrie op elk moment in- of uitschakelen.",
+    "no": "# LinkedIn Games-løser\n\nEn hjelper for LinkedIn Games. Løs dagens puslespill automatisk (Queens, Sudoku, Pinpoint, Crossclimb) med rekker og analyser.\n\n## Hvorfor installere?\n* Mist aldri en streak: Hold det daglige momentumet oppe og sikre streaken din selv på de tøffeste dagene eller når du har dårlig tid.\n* Mestre trivia og ordpuslespill: Spill som Crossclimb og Pinpoint krever dyp trivia­kunnskap og raske assosiasjoner. Den innebygde AI-en løser dem med høy nøyaktighet.\n* Hybidt svarregister: Løs Crossclimb og Pinpoint umiddelbart uten noen API-kostnad ved å bruke vår eksterne svar­database – ingen personlige AI-nøkler er nødvendig.\n* Full støtte for bonusspill: Løs både vanlige daglige oppgaver og lokaliserte bonusnivåer (Queens, Sudoku osv.) sømløst, med uavhengig streak-sporing og et eget \"Bonus\"-merke i dashbordet.\n* Helt innebygd integrasjon: Løsnings­overlegget vises direkte i den aktive spillfanen din. Ett klikk, så ser du det løste brettet rett på skjermen.\n* Læringsorientert hintmodus: Lær å løse oppgaver på en naturlig måte. I stedet for auto­fullføring får du ett logisk trekk foreslått, og oppdager feil umiddelbart med røde markeringer på skjermen.\n* Stealth-løsningshastighet (Stealth-modus): Etterlign menneskelig klikk­atferd med tilfeldige, naturlige forsinkelser (1–3 sekunder) for å beskytte den daglige streaken din mot bot-deteksjonsflagg.\n* Kontekstbevisste snarveier: Bruk høyreklikk-kontekstmeny med valg som \"Merk som ikke spilt\", \"Løs\" eller \"Få hint\" direkte fra spillkortene.\n* Lokal innebygd AI i Chrome: Koble til Google Chrome sitt innebygde Gemini Nano-modell for en kostnadsfri, helt lokal og privat oppgave­løsningsopplevelse.\n* Vakkert analysepanel: Følg med på løsnings­historikken din, gjennomsnittstidene, streaks og personlige rekorder med vårt moderne premium kalender­dashbord.\n* Privat og sikker: Kjører helt og holdent i nettleseren din. API-nøklene dine krypteres lokalt med AES-256 og deles aldri med noen server. Du kan når som helst slå anonym telemetri av eller på.",
+    "pl": "# Solver gier LinkedIn\n\nPomocnik do LinkedIn Games. Automatycznie rozwiązuj codzienne łamigłówki (Queens, Sudoku, Pinpoint, Crossclimb) z seriami i analizami.\n\n## Dlaczego zainstalować?\n* Nigdy nie trać serii: Utrzymuj codzienny rozpęd i chroń swoją serię nawet w najtrudniejsze dni lub wtedy, gdy brakuje Ci czasu.\n* Opanuj ciekawostki i łamigłówki słowne: Gry takie jak Crossclimb i Pinpoint wymagają rozległej wiedzy i szybkiego kojarzenia. Wbudowana sztuczna inteligencja rozwiązuje je z wysoką dokładnością.\n* Hybrydowy rejestr odpowiedzi: Rozwiązuj Crossclimb i Pinpoint natychmiast, bez żadnych kosztów API, korzystając z naszej zdalnej bazy odpowiedzi – bez konieczności używania własnych kluczy AI.\n* Pełna obsługa gier bonusowych: Płynnie rozwiązuj zarówno standardowe codzienne łamigłówki, jak i zlokalizowane poziomy bonusowe (Queens, Sudoku itd.), z niezależnym śledzeniem serii i specjalną odznaką „Bonus” w panelu.\n* Całkowicie natywna integracja: Nakładka solvera pojawia się bezpośrednio na Twojej aktywnej karcie z grą. Jeden klik i widzisz rozwiązany układ prosto na ekranie.\n* Edukacyjny tryb podpowiedzi: Naucz się naturalnie rozwiązywać łamigłówki. Zamiast automatycznego uzupełniania otrzymujesz propozycję pojedynczego logicznego ruchu, a błędy natychmiast wychwycisz dzięki czerwonym podświetleniom na ekranie.\n* Szybkość cichego rozwiązywania (tryb Stealth): Emuluj ludzkie klikanie za pomocą losowych, naturalnych opóźnień (1–3 sekundy), aby chronić swoją codzienną serię przed flagami wykrywania botów.\n* Skróty uwzględniające kontekst: Korzystaj z opcji menu kontekstowego pod prawym przyciskiem, takich jak „Oznacz jako niegrane”, „Rozwiąż” czy „Podpowiedź”, bezpośrednio z kart gry.\n* Lokalna wbudowana AI Chrome: Połącz się z wbudowanym w Google Chrome modelem Gemini Nano, aby cieszyć się całkowicie lokalnym, prywatnym i bezkosztowym rozwiązywaniem łamigłówek.\n* Piękny pulpit analityczny: Śledź swoją historię rozwiązywania, średnie czasy, serie i rekordy osobiste w naszym nowoczesnym, premium panelu kalendarzowym.\n* Prywatne i bezpieczne: Działa całkowicie w Twojej przeglądarce. Twoje klucze API są lokalnie szyfrowane przy użyciu AES-256 i nigdy nie są udostępniane żadnemu serwerowi. Możesz w każdej chwili włączyć lub wyłączyć anonimową telemetrię.",
+    "pt_BR": "# Solucionador de Jogos do LinkedIn\n\nUm ajudante para LinkedIn Games. Resolve quebra-cabeças diários (Queens, Sudoku, Pinpoint, Crossclimb) com sequências e análises.\n\n## Por que instalar?\n* Nunca perca sua sequência: Mantenha seu ritmo diário e garanta sua sequência de vitórias mesmo nos dias mais difíceis ou quando estiver sem tempo.\n* Domine jogos de conhecimentos gerais e palavras: Jogos como Crossclimb e Pinpoint exigem conhecimentos profundos e associações rápidas. A IA integrada resolve-os com alta precisão.\n* Registro de Respostas Híbrido: Resolva Crossclimb e Pinpoint instantaneamente com custo zero de API usando nosso banco de dados remoto de respostas, sem necessidade de chaves de IA pessoais.\n* Suporte Total a Jogos de Bônus: Resolva facilmente os quebra-cabeças diários padrão e as fases de bônus especiais (Queens, Sudoku, etc.) com rastreamento de sequência independente e um selo \"Bônus\" exclusivo no painel.\n* Integração totalmente nativa: A sobreposição do solucionador aparece diretamente na aba ativa do jogo. Com um clique, você vê o tabuleiro resolvido na tela.\n* Modo de dica educativo (Hint Mode): Aprenda a resolver os quebra-cabeças naturalmente. Em vez de preencher tudo automaticamente, receba sugestões de movimentos lógicos únicos e identifique erros instantaneamente com destaques vermelhos na tela.\n* Velocidade de resolução furtiva (Stealth Mode): Emule o comportamento de cliques humanos com atrasos aleatórios e naturais (1 a 3 segundos) para proteger sua sequência de resolução diária de detecções de bots.\n* Atalhos Contextuais Úteis: Aproveite as opções do menu de clique com botão direito, como \"Marcar como não jogado\", \"Resolver\" ou \"Obter dica\" diretamente nos cartões de jogo.\n* IA Integrada do Google Chrome: Conecte o modelo Gemini Nano local integrado do Google Chrome para uma experiência de resolução de desafios totalmente local, gratuita e privada.\n* Painel analítico moderno: Acompanhe seu histórico de resoluções, tempos médios, sequências e recordes pessoais com nosso painel moderno e interativo.\n* Privado e seguro: Funciona totalmente no seu navegador. Suas chaves de API são criptografadas localmente usando AES-256 e nunca são compartilhadas. Ative ou desactive a telemetria anônima quando quiser.",
+    "pt_PT": "# Solucionador de Jogos do LinkedIn\n\nUm ajudante para LinkedIn Games. Resolve quebra-cabeças diários (Queens, Sudoku, Pinpoint, Crossclimb) com sequências e análises.\n\n## Por que instalar?\n* Nunca perca sua sequência: Mantenha seu ritmo diário e garanta sua sequência de vitórias mesmo nos dias mais difíceis ou quando estiver sem tempo.\n* Domine jogos de conhecimentos gerais e palavras: Jogos como Crossclimb e Pinpoint exigem conhecimentos profundos e associações rápidas. A IA integrada resolve-os com alta precisão.\n* Registro de Respostas Híbrido: Resolva Crossclimb e Pinpoint instantaneamente com custo zero de API usando o nosso banco de dados remoto de respostas, sem necessidade de chaves de IA pessoais.\n* Suporte Total a Jogos de Bónus: Resolva facilmente os quebra-cabeças diários padrão e as fases de bónus especiais (Queens, Sudoku, etc.) com rastreio de sequência independente e um selo \"Bónus\" exclusivo no painel.\n* Integração totalmente nativa: A sobreposição do solucionador aparece diretamente na aba ativa do jogo. Com um clique, você vê o tabuleiro resolvido na tela.\n* Modo de dica educativo (Hint Mode): Aprenda a resolver os quebra-cabeças naturalmente. Em vez de preencher tudo automaticamente, receba sugestões de movimentos lógicos únicos e identifique erros instantaneamente com destaques vermelhos no ecrã.\n* Velocidade de resolução furtiva (Stealth Mode): Emule o comportamento de cliques humanos com atrasos aleatórios e naturais (1 a 3 segundos) para proteger a sua sequência de resolução diária de deteções de bots.\n* Atalhos Contextuais Úteis: Aproveite as opções do menu de clique com botão direito, como \"Marcar como não jogado\", \"Resolver\" ou \"Obter dica\" diretamente nos cartões de jogo.\n* IA Integrada do Google Chrome: Conecte o modelo Gemini Nano local integrado do Google Chrome para uma experiência de resolução de desafios totalmente local, gratuita e privada.\n* Painel analítico moderno: Acompanhe o seu histórico de resoluções, tempos médios, sequências e recordes pessoais com o nosso painel moderno e interativo.\n* Privado e seguro: Funciona totalmente no seu navegador. As suas chaves de API são encriptadas localmente usando AES-256 e nunca são partilhadas. Ative ou desative a telemetria anónima quando quiser.",
+    "ro": "# Solver pentru LinkedIn Games\n\nUn ajutor pentru LinkedIn Games. Rezolvă automat puzzle-urile zilnice (Queens, Sudoku, Pinpoint, Crossclimb) cu serii și analitice.\n\n## De ce să instalezi?\n* Nu pierde niciodată o serie: Păstrează-ți ritmul zilnic și asigură-ți seria chiar și în cele mai grele zile sau atunci când ești în criză de timp.\n* Stăpânește trivia și puzzle-urile de cuvinte: Jocuri precum Crossclimb și Pinpoint cer cunoștințe ample de trivia și asocieri rapide. AI-ul integrat le rezolvă cu acuratețe ridicată.\n* Registru hibrid de răspunsuri: Rezolvă Crossclimb și Pinpoint instantaneu, fără niciun cost de API, folosind baza noastră de date de răspunsuri la distanță, fără chei AI personale.\n* Suport complet pentru jocurile bonus: Rezolvă fluent atât puzzle-urile zilnice standard, cât și nivelurile bonus localizate (Queens, Sudoku etc.), cu urmărirea separată a seriei și o insignă dedicată „Bonus” în panoul de control.\n* Integrare complet nativă: Suprapunerea solverului apare direct în fila de joc activă. Un singur clic și vezi tabla rezolvată chiar pe ecran.\n* Mod educativ de indicii: Învață să rezolvi puzzle-uri în mod natural. În loc de completare automată, primești o singură mutare logică sugerată și depistezi instant erorile datorită evidențierilor roșii de pe ecran.\n* Viteză de rezolvare stealth (mod Stealth): Emulează comportamentul de clic uman cu întârzieri aleatorii și naturale (1–3 secunde) pentru a-ți proteja seria zilnică de rezolvare de semnalele de detectare a roboților.\n* Scurtături conștiente de context: Folosește opțiunile din meniul contextual la clic dreapta, precum „Marchează ca nejucat”, „Rezolvă” sau „Primește indiciu”, direct din cardurile de joc.\n* AI local încorporat în Chrome: Conectează modelul Gemini Nano încorporat în Google Chrome pentru o experiență de rezolvare a puzzle-urilor complet locală, privată și fără costuri.\n* Tablou de bord analitic frumos: Urmărește istoricul rezolvărilor, timpii medii, seriile și recordurile personale cu panoul nostru modern, premium, de tip calendar.\n* Privat și sigur: Rulează complet în browserul tău. Cheile tale API sunt criptate local folosind AES-256 și nu sunt partajate niciodată cu vreun server. Poți să optezi oricând pentru activarea sau dezactivarea telemetriei anonime.",
+    "ru": "# Решатель игр LinkedIn\n\nПомощник для LinkedIn Games. Автоматически решает ежедневные головоломки (Queens, Sudoku, Pinpoint, Crossclimb) с сериями и аналитикой.\n\n## Зачем устанавливать?\n* Никогда не теряйте серию: Сохраняйте ежедневный темп и не прерывайте свою серию даже в самые сложные дни или когда у вас мало времени.\n* Освойте викторины и словесные головоломки: Игры вроде Crossclimb и Pinpoint требуют глубоких знаний и быстрых ассоциаций. Встроенный ИИ решает их с высокой точностью.\n* Гибридный реестр ответов: Мгновенно решайте Crossclimb и Pinpoint без каких‑либо затрат на API, используя нашу удалённую базу ответов — личные AI‑ключи не нужны.\n* Полная поддержка бонусных игр: Легко решайте как стандартные ежедневные головоломки, так и локализованные бонусные уровни (Queens, Sudoku и др.) с отдельным учётом серии и специальным бейджем «Bonus» в панели.\n* Полностью нативная интеграция: Окно решателя появляется прямо на активной вкладке с игрой. Один клик — и вы видите решённое поле прямо на экране.\n* Обучающий режим подсказок: Научитесь естественно решать головоломки. Вместо автозаполнения получайте подсказку в виде одного логического хода и сразу замечайте ошибки по красным выделениям на экране.\n* Скорость скрытого решения (режим Stealth): Имитируйте поведение реальных кликов с помощью случайных, естественных задержек (1–3 секунды), чтобы защитить свою ежедневную серию от срабатывания систем обнаружения ботов.\n* Контекстно-зависимые ярлыки: Используйте пункты контекстного меню по правому клику, такие как «Отметить как не сыгранную», «Решить» или «Подсказка», прямо с карточек игр.\n* Локальный встроенный ИИ Chrome: Подключите встроенную в Google Chrome модель Gemini Nano, чтобы бесплатно, локально и конфиденциально решать головоломки.\n* Красивый аналитический дашборд: Отслеживайте историю решений, среднее время, серии и личные рекорды в нашей современной, премиальной календарной панели.\n* Конфиденциально и безопасно: Расширение полностью работает в вашем браузере. Ваши API‑ключи локально шифруются с помощью AES‑256 и никогда не передаются ни одному серверу. Вы можете в любой момент включить или отключить анонимную телеметрию.",
+    "sk": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "sl": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "sr": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "sv": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "sw": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "ta": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "te": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "th": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "tr": "# LinkedIn Oyun Çözücü\n\nLinkedIn Oyunları için bir yardımcı. Günlük bulmacaları otomatik çöz (Queens, Sudoku, Pinpoint, Crossclimb) ile seriler ve analizler.\n\n## Neden Yüklemelisiniz?\n* Serinizi Asla Kaybetmeyin: En zor günlerde veya zamanınız kısıtlı olduğunda bile günlük serinizi güvence altına alın.\n* Bilgi Yarışması ve Kelime Bulmacalarında Ustalaşın: Crossclimb ve Pinpoint gibi oyunlar derin bilgi birikimi ve hızlı çağrışım gerektirir. Dahili yapay zeka bunları yüksek doğrulukla çözer.\n* Hibrit Cevap Kayıt Defteri: Kişisel yapay zeka API anahtarlarına gerek kalmadan, uzak cevap veritabanımız sayesinde Crossclimb ve Pinpoint bulmacalarını sıfır API maliyetiyle anında çözün.\n* Tam Bonus Oyun Desteği: Hem standart günlük bulmacaları hem de özel bonus seviyelerini (Queens, Sudoku vb.) bağımsız seri takibi ve takvim panelindeki özel \"Bonus\" rozetiyle sorunsuz bir şekilde çözün.\n* Doğal Entegrasyon: Çözücü arayüzü doğrudan aktif oyun sekmenizde belirir. Tek bir tıklama ile çözülmüş panoyu ekranda görürsünüz.\n* Eğitici İpucu Modu (Hint Mode): Panoyu otomatik olarak çözmek yerine, bir sonraki mantıklı hamleyi ipucu olarak alın ve yaptığınız hataları ekranda kırmızı vurgularla anında keşfederek oyunu kendi başınıza öğrenin.\n* İnsansı Gizli Mod (Stealth Mode): Otomatik bot algılama korumalarını atlatmak için tıklamalar arasına insansı ve rastgele zamanlanmış gecikmeler (1-3 saniye) ekleyin.\n* Bağlama Duyarlı Kısayollar: Oyun kartlarına sağ tıklayarak doğrudan \"Oynanmadı Olarak İşaretle\", \"Çöz\" veya \"İpucu Al\" gibi seçeneklere hızla erişin.\n* Yerleşik Chrome Yapay Zekası: Tamamen ücretsiz, yerel ve gizli bir bulmaca çözme deneyimi için Google Chrome'un yerleşik Gemini Nano modelini bağlayın.\n* Harika Analiz Paneli: Premium, modern takvim panelimizle çözme geçmişinizi, ortalama sürelerinizi, serilerinizi ve kişisel en iyilerinizi takip edin.\n* Gizli ve Güvenli: Tamamen tarayıcınızda çalışır. API anahtarlarınız AES-256 ile yerel olarak şifrelenir ve asla harici sunucularla paylaşılmaz. İstediğiniz zaman anonim telemetriyi açıp kapatabilirsiniz.",
+    "uk": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "vi": "# LinkedIn Games Solver\n\nA helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.\n\n## Why Install It?\n* Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.\n* Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.\n* Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.\n* Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard \"Bonus\" badge.\n* Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.\n* Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.\n* Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.\n* Context-Aware Shortcuts: Enjoy right-click context menu options like \"Mark as Not Played\", \"Solve\", or \"Get Hint\" directly from game cards.\n* Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.\n* Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.\n* Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.",
+    "zh_CN": "# LinkedIn 游戏求解器\n\nLinkedIn 游戏的帮手。自动求解每日谜题（Queens，Sudoku，Pinpoint，Crossclimb），提供连胜纪录和数据分析。\n\n## 为什么选择安装？\n* 保持您的每日连胜: 确保您的每日连胜记录，即使在最繁忙或谜题最难的日子里也绝不中断。\n* 轻松应对常识与单词挑战: 像 Crossclimb 和 Pinpoint 这类游戏需要深厚的常识储备和敏捷的联想能力。内置的人工智能能够以极高的准确度完美解答。\n* 混合型答案数据库: 无需配置个人 AI API 密钥，即可使用我们的远程答案库瞬间且免 API 成本地解开 Crossclimb 和 Pinpoint 游戏。\n* 完美支持 Bonus 附加赛: 无缝求解标准每日谜题与特殊的本地化 Bonus 关卡（Queens、Sudoku 等），并提供独立的连胜统计与专属的\"Bonus\"日历数据徽章。\n* 原生无缝集成: 求解器悬浮窗直接显示在您的游戏标签页上。只需轻轻一点，解出的答案就会呈现在屏幕中。\n* 寓教于乐的提示模式 (Hint Mode): 帮助您自然地掌握解题技巧。它不会一键自动填满所有空格，而是为您指出下一步最合理的逻辑走法，并通过屏幕上的红色高亮瞬间纠错。\n* 隐形防检测求解速度 (Stealth Mode): 模拟真实的真人点击操作行为，并在点击间加入随机、自然的延迟（1-3秒），有效保护您的每日连胜战绩免遭机器人检测。\n* 上下文快捷操作: 在游戏卡片上右键点击，即可直接\"标记为未玩\"、\"一键求解\"或\"获取提示\"。\n* 谷歌 Chrome 内置 AI: 可无缝连接 Chrome 浏览器内置的 Gemini Nano 本地模型，体验完全免费、100%本地与隐私安全的求解功能。\n* 精美的数据看板: 通过现代化的日历数据面板，追踪您的求解历史、平均时间、连胜纪录以及个人最佳成绩。\n* 隐私与安全保护: 完全在您的本地浏览器中运行。您的 API 密钥在本地使用 AES-256 加密存储，绝对不会上传。您可以随时选择开启或关闭遥测。",
+    "zh_TW": "# LinkedIn 遊戲助手\n\nLinkedIn 遊戲的幫手。自動求解每日謎題（Queens，Sudoku，Pinpoint，Crossclimb），提供連勝紀錄和數據分析。\n\n## 說明：為什麼選擇安裝？\n* 保持您的每日連勝: 確保您的每日連勝記錄，即使在最繁忙或謎題最難的日子里也絕不中斷。\n* 輕鬆應對常識與單字挑戰: 像 Crossclimb 與 Pinpoint 這類遊戲需要深厚的常識儲備和敏捷的聯想能力。內置的人工智慧能夠以極高的準確度完美解答。\n* 混合型答案資料庫: 無需配置個人 AI API 金鑰，即可使用遠端答案庫瞬間且免 API 成本地解開 Crossclimb 和 Pinpoint 遊戲。\n* 完美支援 Bonus 附加賽: 無縫求解標準每日謎題與特殊的在地化 Bonus 關卡（Queens、Sudoku 等），並提供獨立的連勝統計與專屬的「Bonus」月曆數據徽章。\n* 原生無縫整合: 求解器懸浮窗直接顯示在您的遊戲標籤頁上。只需輕輕一點，解出的答案就會呈現螢幕中。\n* 寓教於樂的提示模式 (Hint Mode): 幫助您自然地掌握解題技巧。它不會一鍵自動填滿所有空格，而是為您指出下一步最合理的邏輯走法，並透過螢幕上的紅色高亮瞬間糾正您的錯誤。\n* 隱形防檢測求解速度 (Stealth Mode): 模擬真實的真人點擊操作行为，並在點擊間加入隨機、自然的延遲（1-3秒），有效保護您的每日連勝戰績免遭機器人檢測。\n* 上下文快捷操作: 在遊戲卡片上右鍵點擊，即可直接「標記為未玩」、「一鍵求解」或「獲取提示」。\n* 谷歌 Chrome 內置 AI: 可無縫連接 Chrome 瀏覽器內置的 Gemini Nano 本地模型，體驗完全免费、100%本地與隱私安全的求解功能。\n* 精美數據看板: 透過現代化的日曆數據面板，追蹤您的求解歷史、平均時間、連勝紀錄以及個人最佳成績。\n* 隱私與安全保護: 完全在您的本地瀏覽器中運行。您的 API 金鑰安全保存在本地儲存中，絕對不會被上傳或分享給任何第三方。"
+  }
+}

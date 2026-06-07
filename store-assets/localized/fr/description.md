@@ -1,6 +1,6 @@
 # Résolveur de Jeux LinkedIn
 
-Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidiennes sur LinkedIn. Il analyse et résout instantanément vos plateaux de jeux préférés directement sur la page. Grâce à des modèles d'IA locaux et cloud avancés (tels que Google Gemini, OpenAI et Anthropic), combinés à un registre de réponses à distance ultra-rapide, il résout les questionnaires complexes et les associations de mots en un clin d'œil.
+Un assistant pour les jeux LinkedIn.
 
 ## Pourquoi l'installer ?
 
@@ -18,4 +18,4 @@ Résolveur de Jeux LinkedIn est le compagnon ultime pour vos énigmes quotidienn
 
 ---
 
-_Clause de Non-Responsabilité : Il s'agit d'un projet éducatif indépendant et open-source. Il n'est pas affilié, sponsorisé ou approuvé par LinkedIn Corporation. 'LinkedIn' est une marque déposée de LinkedIn Corporation._
+_Clause de Non-Responsabilité : Il s'agit d'un projet éducatif indépendant et open-source. Il n'est pas affilié, sponsorisé ou approuvé par LinkedIn Corporation. 'LinkedIn' ést une marque déposée de LinkedIn Corporation._

@@ -1,6 +1,6 @@
 # Solucionador de Jogos do LinkedIn
 
-Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desafios diários no LinkedIn. Ele analisa e resolve instantaneamente seus jogos favoritos diretamente na página. Alimentado por modelos avançados de IA locais e na nuvem (como Google Gemini, OpenAI e Anthropic), combinados com um Registro de Respostas Remoto ultra-rápido, resolve testes complexos e associações de palavras em um piscar de olhos.
+Um ajudante para LinkedIn Games. Resolve quebra-cabeças diários (Queens, Sudoku, Pinpoint, Crossclimb) com sequências e análises.
 
 ## Por que instalar?
 
@@ -18,4 +18,4 @@ Solucionador de Jogos do LinkedIn é o companheiro definitivo para os seus desaf
 
 ---
 
-_Aviso Legal: Este é um projeto educacional de código aberto independente. Não é afiliado, patrocinado ou endossado pela LinkedIn Corporation. 'LinkedIn' é uma marca registrada da LinkedIn Corporation._
+_Aviso de responsabilidade: Este é um projeto educacional independente e de código aberto. Não é afiliado, patrocinado ou endossado pela LinkedIn Corporation. 'LinkedIn' é uma marca registrada da LinkedIn Corporation._

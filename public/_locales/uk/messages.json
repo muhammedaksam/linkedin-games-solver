@@ -1,0 +1,645 @@
+{
+  "extensionName": {
+    "message": "Розв’язувач ігор LinkedIn",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Помічник для LinkedIn Games. Автоматично розв’язує щоденні головоломки (Queens, Sudoku, Pinpoint, Crossclimb) з серіями та аналітикою.",
+    "description": "The description of the extension."
+  },
+  "subtitle": {
+    "message": "Розв’язуйте активні дошки одним кліком",
+    "description": "Header subtitle of the popup"
+  },
+  "errorChromeTabIntegration": {
+    "message": "Потрібна інтеграція з вкладкою Chrome.",
+    "description": "Error shown if not running in extension context"
+  },
+  "errorActiveTabNotFound": {
+    "message": "Активну вкладку не знайдено.",
+    "description": "Error shown if tab is not found"
+  },
+  "errorNavigationFailed": {
+    "message": "Не вдалося перейти до $1.",
+    "description": "Error shown if tab switching fails"
+  },
+  "errorConnectionFailed": {
+    "message": "Не вдалося підключитися.",
+    "description": "Error shown if content script is unresponsive"
+  },
+  "errorExecutionFailedDefault": {
+    "message": "Під час запуску розв'язувача сталася проблема.",
+    "description": "Fallback solver error"
+  },
+  "successSolverStarted": {
+    "message": "Розв'язувач запущено.",
+    "description": "Toast message for successful solve start"
+  },
+  "dashboardTitle": {
+    "message": "Історія та статистика",
+    "description": "Header title of the solver dashboard"
+  },
+  "dashboardSubtitle": {
+    "message": "Ваша історія та статистика рішень LinkedIn Games",
+    "description": "Header subtitle of the solver dashboard"
+  },
+  "statTotalSolved": {
+    "message": "Всього вирішено",
+    "description": "Label for the total solved games card"
+  },
+  "statTotalSolvedDesc": {
+    "message": "Ігри, вирішені на всі дати",
+    "description": "Description for the total solved games card"
+  },
+  "statAverageTime": {
+    "message": "Середній час",
+    "description": "Label for the average solve time card"
+  },
+  "statAverageTimeDesc": {
+    "message": "За всіма зареєстрованими завершеннями",
+    "description": "Description for the average solve time card"
+  },
+  "statActiveStreak": {
+    "message": "Активна серія",
+    "description": "Label for the active streak card"
+  },
+  "statActiveStreakDesc": {
+    "message": "Підряд активні дні",
+    "description": "Description for the active streak card"
+  },
+  "dashboardDescText": {
+    "message": "Аналізуйте свої показники ефективності, фіксуйте серії та відстежуйте шлях щодня розв’язаних головоломок.",
+    "description": "Sub-header description on statistics dashboard"
+  },
+  "disclaimerText": {
+    "message": "Відмова від відповідальності: Це незалежний, освітній проєкт з відкритим кодом. Він не пов’язаний, не спонсорується та не схвалений компанією LinkedIn Corporation. «LinkedIn» є зареєстрованою торговельною маркою компанії LinkedIn Corporation.",
+    "description": "Compliance footer disclaimer text"
+  },
+  "title": {
+    "message": "Ігри LinkedIn"
+  },
+  "switchThemeTitle": {
+    "message": "Переключитися в режим $1"
+  },
+  "solvingStatus": {
+    "message": "Розв'язання..."
+  },
+  "sudoku": {
+    "message": "Sudoku"
+  },
+  "tango": {
+    "message": "Tango"
+  },
+  "queens": {
+    "message": "Queens"
+  },
+  "zip": {
+    "message": "Zip"
+  },
+  "patches": {
+    "message": "Patches"
+  },
+  "crossclimb": {
+    "message": "Crossclimb"
+  },
+  "pinpoint": {
+    "message": "Pinpoint"
+  },
+  "bonus": {
+    "message": "Бонус"
+  },
+  "desc_patches": {
+    "message": "Зберіть це разом"
+  },
+  "desc_zip": {
+    "message": "Завершіть шлях"
+  },
+  "desc_sudoku": {
+    "message": "Класична гра, зроблена в міні-форматі"
+  },
+  "desc_tango": {
+    "message": "Гармонізуйте мережу"
+  },
+  "desc_queens": {
+    "message": "Коронуйте кожен регіон"
+  },
+  "desc_crossclimb": {
+    "message": "Відкрийте вікторину сходів"
+  },
+  "desc_pinpoint": {
+    "message": "Вгадай категорію"
+  },
+  "titleSolve": {
+    "message": "Розв'яжіть $1"
+  },
+  "titleCompleted": {
+    "message": "Завершено сьогодні! Натисніть, щоб перейти до $1"
+  },
+  "titleOpen": {
+    "message": "Відкрийте $1, щоб вирішити"
+  },
+  "perfectDay": {
+    "message": "Ідеальний день! Усі ігри $1 завершені! 🎉"
+  },
+  "dailyProgress": {
+    "message": "Щоденний прогрес: $1 з $2 ігор завершено сьогодні"
+  },
+  "statStreakDays": {
+    "message": "$1 днів"
+  },
+  "personalBests": {
+    "message": "Особисті досягнення"
+  },
+  "noRecordsYet": {
+    "message": "Ще не зафіксовано жодних записів розв'язків."
+  },
+  "solvingHistory": {
+    "message": "Розв'язання історії"
+  },
+  "activityCalendar": {
+    "message": "Календар активностей"
+  },
+  "clearFilter": {
+    "message": "Очистити фільтр"
+  },
+  "settingModel": {
+    "message": "Модель"
+  },
+  "settingModelSelect": {
+    "message": "Вибрати модель"
+  },
+  "settingModelCustomOption": {
+    "message": "Ім'я користувацької моделі..."
+  },
+  "settingModelCustomLabel": {
+    "message": "Ім'я користувацької моделі"
+  },
+  "settingModelCustomPlaceholderLocal": {
+    "message": "наприклад, llama3, mistral"
+  },
+  "settingModelCustomPlaceholderOther": {
+    "message": "Введіть власний ідентифікатор..."
+  },
+  "settingEndpointLabel": {
+    "message": "URL кінцевої точки"
+  },
+  "settingEndpointPlaceholder": {
+    "message": "наприклад http://localhost:11434/v1"
+  },
+  "settingApiKeyGemini": {
+    "message": "Ключ API Gemini"
+  },
+  "settingApiKeyOpenAI": {
+    "message": "Ключ API OpenAI"
+  },
+  "settingApiKeyAnthropic": {
+    "message": "Ключ API Anthropic"
+  },
+  "settingApiKeyDeepSeek": {
+    "message": "Ключ API DeepSeek"
+  },
+  "settingApiKeyCustom": {
+    "message": "Ключ API (необов'язково)"
+  },
+  "settingApiKeyPlaceholderCustom": {
+    "message": "Додаткові облікові дані..."
+  },
+  "settingApiKeyPlaceholderDefault": {
+    "message": "Введіть ключ облікових даних..."
+  },
+  "settingApiKeyNotice": {
+    "message": "Вибрана модель вирішує Crossclimb та Pinpoint. Розширення ніколи не ділиться вашим ключем."
+  },
+  "popupCardTitle": {
+    "message": "Підключайтеся через веселі щоденні ігри"
+  },
+  "popupCardDesc": {
+    "message": "Підготуйте свій розум до робочого дня та порівняйте результати. Ваші бали є конфіденційними, якщо ви їх не поділите."
+  },
+  "saveAndBack": {
+    "message": "Зберегти та повернутися до ігор"
+  },
+  "solvingWorking": {
+    "message": "AI Розв'язувач працює..."
+  },
+  "completedToday": {
+    "message": "Завершено сьогодні"
+  },
+  "solvedCountSuffix": {
+    "message": "Вирішено"
+  },
+  "settingsHeaderTitle": {
+    "message": "Конфігурація моделі ШІ"
+  },
+  "labelAiProvider": {
+    "message": "Постачальник ШІ"
+  },
+  "labelModelIdentifier": {
+    "message": "МОДЕЛЬ ІДЕНТИФІКАТОР"
+  },
+  "labelCustomModel": {
+    "message": "ІНДИВІДУАЛЬНА НАЗВА МОДЕЛІ"
+  },
+  "labelEndpointUrl": {
+    "message": "URL кінцевої точки"
+  },
+  "labelGeminiKey": {
+    "message": "КЛЮЧ API GEMINI"
+  },
+  "labelOpenAiKey": {
+    "message": "КЛЮЧ API OPENAI"
+  },
+  "labelAnthropicKey": {
+    "message": "АНТРОПІЧНИЙ КЛЮЧ API"
+  },
+  "labelDeepSeekKey": {
+    "message": "КЛЮЧ API DEEPSEEK"
+  },
+  "labelCustomKey": {
+    "message": "КЛЮЧ API (НЕ ОБОВ'ЯЗКОВИЙ)"
+  },
+  "navHome": {
+    "message": "Дім"
+  },
+  "navAiConfig": {
+    "message": "Налаштування / Опції"
+  },
+  "navStats": {
+    "message": "Статистика"
+  },
+  "navTheme": {
+    "message": "Тема"
+  },
+  "navDebug": {
+    "message": "Виправлення помилок"
+  },
+  "dailyProgressLabel": {
+    "message": "Щоденний прогрес"
+  },
+  "solveActiveBoard": {
+    "message": "Розв'язати активну дошку"
+  },
+  "backToGames": {
+    "message": "Повернутися до ігор LinkedIn"
+  },
+  "dashboardLabel": {
+    "message": "Панель управління"
+  },
+  "gamesSolverTitle": {
+    "message": "Розв'язувач ігор"
+  },
+  "completedSuccessfully": {
+    "message": "Успішно завершено"
+  },
+  "settingsCredentialsTitle": {
+    "message": "Облікові дані та моделі"
+  },
+  "settingsModelGuideTitle": {
+    "message": "Посібник та інформація про модель"
+  },
+  "settingsConnectionStatusTitle": {
+    "message": "Статус з'єднання"
+  },
+  "settingsActiveSolverLabel": {
+    "message": "Активний розв'язувач:"
+  },
+  "settingsModelIdentifierLabel": {
+    "message": "Ідентифікатор моделі:"
+  },
+  "settingsAutoSavedNotification": {
+    "message": "Налаштування автоматично збережено!"
+  },
+  "settingsSubtitleDesc": {
+    "message": "Налаштуйте кінцеві точки інтеграції моделей ШІ та облікові дані для розширеного розв'язання головоломок."
+  },
+  "settingsGeminiGuideDesc": {
+    "message": "Видатна продуктивність при майже нульових витратах. Вирішує Crossclimb і Pinpoint з відмінною логікою. Рекомендуване за замовчуванням: gemini-2.5-flash."
+  },
+  "settingsOpenaiGuideDesc": {
+    "message": "Швидкий, чутливий та надзвичайно надійний з загальними знаннями. Рекомендується за замовчуванням: gpt-4o-mini."
+  },
+  "settingsAnthropicGuideDesc": {
+    "message": "Максимальна здатність до міркування. Бездоганно справляється з дуже складними асоціаціями слів. Рекомендоване значення за замовчуванням: claude-3-5-haiku."
+  },
+  "settingsCustomGuideDesc": {
+    "message": "Підключіться до локальних LLM фреймворків, таких як Ollama або LM Studio. Вкажіть URL-адресу вашої точки доступу (наприклад, http://localhost:11434/v1) та ім'я користувацької моделі."
+  },
+  "showMoreDates": {
+    "message": "Показати більше дат"
+  },
+  "showLessDates": {
+    "message": "Показати менше"
+  },
+  "solveBtn_withAi": {
+    "message": "Розв'язати за допомогою ШІ"
+  },
+  "solveBtn_game": {
+    "message": "Розв'язати гру"
+  },
+  "solveBtn_solving": {
+    "message": "Розв'язання..."
+  },
+  "solveBtn_solved": {
+    "message": "Вирішено!"
+  },
+  "scoreClue": {
+    "message": "1 підказка"
+  },
+  "scoreClues": {
+    "message": "$1 підказки"
+  },
+  "scoreSeconds": {
+    "message": "$1s"
+  },
+  "scoreMinutesSeconds": {
+    "message": "$1м $2с"
+  },
+  "markAsNotPlayed": {
+    "message": "Позначити як Не зіграно"
+  },
+  "settingSolveSpeed": {
+    "message": "Швидкість вирішення / Затримка"
+  },
+  "solveSpeed_instant": {
+    "message": "Миттєвий (Найшвидший)"
+  },
+  "solveSpeed_normal": {
+    "message": "Нормальний (Стандартний)"
+  },
+  "solveSpeed_stealth": {
+    "message": "Режим прихованості (людські затримки)"
+  },
+  "labelSolveSpeed": {
+    "message": "РІШЕННЯ ШВИДКОСТІ ТА РИТМУ"
+  },
+  "settingSolveSpeedNotice": {
+    "message": "Миттєвий режим завершує дошку за мілісекунди. Режим прихованості імітує людську поведінку з випадковим темпом (1–3 секунди), щоб захистити серії від автоматизованого виявлення."
+  },
+  "solveBtn_hint": {
+    "message": "Отримати підказку"
+  },
+  "settingDefaultSolveMode": {
+    "message": "Дія за замовчуванням для розв'язувача"
+  },
+  "solveMode_full": {
+    "message": "Повне автоматичне вирішення"
+  },
+  "solveMode_hint": {
+    "message": "Режим навчальних підказок"
+  },
+  "labelDefaultSolveMode": {
+    "message": "РЕЖИМ РОЗВ'ЯЗУВАЧА ЗА ЗАМОВЧУВАННЯМ"
+  },
+  "settingDefaultSolveModeNotice": {
+    "message": "Виберіть основну дію при активації розв'язувача з перегляду вкладок або дошок. Повне розв'язання завершує гру; Режим підказки розміщує один правильний елемент."
+  },
+  "settingsChromeBuiltInGuideTitle": {
+    "message": "Нульова вартість та повністю локальний ШІ"
+  },
+  "settingsChromeBuiltInGuideDesc": {
+    "message": "Працює повністю локально на вашому пристрої в браузері. Нульова затримка мережі та 100% безкоштовно з Gemini Nano."
+  },
+  "debugHeaderTitle": {
+    "message": "Інструменти налагодження і розробки ігор"
+  },
+  "debugStatusOffline": {
+    "message": "Офлайн"
+  },
+  "debugStatusLive": {
+    "message": "Жити"
+  },
+  "debugDetectedGame": {
+    "message": "Виявлена гра"
+  },
+  "debugNoneDetected": {
+    "message": "Не виявлено"
+  },
+  "debugTargetUrl": {
+    "message": "Цільовий URL"
+  },
+  "debugNoActiveTab": {
+    "message": "Немає активної вкладки"
+  },
+  "debugHtmlCopied": {
+    "message": "HTML скопійовано!"
+  },
+  "debugCopyHtml": {
+    "message": "Скопіювати <main> HTML"
+  },
+  "debugLogsCopied": {
+    "message": "Журнали скопійовані!"
+  },
+  "debugCopyLogs": {
+    "message": "Скопіювати журнали консолі"
+  },
+  "debugBothCopied": {
+    "message": "Обидва скопійовані!"
+  },
+  "debugCopyBoth": {
+    "message": "Скопіювати обидва (HTML та журнали)"
+  },
+  "debugRegistryCopied": {
+    "message": "Реєстр JSON скопійовано!"
+  },
+  "debugCopyRegistry": {
+    "message": "Скопіювати JSON реєстру сьогодні"
+  },
+  "debugCopyRegistryShort": {
+    "message": "Скопіювати JSON"
+  },
+  "debugSubmitAnswer": {
+    "message": "Надіслати відповідь"
+  },
+  "debugDomPreview": {
+    "message": "Попередній перегляд елемента DOM"
+  },
+  "debugHtmlTruncated": {
+    "message": "\n\n[... [урізано, загальна кількість символів: $1] ... ]"
+  },
+  "debugCopyCompleteHtmlTooltip": {
+    "message": "Копіювати повний <main> HTML"
+  },
+  "debugNoMainTagCaptured": {
+    "message": "Не захоплено жодного активного тегу <main>. Переконайтеся, що ви на екрані гри LinkedIn."
+  },
+  "debugConsoleOutput": {
+    "message": "Вивід консолі"
+  },
+  "debugEventsCount": {
+    "message": "$1 події"
+  },
+  "debugRefreshLogsTooltip": {
+    "message": "Оновити журнали"
+  },
+  "debugClearLogsTooltip": {
+    "message": "Очистити журнали"
+  },
+  "debugNoLogsCaptured": {
+    "message": "Ще не зафіксовано жодних журналів. Виконайте дії на екрані гри, щоб викликати події консолі."
+  },
+  "debugListeningEvents": {
+    "message": "Слухання подій console.log, console.warn та console.error..."
+  },
+  "debugErrorInitializing": {
+    "message": "З'єднання зі сторінкою гри LinkedIn ініціалізується..."
+  },
+  "debugErrorRetrieveFailed": {
+    "message": "Неможливо отримати дані гри."
+  },
+  "debugErrorNotGamesPage": {
+    "message": "Активна вкладка не є сторінкою ігор LinkedIn. Перейдіть до гри, щоб зафіксувати деталі."
+  },
+  "debugErrorNoActiveTab": {
+    "message": "Не вдалося визначити активну вкладку."
+  },
+  "labelDailyReminders": {
+    "message": "ЩОДЕННІ НАГАДУВАННЯ ТА ЗАХИСТ СЕРІЇ"
+  },
+  "settingEnableReminders": {
+    "message": "Увімкнути щоденні нагадування"
+  },
+  "settingEnableRemindersDesc": {
+    "message": "Попередь мене, перш ніж сьогоднішня серія закінчиться."
+  },
+  "settingReminderTime": {
+    "message": "Нагадування часу"
+  },
+  "settingReminderTimeNotice": {
+    "message": "Виберіть місцевий час, щоб перевірити нерозв'язані ігри."
+  },
+  "notificationTitle": {
+    "message": "Захисник смуг 🚀"
+  },
+  "notificationMessage": {
+    "message": "Не втрачайте свою серію розв'язків! Ви ще не розв'язали сьогоднішні ігри LinkedIn."
+  },
+  "notificationButton": {
+    "message": "Розв'яжіть зараз!"
+  },
+  "commandSolveActiveGame": {
+    "message": "Автоматично вирішуйте активну гру в LinkedIn."
+  },
+  "commandGetSingleHint": {
+    "message": "Надайте підказку в один крок або перевірте на помилки."
+  },
+  "settingAutoOpenSidepanel": {
+    "message": "Автоматичне відкриття бокової панелі в іграх"
+  },
+  "settingAutoOpenSidepanelDesc": {
+    "message": "Автоматично відкривати бокову панель розв'язувача при відвідуванні LinkedIn Games."
+  },
+  "labelAutoOpenSidepanel": {
+    "message": "АВТОМАТИЧНЕ ВІДКРИТТЯ БОКОВОЇ ПАНЕЛІ РОЗВ'ЯЗУВАЧА"
+  },
+  "permissionDialogTitle": {
+    "message": "Надати доступ до сторінки"
+  },
+  "permissionDialogDesc": {
+    "message": "Щоб виявити активні ігрові дошки та розв'язати головоломки, розширенню потрібен дозвіл на роботу в LinkedIn Games. Натисніть нижче, щоб надати доступ."
+  },
+  "permissionDialogButton": {
+    "message": "Надати доступ"
+  },
+  "omniboxSuggestionQueens": {
+    "message": "👑 Грайте та розв'язуйте \"Королев\" сьогодні!"
+  },
+  "omniboxSuggestionSudoku": {
+    "message": "🔢 Відкрити міні-Судоку Розв'язувач"
+  },
+  "omniboxSuggestionStats": {
+    "message": "📊 Відкрийте панель стрибків та продуктивності"
+  },
+  "diagnosticsEngine": {
+    "message": "Діагностичний двигун"
+  },
+  "liveInspected": {
+    "message": "Живий огляд"
+  },
+  "offline": {
+    "message": "Офлайн"
+  },
+  "inspectedTab": {
+    "message": "Перевірена вкладка:"
+  },
+  "liveMatrixGridInspector": {
+    "message": "Живий інспектор матриці сітки"
+  },
+  "waitingForLinkedInGamePage": {
+    "message": "Очікування сторінки гри LinkedIn"
+  },
+  "waitingForLinkedInGamePageDesc": {
+    "message": "Перейдіть до будь-якої вкладки ігрової дошки LinkedIn (Королеви, Судоку, Танго, Точне визначення), щоб зафіксувати координати обмежень, стани клітинок та реактивні структури."
+  },
+  "telemetryLogsStreamer": {
+    "message": "Телеметричні журнали стрімера"
+  },
+  "searchLogsPlaceholder": {
+    "message": "Шукайте журнали..."
+  },
+  "allTypes": {
+    "message": "УСІ ТИПИ"
+  },
+  "logsType": {
+    "message": "ДОКУМЕНТИ"
+  },
+  "infoType": {
+    "message": "ІНФО"
+  },
+  "warnsType": {
+    "message": "ПОПЕРЕДЖАЄ"
+  },
+  "errorsType": {
+    "message": "ПОМИЛКИ"
+  },
+  "selectTypePlaceholder": {
+    "message": "Виберіть тип"
+  },
+  "consoleStreamEmpty": {
+    "message": "Консольний потік порожній"
+  },
+  "consoleStreamEmptyDesc": {
+    "message": "Не виявлено жодних виходів журналу, що відповідають фільтрам. Запустіть кроки в інтерфейсі вирішення ігор LinkedIn, щоб транслювати дії журналу сюди."
+  },
+  "subscribedToStorageSession": {
+    "message": "Підписано на потік storage.session"
+  },
+  "parsingGameGridCells": {
+    "message": "Парсинг клітин ігрового поля... Переконайтеся, що на дошці видимі активні блоки сітки."
+  },
+  "urlLabel": {
+    "message": "URL:"
+  },
+  "notAvailable": {
+    "message": "Н/Д"
+  },
+  "matchesLabel": {
+    "message": "сірники"
+  },
+  "copiedLabel": {
+    "message": "Скопійовано!"
+  },
+  "copyLogsTooltip": {
+    "message": "Копіювати журнали"
+  },
+  "clearLogSpaceTooltip": {
+    "message": "Очистити простір журналу"
+  },
+  "contextMenuSolve": {
+    "message": "⚡ Розв'яжіть активну гру LinkedIn"
+  },
+  "contextMenuHint": {
+    "message": "💡 Отримати підказку"
+  },
+  "contextMenuViewResults": {
+    "message": "📊 Переглянути результати"
+  },
+  "labelTelemetryTitle": {
+    "message": "ТЕЛЕМЕТРІЯ І ПРИВАТНІСТЬ"
+  },
+  "telemetryToggleLabel": {
+    "message": "Надіслати анонімну телеметрію"
+  },
+  "telemetryToggleDesc": {
+    "message": "Допоможіть покращити розв'язувач, поділившись анонімними показниками продуктивності та використання."
+  }
+}

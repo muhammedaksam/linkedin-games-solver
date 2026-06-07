@@ -44,7 +44,12 @@ import { cn } from "~lib/utils"
 
 import "~tabs/dashboard.css"
 
-import { getMessage, locale } from "~lib/i18n"
+import {
+  getActiveLocale,
+  getLocaleDirection,
+  getMessage,
+  locale
+} from "~lib/i18n"
 
 import { LanguageSwitcher } from "../components/LanguageSwitcher"
 
@@ -397,9 +402,12 @@ export default function Dashboard() {
     return solvedDates.includes(dateStr)
   }
 
-  // Dynamically set document title on mount
+  // Dynamically set document title and direction on mount
   useEffect(() => {
     document.title = `${getMessage("dashboardTitle")} | LinkedIn Games Solver`
+    const activeLoc = getActiveLocale()
+    document.documentElement.dir = getLocaleDirection(activeLoc)
+    document.documentElement.lang = activeLoc
   }, [])
 
   // Class toggle
@@ -491,10 +499,10 @@ export default function Dashboard() {
             {/* Mode Switch */}
             <Button
               type="button"
-              variant="outline"
+              variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="h-9 w-9 rounded-full border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all duration-200 shadow-sm"
+              className="h-9 w-9 rounded-full border-none bg-transparent text-muted-foreground shadow-none hover:bg-muted/60 hover:text-foreground focus-visible:border-transparent focus-visible:ring-0 focus-visible:ring-transparent"
               title={getMessage(
                 "switchThemeTitle",
                 theme === "dark" ? "light" : "dark"
