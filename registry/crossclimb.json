@@ -1702,5 +1702,17 @@
     "answers": ["VEST", "PEST", "POST", "HOST", "HOSE"],
     "topWord": "VENT",
     "bottomWord": "HOLE"
+  },
+  "768": {
+    "clues": [
+      "Greeted someone from a distance",
+      "Wobble uncertainly",
+      "Drink that might be free in a restaurant",
+      "Provide food for a large banquet",
+      "Playful prank or criminal plan"
+    ],
+    "answers": ["WAVED", "WAVER", "WATER", "CATER", "CAPER"],
+    "topWord": "WAXED",
+    "bottomWord": "PAPER"
   }
 }
