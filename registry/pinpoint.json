@@ -1340,5 +1340,15 @@
   "767": {
     "category": "Words that come before \"station\"!",
     "clues": ["Space", "Power", "Police", "TV", "Bus"]
+  },
+  "768": {
+    "category": "Words that come before \"class\"",
+    "clues": [
+      "First",
+      "Weight",
+      "Fitness",
+      "Business",
+      "World- (the very best)"
+    ]
   }
 }
