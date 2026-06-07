@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.1.1
+
+[compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.1.0...v0.1.1)
+
+### 🚀 Enhancements
+
+- Implement comprehensive internationalization support by adding new locale message files and updating the i18n configuration. ([85ea298](https://github.com/muhammedaksam/linkedin-games-solver/commit/85ea298))
+
+### 📖 Documentation
+
+- Reformat store description files to use bulleted lists and consistent styling ([9abf239](https://github.com/muhammedaksam/linkedin-games-solver/commit/9abf239))
+
+### 🏡 Chore
+
+- Update solver registry ([b912452](https://github.com/muhammedaksam/linkedin-games-solver/commit/b912452))
+- Update solver registry ([ba5cd40](https://github.com/muhammedaksam/linkedin-games-solver/commit/ba5cd40))
+- Update solver registry ([3f613b8](https://github.com/muhammedaksam/linkedin-games-solver/commit/3f613b8))
+- Update solver registry ([3782240](https://github.com/muhammedaksam/linkedin-games-solver/commit/3782240))
+- Update solver registry ([5825fd3](https://github.com/muhammedaksam/linkedin-games-solver/commit/5825fd3))
+- Remove unused translation and verification scripts from package.json ([febdbd4](https://github.com/muhammedaksam/linkedin-games-solver/commit/febdbd4))
+- Update localized store assets, screenshots, and descriptions ([8e868ef](https://github.com/muhammedaksam/linkedin-games-solver/commit/8e868ef))
+
+### ❤️ Contributors
+
+- Muhammed Mustafa AKSAM ([@muhammedaksam](https://github.com/muhammedaksam))
+
 ## v0.1.0
 
 ### 🚀 Enhancements
