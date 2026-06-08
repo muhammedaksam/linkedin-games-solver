@@ -1714,5 +1714,17 @@
     "answers": ["WAVED", "WAVER", "WATER", "CATER", "CAPER"],
     "topWord": "WAXED",
     "bottomWord": "PAPER"
+  },
+  "769": {
+    "clues": [
+      "It can charge your phone",
+      "Jack, queen, king, or joker",
+      "Challenging, as a task",
+      "Critter like a rabbit",
+      "“We ___ it under control” (the situation is being managed)"
+    ],
+    "answers": ["CORD", "CARD", "HARD", "HARE", "HAVE"],
+    "topWord": "COLD",
+    "bottomWord": "WAVE"
   }
 }
