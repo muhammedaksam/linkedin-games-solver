@@ -81,12 +81,20 @@ const DEV_CONSOLE_URL = `https://chrome.google.com/webstore/devconsole/${CONSOLE
 
 const EDGE_PRODUCT_ID = process.env.EDGE_PRODUCT_ID
 
-if (!EDGE_PRODUCT_ID) {
+if (store === "edge" && !EDGE_PRODUCT_ID) {
   console.error("❌ Missing EDGE_PRODUCT_ID in environment variables")
   process.exit(1)
 }
 
-const EDGE_DASHBOARD_URL = `https://partner.microsoft.com/en-us/dashboard/microsoftedge/${EDGE_PRODUCT_ID}/listings`
+const EDGE_DASHBOARD_URL = EDGE_PRODUCT_ID
+  ? `https://partner.microsoft.com/en-us/dashboard/microsoftedge/${EDGE_PRODUCT_ID}/listings`
+  : ""
+
+const FIREFOX_ID = process.env.FIREFOX_EXTENSION_ID
+if (store === "firefox" && !FIREFOX_ID) {
+  console.error("❌ Missing FIREFOX_EXTENSION_ID in environment variables")
+  process.exit(1)
+}
 
 interface LocaleConfig {
   displayName: string
@@ -409,6 +417,11 @@ async function main() {
 
   if (store === "edge") {
     await runEdgeUploader(browser)
+    return
+  }
+
+  if (store === "firefox") {
+    await runFirefoxUploader(browser)
     return
   }
 
@@ -1717,6 +1730,504 @@ async function runEdgeUploader(browser: Browser) {
   console.log("and click 'Publish' in the partner center dashboard.")
   console.log("Disconnecting from browser automation...")
   await browser.disconnect()
+}
+
+// ─── Firefox Add-on (AMO) Uploader ───────────────────────────────────────────
+
+const AMO_LOCALES: { amoCode: string; internal: string; descLocale: string }[] =
+  [
+    { amoCode: "cs", internal: "cs", descLocale: "cs" },
+    { amoCode: "de", internal: "de", descLocale: "de" },
+    { amoCode: "dsb", internal: "", descLocale: "" },
+    { amoCode: "el", internal: "el", descLocale: "el" },
+    { amoCode: "en-gb", internal: "en_GB", descLocale: "en_GB" },
+    { amoCode: "en-us", internal: "en_US", descLocale: "en_US" },
+    { amoCode: "es-es", internal: "es", descLocale: "es" },
+    { amoCode: "fi", internal: "fi", descLocale: "fi" },
+    { amoCode: "fr", internal: "fr", descLocale: "fr" },
+    { amoCode: "he", internal: "he", descLocale: "he" },
+    { amoCode: "hr", internal: "hr", descLocale: "hr" },
+    { amoCode: "hu", internal: "hu", descLocale: "hu" },
+    { amoCode: "it", internal: "it", descLocale: "it" },
+    { amoCode: "ja", internal: "ja", descLocale: "ja" },
+    { amoCode: "ko", internal: "ko", descLocale: "ko" },
+    { amoCode: "nb-no", internal: "no", descLocale: "no" },
+    { amoCode: "nl", internal: "nl", descLocale: "nl" },
+    { amoCode: "pl", internal: "pl", descLocale: "pl" },
+    { amoCode: "pt-br", internal: "pt_BR", descLocale: "pt_BR" },
+    { amoCode: "pt-pt", internal: "pt_PT", descLocale: "pt_PT" },
+    { amoCode: "ro", internal: "ro", descLocale: "ro" },
+    { amoCode: "ru", internal: "ru", descLocale: "ru" },
+    { amoCode: "sk", internal: "sk", descLocale: "sk" },
+    { amoCode: "sl", internal: "sl", descLocale: "sl" },
+    { amoCode: "sv-se", internal: "sv", descLocale: "sv" },
+    { amoCode: "tr", internal: "tr", descLocale: "tr" },
+    { amoCode: "uk", internal: "uk", descLocale: "uk" },
+    { amoCode: "vi", internal: "vi", descLocale: "vi" },
+    { amoCode: "zh-cn", internal: "zh_CN", descLocale: "zh_CN" },
+    { amoCode: "zh-tw", internal: "zh_TW", descLocale: "zh_TW" }
+  ]
+
+async function runFirefoxUploader(browser: Browser) {
+  const AMO_BASE = `https://addons.mozilla.org/en-US/developers/addon/${FIREFOX_ID}`
+
+  console.log("\n=======================================================")
+  console.log("🚀 FIREFOX ADD-ON (AMO) LISTING UPDATER")
+  console.log("=======================================================")
+  console.log("Make sure you are logged in to addons.mozilla.org.")
+
+  const pages = await browser.pages()
+  let page = pages.find((p) => p.url().includes("addons.mozilla.org"))
+
+  if (!page) {
+    console.log("Opening new tab to AMO edit page...")
+    page = await browser.newPage()
+    await page.goto(`${AMO_BASE}/edit`, { waitUntil: "networkidle2" })
+  } else {
+    console.log("Using already open AMO tab...")
+    await page.bringToFront()
+  }
+
+  // Click "Edit" on the Describe Add-on section to open the form
+  console.log("\n1️⃣ Opening Describe Add-on form...")
+  const editBtn = await page.$('a[data-editurl$="edit_describe/edit"]')
+  if (editBtn) {
+    await page.evaluate((el) => {
+      ;(el as HTMLElement).scrollIntoView({ block: "center" })
+      ;(el as HTMLElement).click()
+    }, editBtn)
+    await delay(2000)
+  }
+
+  try {
+    await page.waitForSelector("#addon-edit-describe", { timeout: 10000 })
+    console.log("✅ Form loaded successfully.")
+  } catch {
+    console.log("⚠️ Form not found. Navigating directly to edit URL...")
+    await page.goto(`${AMO_BASE}/edit_describe/edit`, {
+      waitUntil: "networkidle2"
+    })
+    await page.waitForSelector("#addon-edit-describe", { timeout: 10000 })
+  }
+
+  // Load translations
+  const translationsPath = path.join(
+    __dirname,
+    "store-assets-translations.json"
+  )
+  const translations = JSON.parse(readFileSync(translationsPath, "utf-8"))
+  const nameMap: Record<string, string> = translations.extensionNameMap || {}
+  const summaryMap: Record<string, string> = translations.subtitleMap || {}
+
+  const targetLocales = localeFilter
+    ? AMO_LOCALES.filter((l) => localeFilter.includes(l.amoCode))
+    : AMO_LOCALES
+
+  // Only process locales with actual translation data
+  const activeLocales = targetLocales.filter((l) => l.internal)
+
+  console.log(`\n2️⃣ Phase 1: Adding missing locales...`)
+  for (const locale of activeLocales) {
+    const inputExists = await page.$(`[name="name_${locale.amoCode}"]`)
+    if (inputExists) continue
+
+    console.log(`  🌐 Adding "${locale.amoCode}"...`)
+    const localeTrigger = await page.$("#change-locale")
+    if (!localeTrigger) {
+      console.log(`  ⚠️ Could not find locale trigger`)
+      continue
+    }
+    await page.evaluate((el) => {
+      ;(el as HTMLElement).click()
+    }, localeTrigger)
+    await delay(800)
+
+    const localeLink = await page.$(
+      `#locale-popup a[href="#${locale.amoCode}"]`
+    )
+    if (!localeLink) {
+      console.log(`  ⚠️ Locale "${locale.amoCode}" not available in popup`)
+      continue
+    }
+    await page.evaluate((el) => {
+      ;(el as HTMLElement).click()
+    }, localeLink)
+    await delay(800)
+
+    // Unsaved changes modal shouldn't appear (no edits yet),
+    // but handle it just in case
+    const modalVisible = await page.evaluate(() => {
+      const modal = document.getElementById("modal-l10n-unsaved")
+      return modal && !modal.classList.contains("hidden")
+    })
+    if (modalVisible) {
+      await page.evaluate(() => {
+        const btn = document.getElementById("l10n-discard-changes")
+        if (btn) btn.click()
+      })
+      await delay(1000)
+    }
+    await delay(800)
+    console.log(`  ✅ Added`)
+  }
+
+  console.log(
+    `\n3️⃣ Phase 2: Filling values for ${activeLocales.length} locale(s)...`
+  )
+  for (const locale of activeLocales) {
+    console.log(`\n  🌐 [${locale.amoCode.toUpperCase()}]`)
+
+    const nameVal = nameMap[locale.internal]
+    if (nameVal) {
+      const el = await page.$(`[name="name_${locale.amoCode}"]`)
+      if (el) {
+        await page.evaluate(
+          (input, val) => {
+            ;(input as HTMLInputElement).value = val
+            input.dispatchEvent(new Event("input", { bubbles: true }))
+            input.dispatchEvent(new Event("change", { bubbles: true }))
+          },
+          el,
+          nameVal
+        )
+        console.log(`  ✅ Name: "${nameVal}"`)
+      }
+    }
+
+    const summaryVal = summaryMap[locale.internal]
+    if (summaryVal) {
+      const el = await page.$(`[name="summary_${locale.amoCode}"]`)
+      if (el) {
+        await page.evaluate(
+          (input, val) => {
+            ;(input as HTMLTextAreaElement).value = val
+            input.dispatchEvent(new Event("input", { bubbles: true }))
+            input.dispatchEvent(new Event("change", { bubbles: true }))
+          },
+          el,
+          summaryVal
+        )
+        console.log(`  ✅ Summary set`)
+      }
+    }
+
+    const descPath = path.join(
+      outDir,
+      "localized",
+      locale.descLocale,
+      "description.md"
+    )
+    if (existsSync(descPath)) {
+      let descVal = readFileSync(descPath, "utf-8")
+      descVal = descVal
+        .replace(/Google Chrome's/gi, "the browser's")
+        .replace(/Google Chrome/gi, "the browser")
+        .replace(/Chrome Web Store/gi, "Add-on Store")
+        .replace(/\bChrome\b/gi, "browser")
+
+      const el = await page.$(`[name="description_${locale.amoCode}"]`)
+      if (el) {
+        await page.evaluate(
+          (input, val) => {
+            ;(input as HTMLTextAreaElement).value = val
+            input.dispatchEvent(new Event("input", { bubbles: true }))
+            input.dispatchEvent(new Event("change", { bubbles: true }))
+          },
+          el,
+          descVal
+        )
+        console.log(`  ✅ Description set (${descVal.length} chars)`)
+      }
+    } else {
+      console.log(`  ⚠️ Description file missing: ${descPath}`)
+    }
+  }
+
+  console.log("\n4️⃣ Submitting form...")
+  const submitBtn = await page.$('#addon-edit-describe button[type="submit"]')
+  if (submitBtn) {
+    await page.evaluate((el) => {
+      ;(el as HTMLElement).scrollIntoView({ block: "center" })
+      ;(el as HTMLElement).click()
+    }, submitBtn)
+    console.log("✅ Save Changes clicked!")
+
+    try {
+      await page.waitForFunction(
+        () =>
+          !document.querySelector("#addon-edit-describe") ||
+          document.querySelector(".notification-box") !== null,
+        { timeout: 15000 }
+      )
+      console.log("✅ Changes saved successfully!")
+    } catch {
+      console.log("⚠️ Could not verify save success. Please check the page.")
+    }
+  } else {
+    console.log("❌ Could not find Submit button.")
+  }
+
+  console.log("\n📸 Now processing Images/Media section...")
+  await runFirefoxImagesUpload(page)
+
+  console.log("\n=======================================================")
+  console.log("🎉 AMO LISTING UPDATE COMPLETE!")
+  console.log("=======================================================")
+  console.log("Please verify the changes on the AMO edit page.")
+  await browser.disconnect()
+}
+
+async function runFirefoxImagesUpload(page: Page) {
+  const AMO_BASE = `https://addons.mozilla.org/en-US/developers/addon/${FIREFOX_ID}`
+
+  console.log("\n=======================================================")
+  console.log("🖼️ FIREFOX ADD-ON (AMO) IMAGES & CAPTIONS")
+  console.log("=======================================================")
+
+  const onMediaPage = page.url().includes("edit_media")
+  if (!onMediaPage) {
+    const editBtn = await page.$('a[data-editurl$="edit_media/edit"]')
+    if (editBtn) {
+      console.log("1️⃣ Opening Images/Media form...")
+      await page.evaluate((el) => {
+        ;(el as HTMLElement).scrollIntoView({ block: "center" })
+        ;(el as HTMLElement).click()
+      }, editBtn)
+      await delay(2000)
+    }
+
+    try {
+      await page.waitForSelector("#edit-addon-media", { timeout: 10000 })
+      console.log("✅ Media form loaded successfully.")
+    } catch {
+      console.log("⚠️ Form not found. Navigating directly to edit URL...")
+      await page.goto(`${AMO_BASE}/edit_media/edit`, {
+        waitUntil: "networkidle2"
+      })
+      await page.waitForSelector("#edit-addon-media", { timeout: 10000 })
+    }
+  }
+
+  // Upload icon
+  const iconFile = path.join(outDir, "store-icon-128.png")
+  if (existsSync(iconFile)) {
+    console.log("\n2️⃣ Uploading icon...")
+    const iconInput = await page.$("#id_icon_upload")
+    if (iconInput) {
+      await (iconInput as ElementHandle<HTMLInputElement>).uploadFile(iconFile)
+      console.log("✅ Icon uploaded (may take a moment to process)...")
+      await delay(4000)
+    } else {
+      console.log("⚠️ Could not find icon file input (#id_icon_upload)")
+    }
+  } else {
+    console.log(`⏭️ No icon file found at ${iconFile}`)
+  }
+
+  // Upload/Replace screenshots
+  console.log("\n3️⃣ Checking screenshots...")
+  const existingScreenshots = await page.evaluate(() => {
+    const totalInput = document.querySelector(
+      '[name="files-INITIAL_FORMS"]'
+    ) as HTMLInputElement
+    return totalInput ? parseInt(totalInput.value, 10) : 0
+  })
+  console.log(`  Found ${existingScreenshots} existing screenshot(s)`)
+
+  const screenshotDir = path.join(outDir, "localized", "en", "screenshots")
+  const screenshotFiles = [
+    "screenshot-1.png",
+    "screenshot-1.jpg",
+    "screenshot-2.png",
+    "screenshot-2.jpg",
+    "screenshot-3.png",
+    "screenshot-3.jpg",
+    "screenshot-4.png",
+    "screenshot-4.jpg",
+    "screenshot-5.png",
+    "screenshot-5.jpg",
+    "screenshot-6.png",
+    "screenshot-6.jpg"
+  ]
+    .map((f) => path.join(screenshotDir, f))
+    .filter((f) => existsSync(f))
+    .slice(0, 6)
+
+  if (uploadScreenshots && screenshotFiles.length > 0) {
+    // Step 1: Delete all existing screenshots
+    if (existingScreenshots > 0) {
+      console.log(`  Deleting ${existingScreenshots} existing screenshot(s)...`)
+      for (let i = 0; i < existingScreenshots; i++) {
+        const deleteCheckbox = (await page.$(
+          `[name="files-${i}-DELETE"]`
+        )) as ElementHandle<HTMLInputElement>
+        if (deleteCheckbox) {
+          await deleteCheckbox.evaluate((cb) => {
+            ;(cb as HTMLInputElement).checked = true
+            cb.dispatchEvent(new Event("change", { bubbles: true }))
+          })
+        }
+      }
+      console.log("  ✅ Existing screenshots marked for deletion")
+    }
+
+    // Step 2: Upload new screenshots
+    console.log(`  Uploading ${screenshotFiles.length} screenshot(s)...`)
+    const uploadInput = await page.$("#screenshot_upload")
+    if (uploadInput) {
+      for (const ssPath of screenshotFiles) {
+        console.log(`    Uploading ${path.basename(ssPath)}...`)
+        await (uploadInput as ElementHandle<HTMLInputElement>).uploadFile(
+          ssPath
+        )
+        await delay(3000)
+      }
+      console.log("  ✅ Screenshots uploaded")
+    } else {
+      console.log("  ⚠️ Could not find #screenshot_upload input")
+    }
+  } else if (!uploadScreenshots) {
+    console.log("  ⏭️ Skipping screenshot upload (--screenshots false)")
+  } else {
+    console.log("  ⏭️ No screenshot files found to upload")
+  }
+
+  // Fill screenshot captions
+  const translationsPath = path.join(
+    __dirname,
+    "store-assets-translations.json"
+  )
+  if (!existsSync(translationsPath)) {
+    console.log("⚠️ Translations file not found. Skipping captions.")
+  } else {
+    const translations = JSON.parse(readFileSync(translationsPath, "utf-8"))
+    const screenshotCaptions: Record<
+      string,
+      Record<string, string>
+    > = translations.screenshotCaptions || {}
+
+    // Determine how many screenshot slots have caption textareas
+    const maxScreenshotSlots = await page.evaluate(() => {
+      const totalInput = document.querySelector(
+        '[name="files-TOTAL_FORMS"]'
+      ) as HTMLInputElement
+      return totalInput ? parseInt(totalInput.value, 10) : 0
+    })
+
+    console.log(
+      `\n4️⃣ Filling captions for ${Math.min(maxScreenshotSlots, 6)} screenshot(s) across all locales...`
+    )
+
+    // First add any missing locales (using the same locale popup)
+    for (const locale of AMO_LOCALES) {
+      if (!locale.internal) continue
+      const firstTextarea = await page.$(
+        `[name="files-0-caption_${locale.amoCode}"]`
+      )
+      if (!firstTextarea && maxScreenshotSlots > 0) {
+        console.log(`  🌐 Adding locale "${locale.amoCode}" for captions...`)
+        const localeTrigger = await page.$("#change-locale")
+        if (localeTrigger) {
+          await page.evaluate((el) => {
+            ;(el as HTMLElement).click()
+          }, localeTrigger)
+          await delay(800)
+          const localeLink = await page.$(
+            `#locale-popup a[href="#${locale.amoCode}"]`
+          )
+          if (localeLink) {
+            await page.evaluate((el) => {
+              ;(el as HTMLElement).click()
+            }, localeLink)
+            await delay(800)
+            const modalVisible = await page.evaluate(() => {
+              const modal = document.getElementById("modal-l10n-unsaved")
+              return modal && !modal.classList.contains("hidden")
+            })
+            if (modalVisible) {
+              await page.evaluate(() => {
+                const btn = document.getElementById("l10n-discard-changes")
+                if (btn) btn.click()
+              })
+              await delay(1000)
+            }
+            await delay(800)
+          }
+        }
+      }
+    }
+
+    // Now fill caption values
+    const sceneKeys = [
+      "scene1",
+      "scene2",
+      "scene3",
+      "scene4",
+      "scene5",
+      "scene6"
+    ]
+    for (let i = 0; i < Math.min(maxScreenshotSlots, 6); i++) {
+      const sceneKey = sceneKeys[i]
+      const sceneCaps = screenshotCaptions[sceneKey]
+      if (!sceneCaps) {
+        console.log(`  ⏭️ No captions for screenshot ${i + 1}`)
+        continue
+      }
+
+      let filledCount = 0
+      for (const locale of AMO_LOCALES) {
+        if (!locale.internal) continue
+        const caption = sceneCaps[locale.internal]
+        if (!caption) continue
+
+        const textarea = await page.$(
+          `[name="files-${i}-caption_${locale.amoCode}"]`
+        )
+        if (textarea) {
+          await page.evaluate(
+            (el, val) => {
+              ;(el as HTMLTextAreaElement).value = val
+              el.dispatchEvent(new Event("input", { bubbles: true }))
+              el.dispatchEvent(new Event("change", { bubbles: true }))
+            },
+            textarea,
+            caption
+          )
+          filledCount++
+        }
+      }
+      if (filledCount > 0) {
+        console.log(`  ✅ Screenshot ${i + 1}: ${filledCount} locale(s) filled`)
+      }
+    }
+  }
+
+  // Submit the media form
+  console.log("\n5️⃣ Submitting media form...")
+  const submitBtn = await page.$(
+    '#edit-addon-media button[type="submit"], .edit-media-button button'
+  )
+  if (submitBtn) {
+    await page.evaluate((el) => {
+      ;(el as HTMLElement).scrollIntoView({ block: "center" })
+      ;(el as HTMLElement).click()
+    }, submitBtn)
+    console.log("✅ Save Changes clicked!")
+
+    try {
+      await page.waitForFunction(
+        () =>
+          !document.querySelector("#edit-addon-media") ||
+          document.querySelector(".notification-box") !== null,
+        { timeout: 15000 }
+      )
+      console.log("✅ Media changes saved successfully!")
+    } catch {
+      console.log("⚠️ Could not verify save success. Please check the page.")
+    }
+  } else {
+    console.log("❌ Could not find Save Changes button.")
+  }
 }
 
 main().catch(console.error)
