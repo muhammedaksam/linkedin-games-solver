@@ -1,20 +1,20 @@
 # LinkedIn Games Solver
 
-A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
+LinkedIn Games க்கான உதவியாளர். தினசரி புதிர்களை (Queens, Sudoku, Pinpoint, Crossclimb) தொடர்ச்சியுடன் மற்றும் பகுப்பாய்வுகளுடன் தானாகவே தீர்க்கவும்.
 
-## Why Install It?
+## ஏன் இதை நிறுவ வேண்டும்?
 
-- Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
-- Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
-- Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.
-- Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard "Bonus" badge.
-- Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
-- Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
-- Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
-- Context-Aware Shortcuts: Enjoy right-click context menu options like "Mark as Not Played", "Solve", or "Get Hint" directly from game cards.
-- Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.
-- Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
-- Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.
+- ஒருபோதும் தொடர்ச்சியை இழக்காதீர்கள்: உங்கள் தினசரி மொமென்டத்தை தொடருங்கள் மற்றும் கடினமான நாட்களில் அல்லது நேரம் குறைவாக இருந்தால் கூட உங்கள் தொடர்ச்சியை பாதுகாக்கவும்.
+- Trivia & Word Puzzles ஐ கற்றுக்கொள்ளுங்கள்: Crossclimb மற்றும் Pinpoint போன்ற விளையாட்டுகள் ஆழ்ந்த trivia அறிவு மற்றும் விரைவான தொடர்புகளை தேவைப்படுத்துகின்றன. உள்ளமைக்கப்பட்ட AI அவற்றை மிகுந்த துல்லியத்துடன் தீர்க்கிறது.
+- ஹைபிரிட் பதில்கள் பதிவேடு: எங்கள் தொலைவிலுள்ள பதில்கள் தரவுத்தொகுப்பைப் பயன்படுத்தி, எந்த API செலவுமின்றி Crossclimb மற்றும் Pinpoint ஐ உடனடியாக தீர்க்கவும், தனிப்பட்ட AI விசைகள் தேவையில்லை.
+- முழுமையான Bonus Games ஆதரவு: சுயமாகத் தொடர்ச்சியை கண்காணிக்கும் மற்றும் "Bonus" பேஜ் கொண்ட தனிப்பட்ட டாஷ்போர்டுடன், நிலையான தினசரி புதிர்கள் மற்றும் உள்ளூர் Bonus நிலைகளை (Queens, Sudoku, etc.) எளிதாக தீர்க்கவும்.
+- முற்றிலும் உள்ளூர் ஒருங்கிணைப்பு: தீர்க்கும் மேலோட்டம் உங்கள் செயல்பாட்டில் உள்ள விளையாட்டு தாவலில் நேரடியாக தோன்றுகிறது. ஒரு கிளிக், மற்றும் நீங்கள் திரையில் தீர்க்கப்பட்ட பலகையை காணலாம்.
+- கல்வி Hint Mode: புதிர்களை இயற்கையாக தீர்க்க கற்றுக்கொள்ளுங்கள். தானாகவே முடிக்காமல், ஒரு தனி தர்க்கமான நகர்வை பரிந்துரைக்கவும், மற்றும் திரையில் சிவப்பு ஒளி மூலம் தவறுகளை உடனடியாக பிடிக்கவும்.
+- Stealth Solve Speed (Stealth Mode): மனித கிளிக் நடத்தை போலவே, சீரற்ற, இயற்கையான தாமதங்களுடன் (1–3 விநாடிகள்) உங்கள் தினசரி தீர்க்கும் தொடர்ச்சியை பாட்டின் கண்டுபிடிப்பு கொடிகளிலிருந்து காக்கவும்.
+- சூழல்-அறிந்த குறுக்கீடுகள்: "Mark as Not Played", "Solve", அல்லது "Get Hint" போன்ற வலது கிளிக் சூழல் மெனு விருப்பங்களை விளையாட்டு அட்டைமூலமாக நேரடியாக அனுபவிக்கவும்.
+- உள்ளூர் Chrome உள்ளமைக்கப்பட்ட AI: Google Chrome இன் உள்ளமைக்கப்பட்ட Gemini Nano மாதிரியை இணைத்து, எந்த செலவுமின்றி, முழுமையாக உள்ளூர் மற்றும் தனிப்பட்ட புதிர் தீர்க்கும் அனுபவத்தை பெறவும்.
+- அழகான பகுப்பாய்வு டாஷ்போர்டு: உங்கள் தீர்க்கும் வரலாறு, சராசரி நேரங்கள், தொடர்ச்சிகள் மற்றும் தனிப்பட்ட சிறந்தவற்றைப் கண்காணிக்க எங்கள் பிரீமியம், நவீன காலண்டர் டாஷ்போர்டைப் பயன்படுத்தவும்.
+- தனிப்பட்ட & பாதுகாப்பானது: உங்கள் உலாவியில் முழுமையாக இயங்குகிறது. உங்கள் API விசைகள் AES-256 ஐப் பயன்படுத்தி உள்ளகமாக குறியாக்கம் செய்யப்படுகின்றன மற்றும் எந்த சேவையுடன் பகிரப்படுவதில்லை. எப்போது வேண்டுமானாலும் அநாமிக தகவல்களைப் பெறுவதற்காக opt-in அல்லது opt-out செய்யவும்.
 
 ---
 

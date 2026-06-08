@@ -1,20 +1,20 @@
 # LinkedIn Games Solver
 
-A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
+Pomoćnik za LinkedIn Games. Automatski rešavajte dnevne zagonetke (Kraljice, Sudoku, Pinpoint, Crossclimb) sa nizovima i analizama.
 
-## Why Install It?
+## Zašto instalirati?
 
-- Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
-- Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
-- Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.
-- Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard "Bonus" badge.
-- Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
-- Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
-- Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
-- Context-Aware Shortcuts: Enjoy right-click context menu options like "Mark as Not Played", "Solve", or "Get Hint" directly from game cards.
-- Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.
-- Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
-- Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.
+- Nikada ne gubite niz: Održavajte svoj dnevni zamah i obezbedite svoj niz čak i u najtežim danima ili kada imate malo vremena.
+- Ovladavanje trivijalnostima i rečnim zagonetkama: Igra kao što je Crossclimb i Pinpoint zahteva duboko znanje trivijalnosti i brzu asocijaciju. Ugrađena AI ih rešava sa visokom tačnošću.
+- Hibridni registar odgovora: Odmah rešavajte Crossclimb i Pinpoint bez ikakvih troškova API-ja koristeći našu bazu podataka daljinskih odgovora, bez potrebe za ličnim AI ključevima.
+- Puna podrška za bonus igre: Besprekorno rešavajte kako standardne dnevne zagonetke tako i lokalizovane bonus nivoe (Kraljice, Sudoku, itd.) sa nezavisnim praćenjem nizova i posvećenim "Bonus" bedžom na kontrolnoj tabli.
+- Potpuna nativna integracija: Prozor za rešavanje pojavljuje se direktno na vašoj aktivnoj kartici igre. Jedan klik, i vidite rešenu tablu odmah na ekranu.
+- Obrazovni način nagoveštaja: Naučite kako da rešavate zagonetke prirodno. Umesto automatskog dovršavanja, dobijate jedan logički potez kao predlog i odmah uočavate greške sa crvenim oznakama na ekranu.
+- Brzina rešavanja u stealth modu (Stealth Mode): Oponašajte ljudsko ponašanje klikanja sa nasumičnim, prirodnim kašnjenjima (1–3 sekunde) kako biste zaštitili svoj dnevni niz rešavanja od oznaka za detekciju botova.
+- Kontekstualne prečice: Uživajte u opcijama kontekstualnog menija desnog klika kao što su "Označi kao neigrano", "Reši" ili "Dobij nagoveštaj" direktno sa kartica igara.
+- Lokalni Chrome ugrađeni AI: Povežite se sa ugrađenim modelom Gemini Nano u Google Chrome-u za iskustvo rešavanja zagonetki bez troškova, potpuno lokalno i privatno.
+- Prekrasna analitička kontrolna tabla: Pratite svoju istoriju rešavanja, prosečne vreme, nizove i lične rekorde sa našom premium, modernom kontrolnom tablom kalendara.
+- Privatno i sigurno: Radi potpuno u vašem pretraživaču. Vaši API ključevi su lokalno šifrovani koristeći AES-256 i nikada se ne dele sa bilo kojim serverom. Prijavite se ili odjavite iz anonimne telemetrije u bilo kojem trenutku.
 
 ---
 

@@ -1,20 +1,20 @@
 # LinkedIn Games Solver
 
-A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
+ผู้ช่วยสำหรับ LinkedIn Games แก้ปัญหาประจำวัน (Queens, Sudoku, Pinpoint, Crossclimb) โดยอัตโนมัติพร้อมสถิติและการวิเคราะห์
 
-## Why Install It?
+## ทำไมต้องติดตั้ง?
 
-- Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
-- Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
-- Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.
-- Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard "Bonus" badge.
-- Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
-- Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
-- Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
-- Context-Aware Shortcuts: Enjoy right-click context menu options like "Mark as Not Played", "Solve", or "Get Hint" directly from game cards.
-- Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.
-- Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
-- Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.
+- ไม่เคยเสียสตรีค: รักษาโมเมนตัมประจำวันของคุณและรักษาสตรีคของคุณแม้ในวันที่ยากที่สุดหรือเมื่อคุณมีเวลาน้อย
+- เชี่ยวชาญใน Trivia & Word Puzzles: เกมอย่าง Crossclimb และ Pinpoint ต้องการความรู้ trivia ที่ลึกซึ้งและการเชื่อมโยงอย่างรวดเร็ว AI ที่มีอยู่ในตัวช่วยแก้ปัญหาเหล่านี้ด้วยความแม่นยำสูง
+- Hybrid Answers Registry: แก้ปัญหา Crossclimb และ Pinpoint ทันทีโดยไม่มีค่าใช้จ่าย API โดยใช้ฐานข้อมูลคำตอบระยะไกลของเรา ไม่ต้องใช้ API keys ส่วนบุคคล
+- Full Bonus Games Support: แก้ปัญหาทั้งปริศนาประจำวันมาตรฐานและระดับโบนัสที่ปรับให้เข้ากับท้องถิ่น (Queens, Sudoku, ฯลฯ) ได้อย่างราบรื่นพร้อมการติดตามสตรีคที่เป็นอิสระและป้ายแดชบอร์ด "Bonus" ที่เฉพาะเจาะจง
+- Completely Native Integration: ตัวแก้ปัญหาจะปรากฏขึ้นโดยตรงบนแท็บเกมที่คุณใช้งานอยู่ คลิกเดียวและคุณจะเห็นกระดานที่แก้ไขแล้วบนหน้าจอ
+- Educational Hint Mode: เรียนรู้วิธีการแก้ปัญหาอย่างเป็นธรรมชาติ แทนที่จะทำการเติมอัตโนมัติ ให้แนะนำการเคลื่อนไหวที่มีเหตุผลเพียงหนึ่งครั้ง และจับข้อผิดพลาดทันทีด้วยการเน้นสีแดงบนหน้าจอ
+- Stealth Solve Speed (Stealth Mode): จำลองพฤติกรรมการคลิกของมนุษย์ด้วยความล่าช้าที่เป็นธรรมชาติและสุ่ม (1–3 วินาที) เพื่อปกป้องสตรีคการแก้ปัญหาประจำวันของคุณจากธงการตรวจจับบอท
+- Context-Aware Shortcuts: เพลิดเพลินกับตัวเลือกเมนูบริบทคลิกขวาเช่น "Mark as Not Played", "Solve", หรือ "Get Hint" โดยตรงจากการ์ดเกม
+- Local Chrome Built-in AI: เชื่อมต่อกับโมเดล Gemini Nano ที่มีอยู่ใน Google Chrome สำหรับประสบการณ์การแก้ปัญหาที่ไม่มีค่าใช้จ่าย แบบท้องถิ่นและเป็นส่วนตัว
+- Beautiful Analytics Dashboard: ติดตามประวัติการแก้ปัญหาของคุณ เวลาที่เฉลี่ย สตรีค และสถิติส่วนบุคคลที่ดีที่สุดของคุณด้วยแดชบอร์ดปฏิทินที่ทันสมัยและพรีเมียม
+- Private & Secure: ทำงานโดยสมบูรณ์ในเบราว์เซอร์ของคุณ API keys ของคุณจะถูกเข้ารหัสในเครื่องโดยใช้ AES-256 และจะไม่ถูกแชร์กับเซิร์ฟเวอร์ใด ๆ คุณสามารถเลือกเข้าร่วมหรือออกจากการเก็บข้อมูลแบบไม่ระบุชื่อได้ทุกเมื่อ
 
 ---
 

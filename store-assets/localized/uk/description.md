@@ -1,20 +1,20 @@
 # LinkedIn Games Solver
 
-A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
+Допоміжник для LinkedIn Games. Автоматично розв'язуйте щоденні головоломки (Queens, Sudoku, Pinpoint, Crossclimb) з серіями та аналітикою.
 
-## Why Install It?
+## Чому варто встановити?
 
-- Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
-- Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
-- Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.
-- Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard "Bonus" badge.
-- Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
-- Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
-- Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
-- Context-Aware Shortcuts: Enjoy right-click context menu options like "Mark as Not Played", "Solve", or "Get Hint" directly from game cards.
-- Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.
-- Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
-- Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.
+- Ніколи не втрачай серію: Підтримуй свій щоденний імпульс і забезпечуй свою серію навіть у найскладніші дні або коли у тебе мало часу.
+- Опануй вікторини та словесні головоломки: Ігри, такі як Crossclimb і Pinpoint, вимагають глибоких знань та швидкої асоціації. Вбудований AI розв'язує їх з високою точністю.
+- Гібридний реєстр відповідей: Розв'язуйте Crossclimb і Pinpoint миттєво без витрат на API, використовуючи нашу віддалену базу відповідей, без необхідності в особистих AI ключах.
+- Повна підтримка бонусних ігор: Безперешкодно розв'язуйте як стандартні щоденні головоломки, так і локалізовані бонусні рівні (Queens, Sudoku тощо) з незалежним відстеженням серій та спеціальною панеллю "Bonus".
+- Повністю НАТИВНА ІНТЕГРАЦІЯ: Накладка розв'язувача з'являється безпосередньо на вашій активній вкладці гри. Один клік, і ви бачите розв'язану дошку прямо на екрані.
+- Освітній режим підказок: Дізнайтеся, як природно розв'язувати головоломки. Замість автоматичного завершення отримуйте одну логічну пропозицію, і миттєво виявляйте помилки з червоними підсвітками на екрані.
+- Швидкість розв'язання в режимі Stealth (Stealth Mode): Імітуйте людську поведінку кліків з випадковими, природними затримками (1–3 секунди), щоб захистити вашу щоденну серію розв'язування від сигналів виявлення ботів.
+- Контекстно-обізнані ярлики: Насолоджуйтесь опціями контекстного меню правої кнопки миші, такими як "Позначити як не зіграно", "Розв'язати" або "Отримати підказку" безпосередньо з карток гри.
+- Локальний вбудований AI Chrome: Підключіть вбудовану модель Gemini Nano Google Chrome для безкоштовного, повністю локального та приватного досвіду розв'язування головоломок.
+- Красивий аналітичний дашборд: Відстежуйте свою історію розв'язування, середній час, серії та особисті рекорди за допомогою нашого преміум, сучасного календарного дашборду.
+- Приватність та безпека: Працює повністю у вашому браузері. Ваші API ключі шифруються локально за допомогою AES-256 і ніколи не передаються жодному серверу. Можна в будь-який час підключитися або відключитися від анонімної телеметрії.
 
 ---
 

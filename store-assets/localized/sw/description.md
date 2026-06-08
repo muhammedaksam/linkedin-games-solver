@@ -1,20 +1,20 @@
-# LinkedIn Games Solver
+# Msaidizi wa Michezo ya LinkedIn
 
-A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
+Msaidizi wa Michezo ya LinkedIn. Suluhisha fumbo za kila siku (Malkia, Sudoku, Pinpoint, Crossclimb) kwa mfululizo na uchambuzi.
 
-## Why Install It?
+## Kwa Nini Uweke?
 
-- Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
-- Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
-- Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.
-- Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard "Bonus" badge.
-- Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
-- Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
-- Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
-- Context-Aware Shortcuts: Enjoy right-click context menu options like "Mark as Not Played", "Solve", or "Get Hint" directly from game cards.
-- Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.
-- Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
-- Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.
+- Usikose Mfululizo: Hifadhi kasi yako ya kila siku na uhakikishe mfululizo wako hata katika siku ngumu au unapokuwa na muda mfupi.
+- Kuwa Mtaalamu wa Trivia & Fumbo za Maneno: Michezo kama Crossclimb na Pinpoint yanahitaji maarifa ya kina ya trivia na uhusiano wa haraka. AI iliyojumuishwa inazitatua kwa usahihi wa juu.
+- Usajili wa Majibu ya Mchanganyiko: Suluhisha Crossclimb na Pinpoint mara moja bila gharama ya API kwa kutumia hifadhidata yetu ya majibu ya mbali, hakuna funguo za AI za kibinafsi zinazohitajika.
+- Msaada Kamili wa Michezo ya Zawadi: Suluhisha bila mshono fumbo za kila siku za kawaida na viwango vya ziada vya ndani (Malkia, Sudoku, nk.) kwa ufuatiliaji wa mfululizo huru na alama ya dashibodi ya "Zawadi".
+- Ujumuishaji Kabisa wa Asili: Overlay ya msaidizi inaonekana moja kwa moja kwenye kichupo chako cha mchezo kinachofanya kazi. Bonyeza moja, na unaona bodi iliyosuluhishwa moja kwa moja kwenye skrini.
+- Njia ya Kidokezo ya Kijamii: Jifunze jinsi ya kutatua fumbo kwa asili. Badala ya kukamilisha moja kwa moja, pata hatua moja ya kimantiki iliyopendekezwa, na ugundue makosa mara moja kwa alama nyekundu kwenye skrini.
+- Kasi ya Suluhisho ya Kijanja (Njia ya Kijanja): Fanya kama tabia za kubonyeza za kibinadamu kwa kuchelewesha kwa nasibu, asilia (sekunde 1–3) ili kulinda mfululizo wako wa kutatua wa kila siku dhidi ya bendera za kugundua bots.
+- Njia Fupi Zinazoeleweka: Furahia chaguo za menyu ya muktadha ya kubonyeza kulia kama "Tandaza kama Sijacheza", "Suluhisha", au "Pata Kidokezo" moja kwa moja kutoka kwenye kadi za mchezo.
+- AI ya Ndani ya Chrome: Unganisha mfano wa Gemini Nano wa Google Chrome wa ndani kwa uzoefu wa kutatua fumbo wa ndani, wa kibinafsi, na bila gharama.
+- Dashibodi ya Uchambuzi Mzuri: Fuata historia yako ya kutatua, nyakati za wastani, mfululizo, na bora zako binafsi kwa dashibodi yetu ya kisasa ya kalenda.
+- Binafsi & Salama: Inafanya kazi kabisa kwenye kivinjari chako. Funguo zako za API zimefungwa kwa ndani kwa kutumia AES-256 na hazishirikiwa kamwe na seva yoyote. Chagua kujiunga au kujiondoa kwenye telemetry isiyo na jina wakati wowote.
 
 ---
 

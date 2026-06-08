@@ -1913,9 +1913,15 @@ async function generateLocalizedSocialPreviews(): Promise<void> {
 }
 
 // --- Store Description Markdown Generator ---
-function generateStoreDescriptions(): void {
+function generateStoreDescriptions(localeFilter?: string[] | null): void {
   console.log("\nGenerating store descriptions...")
-  const descriptions: Record<string, string> = compiledDescriptions
+  let descriptions: Record<string, string> = compiledDescriptions
+
+  if (localeFilter) {
+    descriptions = Object.fromEntries(
+      Object.entries(descriptions).filter(([loc]) => localeFilter.includes(loc))
+    )
+  }
 
   // Save global/English description for backward compatibility
   const enMessages = readLocaleMessages("en")
@@ -1966,15 +1972,40 @@ async function pMap<T>(
 
 // --- Main Program Execution ---
 async function main(): Promise<void> {
+  const args = process.argv.slice(2)
+  const descriptionsOnly = args.includes("--descriptions")
+
+  const localesArgIndex = args.indexOf("--locales")
+  const localeFilter: string[] | null =
+    localesArgIndex !== -1 && args[localesArgIndex + 1]
+      ? args[localesArgIndex + 1]
+          .split(",")
+          .map((l) => l.trim())
+          .filter(Boolean)
+      : null
+
+  if (descriptionsOnly) {
+    console.log(
+      "Descriptions-only mode. Generating Markdown store descriptions...\n"
+    )
+    generateStoreDescriptions(localeFilter)
+    console.log("\nSuccessfully generated Markdown store descriptions!")
+    return
+  }
+
   const hasRsvg = hasTool("rsvg-convert")
   const hasMagick = hasTool(imageMagickCmd)
 
-  console.log("Completely clearing store-assets folder for a clean slate...")
-  if (existsSync(outDir)) {
-    // If image tools are missing, do not clear the whole folder completely
-    // since screenshots/icons might already exist. Just clear descriptions or create if empty.
-    if (hasRsvg && hasMagick) {
-      rmSync(outDir, { recursive: true, force: true })
+  if (localeFilter) {
+    console.log(
+      "Locale filter detected — only regenerating specified locales, preserving existing assets for others."
+    )
+  } else {
+    console.log("Completely clearing store-assets folder for a clean slate...")
+    if (existsSync(outDir)) {
+      if (hasRsvg && hasMagick) {
+        rmSync(outDir, { recursive: true, force: true })
+      }
     }
   }
 
@@ -2021,9 +2052,12 @@ async function main(): Promise<void> {
   ])
 
   // Step 5: Capture screenshots and generate localized promotional tiles for all other localized directories
-  const locales = readdirSync(localesDir, { withFileTypes: true })
+  const allLocales = readdirSync(localesDir, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory() && dirent.name !== "en")
     .map((dirent) => dirent.name)
+  const locales = localeFilter
+    ? allLocales.filter((l) => localeFilter.includes(l))
+    : allLocales
   await pMap(
     locales,
     async (locale) => {
@@ -2039,7 +2073,7 @@ async function main(): Promise<void> {
   await generateLocalizedSocialPreviews()
 
   // Step 7: Generate clean Markdown store descriptions for all locales
-  generateStoreDescriptions()
+  generateStoreDescriptions(localeFilter)
 
   // Cleanup temp files
   rmSync(tmpDir, { recursive: true, force: true })

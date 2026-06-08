@@ -48,6 +48,25 @@ const store =
     ? args[storeArgIndex + 1].toLowerCase()
     : "chrome"
 
+const descArgIndex = args.indexOf("--description")
+const uploadDescription =
+  descArgIndex !== -1 ? args[descArgIndex + 1]?.toLowerCase() !== "false" : true
+
+const screenshotArgIndex = args.indexOf("--screenshots")
+const uploadScreenshots =
+  screenshotArgIndex !== -1
+    ? args[screenshotArgIndex + 1]?.toLowerCase() !== "false"
+    : true
+
+const localesArgIndex = args.indexOf("--locales")
+const localeFilter: string[] | null =
+  localesArgIndex !== -1 && args[localesArgIndex + 1]
+    ? args[localesArgIndex + 1]
+        .split(",")
+        .map((l) => l.trim())
+        .filter(Boolean)
+    : null
+
 const CONSOLE_ID = process.env.CWS_CONSOLE_ID
 const ITEM_ID = process.env.CWS_ITEM_ID
 
@@ -80,7 +99,7 @@ const ALL_LOCALES_RAW: { code: string; name: string; subStr: string }[] = [
   { code: "ar", name: "Arabic", subStr: "Arabic" },
   { code: "am", name: "Amharic", subStr: "Amharic" },
   { code: "bg", name: "Bulgarian", subStr: "Bulgarian" },
-  { code: "bn", name: "Bengali", subStr: "Bengali" },
+  { code: "bn", name: "Bengali", subStr: "Bangla" },
   { code: "ca", name: "Catalan", subStr: "Catalan" },
   { code: "cs", name: "Czech", subStr: "Czech" },
   { code: "da", name: "Danish", subStr: "Danish" },
@@ -90,15 +109,19 @@ const ALL_LOCALES_RAW: { code: string; name: string; subStr: string }[] = [
   { code: "en_AU", name: "English (Australia)", subStr: "English (Australia)" },
   {
     code: "en_GB",
-    name: "English (Great Britain)",
-    subStr: "English (Great Britain)"
+    name: "English (United Kingdom)",
+    subStr: "English (United Kingdom)"
   },
-  { code: "en_US", name: "English (USA)", subStr: "English (USA)" },
+  {
+    code: "en_US",
+    name: "English (United States)",
+    subStr: "English (United States)"
+  },
   { code: "es", name: "Spanish", subStr: "Spanish" },
   {
     code: "es_419",
-    name: "Spanish (Latin America and Caribbean)",
-    subStr: "Spanish (Latin America and Caribbean)"
+    name: "Spanish (Latin America and the Caribbean)",
+    subStr: "Spanish (Latin America and the Caribbean)"
   },
   { code: "et", name: "Estonian", subStr: "Estonian" },
   { code: "fa", name: "Persian", subStr: "Persian" },
@@ -135,7 +158,7 @@ const ALL_LOCALES_RAW: { code: string; name: string; subStr: string }[] = [
   { code: "sl", name: "Slovenian", subStr: "Slovenian" },
   { code: "sr", name: "Serbian", subStr: "Serbian" },
   { code: "sv", name: "Swedish", subStr: "Swedish" },
-  { code: "sw", name: "Swahili", subStr: "Swahili" },
+  { code: "sw", name: "Kiswahili", subStr: "Kiswahili" },
   { code: "ta", name: "Tamil", subStr: "Tamil" },
   { code: "te", name: "Telugu", subStr: "Telugu" },
   { code: "th", name: "Thai", subStr: "Thai" },
@@ -421,7 +444,11 @@ async function main() {
   console.log("Waiting for listing page to load fully...")
   await page.waitForSelector("textarea, input", { timeout: 15000 })
 
-  for (const [localeCode, config] of Object.entries(localeMap)) {
+  const cmLocales = localeFilter
+    ? Object.entries(localeMap).filter(([code]) => localeFilter.includes(code))
+    : Object.entries(localeMap)
+
+  for (const [localeCode, config] of cmLocales) {
     console.log(`\n-------------------------------------------------------`)
     console.log(
       `🌐 PROCESSING LOCALE: [${localeCode.toUpperCase()}] - ${config.displayName}`
@@ -529,102 +556,124 @@ async function main() {
     }
 
     // Step 2: Update Listing Description Text
-    console.log("Updating listing description text...")
-    const textareaHandle = await page.evaluateHandle(() => {
-      const textareas = Array.from(document.querySelectorAll("textarea"))
-      const target = textareas.find(
-        (ta) =>
-          !ta.readOnly &&
-          (ta.placeholder?.toLowerCase().includes("explain") ||
-            ta.placeholder?.toLowerCase().includes("description"))
-      )
-      return target || textareas.find((ta) => !ta.readOnly) || null
-    })
-    const descTextarea =
-      textareaHandle.asElement() as ElementHandle<HTMLTextAreaElement> | null
-
-    if (descTextarea) {
-      await descTextarea.focus()
-      await page.keyboard.down("Control")
-      await page.keyboard.press("KeyA")
-      await page.keyboard.up("Control")
-      await page.keyboard.press("Backspace")
-
+    if (uploadDescription) {
       console.log(
-        `Typing description text (${descriptionText.length} characters)...`
+        `Updating listing description text (first 100 chars: ${descriptionText.slice(0, 100).replace(/\n/g, "\\n")}...)`
       )
-      await page.evaluate(
-        (el, text) => {
-          el.value = text
-          el.dispatchEvent(new Event("input", { bubbles: true }))
-          el.dispatchEvent(new Event("change", { bubbles: true }))
-        },
-        descTextarea,
-        descriptionText
-      )
-      await delay(1000)
+      const textareaHandle = await page.evaluateHandle(() => {
+        const textareas = Array.from(document.querySelectorAll("textarea"))
+        const target = textareas.find(
+          (ta) =>
+            !ta.readOnly &&
+            (ta.placeholder?.toLowerCase().includes("explain") ||
+              ta.placeholder?.toLowerCase().includes("description"))
+        )
+        return target || textareas.find((ta) => !ta.readOnly) || null
+      })
+      const descTextarea =
+        textareaHandle.asElement() as ElementHandle<HTMLTextAreaElement> | null
+
+      if (descTextarea) {
+        await descTextarea.focus()
+        await page.keyboard.down("Control")
+        await page.keyboard.press("KeyA")
+        await page.keyboard.up("Control")
+        await page.keyboard.press("Backspace")
+
+        console.log(
+          `Typing description text (${descriptionText.length} characters)...`
+        )
+        await page.evaluate(
+          (el, text) => {
+            el.value = text
+            el.dispatchEvent(new Event("input", { bubbles: true }))
+            el.dispatchEvent(new Event("change", { bubbles: true }))
+          },
+          descTextarea,
+          descriptionText
+        )
+        await delay(1000)
+
+        const actualText = await page.evaluate(
+          (el) => (el as HTMLTextAreaElement).value,
+          descTextarea
+        )
+        if (actualText.slice(0, 100) !== descriptionText.slice(0, 100)) {
+          console.log(
+            `⚠️ Verification mismatch! Textarea has: ${actualText.slice(0, 100).replace(/\n/g, "\\n")}`
+          )
+        } else {
+          console.log("✅ Description content verified.")
+        }
+      } else {
+        console.log("❌ Could not locate the description input field.")
+      }
     } else {
-      console.log("❌ Could not locate the description input field.")
+      console.log("⏭️ Skipping description update (--description false)")
     }
 
     // Step 3: Upload Localized Screenshots
-    if (existsSync(config.screenshotDir)) {
-      const allScreens = readdirSync(config.screenshotDir)
-        .filter((f) => f.endsWith(".jpg") || f.endsWith(".png"))
-        .sort()
+    if (uploadScreenshots) {
+      if (existsSync(config.screenshotDir)) {
+        const allScreens = readdirSync(config.screenshotDir)
+          .filter((f) => f.endsWith(".jpg") || f.endsWith(".png"))
+          .sort()
 
-      const topScreens = allScreens
-        .filter((f) =>
-          [
-            "screenshot-1.jpg",
-            "screenshot-2.jpg",
-            "screenshot-3.jpg",
-            "screenshot-5.jpg",
-            "screenshot-6.jpg"
-          ].includes(f)
-        )
-        .map((f) => path.join(config.screenshotDir, f))
-
-      if (topScreens.length > 0) {
-        const screenshotsLabel =
-          localeCode === "en" ? "Global screenshots" : "Localized screenshots"
-
-        // Clear old ones first to prevent exceeding the 5 screenshots limit
-        await clearExistingScreenshots(page, screenshotsLabel)
-
-        console.log(`Locating ${screenshotsLabel} upload section...`)
-        const screenshotInput = await getFileInputForSection(
-          page,
-          screenshotsLabel
-        )
-        if (screenshotInput) {
-          console.log(
-            `Uploading ${topScreens.length} screenshot files one-by-one...`
+        const topScreens = allScreens
+          .filter((f) =>
+            [
+              "screenshot-1.jpg",
+              "screenshot-2.jpg",
+              "screenshot-3.jpg",
+              "screenshot-5.jpg",
+              "screenshot-6.jpg"
+            ].includes(f)
           )
-          let expectedCount = 0
-          for (const screenPath of topScreens) {
-            // Re-locate the input in case the DOM re-renders after an upload
-            const currentInput = await getFileInputForSection(
-              page,
-              screenshotsLabel
+          .map((f) => path.join(config.screenshotDir, f))
+
+        if (topScreens.length > 0) {
+          const screenshotsLabel =
+            localeCode === "en" ? "Global screenshots" : "Localized screenshots"
+
+          // Clear old ones first to prevent exceeding the 5 screenshots limit
+          await clearExistingScreenshots(page, screenshotsLabel)
+
+          console.log(`Locating ${screenshotsLabel} upload section...`)
+          const screenshotInput = await getFileInputForSection(
+            page,
+            screenshotsLabel
+          )
+          if (screenshotInput) {
+            console.log(
+              `Uploading ${topScreens.length} screenshot files one-by-one...`
             )
-            if (currentInput) {
-              console.log(`Uploading: ${path.basename(screenPath)}...`)
-              await currentInput.uploadFile(screenPath)
-              expectedCount++
-              await waitForUploadToComplete(
+            let expectedCount = 0
+            for (const screenPath of topScreens) {
+              // Re-locate the input in case the DOM re-renders after an upload
+              const currentInput = await getFileInputForSection(
                 page,
-                screenshotsLabel,
-                expectedCount
+                screenshotsLabel
               )
-              await delay(1000) // Small safety margin
+              if (currentInput) {
+                console.log(`Uploading: ${path.basename(screenPath)}...`)
+                await currentInput.uploadFile(screenPath)
+                expectedCount++
+                await waitForUploadToComplete(
+                  page,
+                  screenshotsLabel,
+                  expectedCount
+                )
+                await delay(1000) // Small safety margin
+              }
             }
+            await delay(2000)
+          } else {
+            console.log(`⚠️ ${screenshotsLabel} input element not found.`)
           }
-          await delay(2000)
-        } else {
-          console.log(`⚠️ ${screenshotsLabel} input element not found.`)
         }
       }
+    } else {
+      console.log("⏭️ Skipping screenshots upload (--screenshots false)")
     }
 
     // Step 4: Upload Global Assets (Icon, Promo Tiles) - Only once for default locale (English)
@@ -857,7 +906,7 @@ async function clearEdgeExistingImages(
 
       if (clicked) {
         console.log(`Clicked delete button ${i + 1}/${deleteButtonsCount}.`)
-        await delay(1000)
+        await delay(2000)
         const modalConfirmed = await page.evaluate(() => {
           const confirmBtn = Array.from(
             document.querySelectorAll("v6_he-button, button")
@@ -897,69 +946,30 @@ async function setScreenshotCaptions(
   localeCode: string
 ): Promise<void> {
   console.log("\n⚙️ Setting Screenshot Captions...")
-  const captionsMap: Record<string, string[]> = {
-    en: [
-      "Instantly solve and master all daily LinkedIn games",
-      "Real-time grid detection and interactive solve guides",
-      "Comprehensive performance history and stats tracker",
-      "Configure custom AI providers and model preferences",
-      "Seamless sidebar companion directly beside the puzzle",
-      "Advanced diagnostics and real-time telemetry controls"
-    ],
-    tr: [
-      "Tüm günlük LinkedIn oyunlarını anında ve ustaca çözün",
-      "Gerçek zamanlı tablo algılama ve etkileşimli kılavuzlar",
-      "Ayrıntılı performans geçmişi ve istatistik takipçisi",
-      "Özel yapay zeka sağlayıcılarını ve model tercihlerini yapılandırın",
-      "Bulmacanın hemen yanında kesintisiz yan panel yoldaşı",
-      "Gelişmiş tanılama ve gerçek zamanlı telemetri kontrolleri"
-    ],
-    es: [
-      "Resuelva y domine al instante todos los juegos diarios de LinkedIn",
-      "Detección de cuadrícula en tiempo real y guías de resolución interactivas",
-      "Historial de rendimiento completo y seguimiento de estadísticas",
-      "Configure proveedores de IA y preferencias de modelo personalizados",
-      "Acompañante de panel lateral continuo directamente junto al acertijo",
-      "Diagnósticos avanzados y controles de telemetría en tiempo real"
-    ],
-    pt: [
-      "Resolva e domine instantaneamente todos os jogos diários do LinkedIn",
-      "Detecção de grade em tempo real e guias de resolução interativos",
-      "Histórico de desempenho abrangente e rastreador de estatísticas",
-      "Configure provedores de IA personalizados e preferências de modelo",
-      "Acompanhante de painel lateral integrado diretamente ao lado do jogo",
-      "Diagnósticos avançados e controles de telemetría em tempo real"
-    ],
-    zh: [
-      "即时自动求解并精通所有 LinkedIn 每日游戏",
-      "实时棋盘网格检测与交互式求解引导",
-      "全面的历史求解表现与统计数据追踪",
-      "自定义配置 AI 服务商及偏好的模型设置",
-      "游戏页面侧边栏助手，无缝贴合拼图",
-      "高级开发诊断与实时数据遥测控制"
-    ],
-    fr: [
-      "Résolvez et maîtrisez instantanément tous les jeux LinkedIn quotidiens",
-      "Détection de grille en temps réel et guides de résolution interactifs",
-      "Historique complet des performances et suivi des statistiques",
-      "Configurez des fournisseurs d'IA et préférences de modèles personnalisés",
-      "Compagnon de panneau latéral fluide directement à côté du puzzle",
-      "Diagnostics avancés et contrôles de télémétrie en temps réel"
-    ],
-    de: [
-      "Lösen und meistern Sie alle täglichen LinkedIn-Spiele sofort",
-      "Echtzeit-Rastererkennung und interaktive Lösungshilfen",
-      "Umfassender Leistungsverlauf und Statistik-Tracker",
-      "Konfigurieren Sie benutzerdefinierte KI-Anbieter und Modelloptionen",
-      "Nahtloser Seitenleisten-Begleiter direkt neben dem Rätsel",
-      "Erweiterte Diagnose und Echtzeit-Telemetriekontrollen"
-    ]
+
+  const translationsPath = path.join(
+    __dirname,
+    "store-assets-translations.json"
+  )
+  let sceneCaptions: Record<string, Record<string, string>> = {}
+  if (existsSync(translationsPath)) {
+    const t = JSON.parse(readFileSync(translationsPath, "utf-8"))
+    sceneCaptions = t.screenshotCaptions || {}
   }
 
-  const normalizedLocale = localeCode.toLowerCase()
-  const matchedLocale =
-    Object.keys(captionsMap).find((k) => normalizedLocale.startsWith(k)) || "en"
-  const captions = captionsMap[matchedLocale]
+  const captions: string[] = []
+  for (let i = 1; i <= 6; i++) {
+    const sceneKey = `scene${i}`
+    const caption = sceneCaptions[sceneKey]?.[localeCode]
+    if (caption) captions.push(caption)
+  }
+
+  if (captions.length === 0) {
+    console.log(
+      `⏭️ Skipping captions for ${localeCode} (no translations available)`
+    )
+    return
+  }
 
   const container = await getEdgeSectionContainer(page, "Screenshot/s")
   if (!container) {
@@ -1334,7 +1344,11 @@ async function runEdgeUploader(browser: Browser) {
 
   await ensureEdgeStoreListingsView(page)
 
-  for (const [localeCode, config] of Object.entries(localeMap)) {
+  const edgeLocales = localeFilter
+    ? Object.entries(localeMap).filter(([code]) => localeFilter.includes(code))
+    : Object.entries(localeMap)
+
+  for (const [localeCode, config] of edgeLocales) {
     console.log(`\n-------------------------------------------------------`)
     console.log(
       `🌐 PROCESSING LOCALE: [${localeCode.toUpperCase()}] - ${config.displayName}`
@@ -1394,150 +1408,163 @@ async function runEdgeUploader(browser: Browser) {
       timeout: 15000
     })
 
-    console.log("Updating description text...")
-    const descTextarea = await page.$('textarea[aria-label^="Description"]')
-    if (descTextarea) {
-      await descTextarea.focus()
-      await page.keyboard.down("Control")
-      await page.keyboard.press("KeyA")
-      await page.keyboard.up("Control")
-      await page.keyboard.press("Backspace")
+    if (uploadDescription) {
+      console.log("Updating description text...")
+      const descTextarea = await page.$('textarea[aria-label^="Description"]')
+      if (descTextarea) {
+        await descTextarea.focus()
+        await page.keyboard.down("Control")
+        await page.keyboard.press("KeyA")
+        await page.keyboard.up("Control")
+        await page.keyboard.press("Backspace")
 
-      console.log(
-        `Typing description (${descriptionText.length} characters)...`
-      )
-      await page.evaluate(
-        (el, text) => {
-          ;(el as HTMLTextAreaElement).value = text
-          el.dispatchEvent(new Event("input", { bubbles: true }))
-          el.dispatchEvent(new Event("change", { bubbles: true }))
-        },
-        descTextarea,
-        descriptionText
-      )
-      await delay(1000)
+        console.log(
+          `Typing description (${descriptionText.length} characters)...`
+        )
+        await page.evaluate(
+          (el, text) => {
+            ;(el as HTMLTextAreaElement).value = text
+            el.dispatchEvent(new Event("input", { bubbles: true }))
+            el.dispatchEvent(new Event("change", { bubbles: true }))
+          },
+          descTextarea,
+          descriptionText
+        )
+        await delay(1000)
+      } else {
+        console.log("❌ Could not locate the description input field.")
+      }
     } else {
-      console.log("❌ Could not locate the description input field.")
+      console.log("⏭️ Skipping description update (--description false)")
     }
 
-    if (existsSync(config.screenshotDir)) {
-      const allScreens = readdirSync(config.screenshotDir)
-        .filter((f) => f.endsWith(".png") || f.endsWith(".jpg"))
-        .sort()
+    if (uploadScreenshots) {
+      if (existsSync(config.screenshotDir)) {
+        const allScreens = readdirSync(config.screenshotDir)
+          .filter((f) => f.endsWith(".png") || f.endsWith(".jpg"))
+          .sort()
 
-      const pngScreens = allScreens.filter((f) => f.endsWith(".png"))
-      const targetScreens = (pngScreens.length > 0 ? pngScreens : allScreens)
-        .filter((f) =>
-          [
-            "screenshot-1.png",
-            "screenshot-1.jpg",
-            "screenshot-2.png",
-            "screenshot-2.jpg",
-            "screenshot-3.png",
-            "screenshot-3.jpg",
-            "screenshot-4.png",
-            "screenshot-4.jpg",
-            "screenshot-5.png",
-            "screenshot-5.jpg",
-            "screenshot-6.png",
-            "screenshot-6.jpg"
-          ].some((p) => f.endsWith(p))
-        )
-        .map((f) => path.join(config.screenshotDir, f))
-        .slice(0, 6)
+        const pngScreens = allScreens.filter((f) => f.endsWith(".png"))
+        const targetScreens = (pngScreens.length > 0 ? pngScreens : allScreens)
+          .filter((f) =>
+            [
+              "screenshot-1.png",
+              "screenshot-1.jpg",
+              "screenshot-2.png",
+              "screenshot-2.jpg",
+              "screenshot-3.png",
+              "screenshot-3.jpg",
+              "screenshot-4.png",
+              "screenshot-4.jpg",
+              "screenshot-5.png",
+              "screenshot-5.jpg",
+              "screenshot-6.png",
+              "screenshot-6.jpg"
+            ].some((p) => f.endsWith(p))
+          )
+          .map((f) => path.join(config.screenshotDir, f))
+          .slice(0, 6)
 
-      if (targetScreens.length > 0) {
-        await clearEdgeExistingImages(page, "Screenshot/s")
+        if (targetScreens.length > 0) {
+          await clearEdgeExistingImages(page, "Screenshot/s")
 
-        console.log(`Locating "Screenshot/s" upload section...`)
-        console.log(
-          `Uploading ${targetScreens.length} screenshot files sequentially with upload verification...`
-        )
-        for (let i = 0; i < targetScreens.length; i++) {
-          const screenPath = targetScreens[i]
-
-          const container = await getEdgeSectionContainer(page, "Screenshot/s")
-          const startCount = container
-            ? await page.evaluate((el) => {
-                const buttons = Array.from(
-                  el.querySelectorAll("button, [role='button']")
-                )
-                return buttons.filter((btn) => {
-                  const label = btn.getAttribute("aria-label") || ""
-                  const text = (btn.textContent || "").trim().toLowerCase()
-                  return (
-                    label.toLowerCase() === "delete" ||
-                    label.toLowerCase().includes("delete") ||
-                    text === "delete" ||
-                    text.includes("delete")
-                  )
-                }).length
-              }, container)
-            : 0
-
+          console.log(`Locating "Screenshot/s" upload section...`)
           console.log(
-            `Uploading screenshot ${i + 1}/${targetScreens.length}: ${path.basename(screenPath)}...`
+            `Uploading ${targetScreens.length} screenshot files sequentially with upload verification...`
           )
+          for (let i = 0; i < targetScreens.length; i++) {
+            const screenPath = targetScreens[i]
 
-          const screenshotInput = await getEdgeFileInputForSection(
-            page,
-            "Screenshot/s"
-          )
-          if (screenshotInput) {
-            await screenshotInput.uploadFile(screenPath)
-
-            console.log(
-              `Waiting for upload to complete and render (start count: ${startCount})...`
+            const container = await getEdgeSectionContainer(
+              page,
+              "Screenshot/s"
             )
-            let uploaded = false
-            for (let attempt = 0; attempt < 30; attempt++) {
-              await delay(1000)
-              const freshContainer = await getEdgeSectionContainer(
-                page,
-                "Screenshot/s"
-              )
-              const currentCount = freshContainer
-                ? await page.evaluate((el) => {
-                    const buttons = Array.from(
-                      el.querySelectorAll("button, [role='button']")
+            const startCount = container
+              ? await page.evaluate((el) => {
+                  const buttons = Array.from(
+                    el.querySelectorAll("button, [role='button']")
+                  )
+                  return buttons.filter((btn) => {
+                    const label = btn.getAttribute("aria-label") || ""
+                    const text = (btn.textContent || "").trim().toLowerCase()
+                    return (
+                      label.toLowerCase() === "delete" ||
+                      label.toLowerCase().includes("delete") ||
+                      text === "delete" ||
+                      text.includes("delete")
                     )
-                    return buttons.filter((btn) => {
-                      const label = btn.getAttribute("aria-label") || ""
-                      const text = (btn.textContent || "").trim().toLowerCase()
-                      return (
-                        label.toLowerCase() === "delete" ||
-                        label.toLowerCase().includes("delete") ||
-                        text === "delete" ||
-                        text.includes("delete")
-                      )
-                    }).length
-                  }, freshContainer)
-                : 0
+                  }).length
+                }, container)
+              : 0
 
-              if (currentCount > startCount) {
-                console.log(
-                  `✅ Upload of ${path.basename(screenPath)} completed successfully (current count: ${currentCount})!`
-                )
-                uploaded = true
-                break
-              }
-            }
-            if (!uploaded) {
+            console.log(
+              `Uploading screenshot ${i + 1}/${targetScreens.length}: ${path.basename(screenPath)}...`
+            )
+
+            const screenshotInput = await getEdgeFileInputForSection(
+              page,
+              "Screenshot/s"
+            )
+            if (screenshotInput) {
+              await screenshotInput.uploadFile(screenPath)
+
               console.log(
-                `⚠️ Warning: Upload of ${path.basename(screenPath)} did not confirm within 30s. Moving on...`
+                `Waiting for upload to complete and render (start count: ${startCount})...`
+              )
+              let uploaded = false
+              for (let attempt = 0; attempt < 30; attempt++) {
+                await delay(1000)
+                const freshContainer = await getEdgeSectionContainer(
+                  page,
+                  "Screenshot/s"
+                )
+                const currentCount = freshContainer
+                  ? await page.evaluate((el) => {
+                      const buttons = Array.from(
+                        el.querySelectorAll("button, [role='button']")
+                      )
+                      return buttons.filter((btn) => {
+                        const label = btn.getAttribute("aria-label") || ""
+                        const text = (btn.textContent || "")
+                          .trim()
+                          .toLowerCase()
+                        return (
+                          label.toLowerCase() === "delete" ||
+                          label.toLowerCase().includes("delete") ||
+                          text === "delete" ||
+                          text.includes("delete")
+                        )
+                      }).length
+                    }, freshContainer)
+                  : 0
+
+                if (currentCount > startCount) {
+                  console.log(
+                    `✅ Upload of ${path.basename(screenPath)} completed successfully (current count: ${currentCount})!`
+                  )
+                  uploaded = true
+                  break
+                }
+              }
+              if (!uploaded) {
+                console.log(
+                  `⚠️ Warning: Upload of ${path.basename(screenPath)} did not confirm within 30s. Moving on...`
+                )
+              }
+              await delay(2000)
+            } else {
+              console.log(
+                `⚠️ Screenshot/s input element not found for ${path.basename(screenPath)}.`
               )
             }
-            await delay(2000)
-          } else {
-            console.log(
-              `⚠️ Screenshot/s input element not found for ${path.basename(screenPath)}.`
-            )
           }
-        }
 
-        // Add localized captions/titles to each uploaded screenshot
-        await setScreenshotCaptions(page, localeCode)
+          // Add localized captions/titles to each uploaded screenshot
+          await setScreenshotCaptions(page, localeCode)
+        }
       }
+    } else {
+      console.log("⏭️ Skipping screenshots upload (--screenshots false)")
     }
 
     console.log("\n⚙️ Uploading Extension Logo...")

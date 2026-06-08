@@ -1,20 +1,20 @@
 # LinkedIn Games Solver
 
-A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
+LinkedIn Games కోసం సహాయకుడు. రోజువారీ పజిల్స్ (Queens, Sudoku, Pinpoint, Crossclimb) ఆటో-సాల్వ్ చేయండి, స్ట్రీక్‌లు మరియు విశ్లేషణలతో.
 
-## Why Install It?
+## ఎందుకు ఇన్‌స్టాల్ చేయాలి?
 
-- Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
-- Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
-- Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.
-- Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard "Bonus" badge.
-- Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
-- Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
-- Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
-- Context-Aware Shortcuts: Enjoy right-click context menu options like "Mark as Not Played", "Solve", or "Get Hint" directly from game cards.
-- Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.
-- Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
-- Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.
+- స్ట్రీక్‌ను ఎప్పుడూ కోల్పోకండి: మీ రోజువారీ మోమెంటమ్‌ను కొనసాగించండి మరియు కఠినమైన రోజుల్లో లేదా సమయం తక్కువ ఉన్నప్పుడు కూడా మీ స్ట్రీక్‌ను సురక్షితంగా ఉంచండి.
+- ట్రివియా & పద పజిల్స్‌లో నిపుణులు: Crossclimb మరియు Pinpoint వంటి ఆటలకు లోతైన ట్రివియా జ్ఞానం మరియు త్వరిత అసోసియేషన్ అవసరం. అంతర్గత AI వాటిని అధిక ఖచ్చితత్వంతో పరిష్కరిస్తుంది.
+- హైబ్రిడ్ సమాధానాల రిజిస్ట్రి: మా రిమోట్ సమాధానాల డేటాబేస్‌ను ఉపయోగించి Crossclimb మరియు Pinpointను తక్షణమే పరిష్కరించండి, వ్యక్తిగత AI కీలు అవసరం లేదు.
+- పూర్తి బోనస్ గేమ్స్ మద్దతు: స్వతంత్ర స్ట్రీక్ ట్రాకింగ్ మరియు ప్రత్యేక డాష్‌బోర్డ్ "బోనస్" బ్యాడ్జ్‌తో సాధారణ రోజువారీ పజిల్స్ మరియు స్థానిక బోనస్ స్థాయిలను (Queens, Sudoku, మొదలైనవి) సజావుగా పరిష్కరించండి.
+- పూర్తిగా స్థానిక సమీకరణ: సాల్వర్ ఓవర్‌లే మీ క్రియాశీల గేమ్ టాబ్‌పై నేరుగా కనిపిస్తుంది. ఒక క్లిక్, మరియు మీరు స్క్రీన్‌పై పరిష్కరించిన బోర్డును చూడగలరు.
+- విద్యా హింట్ మోడ్: పజిల్స్‌ను సహజంగా ఎలా పరిష్కరించాలో తెలుసుకోండి. ఆటో-కంప్లీటింగ్‌కు బదులుగా, ఒకే ఒక తార్కిక చలనం సూచించబడుతుంది, మరియు స్క్రీన్‌పై ఎరుపు హైలైట్‌లతో తప్పులను వెంటనే పట్టుకోండి.
+- స్టెల్త్ సాల్వ్ స్పీడ్ (స్టెల్త్ మోడ్): మీ రోజువారీ సాల్వింగ్ స్ట్రీక్‌ను బాట్-డిటెక్షన్ పతాకాల నుండి కాపాడటానికి యాదృచ్ఛిక, సహజ ఆలస్యం (1–3 సెకన్లు) తో మానవ క్లిక్ ప్రవర్తనలను అనుకరించండి.
+- సందర్భ-సమర్థమైన షార్ట్‌కట్స్: గేమ్ కార్డుల నుండి "అడిగినట్లు గుర్తించు", "పరిష్కరించు", లేదా "హింట్ పొందు" వంటి కుడి-క్లిక్ సందర్భ మెనూ ఎంపికలను ఆస్వాదించండి.
+- స్థానిక Chrome లో నిర్మిత AI: Google Chrome యొక్క నిర్మిత Gemini Nano మోడల్‌ను కనెక్ట్ చేయండి, ఇది శూన్య ఖర్చుతో, పూర్తిగా స్థానిక మరియు ప్రైవేట్ పజిల్-సాల్వింగ్ అనుభవాన్ని అందిస్తుంది.
+- అందమైన విశ్లేషణ డాష్‌బోర్డ్: మా ప్రీమియం, ఆధునిక క్యాలెండర్ డాష్‌బోర్డ్‌తో మీ సాల్వింగ్ చరిత్ర, సగటు సమయాలు, స్ట్రీక్‌లు మరియు వ్యక్తిగత ఉత్తమాలను ట్రాక్ చేయండి.
+- ప్రైవేట్ & సురక్షిత: మీ బ్రౌజర్‌లో పూర్తిగా నడుస్తుంది. మీ API కీలు AES-256 ఉపయోగించి స్థానికంగా ఎన్‌క్రిప్ట్ చేయబడతాయి మరియు ఎప్పుడూ ఏ సర్వర్‌తోనూ పంచుకోబడవు. ఎప్పుడైనా అనామక టెలిమెట్రీలో చేరండి లేదా బయటకు వెళ్లండి.
 
 ---
 

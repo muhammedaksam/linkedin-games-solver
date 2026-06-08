@@ -1,20 +1,20 @@
 # LinkedIn Games Solver
 
-A helper for LinkedIn Games. Auto-solve daily puzzles (Queens, Sudoku, Pinpoint, Crossclimb) with streaks and analytics.
+En hjälpare för LinkedIn Games. Automatisk lösning av dagliga pussel (Queens, Sudoku, Pinpoint, Crossclimb) med streaks och analyser.
 
-## Why Install It?
+## Varför installera det?
 
-- Never Lose a Streak: Keep your daily momentum going and secure your streak even on the toughest days or when you're short on time.
-- Master Trivia & Word Puzzles: Games like Crossclimb and Pinpoint require deep trivia knowledge and quick association. The built-in AI solves them with high accuracy.
-- Hybrid Answers Registry: Solve Crossclimb and Pinpoint instantly with zero API cost using our remote answers database, no personal AI keys required.
-- Full Bonus Games Support: Seamlessly solve both standard daily puzzles and localized bonus levels (Queens, Sudoku, etc.) with independent streak tracking and a dedicated dashboard "Bonus" badge.
-- Completely Native Integration: The solver overlay appears directly on your active game tab. One click, and you see the solved board right on the screen.
-- Educational Hint Mode: Learn how to solve puzzles naturally. Instead of auto-completing, get a single logical move suggested, and catch mistakes instantly with on-screen red highlights.
-- Stealth Solve Speed (Stealth Mode): Emulate human click behaviors with randomized, natural delays (1–3 seconds) to shield your daily solving streak from bot-detection flags.
-- Context-Aware Shortcuts: Enjoy right-click context menu options like "Mark as Not Played", "Solve", or "Get Hint" directly from game cards.
-- Local Chrome Built-in AI: Connect Google Chrome's built-in Gemini Nano model for a zero-cost, fully local, and private puzzle-solving experience.
-- Beautiful Analytics Dashboard: Track your solving history, average times, streaks, and personal bests with our premium, modern calendar dashboard.
-- Private & Secure: Runs completely in your browser. Your API keys are encrypted locally using AES-256 and are never shared with any server. Opt-in or out of anonymous telemetry at any time.
+- Aldrig förlora en streak: Håll ditt dagliga momentum igång och säkra din streak även de tuffaste dagarna eller när du har ont om tid.
+- Behärska trivia och ordpussel: Spel som Crossclimb och Pinpoint kräver djup trivia kunskap och snabb association. Den inbyggda AI:n löser dem med hög noggrannhet.
+- Hybrid svarregister: Lös Crossclimb och Pinpoint omedelbart utan API-kostnad med vår fjärrsvarsdatabas, inga personliga AI-nycklar krävs.
+- Fullt stöd för bonusspel: Lös både standard dagliga pussel och lokaliserade bonusnivåer (Queens, Sudoku, etc.) sömlöst med oberoende streak-spårning och en dedikerad instrumentpanel "Bonus"-märke.
+- Helt inbyggd integration: Lösarens överlägg visas direkt på din aktiva spelflik. Ett klick, och du ser den lösta spelplanen direkt på skärmen.
+- Utbildande tipsläge: Lär dig att lösa pussel på ett naturligt sätt. Istället för att automatiskt slutföra, få ett enda logiskt drag föreslaget, och fånga misstag omedelbart med röda markeringar på skärmen.
+- Stealth Solve Speed (Stealth Mode): Efterlikna mänskliga klickbeteenden med slumpmässiga, naturliga fördröjningar (1–3 sekunder) för att skydda din dagliga lösningsstreak från bot-detekteringsflaggor.
+- Kontextmedvetna genvägar: Njut av högerklicks kontextmenyalternativ som "Markera som ej spelat", "Lös" eller "Få tips" direkt från spelkort.
+- Lokal Chrome inbyggd AI: Anslut Google Chromes inbyggda Gemini Nano-modell för en kostnadsfri, helt lokal och privat pussel-lösningsupplevelse.
+- Vacker analysinstrumentpanel: Spåra din lösningshistorik, genomsnittliga tider, streaks och personliga rekord med vår premium, moderna kalenderinstrumentpanel.
+- Privat och säker: Kör helt i din webbläsare. Dina API-nycklar är krypterade lokalt med AES-256 och delas aldrig med någon server. Välj att delta i eller avstå från anonym telemetri när som helst.
 
 ---
 
