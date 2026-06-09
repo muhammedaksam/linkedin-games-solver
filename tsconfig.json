@@ -4,6 +4,7 @@
     "jsx": "react-jsx",
     "paths": {
       "#analytics": ["./.wxt/analytics/index.ts"],
+      "#i18n": ["./.wxt/i18n/index.ts"],
       "@plasmohq/messaging": ["./lib/plasmo-messaging-shim.ts"],
       "@plasmohq/storage": ["./lib/plasmo-storage-shim.ts"],
       "@plasmohq/storage/secure": ["./lib/plasmo-storage-shim.ts"],
@@ -11,13 +12,11 @@
       "~lib/*": ["./lib/*"],
       "~games/*": ["./games/*"],
       "~assets/*": ["./assets/*"],
-      "~locales/*": ["./public/_locales/*"],
       "~tabs/*": ["./tabs/*"],
       "~components/*": ["./components/*"],
       "~lib": ["./lib"],
       "~games": ["./games"],
       "~assets": ["./assets"],
-      "~locales": ["./public/_locales"],
       "~tabs": ["./tabs"],
       "~components": ["./components"]
     }

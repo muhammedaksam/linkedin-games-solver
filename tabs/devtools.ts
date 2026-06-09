@@ -1,3 +1,4 @@
+import { i18n } from "#i18n"
 import iconPath from "url:~assets/icon.svg"
 
 if (
@@ -6,8 +7,7 @@ if (
   chrome.devtools.panels
 ) {
   chrome.devtools.panels.create(
-    (chrome.i18n.getMessage("extensionName") || "LinkedIn Games Solver") +
-      " 🧩",
+    i18n.t("extensionName") + " 🧩",
     iconPath,
     "tabs/devtools-panel.html",
     (_panel) => {

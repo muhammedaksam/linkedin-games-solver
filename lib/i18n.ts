@@ -1,3 +1,4 @@
+import { i18n } from "#i18n"
 import type { Locale } from "react-day-picker"
 import {
   ar,
@@ -49,125 +50,6 @@ import {
   zhCN,
   zhTW
 } from "react-day-picker/locale"
-
-import amMessages from "~locales/am/messages.json"
-import arMessages from "~locales/ar/messages.json"
-import bgMessages from "~locales/bg/messages.json"
-import bnMessages from "~locales/bn/messages.json"
-import caMessages from "~locales/ca/messages.json"
-import csMessages from "~locales/cs/messages.json"
-import daMessages from "~locales/da/messages.json"
-import deMessages from "~locales/de/messages.json"
-import elMessages from "~locales/el/messages.json"
-import en_AUMessages from "~locales/en_AU/messages.json"
-import en_GBMessages from "~locales/en_GB/messages.json"
-import en_USMessages from "~locales/en_US/messages.json"
-import enMessages from "~locales/en/messages.json"
-import es_419Messages from "~locales/es_419/messages.json"
-import esMessages from "~locales/es/messages.json"
-import etMessages from "~locales/et/messages.json"
-import faMessages from "~locales/fa/messages.json"
-import fiMessages from "~locales/fi/messages.json"
-import filMessages from "~locales/fil/messages.json"
-import frMessages from "~locales/fr/messages.json"
-import guMessages from "~locales/gu/messages.json"
-import heMessages from "~locales/he/messages.json"
-import hiMessages from "~locales/hi/messages.json"
-import hrMessages from "~locales/hr/messages.json"
-import huMessages from "~locales/hu/messages.json"
-import idMessages from "~locales/id/messages.json"
-import itMessages from "~locales/it/messages.json"
-import jaMessages from "~locales/ja/messages.json"
-import knMessages from "~locales/kn/messages.json"
-import koMessages from "~locales/ko/messages.json"
-import ltMessages from "~locales/lt/messages.json"
-import lvMessages from "~locales/lv/messages.json"
-import mlMessages from "~locales/ml/messages.json"
-import mrMessages from "~locales/mr/messages.json"
-import msMessages from "~locales/ms/messages.json"
-import nlMessages from "~locales/nl/messages.json"
-import noMessages from "~locales/no/messages.json"
-import plMessages from "~locales/pl/messages.json"
-import pt_BRMessages from "~locales/pt_BR/messages.json"
-import pt_PTMessages from "~locales/pt_PT/messages.json"
-import roMessages from "~locales/ro/messages.json"
-import ruMessages from "~locales/ru/messages.json"
-import skMessages from "~locales/sk/messages.json"
-import slMessages from "~locales/sl/messages.json"
-import srMessages from "~locales/sr/messages.json"
-import svMessages from "~locales/sv/messages.json"
-import swMessages from "~locales/sw/messages.json"
-import taMessages from "~locales/ta/messages.json"
-import teMessages from "~locales/te/messages.json"
-import thMessages from "~locales/th/messages.json"
-import trMessages from "~locales/tr/messages.json"
-import ukMessages from "~locales/uk/messages.json"
-import viMessages from "~locales/vi/messages.json"
-import zh_CNMessages from "~locales/zh_CN/messages.json"
-import zh_TWMessages from "~locales/zh_TW/messages.json"
-
-interface MessageItem {
-  message: string
-  description?: string
-}
-
-const localesData: Record<string, Record<string, MessageItem>> = {
-  ar: arMessages as Record<string, MessageItem>,
-  am: amMessages as Record<string, MessageItem>,
-  bg: bgMessages as Record<string, MessageItem>,
-  bn: bnMessages as Record<string, MessageItem>,
-  ca: caMessages as Record<string, MessageItem>,
-  cs: csMessages as Record<string, MessageItem>,
-  da: daMessages as Record<string, MessageItem>,
-  de: deMessages as Record<string, MessageItem>,
-  el: elMessages as Record<string, MessageItem>,
-  en: enMessages as Record<string, MessageItem>,
-  en_AU: en_AUMessages as Record<string, MessageItem>,
-  en_GB: en_GBMessages as Record<string, MessageItem>,
-  en_US: en_USMessages as Record<string, MessageItem>,
-  es: esMessages as Record<string, MessageItem>,
-  es_419: es_419Messages as Record<string, MessageItem>,
-  et: etMessages as Record<string, MessageItem>,
-  fa: faMessages as Record<string, MessageItem>,
-  fi: fiMessages as Record<string, MessageItem>,
-  fil: filMessages as Record<string, MessageItem>,
-  fr: frMessages as Record<string, MessageItem>,
-  gu: guMessages as Record<string, MessageItem>,
-  he: heMessages as Record<string, MessageItem>,
-  hi: hiMessages as Record<string, MessageItem>,
-  hr: hrMessages as Record<string, MessageItem>,
-  hu: huMessages as Record<string, MessageItem>,
-  id: idMessages as Record<string, MessageItem>,
-  it: itMessages as Record<string, MessageItem>,
-  ja: jaMessages as Record<string, MessageItem>,
-  kn: knMessages as Record<string, MessageItem>,
-  ko: koMessages as Record<string, MessageItem>,
-  lt: ltMessages as Record<string, MessageItem>,
-  lv: lvMessages as Record<string, MessageItem>,
-  ml: mlMessages as Record<string, MessageItem>,
-  mr: mrMessages as Record<string, MessageItem>,
-  ms: msMessages as Record<string, MessageItem>,
-  nl: nlMessages as Record<string, MessageItem>,
-  no: noMessages as Record<string, MessageItem>,
-  pl: plMessages as Record<string, MessageItem>,
-  pt_BR: pt_BRMessages as Record<string, MessageItem>,
-  pt_PT: pt_PTMessages as Record<string, MessageItem>,
-  ro: roMessages as Record<string, MessageItem>,
-  ru: ruMessages as Record<string, MessageItem>,
-  sk: skMessages as Record<string, MessageItem>,
-  sl: slMessages as Record<string, MessageItem>,
-  sr: srMessages as Record<string, MessageItem>,
-  sv: svMessages as Record<string, MessageItem>,
-  sw: swMessages as Record<string, MessageItem>,
-  ta: taMessages as Record<string, MessageItem>,
-  te: teMessages as Record<string, MessageItem>,
-  th: thMessages as Record<string, MessageItem>,
-  tr: trMessages as Record<string, MessageItem>,
-  uk: ukMessages as Record<string, MessageItem>,
-  vi: viMessages as Record<string, MessageItem>,
-  zh_CN: zh_CNMessages as Record<string, MessageItem>,
-  zh_TW: zh_TWMessages as Record<string, MessageItem>
-}
 
 // Map locale keys to display metadata (labels and flags)
 export interface LocaleOption {
@@ -299,7 +181,7 @@ function getSystemBaseLanguage(): string {
       const uiLang = chromeApi.i18n.getUILanguage()
       if (uiLang) {
         const cleaned = uiLang.replace("-", "_")
-        if (localesData[cleaned]) return cleaned
+        if (SUPPORTED_LOCALES.some((l) => l.code === cleaned)) return cleaned
         const base = uiLang.split("-")[0].split("_")[0].toLowerCase()
         if (base === "pt") return "pt_BR"
         if (base === "zh")
@@ -307,7 +189,7 @@ function getSystemBaseLanguage(): string {
             uiLang.toLowerCase().includes("hk")
             ? "zh_TW"
             : "zh_CN"
-        if (localesData[base]) return base
+        if (SUPPORTED_LOCALES.some((l) => l.code === base)) return base
       }
     } catch (e) {
       console.warn("Failed to get chrome UI language:", e)
@@ -317,7 +199,7 @@ function getSystemBaseLanguage(): string {
   if (typeof navigator !== "undefined" && navigator.language) {
     const uiLang = navigator.language
     const cleaned = uiLang.replace("-", "_")
-    if (localesData[cleaned]) return cleaned
+    if (SUPPORTED_LOCALES.some((l) => l.code === cleaned)) return cleaned
     const base = uiLang.split("-")[0].toLowerCase()
     if (base === "pt") return "pt_BR"
     if (base === "zh")
@@ -325,7 +207,7 @@ function getSystemBaseLanguage(): string {
         uiLang.toLowerCase().includes("hk")
         ? "zh_TW"
         : "zh_CN"
-    if (localesData[base]) return base
+    if (SUPPORTED_LOCALES.some((l) => l.code === base)) return base
   }
 
   return "en"
@@ -337,7 +219,7 @@ const systemLocale = getSystemBaseLanguage()
 export function getActiveLocale(): string {
   if (typeof window !== "undefined" && window.localStorage) {
     const saved = window.localStorage.getItem("user-locale")
-    if (saved && localesData[saved]) {
+    if (saved && SUPPORTED_LOCALES.some((l) => l.code === saved)) {
       return saved
     }
   }
@@ -348,7 +230,6 @@ export function setActiveLocale(code: string): void {
   if (typeof window !== "undefined" && window.localStorage) {
     window.localStorage.setItem("user-locale", code)
   }
-  // Dispatch custom event for reactive elements in the same window context
   if (typeof window !== "undefined") {
     window.dispatchEvent(new CustomEvent("localeChanged", { detail: code }))
   }
@@ -358,30 +239,16 @@ export function getMessage(
   key: string,
   substitutions?: string | string[]
 ): string {
-  const activeLoc = getActiveLocale()
-
-  // 1. Fetch from selected locale dictionary
-  const dictionary = localesData[activeLoc] || localesData.en
-  let item = dictionary[key]
-
-  // 2. Fallback to English dictionary if key is missing in active locale
-  if ((!item || !item.message) && activeLoc !== "en") {
-    item = localesData.en[key]
-  }
-
-  // 3. Fallback to key itself if not found anywhere
-  if (!item || !item.message) {
+  const subs = Array.isArray(substitutions)
+    ? substitutions
+    : substitutions
+      ? [substitutions]
+      : []
+  try {
+    return (i18n.t as (key: string, ...args: string[]) => string)(key, ...subs)
+  } catch {
     return key
   }
-
-  let msg = item.message
-  if (substitutions) {
-    const subs = Array.isArray(substitutions) ? substitutions : [substitutions]
-    subs.forEach((sub, index) => {
-      msg = msg.replace(`$${index + 1}`, sub)
-    })
-  }
-  return msg
 }
 
 export const locale = getActiveLocale()

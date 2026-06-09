@@ -1,4 +1,5 @@
 import { analytics } from "#analytics"
+import { i18n } from "#i18n"
 
 import { askAI } from "~games/ai"
 import { syncStorage } from "~lib/storage"
@@ -311,14 +312,13 @@ const checkAndNotifyStreak = async () => {
       chrome.notifications.create("streak-protector-reminder", {
         type: "basic",
         iconUrl: "icon.png",
-        title:
-          chrome.i18n.getMessage("notificationTitle") || "Streak Protector 🚀",
+        title: i18n.t("notificationTitle") || "Streak Protector 🚀",
         message:
-          chrome.i18n.getMessage("notificationMessage") ||
+          i18n.t("notificationMessage") ||
           "Don't lose your solving streak! You haven't solved today's LinkedIn games yet.",
         buttons: [
           {
-            title: chrome.i18n.getMessage("notificationButton") || "Solve Now!"
+            title: i18n.t("notificationButton") || "Solve Now!"
           }
         ],
         priority: 2
@@ -501,24 +501,21 @@ export default defineBackground({
           chrome.contextMenus.create({
             id: "solve-active-game-menu",
             title:
-              chrome.i18n.getMessage("contextMenuSolve") ||
-              "⚡ Solve Active LinkedIn Game",
+              i18n.t("contextMenuSolve") || "⚡ Solve Active LinkedIn Game",
             contexts: ["page"],
             documentUrlPatterns: ["https://*.linkedin.com/games/*"]
           })
 
           chrome.contextMenus.create({
             id: "get-single-hint-menu",
-            title: chrome.i18n.getMessage("contextMenuHint") || "💡 Get a Hint",
+            title: i18n.t("contextMenuHint") || "💡 Get a Hint",
             contexts: ["page"],
             documentUrlPatterns: ["https://*.linkedin.com/games/*"]
           })
 
           chrome.contextMenus.create({
             id: "view-results-menu",
-            title:
-              chrome.i18n.getMessage("contextMenuViewResults") ||
-              "📊 View Results",
+            title: i18n.t("contextMenuViewResults") || "📊 View Results",
             contexts: ["page"],
             documentUrlPatterns: ["https://*.linkedin.com/games/*"]
           })
@@ -669,7 +666,7 @@ export default defineBackground({
         .filter((item) => !clean || item.content.includes(clean))
         .map((item) => ({
           content: item.content,
-          description: chrome.i18n.getMessage(item.descKey) || item.defaultDesc
+          description: i18n.t(item.descKey) || item.defaultDesc
         }))
 
       suggest(filtered)

@@ -1,20 +1,13 @@
+import { i18n } from "#i18n"
+
 if (
   typeof chrome !== "undefined" &&
   chrome.devtools &&
   chrome.devtools.panels
 ) {
   try {
-    let extensionName = "LinkedIn Games Solver"
-    try {
-      if (chrome.i18n && typeof chrome.i18n.getMessage === "function") {
-        extensionName = chrome.i18n.getMessage("extensionName") || extensionName
-      }
-    } catch {
-      // Ignore build-time mock exceptions
-    }
-
     chrome.devtools.panels.create(
-      `${extensionName} 🧩`,
+      `${i18n.t("extensionName")} 🧩`,
       "icon.png",
       "devtools-panel.html",
       (_panel) => {
