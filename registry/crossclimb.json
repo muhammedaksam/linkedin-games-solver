@@ -1726,5 +1726,17 @@
     "answers": ["CORD", "CARD", "HARD", "HARE", "HAVE"],
     "topWord": "COLD",
     "bottomWord": "WAVE"
+  },
+  "770": {
+    "clues": [
+      "Without any power, as a battery",
+      "Opening word of many letters and emails",
+      "Opposite of far",
+      "Clean and in good order",
+      "Place for a bird's eggs to hatch"
+    ],
+    "answers": ["DEAD", "DEAR", "NEAR", "NEAT", "NEST"],
+    "topWord": "HEAD",
+    "bottomWord": "REST"
   }
 }
