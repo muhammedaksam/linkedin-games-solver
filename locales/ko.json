@@ -1,780 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn 게임 솔버",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "LinkedIn 게임을 위한 도우미입니다. 일일 퍼즐(Queens, 스도쿠, Pinpoint, Crossclimb)을 자동으로 해결하고 연속 기록과 분석을 제공합니다.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIn 게임",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "활성 보드를 한 번의 클릭으로 해결",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "$1 모드로 전환",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Chrome 탭 통합이 필요합니다.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "활성 탭을 찾을 수 없습니다.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "$1로 이동하지 못했습니다.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "연결에 실패했습니다.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "솔버를 실행하는 중 문제가 발생했습니다.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "솔버가 시작되었습니다.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "풀이 중...",
-    "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "보너스",
-    "description": "Bonus badge next to game name"
-  },
-  "desc_patches": {
-    "message": "패치를 연결하기"
-  },
-  "desc_zip": {
-    "message": "경로 완성하기"
-  },
-  "desc_sudoku": {
-    "message": "클래식 게임, 미니 버전"
-  },
-  "desc_tango": {
-    "message": "그리드 조화시키기"
-  },
-  "desc_queens": {
-    "message": "각 영역 왕관 씌우기"
-  },
-  "desc_crossclimb": {
-    "message": "학습 사다리 열기"
-  },
-  "desc_pinpoint": {
-    "message": "카테고리 맞추기"
-  },
-  "titleSolve": {
-    "message": "$1 풀기",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "오늘 완료! $1로 이동을 클릭하세요",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "풀기 위해 $1 열기",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "완벽한 날! 모든 $1 게임이 완료되었습니다! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "일일 진행률: $2 중 $1개 게임 완료",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "기록 및 통계",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "LinkedIn Games 해결 기록 및 통계",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "총 해결",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "모든 날짜에 걸쳐 해결된 게임",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "평균 시간",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "기록된 모든 완료에 대해",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "활성 연속",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "연속된 활성 일수",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1일",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "개인 최고 기록",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "풀이 기록이 저장되지 않았습니다.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "풀이 기록",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "활동 달력",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "필터 제거",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "모델",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "모델 선택",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "사용자 정의 모델 이름...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "사용자 정의 모델 이름",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "예: llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "사용자 정의 ID 입력...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "엔드포인트 URL",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "예: http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API 키",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API 키",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API 키",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API 키",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API 키 (선택사항)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "인증 정보 (선택사항)...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "인증 정보 키 입력...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "선택한 모델은 크로스클림과 핀포인트를 풉니다. 확장 프로그램은 절대 키를 공유하지 않습니다.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "LinkedIn 게임 풀이기",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "AI로 LinkedIn 게임 풀기",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "저장 후 게임으로 돌아가기",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "AI 풀이기 작동 중...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "오늘 완료",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "풀이됨",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "AI 모델 설정",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "AI 제공자",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "모델 식별자",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "사용자 정의 모델 이름",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "엔드포인트 URL",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API 키",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API 키",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API 키",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API 키",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API 키 (선택사항)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "홈",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "설정/옵션",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "통계",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "테마",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "디버그",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "일일 진행률",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "활성 보드 풀기",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "LinkedIn 게임으로 돌아가기",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "대시보드",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "게임 풀이기",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "성과 지표를 분석하고, 연속 기록을 남기며, 매일 완료한 퍼즐의 흐름을 추적하세요.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "성공적으로 완료",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "면책조항: 이것은 독립적인 오픈 소스 교육 프로젝트입니다. LinkedIn Corporation과 제휴, 후원 또는 승인을 받은 것이 아닙니다. ‘LinkedIn’은 LinkedIn Corporation의 등록 상표입니다.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "인증 정보 및 모델",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "모델 가이드 및 정보",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "연결 상태",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "활성 풀이기:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "모델 식별자:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "설정이 자동 저장되었습니다!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "고급 퍼즐 추론 풀이를 위해 AI 모델 엔드포인트 및 인증 정보를 설정합니다.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "뛰어난 성능, 비용 거의 없음. 뛰어난 논리로 크로스클림과 핀포인트를 풉니다. 권장: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "빠르고 응답성이 뛰어나며 일반 지식 모델로 매우 안정적입니다. 권장: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "최대 추론 능력. 복잡한 크로스워드를 완벽하게 처리합니다. 권장: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Ollama 또는 LM Studio와 같은 로컬 LLM 프레임워크에 연결합니다. 엔드포인트 URL(예: http://localhost:11434/v1) 및 사용자 정의 모델 이름을 지정합니다.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "더 많은 날짜 표시",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "더 적게 표시",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "AI로 풀기"
-  },
-  "solveBtn_game": {
-    "message": "게임 풀기"
-  },
-  "solveBtn_solving": {
-    "message": "풀이 중..."
-  },
-  "solveBtn_solved": {
-    "message": "풀어짐!"
-  },
-  "scoreClue": {
-    "message": "1개 힌트"
-  },
-  "scoreClues": {
-    "message": "$1개 힌트"
-  },
-  "scoreSeconds": {
-    "message": "$1초"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1분 $2초"
-  },
-  "markAsNotPlayed": {
-    "message": "미플레이로 표시",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "풀이 속도/지연",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "즉시 (가장 빠름)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "정상 (표준)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "은폐 모드 (인간적 지연)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "풀이 속도 및 속도",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "즉시 모드는 밀리초 내에 보드를 완성합니다. 은폐 모드는 무작위 지연(1-3초)으로 인간의 동작을 모방하여 자동 감지로부터 보호합니다.",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "힌트 받기",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "풀이기 기본 작업",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "완전 자동 풀이",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "교육용 힌트 모드",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "풀이기 기본 모드",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "탭 보기 또는 보드에서 풀이기를 시작할 때 주요 작업을 선택합니다. 완전 풀이는 게임을 완료합니다. 힌트 모드는 올바른 조각 1개를 배치합니다.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "제로 비용 완전 로컬 AI",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "장치에서 완전히 로컬로 실행, 브라우저 내. Gemini Nano로 네트워크 지연 없음, 100% 무료.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "게임 디버거 및 개발 도구",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "오프라인",
-    "description": "Debug offline status indicator label"
-  },
-  "debugStatusLive": {
-    "message": "온라인",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "감지된 게임",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "감지됨 없음",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "대상 URL",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "활성 탭 없음",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML이 복사되었습니다!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "<main> HTML 복사",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "로그가 복사되었습니다!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "콘솔 로그 복사",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "둘 다 복사되었습니다!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "둘 다 복사 (HTML 및 로그)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "레지스트리 JSON이 복사되었습니다!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "오늘의 레지스트리 JSON 복사",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "JSON 복사",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "답변 제출",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "DOM 요소 미리보기",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [잘린 항목, 총 문자: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "완전한 <main> HTML 복사",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "활성 <main> 태그가 캡처되지 않았습니다. LinkedIn 게임 페이지에 있는지 확인하세요.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "콘솔 출력",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1개 이벤트",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "로그 새로고침",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "로그 지우기",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "아직 로그가 캡처되지 않았습니다. 게임 보드에서 작업을 실행하여 콘솔 이벤트를 트리거합니다.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "console.log, console.warn 및 console.error 이벤트 수신 중...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "LinkedIn 게임 페이지와의 연결 초기화 중...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "게임 데이터를 검색할 수 없습니다.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "활성 탭이 LinkedIn 게임 페이지가 아닙니다. 세부 정보를 캡처하려면 게임으로 이동하세요.",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "활성 탭을 식별할 수 없습니다.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "일일 알림 및 연속 보호",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "일일 알림 활성화",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "오늘의 연속이 만료되기 전에 경고합니다.",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "알림 시간",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "완료되지 않은 게임을 확인하기 위해 현지 시간을 선택합니다.",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "연속 보호 🚀",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "풀이 연속을 잃지 마세요! 아직 오늘의 LinkedIn 게임을 풀지 않았습니다.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "지금 풀기!",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "활성 LinkedIn 게임을 자동으로 풀기."
-  },
-  "commandGetSingleHint": {
-    "message": "단일 단계 힌트를 제공하거나 오류를 확인합니다."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "게임에서 사이드패널 자동 열기"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "LinkedIn 게임을 방문할 때 풀이기 사이드패널을 자동으로 엽니다."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "풀이기 사이드패널 자동 열기"
-  },
-  "permissionDialogTitle": {
-    "message": "페이지 권한 부여"
-  },
-  "permissionDialogDesc": {
-    "message": "활성 게임 보드를 감지하고 퍼즐을 풀기 위해 확장 프로그램이 LinkedIn 게임 페이지에서 실행될 권한이 필요합니다. 아래를 클릭하여 액세스 권한을 부여합니다."
-  },
-  "permissionDialogButton": {
-    "message": "권한 부여"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 오늘 퀸즈를 플레이하고 풀기!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 미니 스도쿠 풀이기 열기"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 연속 및 성능 대시보드 열기"
-  },
-  "diagnosticsEngine": {
-    "message": "진단 엔진"
-  },
-  "liveInspected": {
-    "message": "실시간 검사"
-  },
-  "offline": {
-    "message": "오프라인"
-  },
-  "inspectedTab": {
-    "message": "검사된 탭:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "실시간 매트릭스 그리드 검사기"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "LinkedIn 게임 페이지 대기 중"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "제약 조건 센터, 셀 상태 및 반응형 구조를 캡처하려면 LinkedIn 게임 보드 탭(퀸즈, 스도쿠, 탱고, 핀포인트)으로 이동합니다."
-  },
-  "telemetryLogsStreamer": {
-    "message": "원격 분석 로그 스트림"
-  },
-  "searchLogsPlaceholder": {
-    "message": "로그 검색..."
-  },
-  "allTypes": {
-    "message": "모든 유형"
-  },
-  "logsType": {
-    "message": "로그"
-  },
-  "infoType": {
-    "message": "정보"
-  },
-  "warnsType": {
-    "message": "경고"
-  },
-  "errorsType": {
-    "message": "오류"
-  },
-  "selectTypePlaceholder": {
-    "message": "유형 선택"
-  },
-  "consoleStreamEmpty": {
-    "message": "콘솔 스트림이 비어 있습니다"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "필터와 일치하는 로그 출력이 감지되지 않았습니다. LinkedIn 게임 풀이기 환경 내에서 단계를 실행하여 로그를 스트리밍합니다."
-  },
-  "subscribedToStorageSession": {
-    "message": "storage.session 스트림에 구독됨"
-  },
-  "parsingGameGridCells": {
-    "message": "게임 그리드 셀 구문 분석 중... 보드에 표시되는 활성 그리드 블록이 있는지 확인합니다."
-  },
-  "urlLabel": {
-    "message": "URL:"
-  },
-  "notAvailable": {
-    "message": "사용 불가"
-  },
-  "matchesLabel": {
-    "message": "일치"
-  },
-  "copiedLabel": {
-    "message": "복사됨!"
-  },
-  "copyLogsTooltip": {
-    "message": "로그 복사"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "로그 공간 지우기"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ 활성 LinkedIn 게임 풀기"
-  },
-  "contextMenuHint": {
-    "message": "💡 힌트 받기"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 결과 보기"
-  },
-  "labelTelemetryTitle": {
-    "message": "원격 분석 및 개인 정보 보호",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "익명의 원격 분석 전송",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "익명의 성능 및 사용 메트릭을 공유하여 풀이기 개선에 도움을 줍니다.",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  }
+  "extensionName": "LinkedIn 게임 솔버",
+  "extensionDescription": "LinkedIn 게임을 위한 도우미입니다. 일일 퍼즐(Queens, 스도쿠, Pinpoint, Crossclimb)을 자동으로 해결하고 연속 기록과 분석을 제공합니다.",
+  "title": "LinkedIn 게임",
+  "subtitle": "활성 보드를 한 번의 클릭으로 해결",
+  "switchThemeTitle": "$1 모드로 전환",
+  "errorChromeTabIntegration": "Chrome 탭 통합이 필요합니다.",
+  "errorActiveTabNotFound": "활성 탭을 찾을 수 없습니다.",
+  "errorNavigationFailed": "$1로 이동하지 못했습니다.",
+  "errorConnectionFailed": "연결에 실패했습니다.",
+  "errorExecutionFailedDefault": "솔버를 실행하는 중 문제가 발생했습니다.",
+  "successSolverStarted": "솔버가 시작되었습니다.",
+  "solvingStatus": "풀이 중...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "보너스",
+  "desc_patches": "패치를 연결하기",
+  "desc_zip": "경로 완성하기",
+  "desc_sudoku": "클래식 게임, 미니 버전",
+  "desc_tango": "그리드 조화시키기",
+  "desc_queens": "각 영역 왕관 씌우기",
+  "desc_crossclimb": "학습 사다리 열기",
+  "desc_pinpoint": "카테고리 맞추기",
+  "titleSolve": "$1 풀기",
+  "titleCompleted": "오늘 완료! $1로 이동을 클릭하세요",
+  "titleOpen": "풀기 위해 $1 열기",
+  "perfectDay": "완벽한 날! 모든 $1 게임이 완료되었습니다! 🎉",
+  "dailyProgress": "일일 진행률: $2 중 $1개 게임 완료",
+  "dashboardTitle": "기록 및 통계",
+  "dashboardSubtitle": "LinkedIn Games 해결 기록 및 통계",
+  "statTotalSolved": "총 해결",
+  "statTotalSolvedDesc": "모든 날짜에 걸쳐 해결된 게임",
+  "statAverageTime": "평균 시간",
+  "statAverageTimeDesc": "기록된 모든 완료에 대해",
+  "statActiveStreak": "활성 연속",
+  "statActiveStreakDesc": "연속된 활성 일수",
+  "statStreakDays": "$1일",
+  "personalBests": "개인 최고 기록",
+  "noRecordsYet": "풀이 기록이 저장되지 않았습니다.",
+  "solvingHistory": "풀이 기록",
+  "activityCalendar": "활동 달력",
+  "clearFilter": "필터 제거",
+  "settingModel": "모델",
+  "settingModelSelect": "모델 선택",
+  "settingModelCustomOption": "사용자 정의 모델 이름...",
+  "settingModelCustomLabel": "사용자 정의 모델 이름",
+  "settingModelCustomPlaceholderLocal": "예: llama3, mistral",
+  "settingModelCustomPlaceholderOther": "사용자 정의 ID 입력...",
+  "settingEndpointLabel": "엔드포인트 URL",
+  "settingEndpointPlaceholder": "예: http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API 키",
+  "settingApiKeyOpenAI": "OpenAI API 키",
+  "settingApiKeyAnthropic": "Anthropic API 키",
+  "settingApiKeyDeepSeek": "DeepSeek API 키",
+  "settingApiKeyCustom": "API 키 (선택사항)",
+  "settingApiKeyPlaceholderCustom": "인증 정보 (선택사항)...",
+  "settingApiKeyPlaceholderDefault": "인증 정보 키 입력...",
+  "settingApiKeyNotice": "선택한 모델은 크로스클림과 핀포인트를 풉니다. 확장 프로그램은 절대 키를 공유하지 않습니다.",
+  "popupCardTitle": "LinkedIn 게임 풀이기",
+  "popupCardDesc": "AI로 LinkedIn 게임 풀기",
+  "saveAndBack": "저장 후 게임으로 돌아가기",
+  "solvingWorking": "AI 풀이기 작동 중...",
+  "completedToday": "오늘 완료",
+  "solvedCountSuffix": "풀이됨",
+  "settingsHeaderTitle": "AI 모델 설정",
+  "labelAiProvider": "AI 제공자",
+  "labelModelIdentifier": "모델 식별자",
+  "labelCustomModel": "사용자 정의 모델 이름",
+  "labelEndpointUrl": "엔드포인트 URL",
+  "labelGeminiKey": "GEMINI API 키",
+  "labelOpenAiKey": "OPENAI API 키",
+  "labelAnthropicKey": "ANTHROPIC API 키",
+  "labelDeepSeekKey": "DEEPSEEK API 키",
+  "labelCustomKey": "API 키 (선택사항)",
+  "navHome": "홈",
+  "navAiConfig": "설정/옵션",
+  "navStats": "통계",
+  "navTheme": "테마",
+  "navDebug": "디버그",
+  "dailyProgressLabel": "일일 진행률",
+  "solveActiveBoard": "활성 보드 풀기",
+  "backToGames": "LinkedIn 게임으로 돌아가기",
+  "dashboardLabel": "대시보드",
+  "gamesSolverTitle": "게임 풀이기",
+  "dashboardDescText": "성과 지표를 분석하고, 연속 기록을 남기며, 매일 완료한 퍼즐의 흐름을 추적하세요.",
+  "completedSuccessfully": "성공적으로 완료",
+  "disclaimerText": "면책조항: 이것은 독립적인 오픈 소스 교육 프로젝트입니다. LinkedIn Corporation과 제휴, 후원 또는 승인을 받은 것이 아닙니다. ‘LinkedIn’은 LinkedIn Corporation의 등록 상표입니다.",
+  "settingsCredentialsTitle": "인증 정보 및 모델",
+  "settingsModelGuideTitle": "모델 가이드 및 정보",
+  "settingsConnectionStatusTitle": "연결 상태",
+  "settingsActiveSolverLabel": "활성 풀이기:",
+  "settingsModelIdentifierLabel": "모델 식별자:",
+  "settingsAutoSavedNotification": "설정이 자동 저장되었습니다!",
+  "settingsSubtitleDesc": "고급 퍼즐 추론 풀이를 위해 AI 모델 엔드포인트 및 인증 정보를 설정합니다.",
+  "settingsGeminiGuideDesc": "뛰어난 성능, 비용 거의 없음. 뛰어난 논리로 크로스클림과 핀포인트를 풉니다. 권장: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "빠르고 응답성이 뛰어나며 일반 지식 모델로 매우 안정적입니다. 권장: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "최대 추론 능력. 복잡한 크로스워드를 완벽하게 처리합니다. 권장: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Ollama 또는 LM Studio와 같은 로컬 LLM 프레임워크에 연결합니다. 엔드포인트 URL(예: http://localhost:11434/v1) 및 사용자 정의 모델 이름을 지정합니다.",
+  "showMoreDates": "더 많은 날짜 표시",
+  "showLessDates": "더 적게 표시",
+  "solveBtn_withAi": "AI로 풀기",
+  "solveBtn_game": "게임 풀기",
+  "solveBtn_solving": "풀이 중...",
+  "solveBtn_solved": "풀어짐!",
+  "scoreClue": "1개 힌트",
+  "scoreClues": "$1개 힌트",
+  "scoreSeconds": "$1초",
+  "scoreMinutesSeconds": "$1분 $2초",
+  "markAsNotPlayed": "미플레이로 표시",
+  "settingSolveSpeed": "풀이 속도/지연",
+  "solveSpeed_instant": "즉시 (가장 빠름)",
+  "solveSpeed_normal": "정상 (표준)",
+  "solveSpeed_stealth": "은폐 모드 (인간적 지연)",
+  "labelSolveSpeed": "풀이 속도 및 속도",
+  "settingSolveSpeedNotice": "즉시 모드는 밀리초 내에 보드를 완성합니다. 은폐 모드는 무작위 지연(1-3초)으로 인간의 동작을 모방하여 자동 감지로부터 보호합니다.",
+  "solveBtn_hint": "힌트 받기",
+  "settingDefaultSolveMode": "풀이기 기본 작업",
+  "solveMode_full": "완전 자동 풀이",
+  "solveMode_hint": "교육용 힌트 모드",
+  "labelDefaultSolveMode": "풀이기 기본 모드",
+  "settingDefaultSolveModeNotice": "탭 보기 또는 보드에서 풀이기를 시작할 때 주요 작업을 선택합니다. 완전 풀이는 게임을 완료합니다. 힌트 모드는 올바른 조각 1개를 배치합니다.",
+  "settingsChromeBuiltInGuideTitle": "제로 비용 완전 로컬 AI",
+  "settingsChromeBuiltInGuideDesc": "장치에서 완전히 로컬로 실행, 브라우저 내. Gemini Nano로 네트워크 지연 없음, 100% 무료.",
+  "debugHeaderTitle": "게임 디버거 및 개발 도구",
+  "debugStatusOffline": "오프라인",
+  "debugStatusLive": "온라인",
+  "debugDetectedGame": "감지된 게임",
+  "debugNoneDetected": "감지됨 없음",
+  "debugTargetUrl": "대상 URL",
+  "debugNoActiveTab": "활성 탭 없음",
+  "debugHtmlCopied": "HTML이 복사되었습니다!",
+  "debugCopyHtml": "<main> HTML 복사",
+  "debugLogsCopied": "로그가 복사되었습니다!",
+  "debugCopyLogs": "콘솔 로그 복사",
+  "debugBothCopied": "둘 다 복사되었습니다!",
+  "debugCopyBoth": "둘 다 복사 (HTML 및 로그)",
+  "debugRegistryCopied": "레지스트리 JSON이 복사되었습니다!",
+  "debugCopyRegistry": "오늘의 레지스트리 JSON 복사",
+  "debugCopyRegistryShort": "JSON 복사",
+  "debugSubmitAnswer": "답변 제출",
+  "debugDomPreview": "DOM 요소 미리보기",
+  "debugHtmlTruncated": "\n\n[ ... [잘린 항목, 총 문자: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "완전한 <main> HTML 복사",
+  "debugNoMainTagCaptured": "활성 <main> 태그가 캡처되지 않았습니다. LinkedIn 게임 페이지에 있는지 확인하세요.",
+  "debugConsoleOutput": "콘솔 출력",
+  "debugEventsCount": "$1개 이벤트",
+  "debugRefreshLogsTooltip": "로그 새로고침",
+  "debugClearLogsTooltip": "로그 지우기",
+  "debugNoLogsCaptured": "아직 로그가 캡처되지 않았습니다. 게임 보드에서 작업을 실행하여 콘솔 이벤트를 트리거합니다.",
+  "debugListeningEvents": "console.log, console.warn 및 console.error 이벤트 수신 중...",
+  "debugErrorInitializing": "LinkedIn 게임 페이지와의 연결 초기화 중...",
+  "debugErrorRetrieveFailed": "게임 데이터를 검색할 수 없습니다.",
+  "debugErrorNotGamesPage": "활성 탭이 LinkedIn 게임 페이지가 아닙니다. 세부 정보를 캡처하려면 게임으로 이동하세요.",
+  "debugErrorNoActiveTab": "활성 탭을 식별할 수 없습니다.",
+  "labelDailyReminders": "일일 알림 및 연속 보호",
+  "settingEnableReminders": "일일 알림 활성화",
+  "settingEnableRemindersDesc": "오늘의 연속이 만료되기 전에 경고합니다.",
+  "settingReminderTime": "알림 시간",
+  "settingReminderTimeNotice": "완료되지 않은 게임을 확인하기 위해 현지 시간을 선택합니다.",
+  "notificationTitle": "연속 보호 🚀",
+  "notificationMessage": "풀이 연속을 잃지 마세요! 아직 오늘의 LinkedIn 게임을 풀지 않았습니다.",
+  "notificationButton": "지금 풀기!",
+  "commandSolveActiveGame": "활성 LinkedIn 게임을 자동으로 풀기.",
+  "commandGetSingleHint": "단일 단계 힌트를 제공하거나 오류를 확인합니다.",
+  "settingAutoOpenSidepanel": "게임에서 사이드패널 자동 열기",
+  "settingAutoOpenSidepanelDesc": "LinkedIn 게임을 방문할 때 풀이기 사이드패널을 자동으로 엽니다.",
+  "labelAutoOpenSidepanel": "풀이기 사이드패널 자동 열기",
+  "permissionDialogTitle": "페이지 권한 부여",
+  "permissionDialogDesc": "활성 게임 보드를 감지하고 퍼즐을 풀기 위해 확장 프로그램이 LinkedIn 게임 페이지에서 실행될 권한이 필요합니다. 아래를 클릭하여 액세스 권한을 부여합니다.",
+  "permissionDialogButton": "권한 부여",
+  "omniboxSuggestionQueens": "👑 오늘 퀸즈를 플레이하고 풀기!",
+  "omniboxSuggestionSudoku": "🔢 미니 스도쿠 풀이기 열기",
+  "omniboxSuggestionStats": "📊 연속 및 성능 대시보드 열기",
+  "diagnosticsEngine": "진단 엔진",
+  "liveInspected": "실시간 검사",
+  "offline": "오프라인",
+  "inspectedTab": "검사된 탭:",
+  "liveMatrixGridInspector": "실시간 매트릭스 그리드 검사기",
+  "waitingForLinkedInGamePage": "LinkedIn 게임 페이지 대기 중",
+  "waitingForLinkedInGamePageDesc": "제약 조건 센터, 셀 상태 및 반응형 구조를 캡처하려면 LinkedIn 게임 보드 탭(퀸즈, 스도쿠, 탱고, 핀포인트)으로 이동합니다.",
+  "telemetryLogsStreamer": "원격 분석 로그 스트림",
+  "searchLogsPlaceholder": "로그 검색...",
+  "allTypes": "모든 유형",
+  "logsType": "로그",
+  "infoType": "정보",
+  "warnsType": "경고",
+  "errorsType": "오류",
+  "selectTypePlaceholder": "유형 선택",
+  "consoleStreamEmpty": "콘솔 스트림이 비어 있습니다",
+  "consoleStreamEmptyDesc": "필터와 일치하는 로그 출력이 감지되지 않았습니다. LinkedIn 게임 풀이기 환경 내에서 단계를 실행하여 로그를 스트리밍합니다.",
+  "subscribedToStorageSession": "storage.session 스트림에 구독됨",
+  "parsingGameGridCells": "게임 그리드 셀 구문 분석 중... 보드에 표시되는 활성 그리드 블록이 있는지 확인합니다.",
+  "urlLabel": "URL:",
+  "notAvailable": "사용 불가",
+  "matchesLabel": "일치",
+  "copiedLabel": "복사됨!",
+  "copyLogsTooltip": "로그 복사",
+  "clearLogSpaceTooltip": "로그 공간 지우기",
+  "contextMenuSolve": "⚡ 활성 LinkedIn 게임 풀기",
+  "contextMenuHint": "💡 힌트 받기",
+  "contextMenuViewResults": "📊 결과 보기",
+  "labelTelemetryTitle": "원격 분석 및 개인 정보 보호",
+  "telemetryToggleLabel": "익명의 원격 분석 전송",
+  "telemetryToggleDesc": "익명의 성능 및 사용 메트릭을 공유하여 풀이기 개선에 도움을 줍니다."
 }

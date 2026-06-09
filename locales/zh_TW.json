@@ -1,780 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn 遊戲助手",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "LinkedIn 遊戲的幫手。自動求解每日謎題（Queens，Sudoku，Pinpoint，Crossclimb），提供連勝紀錄和數據分析。",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIn 遊戲",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "一鍵自動求解當前 LinkedIn 遊戲",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "切換至 $1 模式",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "需要 Chrome 分頁整合。",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "找不到目前作用中的分頁。",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "無法前往 $1。",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "連線失敗。",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "執行解題器時發生問題。",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "解題器已啟動。",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "正在求解中...",
-    "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "獎勵",
-    "description": "Bonus badge next to game name"
-  },
-  "titleSolve": {
-    "message": "求解 $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "今日已完成！點擊跳轉至 $1",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "打開 $1 以求解",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "完美的一天！全部 $1 個遊戲已完成！ 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "今日進度：已完成 $1/$2 個遊戲",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "歷史記錄與統計",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "您完整的 LinkedIn 遊戲求解歷史與數據統計",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "累計已解",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "所有日期內已求解的遊戲數",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "平均用時",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "所有記錄的求解用時平均值",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "連續天數",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "連續參與 LinkedIn 遊戲的天数",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 天",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "個人最佳紀錄",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "暫無求解記錄。",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "求解歷史記錄",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "活動日曆",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "清除篩選",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "模型",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "選擇模型",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "自訂模型名稱...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "自訂模型名稱",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "例如 llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "輸入自訂識別碼...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "端點 URL",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "例如 http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API 金鑰",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API 金鑰",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API 金鑰",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API 金鑰",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API 金鑰 (選填)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "選填憑證...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "輸入憑證金鑰...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "所選模型可解決 Crossclimb 和 Pinpoint。此擴充功能絕不會分享您的金鑰。",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "透過有趣的日常遊戲保持聯繫",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "調整身心，為工作日做好準備，並比較結果。除非您本人公開分數，否則您的分數僅對自己顯示。",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "儲存並返回遊戲",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "AI 求解器工作中...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "今日已完成",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "已解決",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "AI 模型設定",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "AI 提供商",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "模型識別碼",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "自訂模型名稱",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "端點 URL",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API 金鑰",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API 金鑰",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API 金鑰",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API 金鑰",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API 金鑰 (選填)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "首頁",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "設定與選項",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "統計",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "主題",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "除錯",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "每日進度",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "求解當前棋盤",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "返回 LinkedIn 遊戲",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "儀表板",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "遊戲求解器",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "分析您的績效指標、記錄連續天數並追蹤您每日完成的謎題路徑。",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "成功完成",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "免責聲明：這是一個獨立的開源教育專案。與 LinkedIn Corporation 無關，亦未獲得其資助或認可。“LinkedIn”是 LinkedIn Corporation 的註冊商標。",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "憑證與模型",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "模型指南與資訊",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "連線狀態",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "活動求解器：",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "模型識別碼：",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "設定已自動儲存！",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "設定人工智慧模型整合端點和憑證，以實現高級拼圖解決推理。",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "接近零成本的优异性能。以出色的邏輯解決 Crossclimb 和 Pinpoint。推薦預設值：gemini-2.5-flash。",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "在通用知識模式下快速、響應迅速且極其可靠。推薦預設值：gpt-4o-mini。",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "最大程度的推理能力。完美處理非常複雜的詞彙關聯。推薦預設值：claude-3-5-haiku。",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "連線到本地 LLM 框架（如 Ollama 或 LM Studio）。指定端端 URL（例如 http://localhost:11434/v1）和自訂模型名稱。",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "顯示更多日期",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "顯示更少",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "使用AI求解"
-  },
-  "solveBtn_game": {
-    "message": "求解遊戲"
-  },
-  "solveBtn_solving": {
-    "message": "正在求解..."
-  },
-  "solveBtn_solved": {
-    "message": "已完成求解！"
-  },
-  "desc_sudoku": {
-    "message": "經典遊戲迷你版"
-  },
-  "desc_tango": {
-    "message": "協調網格"
-  },
-  "desc_queens": {
-    "message": "為每個地區加冕"
-  },
-  "desc_crossclimb": {
-    "message": "解鎖小知識階梯"
-  },
-  "desc_pinpoint": {
-    "message": "猜測類別"
-  },
-  "scoreClue": {
-    "message": "1 條線索"
-  },
-  "scoreClues": {
-    "message": "$1 條線索"
-  },
-  "scoreSeconds": {
-    "message": "$1秒"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1分 $2秒"
-  },
-  "markAsNotPlayed": {
-    "message": "標記為未完成",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "求解速度 / 延遲",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "即時 (最快)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "正常 (標準)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "隱形模式 (模擬真人延遲)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "求解速度與節奏",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "即時模式在毫秒內完成遊戲。隱形模式透過隨機延遲（1-3秒）模擬真人操作行為，以保護您的連勝記錄免遭自動化檢測。",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "獲取提示",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "預設求解操作",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "全自動求解",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "寓教於樂提示模式",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "預設求解器模式",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "選擇從分頁檢視或遊戲盤觸發求解器時的主要操作。全自動求解會直接完成遊戲；提示模式則會為您填入一個正確元素。",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "零成本且完全本機的 AI",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "完全在您的裝置上透過瀏覽器本機執行。零網路延遲，並可搭配 Gemini Nano 100% 免費使用。",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "遊戲除錯器與開發人員工具",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "離線",
-    "description": "Debug offline status indicator label"
-  },
-  "debugStatusLive": {
-    "message": "即時",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "偵測到的遊戲",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "未偵測到",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "目標 URL",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "無活動分頁",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML 已複製！",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "複製 <main> HTML",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "日誌已複製！",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "複製主控台日誌",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "全部已複製！",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "複製全部 (HTML 與日誌)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "註冊 JSON 已複製！",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "複製今日註冊 JSON",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "複製 JSON",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "提交答案",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "DOM 元素預覽",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [已截斷，總字元數：$1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "複製完整 <main> HTML",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "未擷取到活動的 <main> 標籤。請確保您處於 LinkedIn 遊戲畫面中。",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "主控台輸出",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 個事件",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "重新整理日誌",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "清除日誌",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "暫未擷取到日誌。在遊戲畫面中執行操作以觸發主控台事件。",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "正在監聽 console.log、console.warn 和 console.error 事件...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "正在初始化與 LinkedIn 遊戲頁面的連線...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "無法擷取遊戲資料。",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "目前分頁不是 LinkedIn 遊戲頁面。請進入一款遊戲以獲取詳細資訊。",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "無法識別活動分頁。",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "每日提醒與連勝保護",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "啟用每日提醒",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "在今日連勝過期前提醒我。",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "提醒時間",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "選擇本地時間以檢查未完成的遊戲。",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "連勝保護器 🚀",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "不要失去你的連勝！你今天還沒有解決 LinkedIn 遊戲。",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "立即解決！",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "自動解決當前活動的 LinkedIn 遊戲。"
-  },
-  "commandGetSingleHint": {
-    "message": "提供單步提示或檢查錯誤。"
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "在遊戲頁面自動打開侧邊欄"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "造訪 LinkedIn 遊戲時自動打開求解器侧邊欄。"
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "自動打開求解器侧邊欄"
-  },
-  "permissionDialogTitle": {
-    "message": "授予頁面存取權限"
-  },
-  "permissionDialogDesc": {
-    "message": "為偵測活動的遊戲板並解決謎題，擴充功能需要獲得在 LinkedIn 遊戲上執行的權限。點擊下方以授予存取權限。"
-  },
-  "permissionDialogButton": {
-    "message": "授予權限"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 今天就玩並解決 Queens 皇后棋！"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 打開迷你數獨求解器"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 打開連勝與績效儀表板"
-  },
-  "diagnosticsEngine": {
-    "message": "診斷引擎"
-  },
-  "liveInspected": {
-    "message": "即時審查"
-  },
-  "offline": {
-    "message": "離線"
-  },
-  "inspectedTab": {
-    "message": "被審查標籤頁:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "即時矩陣網格檢測器"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "正在等待領英遊戲頁面"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "導航至任何領英遊戲棋盤標籤頁 (Queens, Sudoku, Tango, Pinpoint) 以捕獲約束座標、單元格狀態和響應式結構。"
-  },
-  "telemetryLogsStreamer": {
-    "message": "遙測日誌流"
-  },
-  "searchLogsPlaceholder": {
-    "message": "搜尋日誌..."
-  },
-  "allTypes": {
-    "message": "所有類型"
-  },
-  "logsType": {
-    "message": "日誌"
-  },
-  "infoType": {
-    "message": "資訊"
-  },
-  "warnsType": {
-    "message": "警告"
-  },
-  "errorsType": {
-    "message": "錯誤"
-  },
-  "selectTypePlaceholder": {
-    "message": "選擇類型"
-  },
-  "consoleStreamEmpty": {
-    "message": "控制台流為空"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "未檢測到符合過濾器的日誌輸出。在領英遊戲求解器介面內運行步驟以將日誌流式傳輸到此處。"
-  },
-  "subscribedToStorageSession": {
-    "message": "已訂閱 storage.session 流"
-  },
-  "parsingGameGridCells": {
-    "message": "正在解析遊戲網格單元...請確保棋盤上有可見的活動網格塊。"
-  },
-  "urlLabel": {
-    "message": "網址:"
-  },
-  "notAvailable": {
-    "message": "無"
-  },
-  "matchesLabel": {
-    "message": "個匹配"
-  },
-  "copiedLabel": {
-    "message": "已複製！"
-  },
-  "copyLogsTooltip": {
-    "message": "複製日誌"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "清空日誌空間"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ 自動求解当前 LinkedIn 遊戲"
-  },
-  "contextMenuHint": {
-    "message": "💡 獲取提示"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 查看結果"
-  },
-  "labelTelemetryTitle": {
-    "message": "遥測與隱私",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "傳送匿名遙測",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "透過共享匿名效能和使用情況指標來幫助改進求解器。",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  },
-  "desc_patches": {
-    "message": "拼湊起來"
-  },
-  "desc_zip": {
-    "message": "完成這條路徑"
-  }
+  "extensionName": "LinkedIn 遊戲助手",
+  "extensionDescription": "LinkedIn 遊戲的幫手。自動求解每日謎題（Queens，Sudoku，Pinpoint，Crossclimb），提供連勝紀錄和數據分析。",
+  "title": "LinkedIn 遊戲",
+  "subtitle": "一鍵自動求解當前 LinkedIn 遊戲",
+  "switchThemeTitle": "切換至 $1 模式",
+  "errorChromeTabIntegration": "需要 Chrome 分頁整合。",
+  "errorActiveTabNotFound": "找不到目前作用中的分頁。",
+  "errorNavigationFailed": "無法前往 $1。",
+  "errorConnectionFailed": "連線失敗。",
+  "errorExecutionFailedDefault": "執行解題器時發生問題。",
+  "successSolverStarted": "解題器已啟動。",
+  "solvingStatus": "正在求解中...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "獎勵",
+  "titleSolve": "求解 $1",
+  "titleCompleted": "今日已完成！點擊跳轉至 $1",
+  "titleOpen": "打開 $1 以求解",
+  "perfectDay": "完美的一天！全部 $1 個遊戲已完成！ 🎉",
+  "dailyProgress": "今日進度：已完成 $1/$2 個遊戲",
+  "dashboardTitle": "歷史記錄與統計",
+  "dashboardSubtitle": "您完整的 LinkedIn 遊戲求解歷史與數據統計",
+  "statTotalSolved": "累計已解",
+  "statTotalSolvedDesc": "所有日期內已求解的遊戲數",
+  "statAverageTime": "平均用時",
+  "statAverageTimeDesc": "所有記錄的求解用時平均值",
+  "statActiveStreak": "連續天數",
+  "statActiveStreakDesc": "連續參與 LinkedIn 遊戲的天数",
+  "statStreakDays": "$1 天",
+  "personalBests": "個人最佳紀錄",
+  "noRecordsYet": "暫無求解記錄。",
+  "solvingHistory": "求解歷史記錄",
+  "activityCalendar": "活動日曆",
+  "clearFilter": "清除篩選",
+  "settingModel": "模型",
+  "settingModelSelect": "選擇模型",
+  "settingModelCustomOption": "自訂模型名稱...",
+  "settingModelCustomLabel": "自訂模型名稱",
+  "settingModelCustomPlaceholderLocal": "例如 llama3, mistral",
+  "settingModelCustomPlaceholderOther": "輸入自訂識別碼...",
+  "settingEndpointLabel": "端點 URL",
+  "settingEndpointPlaceholder": "例如 http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API 金鑰",
+  "settingApiKeyOpenAI": "OpenAI API 金鑰",
+  "settingApiKeyAnthropic": "Anthropic API 金鑰",
+  "settingApiKeyDeepSeek": "DeepSeek API 金鑰",
+  "settingApiKeyCustom": "API 金鑰 (選填)",
+  "settingApiKeyPlaceholderCustom": "選填憑證...",
+  "settingApiKeyPlaceholderDefault": "輸入憑證金鑰...",
+  "settingApiKeyNotice": "所選模型可解決 Crossclimb 和 Pinpoint。此擴充功能絕不會分享您的金鑰。",
+  "popupCardTitle": "透過有趣的日常遊戲保持聯繫",
+  "popupCardDesc": "調整身心，為工作日做好準備，並比較結果。除非您本人公開分數，否則您的分數僅對自己顯示。",
+  "saveAndBack": "儲存並返回遊戲",
+  "solvingWorking": "AI 求解器工作中...",
+  "completedToday": "今日已完成",
+  "solvedCountSuffix": "已解決",
+  "settingsHeaderTitle": "AI 模型設定",
+  "labelAiProvider": "AI 提供商",
+  "labelModelIdentifier": "模型識別碼",
+  "labelCustomModel": "自訂模型名稱",
+  "labelEndpointUrl": "端點 URL",
+  "labelGeminiKey": "GEMINI API 金鑰",
+  "labelOpenAiKey": "OPENAI API 金鑰",
+  "labelAnthropicKey": "ANTHROPIC API 金鑰",
+  "labelDeepSeekKey": "DEEPSEEK API 金鑰",
+  "labelCustomKey": "API 金鑰 (選填)",
+  "navHome": "首頁",
+  "navAiConfig": "設定與選項",
+  "navStats": "統計",
+  "navTheme": "主題",
+  "navDebug": "除錯",
+  "dailyProgressLabel": "每日進度",
+  "solveActiveBoard": "求解當前棋盤",
+  "backToGames": "返回 LinkedIn 遊戲",
+  "dashboardLabel": "儀表板",
+  "gamesSolverTitle": "遊戲求解器",
+  "dashboardDescText": "分析您的績效指標、記錄連續天數並追蹤您每日完成的謎題路徑。",
+  "completedSuccessfully": "成功完成",
+  "disclaimerText": "免責聲明：這是一個獨立的開源教育專案。與 LinkedIn Corporation 無關，亦未獲得其資助或認可。“LinkedIn”是 LinkedIn Corporation 的註冊商標。",
+  "settingsCredentialsTitle": "憑證與模型",
+  "settingsModelGuideTitle": "模型指南與資訊",
+  "settingsConnectionStatusTitle": "連線狀態",
+  "settingsActiveSolverLabel": "活動求解器：",
+  "settingsModelIdentifierLabel": "模型識別碼：",
+  "settingsAutoSavedNotification": "設定已自動儲存！",
+  "settingsSubtitleDesc": "設定人工智慧模型整合端點和憑證，以實現高級拼圖解決推理。",
+  "settingsGeminiGuideDesc": "接近零成本的优异性能。以出色的邏輯解決 Crossclimb 和 Pinpoint。推薦預設值：gemini-2.5-flash。",
+  "settingsOpenaiGuideDesc": "在通用知識模式下快速、響應迅速且極其可靠。推薦預設值：gpt-4o-mini。",
+  "settingsAnthropicGuideDesc": "最大程度的推理能力。完美處理非常複雜的詞彙關聯。推薦預設值：claude-3-5-haiku。",
+  "settingsCustomGuideDesc": "連線到本地 LLM 框架（如 Ollama 或 LM Studio）。指定端端 URL（例如 http://localhost:11434/v1）和自訂模型名稱。",
+  "showMoreDates": "顯示更多日期",
+  "showLessDates": "顯示更少",
+  "solveBtn_withAi": "使用AI求解",
+  "solveBtn_game": "求解遊戲",
+  "solveBtn_solving": "正在求解...",
+  "solveBtn_solved": "已完成求解！",
+  "desc_sudoku": "經典遊戲迷你版",
+  "desc_tango": "協調網格",
+  "desc_queens": "為每個地區加冕",
+  "desc_crossclimb": "解鎖小知識階梯",
+  "desc_pinpoint": "猜測類別",
+  "scoreClue": "1 條線索",
+  "scoreClues": "$1 條線索",
+  "scoreSeconds": "$1秒",
+  "scoreMinutesSeconds": "$1分 $2秒",
+  "markAsNotPlayed": "標記為未完成",
+  "settingSolveSpeed": "求解速度 / 延遲",
+  "solveSpeed_instant": "即時 (最快)",
+  "solveSpeed_normal": "正常 (標準)",
+  "solveSpeed_stealth": "隱形模式 (模擬真人延遲)",
+  "labelSolveSpeed": "求解速度與節奏",
+  "settingSolveSpeedNotice": "即時模式在毫秒內完成遊戲。隱形模式透過隨機延遲（1-3秒）模擬真人操作行為，以保護您的連勝記錄免遭自動化檢測。",
+  "solveBtn_hint": "獲取提示",
+  "settingDefaultSolveMode": "預設求解操作",
+  "solveMode_full": "全自動求解",
+  "solveMode_hint": "寓教於樂提示模式",
+  "labelDefaultSolveMode": "預設求解器模式",
+  "settingDefaultSolveModeNotice": "選擇從分頁檢視或遊戲盤觸發求解器時的主要操作。全自動求解會直接完成遊戲；提示模式則會為您填入一個正確元素。",
+  "settingsChromeBuiltInGuideTitle": "零成本且完全本機的 AI",
+  "settingsChromeBuiltInGuideDesc": "完全在您的裝置上透過瀏覽器本機執行。零網路延遲，並可搭配 Gemini Nano 100% 免費使用。",
+  "debugHeaderTitle": "遊戲除錯器與開發人員工具",
+  "debugStatusOffline": "離線",
+  "debugStatusLive": "即時",
+  "debugDetectedGame": "偵測到的遊戲",
+  "debugNoneDetected": "未偵測到",
+  "debugTargetUrl": "目標 URL",
+  "debugNoActiveTab": "無活動分頁",
+  "debugHtmlCopied": "HTML 已複製！",
+  "debugCopyHtml": "複製 <main> HTML",
+  "debugLogsCopied": "日誌已複製！",
+  "debugCopyLogs": "複製主控台日誌",
+  "debugBothCopied": "全部已複製！",
+  "debugCopyBoth": "複製全部 (HTML 與日誌)",
+  "debugRegistryCopied": "註冊 JSON 已複製！",
+  "debugCopyRegistry": "複製今日註冊 JSON",
+  "debugCopyRegistryShort": "複製 JSON",
+  "debugSubmitAnswer": "提交答案",
+  "debugDomPreview": "DOM 元素預覽",
+  "debugHtmlTruncated": "\n\n[ ... [已截斷，總字元數：$1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "複製完整 <main> HTML",
+  "debugNoMainTagCaptured": "未擷取到活動的 <main> 標籤。請確保您處於 LinkedIn 遊戲畫面中。",
+  "debugConsoleOutput": "主控台輸出",
+  "debugEventsCount": "$1 個事件",
+  "debugRefreshLogsTooltip": "重新整理日誌",
+  "debugClearLogsTooltip": "清除日誌",
+  "debugNoLogsCaptured": "暫未擷取到日誌。在遊戲畫面中執行操作以觸發主控台事件。",
+  "debugListeningEvents": "正在監聽 console.log、console.warn 和 console.error 事件...",
+  "debugErrorInitializing": "正在初始化與 LinkedIn 遊戲頁面的連線...",
+  "debugErrorRetrieveFailed": "無法擷取遊戲資料。",
+  "debugErrorNotGamesPage": "目前分頁不是 LinkedIn 遊戲頁面。請進入一款遊戲以獲取詳細資訊。",
+  "debugErrorNoActiveTab": "無法識別活動分頁。",
+  "labelDailyReminders": "每日提醒與連勝保護",
+  "settingEnableReminders": "啟用每日提醒",
+  "settingEnableRemindersDesc": "在今日連勝過期前提醒我。",
+  "settingReminderTime": "提醒時間",
+  "settingReminderTimeNotice": "選擇本地時間以檢查未完成的遊戲。",
+  "notificationTitle": "連勝保護器 🚀",
+  "notificationMessage": "不要失去你的連勝！你今天還沒有解決 LinkedIn 遊戲。",
+  "notificationButton": "立即解決！",
+  "commandSolveActiveGame": "自動解決當前活動的 LinkedIn 遊戲。",
+  "commandGetSingleHint": "提供單步提示或檢查錯誤。",
+  "settingAutoOpenSidepanel": "在遊戲頁面自動打開侧邊欄",
+  "settingAutoOpenSidepanelDesc": "造訪 LinkedIn 遊戲時自動打開求解器侧邊欄。",
+  "labelAutoOpenSidepanel": "自動打開求解器侧邊欄",
+  "permissionDialogTitle": "授予頁面存取權限",
+  "permissionDialogDesc": "為偵測活動的遊戲板並解決謎題，擴充功能需要獲得在 LinkedIn 遊戲上執行的權限。點擊下方以授予存取權限。",
+  "permissionDialogButton": "授予權限",
+  "omniboxSuggestionQueens": "👑 今天就玩並解決 Queens 皇后棋！",
+  "omniboxSuggestionSudoku": "🔢 打開迷你數獨求解器",
+  "omniboxSuggestionStats": "📊 打開連勝與績效儀表板",
+  "diagnosticsEngine": "診斷引擎",
+  "liveInspected": "即時審查",
+  "offline": "離線",
+  "inspectedTab": "被審查標籤頁:",
+  "liveMatrixGridInspector": "即時矩陣網格檢測器",
+  "waitingForLinkedInGamePage": "正在等待領英遊戲頁面",
+  "waitingForLinkedInGamePageDesc": "導航至任何領英遊戲棋盤標籤頁 (Queens, Sudoku, Tango, Pinpoint) 以捕獲約束座標、單元格狀態和響應式結構。",
+  "telemetryLogsStreamer": "遙測日誌流",
+  "searchLogsPlaceholder": "搜尋日誌...",
+  "allTypes": "所有類型",
+  "logsType": "日誌",
+  "infoType": "資訊",
+  "warnsType": "警告",
+  "errorsType": "錯誤",
+  "selectTypePlaceholder": "選擇類型",
+  "consoleStreamEmpty": "控制台流為空",
+  "consoleStreamEmptyDesc": "未檢測到符合過濾器的日誌輸出。在領英遊戲求解器介面內運行步驟以將日誌流式傳輸到此處。",
+  "subscribedToStorageSession": "已訂閱 storage.session 流",
+  "parsingGameGridCells": "正在解析遊戲網格單元...請確保棋盤上有可見的活動網格塊。",
+  "urlLabel": "網址:",
+  "notAvailable": "無",
+  "matchesLabel": "個匹配",
+  "copiedLabel": "已複製！",
+  "copyLogsTooltip": "複製日誌",
+  "clearLogSpaceTooltip": "清空日誌空間",
+  "contextMenuSolve": "⚡ 自動求解当前 LinkedIn 遊戲",
+  "contextMenuHint": "💡 獲取提示",
+  "contextMenuViewResults": "📊 查看結果",
+  "labelTelemetryTitle": "遥測與隱私",
+  "telemetryToggleLabel": "傳送匿名遙測",
+  "telemetryToggleDesc": "透過共享匿名效能和使用情況指標來幫助改進求解器。",
+  "desc_patches": "拼湊起來",
+  "desc_zip": "完成這條路徑"
 }

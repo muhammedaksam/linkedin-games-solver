@@ -1,648 +1,210 @@
 {
-  "extensionName": {
-    "message": "פותר המשחקים של LinkedIn",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "עוזר למשחקי LinkedIn. פתרון אוטומטי של חידות יומיות (Queens, Sudoku, Pinpoint, Crossclimb) עם רצפים וניתוח נתונים.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "משחקי LinkedIn",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "פתרו לוחות פעילים בלחיצה אחת",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "נדרשת שילוב עם לשונית Chrome.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "לא נמצאה הלשונית הפעילה.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "הניווט אל $1 נכשל.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "החיבור נכשל.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "אירעה בעיה בעת הפעלת הפותר.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "הפותר הופעל.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "היסטוריה וסטטיסטיקות",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "היסטוריית הפתרונות והסטטיסטיקות המלאה שלך עבור LinkedIn Games",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "סה״כ נפתרו",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "משחקים שנפתרו בכל התאריכים",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "זמן ממוצע",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "בכל ההשלמות שנרשמו",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "רצף פעיל",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "ימים פעילים ברצף",
-    "description": "Description for the active streak card"
-  },
-  "popupCardTitle": {
-    "message": "התחבר דרך משחקים יומיומיים מהנים",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "הכן את מוחך ליום עבודה והשווה תוצאות. הנקודות שלך פרטיות אלא אם תשתף אותן.",
-    "description": "Description of the card feed in popup"
-  },
-  "dashboardDescText": {
-    "message": "נתח את מדדי הביצועים שלך, תעד רצפים, ועקוב אחר מסלולי החידות שהשלמת בכל יום.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "הבהרה: זהו פרויקט לימודי עצמאי בקוד פתוח. הוא אינו מסונף, ממומן או מאושר על ידי חברת LinkedIn. „LinkedIn” היא סימן מסחר רשום של LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "switchThemeTitle": {
-    "message": "מעבר למצב $1"
-  },
-  "solvingStatus": {
-    "message": "פותר..."
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "queens": {
-    "message": "Queens"
-  },
-  "zip": {
-    "message": "Zip"
-  },
-  "patches": {
-    "message": "Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "bonus": {
-    "message": "בונוס"
-  },
-  "desc_patches": {
-    "message": "חבר את זה יחד"
-  },
-  "desc_zip": {
-    "message": "השלם את הדרך"
-  },
-  "desc_sudoku": {
-    "message": "המשחק הקלאסי, שעשו אותו מיני"
-  },
-  "desc_tango": {
-    "message": "להתאים את הרשת"
-  },
-  "desc_queens": {
-    "message": "כתר כל אזור"
-  },
-  "desc_crossclimb": {
-    "message": "פתח סולם טריוויה"
-  },
-  "desc_pinpoint": {
-    "message": "נחש את הקטגוריה"
-  },
-  "titleSolve": {
-    "message": "פתור $1"
-  },
-  "titleCompleted": {
-    "message": "הושלם היום! לחץ כדי לעבור ל-$1"
-  },
-  "titleOpen": {
-    "message": "פתח $1 כדי לפתור"
-  },
-  "perfectDay": {
-    "message": "יום מושלם! כל משחקי $1 הושלמו! 🎉"
-  },
-  "dailyProgress": {
-    "message": "התקדמות יומית: $1 מתוך $2 משחקים הושלמו היום"
-  },
-  "statStreakDays": {
-    "message": "$1 ימים"
-  },
-  "personalBests": {
-    "message": "שיאים אישיים"
-  },
-  "noRecordsYet": {
-    "message": "עדיין לא נרשמו רשומות פתרון."
-  },
-  "solvingHistory": {
-    "message": "פתרון ההיסטוריה"
-  },
-  "activityCalendar": {
-    "message": "לוח פעילות"
-  },
-  "clearFilter": {
-    "message": "נקה מסנן"
-  },
-  "settingModel": {
-    "message": "מודל"
-  },
-  "settingModelSelect": {
-    "message": "בחר דגם"
-  },
-  "settingModelCustomOption": {
-    "message": "שם מודל מותאם אישית..."
-  },
-  "settingModelCustomLabel": {
-    "message": "שם מודל מותאם"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "למשל, לאמה3, מיסטרל"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "הזן מזהה מותאם אישית..."
-  },
-  "settingEndpointLabel": {
-    "message": "כתובת URL של נקודת קצה"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "למשל http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "מפתח API של ג'מיני"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "מפתח API של OpenAI"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "מפתח API של אנתרופיק"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "מפתח API של DeepSeek"
-  },
-  "settingApiKeyCustom": {
-    "message": "מפתח API (אופציונלי)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "אישורים אופציונליים..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "הזן את מפתח האישורים..."
-  },
-  "settingApiKeyNotice": {
-    "message": "המודל הנבחר פותר את Crossclimb ו-Pinpoint. ההרחבה אף פעם לא משתפת את המפתח שלך."
-  },
-  "saveAndBack": {
-    "message": "שמור וחזור למשחקים"
-  },
-  "solvingWorking": {
-    "message": "מחשב AI פועל..."
-  },
-  "completedToday": {
-    "message": "הושלם היום"
-  },
-  "solvedCountSuffix": {
-    "message": "נפתר"
-  },
-  "settingsHeaderTitle": {
-    "message": "תצורת מודל בינה מלאכותית"
-  },
-  "labelAiProvider": {
-    "message": "ספק בינה מלאכותית"
-  },
-  "labelModelIdentifier": {
-    "message": "מזהה דגם"
-  },
-  "labelCustomModel": {
-    "message": "שם מודל מותאם"
-  },
-  "labelEndpointUrl": {
-    "message": "כתובת URL של נקודת קצה"
-  },
-  "labelGeminiKey": {
-    "message": "מפתח API של ג'מיני"
-  },
-  "labelOpenAiKey": {
-    "message": "מפתח API של OPENAI"
-  },
-  "labelAnthropicKey": {
-    "message": "מפתח API אנטרופי"
-  },
-  "labelDeepSeekKey": {
-    "message": "מפתח API של DEEPSEEK"
-  },
-  "labelCustomKey": {
-    "message": "מפתח API (אופציונלי)"
-  },
-  "navHome": {
-    "message": "בית"
-  },
-  "navAiConfig": {
-    "message": "הגדרות / אפשרויות"
-  },
-  "navStats": {
-    "message": "סטטיסטיקות"
-  },
-  "navTheme": {
-    "message": "נושא"
-  },
-  "navDebug": {
-    "message": "דיבוג"
-  },
-  "dailyProgressLabel": {
-    "message": "התקדמות יומית"
-  },
-  "solveActiveBoard": {
-    "message": "פתור לוח פעיל"
-  },
-  "backToGames": {
-    "message": "חזרה למשחקי לינקדאין"
-  },
-  "dashboardLabel": {
-    "message": "לוח מחוונים"
-  },
-  "gamesSolverTitle": {
-    "message": "פתרון משחקים"
-  },
-  "completedSuccessfully": {
-    "message": "הושלם בהצלחה"
-  },
-  "settingsCredentialsTitle": {
-    "message": "אישורים ודגמים"
-  },
-  "settingsModelGuideTitle": {
-    "message": "מדריך ודגם מידע"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "סטטוס חיבור"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "פתרון פעיל:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "מזהה מודל:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "הגדרות נשמרו אוטומטית!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "הגדר נקודות קצה ואישורים של אינטגרציית מודל בינה מלאכותית עבור פתרון חידות מתקדם."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "ביצועים יוצאים מן הכלל בעלויות כמעט אפסיות. פותר את Crossclimb ו-Pinpoint עם לוגיקה מצוינת. ברירת מחדל מומלצת: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "מהיר, תגובתי, ואמין מאוד עם דפוסי ידע כלליים. ברירת מחדל מומלצת: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "קיבולת הסקת מסקנות מקסימלית. מתמודד עם אסוציאציות מילוליות מורכבות מאוד ללא תקלות. ברירת מחדל מומלצת: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "התחבר למסגרות LLM מקומיות כמו אולמה או LM Studio. ציין את כתובת ה-URL של הנקודה שלך (למשל, http://localhost:11434/v1) ושם המודל המותאם אישית."
-  },
-  "showMoreDates": {
-    "message": "הצג תאריכים נוספים"
-  },
-  "showLessDates": {
-    "message": "הצג פחות"
-  },
-  "solveBtn_withAi": {
-    "message": "פתור עם בינה מלאכותית"
-  },
-  "solveBtn_game": {
-    "message": "פתור משחק"
-  },
-  "solveBtn_solving": {
-    "message": "פותר..."
-  },
-  "solveBtn_solved": {
-    "message": "נפתר!"
-  },
-  "scoreClue": {
-    "message": "רמז אחד"
-  },
-  "scoreClues": {
-    "message": "$1 רמזים"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1מ $2ש"
-  },
-  "markAsNotPlayed": {
-    "message": "סמן כלא שוחק"
-  },
-  "settingSolveSpeed": {
-    "message": "פתרון מהירות / עיכוב"
-  },
-  "solveSpeed_instant": {
-    "message": "מיידי (המהיר ביותר)"
-  },
-  "solveSpeed_normal": {
-    "message": "נורמלי (סטנדרטי)"
-  },
-  "solveSpeed_stealth": {
-    "message": "מצב הסוואה (עיכובים דמויי אדם)"
-  },
-  "labelSolveSpeed": {
-    "message": "פתרון מהירות וקצב"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "מצב מיידי משלים את הלוח במילישניות. מצב הסתרה מחקה התנהגות אנושית עם קצב אקראי (1–3 שניות) כדי להבטיח רצפים נגד זיהוי אוטומטי."
-  },
-  "solveBtn_hint": {
-    "message": "קבל רמז"
-  },
-  "settingDefaultSolveMode": {
-    "message": "פעולת פתרון ברירת מחדל"
-  },
-  "solveMode_full": {
-    "message": "פתרון אוטומטי מלא"
-  },
-  "solveMode_hint": {
-    "message": "מצב רמז חינוכי"
-  },
-  "labelDefaultSolveMode": {
-    "message": "מצב פתרון ברירת מחדל"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "בחר את הפעולה הראשית כאשר אתה מפעיל את הפותר מתוך תצוגת הלשוניות או הלוחות. פתרון מלא מסיים את המשחק; מצב רמז מניח פריט אחד נכון."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "עלות אפס ובינה מלאכותית מקומית לחלוטין"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "פועל לחלוטין באופן מקומי על המכשיר שלך בתוך הדפדפן. אפס השהיית רשת ו-100% חינם עם גמיני ננו."
-  },
-  "debugHeaderTitle": {
-    "message": "מנקה באגים למשחקים וכלי פיתוח"
-  },
-  "debugStatusOffline": {
-    "message": "אוף-ליין"
-  },
-  "debugStatusLive": {
-    "message": "לחיות"
-  },
-  "debugDetectedGame": {
-    "message": "משחק זוהה"
-  },
-  "debugNoneDetected": {
-    "message": "לא זוהה"
-  },
-  "debugTargetUrl": {
-    "message": "כתובת היעד"
-  },
-  "debugNoActiveTab": {
-    "message": "אין טאבל פעיל"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML הועתק!"
-  },
-  "debugCopyHtml": {
-    "message": "העתק <main> HTML"
-  },
-  "debugLogsCopied": {
-    "message": "יומנים הועתקו!"
-  },
-  "debugCopyLogs": {
-    "message": "העתק יומני קונסולה"
-  },
-  "debugBothCopied": {
-    "message": "שניהם הועתקו!"
-  },
-  "debugCopyBoth": {
-    "message": "העתק את שניהם (HTML ויומנים)"
-  },
-  "debugRegistryCopied": {
-    "message": "נרשם JSON הועתק!"
-  },
-  "debugCopyRegistry": {
-    "message": "העתק את ה-JSON של הרישום להיום"
-  },
-  "debugCopyRegistryShort": {
-    "message": "העתק JSON"
-  },
-  "debugSubmitAnswer": {
-    "message": "שלח תשובה"
-  },
-  "debugDomPreview": {
-    "message": "תצוגת אלמנט DOM"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [מוקטן, סך כל התווים: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "העתק ה-HTML <main> הושלם"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "לא נתפס תג <main> פעיל. ודא שאתה על מסך משחק של לינקדאין."
-  },
-  "debugConsoleOutput": {
-    "message": "פלט קונסולה"
-  },
-  "debugEventsCount": {
-    "message": "$1 אירועים"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "רענן יומנים"
-  },
-  "debugClearLogsTooltip": {
-    "message": "נקה יומנים"
-  },
-  "debugNoLogsCaptured": {
-    "message": "עדיין לא נלכדו יומנים. בצע פעולות על מסך המשחק כדי להפעיל אירועי קונסולה."
-  },
-  "debugListeningEvents": {
-    "message": "מקשיב לאירועים של console.log, console.warn ו-console.error..."
-  },
-  "debugErrorInitializing": {
-    "message": "החיבור עם דף המשחק של לינקדאין מתבצע..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "לא ניתן לשחזר את נתוני המשחק."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "הכרטיסייה הפעילה אינה עמוד משחקים של לינקדאין. נווט למשחק כדי ללכוד פרטים."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "לא ניתן היה לזהות את הכרטיסייה הפעילה."
-  },
-  "labelDailyReminders": {
-    "message": "תזכורות יומיות ומגן רצף"
-  },
-  "settingEnableReminders": {
-    "message": "אפשר התראות יומיות"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "הזהר אותי לפני שהרצף של היום יסתיים."
-  },
-  "settingReminderTime": {
-    "message": "זמן תזכורת"
-  },
-  "settingReminderTimeNotice": {
-    "message": "בחר זמן מקומי כדי לבדוק משחקים שלא נפתרו."
-  },
-  "notificationTitle": {
-    "message": "מגן רצועות 🚀"
-  },
-  "notificationMessage": {
-    "message": "אל תפסיד את רצף הפתרונות שלך! עדיין לא פתרת את משחקי לינקדאין של היום."
-  },
-  "notificationButton": {
-    "message": "פתור עכשיו!"
-  },
-  "commandSolveActiveGame": {
-    "message": "פתור את המשחק הפעיל בלינקדאין באופן אוטומטי."
-  },
-  "commandGetSingleHint": {
-    "message": "ספק רמז של שלב אחד או בדוק שגיאות."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "פתח צדדי אוטומטי על משחקים"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "פתח אוטומטית את לוח הצד של הפותר כאשר מבקרים במשחקי לינקדאין."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "סרגל צד של פותר פתיחה אוטומטית"
-  },
-  "permissionDialogTitle": {
-    "message": "הענק גישה לדף"
-  },
-  "permissionDialogDesc": {
-    "message": "כדי לזהות לוחות משחק פעילים ולפתור חידות, ההרחבה זקוקה להרשאה לפעול על משחקי לינקדאין. לחץ למטה כדי להעניק גישה."
-  },
-  "permissionDialogButton": {
-    "message": "הענקת גישה"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 שחקו ופתרו את המלכות היום!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 פתח פתרון מיני-סודוקו"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 פתח דשבורד של רצפים וביצועים"
-  },
-  "diagnosticsEngine": {
-    "message": "מנוע אבחון"
-  },
-  "liveInspected": {
-    "message": "נבדק בשידור חי"
-  },
-  "offline": {
-    "message": "לא מקוון"
-  },
-  "inspectedTab": {
-    "message": "טאב נבדק:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "בוחן רשת מטריצה חיה"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "מחכים לדף המשחק של לינקדאין"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "נווט לכל לשונית לוח המשחק של לינקדאין (מלכות, סודוקו, טנגו, פינוק) כדי ללכוד קואורדינטות מגבלות, מצבי תאים ומבנים תגובתיים."
-  },
-  "telemetryLogsStreamer": {
-    "message": "זרם יומני טלמטריה"
-  },
-  "searchLogsPlaceholder": {
-    "message": "חפש יומני..."
-  },
-  "allTypes": {
-    "message": "כל הסוגים"
-  },
-  "logsType": {
-    "message": "יומנים"
-  },
-  "infoType": {
-    "message": "מידע"
-  },
-  "warnsType": {
-    "message": "מַזהִיר"
-  },
-  "errorsType": {
-    "message": "שגיאות"
-  },
-  "selectTypePlaceholder": {
-    "message": "בחר סוג"
-  },
-  "consoleStreamEmpty": {
-    "message": "קונסולה ריקה"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "לא זוהו פלטי יומן התואמים את המסננים. הרץ צעדים בתוך ממשק המשתמש של פתרון המשחקים של לינקדאין כדי להזרים פעולות יומן כאן."
-  },
-  "subscribedToStorageSession": {
-    "message": "נרשם לזרם storage.session"
-  },
-  "parsingGameGridCells": {
-    "message": "מפרק תאי רשת המשחק... ודא שהלוח מציג בלוקים פעילים ברשת."
-  },
-  "urlLabel": {
-    "message": "כתובת אתר:"
-  },
-  "notAvailable": {
-    "message": "לא זמין"
-  },
-  "matchesLabel": {
-    "message": "גפרורים"
-  },
-  "copiedLabel": {
-    "message": "הועתק!"
-  },
-  "copyLogsTooltip": {
-    "message": "העתק יומנים"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "נקה שטח יומן"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ פתח משחק לינקדאין פעיל"
-  },
-  "contextMenuHint": {
-    "message": "💡 קבל רמז"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 הצג תוצאות"
-  },
-  "labelTelemetryTitle": {
-    "message": "טלמטריה ופרטיות"
-  },
-  "telemetryToggleLabel": {
-    "message": "שלח טלמטריה אנונימית"
-  },
-  "telemetryToggleDesc": {
-    "message": "עזור לשפר את הפותר על ידי שיתוף מדדי ביצועים ושימוש אנונימיים."
-  }
+  "extensionName": "פותר המשחקים של LinkedIn",
+  "extensionDescription": "עוזר למשחקי LinkedIn. פתרון אוטומטי של חידות יומיות (Queens, Sudoku, Pinpoint, Crossclimb) עם רצפים וניתוח נתונים.",
+  "title": "משחקי LinkedIn",
+  "subtitle": "פתרו לוחות פעילים בלחיצה אחת",
+  "errorChromeTabIntegration": "נדרשת שילוב עם לשונית Chrome.",
+  "errorActiveTabNotFound": "לא נמצאה הלשונית הפעילה.",
+  "errorNavigationFailed": "הניווט אל $1 נכשל.",
+  "errorConnectionFailed": "החיבור נכשל.",
+  "errorExecutionFailedDefault": "אירעה בעיה בעת הפעלת הפותר.",
+  "successSolverStarted": "הפותר הופעל.",
+  "dashboardTitle": "היסטוריה וסטטיסטיקות",
+  "dashboardSubtitle": "היסטוריית הפתרונות והסטטיסטיקות המלאה שלך עבור LinkedIn Games",
+  "statTotalSolved": "סה״כ נפתרו",
+  "statTotalSolvedDesc": "משחקים שנפתרו בכל התאריכים",
+  "statAverageTime": "זמן ממוצע",
+  "statAverageTimeDesc": "בכל ההשלמות שנרשמו",
+  "statActiveStreak": "רצף פעיל",
+  "statActiveStreakDesc": "ימים פעילים ברצף",
+  "popupCardTitle": "התחבר דרך משחקים יומיומיים מהנים",
+  "popupCardDesc": "הכן את מוחך ליום עבודה והשווה תוצאות. הנקודות שלך פרטיות אלא אם תשתף אותן.",
+  "dashboardDescText": "נתח את מדדי הביצועים שלך, תעד רצפים, ועקוב אחר מסלולי החידות שהשלמת בכל יום.",
+  "disclaimerText": "הבהרה: זהו פרויקט לימודי עצמאי בקוד פתוח. הוא אינו מסונף, ממומן או מאושר על ידי חברת LinkedIn. „LinkedIn” היא סימן מסחר רשום של LinkedIn Corporation.",
+  "switchThemeTitle": "מעבר למצב $1",
+  "solvingStatus": "פותר...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "בונוס",
+  "desc_patches": "חבר את זה יחד",
+  "desc_zip": "השלם את הדרך",
+  "desc_sudoku": "המשחק הקלאסי, שעשו אותו מיני",
+  "desc_tango": "להתאים את הרשת",
+  "desc_queens": "כתר כל אזור",
+  "desc_crossclimb": "פתח סולם טריוויה",
+  "desc_pinpoint": "נחש את הקטגוריה",
+  "titleSolve": "פתור $1",
+  "titleCompleted": "הושלם היום! לחץ כדי לעבור ל-$1",
+  "titleOpen": "פתח $1 כדי לפתור",
+  "perfectDay": "יום מושלם! כל משחקי $1 הושלמו! 🎉",
+  "dailyProgress": "התקדמות יומית: $1 מתוך $2 משחקים הושלמו היום",
+  "statStreakDays": "$1 ימים",
+  "personalBests": "שיאים אישיים",
+  "noRecordsYet": "עדיין לא נרשמו רשומות פתרון.",
+  "solvingHistory": "פתרון ההיסטוריה",
+  "activityCalendar": "לוח פעילות",
+  "clearFilter": "נקה מסנן",
+  "settingModel": "מודל",
+  "settingModelSelect": "בחר דגם",
+  "settingModelCustomOption": "שם מודל מותאם אישית...",
+  "settingModelCustomLabel": "שם מודל מותאם",
+  "settingModelCustomPlaceholderLocal": "למשל, לאמה3, מיסטרל",
+  "settingModelCustomPlaceholderOther": "הזן מזהה מותאם אישית...",
+  "settingEndpointLabel": "כתובת URL של נקודת קצה",
+  "settingEndpointPlaceholder": "למשל http://localhost:11434/v1",
+  "settingApiKeyGemini": "מפתח API של ג'מיני",
+  "settingApiKeyOpenAI": "מפתח API של OpenAI",
+  "settingApiKeyAnthropic": "מפתח API של אנתרופיק",
+  "settingApiKeyDeepSeek": "מפתח API של DeepSeek",
+  "settingApiKeyCustom": "מפתח API (אופציונלי)",
+  "settingApiKeyPlaceholderCustom": "אישורים אופציונליים...",
+  "settingApiKeyPlaceholderDefault": "הזן את מפתח האישורים...",
+  "settingApiKeyNotice": "המודל הנבחר פותר את Crossclimb ו-Pinpoint. ההרחבה אף פעם לא משתפת את המפתח שלך.",
+  "saveAndBack": "שמור וחזור למשחקים",
+  "solvingWorking": "מחשב AI פועל...",
+  "completedToday": "הושלם היום",
+  "solvedCountSuffix": "נפתר",
+  "settingsHeaderTitle": "תצורת מודל בינה מלאכותית",
+  "labelAiProvider": "ספק בינה מלאכותית",
+  "labelModelIdentifier": "מזהה דגם",
+  "labelCustomModel": "שם מודל מותאם",
+  "labelEndpointUrl": "כתובת URL של נקודת קצה",
+  "labelGeminiKey": "מפתח API של ג'מיני",
+  "labelOpenAiKey": "מפתח API של OPENAI",
+  "labelAnthropicKey": "מפתח API אנטרופי",
+  "labelDeepSeekKey": "מפתח API של DEEPSEEK",
+  "labelCustomKey": "מפתח API (אופציונלי)",
+  "navHome": "בית",
+  "navAiConfig": "הגדרות / אפשרויות",
+  "navStats": "סטטיסטיקות",
+  "navTheme": "נושא",
+  "navDebug": "דיבוג",
+  "dailyProgressLabel": "התקדמות יומית",
+  "solveActiveBoard": "פתור לוח פעיל",
+  "backToGames": "חזרה למשחקי לינקדאין",
+  "dashboardLabel": "לוח מחוונים",
+  "gamesSolverTitle": "פתרון משחקים",
+  "completedSuccessfully": "הושלם בהצלחה",
+  "settingsCredentialsTitle": "אישורים ודגמים",
+  "settingsModelGuideTitle": "מדריך ודגם מידע",
+  "settingsConnectionStatusTitle": "סטטוס חיבור",
+  "settingsActiveSolverLabel": "פתרון פעיל:",
+  "settingsModelIdentifierLabel": "מזהה מודל:",
+  "settingsAutoSavedNotification": "הגדרות נשמרו אוטומטית!",
+  "settingsSubtitleDesc": "הגדר נקודות קצה ואישורים של אינטגרציית מודל בינה מלאכותית עבור פתרון חידות מתקדם.",
+  "settingsGeminiGuideDesc": "ביצועים יוצאים מן הכלל בעלויות כמעט אפסיות. פותר את Crossclimb ו-Pinpoint עם לוגיקה מצוינת. ברירת מחדל מומלצת: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "מהיר, תגובתי, ואמין מאוד עם דפוסי ידע כלליים. ברירת מחדל מומלצת: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "קיבולת הסקת מסקנות מקסימלית. מתמודד עם אסוציאציות מילוליות מורכבות מאוד ללא תקלות. ברירת מחדל מומלצת: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "התחבר למסגרות LLM מקומיות כמו אולמה או LM Studio. ציין את כתובת ה-URL של הנקודה שלך (למשל, http://localhost:11434/v1) ושם המודל המותאם אישית.",
+  "showMoreDates": "הצג תאריכים נוספים",
+  "showLessDates": "הצג פחות",
+  "solveBtn_withAi": "פתור עם בינה מלאכותית",
+  "solveBtn_game": "פתור משחק",
+  "solveBtn_solving": "פותר...",
+  "solveBtn_solved": "נפתר!",
+  "scoreClue": "רמז אחד",
+  "scoreClues": "$1 רמזים",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1מ $2ש",
+  "markAsNotPlayed": "סמן כלא שוחק",
+  "settingSolveSpeed": "פתרון מהירות / עיכוב",
+  "solveSpeed_instant": "מיידי (המהיר ביותר)",
+  "solveSpeed_normal": "נורמלי (סטנדרטי)",
+  "solveSpeed_stealth": "מצב הסוואה (עיכובים דמויי אדם)",
+  "labelSolveSpeed": "פתרון מהירות וקצב",
+  "settingSolveSpeedNotice": "מצב מיידי משלים את הלוח במילישניות. מצב הסתרה מחקה התנהגות אנושית עם קצב אקראי (1–3 שניות) כדי להבטיח רצפים נגד זיהוי אוטומטי.",
+  "solveBtn_hint": "קבל רמז",
+  "settingDefaultSolveMode": "פעולת פתרון ברירת מחדל",
+  "solveMode_full": "פתרון אוטומטי מלא",
+  "solveMode_hint": "מצב רמז חינוכי",
+  "labelDefaultSolveMode": "מצב פתרון ברירת מחדל",
+  "settingDefaultSolveModeNotice": "בחר את הפעולה הראשית כאשר אתה מפעיל את הפותר מתוך תצוגת הלשוניות או הלוחות. פתרון מלא מסיים את המשחק; מצב רמז מניח פריט אחד נכון.",
+  "settingsChromeBuiltInGuideTitle": "עלות אפס ובינה מלאכותית מקומית לחלוטין",
+  "settingsChromeBuiltInGuideDesc": "פועל לחלוטין באופן מקומי על המכשיר שלך בתוך הדפדפן. אפס השהיית רשת ו-100% חינם עם גמיני ננו.",
+  "debugHeaderTitle": "מנקה באגים למשחקים וכלי פיתוח",
+  "debugStatusOffline": "אוף-ליין",
+  "debugStatusLive": "לחיות",
+  "debugDetectedGame": "משחק זוהה",
+  "debugNoneDetected": "לא זוהה",
+  "debugTargetUrl": "כתובת היעד",
+  "debugNoActiveTab": "אין טאבל פעיל",
+  "debugHtmlCopied": "HTML הועתק!",
+  "debugCopyHtml": "העתק <main> HTML",
+  "debugLogsCopied": "יומנים הועתקו!",
+  "debugCopyLogs": "העתק יומני קונסולה",
+  "debugBothCopied": "שניהם הועתקו!",
+  "debugCopyBoth": "העתק את שניהם (HTML ויומנים)",
+  "debugRegistryCopied": "נרשם JSON הועתק!",
+  "debugCopyRegistry": "העתק את ה-JSON של הרישום להיום",
+  "debugCopyRegistryShort": "העתק JSON",
+  "debugSubmitAnswer": "שלח תשובה",
+  "debugDomPreview": "תצוגת אלמנט DOM",
+  "debugHtmlTruncated": "\n\n[... [מוקטן, סך כל התווים: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "העתק ה-HTML <main> הושלם",
+  "debugNoMainTagCaptured": "לא נתפס תג <main> פעיל. ודא שאתה על מסך משחק של לינקדאין.",
+  "debugConsoleOutput": "פלט קונסולה",
+  "debugEventsCount": "$1 אירועים",
+  "debugRefreshLogsTooltip": "רענן יומנים",
+  "debugClearLogsTooltip": "נקה יומנים",
+  "debugNoLogsCaptured": "עדיין לא נלכדו יומנים. בצע פעולות על מסך המשחק כדי להפעיל אירועי קונסולה.",
+  "debugListeningEvents": "מקשיב לאירועים של console.log, console.warn ו-console.error...",
+  "debugErrorInitializing": "החיבור עם דף המשחק של לינקדאין מתבצע...",
+  "debugErrorRetrieveFailed": "לא ניתן לשחזר את נתוני המשחק.",
+  "debugErrorNotGamesPage": "הכרטיסייה הפעילה אינה עמוד משחקים של לינקדאין. נווט למשחק כדי ללכוד פרטים.",
+  "debugErrorNoActiveTab": "לא ניתן היה לזהות את הכרטיסייה הפעילה.",
+  "labelDailyReminders": "תזכורות יומיות ומגן רצף",
+  "settingEnableReminders": "אפשר התראות יומיות",
+  "settingEnableRemindersDesc": "הזהר אותי לפני שהרצף של היום יסתיים.",
+  "settingReminderTime": "זמן תזכורת",
+  "settingReminderTimeNotice": "בחר זמן מקומי כדי לבדוק משחקים שלא נפתרו.",
+  "notificationTitle": "מגן רצועות 🚀",
+  "notificationMessage": "אל תפסיד את רצף הפתרונות שלך! עדיין לא פתרת את משחקי לינקדאין של היום.",
+  "notificationButton": "פתור עכשיו!",
+  "commandSolveActiveGame": "פתור את המשחק הפעיל בלינקדאין באופן אוטומטי.",
+  "commandGetSingleHint": "ספק רמז של שלב אחד או בדוק שגיאות.",
+  "settingAutoOpenSidepanel": "פתח צדדי אוטומטי על משחקים",
+  "settingAutoOpenSidepanelDesc": "פתח אוטומטית את לוח הצד של הפותר כאשר מבקרים במשחקי לינקדאין.",
+  "labelAutoOpenSidepanel": "סרגל צד של פותר פתיחה אוטומטית",
+  "permissionDialogTitle": "הענק גישה לדף",
+  "permissionDialogDesc": "כדי לזהות לוחות משחק פעילים ולפתור חידות, ההרחבה זקוקה להרשאה לפעול על משחקי לינקדאין. לחץ למטה כדי להעניק גישה.",
+  "permissionDialogButton": "הענקת גישה",
+  "omniboxSuggestionQueens": "👑 שחקו ופתרו את המלכות היום!",
+  "omniboxSuggestionSudoku": "🔢 פתח פתרון מיני-סודוקו",
+  "omniboxSuggestionStats": "📊 פתח דשבורד של רצפים וביצועים",
+  "diagnosticsEngine": "מנוע אבחון",
+  "liveInspected": "נבדק בשידור חי",
+  "offline": "לא מקוון",
+  "inspectedTab": "טאב נבדק:",
+  "liveMatrixGridInspector": "בוחן רשת מטריצה חיה",
+  "waitingForLinkedInGamePage": "מחכים לדף המשחק של לינקדאין",
+  "waitingForLinkedInGamePageDesc": "נווט לכל לשונית לוח המשחק של לינקדאין (מלכות, סודוקו, טנגו, פינוק) כדי ללכוד קואורדינטות מגבלות, מצבי תאים ומבנים תגובתיים.",
+  "telemetryLogsStreamer": "זרם יומני טלמטריה",
+  "searchLogsPlaceholder": "חפש יומני...",
+  "allTypes": "כל הסוגים",
+  "logsType": "יומנים",
+  "infoType": "מידע",
+  "warnsType": "מַזהִיר",
+  "errorsType": "שגיאות",
+  "selectTypePlaceholder": "בחר סוג",
+  "consoleStreamEmpty": "קונסולה ריקה",
+  "consoleStreamEmptyDesc": "לא זוהו פלטי יומן התואמים את המסננים. הרץ צעדים בתוך ממשק המשתמש של פתרון המשחקים של לינקדאין כדי להזרים פעולות יומן כאן.",
+  "subscribedToStorageSession": "נרשם לזרם storage.session",
+  "parsingGameGridCells": "מפרק תאי רשת המשחק... ודא שהלוח מציג בלוקים פעילים ברשת.",
+  "urlLabel": "כתובת אתר:",
+  "notAvailable": "לא זמין",
+  "matchesLabel": "גפרורים",
+  "copiedLabel": "הועתק!",
+  "copyLogsTooltip": "העתק יומנים",
+  "clearLogSpaceTooltip": "נקה שטח יומן",
+  "contextMenuSolve": "⚡ פתח משחק לינקדאין פעיל",
+  "contextMenuHint": "💡 קבל רמז",
+  "contextMenuViewResults": "📊 הצג תוצאות",
+  "labelTelemetryTitle": "טלמטריה ופרטיות",
+  "telemetryToggleLabel": "שלח טלמטריה אנונימית",
+  "telemetryToggleDesc": "עזור לשפר את הפותר על ידי שיתוף מדדי ביצועים ושימוש אנונימיים."
 }

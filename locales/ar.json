@@ -1,780 +1,210 @@
 {
-  "extensionName": {
-    "message": "أداة حل ألعاب لينكدإن",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "مساعد لألعاب لينكدإن. يحل الألغاز اليومية تلقائيًا (الملكات، السودوكو، Pinpoint، Crossclimb) مع تتبع السلاسل وتحليلات مفصلة.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "ألعاب لينكدإن",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "حل اللوحات النشطة بنقرة واحدة",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "التبديل إلى وضع $1",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "يتطلب ذلك تكامل تبويب Chrome.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "تعذر العثور على التبويب النشط.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "فشل الانتقال إلى $1.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "فشل الاتصال.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "حدث خطأ أثناء تشغيل المحلل.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "بدأ المحلل.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "جارٍ الحل...",
-    "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "مكافأة",
-    "description": "Bonus badge next to game name"
-  },
-  "desc_patches": {
-    "message": "ركّب القطع"
-  },
-  "desc_zip": {
-    "message": "أكمل المسار"
-  },
-  "desc_sudoku": {
-    "message": "اللعبة الكلاسيكية، مصغرة"
-  },
-  "desc_tango": {
-    "message": "انسق الشبكة"
-  },
-  "desc_queens": {
-    "message": "توّج كل منطقة"
-  },
-  "desc_crossclimb": {
-    "message": "افتح سلم المعلومات"
-  },
-  "desc_pinpoint": {
-    "message": "خمّن الفئة"
-  },
-  "titleSolve": {
-    "message": "حل $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "مكتمل اليوم! انقر للانتقال إلى $1",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "افتح $1 للحل",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "يوم مثالي! تم إكمال جميع ألعاب $1! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "التقدّم اليومي: $1 من $2 ألعاب مكتملة اليوم",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "السجل والإحصاءات",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "سجلك وإحصاءات حل ألعاب LinkedIn",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "الإجمالي المحلول",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "الألعاب المحلولة عبر كافة التواريخ",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "متوسط الوقت",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "على جميع حالات الاكتمال المسجلة",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "سلسلة نشطة",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "أيام نشطة متتالية",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 أيام",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "أفضل النتائج الشخصية",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "لا توجد سجلات حل بعد.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "سجل الحلول",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "تقويم النشاط",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "مسح الفلتر",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "النموذج",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "اختر نموذج",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "اسم نموذج مخصص...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "اسم النموذج المخصص",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "مثال: llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "أدخل المعرف المخصص...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "عنوان الـ Endpoint",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "مثال: http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "مفتاح Gemini API",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "مفتاح OpenAI API",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "مفتاح Anthropic API",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "مفتاح DeepSeek API",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "مفتاح API (اختياري)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "بيانات اعتماد اختيارية...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "أدخل مفتاح الاعتماد...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "النموذج المحدد يحل Crossclimb و Pinpoint. الإضافة لا تشارك مفتاحك.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "تواصل عبر ألعاب يومية ممتعة",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "جهز عقلك ليوم العمل وقارن النتائج. نقاطك خاصة إلا إذا شاركتها.",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "حفظ والعودة إلى الألعاب",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "المحلّل بالذكاء الاصطناعي يعمل...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "مكتمل اليوم",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "محلول",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "تكوين نموذج الذكاء الاصطناعي",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "مزوّد الذكاء الاصطناعي",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "مُعرّف النموذج",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "اسم النموذج المخصص",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "عنوان الـ ENDPOINT",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "مفتاح GEMINI",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "مفتاح OPENAI",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "مفتاح ANTHROPIC",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "مفتاح DEEPSEEK",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "مفتاح API (اختياري)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "الرئيسية",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "الإعدادات / الخيارات",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "الإحصاءات",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "السمة",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "تصحيح",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "التقدّم اليومي",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "حل اللوحة النشطة",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "العودة إلى ألعاب LinkedIn",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "لوحة التحكم",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "محلّل الألعاب",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "حلّل أداءك، سجّل السلاسل اليومية، وتتبع مسارات الألغاز المكتملة.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "تم بنجاح",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "إخلاء مسؤولية: هذا مشروع تعليمي مستقل ومفتوح المصدر. لا توجد له أي علاقة أو رعاية أو تأييد من شركة لينكدإن. «LinkedIn» علامة تجارية مسجّلة لشركة LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "بيانات الاعتماد والنماذج",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "دليل النموذج والمعلومات",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "حالة الاتصال",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "المحلّل النشط:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "مُعرّف النموذج:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "تم حفظ الإعدادات تلقائيًا!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "كوّن نقاط النهاية وبيانات الاعتماد لدمج نماذج الذكاء الاصطناعي.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "أداء متميز بتكاليف منخفضة. يحل Crossclimb و Pinpoint بمنطق ممتاز. الافتراضي الموصى به: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "سريع وموثوق مع أنماط معرفة عامة. الافتراضي الموصى به: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "أقصى قدرة استدلالية. يتعامل مع علاقات الكلمات المعقدة بسهولة. الافتراضي الموصى به: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "اتصل بإطارات LLM محلية مثل Ollama أو LM Studio. وجه عنوان الـ endpoint واسم النموذج المخصص.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "عرض تواريخ أكثر",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "عرض تواريخ أقل",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "الحل بالذكاء الاصطناعي"
-  },
-  "solveBtn_game": {
-    "message": "حل اللعبة"
-  },
-  "solveBtn_solving": {
-    "message": "جارٍ الحل..."
-  },
-  "solveBtn_solved": {
-    "message": "تم الحل!"
-  },
-  "scoreClue": {
-    "message": "1 تلميح"
-  },
-  "scoreClues": {
-    "message": "$1 تلميحات"
-  },
-  "scoreSeconds": {
-    "message": "$1ث"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1د $2ث"
-  },
-  "markAsNotPlayed": {
-    "message": "علّم كم لم تُلعب",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "سرعة الحل / التأخير",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "فوري (الأسرع)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "عادي (افتراضي)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "وضع التخفي (تأخيرات بشرية)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "سرعة الإكمال والتوقيت",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "الوضع الفوري يكمل اللوحة بالمللي ثانية. وضع التخفي يحاكي سلوك الإنسان بتردد عشوائي (1–3 ث).",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "احصل على تلميح",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "الإجراء الافتراضي للمحلّل",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "الحل التلقائي الكامل",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "وضع التلميح التعليمي",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "الوضع الافتراضي للمحلّل",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "حدد الإجراء الرئيسي عند تشغيل المحلّل من عرض التبويب أو اللوحات.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "ذكاء محلي مدمج بدون تكلفة",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "يعمل محليًا داخل المتصفح. لا تأخير شبكي ومجاني تمامًا مع Gemini Nano.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "مصحح اللعبة وأدوات المطور",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "غير متصل",
-    "description": "Debug offline status indicator label"
-  },
-  "debugStatusLive": {
-    "message": "مباشر",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "اللعبة المكتشفة",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "لم يتم الاكتشاف",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "عنوان الهدف",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "لا يوجد تبويب نشط",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "تم نسخ HTML!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "نسخ HTML لعنصر <main>",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "تم نسخ السجلات!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "نسخ سجلات الكونسول",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "تم نسخ الاثنين!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "نسخ الاثنين (HTML & سجلات)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "تم نسخ JSON للسجل!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "نسخ JSON اليوم",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "نسخ JSON",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "إرسال الإجابة",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "معاينة عنصر DOM",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [مجموع الأحرف: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "نسخ HTML الكامل لعنصر <main>",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "لم يتم التقاط وسم <main> النشط. تأكد أنك على شاشة لعبة LinkedIn.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "مخرجات الكونسول",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 أحداث",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "تحديث السجلات",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "مسح السجلات",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "لم يتم تسجيل أي سجلات بعد. نفّذ إجراءات على شاشة اللعبة لإطلاق أحداث.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "يستمع إلى console.log و console.warn و console.error...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "جارٍ تهيئة الاتصال بصفحة لعبة LinkedIn...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "غير قادر على استرجاع بيانات اللعبة.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "هذه الميزة متاحة فقط على linkedin.com/games",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "غير قادر على الوصول إلى التبويب النشط. تحقق من أذونات الإضافة.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "تذكيرات يومية",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "تفعيل التذكيرات اليومية",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "استلم إشعارًا عند توفر ألعاب LinkedIn",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "وقت التذكير",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "خصص وقت استلام تذكيرات الألغاز اليومية",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "تذكير ألعاب LinkedIn اليومية",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "لغزك اليومي جاهز! انقر للعب.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "العب الآن",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "حل اللعبة النشطة"
-  },
-  "commandGetSingleHint": {
-    "message": "احصل على تلميح للعبة الحالية"
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "فتح اللوحة الجانبية تلقائيًا"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "افتح لوحة المحلّل تلقائيًا عند زيارة ألعاب LinkedIn"
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "فتح اللوحة الجانبية تلقائيًا"
-  },
-  "permissionDialogTitle": {
-    "message": "أذونات الإضافة"
-  },
-  "permissionDialogDesc": {
-    "message": "تحتاج هذه الإضافة إذنًا للوصول إلى محتوى ألعاب LinkedIn"
-  },
-  "permissionDialogButton": {
-    "message": "منح الإذن"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "حل لغز Queens"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "حل لغز Sudoku"
-  },
-  "omniboxSuggestionStats": {
-    "message": "عرض إحصاءات اللعبة"
-  },
-  "diagnosticsEngine": {
-    "message": "محرك التشخيص"
-  },
-  "liveInspected": {
-    "message": "معاينة مباشرة"
-  },
-  "offline": {
-    "message": "غير متصل"
-  },
-  "inspectedTab": {
-    "message": "التبويب المفتوح"
-  },
-  "liveMatrixGridInspector": {
-    "message": "مفتش شبكة المصفوفة المباشر"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "في انتظار صفحة ألعاب LinkedIn..."
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "انتقل إلى linkedin.com/games لرؤية بيانات اللغز"
-  },
-  "telemetryLogsStreamer": {
-    "message": "تدفق سجلات القياس"
-  },
-  "searchLogsPlaceholder": {
-    "message": "ابحث في السجلات..."
-  },
-  "allTypes": {
-    "message": "كل الأنواع"
-  },
-  "logsType": {
-    "message": "سجلات"
-  },
-  "infoType": {
-    "message": "معلومات"
-  },
-  "warnsType": {
-    "message": "تحذيرات"
-  },
-  "errorsType": {
-    "message": "أخطاء"
-  },
-  "selectTypePlaceholder": {
-    "message": "اختر نوع السجل"
-  },
-  "consoleStreamEmpty": {
-    "message": "لم يتم تسجيل سجلات"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "ابدأ بالحُلول لالتقاط القياس"
-  },
-  "subscribedToStorageSession": {
-    "message": "مشترك في جلسة التخزين"
-  },
-  "parsingGameGridCells": {
-    "message": "جارٍ تحليل خلايا شبكة اللعبة"
-  },
-  "urlLabel": {
-    "message": "العنوان"
-  },
-  "notAvailable": {
-    "message": "غير متاح"
-  },
-  "matchesLabel": {
-    "message": "مطابقات"
-  },
-  "copiedLabel": {
-    "message": "تم النسخ!"
-  },
-  "copyLogsTooltip": {
-    "message": "نسخ السجلات إلى الحافظة"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "مسح السجلات"
-  },
-  "contextMenuSolve": {
-    "message": "حل باستخدام محلّل LinkedIn Games"
-  },
-  "contextMenuHint": {
-    "message": "احصل على تلميح لهذا اللغز"
-  },
-  "contextMenuViewResults": {
-    "message": "عرض نتائج الحل"
-  },
-  "labelTelemetryTitle": {
-    "message": "القياس والبيانات المجهولة",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "تمكين جمع التحليلات",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "ساعد في تحسين الإضافة بمشاركة بيانات استخدام مجهولة",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  }
+  "extensionName": "أداة حل ألعاب لينكدإن",
+  "extensionDescription": "مساعد لألعاب لينكدإن. يحل الألغاز اليومية تلقائيًا (الملكات، السودوكو، Pinpoint، Crossclimb) مع تتبع السلاسل وتحليلات مفصلة.",
+  "title": "ألعاب لينكدإن",
+  "subtitle": "حل اللوحات النشطة بنقرة واحدة",
+  "switchThemeTitle": "التبديل إلى وضع $1",
+  "errorChromeTabIntegration": "يتطلب ذلك تكامل تبويب Chrome.",
+  "errorActiveTabNotFound": "تعذر العثور على التبويب النشط.",
+  "errorNavigationFailed": "فشل الانتقال إلى $1.",
+  "errorConnectionFailed": "فشل الاتصال.",
+  "errorExecutionFailedDefault": "حدث خطأ أثناء تشغيل المحلل.",
+  "successSolverStarted": "بدأ المحلل.",
+  "solvingStatus": "جارٍ الحل...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "مكافأة",
+  "desc_patches": "ركّب القطع",
+  "desc_zip": "أكمل المسار",
+  "desc_sudoku": "اللعبة الكلاسيكية، مصغرة",
+  "desc_tango": "انسق الشبكة",
+  "desc_queens": "توّج كل منطقة",
+  "desc_crossclimb": "افتح سلم المعلومات",
+  "desc_pinpoint": "خمّن الفئة",
+  "titleSolve": "حل $1",
+  "titleCompleted": "مكتمل اليوم! انقر للانتقال إلى $1",
+  "titleOpen": "افتح $1 للحل",
+  "perfectDay": "يوم مثالي! تم إكمال جميع ألعاب $1! 🎉",
+  "dailyProgress": "التقدّم اليومي: $1 من $2 ألعاب مكتملة اليوم",
+  "dashboardTitle": "السجل والإحصاءات",
+  "dashboardSubtitle": "سجلك وإحصاءات حل ألعاب LinkedIn",
+  "statTotalSolved": "الإجمالي المحلول",
+  "statTotalSolvedDesc": "الألعاب المحلولة عبر كافة التواريخ",
+  "statAverageTime": "متوسط الوقت",
+  "statAverageTimeDesc": "على جميع حالات الاكتمال المسجلة",
+  "statActiveStreak": "سلسلة نشطة",
+  "statActiveStreakDesc": "أيام نشطة متتالية",
+  "statStreakDays": "$1 أيام",
+  "personalBests": "أفضل النتائج الشخصية",
+  "noRecordsYet": "لا توجد سجلات حل بعد.",
+  "solvingHistory": "سجل الحلول",
+  "activityCalendar": "تقويم النشاط",
+  "clearFilter": "مسح الفلتر",
+  "settingModel": "النموذج",
+  "settingModelSelect": "اختر نموذج",
+  "settingModelCustomOption": "اسم نموذج مخصص...",
+  "settingModelCustomLabel": "اسم النموذج المخصص",
+  "settingModelCustomPlaceholderLocal": "مثال: llama3, mistral",
+  "settingModelCustomPlaceholderOther": "أدخل المعرف المخصص...",
+  "settingEndpointLabel": "عنوان الـ Endpoint",
+  "settingEndpointPlaceholder": "مثال: http://localhost:11434/v1",
+  "settingApiKeyGemini": "مفتاح Gemini API",
+  "settingApiKeyOpenAI": "مفتاح OpenAI API",
+  "settingApiKeyAnthropic": "مفتاح Anthropic API",
+  "settingApiKeyDeepSeek": "مفتاح DeepSeek API",
+  "settingApiKeyCustom": "مفتاح API (اختياري)",
+  "settingApiKeyPlaceholderCustom": "بيانات اعتماد اختيارية...",
+  "settingApiKeyPlaceholderDefault": "أدخل مفتاح الاعتماد...",
+  "settingApiKeyNotice": "النموذج المحدد يحل Crossclimb و Pinpoint. الإضافة لا تشارك مفتاحك.",
+  "popupCardTitle": "تواصل عبر ألعاب يومية ممتعة",
+  "popupCardDesc": "جهز عقلك ليوم العمل وقارن النتائج. نقاطك خاصة إلا إذا شاركتها.",
+  "saveAndBack": "حفظ والعودة إلى الألعاب",
+  "solvingWorking": "المحلّل بالذكاء الاصطناعي يعمل...",
+  "completedToday": "مكتمل اليوم",
+  "solvedCountSuffix": "محلول",
+  "settingsHeaderTitle": "تكوين نموذج الذكاء الاصطناعي",
+  "labelAiProvider": "مزوّد الذكاء الاصطناعي",
+  "labelModelIdentifier": "مُعرّف النموذج",
+  "labelCustomModel": "اسم النموذج المخصص",
+  "labelEndpointUrl": "عنوان الـ ENDPOINT",
+  "labelGeminiKey": "مفتاح GEMINI",
+  "labelOpenAiKey": "مفتاح OPENAI",
+  "labelAnthropicKey": "مفتاح ANTHROPIC",
+  "labelDeepSeekKey": "مفتاح DEEPSEEK",
+  "labelCustomKey": "مفتاح API (اختياري)",
+  "navHome": "الرئيسية",
+  "navAiConfig": "الإعدادات / الخيارات",
+  "navStats": "الإحصاءات",
+  "navTheme": "السمة",
+  "navDebug": "تصحيح",
+  "dailyProgressLabel": "التقدّم اليومي",
+  "solveActiveBoard": "حل اللوحة النشطة",
+  "backToGames": "العودة إلى ألعاب LinkedIn",
+  "dashboardLabel": "لوحة التحكم",
+  "gamesSolverTitle": "محلّل الألعاب",
+  "dashboardDescText": "حلّل أداءك، سجّل السلاسل اليومية، وتتبع مسارات الألغاز المكتملة.",
+  "completedSuccessfully": "تم بنجاح",
+  "disclaimerText": "إخلاء مسؤولية: هذا مشروع تعليمي مستقل ومفتوح المصدر. لا توجد له أي علاقة أو رعاية أو تأييد من شركة لينكدإن. «LinkedIn» علامة تجارية مسجّلة لشركة LinkedIn Corporation.",
+  "settingsCredentialsTitle": "بيانات الاعتماد والنماذج",
+  "settingsModelGuideTitle": "دليل النموذج والمعلومات",
+  "settingsConnectionStatusTitle": "حالة الاتصال",
+  "settingsActiveSolverLabel": "المحلّل النشط:",
+  "settingsModelIdentifierLabel": "مُعرّف النموذج:",
+  "settingsAutoSavedNotification": "تم حفظ الإعدادات تلقائيًا!",
+  "settingsSubtitleDesc": "كوّن نقاط النهاية وبيانات الاعتماد لدمج نماذج الذكاء الاصطناعي.",
+  "settingsGeminiGuideDesc": "أداء متميز بتكاليف منخفضة. يحل Crossclimb و Pinpoint بمنطق ممتاز. الافتراضي الموصى به: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "سريع وموثوق مع أنماط معرفة عامة. الافتراضي الموصى به: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "أقصى قدرة استدلالية. يتعامل مع علاقات الكلمات المعقدة بسهولة. الافتراضي الموصى به: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "اتصل بإطارات LLM محلية مثل Ollama أو LM Studio. وجه عنوان الـ endpoint واسم النموذج المخصص.",
+  "showMoreDates": "عرض تواريخ أكثر",
+  "showLessDates": "عرض تواريخ أقل",
+  "solveBtn_withAi": "الحل بالذكاء الاصطناعي",
+  "solveBtn_game": "حل اللعبة",
+  "solveBtn_solving": "جارٍ الحل...",
+  "solveBtn_solved": "تم الحل!",
+  "scoreClue": "1 تلميح",
+  "scoreClues": "$1 تلميحات",
+  "scoreSeconds": "$1ث",
+  "scoreMinutesSeconds": "$1د $2ث",
+  "markAsNotPlayed": "علّم كم لم تُلعب",
+  "settingSolveSpeed": "سرعة الحل / التأخير",
+  "solveSpeed_instant": "فوري (الأسرع)",
+  "solveSpeed_normal": "عادي (افتراضي)",
+  "solveSpeed_stealth": "وضع التخفي (تأخيرات بشرية)",
+  "labelSolveSpeed": "سرعة الإكمال والتوقيت",
+  "settingSolveSpeedNotice": "الوضع الفوري يكمل اللوحة بالمللي ثانية. وضع التخفي يحاكي سلوك الإنسان بتردد عشوائي (1–3 ث).",
+  "solveBtn_hint": "احصل على تلميح",
+  "settingDefaultSolveMode": "الإجراء الافتراضي للمحلّل",
+  "solveMode_full": "الحل التلقائي الكامل",
+  "solveMode_hint": "وضع التلميح التعليمي",
+  "labelDefaultSolveMode": "الوضع الافتراضي للمحلّل",
+  "settingDefaultSolveModeNotice": "حدد الإجراء الرئيسي عند تشغيل المحلّل من عرض التبويب أو اللوحات.",
+  "settingsChromeBuiltInGuideTitle": "ذكاء محلي مدمج بدون تكلفة",
+  "settingsChromeBuiltInGuideDesc": "يعمل محليًا داخل المتصفح. لا تأخير شبكي ومجاني تمامًا مع Gemini Nano.",
+  "debugHeaderTitle": "مصحح اللعبة وأدوات المطور",
+  "debugStatusOffline": "غير متصل",
+  "debugStatusLive": "مباشر",
+  "debugDetectedGame": "اللعبة المكتشفة",
+  "debugNoneDetected": "لم يتم الاكتشاف",
+  "debugTargetUrl": "عنوان الهدف",
+  "debugNoActiveTab": "لا يوجد تبويب نشط",
+  "debugHtmlCopied": "تم نسخ HTML!",
+  "debugCopyHtml": "نسخ HTML لعنصر <main>",
+  "debugLogsCopied": "تم نسخ السجلات!",
+  "debugCopyLogs": "نسخ سجلات الكونسول",
+  "debugBothCopied": "تم نسخ الاثنين!",
+  "debugCopyBoth": "نسخ الاثنين (HTML & سجلات)",
+  "debugRegistryCopied": "تم نسخ JSON للسجل!",
+  "debugCopyRegistry": "نسخ JSON اليوم",
+  "debugCopyRegistryShort": "نسخ JSON",
+  "debugSubmitAnswer": "إرسال الإجابة",
+  "debugDomPreview": "معاينة عنصر DOM",
+  "debugHtmlTruncated": "\n\n[ ... [مجموع الأحرف: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "نسخ HTML الكامل لعنصر <main>",
+  "debugNoMainTagCaptured": "لم يتم التقاط وسم <main> النشط. تأكد أنك على شاشة لعبة LinkedIn.",
+  "debugConsoleOutput": "مخرجات الكونسول",
+  "debugEventsCount": "$1 أحداث",
+  "debugRefreshLogsTooltip": "تحديث السجلات",
+  "debugClearLogsTooltip": "مسح السجلات",
+  "debugNoLogsCaptured": "لم يتم تسجيل أي سجلات بعد. نفّذ إجراءات على شاشة اللعبة لإطلاق أحداث.",
+  "debugListeningEvents": "يستمع إلى console.log و console.warn و console.error...",
+  "debugErrorInitializing": "جارٍ تهيئة الاتصال بصفحة لعبة LinkedIn...",
+  "debugErrorRetrieveFailed": "غير قادر على استرجاع بيانات اللعبة.",
+  "debugErrorNotGamesPage": "هذه الميزة متاحة فقط على linkedin.com/games",
+  "debugErrorNoActiveTab": "غير قادر على الوصول إلى التبويب النشط. تحقق من أذونات الإضافة.",
+  "labelDailyReminders": "تذكيرات يومية",
+  "settingEnableReminders": "تفعيل التذكيرات اليومية",
+  "settingEnableRemindersDesc": "استلم إشعارًا عند توفر ألعاب LinkedIn",
+  "settingReminderTime": "وقت التذكير",
+  "settingReminderTimeNotice": "خصص وقت استلام تذكيرات الألغاز اليومية",
+  "notificationTitle": "تذكير ألعاب LinkedIn اليومية",
+  "notificationMessage": "لغزك اليومي جاهز! انقر للعب.",
+  "notificationButton": "العب الآن",
+  "commandSolveActiveGame": "حل اللعبة النشطة",
+  "commandGetSingleHint": "احصل على تلميح للعبة الحالية",
+  "settingAutoOpenSidepanel": "فتح اللوحة الجانبية تلقائيًا",
+  "settingAutoOpenSidepanelDesc": "افتح لوحة المحلّل تلقائيًا عند زيارة ألعاب LinkedIn",
+  "labelAutoOpenSidepanel": "فتح اللوحة الجانبية تلقائيًا",
+  "permissionDialogTitle": "أذونات الإضافة",
+  "permissionDialogDesc": "تحتاج هذه الإضافة إذنًا للوصول إلى محتوى ألعاب LinkedIn",
+  "permissionDialogButton": "منح الإذن",
+  "omniboxSuggestionQueens": "حل لغز Queens",
+  "omniboxSuggestionSudoku": "حل لغز Sudoku",
+  "omniboxSuggestionStats": "عرض إحصاءات اللعبة",
+  "diagnosticsEngine": "محرك التشخيص",
+  "liveInspected": "معاينة مباشرة",
+  "offline": "غير متصل",
+  "inspectedTab": "التبويب المفتوح",
+  "liveMatrixGridInspector": "مفتش شبكة المصفوفة المباشر",
+  "waitingForLinkedInGamePage": "في انتظار صفحة ألعاب LinkedIn...",
+  "waitingForLinkedInGamePageDesc": "انتقل إلى linkedin.com/games لرؤية بيانات اللغز",
+  "telemetryLogsStreamer": "تدفق سجلات القياس",
+  "searchLogsPlaceholder": "ابحث في السجلات...",
+  "allTypes": "كل الأنواع",
+  "logsType": "سجلات",
+  "infoType": "معلومات",
+  "warnsType": "تحذيرات",
+  "errorsType": "أخطاء",
+  "selectTypePlaceholder": "اختر نوع السجل",
+  "consoleStreamEmpty": "لم يتم تسجيل سجلات",
+  "consoleStreamEmptyDesc": "ابدأ بالحُلول لالتقاط القياس",
+  "subscribedToStorageSession": "مشترك في جلسة التخزين",
+  "parsingGameGridCells": "جارٍ تحليل خلايا شبكة اللعبة",
+  "urlLabel": "العنوان",
+  "notAvailable": "غير متاح",
+  "matchesLabel": "مطابقات",
+  "copiedLabel": "تم النسخ!",
+  "copyLogsTooltip": "نسخ السجلات إلى الحافظة",
+  "clearLogSpaceTooltip": "مسح السجلات",
+  "contextMenuSolve": "حل باستخدام محلّل LinkedIn Games",
+  "contextMenuHint": "احصل على تلميح لهذا اللغز",
+  "contextMenuViewResults": "عرض نتائج الحل",
+  "labelTelemetryTitle": "القياس والبيانات المجهولة",
+  "telemetryToggleLabel": "تمكين جمع التحليلات",
+  "telemetryToggleDesc": "ساعد في تحسين الإضافة بمشاركة بيانات استخدام مجهولة"
 }

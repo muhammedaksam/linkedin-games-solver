@@ -1,776 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn Games-lösare",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "En hjälpare för LinkedIn Games. Lös dagliga pussel automatiskt (Queens, Sudoku, Pinpoint, Crossclimb) med streaks och analys.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIn-spel",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "Lös aktiva bräden med ett klick",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "Växla till $1-läge",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Chrome-flikintegrering krävs.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Den aktiva fliken hittades inte.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Det gick inte att navigera till $1.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Anslutningen misslyckades.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Ett problem uppstod när lösaren kördes.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Lösaren har startats.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "Löser...",
-    "description": "Overlay label during solver run"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "desc_patches": {
-    "message": "Anslut lappar tillsammans"
-  },
-  "desc_zip": {
-    "message": "Slutför vägen"
-  },
-  "desc_sudoku": {
-    "message": "Klassiskt spel, miniversion"
-  },
-  "desc_tango": {
-    "message": "Harmonisera rutnätet"
-  },
-  "desc_queens": {
-    "message": "Krona varje område"
-  },
-  "desc_crossclimb": {
-    "message": "Öppna studieladder"
-  },
-  "desc_pinpoint": {
-    "message": "Gissa kategori"
-  },
-  "titleSolve": {
-    "message": "Lösa $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "Slutförd idag! Klicka för att gå till $1",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "Öppna $1 för att lösa",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "Perfekt dag! Alla $1-spel slutförda! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "Daglig framgång: $1 av $2 spel slutförda",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "Historik & Statistik",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Din historik och statistik för LinkedIn Games",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Totalt löst",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Spel lösta över alla datum",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Genomsnittstid",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Över alla registrerade slutföranden",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Aktiv streak",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "På varandra följande aktiva dagar",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 dagar",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "Personliga rekord",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "Inga lösningsuppgifter än.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "Lösningshistorik",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "Aktivitetskalender",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "Rensa filter",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "Modell",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "Välj modell",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "Anpassat modellnamn...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "Anpassat modellnamn",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "t.ex: llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Ange anpassat ID...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "Slutpunkts-URL",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "t.ex: http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API-nyckel",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API-nyckel",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API-nyckel",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API-nyckel",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API-nyckel (valfritt)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Autentiseringsuppgifter (valfritt)...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Ange autentiseringsnyckel...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "Vald modell löser Crossclimb och Pinpoint. Tillägget delar aldrig din nyckel.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "LinkedIn Games Solver",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "Lösa LinkedIn-spel med AI",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "Spara och återgå till spel",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "AI-lösare arbetar...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "Slutförd idag",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "Löst",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "Konfiguration av AI-modell",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "AI-leverantör",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "Modellidentifierare",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "Anpassat modellnamn",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "Slutpunkts-URL",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API-NYCKEL",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API-NYCKEL",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API-NYCKEL",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API-NYCKEL",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API-NYCKEL (VALFRITT)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "Hemma",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "Inställningar/Alternativ",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "Statistik",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "Tema",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "Felsökning",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "Daglig framgång",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "Lös aktivt bräde",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "Tillbaka till LinkedIn-spel",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "Instrumentpanel",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "Spellösare",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "Analysera dina prestandamått, registrera streaks och följ spåren för dina dagligen slutförda pussel.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "Slutförd framgångsrikt",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "Ansvarsfriskrivning: Detta är ett oberoende, öppenkällkodsbaserat utbildningsprojekt. Det er inte associerat med, sponsrat av eller godkänt av LinkedIn Corporation. ”LinkedIn” är ett registrerat varumärke som tillhör LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Autentiseringsuppgifter och modeller",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Modellguide och information",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Anslutningsstatus",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Aktiv lösare:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Modellidentifierare:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Inställningar sparade automatiskt!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Konfigurera AI-modellslutpunkter och autentiseringsuppgifter för avancerad pusselösning.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Utmärkt prestanda, nästan noll kostnad. Löser Crossclimb och Pinpoint med utmärkt logik. Rekommenderad: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Snabb, responsiv och mycket pålitlig med allmänna kunskapsmodeller. Rekommenderad: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maximal resoneringsförmåga. Hanterar komplexa korsord felfritt. Rekommenderad: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Anslut till lokala LLM-ramverk som Ollama eller LM Studio.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "Visa fler datum",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "Visa mindre",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "Lös med AI"
-  },
-  "solveBtn_game": {
-    "message": "Lös spel"
-  },
-  "solveBtn_solving": {
-    "message": "Löser..."
-  },
-  "solveBtn_solved": {
-    "message": "Löst!"
-  },
-  "scoreClue": {
-    "message": "1 ledtråd"
-  },
-  "scoreClues": {
-    "message": "$1 ledtrådar"
-  },
-  "markAsNotPlayed": {
-    "message": "Markera som ej spelad",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "Löshastighet/fördröjning",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "Omedelbar (snabbast)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "Normal (standard)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "Smygläge (människoliknande förseningar)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "Löshastighet och tempo",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Omedelbar läge slutför brädet på millisekunder. Smygläge efterliknar människans beteende med slumpmässiga förseningar.",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "Få ett tips",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Standardåtgärd för lösare",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "Helt automatisk lösning",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "Utbildningstipsläge",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "Standardläge för lösare",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Välj primär åtgärd när du startar lösaren.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Noll kostnad helt lokal AI",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Körs helt lokalt på din enhet, i webbläsaren.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "Spelfelsökare och utvecklarverktyg",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusLive": {
-    "message": "Direkt sändning",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "Upptäckt spel",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "Ingen identifierad",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "Målwebbadressen",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "Ingen aktiv flik",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML kopierad!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "Kopiera <main> HTML",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "Loggar kopierade!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "Kopiera konsolloggar",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "Båda kopierade!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "Kopiera båda (HTML och loggar)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "Registrets JSON kopierad!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "Kopiera registrets JSON idag",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Kopiera JSON",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "Skicka svar",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "DOM-elementförhandsvisning",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [avklippt, totalt tecken: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Kopiera fullständig <main> HTML",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Ingen aktiv <main>-tagg hämtad.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "Konsolens utdata",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 händelser",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Uppdatera loggar",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Rensa loggar",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Inga loggar hämtade än.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "Lyssnar på console.log, console.warn och console.error...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "Initialisering av anslutning till LinkedIn-spelsidan...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Kunde inte hämta speldata.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Den aktiva fliken är inte en LinkedIn-spelsida.",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Kunde inte identifiera aktiv flik.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "Dagliga påminnelser och serieprotection",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "Aktivera dagliga påminnelser",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Varna innan dagens serie upphör.",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "Påminnelsetid",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Välj lokal tid för att kontrollera ofullständiga spel.",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "Serieprotection 🚀",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "Förlora inte din lösingsserie! Du har ännu inte löst dagens LinkedIn-spel.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "Lös nu!",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "Lös aktivt LinkedIn-spel automatiskt."
-  },
-  "commandGetSingleHint": {
-    "message": "Ge ett enstegstips eller kontrollera fel."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Öppna sidopanelen automatiskt i spel"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Öppnar lösarsidopanelen automatiskt."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "Öppna lösarsidopanelen automatiskt"
-  },
-  "permissionDialogTitle": {
-    "message": "Bevilja sidbehörighet"
-  },
-  "permissionDialogDesc": {
-    "message": "Tillägg kräver behörighet."
-  },
-  "permissionDialogButton": {
-    "message": "Bevilja behörighet"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Spela och lös Damer idag!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Öppna mini sudoku-lösare"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Öppna serie och prestandainstrumentpanel"
-  },
-  "diagnosticsEngine": {
-    "message": "Diagnostikmotor"
-  },
-  "liveInspected": {
-    "message": "Live inspekterad"
-  },
-  "inspectedTab": {
-    "message": "Inspekterad flik:"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Väntar på LinkedIn-spelsida"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Navigera till en LinkedIn-spelbräddflik."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Telemetriloggströmspreader"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Sök i loggar..."
-  },
-  "allTypes": {
-    "message": "Alla typer"
-  },
-  "logsType": {
-    "message": "Loggar"
-  },
-  "infoType": {
-    "message": "Information"
-  },
-  "warnsType": {
-    "message": "Varningar"
-  },
-  "errorsType": {
-    "message": "Fel"
-  },
-  "selectTypePlaceholder": {
-    "message": "Välj typ"
-  },
-  "consoleStreamEmpty": {
-    "message": "Konsolström tom"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Inga loggar identifierade."
-  },
-  "subscribedToStorageSession": {
-    "message": "Prenumererar på storage.session stream"
-  },
-  "parsingGameGridCells": {
-    "message": "Analyserar spelrasterceller..."
-  },
-  "urlLabel": {
-    "message": "URL:"
-  },
-  "matchesLabel": {
-    "message": "Matchningar"
-  },
-  "copiedLabel": {
-    "message": "Kopierad!"
-  },
-  "copyLogsTooltip": {
-    "message": "Kopiera loggar"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Rensa loggutrymme"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Lös aktivt LinkedIn-spel"
-  },
-  "contextMenuHint": {
-    "message": "💡 Få tips"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Visa resultat"
-  },
-  "labelTelemetryTitle": {
-    "message": "Telemetri och sekretess",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "Skicka anonym telemetri",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "Hjälp till att förbättra lösaren.",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "bonus": {
-    "message": "Bonus"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "debugStatusOffline": {
-    "message": "Offline"
-  },
-  "offline": {
-    "message": "Offline"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Live Matrix Grid Inspektör"
-  },
-  "notAvailable": {
-    "message": "Ej tillämpligt"
-  }
+  "extensionName": "LinkedIn Games-lösare",
+  "extensionDescription": "En hjälpare för LinkedIn Games. Lös dagliga pussel automatiskt (Queens, Sudoku, Pinpoint, Crossclimb) med streaks och analys.",
+  "title": "LinkedIn-spel",
+  "subtitle": "Lös aktiva bräden med ett klick",
+  "switchThemeTitle": "Växla till $1-läge",
+  "errorChromeTabIntegration": "Chrome-flikintegrering krävs.",
+  "errorActiveTabNotFound": "Den aktiva fliken hittades inte.",
+  "errorNavigationFailed": "Det gick inte att navigera till $1.",
+  "errorConnectionFailed": "Anslutningen misslyckades.",
+  "errorExecutionFailedDefault": "Ett problem uppstod när lösaren kördes.",
+  "successSolverStarted": "Lösaren har startats.",
+  "solvingStatus": "Löser...",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "desc_patches": "Anslut lappar tillsammans",
+  "desc_zip": "Slutför vägen",
+  "desc_sudoku": "Klassiskt spel, miniversion",
+  "desc_tango": "Harmonisera rutnätet",
+  "desc_queens": "Krona varje område",
+  "desc_crossclimb": "Öppna studieladder",
+  "desc_pinpoint": "Gissa kategori",
+  "titleSolve": "Lösa $1",
+  "titleCompleted": "Slutförd idag! Klicka för att gå till $1",
+  "titleOpen": "Öppna $1 för att lösa",
+  "perfectDay": "Perfekt dag! Alla $1-spel slutförda! 🎉",
+  "dailyProgress": "Daglig framgång: $1 av $2 spel slutförda",
+  "dashboardTitle": "Historik & Statistik",
+  "dashboardSubtitle": "Din historik och statistik för LinkedIn Games",
+  "statTotalSolved": "Totalt löst",
+  "statTotalSolvedDesc": "Spel lösta över alla datum",
+  "statAverageTime": "Genomsnittstid",
+  "statAverageTimeDesc": "Över alla registrerade slutföranden",
+  "statActiveStreak": "Aktiv streak",
+  "statActiveStreakDesc": "På varandra följande aktiva dagar",
+  "statStreakDays": "$1 dagar",
+  "personalBests": "Personliga rekord",
+  "noRecordsYet": "Inga lösningsuppgifter än.",
+  "solvingHistory": "Lösningshistorik",
+  "activityCalendar": "Aktivitetskalender",
+  "clearFilter": "Rensa filter",
+  "settingModel": "Modell",
+  "settingModelSelect": "Välj modell",
+  "settingModelCustomOption": "Anpassat modellnamn...",
+  "settingModelCustomLabel": "Anpassat modellnamn",
+  "settingModelCustomPlaceholderLocal": "t.ex: llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Ange anpassat ID...",
+  "settingEndpointLabel": "Slutpunkts-URL",
+  "settingEndpointPlaceholder": "t.ex: http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API-nyckel",
+  "settingApiKeyOpenAI": "OpenAI API-nyckel",
+  "settingApiKeyAnthropic": "Anthropic API-nyckel",
+  "settingApiKeyDeepSeek": "DeepSeek API-nyckel",
+  "settingApiKeyCustom": "API-nyckel (valfritt)",
+  "settingApiKeyPlaceholderCustom": "Autentiseringsuppgifter (valfritt)...",
+  "settingApiKeyPlaceholderDefault": "Ange autentiseringsnyckel...",
+  "settingApiKeyNotice": "Vald modell löser Crossclimb och Pinpoint. Tillägget delar aldrig din nyckel.",
+  "popupCardTitle": "LinkedIn Games Solver",
+  "popupCardDesc": "Lösa LinkedIn-spel med AI",
+  "saveAndBack": "Spara och återgå till spel",
+  "solvingWorking": "AI-lösare arbetar...",
+  "completedToday": "Slutförd idag",
+  "solvedCountSuffix": "Löst",
+  "settingsHeaderTitle": "Konfiguration av AI-modell",
+  "labelAiProvider": "AI-leverantör",
+  "labelModelIdentifier": "Modellidentifierare",
+  "labelCustomModel": "Anpassat modellnamn",
+  "labelEndpointUrl": "Slutpunkts-URL",
+  "labelGeminiKey": "GEMINI API-NYCKEL",
+  "labelOpenAiKey": "OPENAI API-NYCKEL",
+  "labelAnthropicKey": "ANTHROPIC API-NYCKEL",
+  "labelDeepSeekKey": "DEEPSEEK API-NYCKEL",
+  "labelCustomKey": "API-NYCKEL (VALFRITT)",
+  "navHome": "Hemma",
+  "navAiConfig": "Inställningar/Alternativ",
+  "navStats": "Statistik",
+  "navTheme": "Tema",
+  "navDebug": "Felsökning",
+  "dailyProgressLabel": "Daglig framgång",
+  "solveActiveBoard": "Lös aktivt bräde",
+  "backToGames": "Tillbaka till LinkedIn-spel",
+  "dashboardLabel": "Instrumentpanel",
+  "gamesSolverTitle": "Spellösare",
+  "dashboardDescText": "Analysera dina prestandamått, registrera streaks och följ spåren för dina dagligen slutförda pussel.",
+  "completedSuccessfully": "Slutförd framgångsrikt",
+  "disclaimerText": "Ansvarsfriskrivning: Detta är ett oberoende, öppenkällkodsbaserat utbildningsprojekt. Det er inte associerat med, sponsrat av eller godkänt av LinkedIn Corporation. ”LinkedIn” är ett registrerat varumärke som tillhör LinkedIn Corporation.",
+  "settingsCredentialsTitle": "Autentiseringsuppgifter och modeller",
+  "settingsModelGuideTitle": "Modellguide och information",
+  "settingsConnectionStatusTitle": "Anslutningsstatus",
+  "settingsActiveSolverLabel": "Aktiv lösare:",
+  "settingsModelIdentifierLabel": "Modellidentifierare:",
+  "settingsAutoSavedNotification": "Inställningar sparade automatiskt!",
+  "settingsSubtitleDesc": "Konfigurera AI-modellslutpunkter och autentiseringsuppgifter för avancerad pusselösning.",
+  "settingsGeminiGuideDesc": "Utmärkt prestanda, nästan noll kostnad. Löser Crossclimb och Pinpoint med utmärkt logik. Rekommenderad: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Snabb, responsiv och mycket pålitlig med allmänna kunskapsmodeller. Rekommenderad: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maximal resoneringsförmåga. Hanterar komplexa korsord felfritt. Rekommenderad: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Anslut till lokala LLM-ramverk som Ollama eller LM Studio.",
+  "showMoreDates": "Visa fler datum",
+  "showLessDates": "Visa mindre",
+  "solveBtn_withAi": "Lös med AI",
+  "solveBtn_game": "Lös spel",
+  "solveBtn_solving": "Löser...",
+  "solveBtn_solved": "Löst!",
+  "scoreClue": "1 ledtråd",
+  "scoreClues": "$1 ledtrådar",
+  "markAsNotPlayed": "Markera som ej spelad",
+  "settingSolveSpeed": "Löshastighet/fördröjning",
+  "solveSpeed_instant": "Omedelbar (snabbast)",
+  "solveSpeed_normal": "Normal (standard)",
+  "solveSpeed_stealth": "Smygläge (människoliknande förseningar)",
+  "labelSolveSpeed": "Löshastighet och tempo",
+  "settingSolveSpeedNotice": "Omedelbar läge slutför brädet på millisekunder. Smygläge efterliknar människans beteende med slumpmässiga förseningar.",
+  "solveBtn_hint": "Få ett tips",
+  "settingDefaultSolveMode": "Standardåtgärd för lösare",
+  "solveMode_full": "Helt automatisk lösning",
+  "solveMode_hint": "Utbildningstipsläge",
+  "labelDefaultSolveMode": "Standardläge för lösare",
+  "settingDefaultSolveModeNotice": "Välj primär åtgärd när du startar lösaren.",
+  "settingsChromeBuiltInGuideTitle": "Noll kostnad helt lokal AI",
+  "settingsChromeBuiltInGuideDesc": "Körs helt lokalt på din enhet, i webbläsaren.",
+  "debugHeaderTitle": "Spelfelsökare och utvecklarverktyg",
+  "debugStatusLive": "Direkt sändning",
+  "debugDetectedGame": "Upptäckt spel",
+  "debugNoneDetected": "Ingen identifierad",
+  "debugTargetUrl": "Målwebbadressen",
+  "debugNoActiveTab": "Ingen aktiv flik",
+  "debugHtmlCopied": "HTML kopierad!",
+  "debugCopyHtml": "Kopiera <main> HTML",
+  "debugLogsCopied": "Loggar kopierade!",
+  "debugCopyLogs": "Kopiera konsolloggar",
+  "debugBothCopied": "Båda kopierade!",
+  "debugCopyBoth": "Kopiera båda (HTML och loggar)",
+  "debugRegistryCopied": "Registrets JSON kopierad!",
+  "debugCopyRegistry": "Kopiera registrets JSON idag",
+  "debugCopyRegistryShort": "Kopiera JSON",
+  "debugSubmitAnswer": "Skicka svar",
+  "debugDomPreview": "DOM-elementförhandsvisning",
+  "debugHtmlTruncated": "\n\n[ ... [avklippt, totalt tecken: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Kopiera fullständig <main> HTML",
+  "debugNoMainTagCaptured": "Ingen aktiv <main>-tagg hämtad.",
+  "debugConsoleOutput": "Konsolens utdata",
+  "debugEventsCount": "$1 händelser",
+  "debugRefreshLogsTooltip": "Uppdatera loggar",
+  "debugClearLogsTooltip": "Rensa loggar",
+  "debugNoLogsCaptured": "Inga loggar hämtade än.",
+  "debugListeningEvents": "Lyssnar på console.log, console.warn och console.error...",
+  "debugErrorInitializing": "Initialisering av anslutning till LinkedIn-spelsidan...",
+  "debugErrorRetrieveFailed": "Kunde inte hämta speldata.",
+  "debugErrorNotGamesPage": "Den aktiva fliken är inte en LinkedIn-spelsida.",
+  "debugErrorNoActiveTab": "Kunde inte identifiera aktiv flik.",
+  "labelDailyReminders": "Dagliga påminnelser och serieprotection",
+  "settingEnableReminders": "Aktivera dagliga påminnelser",
+  "settingEnableRemindersDesc": "Varna innan dagens serie upphör.",
+  "settingReminderTime": "Påminnelsetid",
+  "settingReminderTimeNotice": "Välj lokal tid för att kontrollera ofullständiga spel.",
+  "notificationTitle": "Serieprotection 🚀",
+  "notificationMessage": "Förlora inte din lösingsserie! Du har ännu inte löst dagens LinkedIn-spel.",
+  "notificationButton": "Lös nu!",
+  "commandSolveActiveGame": "Lös aktivt LinkedIn-spel automatiskt.",
+  "commandGetSingleHint": "Ge ett enstegstips eller kontrollera fel.",
+  "settingAutoOpenSidepanel": "Öppna sidopanelen automatiskt i spel",
+  "settingAutoOpenSidepanelDesc": "Öppnar lösarsidopanelen automatiskt.",
+  "labelAutoOpenSidepanel": "Öppna lösarsidopanelen automatiskt",
+  "permissionDialogTitle": "Bevilja sidbehörighet",
+  "permissionDialogDesc": "Tillägg kräver behörighet.",
+  "permissionDialogButton": "Bevilja behörighet",
+  "omniboxSuggestionQueens": "👑 Spela och lös Damer idag!",
+  "omniboxSuggestionSudoku": "🔢 Öppna mini sudoku-lösare",
+  "omniboxSuggestionStats": "📊 Öppna serie och prestandainstrumentpanel",
+  "diagnosticsEngine": "Diagnostikmotor",
+  "liveInspected": "Live inspekterad",
+  "inspectedTab": "Inspekterad flik:",
+  "waitingForLinkedInGamePage": "Väntar på LinkedIn-spelsida",
+  "waitingForLinkedInGamePageDesc": "Navigera till en LinkedIn-spelbräddflik.",
+  "telemetryLogsStreamer": "Telemetriloggströmspreader",
+  "searchLogsPlaceholder": "Sök i loggar...",
+  "allTypes": "Alla typer",
+  "logsType": "Loggar",
+  "infoType": "Information",
+  "warnsType": "Varningar",
+  "errorsType": "Fel",
+  "selectTypePlaceholder": "Välj typ",
+  "consoleStreamEmpty": "Konsolström tom",
+  "consoleStreamEmptyDesc": "Inga loggar identifierade.",
+  "subscribedToStorageSession": "Prenumererar på storage.session stream",
+  "parsingGameGridCells": "Analyserar spelrasterceller...",
+  "urlLabel": "URL:",
+  "matchesLabel": "Matchningar",
+  "copiedLabel": "Kopierad!",
+  "copyLogsTooltip": "Kopiera loggar",
+  "clearLogSpaceTooltip": "Rensa loggutrymme",
+  "contextMenuSolve": "⚡ Lös aktivt LinkedIn-spel",
+  "contextMenuHint": "💡 Få tips",
+  "contextMenuViewResults": "📊 Visa resultat",
+  "labelTelemetryTitle": "Telemetri och sekretess",
+  "telemetryToggleLabel": "Skicka anonym telemetri",
+  "telemetryToggleDesc": "Hjälp till att förbättra lösaren.",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "bonus": "Bonus",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "debugStatusOffline": "Offline",
+  "offline": "Offline",
+  "liveMatrixGridInspector": "Live Matrix Grid Inspektör",
+  "notAvailable": "Ej tillämpligt"
 }

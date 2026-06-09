@@ -1,780 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn ጨዋತಾዎች መፍቻ",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "የLinkedIn ጨዋታዎች እርዳታ። ዕለታዊ መረጃ ጥያቄዎችን (Queens፣ Sudoku፣ Pinpoint፣ Crossclimb) በራስ-ሰር ይፍታል እና ሰርጦችን እና ትንታኔዎችን ይከታተላል።",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIn ጨዋታዎች",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "ንቁ ቦርዶችን በአንድ ጠቅታ ተፍት",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "ወደ $1 ሁኔታ አስቀምጥ",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "የአሳሽ ትርኢት እንግዳ ውስጥ ብቻ ይገኛል።",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "ንብረቱ የሚነሳው ትርኢት አልተገኘም።",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "ወደ $1 የቦርድ እርምጃ በራስ መንገድ መዳረስ አልተሳካም።",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "ወደ LinkedIn ገፅ መገናኘት አልተቻለም። እባክዎ ትርኢቱን ደግሞ ያስመልሱና ደግመው ይሞክሩ።",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "የሰርተር እንቅስቃሴ በደንብ አልተፈጸመም።",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "መፍትሔ ተጀምሯል! በመስራት...",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "በመፍታት...",
-    "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "ቦኑስ",
-    "description": "Bonus badge next to game name"
-  },
-  "desc_patches": {
-    "message": "ክፍሎቹን ሰርጥ"
-  },
-  "desc_zip": {
-    "message": "መሄድ አጠናቀር"
-  },
-  "desc_sudoku": {
-    "message": "የባለፈው ጨዋታ፣ ታናሽ"
-  },
-  "desc_tango": {
-    "message": "ኔትወርኩን አዘጋጅ"
-  },
-  "desc_queens": {
-    "message": "እያንዳንዱን ክልል ንግሥታት ስር አድርግ"
-  },
-  "desc_crossclimb": {
-    "message": "የትዕዛዝ መደርደር ክፈት"
-  },
-  "desc_pinpoint": {
-    "message": "ምድብን እገምታለሁ"
-  },
-  "titleSolve": {
-    "message": "መፍትሄ $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "ዛሬ ተጠናቀቀ! ለማሳሰብ ወደ $1 ይጫኑ",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "ለመፍታት $1 ክፈት",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "የተፈጸመ ቀን! ሁሉም $1 ጨዋታዎች ተጠናቀቁ! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "ዕለታዊ ሂደት: $1 ከ $2 ጨዋታዎች ዛሬ ተጠናቀቁ",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "ታሪክ እና ስታቲስቲክስ",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "የLinkedIn ጨዋታዎች መፍታት ታሪክ እና ስታቲስቲክስ",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "አጠቃሚ ተፈታዎች",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "በሁሉም ቀናት የተፈቱ ጨዋታዎች",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "የመካከለኛ ጊዜ",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "የተመዘገቡ ሁሉም ጊዜያዊ መጠን",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "እየተከተለ ያለ ርዝማኔ",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "ቀጣይ የሚከተሉ እየተካተቱ ቀናት",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 ቀናት",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "የግል ምርጥ ውጤቶች",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "እስካሁን ድረስ የተወሰኑ መዝገቦች የሉም።",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "የመፍታት ታሪክ",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "የእንቅስቃሴ የወር ካሌንደር",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "ፈልጋ ይጠፋ",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "ተንቀሳቃሽ",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "ሞዴል ይምረጡ",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "የተለየ ሞዴል ስም...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "የተለየ ሞዴል ስም",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "ለምሳሌ: llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "የተለየ መለያ ያስገቡ...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "የEndpoint አድራሻ",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "ለምሳሌ: http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini መታወቂያ ቁልፍ",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI መታወቂያ ቁልፍ",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic መታወቂያ ቁልፍ",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek መታወቂያ ቁልፍ",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API ቁልፍ (በነፃ)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "እባክዎ ናንተ የሚፈልጉ መረጃ...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "መለያ ያስገቡ...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "የተመረጠው ሞዴል የCrossclimb እና Pinpoint እንዲፈታ ይችላል. እባክዎ ቁልፍዎን አትካፍሉ።",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "በየቀኑ ቀልድ ጨዋታዎች ይገናኙ",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "እርስዎን ለየቀኑ ሥራ ዝግጅት ዝግጅት ያድርጉ፣ ውጤቶችን ይነጋገሩ። ውጤቶችዎ ግል ናቸው እስካሳወቁም።",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "አስቀምጥ እና ወደ ጨዋታዎች ተመለስ",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "የAI መፍትሄ በስራ ላይ...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "ዛሬ ተጠናቀቀ",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "ተፈታ",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "የAI ሞዴል ቅንብር",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "አይነት አቅራቢ",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "የሞዴሉ መለያ",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "የተለየ ሞዴል ስም",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "ENDPOINT አድራሻ",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI ቁልፍ",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI ቁልፍ",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC ቁልፍ",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK ቁልፍ",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API ቁልፍ (በነፃ)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "ቤት",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "ቅንብሮች / አማራጮች",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "Statiስቲክስ",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "ገጽታ",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "መገለጫ",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "ዕለታዊ እድገት",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "ቀጥዩን ይፈቱ",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "ወደ LinkedIn ጨዋታዎች ተመለስ",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "ዳሽቦርድ",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "የጨዋታ መፍትሄ",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "የሥራ አፈፃፀምዎን ይተናገዱ፣ ስትሪኮዎን ይመዝገቡ፣ ዕለታዊ ፈታ መንገዶችን ይከታተሉ።",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "በተሳካ ሁኔታ ተጠናቀቀ",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "እባክዎን ያስታуሱ፡ ይህ ነፃ ሆኖ የሚሰራ ነፃ ምንጭ የትምህርት ፕሮጀክት ነው። ከLinkedIn ኩባንያ ጋር አልተያያዘም፣ አልተደገፈም እና አልተፈቀደም። “LinkedIn” የLinkedIn Corporation የተመዘገበ ንግድ ምልክት ነው።",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "ማረጋገጫዎች & ሞዴሎች",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "የሞዴል መመሪያ & መረጃ",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "የግንኙነት ሁኔታ",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "ንብረት የሚፈታው:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "የሞዴሉ መለያ:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "ቅንብሮቹ በራሳቸው ተያዙ!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "የAI ሞዴሎችን እና መለያዎች ለከፍተኛ መፍታት ያስቀመጡ።",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "ውጤታማና በጣም ውስጣዊ ወጪ ያለው። Crossclimb እና Pinpoint በጥልቅ ስርዓት ይፈታሉ. መመኪያ: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "ፈጣን፣ የታማኝ እና የአጠቃቀም እውቀት ጥራት ያለው። መመኪያ: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "ከፍተኛ የማስተዋል ችሎታ። ረጅም ቃላት ግንኙነቶችን በቋሚነት ያስተካክላል። መመኪያ: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "LLM በአካባቢ እንደ Ollama ወይም LM Studio ይገናኙ። የendpoint አድራሻን እና የሞዴሉን ስም ያስገቡ።",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "ቀናት በተጨማሪ አሳይ",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "ቀናት አንዱን አሳይ",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "በAI ይፈቱ"
-  },
-  "solveBtn_game": {
-    "message": "ጨዋታ ይፈቱ"
-  },
-  "solveBtn_solving": {
-    "message": "በመፍታት..."
-  },
-  "solveBtn_solved": {
-    "message": "ተፈታ!"
-  },
-  "scoreClue": {
-    "message": "1 ምልክት"
-  },
-  "scoreClues": {
-    "message": "$1 ምልክቶች"
-  },
-  "scoreSeconds": {
-    "message": "$1ሰ\""
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1ሴ $2ሰ\""
-  },
-  "markAsNotPlayed": {
-    "message": "እንደ ኣልተጫወተ ይዋስ",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "የመፍታት ፍጥነት / የመዝግብ ጊዜ",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "ወዲያ (እጅግ ፈጣን)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "ጀማሪ (መደበኛ)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "የሰው ቅርጸ ተግባር (የሰው የማይታወቅ ውድድር)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "ፍጥነት እና ማቆያ",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "ፈጣን ሁኔታ በሚሲኮንድ ውስጥ ይጨርሳል። የሰው ሙከራ 1–3 ሰከንድ ይቀርባል።",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "ምልክት ይሁን",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "ነባሪ የመፍታት ዘዴ",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "ሙሉ ራስ-ሰር",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "የትምህርት ምልክት",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "ነባሪ የመፍታት ሁኔታ",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "ከታች ሲጠቀሙ የመጀመሪያውን እርምጃ ይምረጡ።",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "ወጪ የለም & 100% ማንገድ ናቸው",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "በአካባቢ በብራውዘር ውስጥ ይሠራል። የኔትወርክ ወይንም ክፍያ የለም።",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "የጨዋታ መገለጫ & የአስፈላጊ መሣሪያዎች",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "ከስር ውስጥ",
-    "description": "Debug offline status indicator label"
-  },
-  "debugStatusLive": {
-    "message": "ቀና እየሆነ",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "የተገኘው ጨዋታ",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "አልተገኘም",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "የነባር አድራሻ",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "ምንም ንብረት አልነበረም",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML ተቀድሏል!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "የ <main> HTML ይቅዱ",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "ሎግ ተቀድሏል!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "የኮንሶል ሎግ ይቅዱ",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "ሁለቱም ተቀድለዋል!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "ሁለቱንም ቅዱ (HTML & ሎግ)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "የሪጂስትሪ JSON ተቀድሏል!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "የዛሬ የሪጂስትሪ JSON ይቅዱ",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "JSON ይቅዱ",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "መልስ አስገባ",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "DOM አይነት ቅድመ እይታ",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [ድምር የቁጥር ፊደላት: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "ሙሉ <main> HTML ይቅዱ",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "ዋና <main> ደረጃ አልተያዘም. በLinkedIn ጨዋታ ስክሪን መሆን ያረጋግጡ።",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "ኮንሶል ውጤት",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 ክስተቶች",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "ሎግ ያሻሽሉ",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "ሎግ ይወጉ",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "እስካሁን ምንም ሎግ አልተቀረጸም። በጨዋታ ላይ እርምጃዎችን አንቀርቡ።",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "ለ console.log, console.warn, console.error እየተሰማ...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "ከLinkedIn ጨዋታ ገፅ ጋር ግንኙነት እየተሰራ...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "የጨዋታ ዳታ ማግኘት አልቻለም።",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "ይህ ባለሞያ በlinkedin.com/games ብቻ ይሰራል",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "ወደ ንብረቱ መዳረስ አልቻለም. የእርስዎን ፈቃድ ያረጋግጡ።",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "ዕለታዊ ማሳሰቢያዎች",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "ዕለታዊ ማሳሰቢያዎች አንቀርብ",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "LinkedIn ጨዋታ ሲገኙ ምልክት ይቀበሉ",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "የማሳሰቢያ ጊዜ",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "የቀን ማሳሰቢያ ጊዜ ይምረጡ",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "የLinkedIn ጨዋታ ዕለታዊ ማሳሰቢያ",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "የዕለቱ ጨዋታዎ ዝግጁ ነው! ለመጫወት ይጫኑ።",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "አሁን ጫወት",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "ንብረቱን ይፈቱ"
-  },
-  "commandGetSingleHint": {
-    "message": "ለወቅቱ ጨዋታ ምልክት ይውሰዱ"
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "ማዕከላዊ ጎን ቅርጽ ራስሰነቀ"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "ወደ LinkedIn ጨዋታ ሲሄዱ የመፍትሄ ገጽ በራስ ይከፈታል"
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "ጎን ማዕከል ራስ ክፈት"
-  },
-  "permissionDialogTitle": {
-    "message": "ፈቃዶች ለእርስዎ"
-  },
-  "permissionDialogDesc": {
-    "message": "ይህ ተለዋዋጭ የLinkedIn ጨዋታ ይዘት ለማድረግ ፈቃድ ይፈልጋል"
-  },
-  "permissionDialogButton": {
-    "message": "ፈቃድ ስጥ"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "ለQueens ጨዋታ መፍታት"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "ለSudoku ጨዋታ መፍታት"
-  },
-  "omniboxSuggestionStats": {
-    "message": "የጨዋታ መረጃ እይ"
-  },
-  "diagnosticsEngine": {
-    "message": "የመለያ ሞተር"
-  },
-  "liveInspected": {
-    "message": "በቀጥታ የታየ"
-  },
-  "offline": {
-    "message": "ክልል ውስጥ"
-  },
-  "inspectedTab": {
-    "message": "የታየ ትርኢት"
-  },
-  "liveMatrixGridInspector": {
-    "message": "ቀጥታ ማቅረብ አሳይ"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "ለLinkedIn ጨዋታ ገፅ እየተጠበቀ..."
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "ለየሚያዩ ዳታ ወደ linkedin.com/games ይሂዱ"
-  },
-  "telemetryLogsStreamer": {
-    "message": "የቴሌምትሪ የሎግ ፍላጎት"
-  },
-  "searchLogsPlaceholder": {
-    "message": "በሎግ ውስጥ ፈልግ..."
-  },
-  "allTypes": {
-    "message": "ሁሉም አይነቶች"
-  },
-  "logsType": {
-    "message": "ሎግ"
-  },
-  "infoType": {
-    "message": "መረጃ"
-  },
-  "warnsType": {
-    "message": "ማስጠንቀቂያዎች"
-  },
-  "errorsType": {
-    "message": "ስህተቶች"
-  },
-  "selectTypePlaceholder": {
-    "message": "የሎግ አይነት ይምረጡ"
-  },
-  "consoleStreamEmpty": {
-    "message": "ምንም ሎግ የለም"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "ለመለያ ለማስተናገድ መፍታት ይጀምሩ"
-  },
-  "subscribedToStorageSession": {
-    "message": "ወደ የግምገማ ስብስ ተመዝግቧል"
-  },
-  "parsingGameGridCells": {
-    "message": "የጨዋታ መስመሮችን እየተንቀሳቀሰ..."
-  },
-  "urlLabel": {
-    "message": "URL"
-  },
-  "notAvailable": {
-    "message": "የለም"
-  },
-  "matchesLabel": {
-    "message": "ተመሳሳይ"
-  },
-  "copiedLabel": {
-    "message": "ተቀድሏል!"
-  },
-  "copyLogsTooltip": {
-    "message": "ሎግ ወደ ኮፒይ አድርግ"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "ሎግ ይሰወር"
-  },
-  "contextMenuSolve": {
-    "message": "በLinkedIn Games Solver ይፈቱ"
-  },
-  "contextMenuHint": {
-    "message": "ለዚህ ጨዋታ ምልክት ይሁን"
-  },
-  "contextMenuViewResults": {
-    "message": "የመፍታት ውጤቶች ሳምንት"
-  },
-  "labelTelemetryTitle": {
-    "message": "የውስጥ እና የስር መረጃ (ሲሚር)",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "የመረጃ መሰብሰብ አርጋ",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "በድምብ ባለሙያ መረጃ እንዲሰጡ እርዳታ ያድርጉ",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  }
+  "extensionName": "LinkedIn ጨዋತಾዎች መፍቻ",
+  "extensionDescription": "የLinkedIn ጨዋታዎች እርዳታ። ዕለታዊ መረጃ ጥያቄዎችን (Queens፣ Sudoku፣ Pinpoint፣ Crossclimb) በራስ-ሰር ይፍታል እና ሰርጦችን እና ትንታኔዎችን ይከታተላል።",
+  "title": "LinkedIn ጨዋታዎች",
+  "subtitle": "ንቁ ቦርዶችን በአንድ ጠቅታ ተፍት",
+  "switchThemeTitle": "ወደ $1 ሁኔታ አስቀምጥ",
+  "errorChromeTabIntegration": "የአሳሽ ትርኢት እንግዳ ውስጥ ብቻ ይገኛል።",
+  "errorActiveTabNotFound": "ንብረቱ የሚነሳው ትርኢት አልተገኘም።",
+  "errorNavigationFailed": "ወደ $1 የቦርድ እርምጃ በራስ መንገድ መዳረስ አልተሳካም።",
+  "errorConnectionFailed": "ወደ LinkedIn ገፅ መገናኘት አልተቻለም። እባክዎ ትርኢቱን ደግሞ ያስመልሱና ደግመው ይሞክሩ።",
+  "errorExecutionFailedDefault": "የሰርተር እንቅስቃሴ በደንብ አልተፈጸመም።",
+  "successSolverStarted": "መፍትሔ ተጀምሯል! በመስራት...",
+  "solvingStatus": "በመፍታት...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "ቦኑስ",
+  "desc_patches": "ክፍሎቹን ሰርጥ",
+  "desc_zip": "መሄድ አጠናቀር",
+  "desc_sudoku": "የባለፈው ጨዋታ፣ ታናሽ",
+  "desc_tango": "ኔትወርኩን አዘጋጅ",
+  "desc_queens": "እያንዳንዱን ክልል ንግሥታት ስር አድርግ",
+  "desc_crossclimb": "የትዕዛዝ መደርደር ክፈት",
+  "desc_pinpoint": "ምድብን እገምታለሁ",
+  "titleSolve": "መፍትሄ $1",
+  "titleCompleted": "ዛሬ ተጠናቀቀ! ለማሳሰብ ወደ $1 ይጫኑ",
+  "titleOpen": "ለመፍታት $1 ክፈት",
+  "perfectDay": "የተፈጸመ ቀን! ሁሉም $1 ጨዋታዎች ተጠናቀቁ! 🎉",
+  "dailyProgress": "ዕለታዊ ሂደት: $1 ከ $2 ጨዋታዎች ዛሬ ተጠናቀቁ",
+  "dashboardTitle": "ታሪክ እና ስታቲስቲክስ",
+  "dashboardSubtitle": "የLinkedIn ጨዋታዎች መፍታት ታሪክ እና ስታቲስቲክስ",
+  "statTotalSolved": "አጠቃሚ ተፈታዎች",
+  "statTotalSolvedDesc": "በሁሉም ቀናት የተፈቱ ጨዋታዎች",
+  "statAverageTime": "የመካከለኛ ጊዜ",
+  "statAverageTimeDesc": "የተመዘገቡ ሁሉም ጊዜያዊ መጠን",
+  "statActiveStreak": "እየተከተለ ያለ ርዝማኔ",
+  "statActiveStreakDesc": "ቀጣይ የሚከተሉ እየተካተቱ ቀናት",
+  "statStreakDays": "$1 ቀናት",
+  "personalBests": "የግል ምርጥ ውጤቶች",
+  "noRecordsYet": "እስካሁን ድረስ የተወሰኑ መዝገቦች የሉም።",
+  "solvingHistory": "የመፍታት ታሪክ",
+  "activityCalendar": "የእንቅስቃሴ የወር ካሌንደር",
+  "clearFilter": "ፈልጋ ይጠፋ",
+  "settingModel": "ተንቀሳቃሽ",
+  "settingModelSelect": "ሞዴል ይምረጡ",
+  "settingModelCustomOption": "የተለየ ሞዴል ስም...",
+  "settingModelCustomLabel": "የተለየ ሞዴል ስም",
+  "settingModelCustomPlaceholderLocal": "ለምሳሌ: llama3, mistral",
+  "settingModelCustomPlaceholderOther": "የተለየ መለያ ያስገቡ...",
+  "settingEndpointLabel": "የEndpoint አድራሻ",
+  "settingEndpointPlaceholder": "ለምሳሌ: http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini መታወቂያ ቁልፍ",
+  "settingApiKeyOpenAI": "OpenAI መታወቂያ ቁልፍ",
+  "settingApiKeyAnthropic": "Anthropic መታወቂያ ቁልፍ",
+  "settingApiKeyDeepSeek": "DeepSeek መታወቂያ ቁልፍ",
+  "settingApiKeyCustom": "API ቁልፍ (በነፃ)",
+  "settingApiKeyPlaceholderCustom": "እባክዎ ናንተ የሚፈልጉ መረጃ...",
+  "settingApiKeyPlaceholderDefault": "መለያ ያስገቡ...",
+  "settingApiKeyNotice": "የተመረጠው ሞዴል የCrossclimb እና Pinpoint እንዲፈታ ይችላል. እባክዎ ቁልፍዎን አትካፍሉ።",
+  "popupCardTitle": "በየቀኑ ቀልድ ጨዋታዎች ይገናኙ",
+  "popupCardDesc": "እርስዎን ለየቀኑ ሥራ ዝግጅት ዝግጅት ያድርጉ፣ ውጤቶችን ይነጋገሩ። ውጤቶችዎ ግል ናቸው እስካሳወቁም።",
+  "saveAndBack": "አስቀምጥ እና ወደ ጨዋታዎች ተመለስ",
+  "solvingWorking": "የAI መፍትሄ በስራ ላይ...",
+  "completedToday": "ዛሬ ተጠናቀቀ",
+  "solvedCountSuffix": "ተፈታ",
+  "settingsHeaderTitle": "የAI ሞዴል ቅንብር",
+  "labelAiProvider": "አይነት አቅራቢ",
+  "labelModelIdentifier": "የሞዴሉ መለያ",
+  "labelCustomModel": "የተለየ ሞዴል ስም",
+  "labelEndpointUrl": "ENDPOINT አድራሻ",
+  "labelGeminiKey": "GEMINI ቁልፍ",
+  "labelOpenAiKey": "OPENAI ቁልፍ",
+  "labelAnthropicKey": "ANTHROPIC ቁልፍ",
+  "labelDeepSeekKey": "DEEPSEEK ቁልፍ",
+  "labelCustomKey": "API ቁልፍ (በነፃ)",
+  "navHome": "ቤት",
+  "navAiConfig": "ቅንብሮች / አማራጮች",
+  "navStats": "Statiስቲክስ",
+  "navTheme": "ገጽታ",
+  "navDebug": "መገለጫ",
+  "dailyProgressLabel": "ዕለታዊ እድገት",
+  "solveActiveBoard": "ቀጥዩን ይፈቱ",
+  "backToGames": "ወደ LinkedIn ጨዋታዎች ተመለስ",
+  "dashboardLabel": "ዳሽቦርድ",
+  "gamesSolverTitle": "የጨዋታ መፍትሄ",
+  "dashboardDescText": "የሥራ አፈፃፀምዎን ይተናገዱ፣ ስትሪኮዎን ይመዝገቡ፣ ዕለታዊ ፈታ መንገዶችን ይከታተሉ።",
+  "completedSuccessfully": "በተሳካ ሁኔታ ተጠናቀቀ",
+  "disclaimerText": "እባክዎን ያስታуሱ፡ ይህ ነፃ ሆኖ የሚሰራ ነፃ ምንጭ የትምህርት ፕሮጀክት ነው። ከLinkedIn ኩባንያ ጋር አልተያያዘም፣ አልተደገፈም እና አልተፈቀደም። “LinkedIn” የLinkedIn Corporation የተመዘገበ ንግድ ምልክት ነው።",
+  "settingsCredentialsTitle": "ማረጋገጫዎች & ሞዴሎች",
+  "settingsModelGuideTitle": "የሞዴል መመሪያ & መረጃ",
+  "settingsConnectionStatusTitle": "የግንኙነት ሁኔታ",
+  "settingsActiveSolverLabel": "ንብረት የሚፈታው:",
+  "settingsModelIdentifierLabel": "የሞዴሉ መለያ:",
+  "settingsAutoSavedNotification": "ቅንብሮቹ በራሳቸው ተያዙ!",
+  "settingsSubtitleDesc": "የAI ሞዴሎችን እና መለያዎች ለከፍተኛ መፍታት ያስቀመጡ።",
+  "settingsGeminiGuideDesc": "ውጤታማና በጣም ውስጣዊ ወጪ ያለው። Crossclimb እና Pinpoint በጥልቅ ስርዓት ይፈታሉ. መመኪያ: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "ፈጣን፣ የታማኝ እና የአጠቃቀም እውቀት ጥራት ያለው። መመኪያ: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "ከፍተኛ የማስተዋል ችሎታ። ረጅም ቃላት ግንኙነቶችን በቋሚነት ያስተካክላል። መመኪያ: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "LLM በአካባቢ እንደ Ollama ወይም LM Studio ይገናኙ። የendpoint አድራሻን እና የሞዴሉን ስም ያስገቡ።",
+  "showMoreDates": "ቀናት በተጨማሪ አሳይ",
+  "showLessDates": "ቀናት አንዱን አሳይ",
+  "solveBtn_withAi": "በAI ይፈቱ",
+  "solveBtn_game": "ጨዋታ ይፈቱ",
+  "solveBtn_solving": "በመፍታት...",
+  "solveBtn_solved": "ተፈታ!",
+  "scoreClue": "1 ምልክት",
+  "scoreClues": "$1 ምልክቶች",
+  "scoreSeconds": "$1ሰ\"",
+  "scoreMinutesSeconds": "$1ሴ $2ሰ\"",
+  "markAsNotPlayed": "እንደ ኣልተጫወተ ይዋስ",
+  "settingSolveSpeed": "የመፍታት ፍጥነት / የመዝግብ ጊዜ",
+  "solveSpeed_instant": "ወዲያ (እጅግ ፈጣን)",
+  "solveSpeed_normal": "ጀማሪ (መደበኛ)",
+  "solveSpeed_stealth": "የሰው ቅርጸ ተግባር (የሰው የማይታወቅ ውድድር)",
+  "labelSolveSpeed": "ፍጥነት እና ማቆያ",
+  "settingSolveSpeedNotice": "ፈጣን ሁኔታ በሚሲኮንድ ውስጥ ይጨርሳል። የሰው ሙከራ 1–3 ሰከንድ ይቀርባል።",
+  "solveBtn_hint": "ምልክት ይሁን",
+  "settingDefaultSolveMode": "ነባሪ የመፍታት ዘዴ",
+  "solveMode_full": "ሙሉ ራስ-ሰር",
+  "solveMode_hint": "የትምህርት ምልክት",
+  "labelDefaultSolveMode": "ነባሪ የመፍታት ሁኔታ",
+  "settingDefaultSolveModeNotice": "ከታች ሲጠቀሙ የመጀመሪያውን እርምጃ ይምረጡ።",
+  "settingsChromeBuiltInGuideTitle": "ወጪ የለም & 100% ማንገድ ናቸው",
+  "settingsChromeBuiltInGuideDesc": "በአካባቢ በብራውዘር ውስጥ ይሠራል። የኔትወርክ ወይንም ክፍያ የለም።",
+  "debugHeaderTitle": "የጨዋታ መገለጫ & የአስፈላጊ መሣሪያዎች",
+  "debugStatusOffline": "ከስር ውስጥ",
+  "debugStatusLive": "ቀና እየሆነ",
+  "debugDetectedGame": "የተገኘው ጨዋታ",
+  "debugNoneDetected": "አልተገኘም",
+  "debugTargetUrl": "የነባር አድራሻ",
+  "debugNoActiveTab": "ምንም ንብረት አልነበረም",
+  "debugHtmlCopied": "HTML ተቀድሏል!",
+  "debugCopyHtml": "የ <main> HTML ይቅዱ",
+  "debugLogsCopied": "ሎግ ተቀድሏል!",
+  "debugCopyLogs": "የኮንሶል ሎግ ይቅዱ",
+  "debugBothCopied": "ሁለቱም ተቀድለዋል!",
+  "debugCopyBoth": "ሁለቱንም ቅዱ (HTML & ሎግ)",
+  "debugRegistryCopied": "የሪጂስትሪ JSON ተቀድሏል!",
+  "debugCopyRegistry": "የዛሬ የሪጂስትሪ JSON ይቅዱ",
+  "debugCopyRegistryShort": "JSON ይቅዱ",
+  "debugSubmitAnswer": "መልስ አስገባ",
+  "debugDomPreview": "DOM አይነት ቅድመ እይታ",
+  "debugHtmlTruncated": "\n\n[ ... [ድምር የቁጥር ፊደላት: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "ሙሉ <main> HTML ይቅዱ",
+  "debugNoMainTagCaptured": "ዋና <main> ደረጃ አልተያዘም. በLinkedIn ጨዋታ ስክሪን መሆን ያረጋግጡ።",
+  "debugConsoleOutput": "ኮንሶል ውጤት",
+  "debugEventsCount": "$1 ክስተቶች",
+  "debugRefreshLogsTooltip": "ሎግ ያሻሽሉ",
+  "debugClearLogsTooltip": "ሎግ ይወጉ",
+  "debugNoLogsCaptured": "እስካሁን ምንም ሎግ አልተቀረጸም። በጨዋታ ላይ እርምጃዎችን አንቀርቡ።",
+  "debugListeningEvents": "ለ console.log, console.warn, console.error እየተሰማ...",
+  "debugErrorInitializing": "ከLinkedIn ጨዋታ ገፅ ጋር ግንኙነት እየተሰራ...",
+  "debugErrorRetrieveFailed": "የጨዋታ ዳታ ማግኘት አልቻለም።",
+  "debugErrorNotGamesPage": "ይህ ባለሞያ በlinkedin.com/games ብቻ ይሰራል",
+  "debugErrorNoActiveTab": "ወደ ንብረቱ መዳረስ አልቻለም. የእርስዎን ፈቃድ ያረጋግጡ።",
+  "labelDailyReminders": "ዕለታዊ ማሳሰቢያዎች",
+  "settingEnableReminders": "ዕለታዊ ማሳሰቢያዎች አንቀርብ",
+  "settingEnableRemindersDesc": "LinkedIn ጨዋታ ሲገኙ ምልክት ይቀበሉ",
+  "settingReminderTime": "የማሳሰቢያ ጊዜ",
+  "settingReminderTimeNotice": "የቀን ማሳሰቢያ ጊዜ ይምረጡ",
+  "notificationTitle": "የLinkedIn ጨዋታ ዕለታዊ ማሳሰቢያ",
+  "notificationMessage": "የዕለቱ ጨዋታዎ ዝግጁ ነው! ለመጫወት ይጫኑ።",
+  "notificationButton": "አሁን ጫወት",
+  "commandSolveActiveGame": "ንብረቱን ይፈቱ",
+  "commandGetSingleHint": "ለወቅቱ ጨዋታ ምልክት ይውሰዱ",
+  "settingAutoOpenSidepanel": "ማዕከላዊ ጎን ቅርጽ ራስሰነቀ",
+  "settingAutoOpenSidepanelDesc": "ወደ LinkedIn ጨዋታ ሲሄዱ የመፍትሄ ገጽ በራስ ይከፈታል",
+  "labelAutoOpenSidepanel": "ጎን ማዕከል ራስ ክፈት",
+  "permissionDialogTitle": "ፈቃዶች ለእርስዎ",
+  "permissionDialogDesc": "ይህ ተለዋዋጭ የLinkedIn ጨዋታ ይዘት ለማድረግ ፈቃድ ይፈልጋል",
+  "permissionDialogButton": "ፈቃድ ስጥ",
+  "omniboxSuggestionQueens": "ለQueens ጨዋታ መፍታት",
+  "omniboxSuggestionSudoku": "ለSudoku ጨዋታ መፍታት",
+  "omniboxSuggestionStats": "የጨዋታ መረጃ እይ",
+  "diagnosticsEngine": "የመለያ ሞተር",
+  "liveInspected": "በቀጥታ የታየ",
+  "offline": "ክልል ውስጥ",
+  "inspectedTab": "የታየ ትርኢት",
+  "liveMatrixGridInspector": "ቀጥታ ማቅረብ አሳይ",
+  "waitingForLinkedInGamePage": "ለLinkedIn ጨዋታ ገፅ እየተጠበቀ...",
+  "waitingForLinkedInGamePageDesc": "ለየሚያዩ ዳታ ወደ linkedin.com/games ይሂዱ",
+  "telemetryLogsStreamer": "የቴሌምትሪ የሎግ ፍላጎት",
+  "searchLogsPlaceholder": "በሎግ ውስጥ ፈልግ...",
+  "allTypes": "ሁሉም አይነቶች",
+  "logsType": "ሎግ",
+  "infoType": "መረጃ",
+  "warnsType": "ማስጠንቀቂያዎች",
+  "errorsType": "ስህተቶች",
+  "selectTypePlaceholder": "የሎግ አይነት ይምረጡ",
+  "consoleStreamEmpty": "ምንም ሎግ የለም",
+  "consoleStreamEmptyDesc": "ለመለያ ለማስተናገድ መፍታት ይጀምሩ",
+  "subscribedToStorageSession": "ወደ የግምገማ ስብስ ተመዝግቧል",
+  "parsingGameGridCells": "የጨዋታ መስመሮችን እየተንቀሳቀሰ...",
+  "urlLabel": "URL",
+  "notAvailable": "የለም",
+  "matchesLabel": "ተመሳሳይ",
+  "copiedLabel": "ተቀድሏል!",
+  "copyLogsTooltip": "ሎግ ወደ ኮፒይ አድርግ",
+  "clearLogSpaceTooltip": "ሎግ ይሰወር",
+  "contextMenuSolve": "በLinkedIn Games Solver ይፈቱ",
+  "contextMenuHint": "ለዚህ ጨዋታ ምልክት ይሁን",
+  "contextMenuViewResults": "የመፍታት ውጤቶች ሳምንት",
+  "labelTelemetryTitle": "የውስጥ እና የስር መረጃ (ሲሚር)",
+  "telemetryToggleLabel": "የመረጃ መሰብሰብ አርጋ",
+  "telemetryToggleDesc": "በድምብ ባለሙያ መረጃ እንዲሰጡ እርዳታ ያድርጉ"
 }

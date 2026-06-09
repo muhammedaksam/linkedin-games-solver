@@ -1,624 +1,203 @@
 {
-  "extensionName": {
-    "message": "ตัวช่วยแก้เกม LinkedIn",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "ผู้ช่วยสำหรับ LinkedIn Games แก้ปริศนาประจำวันอัตโนมัติ (Queens, Sudoku, Pinpoint, Crossclimb) พร้อมสถิติชุดต่อเนื่องและการวิเคราะห์เชิงลึก",
-    "description": "The description of the extension."
-  },
-  "subtitle": {
-    "message": "แก้กระดานที่กำลังเล่นอยู่ได้ในคลิкเดียว",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "ต้องใช้การผสานรวมกับแท็บ Chrome",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "ไม่พบแท็บที่ใช้งานอยู่",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "ไปที่ $1 ไม่สำเร็จ",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "การเชื่อมต่อล้มเหลว",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "เกิดปัญหาระหว่างการเรียกใช้ตัวแก้ปัญหา",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "เริ่มตัวแก้ปัญหาแล้ว",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "ประวัติ & สถิติ",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "ประวัติและสถิติของการแก้ LinkedIn Games ของคุณ",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "รวมที่แก้ได้",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "เกมที่ถูกแก้ในทุกวันที่ผ่านมา",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "เวลาที่เฉลี่ย",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "จากการเสร็จสิ้นที่บันทึกทั้งหมด",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "สถิติที่กำลังดำเนินอยู่",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "วันกิจกรรมติดต่อกัน",
-    "description": "Description for the active streak card"
-  },
-  "dashboardDescText": {
-    "message": "วิเคราะห์เมตริกประสิทธิภาพของคุณ บันทึกสตรีค และติดตามเส้นทางของปริศนาที่คุณทำเสร็จในแต่ละวัน",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "คำชี้แจงสิทธิ์: นี่เป็นโครงการการศึกษาแบบโอเพนซอร์สที่เป็นอิสระ ไม่ได้มีความเกี่ยวข้อง ได้รับการสนับสนุน หรือรับรองโดยบริษัท LinkedIn Corporation “LinkedIn” เป็นเครื่องหมายการค้าจดทะเบียนของบริษัท LinkedIn Corporation",
-    "description": "Compliance footer disclaimer text"
-  },
-  "title": {
-    "message": "เกม LinkedIn"
-  },
-  "switchThemeTitle": {
-    "message": "เปลี่ยนเป็นโหมด $1"
-  },
-  "solvingStatus": {
-    "message": "กำลังแก้ไข..."
-  },
-  "bonus": {
-    "message": "โบนัส"
-  },
-  "desc_patches": {
-    "message": "ประกอบมันเข้าด้วยกัน"
-  },
-  "desc_zip": {
-    "message": "ทำให้เสร็จสิ้นเส้นทาง"
-  },
-  "desc_sudoku": {
-    "message": "เกมคลาสสิก ทำให้เล็กลง"
-  },
-  "desc_tango": {
-    "message": "ปรับให้สอดคล้องกับกริด"
-  },
-  "desc_queens": {
-    "message": "มงกุฎแต่ละภูมิภาค"
-  },
-  "desc_crossclimb": {
-    "message": "ปลดล็อกบันไดความรู้ทั่วไป"
-  },
-  "desc_pinpoint": {
-    "message": "เดาให้ถูกหมวดหมู่"
-  },
-  "titleSolve": {
-    "message": "แก้ $1"
-  },
-  "titleCompleted": {
-    "message": "เสร็จสิ้นวันนี้! คลิกเพื่อไปยัง $1"
-  },
-  "titleOpen": {
-    "message": "เปิด $1 เพื่อแก้ไข"
-  },
-  "perfectDay": {
-    "message": "วันที่สมบูรณ์แบบ! เกม $1 ทั้งหมดเสร็จสิ้นแล้ว! 🎉"
-  },
-  "dailyProgress": {
-    "message": "ความก้าวหน้าในแต่ละวัน: $1 จาก $2 เกมที่เสร็จสิ้นในวันนี้"
-  },
-  "statStreakDays": {
-    "message": "$1 วัน"
-  },
-  "personalBests": {
-    "message": "สถิติส่วนตัวดีที่สุด"
-  },
-  "noRecordsYet": {
-    "message": "ยังไม่มีบันทึกการแก้ไขที่ถูกบันทึกไว้"
-  },
-  "solvingHistory": {
-    "message": "การแก้ปัญหาประวัติศาสตร์"
-  },
-  "activityCalendar": {
-    "message": "ปฏิทินกิจกรรม"
-  },
-  "clearFilter": {
-    "message": "ล้างตัวกรอง"
-  },
-  "settingModel": {
-    "message": "โมเดล"
-  },
-  "settingModelSelect": {
-    "message": "เลือกโมเดล"
-  },
-  "settingModelCustomOption": {
-    "message": "ชื่อโมเดลที่กำหนดเอง..."
-  },
-  "settingModelCustomLabel": {
-    "message": "ชื่อโมเดลที่กำหนดเอง"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "เช่น llama3, mistral"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "กรอกตัวระบุที่กำหนดเอง..."
-  },
-  "settingEndpointLabel": {
-    "message": "URL จุดสิ้นสุด"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "เช่น http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "กุญแจ API ของ Gemini"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "กุญแจ API ของ OpenAI"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "คีย์ API ของ Anthropic"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "คีย์ API ของ DeepSeek"
-  },
-  "settingApiKeyCustom": {
-    "message": "คีย์ API (ไม่บังคับ)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "ข้อมูลรับรองที่ไม่บังคับ..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "กรอกข้อมูลประจำตัว..."
-  },
-  "settingApiKeyNotice": {
-    "message": "โมเดลที่เลือกแก้ไข Crossclimb & Pinpoint ส่วนขยายจะไม่แชร์กุญแจของคุณเลย"
-  },
-  "popupCardTitle": {
-    "message": "เชื่อมต่อกันผ่านเกมสนุกๆ ทุกวัน"
-  },
-  "popupCardDesc": {
-    "message": "เตรียมจิตใจของคุณให้พร้อมสำหรับวันทำงานและเปรียบเทียบผลลัพธ์ คะแนนของคุณเป็นความลับเว้นแต่คุณจะแบ่งปันมัน"
-  },
-  "saveAndBack": {
-    "message": "บันทึก & กลับสู่เกม"
-  },
-  "solvingWorking": {
-    "message": "กำลังทำงาน AI Solver..."
-  },
-  "completedToday": {
-    "message": "เสร็จสิ้นวันนี้"
-  },
-  "solvedCountSuffix": {
-    "message": "แก้ไขแล้ว"
-  },
-  "settingsHeaderTitle": {
-    "message": "การกำหนดค่ารูปแบบ AI"
-  },
-  "labelAiProvider": {
-    "message": "ผู้ให้บริการ AI"
-  },
-  "labelModelIdentifier": {
-    "message": "รหัสโมเดล"
-  },
-  "labelCustomModel": {
-    "message": "ชื่อโมเดลที่กำหนดเอง"
-  },
-  "labelEndpointUrl": {
-    "message": "URL จุดสิ้นสุด"
-  },
-  "labelGeminiKey": {
-    "message": "กุญแจ API ของ GEMINI"
-  },
-  "labelOpenAiKey": {
-    "message": "รหัส API ของ OPENAI"
-  },
-  "labelAnthropicKey": {
-    "message": "คีย์ API ของ ANTHROPIC"
-  },
-  "labelDeepSeekKey": {
-    "message": "คีย์ API DEEPSEEK"
-  },
-  "labelCustomKey": {
-    "message": "รหัส API (ไม่บังคับ)"
-  },
-  "navHome": {
-    "message": "บ้าน"
-  },
-  "navAiConfig": {
-    "message": "การตั้งค่า / ตัวเลือก"
-  },
-  "navStats": {
-    "message": "สถิติ"
-  },
-  "navTheme": {
-    "message": "ธีม"
-  },
-  "navDebug": {
-    "message": "ดีบัก"
-  },
-  "dailyProgressLabel": {
-    "message": "ความก้าวหน้ารายวัน"
-  },
-  "solveActiveBoard": {
-    "message": "แก้ไขบอร์ดแอคทีฟ"
-  },
-  "backToGames": {
-    "message": "กลับไปที่เกม LinkedIn"
-  },
-  "dashboardLabel": {
-    "message": "แดชบอร์ด"
-  },
-  "gamesSolverTitle": {
-    "message": "เกมแก้ปัญหา"
-  },
-  "completedSuccessfully": {
-    "message": "เสร็จสมบูรณ์แล้ว"
-  },
-  "settingsCredentialsTitle": {
-    "message": "ข้อมูลประจำตัวและโมเดล"
-  },
-  "settingsModelGuideTitle": {
-    "message": "คู่มือและข้อมูลโมเดล"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "สถานะการเชื่อมต่อ"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "ตัวแก้ปัญหาที่ใช้งานอยู่"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "รหัสโมเดล:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "บันทึกการตั้งค่าโดยอัตโนมัติ!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "กำหนดจุดเชื่อมต่อและข้อมูลรับรองสำหรับการรวมโมเดล AI เพื่อการแก้ปัญหาที่ซับซ้อนอย่างมีเหตุผล"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "ประสิทธิภาพที่โดดเด่นในต้นทุนเกือบเป็นศูนย์ แก้ปัญหา Crossclimb และ Pinpoint ด้วยเหตุผลที่ยอดเยี่ยม แนะนำค่าเริ่มต้น: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "รวดเร็ว ตอบสนองได้ดี และเชื่อถือได้อย่างมากด้วยรูปแบบความรู้ทั่วไป แนะนำค่าเริ่มต้น: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "ความสามารถในการให้เหตุผลสูงสุด จัดการกับการเชื่อมโยงคำที่ซับซ้อนได้อย่างไม่มีที่ติ แนะนำค่าเริ่มต้น: claude-3-5-haiku"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "เชื่อมต่อกับกรอบ LLM ท้องถิ่น เช่น Ollama หรือ LM Studio กำหนด URL จุดสิ้นสุดของคุณ (เช่น http://localhost:11434/v1) และชื่อโมเดลที่กำหนดเอง"
-  },
-  "showMoreDates": {
-    "message": "แสดงวันที่เพิ่มเติม"
-  },
-  "showLessDates": {
-    "message": "แสดงน้อยลง"
-  },
-  "solveBtn_withAi": {
-    "message": "แก้ปัญหาด้วย AI"
-  },
-  "solveBtn_game": {
-    "message": "แก้ปัญหาเกม"
-  },
-  "solveBtn_solving": {
-    "message": "กำลังแก้ปัญหา..."
-  },
-  "solveBtn_solved": {
-    "message": "แก้ไขแล้ว!"
-  },
-  "scoreClue": {
-    "message": "1 เบาะแส"
-  },
-  "scoreClues": {
-    "message": "$1 เบาะแส"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "ทำเครื่องหมายว่าไม่ได้เล่น"
-  },
-  "settingSolveSpeed": {
-    "message": "การแก้ปัญหาความเร็ว / ความล่าช้า"
-  },
-  "solveSpeed_instant": {
-    "message": "ทันที (เร็วที่สุด)"
-  },
-  "solveSpeed_normal": {
-    "message": "ปกติ (มาตรฐาน)"
-  },
-  "solveSpeed_stealth": {
-    "message": "โหมดลอบเร้น (การหน่วงเวลาแบบมนุษย์)"
-  },
-  "labelSolveSpeed": {
-    "message": "การแก้ปัญหาความเร็วและจังหวะ"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "โหมดทันทีจะทำให้บอร์ดเสร็จในมิลลิวินาที โหมดลับเลียนแบบพฤติกรรมของมนุษย์ด้วยการตั้งเวลาที่สุ่ม (1–3 วินาที) เพื่อป้องกันการตรวจจับโดยอัตโนมัติ"
-  },
-  "solveBtn_hint": {
-    "message": "รับคำใบ้"
-  },
-  "settingDefaultSolveMode": {
-    "message": "การดำเนินการแก้ปัญหาพื้นฐาน"
-  },
-  "solveMode_full": {
-    "message": "การแก้ปัญหาอัตโนมัติแบบเต็มรูปแบบ"
-  },
-  "solveMode_hint": {
-    "message": "โหมดเคล็ดลับการศึกษา"
-  },
-  "labelDefaultSolveMode": {
-    "message": "โหมดตัวแก้ปัญหาพื้นฐาน"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "เลือกการกระทำหลักเมื่อเรียกใช้ตัวแก้ปัญหาจากมุมมองแท็บหรือกระดาน โหมดแก้ปัญหาเต็มจะจบเกม; โหมดคำใบ้จะวางรายการที่ถูกต้องหนึ่งรายการ"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "ไม่มีค่าใช้จ่ายและ AI ท้องถิ่นเต็มรูปแบบ"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "ทำงานได้อย่างสมบูรณ์ภายในอุปกรณ์ของคุณในเบราว์เซอร์ ไม่มีความล่าช้าในเครือข่ายและฟรี 100% กับ Gemini Nano."
-  },
-  "debugHeaderTitle": {
-    "message": "เครื่องมือดีบักเกมและเครื่องมือพัฒนา"
-  },
-  "debugStatusOffline": {
-    "message": "ออฟไลน์"
-  },
-  "debugStatusLive": {
-    "message": "สด"
-  },
-  "debugDetectedGame": {
-    "message": "เกมที่ตรวจพบ"
-  },
-  "debugNoneDetected": {
-    "message": "ไม่มีการตรวจพบ"
-  },
-  "debugTargetUrl": {
-    "message": "URL เป้าหมาย"
-  },
-  "debugNoActiveTab": {
-    "message": "ไม่มีแท็บที่ใช้งานอยู่"
-  },
-  "debugHtmlCopied": {
-    "message": "คัดลอก HTML!"
-  },
-  "debugCopyHtml": {
-    "message": "คัดลอก <main> HTML"
-  },
-  "debugLogsCopied": {
-    "message": "บันทึกถูกคัดลอกแล้ว!"
-  },
-  "debugCopyLogs": {
-    "message": "คัดลอกบันทึกคอนโซล"
-  },
-  "debugBothCopied": {
-    "message": "ทั้งคู่ถูกคัดลอก!"
-  },
-  "debugCopyBoth": {
-    "message": "คัดลอกทั้งสอง (HTML & บันทึก)"
-  },
-  "debugRegistryCopied": {
-    "message": "คัดลอก JSON ของทะเบียนแล้ว!"
-  },
-  "debugCopyRegistry": {
-    "message": "คัดลอก JSON ของทะเบียนวันนี้"
-  },
-  "debugCopyRegistryShort": {
-    "message": "คัดลอก JSON"
-  },
-  "debugSubmitAnswer": {
-    "message": "ส่งคำตอบ"
-  },
-  "debugDomPreview": {
-    "message": "ตัวอย่างองค์ประกอบ DOM"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [ตัดทอน, จำนวนตัวอักษรทั้งหมด: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "คัดลอก HTML <main> เสร็จสมบูรณ์"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "ไม่พบแท็ก <main> ที่ใช้งานอยู่ ตรวจสอบให้แน่ใจว่าคุณอยู่บนหน้าจอเกม LinkedIn"
-  },
-  "debugConsoleOutput": {
-    "message": "ผลลัพธ์คอนโซล"
-  },
-  "debugEventsCount": {
-    "message": "$1 เหตุการณ์"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "รีเฟรชบันทึก"
-  },
-  "debugClearLogsTooltip": {
-    "message": "ล้างบันทึก"
-  },
-  "debugNoLogsCaptured": {
-    "message": "ยังไม่มีบันทึกที่ถูกจับภาพ ทำการกระทำบนหน้าจอเกมเพื่อกระตุ้นเหตุการณ์ในคอนโซล"
-  },
-  "debugListeningEvents": {
-    "message": "กำลังฟังเหตุการณ์ console.log, console.warn และ console.error..."
-  },
-  "debugErrorInitializing": {
-    "message": "กำลังเริ่มต้นการเชื่อมต่อกับหน้าเกม LinkedIn..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "ไม่สามารถดึงข้อมูลเกมได้"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "แท็บที่ใช้งานอยู่ไม่ใช่หน้าของเกม LinkedIn กรุณาไปที่เกมเพื่อบันทึกรายละเอียด"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "ไม่สามารถระบุแท็บที่ใช้งานอยู่ได้"
-  },
-  "labelDailyReminders": {
-    "message": "การเตือนความจำประจำวัน & ตัวป้องกันสตรีค"
-  },
-  "settingEnableReminders": {
-    "message": "เปิดการแจ้งเตือนรายวัน"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "เตือนฉันก่อนที่สตรีคของวันนี้จะหมดอายุ"
-  },
-  "settingReminderTime": {
-    "message": "เวลาที่เตือนความจำ"
-  },
-  "settingReminderTimeNotice": {
-    "message": "เลือกเวลาท้องถิ่นเพื่อตรวจสอบเกมที่ยังไม่แก้ไข"
-  },
-  "notificationTitle": {
-    "message": "สตริคโปรเทคเตอร์ 🚀"
-  },
-  "notificationMessage": {
-    "message": "อย่าทำให้การแก้ปัญหาของคุณหยุดชะงัก! คุณยังไม่ได้แก้เกม LinkedIn ของวันนี้เลย"
-  },
-  "notificationButton": {
-    "message": "แก้ไขเดี๋ยวนี้!"
-  },
-  "commandSolveActiveGame": {
-    "message": "แก้ปัญหาเกม LinkedIn ที่ใช้งานอยู่โดยอัตโนมัติ"
-  },
-  "commandGetSingleHint": {
-    "message": "ให้คำแนะนำในขั้นตอนเดียวหรือเช็คข้อผิดพลาด"
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "เปิดแถบด้านข้างอัตโนมัติในเกม"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "เปิดแผงด้านข้างของผู้แก้ปัญหาโดยอัตโนมัติเมื่อเยี่ยมชม LinkedIn Games."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "เปิดแถบด้านข้างตัวแก้ปัญหาอัตโนมัติ"
-  },
-  "permissionDialogTitle": {
-    "message": "ให้สิทธิ์การเข้าถึงหน้า"
-  },
-  "permissionDialogDesc": {
-    "message": "เพื่อตรวจจับกระดานเกมที่ใช้งานอยู่และแก้ปริศนา ส่วนขยายต้องการสิทธิ์ในการทำงานบน LinkedIn Games คลิกด้านล่างเพื่ออนุญาตการเข้าถึง"
-  },
-  "permissionDialogButton": {
-    "message": "อนุญาตการเข้าถึง"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 เล่นและแก้ปัญหา Queens วันนี้!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 เปิดโปรแกรมแก้ปัญหาไมโครซูโดกุ"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 เปิดแดชบอร์ดสถิติและประสิทธิภาพ"
-  },
-  "diagnosticsEngine": {
-    "message": "เครื่องมือวิเคราะห์"
-  },
-  "liveInspected": {
-    "message": "ตรวจสอบสด"
-  },
-  "offline": {
-    "message": "ออฟไลน์"
-  },
-  "inspectedTab": {
-    "message": "แท็บที่ตรวจสอบแล้ว"
-  },
-  "liveMatrixGridInspector": {
-    "message": "ตัวตรวจสอบกริดแมทริกซ์สด"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "รอหน้าเกม LinkedIn"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "ไปที่แท็บบอร์ดเกม LinkedIn ใด ๆ (Queens, Sudoku, Tango, Pinpoint) เพื่อบันทึกพิกัดข้อจำกัด สถานะเซลล์ และโครงสร้างที่ตอบสนอง"
-  },
-  "telemetryLogsStreamer": {
-    "message": "สตรีมเมอร์บันทึกเทเลเมตริกส์"
-  },
-  "searchLogsPlaceholder": {
-    "message": "ค้นหาโปรแกรมบันทึก..."
-  },
-  "allTypes": {
-    "message": "ทุกประเภท"
-  },
-  "logsType": {
-    "message": "บันทึก"
-  },
-  "infoType": {
-    "message": "ข้อมูล"
-  },
-  "warnsType": {
-    "message": "เตือน"
-  },
-  "errorsType": {
-    "message": "ข้อผิดพลาด"
-  },
-  "selectTypePlaceholder": {
-    "message": "เลือกประเภท"
-  },
-  "consoleStreamEmpty": {
-    "message": "คอนโซลสตรีมว่างเปล่า"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "ไม่พบการส่งออกบันทึกที่ตรงกับตัวกรอง รันขั้นตอนภายใน UI ตัวแก้ปัญหาเกม LinkedIn เพื่อสตรีมการกระทำบันทึกที่นี่"
-  },
-  "subscribedToStorageSession": {
-    "message": "สมัครสมาชิกสตรีม storage.session"
-  },
-  "parsingGameGridCells": {
-    "message": "กำลังวิเคราะห์เซลล์กริดเกม... ตรวจสอบให้แน่ใจว่าบอร์ดมีบล็อกกริดที่ใช้งานอยู่มองเห็นได้"
-  },
-  "urlLabel": {
-    "message": "Url:"
-  },
-  "notAvailable": {
-    "message": "ไม่ระบุ"
-  },
-  "matchesLabel": {
-    "message": "ไม้ขีดไฟ"
-  },
-  "copiedLabel": {
-    "message": "คัดลอกแล้ว!"
-  },
-  "copyLogsTooltip": {
-    "message": "คัดลอกบันทึก"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "ล้างพื้นที่บันทึก"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ แก้ปริศนาเกม LinkedIn ที่เปิดใช้งาน"
-  },
-  "contextMenuHint": {
-    "message": "💡 ขอคำใบ้"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 ดูผลลัพธ์"
-  },
-  "labelTelemetryTitle": {
-    "message": "การวัดระยะไกลและความเป็นส่วนตัว"
-  },
-  "telemetryToggleLabel": {
-    "message": "ส่งข้อมูลการวัดผลแบบไม่ระบุชื่อ"
-  },
-  "telemetryToggleDesc": {
-    "message": "ช่วยปรับปรุงตัวแก้ปัญหาโดยการแชร์ข้อมูลประสิทธิภาพและการใช้งานแบบไม่ระบุชื่อ"
-  }
+  "extensionName": "ตัวช่วยแก้เกม LinkedIn",
+  "extensionDescription": "ผู้ช่วยสำหรับ LinkedIn Games แก้ปริศนาประจำวันอัตโนมัติ (Queens, Sudoku, Pinpoint, Crossclimb) พร้อมสถิติชุดต่อเนื่องและการวิเคราะห์เชิงลึก",
+  "subtitle": "แก้กระดานที่กำลังเล่นอยู่ได้ในคลิкเดียว",
+  "errorChromeTabIntegration": "ต้องใช้การผสานรวมกับแท็บ Chrome",
+  "errorActiveTabNotFound": "ไม่พบแท็บที่ใช้งานอยู่",
+  "errorNavigationFailed": "ไปที่ $1 ไม่สำเร็จ",
+  "errorConnectionFailed": "การเชื่อมต่อล้มเหลว",
+  "errorExecutionFailedDefault": "เกิดปัญหาระหว่างการเรียกใช้ตัวแก้ปัญหา",
+  "successSolverStarted": "เริ่มตัวแก้ปัญหาแล้ว",
+  "dashboardTitle": "ประวัติ & สถิติ",
+  "dashboardSubtitle": "ประวัติและสถิติของการแก้ LinkedIn Games ของคุณ",
+  "statTotalSolved": "รวมที่แก้ได้",
+  "statTotalSolvedDesc": "เกมที่ถูกแก้ในทุกวันที่ผ่านมา",
+  "statAverageTime": "เวลาที่เฉลี่ย",
+  "statAverageTimeDesc": "จากการเสร็จสิ้นที่บันทึกทั้งหมด",
+  "statActiveStreak": "สถิติที่กำลังดำเนินอยู่",
+  "statActiveStreakDesc": "วันกิจกรรมติดต่อกัน",
+  "dashboardDescText": "วิเคราะห์เมตริกประสิทธิภาพของคุณ บันทึกสตรีค และติดตามเส้นทางของปริศนาที่คุณทำเสร็จในแต่ละวัน",
+  "disclaimerText": "คำชี้แจงสิทธิ์: นี่เป็นโครงการการศึกษาแบบโอเพนซอร์สที่เป็นอิสระ ไม่ได้มีความเกี่ยวข้อง ได้รับการสนับสนุน หรือรับรองโดยบริษัท LinkedIn Corporation “LinkedIn” เป็นเครื่องหมายการค้าจดทะเบียนของบริษัท LinkedIn Corporation",
+  "title": "เกม LinkedIn",
+  "switchThemeTitle": "เปลี่ยนเป็นโหมด $1",
+  "solvingStatus": "กำลังแก้ไข...",
+  "bonus": "โบนัส",
+  "desc_patches": "ประกอบมันเข้าด้วยกัน",
+  "desc_zip": "ทำให้เสร็จสิ้นเส้นทาง",
+  "desc_sudoku": "เกมคลาสสิก ทำให้เล็กลง",
+  "desc_tango": "ปรับให้สอดคล้องกับกริด",
+  "desc_queens": "มงกุฎแต่ละภูมิภาค",
+  "desc_crossclimb": "ปลดล็อกบันไดความรู้ทั่วไป",
+  "desc_pinpoint": "เดาให้ถูกหมวดหมู่",
+  "titleSolve": "แก้ $1",
+  "titleCompleted": "เสร็จสิ้นวันนี้! คลิกเพื่อไปยัง $1",
+  "titleOpen": "เปิด $1 เพื่อแก้ไข",
+  "perfectDay": "วันที่สมบูรณ์แบบ! เกม $1 ทั้งหมดเสร็จสิ้นแล้ว! 🎉",
+  "dailyProgress": "ความก้าวหน้าในแต่ละวัน: $1 จาก $2 เกมที่เสร็จสิ้นในวันนี้",
+  "statStreakDays": "$1 วัน",
+  "personalBests": "สถิติส่วนตัวดีที่สุด",
+  "noRecordsYet": "ยังไม่มีบันทึกการแก้ไขที่ถูกบันทึกไว้",
+  "solvingHistory": "การแก้ปัญหาประวัติศาสตร์",
+  "activityCalendar": "ปฏิทินกิจกรรม",
+  "clearFilter": "ล้างตัวกรอง",
+  "settingModel": "โมเดล",
+  "settingModelSelect": "เลือกโมเดล",
+  "settingModelCustomOption": "ชื่อโมเดลที่กำหนดเอง...",
+  "settingModelCustomLabel": "ชื่อโมเดลที่กำหนดเอง",
+  "settingModelCustomPlaceholderLocal": "เช่น llama3, mistral",
+  "settingModelCustomPlaceholderOther": "กรอกตัวระบุที่กำหนดเอง...",
+  "settingEndpointLabel": "URL จุดสิ้นสุด",
+  "settingEndpointPlaceholder": "เช่น http://localhost:11434/v1",
+  "settingApiKeyGemini": "กุญแจ API ของ Gemini",
+  "settingApiKeyOpenAI": "กุญแจ API ของ OpenAI",
+  "settingApiKeyAnthropic": "คีย์ API ของ Anthropic",
+  "settingApiKeyDeepSeek": "คีย์ API ของ DeepSeek",
+  "settingApiKeyCustom": "คีย์ API (ไม่บังคับ)",
+  "settingApiKeyPlaceholderCustom": "ข้อมูลรับรองที่ไม่บังคับ...",
+  "settingApiKeyPlaceholderDefault": "กรอกข้อมูลประจำตัว...",
+  "settingApiKeyNotice": "โมเดลที่เลือกแก้ไข Crossclimb & Pinpoint ส่วนขยายจะไม่แชร์กุญแจของคุณเลย",
+  "popupCardTitle": "เชื่อมต่อกันผ่านเกมสนุกๆ ทุกวัน",
+  "popupCardDesc": "เตรียมจิตใจของคุณให้พร้อมสำหรับวันทำงานและเปรียบเทียบผลลัพธ์ คะแนนของคุณเป็นความลับเว้นแต่คุณจะแบ่งปันมัน",
+  "saveAndBack": "บันทึก & กลับสู่เกม",
+  "solvingWorking": "กำลังทำงาน AI Solver...",
+  "completedToday": "เสร็จสิ้นวันนี้",
+  "solvedCountSuffix": "แก้ไขแล้ว",
+  "settingsHeaderTitle": "การกำหนดค่ารูปแบบ AI",
+  "labelAiProvider": "ผู้ให้บริการ AI",
+  "labelModelIdentifier": "รหัสโมเดล",
+  "labelCustomModel": "ชื่อโมเดลที่กำหนดเอง",
+  "labelEndpointUrl": "URL จุดสิ้นสุด",
+  "labelGeminiKey": "กุญแจ API ของ GEMINI",
+  "labelOpenAiKey": "รหัส API ของ OPENAI",
+  "labelAnthropicKey": "คีย์ API ของ ANTHROPIC",
+  "labelDeepSeekKey": "คีย์ API DEEPSEEK",
+  "labelCustomKey": "รหัส API (ไม่บังคับ)",
+  "navHome": "บ้าน",
+  "navAiConfig": "การตั้งค่า / ตัวเลือก",
+  "navStats": "สถิติ",
+  "navTheme": "ธีม",
+  "navDebug": "ดีบัก",
+  "dailyProgressLabel": "ความก้าวหน้ารายวัน",
+  "solveActiveBoard": "แก้ไขบอร์ดแอคทีฟ",
+  "backToGames": "กลับไปที่เกม LinkedIn",
+  "dashboardLabel": "แดชบอร์ด",
+  "gamesSolverTitle": "เกมแก้ปัญหา",
+  "completedSuccessfully": "เสร็จสมบูรณ์แล้ว",
+  "settingsCredentialsTitle": "ข้อมูลประจำตัวและโมเดล",
+  "settingsModelGuideTitle": "คู่มือและข้อมูลโมเดล",
+  "settingsConnectionStatusTitle": "สถานะการเชื่อมต่อ",
+  "settingsActiveSolverLabel": "ตัวแก้ปัญหาที่ใช้งานอยู่",
+  "settingsModelIdentifierLabel": "รหัสโมเดล:",
+  "settingsAutoSavedNotification": "บันทึกการตั้งค่าโดยอัตโนมัติ!",
+  "settingsSubtitleDesc": "กำหนดจุดเชื่อมต่อและข้อมูลรับรองสำหรับการรวมโมเดล AI เพื่อการแก้ปัญหาที่ซับซ้อนอย่างมีเหตุผล",
+  "settingsGeminiGuideDesc": "ประสิทธิภาพที่โดดเด่นในต้นทุนเกือบเป็นศูนย์ แก้ปัญหา Crossclimb และ Pinpoint ด้วยเหตุผลที่ยอดเยี่ยม แนะนำค่าเริ่มต้น: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "รวดเร็ว ตอบสนองได้ดี และเชื่อถือได้อย่างมากด้วยรูปแบบความรู้ทั่วไป แนะนำค่าเริ่มต้น: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "ความสามารถในการให้เหตุผลสูงสุด จัดการกับการเชื่อมโยงคำที่ซับซ้อนได้อย่างไม่มีที่ติ แนะนำค่าเริ่มต้น: claude-3-5-haiku",
+  "settingsCustomGuideDesc": "เชื่อมต่อกับกรอบ LLM ท้องถิ่น เช่น Ollama หรือ LM Studio กำหนด URL จุดสิ้นสุดของคุณ (เช่น http://localhost:11434/v1) และชื่อโมเดลที่กำหนดเอง",
+  "showMoreDates": "แสดงวันที่เพิ่มเติม",
+  "showLessDates": "แสดงน้อยลง",
+  "solveBtn_withAi": "แก้ปัญหาด้วย AI",
+  "solveBtn_game": "แก้ปัญหาเกม",
+  "solveBtn_solving": "กำลังแก้ปัญหา...",
+  "solveBtn_solved": "แก้ไขแล้ว!",
+  "scoreClue": "1 เบาะแส",
+  "scoreClues": "$1 เบาะแส",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "ทำเครื่องหมายว่าไม่ได้เล่น",
+  "settingSolveSpeed": "การแก้ปัญหาความเร็ว / ความล่าช้า",
+  "solveSpeed_instant": "ทันที (เร็วที่สุด)",
+  "solveSpeed_normal": "ปกติ (มาตรฐาน)",
+  "solveSpeed_stealth": "โหมดลอบเร้น (การหน่วงเวลาแบบมนุษย์)",
+  "labelSolveSpeed": "การแก้ปัญหาความเร็วและจังหวะ",
+  "settingSolveSpeedNotice": "โหมดทันทีจะทำให้บอร์ดเสร็จในมิลลิวินาที โหมดลับเลียนแบบพฤติกรรมของมนุษย์ด้วยการตั้งเวลาที่สุ่ม (1–3 วินาที) เพื่อป้องกันการตรวจจับโดยอัตโนมัติ",
+  "solveBtn_hint": "รับคำใบ้",
+  "settingDefaultSolveMode": "การดำเนินการแก้ปัญหาพื้นฐาน",
+  "solveMode_full": "การแก้ปัญหาอัตโนมัติแบบเต็มรูปแบบ",
+  "solveMode_hint": "โหมดเคล็ดลับการศึกษา",
+  "labelDefaultSolveMode": "โหมดตัวแก้ปัญหาพื้นฐาน",
+  "settingDefaultSolveModeNotice": "เลือกการกระทำหลักเมื่อเรียกใช้ตัวแก้ปัญหาจากมุมมองแท็บหรือกระดาน โหมดแก้ปัญหาเต็มจะจบเกม; โหมดคำใบ้จะวางรายการที่ถูกต้องหนึ่งรายการ",
+  "settingsChromeBuiltInGuideTitle": "ไม่มีค่าใช้จ่ายและ AI ท้องถิ่นเต็มรูปแบบ",
+  "settingsChromeBuiltInGuideDesc": "ทำงานได้อย่างสมบูรณ์ภายในอุปกรณ์ของคุณในเบราว์เซอร์ ไม่มีความล่าช้าในเครือข่ายและฟรี 100% กับ Gemini Nano.",
+  "debugHeaderTitle": "เครื่องมือดีบักเกมและเครื่องมือพัฒนา",
+  "debugStatusOffline": "ออฟไลน์",
+  "debugStatusLive": "สด",
+  "debugDetectedGame": "เกมที่ตรวจพบ",
+  "debugNoneDetected": "ไม่มีการตรวจพบ",
+  "debugTargetUrl": "URL เป้าหมาย",
+  "debugNoActiveTab": "ไม่มีแท็บที่ใช้งานอยู่",
+  "debugHtmlCopied": "คัดลอก HTML!",
+  "debugCopyHtml": "คัดลอก <main> HTML",
+  "debugLogsCopied": "บันทึกถูกคัดลอกแล้ว!",
+  "debugCopyLogs": "คัดลอกบันทึกคอนโซล",
+  "debugBothCopied": "ทั้งคู่ถูกคัดลอก!",
+  "debugCopyBoth": "คัดลอกทั้งสอง (HTML & บันทึก)",
+  "debugRegistryCopied": "คัดลอก JSON ของทะเบียนแล้ว!",
+  "debugCopyRegistry": "คัดลอก JSON ของทะเบียนวันนี้",
+  "debugCopyRegistryShort": "คัดลอก JSON",
+  "debugSubmitAnswer": "ส่งคำตอบ",
+  "debugDomPreview": "ตัวอย่างองค์ประกอบ DOM",
+  "debugHtmlTruncated": "\n\n[... [ตัดทอน, จำนวนตัวอักษรทั้งหมด: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "คัดลอก HTML <main> เสร็จสมบูรณ์",
+  "debugNoMainTagCaptured": "ไม่พบแท็ก <main> ที่ใช้งานอยู่ ตรวจสอบให้แน่ใจว่าคุณอยู่บนหน้าจอเกม LinkedIn",
+  "debugConsoleOutput": "ผลลัพธ์คอนโซล",
+  "debugEventsCount": "$1 เหตุการณ์",
+  "debugRefreshLogsTooltip": "รีเฟรชบันทึก",
+  "debugClearLogsTooltip": "ล้างบันทึก",
+  "debugNoLogsCaptured": "ยังไม่มีบันทึกที่ถูกจับภาพ ทำการกระทำบนหน้าจอเกมเพื่อกระตุ้นเหตุการณ์ในคอนโซล",
+  "debugListeningEvents": "กำลังฟังเหตุการณ์ console.log, console.warn และ console.error...",
+  "debugErrorInitializing": "กำลังเริ่มต้นการเชื่อมต่อกับหน้าเกม LinkedIn...",
+  "debugErrorRetrieveFailed": "ไม่สามารถดึงข้อมูลเกมได้",
+  "debugErrorNotGamesPage": "แท็บที่ใช้งานอยู่ไม่ใช่หน้าของเกม LinkedIn กรุณาไปที่เกมเพื่อบันทึกรายละเอียด",
+  "debugErrorNoActiveTab": "ไม่สามารถระบุแท็บที่ใช้งานอยู่ได้",
+  "labelDailyReminders": "การเตือนความจำประจำวัน & ตัวป้องกันสตรีค",
+  "settingEnableReminders": "เปิดการแจ้งเตือนรายวัน",
+  "settingEnableRemindersDesc": "เตือนฉันก่อนที่สตรีคของวันนี้จะหมดอายุ",
+  "settingReminderTime": "เวลาที่เตือนความจำ",
+  "settingReminderTimeNotice": "เลือกเวลาท้องถิ่นเพื่อตรวจสอบเกมที่ยังไม่แก้ไข",
+  "notificationTitle": "สตริคโปรเทคเตอร์ 🚀",
+  "notificationMessage": "อย่าทำให้การแก้ปัญหาของคุณหยุดชะงัก! คุณยังไม่ได้แก้เกม LinkedIn ของวันนี้เลย",
+  "notificationButton": "แก้ไขเดี๋ยวนี้!",
+  "commandSolveActiveGame": "แก้ปัญหาเกม LinkedIn ที่ใช้งานอยู่โดยอัตโนมัติ",
+  "commandGetSingleHint": "ให้คำแนะนำในขั้นตอนเดียวหรือเช็คข้อผิดพลาด",
+  "settingAutoOpenSidepanel": "เปิดแถบด้านข้างอัตโนมัติในเกม",
+  "settingAutoOpenSidepanelDesc": "เปิดแผงด้านข้างของผู้แก้ปัญหาโดยอัตโนมัติเมื่อเยี่ยมชม LinkedIn Games.",
+  "labelAutoOpenSidepanel": "เปิดแถบด้านข้างตัวแก้ปัญหาอัตโนมัติ",
+  "permissionDialogTitle": "ให้สิทธิ์การเข้าถึงหน้า",
+  "permissionDialogDesc": "เพื่อตรวจจับกระดานเกมที่ใช้งานอยู่และแก้ปริศนา ส่วนขยายต้องการสิทธิ์ในการทำงานบน LinkedIn Games คลิกด้านล่างเพื่ออนุญาตการเข้าถึง",
+  "permissionDialogButton": "อนุญาตการเข้าถึง",
+  "omniboxSuggestionQueens": "👑 เล่นและแก้ปัญหา Queens วันนี้!",
+  "omniboxSuggestionSudoku": "🔢 เปิดโปรแกรมแก้ปัญหาไมโครซูโดกุ",
+  "omniboxSuggestionStats": "📊 เปิดแดชบอร์ดสถิติและประสิทธิภาพ",
+  "diagnosticsEngine": "เครื่องมือวิเคราะห์",
+  "liveInspected": "ตรวจสอบสด",
+  "offline": "ออฟไลน์",
+  "inspectedTab": "แท็บที่ตรวจสอบแล้ว",
+  "liveMatrixGridInspector": "ตัวตรวจสอบกริดแมทริกซ์สด",
+  "waitingForLinkedInGamePage": "รอหน้าเกม LinkedIn",
+  "waitingForLinkedInGamePageDesc": "ไปที่แท็บบอร์ดเกม LinkedIn ใด ๆ (Queens, Sudoku, Tango, Pinpoint) เพื่อบันทึกพิกัดข้อจำกัด สถานะเซลล์ และโครงสร้างที่ตอบสนอง",
+  "telemetryLogsStreamer": "สตรีมเมอร์บันทึกเทเลเมตริกส์",
+  "searchLogsPlaceholder": "ค้นหาโปรแกรมบันทึก...",
+  "allTypes": "ทุกประเภท",
+  "logsType": "บันทึก",
+  "infoType": "ข้อมูล",
+  "warnsType": "เตือน",
+  "errorsType": "ข้อผิดพลาด",
+  "selectTypePlaceholder": "เลือกประเภท",
+  "consoleStreamEmpty": "คอนโซลสตรีมว่างเปล่า",
+  "consoleStreamEmptyDesc": "ไม่พบการส่งออกบันทึกที่ตรงกับตัวกรอง รันขั้นตอนภายใน UI ตัวแก้ปัญหาเกม LinkedIn เพื่อสตรีมการกระทำบันทึกที่นี่",
+  "subscribedToStorageSession": "สมัครสมาชิกสตรีม storage.session",
+  "parsingGameGridCells": "กำลังวิเคราะห์เซลล์กริดเกม... ตรวจสอบให้แน่ใจว่าบอร์ดมีบล็อกกริดที่ใช้งานอยู่มองเห็นได้",
+  "urlLabel": "Url:",
+  "notAvailable": "ไม่ระบุ",
+  "matchesLabel": "ไม้ขีดไฟ",
+  "copiedLabel": "คัดลอกแล้ว!",
+  "copyLogsTooltip": "คัดลอกบันทึก",
+  "clearLogSpaceTooltip": "ล้างพื้นที่บันทึก",
+  "contextMenuSolve": "⚡ แก้ปริศนาเกม LinkedIn ที่เปิดใช้งาน",
+  "contextMenuHint": "💡 ขอคำใบ้",
+  "contextMenuViewResults": "📊 ดูผลลัพธ์",
+  "labelTelemetryTitle": "การวัดระยะไกลและความเป็นส่วนตัว",
+  "telemetryToggleLabel": "ส่งข้อมูลการวัดผลแบบไม่ระบุชื่อ",
+  "telemetryToggleDesc": "ช่วยปรับปรุงตัวแก้ปัญหาโดยการแชร์ข้อมูลประสิทธิภาพและการใช้งานแบบไม่ระบุชื่อ"
 }

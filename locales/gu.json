@@ -1,648 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn ગેમ્સ સોલ્વર",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "LinkedIn ગેમ્સ માટે એક સહાયક. દૈનિક પઝલ (Queens, Sudoku, Pinpoint, Crossclimb) આપોઆપ ઉકેલો, સાથે સ્ટ્રીક અને એનાલિટિક્સ ટ્રેકિંગ.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIn ગેમ્સ",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "એક જ ક્લિકમાં એક્ટિવ બોર્ડ્સ સોલ્વ કરો",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Chrome ટૅબ એકીકરણ જરૂરી છે.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "સક્રિય ટૅબ મળી નથી.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "$1 પર જવામાં નિષ્ફળ ગયું.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "કનેક્શન નિષ્ફળ ગયું.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "સોલ્વર ચલાવતા સમયે સમસ્યા આવી.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "સોલ્વર શરૂ થયું.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "ઇતિહાસ અને આંકડા",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "તમારા LinkedIn Games સોલ્વિંગનું પૂરું ઇતિહાસ અને આંકડા",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "કુલ સોલ્વ",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "બધા તારીખોને આવતાં રમતો સોલ્વ થયેલ",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "સરેરાશ સમય",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "બધા નોંધાયેલા પૂરાં સમયગાળાઓ પર",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "સક્રિય સ્ટ્રીક",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "અનુક્રમિક સક્રિય દિવસો",
-    "description": "Description for the active streak card"
-  },
-  "popupCardTitle": {
-    "message": "મજેદાર દૈનિક રમતો દ્વારા જોડાણ કરો",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "તમારા મન કામના દિવસ માટે તૈયાર કરો અને પરિણામોની તુલના કરો. તમારા સ્કોર ખાનગી છે જ્યાં સુધી તમે તેમને શેર ન કરો।",
-    "description": "Description of the card feed in popup"
-  },
-  "dashboardDescText": {
-    "message": "તમારા પ્રદર્શન મેટ્રિક્સનું વિશ્લેષણ કરો, સ્ટ્રીક્સ નોંધો, અને તમારી દૈનિક પૂર્ણ થયેલી પઝલની મુસાફરીને અનુસરો.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "અસ્વીકરણ: આ એક સ્વતંત્ર, ઓપન-સોર્સ શૈક્ષણิก પ્રોજેક્ટ છે. તેનો LinkedIn Corporation સાથે કોઈ સંબંધ, પ્રાયોજકતા અથવા મંજૂરી નથી. \"LinkedIn\" LinkedIn Corporation નું રજિસ્ટર્ડ ટ્રેડમાર્ક છે.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "switchThemeTitle": {
-    "message": "$1 મોડમાં સ્વિચ કરો"
-  },
-  "solvingStatus": {
-    "message": "સોલ્વિંગ..."
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "queens": {
-    "message": "Queens"
-  },
-  "zip": {
-    "message": "Zip"
-  },
-  "patches": {
-    "message": "Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "bonus": {
-    "message": "બોનસ"
-  },
-  "desc_patches": {
-    "message": "તેને એકઠું કરો"
-  },
-  "desc_zip": {
-    "message": "માર્ગ પૂર્ણ કરો"
-  },
-  "desc_sudoku": {
-    "message": "ક્લાસિક રમત, મિની બનાવેલ"
-  },
-  "desc_tango": {
-    "message": "ગ્રિડને સુસંગત બનાવો"
-  },
-  "desc_queens": {
-    "message": "દરેક પ્રદેશને તાજ આપો"
-  },
-  "desc_crossclimb": {
-    "message": "ટ્રિવિયા લેડર ખોલો"
-  },
-  "desc_pinpoint": {
-    "message": "શ્રેણી અનુમાન કરો"
-  },
-  "titleSolve": {
-    "message": "$1 ઉકેલો"
-  },
-  "titleCompleted": {
-    "message": "આજે પૂર્ણ થયું! નેવિગેટ કરવા માટે ક્લિક કરો $1"
-  },
-  "titleOpen": {
-    "message": "ઓપન $1 ને ઉકેલવા માટે"
-  },
-  "perfectDay": {
-    "message": "પરફેક્ટ દિવસ! તમામ $1 રમતો પૂર્ણ! 🎉"
-  },
-  "dailyProgress": {
-    "message": "દૈનિક પ્રગતિ: આજે $1 માંથી $2 રમતો પૂર્ણ થઈ છે"
-  },
-  "statStreakDays": {
-    "message": "$1 દિવસો"
-  },
-  "personalBests": {
-    "message": "વ્યક્તિગત શ્રેષ્ઠતા"
-  },
-  "noRecordsYet": {
-    "message": "હજી સુધી કોઈ ઉકેલ રેકોર્ડ કરવામાં આવ્યા નથી."
-  },
-  "solvingHistory": {
-    "message": "ઇતિહાસનો ઉકેલ"
-  },
-  "activityCalendar": {
-    "message": "ક્રિયાપ્રવૃત્તિ કેલેન્ડર"
-  },
-  "clearFilter": {
-    "message": "સ્પષ્ટ ફિલ્ટર"
-  },
-  "settingModel": {
-    "message": "મોડલ"
-  },
-  "settingModelSelect": {
-    "message": "મોડલ પસંદ કરો"
-  },
-  "settingModelCustomOption": {
-    "message": "કસ્ટમ મોડલ નામ..."
-  },
-  "settingModelCustomLabel": {
-    "message": "કસ્ટમ મોડલ નામ"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "ઉદાહરણ તરીકે: લ્લામા3, મિસ્ટ્રલ"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "કસ્ટમ ઓળખકર્તા દાખલ કરો..."
-  },
-  "settingEndpointLabel": {
-    "message": "એન્ડપોઈન્ટ URL"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "ઉદાહરણ: http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "જેમિની એપી આકી"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "ઓપનએઆઈ એપી આકી"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "એન્થ્રોપિક API કી"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "ડીપસિક એપીઆઈ કી"
-  },
-  "settingApiKeyCustom": {
-    "message": "એપીઆઈ કી (વૈકલ્પિક)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "વૈકલ્પિક પ્રમાણપત્રો..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "પ્રમાણપત્ર કી દાખલ કરો..."
-  },
-  "settingApiKeyNotice": {
-    "message": "ચૂંટાયેલ મોડલ ક્રોસક્લાઇમ અને પિનપોઇન્ટને ઉકેલે છે. એક્સ્ટેંશન ક્યારેય તમારી કી શેર કરતું નથી."
-  },
-  "saveAndBack": {
-    "message": "સાચવો અને રમતોમાં પાછા જાઓ"
-  },
-  "solvingWorking": {
-    "message": "એઆઈ સોલ્વર કાર્યરત છે..."
-  },
-  "completedToday": {
-    "message": "આજે પૂર્ણ થયું"
-  },
-  "solvedCountSuffix": {
-    "message": "સમાધાન કરવામાં આવ્યું"
-  },
-  "settingsHeaderTitle": {
-    "message": "એઆઈ મોડેલ રૂપરેખા"
-  },
-  "labelAiProvider": {
-    "message": "એઆઈ પ્રદાતા"
-  },
-  "labelModelIdentifier": {
-    "message": "મોડલ ઓળખકર્તા"
-  },
-  "labelCustomModel": {
-    "message": "કસ્ટમ મોડલ નામ"
-  },
-  "labelEndpointUrl": {
-    "message": "એન્ડપોઈન્ટ URL"
-  },
-  "labelGeminiKey": {
-    "message": "જેમિની એપી કી"
-  },
-  "labelOpenAiKey": {
-    "message": "ઓપનએઆઈ એપીઆઈ કી"
-  },
-  "labelAnthropicKey": {
-    "message": "એન્થ્રોપિક એપી આઈ કી"
-  },
-  "labelDeepSeekKey": {
-    "message": "ડીપસિક એપી કી"
-  },
-  "labelCustomKey": {
-    "message": "એપીઆઈ કી (વૈકલ્પિક)"
-  },
-  "navHome": {
-    "message": "ઘર"
-  },
-  "navAiConfig": {
-    "message": "સેટિંગ્સ / વિકલ્પો"
-  },
-  "navStats": {
-    "message": "આંકડાઓ"
-  },
-  "navTheme": {
-    "message": "વિષય"
-  },
-  "navDebug": {
-    "message": "ડિબગ"
-  },
-  "dailyProgressLabel": {
-    "message": "દૈનિક પ્રગતિ"
-  },
-  "solveActiveBoard": {
-    "message": "સક્રિય બોર્ડ ઉકેલો"
-  },
-  "backToGames": {
-    "message": "લિંકડઈન રમતોમાં પાછા"
-  },
-  "dashboardLabel": {
-    "message": "ડેશબોર્ડ"
-  },
-  "gamesSolverTitle": {
-    "message": "ગેમ્સ સોલ્વર"
-  },
-  "completedSuccessfully": {
-    "message": "સફળતાપૂર્વક પૂર્ણ થયું"
-  },
-  "settingsCredentialsTitle": {
-    "message": "પ્રમાણપત્રો અને મોડલ્સ"
-  },
-  "settingsModelGuideTitle": {
-    "message": "મોડલ માર્ગદર્શિકા અને માહિતી"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "કનેક્શન સ્થિતિ"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "સક્રિય સમાધાનક:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "મોડલ ઓળખકર્તા:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "સેટિંગ્સ આપોઆપ સાચવાઈ ગઈ છે!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "એઆઈ મોડલ ઇન્ટિગ્રેશન એન્ડપોઈન્ટ્સ અને પ્રમાણપત્રો કન્ફિગર કરો અદ્યતન પઝલ-સોલ્વિંગ તર્ક માટે."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "શ્રેષ્ઠ પ્રદર્શન લગભગ શૂન્ય ખર્ચે. ક્રોસક્લાઇમ અને પિનપોઈન્ટને ઉત્તમ તર્ક સાથે ઉકેલે છે. ભલામણ કરેલ ડિફોલ્ટ: જેમિની-2.5-ફ્લેશ."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "ઝડપી, પ્રતિસાદી, અને સામાન્ય જ્ઞાનના પેટર્ન સાથે અત્યંત વિશ્વસનીય. ભલામણ કરેલ ડિફોલ્ટ: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "મહત્તમ તર્ક ક્ષમતા. ખૂબ જ જટિલ શબ્દ સંકળાવણોને નિષ્કલંક રીતે સંભાળે છે. ભલામણ કરેલ ડિફોલ્ટ: ક્લોડ-3-5-હાઈકુ."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "સ્થાનિક LLM ફ્રેમવર્ક્સ જેમ કે ઓલામા અથવા LM સ્ટુડિયો સાથે કનેક્ટ કરો. તમારું એન્ડપોઈન્ટ URL (ઉદાહરણ તરીકે, http://localhost:11434/v1) અને કસ્ટમ મોડેલ નામ દર્શાવો."
-  },
-  "showMoreDates": {
-    "message": "વધુ તારીખો બતાવો"
-  },
-  "showLessDates": {
-    "message": "ઓછું બતાવો"
-  },
-  "solveBtn_withAi": {
-    "message": "એઆઈ સાથે ઉકેલો"
-  },
-  "solveBtn_game": {
-    "message": "ગેમ ઉકેલો"
-  },
-  "solveBtn_solving": {
-    "message": "સમાધાન કરી રહ્યા છીએ..."
-  },
-  "solveBtn_solved": {
-    "message": "સમાધાન!"
-  },
-  "scoreClue": {
-    "message": "1 સંકેત"
-  },
-  "scoreClues": {
-    "message": "$1 સંકેતો"
-  },
-  "scoreSeconds": {
-    "message": "$1સ"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1મ $2સ"
-  },
-  "markAsNotPlayed": {
-    "message": "નિષ્ક્રિય તરીકે માર્ક કરો"
-  },
-  "settingSolveSpeed": {
-    "message": "ઝડપી ઉકેલ / વિલંબ"
-  },
-  "solveSpeed_instant": {
-    "message": "તાત્કાલિક (ઝડપી)"
-  },
-  "solveSpeed_normal": {
-    "message": "સામાન્ય (માનક)"
-  },
-  "solveSpeed_stealth": {
-    "message": "સ્ટેલ્થ મોડ (માનવ-જેમની વિલંબ)"
-  },
-  "labelSolveSpeed": {
-    "message": "સોલ્વિંગ સ્પીડ અને પેસિંગ"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "તાત્કાલિક મોડ બોર્ડને મિલિસેકન્ડમાં પૂર્ણ કરે છે. સ્ટેલ્થ મોડ માનવ વર્તનને નકલી બનાવે છે જેમાં રેન્ડમાઇઝ્ડ પેસિંગ (1–3 સેકન્ડ) હોય છે જેથી આપમેળે શોધી કાઢવા સામે સ્ટ્રીક્સ સુરક્ષિત થાય."
-  },
-  "solveBtn_hint": {
-    "message": "સૂચન મેળવો"
-  },
-  "settingDefaultSolveMode": {
-    "message": "ડિફોલ્ટ સોલ્વર ક્રિયા"
-  },
-  "solveMode_full": {
-    "message": "ફુલ ઓટો-સોલ્વ"
-  },
-  "solveMode_hint": {
-    "message": "શિક્ષણ સૂચન મોડ"
-  },
-  "labelDefaultSolveMode": {
-    "message": "ડિફોલ્ટ સોલ્વર મોડ"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "ટેબ દૃશ્ય અથવા બોર્ડમાંથી સોલ્વરને પ્રેરિત કરતી વખતે પ્રાથમિક ક્રિયા પસંદ કરો. સંપૂર્ણ ઉકેલ રમતને પૂર્ણ કરે છે; હિન્ટ મોડ એક સાચી વસ્તુ મૂકે છે."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "ઝીરો ખર્ચ અને સંપૂર્ણ સ્થાનિક AI"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "તમારા ઉપકરણ પર બ્રાઉઝરમાં સંપૂર્ણપણે સ્થાનિક રીતે ચાલે છે. શૂન્ય નેટવર્ક વિલંબ અને જેમિની નાનો સાથે 100% મફત."
-  },
-  "debugHeaderTitle": {
-    "message": "ગેમ ડિબગર અને ડેવ ટૂલ્સ"
-  },
-  "debugStatusOffline": {
-    "message": "ઓફલાઇન"
-  },
-  "debugStatusLive": {
-    "message": "જીવંત"
-  },
-  "debugDetectedGame": {
-    "message": "શોધાયેલ રમત"
-  },
-  "debugNoneDetected": {
-    "message": "કોઈપણ શોધાયો નથી"
-  },
-  "debugTargetUrl": {
-    "message": "લક્ષ્ય URL"
-  },
-  "debugNoActiveTab": {
-    "message": "કોઈ સક્રિય ટેબ નથી"
-  },
-  "debugHtmlCopied": {
-    "message": "એચટીએમએલ નકલ કરવામાં આવી!"
-  },
-  "debugCopyHtml": {
-    "message": "કોપી <main> HTML"
-  },
-  "debugLogsCopied": {
-    "message": "લોગ્સ નકલ કરવામાં આવ્યા!"
-  },
-  "debugCopyLogs": {
-    "message": "કોન્સોલ લોગ્સ નકલ કરો"
-  },
-  "debugBothCopied": {
-    "message": "બન્ને નકલ કરવામાં આવ્યા!"
-  },
-  "debugCopyBoth": {
-    "message": "બંને નકલ કરો (HTML અને લોગ્સ)"
-  },
-  "debugRegistryCopied": {
-    "message": "રજિસ્ટ્રી JSON નકલ કરવામાં આવી!"
-  },
-  "debugCopyRegistry": {
-    "message": "આજનો રજિસ્ટ્રી JSON નકલ કરો"
-  },
-  "debugCopyRegistryShort": {
-    "message": "જેસન નકલ કરો"
-  },
-  "debugSubmitAnswer": {
-    "message": "જવાબ સબમિટ કરો"
-  },
-  "debugDomPreview": {
-    "message": "ડોમ એલિમેન્ટ પૂર્વદર્શન"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [ટ્રંકેટ, કુલ અક્ષરો: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "કૉપી પૂર્ણ <main> HTML"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "કોઈ સક્રિય <main> ટેગ કેદ કરવામાં આવ્યો નથી. ખાતરી કરો કે તમે લિંકડઇન ગેમ સ્ક્રીન પર છો."
-  },
-  "debugConsoleOutput": {
-    "message": "કોન્સોલ આઉટપુટ"
-  },
-  "debugEventsCount": {
-    "message": "$1 ઇવેન્ટ્સ"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "લોગ્સને નવીનતમ બનાવો"
-  },
-  "debugClearLogsTooltip": {
-    "message": "સ્પષ્ટ લોગ્સ"
-  },
-  "debugNoLogsCaptured": {
-    "message": "હજી સુધી કોઈ લોગ્સ કેદ કરવામાં આવ્યા નથી. કન્સોલ ઇવેન્ટ્સને પ્રેરિત કરવા માટે ગેમ સ્ક્રીન પર ક્રિયાઓ કરો."
-  },
-  "debugListeningEvents": {
-    "message": "console.log, console.warn, અને console.error ઇવેન્ટ્સ માટે સાંભળવું..."
-  },
-  "debugErrorInitializing": {
-    "message": "લિંકડિન ગેમ પેજ સાથે કનેક્શન શરૂ થઈ રહ્યું છે..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "ગેમ ડેટા મેળવવામાં અસમર્થ."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "સક્રિય ટેબ લિંકડિન ગેમ્સ પેજ નથી. વિગતો મેળવવા માટે કોઈ ગેમ પર જાઓ."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "સક્રિય ટેબ ઓળખી શક્યા નથી."
-  },
-  "labelDailyReminders": {
-    "message": "દૈનિક યાદીઓ અને સ્ટ્રીક સુરક્ષક"
-  },
-  "settingEnableReminders": {
-    "message": "દૈનિક યાદીઓ સક્રિય કરો"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "આજના સ્ટ્રીક સમાપ્ત થાય તે પહેલાં મને ચેતવણી આપો."
-  },
-  "settingReminderTime": {
-    "message": "યાદ અપાવવાની સમય"
-  },
-  "settingReminderTimeNotice": {
-    "message": "અનસોલ્વ્ડ રમતોની તપાસ કરવા માટે સ્થાનિક સમય પસંદ કરો."
-  },
-  "notificationTitle": {
-    "message": "સ્ટ્રીક પ્રોટેક્ટર 🚀"
-  },
-  "notificationMessage": {
-    "message": "તમારી સમાધાનની શ્રેણી ગુમાવશો નહીં! તમે આજે LinkedInના રમતો હજી સુધી ઉકેલ્યા નથી."
-  },
-  "notificationButton": {
-    "message": "હવે ઉકેલો!"
-  },
-  "commandSolveActiveGame": {
-    "message": "સક્રિય LinkedIn રમત આપોઆપ ઉકેલો."
-  },
-  "commandGetSingleHint": {
-    "message": "એક પગલાનો સંકેત આપો અથવા ભૂલોની તપાસ કરો."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "ગેમ્સ પર ઓટો-ઓપન સાઇડબાર"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "લિંકડઇન ગેમ્સની મુલાકાત લેતી વખતે સ્વચાલિત રીતે સોલ્વરનું સાઇડ પેનલ ખોલો."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "ઓટો-ઓપન સોલ્વર સાઇડબાર"
-  },
-  "permissionDialogTitle": {
-    "message": "પૃષ્ઠની ઍક્સેસ આપો"
-  },
-  "permissionDialogDesc": {
-    "message": "સક્રિય રમત બોર્ડ્સને શોધવા અને પઝલ્સને ઉકેલવા માટે, વિસ્તરણને લિંકડઇન ગેમ્સ પર ચલાવવાની મંજૂરીની જરૂર છે. પ્રવેશ આપવા માટે નીચે ક્લિક કરો."
-  },
-  "permissionDialogButton": {
-    "message": "પ્રવેશ મંજૂર કરો"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 આજે ક્વીન્સ રમો અને ઉકેલો!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 મિની-સુડોકુ સોલ્વર ખોલો"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 ઓપન સ્ટ્રીક અને પ્રદર્શન ડેશબોર્ડ"
-  },
-  "diagnosticsEngine": {
-    "message": "ડાયગ્નોસ્ટિક્સ એન્જિન"
-  },
-  "liveInspected": {
-    "message": "લાઇવ નિરીક્ષણ કરેલું"
-  },
-  "offline": {
-    "message": "ઓફલાઇન"
-  },
-  "inspectedTab": {
-    "message": "તપાસાયેલ ટેબ:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "લાઇવ મેટ્રિક્સ ગ્રિડ ઇન્સ્પેક્ટર"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "લિંક્ડઇન ગેમ પેજની રાહ જોઈ રહ્યા છીએ"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "કોઈપણ લિંકડિન ગેમ બોર્ડ ટેબ (ક્વિન્સ, સુડોકુ, ટાંગો, પિનપોઇન્ટ) પર જાઓ જેથી નિયંત્રણ સમન્વય, કોષ્ટક રાજ્ય અને પ્રતિસાદી રચનાઓને કેદ કરી શકાય."
-  },
-  "telemetryLogsStreamer": {
-    "message": "ટેલેમેટ્રી લોગ્સ સ્ટ્રીમર"
-  },
-  "searchLogsPlaceholder": {
-    "message": "શોધ લોગો..."
-  },
-  "allTypes": {
-    "message": "બધા પ્રકારો"
-  },
-  "logsType": {
-    "message": "લોગ્સ"
-  },
-  "infoType": {
-    "message": "માહિતિ"
-  },
-  "warnsType": {
-    "message": "ચેતવણી આપે છે"
-  },
-  "errorsType": {
-    "message": "ભૂલો"
-  },
-  "selectTypePlaceholder": {
-    "message": "પ્રકાર પસંદ કરો"
-  },
-  "consoleStreamEmpty": {
-    "message": "કોન્સોલ સ્ટ્રીમ ખાલી"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "કોઈ લોગ આઉટપુટ્સ શોધવામાં આવી નથી જે ફિલ્ટર્સ સાથે મેળ ખાય. અહીં લોગ ક્રિયાઓને સ્ટ્રીમ કરવા માટે LinkedIn Games સોલ્વર UIની અંદર પગલાં ચલાવો."
-  },
-  "subscribedToStorageSession": {
-    "message": "સ્ટોરેજ.સેશન સ્ટ્રીમ માટે સબ્સ્ક્રાઇબ કર્યું"
-  },
-  "parsingGameGridCells": {
-    "message": "ગેમ ગ્રિડ સેલ્સને પાર્સ કરી રહ્યા છીએ... ખાતરી કરો કે બોર્ડ પર સક્રિય ગ્રિડ બ્લોક્સ દેખાય છે."
-  },
-  "urlLabel": {
-    "message": "યુઆરએલ:"
-  },
-  "notAvailable": {
-    "message": "નહીં લાગુ પડે છે"
-  },
-  "matchesLabel": {
-    "message": "મિલન"
-  },
-  "copiedLabel": {
-    "message": "કોપી કરાયું!"
-  },
-  "copyLogsTooltip": {
-    "message": "કોપી લોગ્સ"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "લોગ જગ્યા સાફ કરો"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ સક્રિય લિંકડઇન રમત હલ કરો"
-  },
-  "contextMenuHint": {
-    "message": "💡 એક સંકેત મેળવો"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 પરિણામો જુઓ"
-  },
-  "labelTelemetryTitle": {
-    "message": "ટેલેમેટ્રી અને ગોપનીયતા"
-  },
-  "telemetryToggleLabel": {
-    "message": "ગોપનીય ટેલેમેટ્રી મોકલો"
-  },
-  "telemetryToggleDesc": {
-    "message": "સહાય કરો અને અજાણ્યા પ્રદર્શન અને ઉપયોગ મેટ્રિક્સને શેર કરીને સોલ્વર સુધારો."
-  }
+  "extensionName": "LinkedIn ગેમ્સ સોલ્વર",
+  "extensionDescription": "LinkedIn ગેમ્સ માટે એક સહાયક. દૈનિક પઝલ (Queens, Sudoku, Pinpoint, Crossclimb) આપોઆપ ઉકેલો, સાથે સ્ટ્રીક અને એનાલિટિક્સ ટ્રેકિંગ.",
+  "title": "LinkedIn ગેમ્સ",
+  "subtitle": "એક જ ક્લિકમાં એક્ટિવ બોર્ડ્સ સોલ્વ કરો",
+  "errorChromeTabIntegration": "Chrome ટૅબ એકીકરણ જરૂરી છે.",
+  "errorActiveTabNotFound": "સક્રિય ટૅબ મળી નથી.",
+  "errorNavigationFailed": "$1 પર જવામાં નિષ્ફળ ગયું.",
+  "errorConnectionFailed": "કનેક્શન નિષ્ફળ ગયું.",
+  "errorExecutionFailedDefault": "સોલ્વર ચલાવતા સમયે સમસ્યા આવી.",
+  "successSolverStarted": "સોલ્વર શરૂ થયું.",
+  "dashboardTitle": "ઇતિહાસ અને આંકડા",
+  "dashboardSubtitle": "તમારા LinkedIn Games સોલ્વિંગનું પૂરું ઇતિહાસ અને આંકડા",
+  "statTotalSolved": "કુલ સોલ્વ",
+  "statTotalSolvedDesc": "બધા તારીખોને આવતાં રમતો સોલ્વ થયેલ",
+  "statAverageTime": "સરેરાશ સમય",
+  "statAverageTimeDesc": "બધા નોંધાયેલા પૂરાં સમયગાળાઓ પર",
+  "statActiveStreak": "સક્રિય સ્ટ્રીક",
+  "statActiveStreakDesc": "અનુક્રમિક સક્રિય દિવસો",
+  "popupCardTitle": "મજેદાર દૈનિક રમતો દ્વારા જોડાણ કરો",
+  "popupCardDesc": "તમારા મન કામના દિવસ માટે તૈયાર કરો અને પરિણામોની તુલના કરો. તમારા સ્કોર ખાનગી છે જ્યાં સુધી તમે તેમને શેર ન કરો।",
+  "dashboardDescText": "તમારા પ્રદર્શન મેટ્રિક્સનું વિશ્લેષણ કરો, સ્ટ્રીક્સ નોંધો, અને તમારી દૈનિક પૂર્ણ થયેલી પઝલની મુસાફરીને અનુસરો.",
+  "disclaimerText": "અસ્વીકરણ: આ એક સ્વતંત્ર, ઓપન-સોર્સ શૈક્ષણิก પ્રોજેક્ટ છે. તેનો LinkedIn Corporation સાથે કોઈ સંબંધ, પ્રાયોજકતા અથવા મંજૂરી નથી. \"LinkedIn\" LinkedIn Corporation નું રજિસ્ટર્ડ ટ્રેડમાર્ક છે.",
+  "switchThemeTitle": "$1 મોડમાં સ્વિચ કરો",
+  "solvingStatus": "સોલ્વિંગ...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "બોનસ",
+  "desc_patches": "તેને એકઠું કરો",
+  "desc_zip": "માર્ગ પૂર્ણ કરો",
+  "desc_sudoku": "ક્લાસિક રમત, મિની બનાવેલ",
+  "desc_tango": "ગ્રિડને સુસંગત બનાવો",
+  "desc_queens": "દરેક પ્રદેશને તાજ આપો",
+  "desc_crossclimb": "ટ્રિવિયા લેડર ખોલો",
+  "desc_pinpoint": "શ્રેણી અનુમાન કરો",
+  "titleSolve": "$1 ઉકેલો",
+  "titleCompleted": "આજે પૂર્ણ થયું! નેવિગેટ કરવા માટે ક્લિક કરો $1",
+  "titleOpen": "ઓપન $1 ને ઉકેલવા માટે",
+  "perfectDay": "પરફેક્ટ દિવસ! તમામ $1 રમતો પૂર્ણ! 🎉",
+  "dailyProgress": "દૈનિક પ્રગતિ: આજે $1 માંથી $2 રમતો પૂર્ણ થઈ છે",
+  "statStreakDays": "$1 દિવસો",
+  "personalBests": "વ્યક્તિગત શ્રેષ્ઠતા",
+  "noRecordsYet": "હજી સુધી કોઈ ઉકેલ રેકોર્ડ કરવામાં આવ્યા નથી.",
+  "solvingHistory": "ઇતિહાસનો ઉકેલ",
+  "activityCalendar": "ક્રિયાપ્રવૃત્તિ કેલેન્ડર",
+  "clearFilter": "સ્પષ્ટ ફિલ્ટર",
+  "settingModel": "મોડલ",
+  "settingModelSelect": "મોડલ પસંદ કરો",
+  "settingModelCustomOption": "કસ્ટમ મોડલ નામ...",
+  "settingModelCustomLabel": "કસ્ટમ મોડલ નામ",
+  "settingModelCustomPlaceholderLocal": "ઉદાહરણ તરીકે: લ્લામા3, મિસ્ટ્રલ",
+  "settingModelCustomPlaceholderOther": "કસ્ટમ ઓળખકર્તા દાખલ કરો...",
+  "settingEndpointLabel": "એન્ડપોઈન્ટ URL",
+  "settingEndpointPlaceholder": "ઉદાહરણ: http://localhost:11434/v1",
+  "settingApiKeyGemini": "જેમિની એપી આકી",
+  "settingApiKeyOpenAI": "ઓપનએઆઈ એપી આકી",
+  "settingApiKeyAnthropic": "એન્થ્રોપિક API કી",
+  "settingApiKeyDeepSeek": "ડીપસિક એપીઆઈ કી",
+  "settingApiKeyCustom": "એપીઆઈ કી (વૈકલ્પિક)",
+  "settingApiKeyPlaceholderCustom": "વૈકલ્પિક પ્રમાણપત્રો...",
+  "settingApiKeyPlaceholderDefault": "પ્રમાણપત્ર કી દાખલ કરો...",
+  "settingApiKeyNotice": "ચૂંટાયેલ મોડલ ક્રોસક્લાઇમ અને પિનપોઇન્ટને ઉકેલે છે. એક્સ્ટેંશન ક્યારેય તમારી કી શેર કરતું નથી.",
+  "saveAndBack": "સાચવો અને રમતોમાં પાછા જાઓ",
+  "solvingWorking": "એઆઈ સોલ્વર કાર્યરત છે...",
+  "completedToday": "આજે પૂર્ણ થયું",
+  "solvedCountSuffix": "સમાધાન કરવામાં આવ્યું",
+  "settingsHeaderTitle": "એઆઈ મોડેલ રૂપરેખા",
+  "labelAiProvider": "એઆઈ પ્રદાતા",
+  "labelModelIdentifier": "મોડલ ઓળખકર્તા",
+  "labelCustomModel": "કસ્ટમ મોડલ નામ",
+  "labelEndpointUrl": "એન્ડપોઈન્ટ URL",
+  "labelGeminiKey": "જેમિની એપી કી",
+  "labelOpenAiKey": "ઓપનએઆઈ એપીઆઈ કી",
+  "labelAnthropicKey": "એન્થ્રોપિક એપી આઈ કી",
+  "labelDeepSeekKey": "ડીપસિક એપી કી",
+  "labelCustomKey": "એપીઆઈ કી (વૈકલ્પિક)",
+  "navHome": "ઘર",
+  "navAiConfig": "સેટિંગ્સ / વિકલ્પો",
+  "navStats": "આંકડાઓ",
+  "navTheme": "વિષય",
+  "navDebug": "ડિબગ",
+  "dailyProgressLabel": "દૈનિક પ્રગતિ",
+  "solveActiveBoard": "સક્રિય બોર્ડ ઉકેલો",
+  "backToGames": "લિંકડઈન રમતોમાં પાછા",
+  "dashboardLabel": "ડેશબોર્ડ",
+  "gamesSolverTitle": "ગેમ્સ સોલ્વર",
+  "completedSuccessfully": "સફળતાપૂર્વક પૂર્ણ થયું",
+  "settingsCredentialsTitle": "પ્રમાણપત્રો અને મોડલ્સ",
+  "settingsModelGuideTitle": "મોડલ માર્ગદર્શિકા અને માહિતી",
+  "settingsConnectionStatusTitle": "કનેક્શન સ્થિતિ",
+  "settingsActiveSolverLabel": "સક્રિય સમાધાનક:",
+  "settingsModelIdentifierLabel": "મોડલ ઓળખકર્તા:",
+  "settingsAutoSavedNotification": "સેટિંગ્સ આપોઆપ સાચવાઈ ગઈ છે!",
+  "settingsSubtitleDesc": "એઆઈ મોડલ ઇન્ટિગ્રેશન એન્ડપોઈન્ટ્સ અને પ્રમાણપત્રો કન્ફિગર કરો અદ્યતન પઝલ-સોલ્વિંગ તર્ક માટે.",
+  "settingsGeminiGuideDesc": "શ્રેષ્ઠ પ્રદર્શન લગભગ શૂન્ય ખર્ચે. ક્રોસક્લાઇમ અને પિનપોઈન્ટને ઉત્તમ તર્ક સાથે ઉકેલે છે. ભલામણ કરેલ ડિફોલ્ટ: જેમિની-2.5-ફ્લેશ.",
+  "settingsOpenaiGuideDesc": "ઝડપી, પ્રતિસાદી, અને સામાન્ય જ્ઞાનના પેટર્ન સાથે અત્યંત વિશ્વસનીય. ભલામણ કરેલ ડિફોલ્ટ: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "મહત્તમ તર્ક ક્ષમતા. ખૂબ જ જટિલ શબ્દ સંકળાવણોને નિષ્કલંક રીતે સંભાળે છે. ભલામણ કરેલ ડિફોલ્ટ: ક્લોડ-3-5-હાઈકુ.",
+  "settingsCustomGuideDesc": "સ્થાનિક LLM ફ્રેમવર્ક્સ જેમ કે ઓલામા અથવા LM સ્ટુડિયો સાથે કનેક્ટ કરો. તમારું એન્ડપોઈન્ટ URL (ઉદાહરણ તરીકે, http://localhost:11434/v1) અને કસ્ટમ મોડેલ નામ દર્શાવો.",
+  "showMoreDates": "વધુ તારીખો બતાવો",
+  "showLessDates": "ઓછું બતાવો",
+  "solveBtn_withAi": "એઆઈ સાથે ઉકેલો",
+  "solveBtn_game": "ગેમ ઉકેલો",
+  "solveBtn_solving": "સમાધાન કરી રહ્યા છીએ...",
+  "solveBtn_solved": "સમાધાન!",
+  "scoreClue": "1 સંકેત",
+  "scoreClues": "$1 સંકેતો",
+  "scoreSeconds": "$1સ",
+  "scoreMinutesSeconds": "$1મ $2સ",
+  "markAsNotPlayed": "નિષ્ક્રિય તરીકે માર્ક કરો",
+  "settingSolveSpeed": "ઝડપી ઉકેલ / વિલંબ",
+  "solveSpeed_instant": "તાત્કાલિક (ઝડપી)",
+  "solveSpeed_normal": "સામાન્ય (માનક)",
+  "solveSpeed_stealth": "સ્ટેલ્થ મોડ (માનવ-જેમની વિલંબ)",
+  "labelSolveSpeed": "સોલ્વિંગ સ્પીડ અને પેસિંગ",
+  "settingSolveSpeedNotice": "તાત્કાલિક મોડ બોર્ડને મિલિસેકન્ડમાં પૂર્ણ કરે છે. સ્ટેલ્થ મોડ માનવ વર્તનને નકલી બનાવે છે જેમાં રેન્ડમાઇઝ્ડ પેસિંગ (1–3 સેકન્ડ) હોય છે જેથી આપમેળે શોધી કાઢવા સામે સ્ટ્રીક્સ સુરક્ષિત થાય.",
+  "solveBtn_hint": "સૂચન મેળવો",
+  "settingDefaultSolveMode": "ડિફોલ્ટ સોલ્વર ક્રિયા",
+  "solveMode_full": "ફુલ ઓટો-સોલ્વ",
+  "solveMode_hint": "શિક્ષણ સૂચન મોડ",
+  "labelDefaultSolveMode": "ડિફોલ્ટ સોલ્વર મોડ",
+  "settingDefaultSolveModeNotice": "ટેબ દૃશ્ય અથવા બોર્ડમાંથી સોલ્વરને પ્રેરિત કરતી વખતે પ્રાથમિક ક્રિયા પસંદ કરો. સંપૂર્ણ ઉકેલ રમતને પૂર્ણ કરે છે; હિન્ટ મોડ એક સાચી વસ્તુ મૂકે છે.",
+  "settingsChromeBuiltInGuideTitle": "ઝીરો ખર્ચ અને સંપૂર્ણ સ્થાનિક AI",
+  "settingsChromeBuiltInGuideDesc": "તમારા ઉપકરણ પર બ્રાઉઝરમાં સંપૂર્ણપણે સ્થાનિક રીતે ચાલે છે. શૂન્ય નેટવર્ક વિલંબ અને જેમિની નાનો સાથે 100% મફત.",
+  "debugHeaderTitle": "ગેમ ડિબગર અને ડેવ ટૂલ્સ",
+  "debugStatusOffline": "ઓફલાઇન",
+  "debugStatusLive": "જીવંત",
+  "debugDetectedGame": "શોધાયેલ રમત",
+  "debugNoneDetected": "કોઈપણ શોધાયો નથી",
+  "debugTargetUrl": "લક્ષ્ય URL",
+  "debugNoActiveTab": "કોઈ સક્રિય ટેબ નથી",
+  "debugHtmlCopied": "એચટીએમએલ નકલ કરવામાં આવી!",
+  "debugCopyHtml": "કોપી <main> HTML",
+  "debugLogsCopied": "લોગ્સ નકલ કરવામાં આવ્યા!",
+  "debugCopyLogs": "કોન્સોલ લોગ્સ નકલ કરો",
+  "debugBothCopied": "બન્ને નકલ કરવામાં આવ્યા!",
+  "debugCopyBoth": "બંને નકલ કરો (HTML અને લોગ્સ)",
+  "debugRegistryCopied": "રજિસ્ટ્રી JSON નકલ કરવામાં આવી!",
+  "debugCopyRegistry": "આજનો રજિસ્ટ્રી JSON નકલ કરો",
+  "debugCopyRegistryShort": "જેસન નકલ કરો",
+  "debugSubmitAnswer": "જવાબ સબમિટ કરો",
+  "debugDomPreview": "ડોમ એલિમેન્ટ પૂર્વદર્શન",
+  "debugHtmlTruncated": "\n\n[... [ટ્રંકેટ, કુલ અક્ષરો: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "કૉપી પૂર્ણ <main> HTML",
+  "debugNoMainTagCaptured": "કોઈ સક્રિય <main> ટેગ કેદ કરવામાં આવ્યો નથી. ખાતરી કરો કે તમે લિંકડઇન ગેમ સ્ક્રીન પર છો.",
+  "debugConsoleOutput": "કોન્સોલ આઉટપુટ",
+  "debugEventsCount": "$1 ઇવેન્ટ્સ",
+  "debugRefreshLogsTooltip": "લોગ્સને નવીનતમ બનાવો",
+  "debugClearLogsTooltip": "સ્પષ્ટ લોગ્સ",
+  "debugNoLogsCaptured": "હજી સુધી કોઈ લોગ્સ કેદ કરવામાં આવ્યા નથી. કન્સોલ ઇવેન્ટ્સને પ્રેરિત કરવા માટે ગેમ સ્ક્રીન પર ક્રિયાઓ કરો.",
+  "debugListeningEvents": "console.log, console.warn, અને console.error ઇવેન્ટ્સ માટે સાંભળવું...",
+  "debugErrorInitializing": "લિંકડિન ગેમ પેજ સાથે કનેક્શન શરૂ થઈ રહ્યું છે...",
+  "debugErrorRetrieveFailed": "ગેમ ડેટા મેળવવામાં અસમર્થ.",
+  "debugErrorNotGamesPage": "સક્રિય ટેબ લિંકડિન ગેમ્સ પેજ નથી. વિગતો મેળવવા માટે કોઈ ગેમ પર જાઓ.",
+  "debugErrorNoActiveTab": "સક્રિય ટેબ ઓળખી શક્યા નથી.",
+  "labelDailyReminders": "દૈનિક યાદીઓ અને સ્ટ્રીક સુરક્ષક",
+  "settingEnableReminders": "દૈનિક યાદીઓ સક્રિય કરો",
+  "settingEnableRemindersDesc": "આજના સ્ટ્રીક સમાપ્ત થાય તે પહેલાં મને ચેતવણી આપો.",
+  "settingReminderTime": "યાદ અપાવવાની સમય",
+  "settingReminderTimeNotice": "અનસોલ્વ્ડ રમતોની તપાસ કરવા માટે સ્થાનિક સમય પસંદ કરો.",
+  "notificationTitle": "સ્ટ્રીક પ્રોટેક્ટર 🚀",
+  "notificationMessage": "તમારી સમાધાનની શ્રેણી ગુમાવશો નહીં! તમે આજે LinkedInના રમતો હજી સુધી ઉકેલ્યા નથી.",
+  "notificationButton": "હવે ઉકેલો!",
+  "commandSolveActiveGame": "સક્રિય LinkedIn રમત આપોઆપ ઉકેલો.",
+  "commandGetSingleHint": "એક પગલાનો સંકેત આપો અથવા ભૂલોની તપાસ કરો.",
+  "settingAutoOpenSidepanel": "ગેમ્સ પર ઓટો-ઓપન સાઇડબાર",
+  "settingAutoOpenSidepanelDesc": "લિંકડઇન ગેમ્સની મુલાકાત લેતી વખતે સ્વચાલિત રીતે સોલ્વરનું સાઇડ પેનલ ખોલો.",
+  "labelAutoOpenSidepanel": "ઓટો-ઓપન સોલ્વર સાઇડબાર",
+  "permissionDialogTitle": "પૃષ્ઠની ઍક્સેસ આપો",
+  "permissionDialogDesc": "સક્રિય રમત બોર્ડ્સને શોધવા અને પઝલ્સને ઉકેલવા માટે, વિસ્તરણને લિંકડઇન ગેમ્સ પર ચલાવવાની મંજૂરીની જરૂર છે. પ્રવેશ આપવા માટે નીચે ક્લિક કરો.",
+  "permissionDialogButton": "પ્રવેશ મંજૂર કરો",
+  "omniboxSuggestionQueens": "👑 આજે ક્વીન્સ રમો અને ઉકેલો!",
+  "omniboxSuggestionSudoku": "🔢 મિની-સુડોકુ સોલ્વર ખોલો",
+  "omniboxSuggestionStats": "📊 ઓપન સ્ટ્રીક અને પ્રદર્શન ડેશબોર્ડ",
+  "diagnosticsEngine": "ડાયગ્નોસ્ટિક્સ એન્જિન",
+  "liveInspected": "લાઇવ નિરીક્ષણ કરેલું",
+  "offline": "ઓફલાઇન",
+  "inspectedTab": "તપાસાયેલ ટેબ:",
+  "liveMatrixGridInspector": "લાઇવ મેટ્રિક્સ ગ્રિડ ઇન્સ્પેક્ટર",
+  "waitingForLinkedInGamePage": "લિંક્ડઇન ગેમ પેજની રાહ જોઈ રહ્યા છીએ",
+  "waitingForLinkedInGamePageDesc": "કોઈપણ લિંકડિન ગેમ બોર્ડ ટેબ (ક્વિન્સ, સુડોકુ, ટાંગો, પિનપોઇન્ટ) પર જાઓ જેથી નિયંત્રણ સમન્વય, કોષ્ટક રાજ્ય અને પ્રતિસાદી રચનાઓને કેદ કરી શકાય.",
+  "telemetryLogsStreamer": "ટેલેમેટ્રી લોગ્સ સ્ટ્રીમર",
+  "searchLogsPlaceholder": "શોધ લોગો...",
+  "allTypes": "બધા પ્રકારો",
+  "logsType": "લોગ્સ",
+  "infoType": "માહિતિ",
+  "warnsType": "ચેતવણી આપે છે",
+  "errorsType": "ભૂલો",
+  "selectTypePlaceholder": "પ્રકાર પસંદ કરો",
+  "consoleStreamEmpty": "કોન્સોલ સ્ટ્રીમ ખાલી",
+  "consoleStreamEmptyDesc": "કોઈ લોગ આઉટપુટ્સ શોધવામાં આવી નથી જે ફિલ્ટર્સ સાથે મેળ ખાય. અહીં લોગ ક્રિયાઓને સ્ટ્રીમ કરવા માટે LinkedIn Games સોલ્વર UIની અંદર પગલાં ચલાવો.",
+  "subscribedToStorageSession": "સ્ટોરેજ.સેશન સ્ટ્રીમ માટે સબ્સ્ક્રાઇબ કર્યું",
+  "parsingGameGridCells": "ગેમ ગ્રિડ સેલ્સને પાર્સ કરી રહ્યા છીએ... ખાતરી કરો કે બોર્ડ પર સક્રિય ગ્રિડ બ્લોક્સ દેખાય છે.",
+  "urlLabel": "યુઆરએલ:",
+  "notAvailable": "નહીં લાગુ પડે છે",
+  "matchesLabel": "મિલન",
+  "copiedLabel": "કોપી કરાયું!",
+  "copyLogsTooltip": "કોપી લોગ્સ",
+  "clearLogSpaceTooltip": "લોગ જગ્યા સાફ કરો",
+  "contextMenuSolve": "⚡ સક્રિય લિંકડઇન રમત હલ કરો",
+  "contextMenuHint": "💡 એક સંકેત મેળવો",
+  "contextMenuViewResults": "📊 પરિણામો જુઓ",
+  "labelTelemetryTitle": "ટેલેમેટ્રી અને ગોપનીયતા",
+  "telemetryToggleLabel": "ગોપનીય ટેલેમેટ્રી મોકલો",
+  "telemetryToggleDesc": "સહાય કરો અને અજાણ્યા પ્રદર્શન અને ઉપયોગ મેટ્રિક્સને શેર કરીને સોલ્વર સુધારો."
 }

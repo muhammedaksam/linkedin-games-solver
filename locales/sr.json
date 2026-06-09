@@ -1,624 +1,203 @@
 {
-  "extensionName": {
-    "message": "Решавач за LinkedIn Games",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Помоћник за LinkedIn Games. Аутоматски решава дневне слагалице (Queens, Sudoku, Pinpoint, Crossclimb) са низовима и аналитиком.",
-    "description": "The description of the extension."
-  },
-  "subtitle": {
-    "message": "Решите активне табле једним кликом",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Потребна је интеграција са Chrome картицом.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Активна картица није пронађена.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Кретање до $1 није успело.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Веза није успела.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Дошло је до проблема приликом покретања решавача.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Решавач је покренут.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "Историја и статистика",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Ваша историја и статистика за LinkedIn Games",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Укупно решено",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Игре решене за све датуме",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Просечно време",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "За све забележене завршетке",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Активан низ",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Узвратно активни дани",
-    "description": "Description for the active streak card"
-  },
-  "dashboardDescText": {
-    "message": "Analizirajte svoje metrike performansi, beležite nizove i pratite puteve dnevno završenih zagonetki.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "Одрицање од одговорности: Ово је независан, образовни пројекат отвореног кода. Није повезан, спонзорисан нити одобрен од стране компаније LinkedIn Corporation. „LinkedIn“ је регистровани жиг компаније LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "title": {
-    "message": "LinkedIn igre"
-  },
-  "switchThemeTitle": {
-    "message": "Pređi na $1 režim"
-  },
-  "solvingStatus": {
-    "message": "Rešavanje..."
-  },
-  "bonus": {
-    "message": "Bonus"
-  },
-  "desc_patches": {
-    "message": "Sastavi to zajedno"
-  },
-  "desc_zip": {
-    "message": "Završite putanju"
-  },
-  "desc_sudoku": {
-    "message": "Klasična igra, napravljena u mini formatu"
-  },
-  "desc_tango": {
-    "message": "Harmonizujte mrežu"
-  },
-  "desc_queens": {
-    "message": "Kruniš svaku regiju"
-  },
-  "desc_crossclimb": {
-    "message": "Otključajte trivia merdevine"
-  },
-  "desc_pinpoint": {
-    "message": "Pogodi kategoriju"
-  },
-  "titleSolve": {
-    "message": "Reši $1"
-  },
-  "titleCompleted": {
-    "message": "Dovršeno danas! Kliknite da odete na $1"
-  },
-  "titleOpen": {
-    "message": "Otvorite $1 da biste rešili"
-  },
-  "perfectDay": {
-    "message": "Savršen dan! Sve $1 igre su završene! 🎉"
-  },
-  "dailyProgress": {
-    "message": "Dnevni napredak: $1 od $2 igara završenih danas"
-  },
-  "statStreakDays": {
-    "message": "$1 дана"
-  },
-  "personalBests": {
-    "message": "Lični rekordi"
-  },
-  "noRecordsYet": {
-    "message": "Još nisu zabeleženi nijedni zapisi o rešenju."
-  },
-  "solvingHistory": {
-    "message": "Rešavanje istorije"
-  },
-  "activityCalendar": {
-    "message": "Kalendar aktivnosti"
-  },
-  "clearFilter": {
-    "message": "Očisti filter"
-  },
-  "settingModel": {
-    "message": "Model"
-  },
-  "settingModelSelect": {
-    "message": "Izaberite model"
-  },
-  "settingModelCustomOption": {
-    "message": "Prilagođeno ime modela..."
-  },
-  "settingModelCustomLabel": {
-    "message": "Prilagođeno ime modela"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "npr. llama3, mistral"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Unesite prilagođeni identifikator..."
-  },
-  "settingEndpointLabel": {
-    "message": "URL krajnje tačke"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "npr. http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API ključ"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API ključ"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API ključ"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API ključ"
-  },
-  "settingApiKeyCustom": {
-    "message": "API ključ (opciono)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Opcione akreditive..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Unesite ključ za pristup..."
-  },
-  "settingApiKeyNotice": {
-    "message": "Odabrani model rešava Crossclimb i Pinpoint. Ekstenzija nikada ne deli vaš ključ."
-  },
-  "popupCardTitle": {
-    "message": "Povežite se kroz zabavne, dnevne igre"
-  },
-  "popupCardDesc": {
-    "message": "Pripremite svoj um za radni dan i uporedite rezultate. Vaši rezultati su privatni osim ako ih ne podelite."
-  },
-  "saveAndBack": {
-    "message": "Sačuvaj i nazad na igre"
-  },
-  "solvingWorking": {
-    "message": "AI rešenje radi..."
-  },
-  "completedToday": {
-    "message": "Završeno danas"
-  },
-  "solvedCountSuffix": {
-    "message": "Rešeno"
-  },
-  "settingsHeaderTitle": {
-    "message": "Konfiguracija AI modela"
-  },
-  "labelAiProvider": {
-    "message": "AI Pružalac"
-  },
-  "labelModelIdentifier": {
-    "message": "IDENTIFIKATOR MODELA"
-  },
-  "labelCustomModel": {
-    "message": "IME PRILAGOĐENOG MODELA"
-  },
-  "labelEndpointUrl": {
-    "message": "URL KRAJNJE TAČKE"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API KLJUČ"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API KLJUČ"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTROPIC API KLJUČ"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API KLJUČ"
-  },
-  "labelCustomKey": {
-    "message": "API KLJUČ (OPCIONALNO)"
-  },
-  "navHome": {
-    "message": "Dom"
-  },
-  "navAiConfig": {
-    "message": "Podešavanja / Opcije"
-  },
-  "navStats": {
-    "message": "Statistika"
-  },
-  "navTheme": {
-    "message": "Tema"
-  },
-  "navDebug": {
-    "message": "Otklanjanje grešaka"
-  },
-  "dailyProgressLabel": {
-    "message": "Dnevni napredak"
-  },
-  "solveActiveBoard": {
-    "message": "Rešite aktivnu tablu"
-  },
-  "backToGames": {
-    "message": "Povratak na LinkedIn igre"
-  },
-  "dashboardLabel": {
-    "message": "Kontrolna tabla"
-  },
-  "gamesSolverTitle": {
-    "message": "Rešavač igara"
-  },
-  "completedSuccessfully": {
-    "message": "Uspešno završeno"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Akreditivi i modeli"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Vodič za modele i informacije"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Status veze"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Aktivni reševač:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Identifikator modela:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Podešavanja su automatski sačuvana!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Konfigurišite krajnje tačke i akreditive za integraciju AI modela za napredno rešavanje zagonetki."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Izvanredna izvedba uz gotovo nulte troškove. Rešava Crossclimb i Pinpoint sa odličnom logikom. Preporučeni podrazumevani: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Brz, responzivan i izuzetno pouzdan sa opštim obrascima znanja. Preporučeni podrazumevani: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maksimalna kapacitet za rezonovanje. Besprekorno upravlja veoma složenim asocijacijama reči. Preporučeni podrazumevani: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Povežite se sa lokalnim LLM okvirima kao što su Ollama ili LM Studio. Postavite URL vašeg krajnjeg tačke (npr., http://localhost:11434/v1) i ime prilagođenog modela."
-  },
-  "showMoreDates": {
-    "message": "Prikaži više datuma"
-  },
-  "showLessDates": {
-    "message": "Prikaži manje"
-  },
-  "solveBtn_withAi": {
-    "message": "Reši uz pomoć veštačke inteligencije"
-  },
-  "solveBtn_game": {
-    "message": "Reši igru"
-  },
-  "solveBtn_solving": {
-    "message": "Rešavanje..."
-  },
-  "solveBtn_solved": {
-    "message": "Rešeno!"
-  },
-  "scoreClue": {
-    "message": "1 trag"
-  },
-  "scoreClues": {
-    "message": "$1 tragovi"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "Označi kao Nije odigrano"
-  },
-  "settingSolveSpeed": {
-    "message": "Rešavanje brzine / kašnjenja"
-  },
-  "solveSpeed_instant": {
-    "message": "Instant (Najbrže)"
-  },
-  "solveSpeed_normal": {
-    "message": "Normalno (Standardno)"
-  },
-  "solveSpeed_stealth": {
-    "message": "Modus prikrivanja (kao ljudska kašnjenja)"
-  },
-  "labelSolveSpeed": {
-    "message": "REŠAVANJE BRZINE I TEMPA"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Instant mod završava tablu u milisekundama. Stealth mod oponaša ljudsko ponašanje sa randomizovanim tempom (1–3 sekunde) kako bi osigurao nizove protiv automatskog otkrivanja."
-  },
-  "solveBtn_hint": {
-    "message": "Dobijte trag"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Podrazumevana akcija rešenja"
-  },
-  "solveMode_full": {
-    "message": "Potpuno automatsko rešenje"
-  },
-  "solveMode_hint": {
-    "message": "Obrazovni režim saveta"
-  },
-  "labelDefaultSolveMode": {
-    "message": "ZADANI MOD REŠAVAČA"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Izaberite primarnu akciju prilikom aktiviranja rešenja iz prikaza taba ili tabli. Potpuno rešenje završava igru; Mod saveta postavlja jedan tačan predmet."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Nulta cena i potpuno lokalna veštačka inteligencija"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Radi potpuno lokalno na vašem uređaju unutar pregledača. Nema mrežne latencije i 100% je besplatno sa Gemini Nano."
-  },
-  "debugHeaderTitle": {
-    "message": "Igra Debugger i alati za razvoj"
-  },
-  "debugStatusOffline": {
-    "message": "Van mreže"
-  },
-  "debugStatusLive": {
-    "message": "Živeti"
-  },
-  "debugDetectedGame": {
-    "message": "Otkrivena igra"
-  },
-  "debugNoneDetected": {
-    "message": "Nema otkriveno"
-  },
-  "debugTargetUrl": {
-    "message": "Ciljna URL adresa"
-  },
-  "debugNoActiveTab": {
-    "message": "Nema aktivne kartice"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML je kopiran!"
-  },
-  "debugCopyHtml": {
-    "message": "Kopiraj <main> HTML"
-  },
-  "debugLogsCopied": {
-    "message": "Zapisi su kopirani!"
-  },
-  "debugCopyLogs": {
-    "message": "Kopiraj konzolne logove"
-  },
-  "debugBothCopied": {
-    "message": "Oba su kopirana!"
-  },
-  "debugCopyBoth": {
-    "message": "Kopiraj oba (HTML i dnevnike)"
-  },
-  "debugRegistryCopied": {
-    "message": "Registrovani JSON je kopiran!"
-  },
-  "debugCopyRegistry": {
-    "message": "Kopiraj današnji JSON registar"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Kopiraj JSON"
-  },
-  "debugSubmitAnswer": {
-    "message": "Pošalji odgovor"
-  },
-  "debugDomPreview": {
-    "message": "DOM Element Pregled"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [skraćeno, ukupno karaktera: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Kopiraj kompletan <main> HTML"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Nema aktivnog <main> taga. Proverite da li ste na ekranu igre na LinkedIn-u."
-  },
-  "debugConsoleOutput": {
-    "message": "Izlaz konzole"
-  },
-  "debugEventsCount": {
-    "message": "$1 događaji"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Osveži dnevnike"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Obriši logove"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Još uvek nema zabeleženih logova. Izvršite radnje na ekranu igre da biste pokrenuli događaje u konzoli."
-  },
-  "debugListeningEvents": {
-    "message": "Slušanje za događaje console.log, console.warn i console.error..."
-  },
-  "debugErrorInitializing": {
-    "message": "Povezivanje sa LinkedIn stranicom igre se inicijalizuje..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Nije moguće preuzeti podatke o igri."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Aktivna kartica nije stranica LinkedIn igara. Idite na igru da biste zabeležili detalje."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Nije moguće identifikovati aktivnu karticu."
-  },
-  "labelDailyReminders": {
-    "message": "DNEVNI PODSETNICI I ZAŠTITA NIZA"
-  },
-  "settingEnableReminders": {
-    "message": "Omogući dnevna podsećanja"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Upozori me pre nego što današnji niz istekne."
-  },
-  "settingReminderTime": {
-    "message": "Podsetnik vreme"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Izaberite lokalno vreme da proverite nerešene igre."
-  },
-  "notificationTitle": {
-    "message": "Zaštitnik niza 🚀"
-  },
-  "notificationMessage": {
-    "message": "Ne gubi svoj niz rešavanja! Još nisi rešio današnje LinkedIn igre."
-  },
-  "notificationButton": {
-    "message": "Reši odmah!"
-  },
-  "commandSolveActiveGame": {
-    "message": "Automatski reši aktivnu LinkedIn igru."
-  },
-  "commandGetSingleHint": {
-    "message": "Pružite jednostavan savet ili proverite greške."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Automatski otvori bočnu traku na igrama"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Automatski otvorite bočnu traku rešenja prilikom posete LinkedIn igrama."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "AUTO-OTVARANJE REŠAVAČA BOČNE TRAKE"
-  },
-  "permissionDialogTitle": {
-    "message": "Dodeli pristup stranici"
-  },
-  "permissionDialogDesc": {
-    "message": "Da bi otkrio aktivne igračke table i rešio zagonetke, ekstenziji je potrebna dozvola da radi na LinkedIn igrama. Kliknite ispod da biste odobrili pristup."
-  },
-  "permissionDialogButton": {
-    "message": "Dodeli pristup"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Igrajte i rešavajte Kraljice danas!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Otvorite mini-Sudoku reševač"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Otvorite Streaks i Performans Dashboard"
-  },
-  "diagnosticsEngine": {
-    "message": "Dijagnostički motor"
-  },
-  "liveInspected": {
-    "message": "Živo Inspekcija"
-  },
-  "offline": {
-    "message": "Van mreže"
-  },
-  "inspectedTab": {
-    "message": "Inspekcija kartice:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Živi Mrežni Inspektor"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Čekanje na LinkedIn stranicu igre"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Navigirajte do bilo kojeg taba LinkedIn Game board-a (Kraljice, Sudoku, Tango, Pinpoint) kako biste zabeležili koordinate ograničenja, stanja ćelija i reaktivne strukture."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Telemetrijski dnevnici strimer"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Pretraži dnevnike..."
-  },
-  "allTypes": {
-    "message": "SVE VRSTE"
-  },
-  "logsType": {
-    "message": "DRVA"
-  },
-  "infoType": {
-    "message": "INFO"
-  },
-  "warnsType": {
-    "message": "UPOZORAVA"
-  },
-  "errorsType": {
-    "message": "GREŠKE"
-  },
-  "selectTypePlaceholder": {
-    "message": "Izaberi tip"
-  },
-  "consoleStreamEmpty": {
-    "message": "Konzola Tok Prazan"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Nema zabeleženih izlaza iz dnevnika koji odgovaraju filtrima. Pokrenite korake unutar LinkedIn Games rešenja korisničkog interfejsa da biste ovde strimovali akcije dnevnika."
-  },
-  "subscribedToStorageSession": {
-    "message": "Pretplaćen na storage.session tok"
-  },
-  "parsingGameGridCells": {
-    "message": "Parsiranje ćelija igre... Osigurajte da su aktivne blokove mreže vidljive na tabli."
-  },
-  "urlLabel": {
-    "message": "Url:"
-  },
-  "notAvailable": {
-    "message": "N/A"
-  },
-  "matchesLabel": {
-    "message": "šibice"
-  },
-  "copiedLabel": {
-    "message": "Kopirano!"
-  },
-  "copyLogsTooltip": {
-    "message": "Kopiraj dnevnike"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Očisti prostor za logove"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Reši aktivnu LinkedIn igru"
-  },
-  "contextMenuHint": {
-    "message": "💡 Dobijte naznaku"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Pogledajte rezultate"
-  },
-  "labelTelemetryTitle": {
-    "message": "TELEMETRIJA I PRIVATNOST"
-  },
-  "telemetryToggleLabel": {
-    "message": "Pošaljite anonimnu telemetriju"
-  },
-  "telemetryToggleDesc": {
-    "message": "Pomozite poboljšanju rešenja deljenjem anonimnih performansi i metrika korišćenja."
-  }
+  "extensionName": "Решавач за LinkedIn Games",
+  "extensionDescription": "Помоћник за LinkedIn Games. Аутоматски решава дневне слагалице (Queens, Sudoku, Pinpoint, Crossclimb) са низовима и аналитиком.",
+  "subtitle": "Решите активне табле једним кликом",
+  "errorChromeTabIntegration": "Потребна је интеграција са Chrome картицом.",
+  "errorActiveTabNotFound": "Активна картица није пронађена.",
+  "errorNavigationFailed": "Кретање до $1 није успело.",
+  "errorConnectionFailed": "Веза није успела.",
+  "errorExecutionFailedDefault": "Дошло је до проблема приликом покретања решавача.",
+  "successSolverStarted": "Решавач је покренут.",
+  "dashboardTitle": "Историја и статистика",
+  "dashboardSubtitle": "Ваша историја и статистика за LinkedIn Games",
+  "statTotalSolved": "Укупно решено",
+  "statTotalSolvedDesc": "Игре решене за све датуме",
+  "statAverageTime": "Просечно време",
+  "statAverageTimeDesc": "За све забележене завршетке",
+  "statActiveStreak": "Активан низ",
+  "statActiveStreakDesc": "Узвратно активни дани",
+  "dashboardDescText": "Analizirajte svoje metrike performansi, beležite nizove i pratite puteve dnevno završenih zagonetki.",
+  "disclaimerText": "Одрицање од одговорности: Ово је независан, образовни пројекат отвореног кода. Није повезан, спонзорисан нити одобрен од стране компаније LinkedIn Corporation. „LinkedIn“ је регистровани жиг компаније LinkedIn Corporation.",
+  "title": "LinkedIn igre",
+  "switchThemeTitle": "Pređi na $1 režim",
+  "solvingStatus": "Rešavanje...",
+  "bonus": "Bonus",
+  "desc_patches": "Sastavi to zajedno",
+  "desc_zip": "Završite putanju",
+  "desc_sudoku": "Klasična igra, napravljena u mini formatu",
+  "desc_tango": "Harmonizujte mrežu",
+  "desc_queens": "Kruniš svaku regiju",
+  "desc_crossclimb": "Otključajte trivia merdevine",
+  "desc_pinpoint": "Pogodi kategoriju",
+  "titleSolve": "Reši $1",
+  "titleCompleted": "Dovršeno danas! Kliknite da odete na $1",
+  "titleOpen": "Otvorite $1 da biste rešili",
+  "perfectDay": "Savršen dan! Sve $1 igre su završene! 🎉",
+  "dailyProgress": "Dnevni napredak: $1 od $2 igara završenih danas",
+  "statStreakDays": "$1 дана",
+  "personalBests": "Lični rekordi",
+  "noRecordsYet": "Još nisu zabeleženi nijedni zapisi o rešenju.",
+  "solvingHistory": "Rešavanje istorije",
+  "activityCalendar": "Kalendar aktivnosti",
+  "clearFilter": "Očisti filter",
+  "settingModel": "Model",
+  "settingModelSelect": "Izaberite model",
+  "settingModelCustomOption": "Prilagođeno ime modela...",
+  "settingModelCustomLabel": "Prilagođeno ime modela",
+  "settingModelCustomPlaceholderLocal": "npr. llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Unesite prilagođeni identifikator...",
+  "settingEndpointLabel": "URL krajnje tačke",
+  "settingEndpointPlaceholder": "npr. http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API ključ",
+  "settingApiKeyOpenAI": "OpenAI API ključ",
+  "settingApiKeyAnthropic": "Anthropic API ključ",
+  "settingApiKeyDeepSeek": "DeepSeek API ključ",
+  "settingApiKeyCustom": "API ključ (opciono)",
+  "settingApiKeyPlaceholderCustom": "Opcione akreditive...",
+  "settingApiKeyPlaceholderDefault": "Unesite ključ za pristup...",
+  "settingApiKeyNotice": "Odabrani model rešava Crossclimb i Pinpoint. Ekstenzija nikada ne deli vaš ključ.",
+  "popupCardTitle": "Povežite se kroz zabavne, dnevne igre",
+  "popupCardDesc": "Pripremite svoj um za radni dan i uporedite rezultate. Vaši rezultati su privatni osim ako ih ne podelite.",
+  "saveAndBack": "Sačuvaj i nazad na igre",
+  "solvingWorking": "AI rešenje radi...",
+  "completedToday": "Završeno danas",
+  "solvedCountSuffix": "Rešeno",
+  "settingsHeaderTitle": "Konfiguracija AI modela",
+  "labelAiProvider": "AI Pružalac",
+  "labelModelIdentifier": "IDENTIFIKATOR MODELA",
+  "labelCustomModel": "IME PRILAGOĐENOG MODELA",
+  "labelEndpointUrl": "URL KRAJNJE TAČKE",
+  "labelGeminiKey": "GEMINI API KLJUČ",
+  "labelOpenAiKey": "OPENAI API KLJUČ",
+  "labelAnthropicKey": "ANTROPIC API KLJUČ",
+  "labelDeepSeekKey": "DEEPSEEK API KLJUČ",
+  "labelCustomKey": "API KLJUČ (OPCIONALNO)",
+  "navHome": "Dom",
+  "navAiConfig": "Podešavanja / Opcije",
+  "navStats": "Statistika",
+  "navTheme": "Tema",
+  "navDebug": "Otklanjanje grešaka",
+  "dailyProgressLabel": "Dnevni napredak",
+  "solveActiveBoard": "Rešite aktivnu tablu",
+  "backToGames": "Povratak na LinkedIn igre",
+  "dashboardLabel": "Kontrolna tabla",
+  "gamesSolverTitle": "Rešavač igara",
+  "completedSuccessfully": "Uspešno završeno",
+  "settingsCredentialsTitle": "Akreditivi i modeli",
+  "settingsModelGuideTitle": "Vodič za modele i informacije",
+  "settingsConnectionStatusTitle": "Status veze",
+  "settingsActiveSolverLabel": "Aktivni reševač:",
+  "settingsModelIdentifierLabel": "Identifikator modela:",
+  "settingsAutoSavedNotification": "Podešavanja su automatski sačuvana!",
+  "settingsSubtitleDesc": "Konfigurišite krajnje tačke i akreditive za integraciju AI modela za napredno rešavanje zagonetki.",
+  "settingsGeminiGuideDesc": "Izvanredna izvedba uz gotovo nulte troškove. Rešava Crossclimb i Pinpoint sa odličnom logikom. Preporučeni podrazumevani: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Brz, responzivan i izuzetno pouzdan sa opštim obrascima znanja. Preporučeni podrazumevani: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maksimalna kapacitet za rezonovanje. Besprekorno upravlja veoma složenim asocijacijama reči. Preporučeni podrazumevani: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Povežite se sa lokalnim LLM okvirima kao što su Ollama ili LM Studio. Postavite URL vašeg krajnjeg tačke (npr., http://localhost:11434/v1) i ime prilagođenog modela.",
+  "showMoreDates": "Prikaži više datuma",
+  "showLessDates": "Prikaži manje",
+  "solveBtn_withAi": "Reši uz pomoć veštačke inteligencije",
+  "solveBtn_game": "Reši igru",
+  "solveBtn_solving": "Rešavanje...",
+  "solveBtn_solved": "Rešeno!",
+  "scoreClue": "1 trag",
+  "scoreClues": "$1 tragovi",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "Označi kao Nije odigrano",
+  "settingSolveSpeed": "Rešavanje brzine / kašnjenja",
+  "solveSpeed_instant": "Instant (Najbrže)",
+  "solveSpeed_normal": "Normalno (Standardno)",
+  "solveSpeed_stealth": "Modus prikrivanja (kao ljudska kašnjenja)",
+  "labelSolveSpeed": "REŠAVANJE BRZINE I TEMPA",
+  "settingSolveSpeedNotice": "Instant mod završava tablu u milisekundama. Stealth mod oponaša ljudsko ponašanje sa randomizovanim tempom (1–3 sekunde) kako bi osigurao nizove protiv automatskog otkrivanja.",
+  "solveBtn_hint": "Dobijte trag",
+  "settingDefaultSolveMode": "Podrazumevana akcija rešenja",
+  "solveMode_full": "Potpuno automatsko rešenje",
+  "solveMode_hint": "Obrazovni režim saveta",
+  "labelDefaultSolveMode": "ZADANI MOD REŠAVAČA",
+  "settingDefaultSolveModeNotice": "Izaberite primarnu akciju prilikom aktiviranja rešenja iz prikaza taba ili tabli. Potpuno rešenje završava igru; Mod saveta postavlja jedan tačan predmet.",
+  "settingsChromeBuiltInGuideTitle": "Nulta cena i potpuno lokalna veštačka inteligencija",
+  "settingsChromeBuiltInGuideDesc": "Radi potpuno lokalno na vašem uređaju unutar pregledača. Nema mrežne latencije i 100% je besplatno sa Gemini Nano.",
+  "debugHeaderTitle": "Igra Debugger i alati za razvoj",
+  "debugStatusOffline": "Van mreže",
+  "debugStatusLive": "Živeti",
+  "debugDetectedGame": "Otkrivena igra",
+  "debugNoneDetected": "Nema otkriveno",
+  "debugTargetUrl": "Ciljna URL adresa",
+  "debugNoActiveTab": "Nema aktivne kartice",
+  "debugHtmlCopied": "HTML je kopiran!",
+  "debugCopyHtml": "Kopiraj <main> HTML",
+  "debugLogsCopied": "Zapisi su kopirani!",
+  "debugCopyLogs": "Kopiraj konzolne logove",
+  "debugBothCopied": "Oba su kopirana!",
+  "debugCopyBoth": "Kopiraj oba (HTML i dnevnike)",
+  "debugRegistryCopied": "Registrovani JSON je kopiran!",
+  "debugCopyRegistry": "Kopiraj današnji JSON registar",
+  "debugCopyRegistryShort": "Kopiraj JSON",
+  "debugSubmitAnswer": "Pošalji odgovor",
+  "debugDomPreview": "DOM Element Pregled",
+  "debugHtmlTruncated": "\n\n[... [skraćeno, ukupno karaktera: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Kopiraj kompletan <main> HTML",
+  "debugNoMainTagCaptured": "Nema aktivnog <main> taga. Proverite da li ste na ekranu igre na LinkedIn-u.",
+  "debugConsoleOutput": "Izlaz konzole",
+  "debugEventsCount": "$1 događaji",
+  "debugRefreshLogsTooltip": "Osveži dnevnike",
+  "debugClearLogsTooltip": "Obriši logove",
+  "debugNoLogsCaptured": "Još uvek nema zabeleženih logova. Izvršite radnje na ekranu igre da biste pokrenuli događaje u konzoli.",
+  "debugListeningEvents": "Slušanje za događaje console.log, console.warn i console.error...",
+  "debugErrorInitializing": "Povezivanje sa LinkedIn stranicom igre se inicijalizuje...",
+  "debugErrorRetrieveFailed": "Nije moguće preuzeti podatke o igri.",
+  "debugErrorNotGamesPage": "Aktivna kartica nije stranica LinkedIn igara. Idite na igru da biste zabeležili detalje.",
+  "debugErrorNoActiveTab": "Nije moguće identifikovati aktivnu karticu.",
+  "labelDailyReminders": "DNEVNI PODSETNICI I ZAŠTITA NIZA",
+  "settingEnableReminders": "Omogući dnevna podsećanja",
+  "settingEnableRemindersDesc": "Upozori me pre nego što današnji niz istekne.",
+  "settingReminderTime": "Podsetnik vreme",
+  "settingReminderTimeNotice": "Izaberite lokalno vreme da proverite nerešene igre.",
+  "notificationTitle": "Zaštitnik niza 🚀",
+  "notificationMessage": "Ne gubi svoj niz rešavanja! Još nisi rešio današnje LinkedIn igre.",
+  "notificationButton": "Reši odmah!",
+  "commandSolveActiveGame": "Automatski reši aktivnu LinkedIn igru.",
+  "commandGetSingleHint": "Pružite jednostavan savet ili proverite greške.",
+  "settingAutoOpenSidepanel": "Automatski otvori bočnu traku na igrama",
+  "settingAutoOpenSidepanelDesc": "Automatski otvorite bočnu traku rešenja prilikom posete LinkedIn igrama.",
+  "labelAutoOpenSidepanel": "AUTO-OTVARANJE REŠAVAČA BOČNE TRAKE",
+  "permissionDialogTitle": "Dodeli pristup stranici",
+  "permissionDialogDesc": "Da bi otkrio aktivne igračke table i rešio zagonetke, ekstenziji je potrebna dozvola da radi na LinkedIn igrama. Kliknite ispod da biste odobrili pristup.",
+  "permissionDialogButton": "Dodeli pristup",
+  "omniboxSuggestionQueens": "👑 Igrajte i rešavajte Kraljice danas!",
+  "omniboxSuggestionSudoku": "🔢 Otvorite mini-Sudoku reševač",
+  "omniboxSuggestionStats": "📊 Otvorite Streaks i Performans Dashboard",
+  "diagnosticsEngine": "Dijagnostički motor",
+  "liveInspected": "Živo Inspekcija",
+  "offline": "Van mreže",
+  "inspectedTab": "Inspekcija kartice:",
+  "liveMatrixGridInspector": "Živi Mrežni Inspektor",
+  "waitingForLinkedInGamePage": "Čekanje na LinkedIn stranicu igre",
+  "waitingForLinkedInGamePageDesc": "Navigirajte do bilo kojeg taba LinkedIn Game board-a (Kraljice, Sudoku, Tango, Pinpoint) kako biste zabeležili koordinate ograničenja, stanja ćelija i reaktivne strukture.",
+  "telemetryLogsStreamer": "Telemetrijski dnevnici strimer",
+  "searchLogsPlaceholder": "Pretraži dnevnike...",
+  "allTypes": "SVE VRSTE",
+  "logsType": "DRVA",
+  "infoType": "INFO",
+  "warnsType": "UPOZORAVA",
+  "errorsType": "GREŠKE",
+  "selectTypePlaceholder": "Izaberi tip",
+  "consoleStreamEmpty": "Konzola Tok Prazan",
+  "consoleStreamEmptyDesc": "Nema zabeleženih izlaza iz dnevnika koji odgovaraju filtrima. Pokrenite korake unutar LinkedIn Games rešenja korisničkog interfejsa da biste ovde strimovali akcije dnevnika.",
+  "subscribedToStorageSession": "Pretplaćen na storage.session tok",
+  "parsingGameGridCells": "Parsiranje ćelija igre... Osigurajte da su aktivne blokove mreže vidljive na tabli.",
+  "urlLabel": "Url:",
+  "notAvailable": "N/A",
+  "matchesLabel": "šibice",
+  "copiedLabel": "Kopirano!",
+  "copyLogsTooltip": "Kopiraj dnevnike",
+  "clearLogSpaceTooltip": "Očisti prostor za logove",
+  "contextMenuSolve": "⚡ Reši aktivnu LinkedIn igru",
+  "contextMenuHint": "💡 Dobijte naznaku",
+  "contextMenuViewResults": "📊 Pogledajte rezultate",
+  "labelTelemetryTitle": "TELEMETRIJA I PRIVATNOST",
+  "telemetryToggleLabel": "Pošaljite anonimnu telemetriju",
+  "telemetryToggleDesc": "Pomozite poboljšanju rešenja deljenjem anonimnih performansi i metrika korišćenja."
 }

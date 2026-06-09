@@ -1,772 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn Games-oplosser",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Een hulpje voor LinkedIn Games. Los dagelijkse puzzels (Queens, Sudoku, Pinpoint, Crossclimb) automatisch op, met reeksen en analytics.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIn Spellen",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "Los actieve borden op met één klik",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "Overschakelen naar $1-modus",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Chrome-tabintegratie is vereist.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Het actieve tabblad is niet gevonden.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Navigeren naar $1 is mislukt.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Verbinding mislukt.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Er is een probleem opgetreden أثناء het uitvoeren van de oplosser.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "De oplosser is gestart.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "Oplossen...",
-    "description": "Overlay label during solver run"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "desc_patches": {
-    "message": "Plakken samenbrengen"
-  },
-  "desc_zip": {
-    "message": "Pad voltooien"
-  },
-  "desc_sudoku": {
-    "message": "Klassiek spel, mini versie"
-  },
-  "desc_tango": {
-    "message": "Rooster harmoniseren"
-  },
-  "desc_queens": {
-    "message": "Elke regio kronen"
-  },
-  "desc_crossclimb": {
-    "message": "Studieladder openen"
-  },
-  "desc_pinpoint": {
-    "message": "Categorie raden"
-  },
-  "titleSolve": {
-    "message": "$1 oplossen",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "Vandaag voltooid! Klik om naar $1 te gaan",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "Open $1 om op te lossen",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "Perfecte dag! Alle $1-spellen voltooid! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "Dagelijkse voortgang: $1 van $2 spellen voltooid",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "Geschiedenis & Statistieken",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Je LinkedIn Games-oplosgeschiedenis en statistieken",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Totaal opgelost",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Spellen opgelost over alle datums",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Gemiddelde tijd",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Over alle geregistreerde voltooiingen",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Actieve reeks",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Aaneengesloten actieve dagen",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 dagen",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "Persoonlijke records",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "Nog geen oplossingrecords.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "Oplossingsgeschiedenis",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "Activiteitenkalender",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "Filter wissen",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModelSelect": {
-    "message": "Kies model",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "Aangepaste modelnaam...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "Aangepaste modelnaam",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "bijv: llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Voer aangepaste ID in...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "Eindpunt-URL",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "bijv: http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API-sleutel",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API-sleutel",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API-sleutel",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API-sleutel",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API-sleutel (optioneel)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Inloggegevens (optioneel)...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Voer inloggev sleutel in...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "Het gekozen model lost Crossclimb en Precisie op. Extensie zal uw sleutel nooit delen.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "LinkedIn Games Solver",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "Los LinkedIn-spellen op met AI",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "Opslaan en terug naar spellen",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "AI-oplosser werkt...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "Vandaag voltooid",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "Opgelost",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "AI-modelconfiguratie",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "AI-provider",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "Modelidentificatie",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "Aangepaste modelnaam",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "Eindpunt-URL",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API-SLEUTEL",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API-SLEUTEL",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API-SLEUTEL",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API-SLEUTEL",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API-SLEUTEL (OPTIONEEL)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "Thuis",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "Instellingen/Opties",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "Statistieken",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "Thema",
-    "description": "Theme nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "Dagelijkse voortgang",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "Los actief bord op",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "Terug naar LinkedIn-spellen",
-    "description": "Text for the link back to games tab"
-  },
-  "gamesSolverTitle": {
-    "message": "Spellen-oplosser",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "Analyseer je prestatiegegevens, leg streaks vast en volg de paden van je dagelijks voltooide puzzels.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "Met succes voltooid",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "Disclaimer: dit is een onafhankelijk educatief opensourceproject. Het is niet gelieerd aan, gesponsord of goedgekeurd door LinkedIn Corporation. ‘LinkedIn’ is een geregistreerd handelsmerk van LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Inloggegevens en modellen",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Modelgids en informatie",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Verbindingsstatus",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Actieve oplosser:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Modelidentificatie:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Instellingen automatisch opgeslagen!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Configureer AI-model eindpunten en inloggegevens voor geavanceerde puzzeloplosing.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Uitstekende prestaties, bijna nul kosten. Lost Crossclimb en Precisie op met uitstekende logica. Aanbevolen: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Snel, responsief en zeer betrouwbaar met algemene kennismodellen. Aanbevolen: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maximale redeneringscapaciteit. Verwerkt complexe kruiswoorden foutloos. Aanbevolen: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Verbind met lokale LLM-frameworks zoals Ollama of LM Studio.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "Meer datums weergeven",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "Minder weergeven",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "Oplossen met AI"
-  },
-  "solveBtn_game": {
-    "message": "Spel oplossen"
-  },
-  "solveBtn_solving": {
-    "message": "Oplossen..."
-  },
-  "solveBtn_solved": {
-    "message": "Opgelost!"
-  },
-  "scoreClue": {
-    "message": "1 aanwijzing"
-  },
-  "scoreClues": {
-    "message": "$1 aanwijzingen"
-  },
-  "markAsNotPlayed": {
-    "message": "Markeren als niet gespeeld",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "Oplossnelheid/vertraging",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "Onmiddellijk (snelste)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "Normaal (standaard)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "Stealth-modus (menselijke vertragingen)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "Oplossnelheid en tempo",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Directe modus voltooit het bord in milliseconden.",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "Hint krijgen",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Standaard oplosseractie",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "Volledig automatisch oplossen",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "Educatieve hintmodus",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "Standaard oplosser modus",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Kies de primaire actie bij het starten van de oplosser.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "AI met nulkosten volledig lokaal",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Draait volledig lokaal op uw apparaat, binnen de browser.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "Spellendebugger en ontwikkelaarstools",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugDetectedGame": {
-    "message": "Gedetecteerd spel",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "Geen gedetecteerd",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "Doel-URL",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "Geen actief tabblad",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML gekopieerd!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "<main> HTML kopiëren",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "Logboeken gekopieerd!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "Consolelogboeken kopiëren",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "Beide gekopieerd!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "Beide kopiëren (HTML en logboeken)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "Register JSON gekopieerd!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "Register JSON vandaag kopiëren",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "JSON kopiëren",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "Antwoord indienen",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "DOM-element voorbeeld",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [afgekapt, totaal karakters: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Volledig <main> HTML kopiëren",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Geen actieve <main> tag vastgelegd.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "Console-uitvoer",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 gebeurtenissen",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Logboeken verversen",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Logboeken wissen",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Nog geen logboeken vastgelegd.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "Luisteren naar console.log, console.warn en console.error...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "Initialisatie van verbinding met LinkedIn-spelpagina...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Kon spelgegevens niet ophalen.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Het actieve tabblad is geen LinkedIn-spelpagina.",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Kon actief tabblad niet identificeren.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "Dagelijkse herinneringen en streak-beveiliging",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "Dagelijkse herinneringen inschakelen",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Waarschuwen voordat vandaag de streak verloopt.",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "Herinnertijd",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Kies lokale tijd om onvoltooide spellen te controleren.",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "Streak-beveiliging 🚀",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "Verlies uw oplossingstreak niet! U hebt nog niet de spellen van vandaag opgelost.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "Nu oplossen!",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "Los actief LinkedIn-spel automatisch op."
-  },
-  "commandGetSingleHint": {
-    "message": "Geef eenhaps hint of controleer fouten."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Zijpaneel in spellen automatisch openen"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Open het oplosser zijpaneel automatisch."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "Oplosser zijpaneel automatisch openen"
-  },
-  "permissionDialogTitle": {
-    "message": "Pagina-toestemming verlenen"
-  },
-  "permissionDialogDesc": {
-    "message": "Extensie vereist toestemming."
-  },
-  "permissionDialogButton": {
-    "message": "Toestemming verlenen"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Speel en los Vrouwen vandaag op!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Mini Sudoku-oplosser openen"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Streak en performance dashboard openen"
-  },
-  "diagnosticsEngine": {
-    "message": "Diagnostische engine"
-  },
-  "liveInspected": {
-    "message": "Live geinspecteerd"
-  },
-  "inspectedTab": {
-    "message": "Geinspecteerd tabblad:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Live matrix rasterin spector"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Wachten op LinkedIn-spelpagina"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Navigeer naar een LinkedIn-spelbordt tabblad."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Telemetrie log streamer"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Logboeken doorzoeken..."
-  },
-  "allTypes": {
-    "message": "Alle typen"
-  },
-  "logsType": {
-    "message": "Logboeken"
-  },
-  "infoType": {
-    "message": "Informatie"
-  },
-  "warnsType": {
-    "message": "Waarschuwingen"
-  },
-  "errorsType": {
-    "message": "Fouten"
-  },
-  "selectTypePlaceholder": {
-    "message": "Selecteer type"
-  },
-  "consoleStreamEmpty": {
-    "message": "Console stream leeg"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Geen logboekuitvoer gedetecteerd."
-  },
-  "subscribedToStorageSession": {
-    "message": "Geabonneerd op storage.session stream"
-  },
-  "parsingGameGridCells": {
-    "message": "Spelrastercellen parseren..."
-  },
-  "urlLabel": {
-    "message": "URL:"
-  },
-  "matchesLabel": {
-    "message": "Overeenkomsten"
-  },
-  "copiedLabel": {
-    "message": "Gekopieerd!"
-  },
-  "copyLogsTooltip": {
-    "message": "Logboeken kopiëren"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Logboekruimte wissen"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Los actief LinkedIn-spel op"
-  },
-  "contextMenuHint": {
-    "message": "💡 Krijg hint"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Resultaten weergeven"
-  },
-  "labelTelemetryTitle": {
-    "message": "Telemetrie en privacy",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "Anonieme telemetrie verzenden",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "Help de oplosser verbeteren.",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "bonus": {
-    "message": "Bonus"
-  },
-  "settingModel": {
-    "message": "Model"
-  },
-  "navDebug": {
-    "message": "Foutopsporing"
-  },
-  "dashboardLabel": {
-    "message": "Dashboard"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "debugStatusOffline": {
-    "message": "Offline"
-  },
-  "debugStatusLive": {
-    "message": "Leven"
-  },
-  "offline": {
-    "message": "Offline"
-  },
-  "notAvailable": {
-    "message": "N.v.t."
-  }
+  "extensionName": "LinkedIn Games-oplosser",
+  "extensionDescription": "Een hulpje voor LinkedIn Games. Los dagelijkse puzzels (Queens, Sudoku, Pinpoint, Crossclimb) automatisch op, met reeksen en analytics.",
+  "title": "LinkedIn Spellen",
+  "subtitle": "Los actieve borden op met één klik",
+  "switchThemeTitle": "Overschakelen naar $1-modus",
+  "errorChromeTabIntegration": "Chrome-tabintegratie is vereist.",
+  "errorActiveTabNotFound": "Het actieve tabblad is niet gevonden.",
+  "errorNavigationFailed": "Navigeren naar $1 is mislukt.",
+  "errorConnectionFailed": "Verbinding mislukt.",
+  "errorExecutionFailedDefault": "Er is een probleem opgetreden أثناء het uitvoeren van de oplosser.",
+  "successSolverStarted": "De oplosser is gestart.",
+  "solvingStatus": "Oplossen...",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "desc_patches": "Plakken samenbrengen",
+  "desc_zip": "Pad voltooien",
+  "desc_sudoku": "Klassiek spel, mini versie",
+  "desc_tango": "Rooster harmoniseren",
+  "desc_queens": "Elke regio kronen",
+  "desc_crossclimb": "Studieladder openen",
+  "desc_pinpoint": "Categorie raden",
+  "titleSolve": "$1 oplossen",
+  "titleCompleted": "Vandaag voltooid! Klik om naar $1 te gaan",
+  "titleOpen": "Open $1 om op te lossen",
+  "perfectDay": "Perfecte dag! Alle $1-spellen voltooid! 🎉",
+  "dailyProgress": "Dagelijkse voortgang: $1 van $2 spellen voltooid",
+  "dashboardTitle": "Geschiedenis & Statistieken",
+  "dashboardSubtitle": "Je LinkedIn Games-oplosgeschiedenis en statistieken",
+  "statTotalSolved": "Totaal opgelost",
+  "statTotalSolvedDesc": "Spellen opgelost over alle datums",
+  "statAverageTime": "Gemiddelde tijd",
+  "statAverageTimeDesc": "Over alle geregistreerde voltooiingen",
+  "statActiveStreak": "Actieve reeks",
+  "statActiveStreakDesc": "Aaneengesloten actieve dagen",
+  "statStreakDays": "$1 dagen",
+  "personalBests": "Persoonlijke records",
+  "noRecordsYet": "Nog geen oplossingrecords.",
+  "solvingHistory": "Oplossingsgeschiedenis",
+  "activityCalendar": "Activiteitenkalender",
+  "clearFilter": "Filter wissen",
+  "settingModelSelect": "Kies model",
+  "settingModelCustomOption": "Aangepaste modelnaam...",
+  "settingModelCustomLabel": "Aangepaste modelnaam",
+  "settingModelCustomPlaceholderLocal": "bijv: llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Voer aangepaste ID in...",
+  "settingEndpointLabel": "Eindpunt-URL",
+  "settingEndpointPlaceholder": "bijv: http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API-sleutel",
+  "settingApiKeyOpenAI": "OpenAI API-sleutel",
+  "settingApiKeyAnthropic": "Anthropic API-sleutel",
+  "settingApiKeyDeepSeek": "DeepSeek API-sleutel",
+  "settingApiKeyCustom": "API-sleutel (optioneel)",
+  "settingApiKeyPlaceholderCustom": "Inloggegevens (optioneel)...",
+  "settingApiKeyPlaceholderDefault": "Voer inloggev sleutel in...",
+  "settingApiKeyNotice": "Het gekozen model lost Crossclimb en Precisie op. Extensie zal uw sleutel nooit delen.",
+  "popupCardTitle": "LinkedIn Games Solver",
+  "popupCardDesc": "Los LinkedIn-spellen op met AI",
+  "saveAndBack": "Opslaan en terug naar spellen",
+  "solvingWorking": "AI-oplosser werkt...",
+  "completedToday": "Vandaag voltooid",
+  "solvedCountSuffix": "Opgelost",
+  "settingsHeaderTitle": "AI-modelconfiguratie",
+  "labelAiProvider": "AI-provider",
+  "labelModelIdentifier": "Modelidentificatie",
+  "labelCustomModel": "Aangepaste modelnaam",
+  "labelEndpointUrl": "Eindpunt-URL",
+  "labelGeminiKey": "GEMINI API-SLEUTEL",
+  "labelOpenAiKey": "OPENAI API-SLEUTEL",
+  "labelAnthropicKey": "ANTHROPIC API-SLEUTEL",
+  "labelDeepSeekKey": "DEEPSEEK API-SLEUTEL",
+  "labelCustomKey": "API-SLEUTEL (OPTIONEEL)",
+  "navHome": "Thuis",
+  "navAiConfig": "Instellingen/Opties",
+  "navStats": "Statistieken",
+  "navTheme": "Thema",
+  "dailyProgressLabel": "Dagelijkse voortgang",
+  "solveActiveBoard": "Los actief bord op",
+  "backToGames": "Terug naar LinkedIn-spellen",
+  "gamesSolverTitle": "Spellen-oplosser",
+  "dashboardDescText": "Analyseer je prestatiegegevens, leg streaks vast en volg de paden van je dagelijks voltooide puzzels.",
+  "completedSuccessfully": "Met succes voltooid",
+  "disclaimerText": "Disclaimer: dit is een onafhankelijk educatief opensourceproject. Het is niet gelieerd aan, gesponsord of goedgekeurd door LinkedIn Corporation. ‘LinkedIn’ is een geregistreerd handelsmerk van LinkedIn Corporation.",
+  "settingsCredentialsTitle": "Inloggegevens en modellen",
+  "settingsModelGuideTitle": "Modelgids en informatie",
+  "settingsConnectionStatusTitle": "Verbindingsstatus",
+  "settingsActiveSolverLabel": "Actieve oplosser:",
+  "settingsModelIdentifierLabel": "Modelidentificatie:",
+  "settingsAutoSavedNotification": "Instellingen automatisch opgeslagen!",
+  "settingsSubtitleDesc": "Configureer AI-model eindpunten en inloggegevens voor geavanceerde puzzeloplosing.",
+  "settingsGeminiGuideDesc": "Uitstekende prestaties, bijna nul kosten. Lost Crossclimb en Precisie op met uitstekende logica. Aanbevolen: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Snel, responsief en zeer betrouwbaar met algemene kennismodellen. Aanbevolen: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maximale redeneringscapaciteit. Verwerkt complexe kruiswoorden foutloos. Aanbevolen: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Verbind met lokale LLM-frameworks zoals Ollama of LM Studio.",
+  "showMoreDates": "Meer datums weergeven",
+  "showLessDates": "Minder weergeven",
+  "solveBtn_withAi": "Oplossen met AI",
+  "solveBtn_game": "Spel oplossen",
+  "solveBtn_solving": "Oplossen...",
+  "solveBtn_solved": "Opgelost!",
+  "scoreClue": "1 aanwijzing",
+  "scoreClues": "$1 aanwijzingen",
+  "markAsNotPlayed": "Markeren als niet gespeeld",
+  "settingSolveSpeed": "Oplossnelheid/vertraging",
+  "solveSpeed_instant": "Onmiddellijk (snelste)",
+  "solveSpeed_normal": "Normaal (standaard)",
+  "solveSpeed_stealth": "Stealth-modus (menselijke vertragingen)",
+  "labelSolveSpeed": "Oplossnelheid en tempo",
+  "settingSolveSpeedNotice": "Directe modus voltooit het bord in milliseconden.",
+  "solveBtn_hint": "Hint krijgen",
+  "settingDefaultSolveMode": "Standaard oplosseractie",
+  "solveMode_full": "Volledig automatisch oplossen",
+  "solveMode_hint": "Educatieve hintmodus",
+  "labelDefaultSolveMode": "Standaard oplosser modus",
+  "settingDefaultSolveModeNotice": "Kies de primaire actie bij het starten van de oplosser.",
+  "settingsChromeBuiltInGuideTitle": "AI met nulkosten volledig lokaal",
+  "settingsChromeBuiltInGuideDesc": "Draait volledig lokaal op uw apparaat, binnen de browser.",
+  "debugHeaderTitle": "Spellendebugger en ontwikkelaarstools",
+  "debugDetectedGame": "Gedetecteerd spel",
+  "debugNoneDetected": "Geen gedetecteerd",
+  "debugTargetUrl": "Doel-URL",
+  "debugNoActiveTab": "Geen actief tabblad",
+  "debugHtmlCopied": "HTML gekopieerd!",
+  "debugCopyHtml": "<main> HTML kopiëren",
+  "debugLogsCopied": "Logboeken gekopieerd!",
+  "debugCopyLogs": "Consolelogboeken kopiëren",
+  "debugBothCopied": "Beide gekopieerd!",
+  "debugCopyBoth": "Beide kopiëren (HTML en logboeken)",
+  "debugRegistryCopied": "Register JSON gekopieerd!",
+  "debugCopyRegistry": "Register JSON vandaag kopiëren",
+  "debugCopyRegistryShort": "JSON kopiëren",
+  "debugSubmitAnswer": "Antwoord indienen",
+  "debugDomPreview": "DOM-element voorbeeld",
+  "debugHtmlTruncated": "\n\n[ ... [afgekapt, totaal karakters: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Volledig <main> HTML kopiëren",
+  "debugNoMainTagCaptured": "Geen actieve <main> tag vastgelegd.",
+  "debugConsoleOutput": "Console-uitvoer",
+  "debugEventsCount": "$1 gebeurtenissen",
+  "debugRefreshLogsTooltip": "Logboeken verversen",
+  "debugClearLogsTooltip": "Logboeken wissen",
+  "debugNoLogsCaptured": "Nog geen logboeken vastgelegd.",
+  "debugListeningEvents": "Luisteren naar console.log, console.warn en console.error...",
+  "debugErrorInitializing": "Initialisatie van verbinding met LinkedIn-spelpagina...",
+  "debugErrorRetrieveFailed": "Kon spelgegevens niet ophalen.",
+  "debugErrorNotGamesPage": "Het actieve tabblad is geen LinkedIn-spelpagina.",
+  "debugErrorNoActiveTab": "Kon actief tabblad niet identificeren.",
+  "labelDailyReminders": "Dagelijkse herinneringen en streak-beveiliging",
+  "settingEnableReminders": "Dagelijkse herinneringen inschakelen",
+  "settingEnableRemindersDesc": "Waarschuwen voordat vandaag de streak verloopt.",
+  "settingReminderTime": "Herinnertijd",
+  "settingReminderTimeNotice": "Kies lokale tijd om onvoltooide spellen te controleren.",
+  "notificationTitle": "Streak-beveiliging 🚀",
+  "notificationMessage": "Verlies uw oplossingstreak niet! U hebt nog niet de spellen van vandaag opgelost.",
+  "notificationButton": "Nu oplossen!",
+  "commandSolveActiveGame": "Los actief LinkedIn-spel automatisch op.",
+  "commandGetSingleHint": "Geef eenhaps hint of controleer fouten.",
+  "settingAutoOpenSidepanel": "Zijpaneel in spellen automatisch openen",
+  "settingAutoOpenSidepanelDesc": "Open het oplosser zijpaneel automatisch.",
+  "labelAutoOpenSidepanel": "Oplosser zijpaneel automatisch openen",
+  "permissionDialogTitle": "Pagina-toestemming verlenen",
+  "permissionDialogDesc": "Extensie vereist toestemming.",
+  "permissionDialogButton": "Toestemming verlenen",
+  "omniboxSuggestionQueens": "👑 Speel en los Vrouwen vandaag op!",
+  "omniboxSuggestionSudoku": "🔢 Mini Sudoku-oplosser openen",
+  "omniboxSuggestionStats": "📊 Streak en performance dashboard openen",
+  "diagnosticsEngine": "Diagnostische engine",
+  "liveInspected": "Live geinspecteerd",
+  "inspectedTab": "Geinspecteerd tabblad:",
+  "liveMatrixGridInspector": "Live matrix rasterin spector",
+  "waitingForLinkedInGamePage": "Wachten op LinkedIn-spelpagina",
+  "waitingForLinkedInGamePageDesc": "Navigeer naar een LinkedIn-spelbordt tabblad.",
+  "telemetryLogsStreamer": "Telemetrie log streamer",
+  "searchLogsPlaceholder": "Logboeken doorzoeken...",
+  "allTypes": "Alle typen",
+  "logsType": "Logboeken",
+  "infoType": "Informatie",
+  "warnsType": "Waarschuwingen",
+  "errorsType": "Fouten",
+  "selectTypePlaceholder": "Selecteer type",
+  "consoleStreamEmpty": "Console stream leeg",
+  "consoleStreamEmptyDesc": "Geen logboekuitvoer gedetecteerd.",
+  "subscribedToStorageSession": "Geabonneerd op storage.session stream",
+  "parsingGameGridCells": "Spelrastercellen parseren...",
+  "urlLabel": "URL:",
+  "matchesLabel": "Overeenkomsten",
+  "copiedLabel": "Gekopieerd!",
+  "copyLogsTooltip": "Logboeken kopiëren",
+  "clearLogSpaceTooltip": "Logboekruimte wissen",
+  "contextMenuSolve": "⚡ Los actief LinkedIn-spel op",
+  "contextMenuHint": "💡 Krijg hint",
+  "contextMenuViewResults": "📊 Resultaten weergeven",
+  "labelTelemetryTitle": "Telemetrie en privacy",
+  "telemetryToggleLabel": "Anonieme telemetrie verzenden",
+  "telemetryToggleDesc": "Help de oplosser verbeteren.",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "bonus": "Bonus",
+  "settingModel": "Model",
+  "navDebug": "Foutopsporing",
+  "dashboardLabel": "Dashboard",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "debugStatusOffline": "Offline",
+  "debugStatusLive": "Leven",
+  "offline": "Offline",
+  "notAvailable": "N.v.t."
 }

@@ -1,774 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIni mängude lahendaja",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Abiline LinkedIni mängude jaoks. Lahendab automaatselt igapäevased mõistatused (Queens, Sudoku, Pinpoint, Crossclimb), jälgides järjestusi ja pakkudes analüütikat.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIni mängud",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "Lahenda aktiivsed lauad ühe klõpsuga",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "Lülitu $1 režiimi",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Vajalik on Chrome'i vahekaardi integreerimine.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Aktiivset vahekaarti ei leitud.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Liikumine asukohta $1 ebaõnnestus.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Ühendus nurjus.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Lahendaja käivitamisel tekkis probleem.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Lahendaja käivitati.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "Lahendamine...",
-    "description": "Overlay label during solver run"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "bonus": {
-    "message": "Boonus",
-    "description": "Bonus badge next to game name"
-  },
-  "desc_patches": {
-    "message": "Pane tükid kokku"
-  },
-  "desc_zip": {
-    "message": "Täienda rada"
-  },
-  "desc_sudoku": {
-    "message": "Klassikaline mäng, mini"
-  },
-  "desc_tango": {
-    "message": "Harmoniseeri võrk"
-  },
-  "desc_queens": {
-    "message": "Krooni iga piirkond"
-  },
-  "desc_crossclimb": {
-    "message": "Lukusta trivia redel lahti"
-  },
-  "desc_pinpoint": {
-    "message": "Arva kategooria"
-  },
-  "titleSolve": {
-    "message": "Lahenda $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "Täna lõpetatud! Klõpsa, et navigeerida $1",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "Ava $1 lahendamiseks",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "Täiuslik päev! Kõik $1 mängud lõpetatud! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "Päevane edenemine: $1 / $2 mängu lõpetatud täna",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "Ajalugu ja statistika",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Teie LinkedIn Games lahenduste ajalugu ja statistika",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Kokku lahendatud",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Mängud lahendatud kõigil kuupäevadel",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Keskmine aeg",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Kõigi registreeritud lõpete põhjal",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Aktiivne järjestus",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Järjestikused aktiivsed päevad",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 päeva",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "Isiklikud rekordid",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "Veel pole ühtegi lahenduse kirjet.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "Lahenduste ajalugu",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "Tegevuste kalender",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "Tühjenda filter",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "Mudel",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "Vali mudel",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "Kohandatud mudeli nimi...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "Kohandatud mudeli nimi",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "nt. llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Sisesta kohandatud identifikaator...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "nt. http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API võti",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API võti",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API võti",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API võti",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API võti (valikuline)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Valikulised mandaadid...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Sisesta mandaadi võti...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "Valitud mudel lahendab Crossclimb & Pinpoint. Laiendus ei jaga kunagi sinu võtit.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "Ühendage end lõbusate päevaülesannete kaudu",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "Valmistage oma meeled tööpäevaks ja võrrelge tulemusi. Teie skoor on privaatne, kui te seda ei jaga.",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "Salvesta ja tagasi mängude juurde",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "AI lahendaja töötab...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "Täna lõpetatud",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "Lahendatud",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "AI mudeli seadistamine",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "AI PAKKIJA",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "MUDELI TUNNUSTI",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "KOHANDATUD MUDELI NIMI",
-    "description": "Custom Model Name input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API VÕTI",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API VÕTI",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API VÕTI",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API VÕTI",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API VÕTI (VALIKULINE)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "Kodu",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "Seaded / Valikud",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "Statistika",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "Teema",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "Silumine",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "Päevane edenemine",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "Lahenda aktiivne tahvel",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "Tagasi LinkedIn mängudesse",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "Töölaud",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "Mängude lahendaja",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "Analüüsi oma mõõdikuid, salvesta seeriad ja jälgi igapäevaselt lõpetatud pusle-radasid.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "Edukalt lõpetatud",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "Vastutusest loobumine: tegemist on sõltumatu, avatud lähtekoodiga haridusprojektiga. See ei ole seotud LinkedIn Corporationiga ega selle poolt sponsoreeritud või heaks kiidetud. „LinkedIn“ on LinkedIn Corporationi registreeritud kaubamärk.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Mandaat & mudelid",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Mudeli juhend & info",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Ühenduse staatus",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Aktiivne lahendaja:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Mudeli identifikaator:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Seaded automaatselt salvestatud!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Seadista AI mudelite endpoints ja mandaadid edasiseks pusle-lahenduseks.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Suur jõudlus peaaegu nullkulude juures. Lahendab Crossclimb ja Pinpoint suurepärase loogikaga. Soovitus: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Kiire, vastutulelik ja äärmiselt usaldusväärne üldteadmiste mustritega. Soovitus: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maksimaalne järeldamisvõime. Haldab väga keerukaid sõnaühendusi laitmatult. Soovitus: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Ühendu kohalike LLM raamistikuga nagu Ollama või LM Studio. Suuna oma endpoint URL ja kohandatud mudeli nimi.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "Näita rohkem kuupäevi",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "Näita vähem kuupäevi",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "Lahenda AI-ga"
-  },
-  "solveBtn_game": {
-    "message": "Lahenda mäng"
-  },
-  "solveBtn_solving": {
-    "message": "Lahendamine..."
-  },
-  "solveBtn_solved": {
-    "message": "Lahendatud!"
-  },
-  "scoreClue": {
-    "message": "1 vihje"
-  },
-  "scoreClues": {
-    "message": "$1 vihjet"
-  },
-  "markAsNotPlayed": {
-    "message": "Markeeri mitte mängituna",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "Lahenduskiirus / Viivitus",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "Vahetu (Kõige kiirem)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "Tavaline (Standard)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "Varjatud režiim (inim-sarnased viivitused)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "LAHENDUSKIIRUS & TEMPO",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Vahetu režiim lõpetab tahvli millisekunditega. Varjatud režiim jäljendab inimese käitumist juhusliku tempoga (1–3 s).",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "Saavuta vihje",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Vaikimisi lahendaja tegevus",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "Täielik automaatlahendus",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "Õppe vihje-režiim",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "VAIKIMISI LAHENDA REŽIIM",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Vali põhitegevus, kui lahendajat käivitatakse vahekaardivaate või tahvlitelt.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Nullkulu & Täielikult kohalik AI",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Jookseb täielikult lokaalselt sinu seadmes brauseris. Võrgu latentsus null ja 100% tasuta Gemini Nano-ga.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "Mängude silur & Dev tööriistad",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "Võrgust väljas",
-    "description": "Debug offline status indicator label"
-  },
-  "debugStatusLive": {
-    "message": "Otsesaates",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "Avastatud mäng",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "Puudub avastus",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "Siht-URL",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "Pole aktiivset vahekaarti",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML kopeeritud!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "Kopeeri <main> HTML",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "Logid kopeeritud!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "Kopeeri konsoolilogid",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "Mõlemad kopeeritud!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "Kopeeri mõlemad (HTML & logid)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "Registri JSON kopeeritud!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "Kopeeri tänane registri JSON",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Kopeeri JSON",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "Esita vastus",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "DOM elemendi eelvaade",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [kokku tähemärke: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Kopeeri täielik <main> HTML",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Aktivset <main> märgendit ei leitud. Veendu, et oled LinkedIn mängu ekraanil.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "Konsooli väljund",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 sündmust",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Värskenda logisid",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Tühjenda logid",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Logisid pole veel salvestatud. Käivita tegevusi mänguekraanil, et vallandada sündmusi.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "Kuulan console.log, console.warn ja console.error...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "Initsialiseerimine LinkedIn Game lehega...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Mänguandmete toomine ebaõnnestus.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "See funktsioon on saadaval ainult linkedin.com/games",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Ei saa ligi aktiivsele vahekaardile. Kontrolli laienduse õigusi.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "Igapäevased meeldetuletused",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "Luba igapäevased meeldetuletused",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Saa teatis, kui LinkedIn Games on saadaval",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "Meeldetuletuse aeg",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Kohanda, millal saad igapäevased pusle-meeldetuletused",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "LinkedIn Games igapäevane meeldetuletus",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "Sinu igapäevane pusle on valmis! Klõpsa mängimiseks.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "Mängi nüüd",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "Lahenda aktiivne mäng"
-  },
-  "commandGetSingleHint": {
-    "message": "Saada vihje praeguse mängu jaoks"
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Automaatne külgpaneeli avamine"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Ava automaatselt lahendaja paneel LinkedIn Games külastamisel"
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "AUTO-AVA KÜLGPANEEL"
-  },
-  "permissionDialogTitle": {
-    "message": "Laienduse õigused"
-  },
-  "permissionDialogDesc": {
-    "message": "See laiendus vajab luba LinkedIn Games sisu kuvamiseks"
-  },
-  "permissionDialogButton": {
-    "message": "Luba juurdepääs"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "Lahenda Queens pusle"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "Lahenda Sudoku pusle"
-  },
-  "omniboxSuggestionStats": {
-    "message": "Vaata mängu statistikat"
-  },
-  "diagnosticsEngine": {
-    "message": "Diagnostika mootor"
-  },
-  "liveInspected": {
-    "message": "Reaalajas kontrollitud"
-  },
-  "offline": {
-    "message": "Võrgust väljas"
-  },
-  "inspectedTab": {
-    "message": "Kontrollitud vahekaart"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Reaalajas maatriksvõrgu inspektor"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Ootan LinkedIn Games lehte..."
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Mine aadressile linkedin.com/games, et näha pusle andmeid"
-  },
-  "telemetryLogsStreamer": {
-    "message": "Telemeetria logide voog"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Otsi logisid..."
-  },
-  "allTypes": {
-    "message": "Kõik tüübid"
-  },
-  "logsType": {
-    "message": "Logid"
-  },
-  "infoType": {
-    "message": "Info"
-  },
-  "warnsType": {
-    "message": "Hoiatused"
-  },
-  "errorsType": {
-    "message": "Ve錯"
-  },
-  "selectTypePlaceholder": {
-    "message": "Vali logi tüüp"
-  },
-  "consoleStreamEmpty": {
-    "message": "Konsoolil pole kirjeid"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Alusta lahendamist telemeetria jäädvustamiseks"
-  },
-  "subscribedToStorageSession": {
-    "message": "Tellitud salvestusistungile"
-  },
-  "parsingGameGridCells": {
-    "message": "Mänguvõrgu rakkude töötlemine"
-  },
-  "urlLabel": {
-    "message": "URL"
-  },
-  "notAvailable": {
-    "message": "Puudub"
-  },
-  "matchesLabel": {
-    "message": "Vastavused"
-  },
-  "copiedLabel": {
-    "message": "Kopeeritud!"
-  },
-  "copyLogsTooltip": {
-    "message": "Kopeeri logid lõikelauale"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Tühjenda logiruumi"
-  },
-  "contextMenuSolve": {
-    "message": "Lahenda LinkedIn Games Solveriga"
-  },
-  "contextMenuHint": {
-    "message": "Saada vihje sellele puslele"
-  },
-  "contextMenuViewResults": {
-    "message": "Vaata lahendustulemusi"
-  },
-  "labelTelemetryTitle": {
-    "message": "Anonüümne telemeetria & analüütika",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "Luba analüütika kogumine",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "Aita parandada laiendust, jagades anonüümseid kasutusandmeid",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "settingEndpointLabel": {
-    "message": "Lõpp-punkti URL"
-  },
-  "labelEndpointUrl": {
-    "message": "LÕPP-PUNKTI URL"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  }
+  "extensionName": "LinkedIni mängude lahendaja",
+  "extensionDescription": "Abiline LinkedIni mängude jaoks. Lahendab automaatselt igapäevased mõistatused (Queens, Sudoku, Pinpoint, Crossclimb), jälgides järjestusi ja pakkudes analüütikat.",
+  "title": "LinkedIni mängud",
+  "subtitle": "Lahenda aktiivsed lauad ühe klõpsuga",
+  "switchThemeTitle": "Lülitu $1 režiimi",
+  "errorChromeTabIntegration": "Vajalik on Chrome'i vahekaardi integreerimine.",
+  "errorActiveTabNotFound": "Aktiivset vahekaarti ei leitud.",
+  "errorNavigationFailed": "Liikumine asukohta $1 ebaõnnestus.",
+  "errorConnectionFailed": "Ühendus nurjus.",
+  "errorExecutionFailedDefault": "Lahendaja käivitamisel tekkis probleem.",
+  "successSolverStarted": "Lahendaja käivitati.",
+  "solvingStatus": "Lahendamine...",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "bonus": "Boonus",
+  "desc_patches": "Pane tükid kokku",
+  "desc_zip": "Täienda rada",
+  "desc_sudoku": "Klassikaline mäng, mini",
+  "desc_tango": "Harmoniseeri võrk",
+  "desc_queens": "Krooni iga piirkond",
+  "desc_crossclimb": "Lukusta trivia redel lahti",
+  "desc_pinpoint": "Arva kategooria",
+  "titleSolve": "Lahenda $1",
+  "titleCompleted": "Täna lõpetatud! Klõpsa, et navigeerida $1",
+  "titleOpen": "Ava $1 lahendamiseks",
+  "perfectDay": "Täiuslik päev! Kõik $1 mängud lõpetatud! 🎉",
+  "dailyProgress": "Päevane edenemine: $1 / $2 mängu lõpetatud täna",
+  "dashboardTitle": "Ajalugu ja statistika",
+  "dashboardSubtitle": "Teie LinkedIn Games lahenduste ajalugu ja statistika",
+  "statTotalSolved": "Kokku lahendatud",
+  "statTotalSolvedDesc": "Mängud lahendatud kõigil kuupäevadel",
+  "statAverageTime": "Keskmine aeg",
+  "statAverageTimeDesc": "Kõigi registreeritud lõpete põhjal",
+  "statActiveStreak": "Aktiivne järjestus",
+  "statActiveStreakDesc": "Järjestikused aktiivsed päevad",
+  "statStreakDays": "$1 päeva",
+  "personalBests": "Isiklikud rekordid",
+  "noRecordsYet": "Veel pole ühtegi lahenduse kirjet.",
+  "solvingHistory": "Lahenduste ajalugu",
+  "activityCalendar": "Tegevuste kalender",
+  "clearFilter": "Tühjenda filter",
+  "settingModel": "Mudel",
+  "settingModelSelect": "Vali mudel",
+  "settingModelCustomOption": "Kohandatud mudeli nimi...",
+  "settingModelCustomLabel": "Kohandatud mudeli nimi",
+  "settingModelCustomPlaceholderLocal": "nt. llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Sisesta kohandatud identifikaator...",
+  "settingEndpointPlaceholder": "nt. http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API võti",
+  "settingApiKeyOpenAI": "OpenAI API võti",
+  "settingApiKeyAnthropic": "Anthropic API võti",
+  "settingApiKeyDeepSeek": "DeepSeek API võti",
+  "settingApiKeyCustom": "API võti (valikuline)",
+  "settingApiKeyPlaceholderCustom": "Valikulised mandaadid...",
+  "settingApiKeyPlaceholderDefault": "Sisesta mandaadi võti...",
+  "settingApiKeyNotice": "Valitud mudel lahendab Crossclimb & Pinpoint. Laiendus ei jaga kunagi sinu võtit.",
+  "popupCardTitle": "Ühendage end lõbusate päevaülesannete kaudu",
+  "popupCardDesc": "Valmistage oma meeled tööpäevaks ja võrrelge tulemusi. Teie skoor on privaatne, kui te seda ei jaga.",
+  "saveAndBack": "Salvesta ja tagasi mängude juurde",
+  "solvingWorking": "AI lahendaja töötab...",
+  "completedToday": "Täna lõpetatud",
+  "solvedCountSuffix": "Lahendatud",
+  "settingsHeaderTitle": "AI mudeli seadistamine",
+  "labelAiProvider": "AI PAKKIJA",
+  "labelModelIdentifier": "MUDELI TUNNUSTI",
+  "labelCustomModel": "KOHANDATUD MUDELI NIMI",
+  "labelGeminiKey": "GEMINI API VÕTI",
+  "labelOpenAiKey": "OPENAI API VÕTI",
+  "labelAnthropicKey": "ANTHROPIC API VÕTI",
+  "labelDeepSeekKey": "DEEPSEEK API VÕTI",
+  "labelCustomKey": "API VÕTI (VALIKULINE)",
+  "navHome": "Kodu",
+  "navAiConfig": "Seaded / Valikud",
+  "navStats": "Statistika",
+  "navTheme": "Teema",
+  "navDebug": "Silumine",
+  "dailyProgressLabel": "Päevane edenemine",
+  "solveActiveBoard": "Lahenda aktiivne tahvel",
+  "backToGames": "Tagasi LinkedIn mängudesse",
+  "dashboardLabel": "Töölaud",
+  "gamesSolverTitle": "Mängude lahendaja",
+  "dashboardDescText": "Analüüsi oma mõõdikuid, salvesta seeriad ja jälgi igapäevaselt lõpetatud pusle-radasid.",
+  "completedSuccessfully": "Edukalt lõpetatud",
+  "disclaimerText": "Vastutusest loobumine: tegemist on sõltumatu, avatud lähtekoodiga haridusprojektiga. See ei ole seotud LinkedIn Corporationiga ega selle poolt sponsoreeritud või heaks kiidetud. „LinkedIn“ on LinkedIn Corporationi registreeritud kaubamärk.",
+  "settingsCredentialsTitle": "Mandaat & mudelid",
+  "settingsModelGuideTitle": "Mudeli juhend & info",
+  "settingsConnectionStatusTitle": "Ühenduse staatus",
+  "settingsActiveSolverLabel": "Aktiivne lahendaja:",
+  "settingsModelIdentifierLabel": "Mudeli identifikaator:",
+  "settingsAutoSavedNotification": "Seaded automaatselt salvestatud!",
+  "settingsSubtitleDesc": "Seadista AI mudelite endpoints ja mandaadid edasiseks pusle-lahenduseks.",
+  "settingsGeminiGuideDesc": "Suur jõudlus peaaegu nullkulude juures. Lahendab Crossclimb ja Pinpoint suurepärase loogikaga. Soovitus: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Kiire, vastutulelik ja äärmiselt usaldusväärne üldteadmiste mustritega. Soovitus: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maksimaalne järeldamisvõime. Haldab väga keerukaid sõnaühendusi laitmatult. Soovitus: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Ühendu kohalike LLM raamistikuga nagu Ollama või LM Studio. Suuna oma endpoint URL ja kohandatud mudeli nimi.",
+  "showMoreDates": "Näita rohkem kuupäevi",
+  "showLessDates": "Näita vähem kuupäevi",
+  "solveBtn_withAi": "Lahenda AI-ga",
+  "solveBtn_game": "Lahenda mäng",
+  "solveBtn_solving": "Lahendamine...",
+  "solveBtn_solved": "Lahendatud!",
+  "scoreClue": "1 vihje",
+  "scoreClues": "$1 vihjet",
+  "markAsNotPlayed": "Markeeri mitte mängituna",
+  "settingSolveSpeed": "Lahenduskiirus / Viivitus",
+  "solveSpeed_instant": "Vahetu (Kõige kiirem)",
+  "solveSpeed_normal": "Tavaline (Standard)",
+  "solveSpeed_stealth": "Varjatud režiim (inim-sarnased viivitused)",
+  "labelSolveSpeed": "LAHENDUSKIIRUS & TEMPO",
+  "settingSolveSpeedNotice": "Vahetu režiim lõpetab tahvli millisekunditega. Varjatud režiim jäljendab inimese käitumist juhusliku tempoga (1–3 s).",
+  "solveBtn_hint": "Saavuta vihje",
+  "settingDefaultSolveMode": "Vaikimisi lahendaja tegevus",
+  "solveMode_full": "Täielik automaatlahendus",
+  "solveMode_hint": "Õppe vihje-režiim",
+  "labelDefaultSolveMode": "VAIKIMISI LAHENDA REŽIIM",
+  "settingDefaultSolveModeNotice": "Vali põhitegevus, kui lahendajat käivitatakse vahekaardivaate või tahvlitelt.",
+  "settingsChromeBuiltInGuideTitle": "Nullkulu & Täielikult kohalik AI",
+  "settingsChromeBuiltInGuideDesc": "Jookseb täielikult lokaalselt sinu seadmes brauseris. Võrgu latentsus null ja 100% tasuta Gemini Nano-ga.",
+  "debugHeaderTitle": "Mängude silur & Dev tööriistad",
+  "debugStatusOffline": "Võrgust väljas",
+  "debugStatusLive": "Otsesaates",
+  "debugDetectedGame": "Avastatud mäng",
+  "debugNoneDetected": "Puudub avastus",
+  "debugTargetUrl": "Siht-URL",
+  "debugNoActiveTab": "Pole aktiivset vahekaarti",
+  "debugHtmlCopied": "HTML kopeeritud!",
+  "debugCopyHtml": "Kopeeri <main> HTML",
+  "debugLogsCopied": "Logid kopeeritud!",
+  "debugCopyLogs": "Kopeeri konsoolilogid",
+  "debugBothCopied": "Mõlemad kopeeritud!",
+  "debugCopyBoth": "Kopeeri mõlemad (HTML & logid)",
+  "debugRegistryCopied": "Registri JSON kopeeritud!",
+  "debugCopyRegistry": "Kopeeri tänane registri JSON",
+  "debugCopyRegistryShort": "Kopeeri JSON",
+  "debugSubmitAnswer": "Esita vastus",
+  "debugDomPreview": "DOM elemendi eelvaade",
+  "debugHtmlTruncated": "\n\n[ ... [kokku tähemärke: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Kopeeri täielik <main> HTML",
+  "debugNoMainTagCaptured": "Aktivset <main> märgendit ei leitud. Veendu, et oled LinkedIn mängu ekraanil.",
+  "debugConsoleOutput": "Konsooli väljund",
+  "debugEventsCount": "$1 sündmust",
+  "debugRefreshLogsTooltip": "Värskenda logisid",
+  "debugClearLogsTooltip": "Tühjenda logid",
+  "debugNoLogsCaptured": "Logisid pole veel salvestatud. Käivita tegevusi mänguekraanil, et vallandada sündmusi.",
+  "debugListeningEvents": "Kuulan console.log, console.warn ja console.error...",
+  "debugErrorInitializing": "Initsialiseerimine LinkedIn Game lehega...",
+  "debugErrorRetrieveFailed": "Mänguandmete toomine ebaõnnestus.",
+  "debugErrorNotGamesPage": "See funktsioon on saadaval ainult linkedin.com/games",
+  "debugErrorNoActiveTab": "Ei saa ligi aktiivsele vahekaardile. Kontrolli laienduse õigusi.",
+  "labelDailyReminders": "Igapäevased meeldetuletused",
+  "settingEnableReminders": "Luba igapäevased meeldetuletused",
+  "settingEnableRemindersDesc": "Saa teatis, kui LinkedIn Games on saadaval",
+  "settingReminderTime": "Meeldetuletuse aeg",
+  "settingReminderTimeNotice": "Kohanda, millal saad igapäevased pusle-meeldetuletused",
+  "notificationTitle": "LinkedIn Games igapäevane meeldetuletus",
+  "notificationMessage": "Sinu igapäevane pusle on valmis! Klõpsa mängimiseks.",
+  "notificationButton": "Mängi nüüd",
+  "commandSolveActiveGame": "Lahenda aktiivne mäng",
+  "commandGetSingleHint": "Saada vihje praeguse mängu jaoks",
+  "settingAutoOpenSidepanel": "Automaatne külgpaneeli avamine",
+  "settingAutoOpenSidepanelDesc": "Ava automaatselt lahendaja paneel LinkedIn Games külastamisel",
+  "labelAutoOpenSidepanel": "AUTO-AVA KÜLGPANEEL",
+  "permissionDialogTitle": "Laienduse õigused",
+  "permissionDialogDesc": "See laiendus vajab luba LinkedIn Games sisu kuvamiseks",
+  "permissionDialogButton": "Luba juurdepääs",
+  "omniboxSuggestionQueens": "Lahenda Queens pusle",
+  "omniboxSuggestionSudoku": "Lahenda Sudoku pusle",
+  "omniboxSuggestionStats": "Vaata mängu statistikat",
+  "diagnosticsEngine": "Diagnostika mootor",
+  "liveInspected": "Reaalajas kontrollitud",
+  "offline": "Võrgust väljas",
+  "inspectedTab": "Kontrollitud vahekaart",
+  "liveMatrixGridInspector": "Reaalajas maatriksvõrgu inspektor",
+  "waitingForLinkedInGamePage": "Ootan LinkedIn Games lehte...",
+  "waitingForLinkedInGamePageDesc": "Mine aadressile linkedin.com/games, et näha pusle andmeid",
+  "telemetryLogsStreamer": "Telemeetria logide voog",
+  "searchLogsPlaceholder": "Otsi logisid...",
+  "allTypes": "Kõik tüübid",
+  "logsType": "Logid",
+  "infoType": "Info",
+  "warnsType": "Hoiatused",
+  "errorsType": "Ve錯",
+  "selectTypePlaceholder": "Vali logi tüüp",
+  "consoleStreamEmpty": "Konsoolil pole kirjeid",
+  "consoleStreamEmptyDesc": "Alusta lahendamist telemeetria jäädvustamiseks",
+  "subscribedToStorageSession": "Tellitud salvestusistungile",
+  "parsingGameGridCells": "Mänguvõrgu rakkude töötlemine",
+  "urlLabel": "URL",
+  "notAvailable": "Puudub",
+  "matchesLabel": "Vastavused",
+  "copiedLabel": "Kopeeritud!",
+  "copyLogsTooltip": "Kopeeri logid lõikelauale",
+  "clearLogSpaceTooltip": "Tühjenda logiruumi",
+  "contextMenuSolve": "Lahenda LinkedIn Games Solveriga",
+  "contextMenuHint": "Saada vihje sellele puslele",
+  "contextMenuViewResults": "Vaata lahendustulemusi",
+  "labelTelemetryTitle": "Anonüümne telemeetria & analüütika",
+  "telemetryToggleLabel": "Luba analüütika kogumine",
+  "telemetryToggleDesc": "Aita parandada laiendust, jagades anonüümseid kasutusandmeid",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "settingEndpointLabel": "Lõpp-punkti URL",
+  "labelEndpointUrl": "LÕPP-PUNKTI URL",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s"
 }

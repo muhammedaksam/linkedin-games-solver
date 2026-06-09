@@ -1,780 +1,210 @@
 {
-  "extensionName": {
-    "message": "حل‌گر بازی‌های لینکدین",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "یک دستیار برای بازی‌های لینکدین. حل خودکار معماهای روزانه (Queens، Sudoku، Pinpoint، Crossclimb) همراه با ردیابی استریک و تحلیل‌ها.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "بازی‌های لینکدین",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "حل صفحه‌های فعال تنها با یک کلیک",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "تغییر به حالت $1",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "یکپارچه‌سازی تب Chrome لازم است.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "تب فعال پیدا نشد.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "رفتن به $1 ناموفق بود.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "اتصال برقرار نشد.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "هنگام اجرای حل‌کننده مشکلی پیش آمد.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "حل‌کننده شروع شد.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "حل کردن...",
-    "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "جایزه",
-    "description": "Bonus badge next to game name"
-  },
-  "desc_patches": {
-    "message": "قطعات را کنار هم قرار بده"
-  },
-  "desc_zip": {
-    "message": "مسیر را تکمیل کن"
-  },
-  "desc_sudoku": {
-    "message": "بازی کلاسیک، نسخه کوچک"
-  },
-  "desc_tango": {
-    "message": "شبکه را هماهنگ کن"
-  },
-  "desc_queens": {
-    "message": "هر ناحیه را تاج دار کن"
-  },
-  "desc_crossclimb": {
-    "message": "نردبان مطالعات را باز کن"
-  },
-  "desc_pinpoint": {
-    "message": "دسته‌بندی را حدس بزن"
-  },
-  "titleSolve": {
-    "message": "حل $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "امروز تکمیل شد! برای رفتن به $1 کلیک کنید",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "$1 را برای حل باز کنید",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "روز کامل! تمام بازی‌های $1 تکمیل شدند! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "پیشرفت روزانه: $1 از $2 بازی امروز تکمیل شده است",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "سوابق و آمار",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "تاریخچه و آمار حل بازی‌های LinkedIn شما",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "جمع حل‌شده",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "بازی‌های حل‌شده در همه تاریخ‌ها",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "میانگین زمان",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "در تمام اتمام‌های ثبت‌شده",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "سری فعال",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "روزهای فعال متوالی",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 روز",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "بهترین رکوردهای شخصی",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "هنوز هیچ سابقه حل ثبت نشده است.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "سابقه حل",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "تقویم فعالیت",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "پاک کردن فیلتر",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "مدل",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "انتخاب مدل",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "نام مدل سفارشی...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "نام مدل سفارشی",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "مثال: llama3، mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "شناسه سفارشی را وارد کنید...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "URL نقطه پایانی",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "مثال: http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "کلید API Gemini",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "کلید API OpenAI",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "کلید API Anthropic",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "کلید API DeepSeek",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "کلید API (اختیاری)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "اعتبارات اختیاری...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "کلید اعتبارات را وارد کنید...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "مدل انتخاب‌شده Crossclimb و Pinpoint را حل می‌کند. پسوند هرگز کلید شما را به اشتراک نمی‌گذارد.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "از طریق بازی های روزانه سرگرم کننده تماس برقرار کنید",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "ذهن خود را برای روز کاری آماده کنید و نتایج را مقایسه کنید. امتیازات شما خصوصی است مگر اینکه آن را به اشتراک بگذارید.",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "ذخیره و بازگشت به بازی‌ها",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "حل‌کننده AI در حال کار...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "امروز تکمیل شد",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "حل شد",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "تنظیم مدل AI",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "ارائه‌دهنده AI",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "شناسه مدل",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "نام مدل سفارشی",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "URL نقطه پایانی",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "کلید API GEMINI",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "کلید API OPENAI",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "کلید API ANTHROPIC",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "کلید API DEEPSEEK",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "کلید API (اختیاری)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "خانه",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "تنظیمات / گزینه‌ها",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "آمار",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "تم",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "اشکال‌زدایی",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "پیشرفت روزانه",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "حل بورد فعال",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "بازگشت به بازی‌های LinkedIn",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "داشبورد",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "حل‌کننده بازی‌ها",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "عملکردهایت را تحلیل کن، رکوردهای پیاپی را ثبت کن، و مسیرهای روزانهٔ معماهای کامل‌شده را دنبال کن.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "با موفقیت تکمیل شد",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "سلب مسئولیت: این یک پروژه آموزشی مستقل و متن‌باز است. هیچ وابستگی، حمایت مالی یا تأییدی از سوی شرکت LinkedIn ندارد. «LinkedIn» یک علامت تجاری ثبت‌شده متعلق به شرکت LinkedIn Corporation است.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "اعتبارات و مدل‌ها",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "راهنمای مدل و اطلاعات",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "وضعیت اتصال",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "حل‌کننده فعال:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "شناسه مدل:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "تنظیمات خودکار ذخیره شد!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "نقاط پایانی و اعتبارات ادغام مدل AI را برای استدلال حل‌کننده پیشرفته تنظیم کنید.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "عملکرد برتر با هزینه‌های نزدیک به صفر. Crossclimb و Pinpoint را با منطق عالی حل می‌کند. پیشنهاد شده: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "سریع، پاسخ‌گو و بسیار قابل اعتماد با الگوهای دانش عمومی. پیشنهاد شده: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "حداکثر ظرفیت استدلال. انجمن‌های پیچیده کلمات را بی‌خطا مدیریت می‌کند. پیشنهاد شده: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "به فریم‌ورک‌های LLM محلی مانند Ollama یا LM Studio متصل شوید. URL نقطه پایانی خود (مثال: http://localhost:11434/v1) و نام مدل سفارشی را مشخص کنید.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "نمایش تاریخ‌های بیشتر",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "نمایش کمتر",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "با AI حل کن"
-  },
-  "solveBtn_game": {
-    "message": "حل بازی"
-  },
-  "solveBtn_solving": {
-    "message": "حل کردن..."
-  },
-  "solveBtn_solved": {
-    "message": "حل شد!"
-  },
-  "scoreClue": {
-    "message": "1 سرنخ"
-  },
-  "scoreClues": {
-    "message": "$1 سرنخ"
-  },
-  "markAsNotPlayed": {
-    "message": "علامت‌گذاری به عنوان بازی نشده",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "سرعت حل / تاخیر",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "فوری (سریع‌ترین)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "عادی (استاندارد)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "حالت پنهان (تأخیرهای شبیه انسان)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "سرعت و گام‌بندی حل",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "حالت فوری بورد را در میلی‌ثانیه‌ها تکمیل می‌کند. حالت پنهان با تأخیرهای تصادفی (1-3 ثانیه) رفتار انسانی را تقلید می‌کند تا سریال‌ها را در برابر تشخیص خودکار محافظت کند.",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "دریافت نکته",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "عمل حل‌کننده پیش‌فرض",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "حل خودکار کامل",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "حالت نکته آموزشی",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "حالت حل‌کننده پیش‌فرض",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "هنگام فعال‌کردن حل‌کننده از نمای برگه یا بورد‌ها، عمل اساسی را انتخاب کنید. حل کامل بازی را تکمیل می‌کند؛ حالت نکته یک مورد درست قرار می‌دهد.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "هوش مصنوعی صفر هزینه و کاملاً محلی",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "کاملاً به صورت محلی بر روی دستگاه شما در مرورگر اجرا می‌شود. صفر تأخیر شبکه و 100٪ رایگان با Gemini Nano.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "اشکال‌زدای بازی و ابزارهای توسعه",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "آفلاین",
-    "description": "Debug offline status indicator label"
-  },
-  "debugStatusLive": {
-    "message": "زنده",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "بازی شناسایی شده",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "هیچ‌کدام شناسایی نشدند",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "URL هدف",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "برگه فعالی وجود ندارد",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML کپی شد!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "کپی <main> HTML",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "گزارش‌ها کپی شدند!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "کپی گزارش‌های کنسول",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "هر دو کپی شدند!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "کپی هر دو (HTML و گزارش‌ها)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "JSON رجیستری کپی شد!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "کپی JSON رجیستری امروز",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "کپی JSON",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "ارسال پاسخ",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "پیش‌نمایش عنصر DOM",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [کوتاه‌شده، کل کاراکتر: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "کپی HTML <main> کامل",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "هیچ برچسب <main> فعال ثبت نشد. اطمینان حاصل کنید که در صفحه بازی LinkedIn هستید.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "خروجی کنسول",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 رویداد",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "بازخوانی گزارش‌ها",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "پاک کردن گزارش‌ها",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "هنوز گزارشی ثبت نشده است. برای فعال کردن رویدادهای کنسول، اقدامات را بر روی صفحه بازی انجام دهید.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "گوش دادن برای رویدادهای console.log، console.warn و console.error...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "اتصال با صفحة بازی LinkedIn شروع می‌شود...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "نمی‌توان داده‌های بازی را بازیابی کرد.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "برگه فعال یک صفحه بازی LinkedIn نیست. برای ثبت جزئیات به یک بازی بروید.",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "نمی‌توان برگه فعال را شناسایی کرد.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "یادآوری روزانه و محافظ سریال",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "فعال کردن یادآوری روزانه",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "قبل از انقضای سریال امروز هشدار بدهید.",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "زمان یادآوری",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "زمان محلی را برای بررسی بازی‌های حل‌نشده انتخاب کنید.",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "محافظ سریال 🚀",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "سریال حل خود را از دست ندهید! هنوز بازی‌های LinkedIn امروز را حل نکرده‌اید.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "فوری حل کن!",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "بازی فعال LinkedIn را خودکار حل کن."
-  },
-  "commandGetSingleHint": {
-    "message": "یک نکته تک‌مرحله‌ای ارائه بده یا اشتباهات را بررسی کن."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "خود باز کردن نوار کناری در بازی‌ها"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "هنگام بازدید از بازی‌های LinkedIn، پنل کناری حل‌کننده را به طور خودکار باز کنید."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "خود باز کردن نوار کناری حل‌کننده"
-  },
-  "permissionDialogTitle": {
-    "message": "اعطای دسترسی صفحه"
-  },
-  "permissionDialogDesc": {
-    "message": "برای شناسایی بورد‌های بازی فعال و حل پازل‌ها، پسوند نیاز به اجازه اجرا در بازی‌های LinkedIn دارد. برای اعطای دسترسی زیر کلیک کنید."
-  },
-  "permissionDialogButton": {
-    "message": "اعطای دسترسی"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 امروز بازی و حل کن Queens!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 حل‌کننده سودوکو کوچک را باز کن"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 داشبورد سریال‌ها و عملکرد را باز کن"
-  },
-  "diagnosticsEngine": {
-    "message": "موتور تشخیصی"
-  },
-  "liveInspected": {
-    "message": "بررسی شده زنده"
-  },
-  "offline": {
-    "message": "آفلاین"
-  },
-  "inspectedTab": {
-    "message": "برگه بررسی شده:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "بازرس شبکه ماتریس زنده"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "منتظر صفحه بازی LinkedIn"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "برای دریافت مختصات محدودیت، حالات سلول و ساختارهای واکنش‌پذیر، به هر برگه بورد بازی LinkedIn (Queens، Sudoku، Tango، Pinpoint) بروید."
-  },
-  "telemetryLogsStreamer": {
-    "message": "جریان گزارش‌های تله‌متری"
-  },
-  "searchLogsPlaceholder": {
-    "message": "جستجو در گزارش‌ها..."
-  },
-  "allTypes": {
-    "message": "تمام انواع"
-  },
-  "logsType": {
-    "message": "گزارش‌ها"
-  },
-  "infoType": {
-    "message": "اطلاعات"
-  },
-  "warnsType": {
-    "message": "هشدارها"
-  },
-  "errorsType": {
-    "message": "خطاها"
-  },
-  "selectTypePlaceholder": {
-    "message": "نوع را انتخاب کنید"
-  },
-  "consoleStreamEmpty": {
-    "message": "جریان کنسول خالی"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "هیچ خروجی‌های گزارش منطبق با فیلترها شناسایی نشدند. برای جریان اقدامات گزارش، مراحل را در محیط حل‌کننده بازی LinkedIn اجرا کنید."
-  },
-  "subscribedToStorageSession": {
-    "message": "در جریان storage.session مشترک"
-  },
-  "parsingGameGridCells": {
-    "message": "تجزیه سلول‌های شبکة بازی... مطمئن شوید که بورد دارای بلوک‌های شبکة فعال دیدنی است."
-  },
-  "urlLabel": {
-    "message": "آدرس URL:"
-  },
-  "matchesLabel": {
-    "message": "تطابقات"
-  },
-  "copiedLabel": {
-    "message": "کپی شد!"
-  },
-  "copyLogsTooltip": {
-    "message": "کپی گزارش‌ها"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "پاک کردن فضای گزارش"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ حل بازی فعال LinkedIn"
-  },
-  "contextMenuHint": {
-    "message": "💡 دریافت نکته"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 مشاهدة نتایج"
-  },
-  "labelTelemetryTitle": {
-    "message": "تله‌متری و حریم خصوصی",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "ارسال تله‌متری ناشناس",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "برای بهبود حل‌کننده با اشتراک‌گذاری معیارهای عملکرد و استفاده ناشناس کمک کنید.",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "notAvailable": {
-    "message": "غیرقابل کاربرد"
-  }
+  "extensionName": "حل‌گر بازی‌های لینکدین",
+  "extensionDescription": "یک دستیار برای بازی‌های لینکدین. حل خودکار معماهای روزانه (Queens، Sudoku، Pinpoint، Crossclimb) همراه با ردیابی استریک و تحلیل‌ها.",
+  "title": "بازی‌های لینکدین",
+  "subtitle": "حل صفحه‌های فعال تنها با یک کلیک",
+  "switchThemeTitle": "تغییر به حالت $1",
+  "errorChromeTabIntegration": "یکپارچه‌سازی تب Chrome لازم است.",
+  "errorActiveTabNotFound": "تب فعال پیدا نشد.",
+  "errorNavigationFailed": "رفتن به $1 ناموفق بود.",
+  "errorConnectionFailed": "اتصال برقرار نشد.",
+  "errorExecutionFailedDefault": "هنگام اجرای حل‌کننده مشکلی پیش آمد.",
+  "successSolverStarted": "حل‌کننده شروع شد.",
+  "solvingStatus": "حل کردن...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "جایزه",
+  "desc_patches": "قطعات را کنار هم قرار بده",
+  "desc_zip": "مسیر را تکمیل کن",
+  "desc_sudoku": "بازی کلاسیک، نسخه کوچک",
+  "desc_tango": "شبکه را هماهنگ کن",
+  "desc_queens": "هر ناحیه را تاج دار کن",
+  "desc_crossclimb": "نردبان مطالعات را باز کن",
+  "desc_pinpoint": "دسته‌بندی را حدس بزن",
+  "titleSolve": "حل $1",
+  "titleCompleted": "امروز تکمیل شد! برای رفتن به $1 کلیک کنید",
+  "titleOpen": "$1 را برای حل باز کنید",
+  "perfectDay": "روز کامل! تمام بازی‌های $1 تکمیل شدند! 🎉",
+  "dailyProgress": "پیشرفت روزانه: $1 از $2 بازی امروز تکمیل شده است",
+  "dashboardTitle": "سوابق و آمار",
+  "dashboardSubtitle": "تاریخچه و آمار حل بازی‌های LinkedIn شما",
+  "statTotalSolved": "جمع حل‌شده",
+  "statTotalSolvedDesc": "بازی‌های حل‌شده در همه تاریخ‌ها",
+  "statAverageTime": "میانگین زمان",
+  "statAverageTimeDesc": "در تمام اتمام‌های ثبت‌شده",
+  "statActiveStreak": "سری فعال",
+  "statActiveStreakDesc": "روزهای فعال متوالی",
+  "statStreakDays": "$1 روز",
+  "personalBests": "بهترین رکوردهای شخصی",
+  "noRecordsYet": "هنوز هیچ سابقه حل ثبت نشده است.",
+  "solvingHistory": "سابقه حل",
+  "activityCalendar": "تقویم فعالیت",
+  "clearFilter": "پاک کردن فیلتر",
+  "settingModel": "مدل",
+  "settingModelSelect": "انتخاب مدل",
+  "settingModelCustomOption": "نام مدل سفارشی...",
+  "settingModelCustomLabel": "نام مدل سفارشی",
+  "settingModelCustomPlaceholderLocal": "مثال: llama3، mistral",
+  "settingModelCustomPlaceholderOther": "شناسه سفارشی را وارد کنید...",
+  "settingEndpointLabel": "URL نقطه پایانی",
+  "settingEndpointPlaceholder": "مثال: http://localhost:11434/v1",
+  "settingApiKeyGemini": "کلید API Gemini",
+  "settingApiKeyOpenAI": "کلید API OpenAI",
+  "settingApiKeyAnthropic": "کلید API Anthropic",
+  "settingApiKeyDeepSeek": "کلید API DeepSeek",
+  "settingApiKeyCustom": "کلید API (اختیاری)",
+  "settingApiKeyPlaceholderCustom": "اعتبارات اختیاری...",
+  "settingApiKeyPlaceholderDefault": "کلید اعتبارات را وارد کنید...",
+  "settingApiKeyNotice": "مدل انتخاب‌شده Crossclimb و Pinpoint را حل می‌کند. پسوند هرگز کلید شما را به اشتراک نمی‌گذارد.",
+  "popupCardTitle": "از طریق بازی های روزانه سرگرم کننده تماس برقرار کنید",
+  "popupCardDesc": "ذهن خود را برای روز کاری آماده کنید و نتایج را مقایسه کنید. امتیازات شما خصوصی است مگر اینکه آن را به اشتراک بگذارید.",
+  "saveAndBack": "ذخیره و بازگشت به بازی‌ها",
+  "solvingWorking": "حل‌کننده AI در حال کار...",
+  "completedToday": "امروز تکمیل شد",
+  "solvedCountSuffix": "حل شد",
+  "settingsHeaderTitle": "تنظیم مدل AI",
+  "labelAiProvider": "ارائه‌دهنده AI",
+  "labelModelIdentifier": "شناسه مدل",
+  "labelCustomModel": "نام مدل سفارشی",
+  "labelEndpointUrl": "URL نقطه پایانی",
+  "labelGeminiKey": "کلید API GEMINI",
+  "labelOpenAiKey": "کلید API OPENAI",
+  "labelAnthropicKey": "کلید API ANTHROPIC",
+  "labelDeepSeekKey": "کلید API DEEPSEEK",
+  "labelCustomKey": "کلید API (اختیاری)",
+  "navHome": "خانه",
+  "navAiConfig": "تنظیمات / گزینه‌ها",
+  "navStats": "آمار",
+  "navTheme": "تم",
+  "navDebug": "اشکال‌زدایی",
+  "dailyProgressLabel": "پیشرفت روزانه",
+  "solveActiveBoard": "حل بورد فعال",
+  "backToGames": "بازگشت به بازی‌های LinkedIn",
+  "dashboardLabel": "داشبورد",
+  "gamesSolverTitle": "حل‌کننده بازی‌ها",
+  "dashboardDescText": "عملکردهایت را تحلیل کن، رکوردهای پیاپی را ثبت کن، و مسیرهای روزانهٔ معماهای کامل‌شده را دنبال کن.",
+  "completedSuccessfully": "با موفقیت تکمیل شد",
+  "disclaimerText": "سلب مسئولیت: این یک پروژه آموزشی مستقل و متن‌باز است. هیچ وابستگی، حمایت مالی یا تأییدی از سوی شرکت LinkedIn ندارد. «LinkedIn» یک علامت تجاری ثبت‌شده متعلق به شرکت LinkedIn Corporation است.",
+  "settingsCredentialsTitle": "اعتبارات و مدل‌ها",
+  "settingsModelGuideTitle": "راهنمای مدل و اطلاعات",
+  "settingsConnectionStatusTitle": "وضعیت اتصال",
+  "settingsActiveSolverLabel": "حل‌کننده فعال:",
+  "settingsModelIdentifierLabel": "شناسه مدل:",
+  "settingsAutoSavedNotification": "تنظیمات خودکار ذخیره شد!",
+  "settingsSubtitleDesc": "نقاط پایانی و اعتبارات ادغام مدل AI را برای استدلال حل‌کننده پیشرفته تنظیم کنید.",
+  "settingsGeminiGuideDesc": "عملکرد برتر با هزینه‌های نزدیک به صفر. Crossclimb و Pinpoint را با منطق عالی حل می‌کند. پیشنهاد شده: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "سریع، پاسخ‌گو و بسیار قابل اعتماد با الگوهای دانش عمومی. پیشنهاد شده: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "حداکثر ظرفیت استدلال. انجمن‌های پیچیده کلمات را بی‌خطا مدیریت می‌کند. پیشنهاد شده: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "به فریم‌ورک‌های LLM محلی مانند Ollama یا LM Studio متصل شوید. URL نقطه پایانی خود (مثال: http://localhost:11434/v1) و نام مدل سفارشی را مشخص کنید.",
+  "showMoreDates": "نمایش تاریخ‌های بیشتر",
+  "showLessDates": "نمایش کمتر",
+  "solveBtn_withAi": "با AI حل کن",
+  "solveBtn_game": "حل بازی",
+  "solveBtn_solving": "حل کردن...",
+  "solveBtn_solved": "حل شد!",
+  "scoreClue": "1 سرنخ",
+  "scoreClues": "$1 سرنخ",
+  "markAsNotPlayed": "علامت‌گذاری به عنوان بازی نشده",
+  "settingSolveSpeed": "سرعت حل / تاخیر",
+  "solveSpeed_instant": "فوری (سریع‌ترین)",
+  "solveSpeed_normal": "عادی (استاندارد)",
+  "solveSpeed_stealth": "حالت پنهان (تأخیرهای شبیه انسان)",
+  "labelSolveSpeed": "سرعت و گام‌بندی حل",
+  "settingSolveSpeedNotice": "حالت فوری بورد را در میلی‌ثانیه‌ها تکمیل می‌کند. حالت پنهان با تأخیرهای تصادفی (1-3 ثانیه) رفتار انسانی را تقلید می‌کند تا سریال‌ها را در برابر تشخیص خودکار محافظت کند.",
+  "solveBtn_hint": "دریافت نکته",
+  "settingDefaultSolveMode": "عمل حل‌کننده پیش‌فرض",
+  "solveMode_full": "حل خودکار کامل",
+  "solveMode_hint": "حالت نکته آموزشی",
+  "labelDefaultSolveMode": "حالت حل‌کننده پیش‌فرض",
+  "settingDefaultSolveModeNotice": "هنگام فعال‌کردن حل‌کننده از نمای برگه یا بورد‌ها، عمل اساسی را انتخاب کنید. حل کامل بازی را تکمیل می‌کند؛ حالت نکته یک مورد درست قرار می‌دهد.",
+  "settingsChromeBuiltInGuideTitle": "هوش مصنوعی صفر هزینه و کاملاً محلی",
+  "settingsChromeBuiltInGuideDesc": "کاملاً به صورت محلی بر روی دستگاه شما در مرورگر اجرا می‌شود. صفر تأخیر شبکه و 100٪ رایگان با Gemini Nano.",
+  "debugHeaderTitle": "اشکال‌زدای بازی و ابزارهای توسعه",
+  "debugStatusOffline": "آفلاین",
+  "debugStatusLive": "زنده",
+  "debugDetectedGame": "بازی شناسایی شده",
+  "debugNoneDetected": "هیچ‌کدام شناسایی نشدند",
+  "debugTargetUrl": "URL هدف",
+  "debugNoActiveTab": "برگه فعالی وجود ندارد",
+  "debugHtmlCopied": "HTML کپی شد!",
+  "debugCopyHtml": "کپی <main> HTML",
+  "debugLogsCopied": "گزارش‌ها کپی شدند!",
+  "debugCopyLogs": "کپی گزارش‌های کنسول",
+  "debugBothCopied": "هر دو کپی شدند!",
+  "debugCopyBoth": "کپی هر دو (HTML و گزارش‌ها)",
+  "debugRegistryCopied": "JSON رجیستری کپی شد!",
+  "debugCopyRegistry": "کپی JSON رجیستری امروز",
+  "debugCopyRegistryShort": "کپی JSON",
+  "debugSubmitAnswer": "ارسال پاسخ",
+  "debugDomPreview": "پیش‌نمایش عنصر DOM",
+  "debugHtmlTruncated": "\n\n[ ... [کوتاه‌شده، کل کاراکتر: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "کپی HTML <main> کامل",
+  "debugNoMainTagCaptured": "هیچ برچسب <main> فعال ثبت نشد. اطمینان حاصل کنید که در صفحه بازی LinkedIn هستید.",
+  "debugConsoleOutput": "خروجی کنسول",
+  "debugEventsCount": "$1 رویداد",
+  "debugRefreshLogsTooltip": "بازخوانی گزارش‌ها",
+  "debugClearLogsTooltip": "پاک کردن گزارش‌ها",
+  "debugNoLogsCaptured": "هنوز گزارشی ثبت نشده است. برای فعال کردن رویدادهای کنسول، اقدامات را بر روی صفحه بازی انجام دهید.",
+  "debugListeningEvents": "گوش دادن برای رویدادهای console.log، console.warn و console.error...",
+  "debugErrorInitializing": "اتصال با صفحة بازی LinkedIn شروع می‌شود...",
+  "debugErrorRetrieveFailed": "نمی‌توان داده‌های بازی را بازیابی کرد.",
+  "debugErrorNotGamesPage": "برگه فعال یک صفحه بازی LinkedIn نیست. برای ثبت جزئیات به یک بازی بروید.",
+  "debugErrorNoActiveTab": "نمی‌توان برگه فعال را شناسایی کرد.",
+  "labelDailyReminders": "یادآوری روزانه و محافظ سریال",
+  "settingEnableReminders": "فعال کردن یادآوری روزانه",
+  "settingEnableRemindersDesc": "قبل از انقضای سریال امروز هشدار بدهید.",
+  "settingReminderTime": "زمان یادآوری",
+  "settingReminderTimeNotice": "زمان محلی را برای بررسی بازی‌های حل‌نشده انتخاب کنید.",
+  "notificationTitle": "محافظ سریال 🚀",
+  "notificationMessage": "سریال حل خود را از دست ندهید! هنوز بازی‌های LinkedIn امروز را حل نکرده‌اید.",
+  "notificationButton": "فوری حل کن!",
+  "commandSolveActiveGame": "بازی فعال LinkedIn را خودکار حل کن.",
+  "commandGetSingleHint": "یک نکته تک‌مرحله‌ای ارائه بده یا اشتباهات را بررسی کن.",
+  "settingAutoOpenSidepanel": "خود باز کردن نوار کناری در بازی‌ها",
+  "settingAutoOpenSidepanelDesc": "هنگام بازدید از بازی‌های LinkedIn، پنل کناری حل‌کننده را به طور خودکار باز کنید.",
+  "labelAutoOpenSidepanel": "خود باز کردن نوار کناری حل‌کننده",
+  "permissionDialogTitle": "اعطای دسترسی صفحه",
+  "permissionDialogDesc": "برای شناسایی بورد‌های بازی فعال و حل پازل‌ها، پسوند نیاز به اجازه اجرا در بازی‌های LinkedIn دارد. برای اعطای دسترسی زیر کلیک کنید.",
+  "permissionDialogButton": "اعطای دسترسی",
+  "omniboxSuggestionQueens": "👑 امروز بازی و حل کن Queens!",
+  "omniboxSuggestionSudoku": "🔢 حل‌کننده سودوکو کوچک را باز کن",
+  "omniboxSuggestionStats": "📊 داشبورد سریال‌ها و عملکرد را باز کن",
+  "diagnosticsEngine": "موتور تشخیصی",
+  "liveInspected": "بررسی شده زنده",
+  "offline": "آفلاین",
+  "inspectedTab": "برگه بررسی شده:",
+  "liveMatrixGridInspector": "بازرس شبکه ماتریس زنده",
+  "waitingForLinkedInGamePage": "منتظر صفحه بازی LinkedIn",
+  "waitingForLinkedInGamePageDesc": "برای دریافت مختصات محدودیت، حالات سلول و ساختارهای واکنش‌پذیر، به هر برگه بورد بازی LinkedIn (Queens، Sudoku، Tango، Pinpoint) بروید.",
+  "telemetryLogsStreamer": "جریان گزارش‌های تله‌متری",
+  "searchLogsPlaceholder": "جستجو در گزارش‌ها...",
+  "allTypes": "تمام انواع",
+  "logsType": "گزارش‌ها",
+  "infoType": "اطلاعات",
+  "warnsType": "هشدارها",
+  "errorsType": "خطاها",
+  "selectTypePlaceholder": "نوع را انتخاب کنید",
+  "consoleStreamEmpty": "جریان کنسول خالی",
+  "consoleStreamEmptyDesc": "هیچ خروجی‌های گزارش منطبق با فیلترها شناسایی نشدند. برای جریان اقدامات گزارش، مراحل را در محیط حل‌کننده بازی LinkedIn اجرا کنید.",
+  "subscribedToStorageSession": "در جریان storage.session مشترک",
+  "parsingGameGridCells": "تجزیه سلول‌های شبکة بازی... مطمئن شوید که بورد دارای بلوک‌های شبکة فعال دیدنی است.",
+  "urlLabel": "آدرس URL:",
+  "matchesLabel": "تطابقات",
+  "copiedLabel": "کپی شد!",
+  "copyLogsTooltip": "کپی گزارش‌ها",
+  "clearLogSpaceTooltip": "پاک کردن فضای گزارش",
+  "contextMenuSolve": "⚡ حل بازی فعال LinkedIn",
+  "contextMenuHint": "💡 دریافت نکته",
+  "contextMenuViewResults": "📊 مشاهدة نتایج",
+  "labelTelemetryTitle": "تله‌متری و حریم خصوصی",
+  "telemetryToggleLabel": "ارسال تله‌متری ناشناس",
+  "telemetryToggleDesc": "برای بهبود حل‌کننده با اشتراک‌گذاری معیارهای عملکرد و استفاده ناشناس کمک کنید.",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "notAvailable": "غیرقابل کاربرد"
 }

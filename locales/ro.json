@@ -1,624 +1,203 @@
 {
-  "extensionName": {
-    "message": "Solver pentru LinkedIn Games",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Un ajutor pentru LinkedIn Games. Rezolvă automat puzzle-urile zilnice (Queens, Sudoku, Pinpoint, Crossclimb) cu serii și analitice.",
-    "description": "The description of the extension."
-  },
-  "subtitle": {
-    "message": "Rezolvă tablele active cu un singur clic",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Este necesară integrarea cu fila Chrome.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Fila activă nu a fost găsită.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Nu s-a putut naviga la $1.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Conexiunea a eșuat.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "A apărut o problemă la rularea soluționatorului.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Soluționatorul a pornit.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "Istoric & Statistică",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Istoricul și statisticile tale pentru LinkedIn Games",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Total rezolvat",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Jocuri rezolvate pentru toate datele",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Timp mediu",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Pe toate finalizările înregistrate",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Serii active",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Zile active consecutive",
-    "description": "Description for the active streak card"
-  },
-  "dashboardDescText": {
-    "message": "Analizează-ți metricile de performanță, înregistrează-ți șirurile și urmărește traseele zilnice ale puzzle-urilor rezolvate.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "Declinare de responsabilitate: Acesta este un proiect educațional independent, open-source. Nu este afiliat, sponsorizat sau aprobat de LinkedIn Corporation. „LinkedIn” este o marcă înregistrată a LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "title": {
-    "message": "Jocuri LinkedIn"
-  },
-  "switchThemeTitle": {
-    "message": "Comută în modul $1"
-  },
-  "solvingStatus": {
-    "message": "Rezolvând..."
-  },
-  "bonus": {
-    "message": "Bonus"
-  },
-  "desc_patches": {
-    "message": "Pune-l împreună"
-  },
-  "desc_zip": {
-    "message": "Completează calea"
-  },
-  "desc_sudoku": {
-    "message": "Jocul clasic, făcut mini"
-  },
-  "desc_tango": {
-    "message": "Harmonizează rețeaua"
-  },
-  "desc_queens": {
-    "message": "Coroanează fiecare regiune"
-  },
-  "desc_crossclimb": {
-    "message": "Dezvăluie o scară de trivia"
-  },
-  "desc_pinpoint": {
-    "message": "Ghicește categoria"
-  },
-  "titleSolve": {
-    "message": "Rezolvă $1"
-  },
-  "titleCompleted": {
-    "message": "Finalizat astăzi! Faceți clic pentru a naviga la $1"
-  },
-  "titleOpen": {
-    "message": "Deschide $1 pentru a rezolva"
-  },
-  "perfectDay": {
-    "message": "Zi perfectă! Toate jocurile $1 finalizate! 🎉"
-  },
-  "dailyProgress": {
-    "message": "Progres zilnic: $1 din $2 jocuri finalizate astăzi"
-  },
-  "statStreakDays": {
-    "message": "$1 zile"
-  },
-  "personalBests": {
-    "message": "Cele mai bune performanțe personale"
-  },
-  "noRecordsYet": {
-    "message": "Nu s-au înregistrat încă înregistrări de soluționare."
-  },
-  "solvingHistory": {
-    "message": "Rezolvarea Istoriei"
-  },
-  "activityCalendar": {
-    "message": "Calendar de activități"
-  },
-  "clearFilter": {
-    "message": "Șterge filtrul"
-  },
-  "settingModel": {
-    "message": "Model"
-  },
-  "settingModelSelect": {
-    "message": "Selectați modelul"
-  },
-  "settingModelCustomOption": {
-    "message": "Nume model personalizat..."
-  },
-  "settingModelCustomLabel": {
-    "message": "Nume model personalizat"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "de exemplu, llama3, mistral"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Introduceți un identificator personalizat..."
-  },
-  "settingEndpointLabel": {
-    "message": "URL-ul punctului final"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "de exemplu http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "Cheia API Gemini"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "Cheia API OpenAI"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Cheia API Anthropic"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "Cheia API DeepSeek"
-  },
-  "settingApiKeyCustom": {
-    "message": "Cheie API (Opțional)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Credențiale opționale..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Introduceți cheia de acreditive..."
-  },
-  "settingApiKeyNotice": {
-    "message": "Modelul selectat rezolvă Crossclimb și Pinpoint. Extensia nu îți va împărtăși niciodată cheia."
-  },
-  "popupCardTitle": {
-    "message": "Conectează-te prin jocuri distractive zilnice"
-  },
-  "popupCardDesc": {
-    "message": "Pregătește-ți mintea pentru ziua de lucru și compară rezultatele. Scorurile tale sunt private, cu excepția cazului în care le împărtășești."
-  },
-  "saveAndBack": {
-    "message": "Salvează și Înapoi la Jocuri"
-  },
-  "solvingWorking": {
-    "message": "Solver AI în lucru..."
-  },
-  "completedToday": {
-    "message": "Finalizat astăzi"
-  },
-  "solvedCountSuffix": {
-    "message": "Rezolvat"
-  },
-  "settingsHeaderTitle": {
-    "message": "Configurarea modelului AI"
-  },
-  "labelAiProvider": {
-    "message": "FURNIZOR AI"
-  },
-  "labelModelIdentifier": {
-    "message": "IDENTIFICATOR MODEL"
-  },
-  "labelCustomModel": {
-    "message": "NUME MODEL PERSONALIZAT"
-  },
-  "labelEndpointUrl": {
-    "message": "URL DE FINALizare"
-  },
-  "labelGeminiKey": {
-    "message": "CHEIA API GEMINI"
-  },
-  "labelOpenAiKey": {
-    "message": "CHEIA API OPENAI"
-  },
-  "labelAnthropicKey": {
-    "message": "CHEIE API ANTHROPIC"
-  },
-  "labelDeepSeekKey": {
-    "message": "CHEIA API DEEPSEEK"
-  },
-  "labelCustomKey": {
-    "message": "CHEIE API (OPȚIONALĂ)"
-  },
-  "navHome": {
-    "message": "Acasă"
-  },
-  "navAiConfig": {
-    "message": "Setări / Opțiuni"
-  },
-  "navStats": {
-    "message": "Statistici"
-  },
-  "navTheme": {
-    "message": "Temă"
-  },
-  "navDebug": {
-    "message": "Depanare"
-  },
-  "dailyProgressLabel": {
-    "message": "Progres zilnic"
-  },
-  "solveActiveBoard": {
-    "message": "Rezolvați tabla activă"
-  },
-  "backToGames": {
-    "message": "Înapoi la jocurile LinkedIn"
-  },
-  "dashboardLabel": {
-    "message": "Tablou de bord"
-  },
-  "gamesSolverTitle": {
-    "message": "Soluționator de jocuri"
-  },
-  "completedSuccessfully": {
-    "message": "Finalizat cu succes"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Credențiale și modele"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Ghid și informații despre model"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Starea conexiunii"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Solver activ:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Identificator model:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Setările au fost salvate automat!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Configurează punctele de integrare și acreditivele modelului AI pentru raționamentul avansat în rezolvarea puzzle-urilor."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Performanță remarcabilă la costuri aproape zero. Rezolvă Crossclimb și Pinpoint cu o logică excelentă. Recomandare implicită: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Rapid, receptiv și extrem de fiabil cu modele de cunoștințe generale. Recomandare implicită: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Capacitate maximă de raționare. Gestionează asocieri de cuvinte foarte complexe fără greșeli. Recomandare implicită: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Conectați-vă la cadrele LLM locale precum Ollama sau LM Studio. Indicați URL-ul punctului final (de exemplu, http://localhost:11434/v1) și numele modelului personalizat."
-  },
-  "showMoreDates": {
-    "message": "Arată mai multe date"
-  },
-  "showLessDates": {
-    "message": "Arată mai puțin"
-  },
-  "solveBtn_withAi": {
-    "message": "Rezolvă cu AI"
-  },
-  "solveBtn_game": {
-    "message": "Rezolvă jocul"
-  },
-  "solveBtn_solving": {
-    "message": "Rezolvând..."
-  },
-  "solveBtn_solved": {
-    "message": "Rezolvat!"
-  },
-  "scoreClue": {
-    "message": "1 indiciu"
-  },
-  "scoreClues": {
-    "message": "$1 indicii"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "Marchează ca Nejucat"
-  },
-  "settingSolveSpeed": {
-    "message": "Rezolvarea Vitezei / Întârzierii"
-  },
-  "solveSpeed_instant": {
-    "message": "Instant (Cel mai rapid)"
-  },
-  "solveSpeed_normal": {
-    "message": "Normal (Standard)"
-  },
-  "solveSpeed_stealth": {
-    "message": "Mod de stealth ( întârzieri asemănătoare cu cele umane)"
-  },
-  "labelSolveSpeed": {
-    "message": "REZOLVAREA VITEZELOR ȘI TEMPOULUI"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Modul instantaneu finalizează tabla în milisecunde. Modul stealth imită comportamentul uman cu un ritm aleatorizat (1–3 secunde) pentru a asigura serii împotriva detectării automate."
-  },
-  "solveBtn_hint": {
-    "message": "Obține Indiciu"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Acțiune implicită a solver-ului"
-  },
-  "solveMode_full": {
-    "message": "Rezolvare complet automată"
-  },
-  "solveMode_hint": {
-    "message": "Mod de sugestii educaționale"
-  },
-  "labelDefaultSolveMode": {
-    "message": "MODUL DE SOLUȚIONARE IMPLICIT"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Selectați acțiunea principală atunci când activați rezolvatorul din vizualizarea tab-ului sau din tablouri. Rezolvarea completă finalizează jocul; Modul de sugestie plasează un element corect."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Cost Zero și AI Complet Local"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Funcționează complet local pe dispozitivul tău în interiorul browserului. Zero latență de rețea și 100% gratuit cu Gemini Nano."
-  },
-  "debugHeaderTitle": {
-    "message": "Debugger de jocuri și instrumente de dezvoltare"
-  },
-  "debugStatusOffline": {
-    "message": "Offline"
-  },
-  "debugStatusLive": {
-    "message": "În direct"
-  },
-  "debugDetectedGame": {
-    "message": "Joc detectat"
-  },
-  "debugNoneDetected": {
-    "message": "Nimic detectat"
-  },
-  "debugTargetUrl": {
-    "message": "URL țintă"
-  },
-  "debugNoActiveTab": {
-    "message": "Niciun tab activ"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML Copiat!"
-  },
-  "debugCopyHtml": {
-    "message": "Copiază HTML <main>"
-  },
-  "debugLogsCopied": {
-    "message": "Jurnalele au fost copiate!"
-  },
-  "debugCopyLogs": {
-    "message": "Copiază jurnalele consolei"
-  },
-  "debugBothCopied": {
-    "message": "Ambele copiate!"
-  },
-  "debugCopyBoth": {
-    "message": "Copiază ambele (HTML și Jurnale)"
-  },
-  "debugRegistryCopied": {
-    "message": "Registrul JSON a fost copiat!"
-  },
-  "debugCopyRegistry": {
-    "message": "Copiază JSON-ul Registrului de astăzi"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Copiază JSON"
-  },
-  "debugSubmitAnswer": {
-    "message": "Trimite răspunsul"
-  },
-  "debugDomPreview": {
-    "message": "Previzualizare element DOM"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [trunchiat, total caractere: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Copie completă <main> HTML"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Nu a fost capturat niciun tag <main> activ. Asigurați-vă că sunteți pe un ecran de joc LinkedIn."
-  },
-  "debugConsoleOutput": {
-    "message": "Ieșire Consolă"
-  },
-  "debugEventsCount": {
-    "message": "evenimente $1"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Reîmprospătare jurnale"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Șterge jurnalele"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Nu s-au capturat încă jurnale. Efectuează acțiuni pe ecranul jocului pentru a declanșa evenimentele consolei."
-  },
-  "debugListeningEvents": {
-    "message": "Ascultând evenimentele console.log, console.warn și console.error..."
-  },
-  "debugErrorInitializing": {
-    "message": "Conexiunea cu pagina de jocuri LinkedIn se inițiază..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Imposibil de recuperat datele jocului."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Tab-ul activ nu este o pagină de jocuri LinkedIn. Navighează la un joc pentru a captura detalii."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Nu s-a putut identifica tab-ul activ."
-  },
-  "labelDailyReminders": {
-    "message": "REMINISCENȚE ZILNICE ȘI PROTECTOR DE SERII"
-  },
-  "settingEnableReminders": {
-    "message": "Activează mementouri zilnice"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Avertizează-mă înainte ca seria de astăzi să expire."
-  },
-  "settingReminderTime": {
-    "message": "Timp de reamintire"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Selectați ora locală pentru a verifica jocurile nerezolvate."
-  },
-  "notificationTitle": {
-    "message": "Protector de Serii 🚀"
-  },
-  "notificationMessage": {
-    "message": "Nu-ți pierde seria de soluționare! Nu ai rezolvat încă jocurile de pe LinkedIn de astăzi."
-  },
-  "notificationButton": {
-    "message": "Rezolvă acum!"
-  },
-  "commandSolveActiveGame": {
-    "message": "Rezolvă automat jocul activ de pe LinkedIn."
-  },
-  "commandGetSingleHint": {
-    "message": "Oferiți un indiciu într-un singur pas sau verificați greșelile."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Deschidere automată a barei laterale în jocuri"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Deschide automat panoul lateral al solver-ului atunci când vizitezi jocurile LinkedIn."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "BARĂ LATERALĂ DE SOLUȚIONARE AUTO-OTVORITĂ"
-  },
-  "permissionDialogTitle": {
-    "message": "Acordați acces la pagină"
-  },
-  "permissionDialogDesc": {
-    "message": "Pentru a detecta tablouri de joc active și a rezolva puzzle-uri, extensia are nevoie de permisiunea de a rula pe LinkedIn Games. Faceți clic mai jos pentru a acorda acces."
-  },
-  "permissionDialogButton": {
-    "message": "Acordați acces"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Joacă și rezolvă Reginele astăzi!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Deschide mini-Sudoku Solver"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Deschide tabloul de bord pentru serii și performanță"
-  },
-  "diagnosticsEngine": {
-    "message": "Motor de diagnosticare"
-  },
-  "liveInspected": {
-    "message": "Inspecție în direct"
-  },
-  "offline": {
-    "message": "Offline"
-  },
-  "inspectedTab": {
-    "message": "Tabăra inspectată:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Inspector de Grilă Matrice Live"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Așteptând pagina de joc LinkedIn"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Navigați la orice tab de tablă de joc LinkedIn (Regine, Sudoku, Tango, Pinpoint) pentru a captura coordonatele constrângerii, stările celulelor și structurile reactive."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Streamer de Jurnale de Telemetrie"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Caută jurnalele..."
-  },
-  "allTypes": {
-    "message": "TOATE TIPURILE"
-  },
-  "logsType": {
-    "message": "JURNALURI"
-  },
-  "infoType": {
-    "message": "INFORMAȚII"
-  },
-  "warnsType": {
-    "message": "AVERTIZEAZĂ"
-  },
-  "errorsType": {
-    "message": "ERORI"
-  },
-  "selectTypePlaceholder": {
-    "message": "Selectați tipul"
-  },
-  "consoleStreamEmpty": {
-    "message": "Fluxul consolei este gol"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Nu au fost detectate ieșiri de log care să corespundă filtrelor. Rulați pașii în interfața de utilizare a soluționatorului LinkedIn Games pentru a transmite acțiunile de log aici."
-  },
-  "subscribedToStorageSession": {
-    "message": "Abonat la fluxul storage.session"
-  },
-  "parsingGameGridCells": {
-    "message": "Analizând celulele grilei jocului... Asigurați-vă că tabla are blocuri de grilă active vizibile."
-  },
-  "urlLabel": {
-    "message": "Url:"
-  },
-  "notAvailable": {
-    "message": "N/A"
-  },
-  "matchesLabel": {
-    "message": "bete"
-  },
-  "copiedLabel": {
-    "message": "Copiat!"
-  },
-  "copyLogsTooltip": {
-    "message": "Copiază jurnalele"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Șterge spațiul de jurnal"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Rezolvă jocul activ LinkedIn"
-  },
-  "contextMenuHint": {
-    "message": "💡 Obține un indiciu"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Vezi rezultatele"
-  },
-  "labelTelemetryTitle": {
-    "message": "TELEMETRIE ȘI CONFIDENȚIALITATE"
-  },
-  "telemetryToggleLabel": {
-    "message": "Trimite Telemetrie Anonimă"
-  },
-  "telemetryToggleDesc": {
-    "message": "Ajută la îmbunătățirea rezolvatorului prin partajarea de metrici anonime de performanță și utilizare."
-  }
+  "extensionName": "Solver pentru LinkedIn Games",
+  "extensionDescription": "Un ajutor pentru LinkedIn Games. Rezolvă automat puzzle-urile zilnice (Queens, Sudoku, Pinpoint, Crossclimb) cu serii și analitice.",
+  "subtitle": "Rezolvă tablele active cu un singur clic",
+  "errorChromeTabIntegration": "Este necesară integrarea cu fila Chrome.",
+  "errorActiveTabNotFound": "Fila activă nu a fost găsită.",
+  "errorNavigationFailed": "Nu s-a putut naviga la $1.",
+  "errorConnectionFailed": "Conexiunea a eșuat.",
+  "errorExecutionFailedDefault": "A apărut o problemă la rularea soluționatorului.",
+  "successSolverStarted": "Soluționatorul a pornit.",
+  "dashboardTitle": "Istoric & Statistică",
+  "dashboardSubtitle": "Istoricul și statisticile tale pentru LinkedIn Games",
+  "statTotalSolved": "Total rezolvat",
+  "statTotalSolvedDesc": "Jocuri rezolvate pentru toate datele",
+  "statAverageTime": "Timp mediu",
+  "statAverageTimeDesc": "Pe toate finalizările înregistrate",
+  "statActiveStreak": "Serii active",
+  "statActiveStreakDesc": "Zile active consecutive",
+  "dashboardDescText": "Analizează-ți metricile de performanță, înregistrează-ți șirurile și urmărește traseele zilnice ale puzzle-urilor rezolvate.",
+  "disclaimerText": "Declinare de responsabilitate: Acesta este un proiect educațional independent, open-source. Nu este afiliat, sponsorizat sau aprobat de LinkedIn Corporation. „LinkedIn” este o marcă înregistrată a LinkedIn Corporation.",
+  "title": "Jocuri LinkedIn",
+  "switchThemeTitle": "Comută în modul $1",
+  "solvingStatus": "Rezolvând...",
+  "bonus": "Bonus",
+  "desc_patches": "Pune-l împreună",
+  "desc_zip": "Completează calea",
+  "desc_sudoku": "Jocul clasic, făcut mini",
+  "desc_tango": "Harmonizează rețeaua",
+  "desc_queens": "Coroanează fiecare regiune",
+  "desc_crossclimb": "Dezvăluie o scară de trivia",
+  "desc_pinpoint": "Ghicește categoria",
+  "titleSolve": "Rezolvă $1",
+  "titleCompleted": "Finalizat astăzi! Faceți clic pentru a naviga la $1",
+  "titleOpen": "Deschide $1 pentru a rezolva",
+  "perfectDay": "Zi perfectă! Toate jocurile $1 finalizate! 🎉",
+  "dailyProgress": "Progres zilnic: $1 din $2 jocuri finalizate astăzi",
+  "statStreakDays": "$1 zile",
+  "personalBests": "Cele mai bune performanțe personale",
+  "noRecordsYet": "Nu s-au înregistrat încă înregistrări de soluționare.",
+  "solvingHistory": "Rezolvarea Istoriei",
+  "activityCalendar": "Calendar de activități",
+  "clearFilter": "Șterge filtrul",
+  "settingModel": "Model",
+  "settingModelSelect": "Selectați modelul",
+  "settingModelCustomOption": "Nume model personalizat...",
+  "settingModelCustomLabel": "Nume model personalizat",
+  "settingModelCustomPlaceholderLocal": "de exemplu, llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Introduceți un identificator personalizat...",
+  "settingEndpointLabel": "URL-ul punctului final",
+  "settingEndpointPlaceholder": "de exemplu http://localhost:11434/v1",
+  "settingApiKeyGemini": "Cheia API Gemini",
+  "settingApiKeyOpenAI": "Cheia API OpenAI",
+  "settingApiKeyAnthropic": "Cheia API Anthropic",
+  "settingApiKeyDeepSeek": "Cheia API DeepSeek",
+  "settingApiKeyCustom": "Cheie API (Opțional)",
+  "settingApiKeyPlaceholderCustom": "Credențiale opționale...",
+  "settingApiKeyPlaceholderDefault": "Introduceți cheia de acreditive...",
+  "settingApiKeyNotice": "Modelul selectat rezolvă Crossclimb și Pinpoint. Extensia nu îți va împărtăși niciodată cheia.",
+  "popupCardTitle": "Conectează-te prin jocuri distractive zilnice",
+  "popupCardDesc": "Pregătește-ți mintea pentru ziua de lucru și compară rezultatele. Scorurile tale sunt private, cu excepția cazului în care le împărtășești.",
+  "saveAndBack": "Salvează și Înapoi la Jocuri",
+  "solvingWorking": "Solver AI în lucru...",
+  "completedToday": "Finalizat astăzi",
+  "solvedCountSuffix": "Rezolvat",
+  "settingsHeaderTitle": "Configurarea modelului AI",
+  "labelAiProvider": "FURNIZOR AI",
+  "labelModelIdentifier": "IDENTIFICATOR MODEL",
+  "labelCustomModel": "NUME MODEL PERSONALIZAT",
+  "labelEndpointUrl": "URL DE FINALizare",
+  "labelGeminiKey": "CHEIA API GEMINI",
+  "labelOpenAiKey": "CHEIA API OPENAI",
+  "labelAnthropicKey": "CHEIE API ANTHROPIC",
+  "labelDeepSeekKey": "CHEIA API DEEPSEEK",
+  "labelCustomKey": "CHEIE API (OPȚIONALĂ)",
+  "navHome": "Acasă",
+  "navAiConfig": "Setări / Opțiuni",
+  "navStats": "Statistici",
+  "navTheme": "Temă",
+  "navDebug": "Depanare",
+  "dailyProgressLabel": "Progres zilnic",
+  "solveActiveBoard": "Rezolvați tabla activă",
+  "backToGames": "Înapoi la jocurile LinkedIn",
+  "dashboardLabel": "Tablou de bord",
+  "gamesSolverTitle": "Soluționator de jocuri",
+  "completedSuccessfully": "Finalizat cu succes",
+  "settingsCredentialsTitle": "Credențiale și modele",
+  "settingsModelGuideTitle": "Ghid și informații despre model",
+  "settingsConnectionStatusTitle": "Starea conexiunii",
+  "settingsActiveSolverLabel": "Solver activ:",
+  "settingsModelIdentifierLabel": "Identificator model:",
+  "settingsAutoSavedNotification": "Setările au fost salvate automat!",
+  "settingsSubtitleDesc": "Configurează punctele de integrare și acreditivele modelului AI pentru raționamentul avansat în rezolvarea puzzle-urilor.",
+  "settingsGeminiGuideDesc": "Performanță remarcabilă la costuri aproape zero. Rezolvă Crossclimb și Pinpoint cu o logică excelentă. Recomandare implicită: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Rapid, receptiv și extrem de fiabil cu modele de cunoștințe generale. Recomandare implicită: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Capacitate maximă de raționare. Gestionează asocieri de cuvinte foarte complexe fără greșeli. Recomandare implicită: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Conectați-vă la cadrele LLM locale precum Ollama sau LM Studio. Indicați URL-ul punctului final (de exemplu, http://localhost:11434/v1) și numele modelului personalizat.",
+  "showMoreDates": "Arată mai multe date",
+  "showLessDates": "Arată mai puțin",
+  "solveBtn_withAi": "Rezolvă cu AI",
+  "solveBtn_game": "Rezolvă jocul",
+  "solveBtn_solving": "Rezolvând...",
+  "solveBtn_solved": "Rezolvat!",
+  "scoreClue": "1 indiciu",
+  "scoreClues": "$1 indicii",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "Marchează ca Nejucat",
+  "settingSolveSpeed": "Rezolvarea Vitezei / Întârzierii",
+  "solveSpeed_instant": "Instant (Cel mai rapid)",
+  "solveSpeed_normal": "Normal (Standard)",
+  "solveSpeed_stealth": "Mod de stealth ( întârzieri asemănătoare cu cele umane)",
+  "labelSolveSpeed": "REZOLVAREA VITEZELOR ȘI TEMPOULUI",
+  "settingSolveSpeedNotice": "Modul instantaneu finalizează tabla în milisecunde. Modul stealth imită comportamentul uman cu un ritm aleatorizat (1–3 secunde) pentru a asigura serii împotriva detectării automate.",
+  "solveBtn_hint": "Obține Indiciu",
+  "settingDefaultSolveMode": "Acțiune implicită a solver-ului",
+  "solveMode_full": "Rezolvare complet automată",
+  "solveMode_hint": "Mod de sugestii educaționale",
+  "labelDefaultSolveMode": "MODUL DE SOLUȚIONARE IMPLICIT",
+  "settingDefaultSolveModeNotice": "Selectați acțiunea principală atunci când activați rezolvatorul din vizualizarea tab-ului sau din tablouri. Rezolvarea completă finalizează jocul; Modul de sugestie plasează un element corect.",
+  "settingsChromeBuiltInGuideTitle": "Cost Zero și AI Complet Local",
+  "settingsChromeBuiltInGuideDesc": "Funcționează complet local pe dispozitivul tău în interiorul browserului. Zero latență de rețea și 100% gratuit cu Gemini Nano.",
+  "debugHeaderTitle": "Debugger de jocuri și instrumente de dezvoltare",
+  "debugStatusOffline": "Offline",
+  "debugStatusLive": "În direct",
+  "debugDetectedGame": "Joc detectat",
+  "debugNoneDetected": "Nimic detectat",
+  "debugTargetUrl": "URL țintă",
+  "debugNoActiveTab": "Niciun tab activ",
+  "debugHtmlCopied": "HTML Copiat!",
+  "debugCopyHtml": "Copiază HTML <main>",
+  "debugLogsCopied": "Jurnalele au fost copiate!",
+  "debugCopyLogs": "Copiază jurnalele consolei",
+  "debugBothCopied": "Ambele copiate!",
+  "debugCopyBoth": "Copiază ambele (HTML și Jurnale)",
+  "debugRegistryCopied": "Registrul JSON a fost copiat!",
+  "debugCopyRegistry": "Copiază JSON-ul Registrului de astăzi",
+  "debugCopyRegistryShort": "Copiază JSON",
+  "debugSubmitAnswer": "Trimite răspunsul",
+  "debugDomPreview": "Previzualizare element DOM",
+  "debugHtmlTruncated": "\n\n[... [trunchiat, total caractere: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Copie completă <main> HTML",
+  "debugNoMainTagCaptured": "Nu a fost capturat niciun tag <main> activ. Asigurați-vă că sunteți pe un ecran de joc LinkedIn.",
+  "debugConsoleOutput": "Ieșire Consolă",
+  "debugEventsCount": "evenimente $1",
+  "debugRefreshLogsTooltip": "Reîmprospătare jurnale",
+  "debugClearLogsTooltip": "Șterge jurnalele",
+  "debugNoLogsCaptured": "Nu s-au capturat încă jurnale. Efectuează acțiuni pe ecranul jocului pentru a declanșa evenimentele consolei.",
+  "debugListeningEvents": "Ascultând evenimentele console.log, console.warn și console.error...",
+  "debugErrorInitializing": "Conexiunea cu pagina de jocuri LinkedIn se inițiază...",
+  "debugErrorRetrieveFailed": "Imposibil de recuperat datele jocului.",
+  "debugErrorNotGamesPage": "Tab-ul activ nu este o pagină de jocuri LinkedIn. Navighează la un joc pentru a captura detalii.",
+  "debugErrorNoActiveTab": "Nu s-a putut identifica tab-ul activ.",
+  "labelDailyReminders": "REMINISCENȚE ZILNICE ȘI PROTECTOR DE SERII",
+  "settingEnableReminders": "Activează mementouri zilnice",
+  "settingEnableRemindersDesc": "Avertizează-mă înainte ca seria de astăzi să expire.",
+  "settingReminderTime": "Timp de reamintire",
+  "settingReminderTimeNotice": "Selectați ora locală pentru a verifica jocurile nerezolvate.",
+  "notificationTitle": "Protector de Serii 🚀",
+  "notificationMessage": "Nu-ți pierde seria de soluționare! Nu ai rezolvat încă jocurile de pe LinkedIn de astăzi.",
+  "notificationButton": "Rezolvă acum!",
+  "commandSolveActiveGame": "Rezolvă automat jocul activ de pe LinkedIn.",
+  "commandGetSingleHint": "Oferiți un indiciu într-un singur pas sau verificați greșelile.",
+  "settingAutoOpenSidepanel": "Deschidere automată a barei laterale în jocuri",
+  "settingAutoOpenSidepanelDesc": "Deschide automat panoul lateral al solver-ului atunci când vizitezi jocurile LinkedIn.",
+  "labelAutoOpenSidepanel": "BARĂ LATERALĂ DE SOLUȚIONARE AUTO-OTVORITĂ",
+  "permissionDialogTitle": "Acordați acces la pagină",
+  "permissionDialogDesc": "Pentru a detecta tablouri de joc active și a rezolva puzzle-uri, extensia are nevoie de permisiunea de a rula pe LinkedIn Games. Faceți clic mai jos pentru a acorda acces.",
+  "permissionDialogButton": "Acordați acces",
+  "omniboxSuggestionQueens": "👑 Joacă și rezolvă Reginele astăzi!",
+  "omniboxSuggestionSudoku": "🔢 Deschide mini-Sudoku Solver",
+  "omniboxSuggestionStats": "📊 Deschide tabloul de bord pentru serii și performanță",
+  "diagnosticsEngine": "Motor de diagnosticare",
+  "liveInspected": "Inspecție în direct",
+  "offline": "Offline",
+  "inspectedTab": "Tabăra inspectată:",
+  "liveMatrixGridInspector": "Inspector de Grilă Matrice Live",
+  "waitingForLinkedInGamePage": "Așteptând pagina de joc LinkedIn",
+  "waitingForLinkedInGamePageDesc": "Navigați la orice tab de tablă de joc LinkedIn (Regine, Sudoku, Tango, Pinpoint) pentru a captura coordonatele constrângerii, stările celulelor și structurile reactive.",
+  "telemetryLogsStreamer": "Streamer de Jurnale de Telemetrie",
+  "searchLogsPlaceholder": "Caută jurnalele...",
+  "allTypes": "TOATE TIPURILE",
+  "logsType": "JURNALURI",
+  "infoType": "INFORMAȚII",
+  "warnsType": "AVERTIZEAZĂ",
+  "errorsType": "ERORI",
+  "selectTypePlaceholder": "Selectați tipul",
+  "consoleStreamEmpty": "Fluxul consolei este gol",
+  "consoleStreamEmptyDesc": "Nu au fost detectate ieșiri de log care să corespundă filtrelor. Rulați pașii în interfața de utilizare a soluționatorului LinkedIn Games pentru a transmite acțiunile de log aici.",
+  "subscribedToStorageSession": "Abonat la fluxul storage.session",
+  "parsingGameGridCells": "Analizând celulele grilei jocului... Asigurați-vă că tabla are blocuri de grilă active vizibile.",
+  "urlLabel": "Url:",
+  "notAvailable": "N/A",
+  "matchesLabel": "bete",
+  "copiedLabel": "Copiat!",
+  "copyLogsTooltip": "Copiază jurnalele",
+  "clearLogSpaceTooltip": "Șterge spațiul de jurnal",
+  "contextMenuSolve": "⚡ Rezolvă jocul activ LinkedIn",
+  "contextMenuHint": "💡 Obține un indiciu",
+  "contextMenuViewResults": "📊 Vezi rezultatele",
+  "labelTelemetryTitle": "TELEMETRIE ȘI CONFIDENȚIALITATE",
+  "telemetryToggleLabel": "Trimite Telemetrie Anonimă",
+  "telemetryToggleDesc": "Ajută la îmbunătățirea rezolvatorului prin partajarea de metrici anonime de performanță și utilizare."
 }

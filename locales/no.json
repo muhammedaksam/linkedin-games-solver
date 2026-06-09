@@ -1,645 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn Games-løser",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "En hjelper for LinkedIn Games. Løs dagens puslespill automatisk (Queens, Sudoku, Pinpoint, Crossclimb) med rekker og analyser.",
-    "description": "The description of the extension."
-  },
-  "subtitle": {
-    "message": "Løs aktive brett med ett klikk",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Chrome-faneintegrasjon er påkrevd.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Fant ikke den aktive fanen.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Navigering til $1 mislyktes.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Tilkoblingen mislyktes.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Det oppstod et problem under kjøring av løseren.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Løseren er startet.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "Historikk & Statistikk",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Din LinkedIn Games historikk og statistikk",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Totalt løst",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Spill løst på tvers av alle datoer",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Gjennomsnittstid",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "På tvers av alle registrerte fullføringer",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Aktiv rekke",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Sammenhengende aktive dager",
-    "description": "Description for the active streak card"
-  },
-  "dashboardDescText": {
-    "message": "Analyser ytelsesverdiene dine, registrer serier og følg sporene til de daglige fullførte puslespillene dine.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "Ansvarsfraskrivelse: Dette er et uavhengig, åpen kildekode-baserte undervisningsprosjekt. Det er ikke tilknyttet, sponset av eller godkjent av LinkedIn Corporation. «LinkedIn» er et registrert varemerke tilhørende LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "title": {
-    "message": "LinkedIn Spill"
-  },
-  "switchThemeTitle": {
-    "message": "Bytt til $1-modus"
-  },
-  "solvingStatus": {
-    "message": "Løser..."
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "queens": {
-    "message": "Queens"
-  },
-  "zip": {
-    "message": "Zip"
-  },
-  "patches": {
-    "message": "Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "bonus": {
-    "message": "Bonus"
-  },
-  "desc_patches": {
-    "message": "Sett det sammen"
-  },
-  "desc_zip": {
-    "message": "Fullfør stien"
-  },
-  "desc_sudoku": {
-    "message": "Det klassiske spillet, laget mini"
-  },
-  "desc_tango": {
-    "message": "Harmoniser nettet"
-  },
-  "desc_queens": {
-    "message": "Kron hver region"
-  },
-  "desc_crossclimb": {
-    "message": "Lås opp en trivia-stige"
-  },
-  "desc_pinpoint": {
-    "message": "Gjet kategorien"
-  },
-  "titleSolve": {
-    "message": "Løs $1"
-  },
-  "titleCompleted": {
-    "message": "Fullført i dag! Klikk for å navigere til $1"
-  },
-  "titleOpen": {
-    "message": "Åpne $1 for å løse"
-  },
-  "perfectDay": {
-    "message": "Perfekt dag! Alle $1 spill fullført! 🎉"
-  },
-  "dailyProgress": {
-    "message": "Daglig fremgang: $1 av $2 spill fullført i dag"
-  },
-  "statStreakDays": {
-    "message": "$1 dager"
-  },
-  "personalBests": {
-    "message": "Personlige rekorder"
-  },
-  "noRecordsYet": {
-    "message": "Ingen løsningsopptegnelser er registrert ennå."
-  },
-  "solvingHistory": {
-    "message": "Løse historien"
-  },
-  "activityCalendar": {
-    "message": "Aktivitetskalender"
-  },
-  "clearFilter": {
-    "message": "Fjern filter"
-  },
-  "settingModel": {
-    "message": "Modell"
-  },
-  "settingModelSelect": {
-    "message": "Velg modell"
-  },
-  "settingModelCustomOption": {
-    "message": "Egendefinert modellnavn..."
-  },
-  "settingModelCustomLabel": {
-    "message": "Egendefinert modellnavn"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "f.eks. llama3, mistral"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Skriv inn tilpasset identifikator..."
-  },
-  "settingEndpointLabel": {
-    "message": "Endepunkt-URL"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "f.eks. http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API-nøkkel"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API-nøkkel"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API-nøkkel"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API-nøkkel"
-  },
-  "settingApiKeyCustom": {
-    "message": "API-nøkkel (valgfritt)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Valgfri legitimasjon..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Skriv inn legitimasjonsnøkkel..."
-  },
-  "settingApiKeyNotice": {
-    "message": "Valgt modell løser Crossclimb og Pinpoint. Utvidelsen deler aldri nøkkelen din."
-  },
-  "popupCardTitle": {
-    "message": "Koble sammen over morsomme, daglige spill"
-  },
-  "popupCardDesc": {
-    "message": "Forbered sinnet ditt for arbeidsdagen og sammenlign resultater. Poengene dine er private med mindre du deler dem."
-  },
-  "saveAndBack": {
-    "message": "Lagre og tilbake til spill"
-  },
-  "solvingWorking": {
-    "message": "AI-løser jobber..."
-  },
-  "completedToday": {
-    "message": "Fullført i dag"
-  },
-  "solvedCountSuffix": {
-    "message": "Løst"
-  },
-  "settingsHeaderTitle": {
-    "message": "AI-modellkonfigurasjon"
-  },
-  "labelAiProvider": {
-    "message": "AI-leverandør"
-  },
-  "labelModelIdentifier": {
-    "message": "MODELLIDENTIFIKATOR"
-  },
-  "labelCustomModel": {
-    "message": "EGEN MODELLNAVN"
-  },
-  "labelEndpointUrl": {
-    "message": "ENDPOINT-URL"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API-NØKKEL"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API NØKKEL"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API NØKKEL"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API NØKKEL"
-  },
-  "labelCustomKey": {
-    "message": "API-NØKKEL (VALGFRITT)"
-  },
-  "navHome": {
-    "message": "Hjem"
-  },
-  "navAiConfig": {
-    "message": "Innstillinger / Valg"
-  },
-  "navStats": {
-    "message": "Statistikk"
-  },
-  "navTheme": {
-    "message": "Tema"
-  },
-  "navDebug": {
-    "message": "Feilsøking"
-  },
-  "dailyProgressLabel": {
-    "message": "Daglig fremgang"
-  },
-  "solveActiveBoard": {
-    "message": "Løs Aktivt Styre"
-  },
-  "backToGames": {
-    "message": "Tilbake til LinkedIn-spill"
-  },
-  "dashboardLabel": {
-    "message": "Dashbord"
-  },
-  "gamesSolverTitle": {
-    "message": "Spillløser"
-  },
-  "completedSuccessfully": {
-    "message": "Fullført med suksess"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Legitimasjon og modeller"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Modellguide og informasjon"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Tilkoblingsstatus"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Aktiv løser:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Modellidentifikator:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Innstillinger lagret automatisk!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Konfigurer AI-modellintegrasjonsendepunkter og legitimasjon for avansert puslespill-løsning."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Fremragende ytelse til nesten null kostnader. Løser Crossclimb og Pinpoint med utmerket logikk. Anbefalt standard: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Rask, responsiv og ekstremt pålitelig med generelle kunnskapsmønstre. Anbefalt standard: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maksimal resonneringsevne. Håndterer svært komplekse ordassosiasjoner feilfritt. Anbefalt standard: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Koble til lokale LLM-rammeverk som Ollama eller LM Studio. Pek på din endepunkt-URL (f.eks. http://localhost:11434/v1) og tilpasset modellenavn."
-  },
-  "showMoreDates": {
-    "message": "Vis flere datoer"
-  },
-  "showLessDates": {
-    "message": "Vis mindre"
-  },
-  "solveBtn_withAi": {
-    "message": "Løs med AI"
-  },
-  "solveBtn_game": {
-    "message": "Løs spill"
-  },
-  "solveBtn_solving": {
-    "message": "Løser..."
-  },
-  "solveBtn_solved": {
-    "message": "Løst!"
-  },
-  "scoreClue": {
-    "message": "1 ledetråd"
-  },
-  "scoreClues": {
-    "message": "$1 ledetråder"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "Merk som Ikke Spilt"
-  },
-  "settingSolveSpeed": {
-    "message": "Løsning av hastighet / forsinkelse"
-  },
-  "solveSpeed_instant": {
-    "message": "Umiddelbar (Raskest)"
-  },
-  "solveSpeed_normal": {
-    "message": "Normal (Standard)"
-  },
-  "solveSpeed_stealth": {
-    "message": "Stealth-modus (menneskelignende forsinkelser)"
-  },
-  "labelSolveSpeed": {
-    "message": "LØSNINGSHASTIGHET OG TEMPO"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Umiddelbar modus fullfører brettet på millisekunder. Stealth-modus etterligner menneskelig atferd med tilfeldig tempo (1–3 sekunder) for å sikre streaks mot automatisk oppdagelse."
-  },
-  "solveBtn_hint": {
-    "message": "Få ledetråd"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Standard løsningshandling"
-  },
-  "solveMode_full": {
-    "message": "Full Auto-Løsning"
-  },
-  "solveMode_hint": {
-    "message": "Utdanningshintmodus"
-  },
-  "labelDefaultSolveMode": {
-    "message": "STANDARD LØSNINGSMODUS"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Velg den primære handlingen når du utløser løseren fra fanevisning eller brett. Full Løsning avslutter spillet; Hint-modus plasserer ett riktig element."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Null kostnad og fullt lokal AI"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Kjører helt lokalt på enheten din inne i nettleseren. Null nettverkslatens og 100% gratis med Gemini Nano."
-  },
-  "debugHeaderTitle": {
-    "message": "Spillfeilsøker og utviklerverktøy"
-  },
-  "debugStatusOffline": {
-    "message": "Frakoblet"
-  },
-  "debugStatusLive": {
-    "message": "Live"
-  },
-  "debugDetectedGame": {
-    "message": "Oppdaget spill"
-  },
-  "debugNoneDetected": {
-    "message": "Ingen oppdaget"
-  },
-  "debugTargetUrl": {
-    "message": "Mål-URL"
-  },
-  "debugNoActiveTab": {
-    "message": "Ingen aktiv fane"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML kopiert!"
-  },
-  "debugCopyHtml": {
-    "message": "Kopier <main> HTML"
-  },
-  "debugLogsCopied": {
-    "message": "Logger kopiert!"
-  },
-  "debugCopyLogs": {
-    "message": "Kopier konsolllogger"
-  },
-  "debugBothCopied": {
-    "message": "Begge kopiert!"
-  },
-  "debugCopyBoth": {
-    "message": "Kopier begge (HTML og logger)"
-  },
-  "debugRegistryCopied": {
-    "message": "Registrerings-JSON kopiert!"
-  },
-  "debugCopyRegistry": {
-    "message": "Kopier dagens register JSON"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Kopier JSON"
-  },
-  "debugSubmitAnswer": {
-    "message": "Send inn svar"
-  },
-  "debugDomPreview": {
-    "message": "DOM Element Forhåndsvisning"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [truncated, total characters: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Kopier fullført <main> HTML"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Ingen aktiv <main>-tagg fanget. Sørg for at du er på en LinkedIn spillskjerm."
-  },
-  "debugConsoleOutput": {
-    "message": "Konsollutdata"
-  },
-  "debugEventsCount": {
-    "message": "$1 arrangementer"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Oppdater logger"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Tøm logger"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Ingen logger er fanget ennå. Utfør handlinger på spillskjermen for å utløse konsollhendelser."
-  },
-  "debugListeningEvents": {
-    "message": "Lytter etter console.log, console.warn og console.error hendelser..."
-  },
-  "debugErrorInitializing": {
-    "message": "Tilkobling til LinkedIn-spillside er i ferd med å bli initiert..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Kan ikke hente spilldata."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Aktiv fane er ikke en LinkedIn Games-side. Naviger til et spill for å fange detaljer."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Kunne ikke identifisere den aktive fanen."
-  },
-  "labelDailyReminders": {
-    "message": "DAGLIGE PÅMINNELSER & SERIEBESKYTTELSE"
-  },
-  "settingEnableReminders": {
-    "message": "Aktiver daglige påminnelser"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Advar meg før dagens rekke utløper."
-  },
-  "settingReminderTime": {
-    "message": "Påminnelse Tid"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Velg lokal tid for å sjekke etter uløste spill."
-  },
-  "notificationTitle": {
-    "message": "Streakbeskytter 🚀"
-  },
-  "notificationMessage": {
-    "message": "Ikke mist løsningsrekken din! Du har ikke løst dagens LinkedIn-spill ennå."
-  },
-  "notificationButton": {
-    "message": "Løs nå!"
-  },
-  "commandSolveActiveGame": {
-    "message": "Løs det aktive LinkedIn-spillet automatisk."
-  },
-  "commandGetSingleHint": {
-    "message": "Gi et enkelt trinns hint eller sjekk for feil."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Auto-åpne sidepanel på spill"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Åpne automatisk løserens sidepanel når du besøker LinkedIn Games."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "AUTO-ÅPNE LØSNINGSBOKS"
-  },
-  "permissionDialogTitle": {
-    "message": "Gi tilgang til siden"
-  },
-  "permissionDialogDesc": {
-    "message": "For å oppdage aktive spillbrett og løse gåter, trenger utvidelsen tillatelse til å kjøre på LinkedIn Games. Klikk nedenfor for å gi tilgang."
-  },
-  "permissionDialogButton": {
-    "message": "Gi tilgang"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Spill og løs dronninger i dag!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Åpne mini-Sudoku-løser"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Åpne Streaks & Ytelsesdashbord"
-  },
-  "diagnosticsEngine": {
-    "message": "Diagnostikkmotor"
-  },
-  "liveInspected": {
-    "message": "Live inspisert"
-  },
-  "offline": {
-    "message": "Frakoblet"
-  },
-  "inspectedTab": {
-    "message": "Inspisert fane:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Live Matrix Grid Inspektør"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Venter på LinkedIn-spillside"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Naviger til hvilken som helst LinkedIn Game board-fane (Dronninger, Sudoku, Tango, Pinpoint) for å fange opp begrensningskoordinater, celletilstander og reaktive strukturer."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Telemetry-loggstrømmer"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Søk logger..."
-  },
-  "allTypes": {
-    "message": "ALLE TYPER"
-  },
-  "logsType": {
-    "message": "LOGGER"
-  },
-  "infoType": {
-    "message": "INFO"
-  },
-  "warnsType": {
-    "message": "ADVARER"
-  },
-  "errorsType": {
-    "message": "FEIL"
-  },
-  "selectTypePlaceholder": {
-    "message": "Velg type"
-  },
-  "consoleStreamEmpty": {
-    "message": "Konsollstrømmen er tom"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Ingen loggutdata ble oppdaget som samsvarer med filtrene. Kjør trinn inne i LinkedIn Games-løsningen for å strømme logghandlinger her."
-  },
-  "subscribedToStorageSession": {
-    "message": "Abonnert på storage.session-strømmen"
-  },
-  "parsingGameGridCells": {
-    "message": "Parserer spillrutenettceller... Sørg for at brettet har aktive rutenettblokker synlige."
-  },
-  "urlLabel": {
-    "message": "Url:"
-  },
-  "notAvailable": {
-    "message": "Ikke aktuelt"
-  },
-  "matchesLabel": {
-    "message": "samsvar"
-  },
-  "copiedLabel": {
-    "message": "Kopiert!"
-  },
-  "copyLogsTooltip": {
-    "message": "Kopier logger"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Tøm loggplass"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Løs aktiv LinkedIn-spill"
-  },
-  "contextMenuHint": {
-    "message": "💡 Få et hint"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Se resultater"
-  },
-  "labelTelemetryTitle": {
-    "message": "TELEMETRI & PERSONVERN"
-  },
-  "telemetryToggleLabel": {
-    "message": "Send anonym telemetri"
-  },
-  "telemetryToggleDesc": {
-    "message": "Hjelp med å forbedre løseren ved å dele anonyme ytelses- og bruksdata."
-  }
+  "extensionName": "LinkedIn Games-løser",
+  "extensionDescription": "En hjelper for LinkedIn Games. Løs dagens puslespill automatisk (Queens, Sudoku, Pinpoint, Crossclimb) med rekker og analyser.",
+  "subtitle": "Løs aktive brett med ett klikk",
+  "errorChromeTabIntegration": "Chrome-faneintegrasjon er påkrevd.",
+  "errorActiveTabNotFound": "Fant ikke den aktive fanen.",
+  "errorNavigationFailed": "Navigering til $1 mislyktes.",
+  "errorConnectionFailed": "Tilkoblingen mislyktes.",
+  "errorExecutionFailedDefault": "Det oppstod et problem under kjøring av løseren.",
+  "successSolverStarted": "Løseren er startet.",
+  "dashboardTitle": "Historikk & Statistikk",
+  "dashboardSubtitle": "Din LinkedIn Games historikk og statistikk",
+  "statTotalSolved": "Totalt løst",
+  "statTotalSolvedDesc": "Spill løst på tvers av alle datoer",
+  "statAverageTime": "Gjennomsnittstid",
+  "statAverageTimeDesc": "På tvers av alle registrerte fullføringer",
+  "statActiveStreak": "Aktiv rekke",
+  "statActiveStreakDesc": "Sammenhengende aktive dager",
+  "dashboardDescText": "Analyser ytelsesverdiene dine, registrer serier og følg sporene til de daglige fullførte puslespillene dine.",
+  "disclaimerText": "Ansvarsfraskrivelse: Dette er et uavhengig, åpen kildekode-baserte undervisningsprosjekt. Det er ikke tilknyttet, sponset av eller godkjent av LinkedIn Corporation. «LinkedIn» er et registrert varemerke tilhørende LinkedIn Corporation.",
+  "title": "LinkedIn Spill",
+  "switchThemeTitle": "Bytt til $1-modus",
+  "solvingStatus": "Løser...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "Bonus",
+  "desc_patches": "Sett det sammen",
+  "desc_zip": "Fullfør stien",
+  "desc_sudoku": "Det klassiske spillet, laget mini",
+  "desc_tango": "Harmoniser nettet",
+  "desc_queens": "Kron hver region",
+  "desc_crossclimb": "Lås opp en trivia-stige",
+  "desc_pinpoint": "Gjet kategorien",
+  "titleSolve": "Løs $1",
+  "titleCompleted": "Fullført i dag! Klikk for å navigere til $1",
+  "titleOpen": "Åpne $1 for å løse",
+  "perfectDay": "Perfekt dag! Alle $1 spill fullført! 🎉",
+  "dailyProgress": "Daglig fremgang: $1 av $2 spill fullført i dag",
+  "statStreakDays": "$1 dager",
+  "personalBests": "Personlige rekorder",
+  "noRecordsYet": "Ingen løsningsopptegnelser er registrert ennå.",
+  "solvingHistory": "Løse historien",
+  "activityCalendar": "Aktivitetskalender",
+  "clearFilter": "Fjern filter",
+  "settingModel": "Modell",
+  "settingModelSelect": "Velg modell",
+  "settingModelCustomOption": "Egendefinert modellnavn...",
+  "settingModelCustomLabel": "Egendefinert modellnavn",
+  "settingModelCustomPlaceholderLocal": "f.eks. llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Skriv inn tilpasset identifikator...",
+  "settingEndpointLabel": "Endepunkt-URL",
+  "settingEndpointPlaceholder": "f.eks. http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API-nøkkel",
+  "settingApiKeyOpenAI": "OpenAI API-nøkkel",
+  "settingApiKeyAnthropic": "Anthropic API-nøkkel",
+  "settingApiKeyDeepSeek": "DeepSeek API-nøkkel",
+  "settingApiKeyCustom": "API-nøkkel (valgfritt)",
+  "settingApiKeyPlaceholderCustom": "Valgfri legitimasjon...",
+  "settingApiKeyPlaceholderDefault": "Skriv inn legitimasjonsnøkkel...",
+  "settingApiKeyNotice": "Valgt modell løser Crossclimb og Pinpoint. Utvidelsen deler aldri nøkkelen din.",
+  "popupCardTitle": "Koble sammen over morsomme, daglige spill",
+  "popupCardDesc": "Forbered sinnet ditt for arbeidsdagen og sammenlign resultater. Poengene dine er private med mindre du deler dem.",
+  "saveAndBack": "Lagre og tilbake til spill",
+  "solvingWorking": "AI-løser jobber...",
+  "completedToday": "Fullført i dag",
+  "solvedCountSuffix": "Løst",
+  "settingsHeaderTitle": "AI-modellkonfigurasjon",
+  "labelAiProvider": "AI-leverandør",
+  "labelModelIdentifier": "MODELLIDENTIFIKATOR",
+  "labelCustomModel": "EGEN MODELLNAVN",
+  "labelEndpointUrl": "ENDPOINT-URL",
+  "labelGeminiKey": "GEMINI API-NØKKEL",
+  "labelOpenAiKey": "OPENAI API NØKKEL",
+  "labelAnthropicKey": "ANTHROPIC API NØKKEL",
+  "labelDeepSeekKey": "DEEPSEEK API NØKKEL",
+  "labelCustomKey": "API-NØKKEL (VALGFRITT)",
+  "navHome": "Hjem",
+  "navAiConfig": "Innstillinger / Valg",
+  "navStats": "Statistikk",
+  "navTheme": "Tema",
+  "navDebug": "Feilsøking",
+  "dailyProgressLabel": "Daglig fremgang",
+  "solveActiveBoard": "Løs Aktivt Styre",
+  "backToGames": "Tilbake til LinkedIn-spill",
+  "dashboardLabel": "Dashbord",
+  "gamesSolverTitle": "Spillløser",
+  "completedSuccessfully": "Fullført med suksess",
+  "settingsCredentialsTitle": "Legitimasjon og modeller",
+  "settingsModelGuideTitle": "Modellguide og informasjon",
+  "settingsConnectionStatusTitle": "Tilkoblingsstatus",
+  "settingsActiveSolverLabel": "Aktiv løser:",
+  "settingsModelIdentifierLabel": "Modellidentifikator:",
+  "settingsAutoSavedNotification": "Innstillinger lagret automatisk!",
+  "settingsSubtitleDesc": "Konfigurer AI-modellintegrasjonsendepunkter og legitimasjon for avansert puslespill-løsning.",
+  "settingsGeminiGuideDesc": "Fremragende ytelse til nesten null kostnader. Løser Crossclimb og Pinpoint med utmerket logikk. Anbefalt standard: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Rask, responsiv og ekstremt pålitelig med generelle kunnskapsmønstre. Anbefalt standard: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maksimal resonneringsevne. Håndterer svært komplekse ordassosiasjoner feilfritt. Anbefalt standard: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Koble til lokale LLM-rammeverk som Ollama eller LM Studio. Pek på din endepunkt-URL (f.eks. http://localhost:11434/v1) og tilpasset modellenavn.",
+  "showMoreDates": "Vis flere datoer",
+  "showLessDates": "Vis mindre",
+  "solveBtn_withAi": "Løs med AI",
+  "solveBtn_game": "Løs spill",
+  "solveBtn_solving": "Løser...",
+  "solveBtn_solved": "Løst!",
+  "scoreClue": "1 ledetråd",
+  "scoreClues": "$1 ledetråder",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "Merk som Ikke Spilt",
+  "settingSolveSpeed": "Løsning av hastighet / forsinkelse",
+  "solveSpeed_instant": "Umiddelbar (Raskest)",
+  "solveSpeed_normal": "Normal (Standard)",
+  "solveSpeed_stealth": "Stealth-modus (menneskelignende forsinkelser)",
+  "labelSolveSpeed": "LØSNINGSHASTIGHET OG TEMPO",
+  "settingSolveSpeedNotice": "Umiddelbar modus fullfører brettet på millisekunder. Stealth-modus etterligner menneskelig atferd med tilfeldig tempo (1–3 sekunder) for å sikre streaks mot automatisk oppdagelse.",
+  "solveBtn_hint": "Få ledetråd",
+  "settingDefaultSolveMode": "Standard løsningshandling",
+  "solveMode_full": "Full Auto-Løsning",
+  "solveMode_hint": "Utdanningshintmodus",
+  "labelDefaultSolveMode": "STANDARD LØSNINGSMODUS",
+  "settingDefaultSolveModeNotice": "Velg den primære handlingen når du utløser løseren fra fanevisning eller brett. Full Løsning avslutter spillet; Hint-modus plasserer ett riktig element.",
+  "settingsChromeBuiltInGuideTitle": "Null kostnad og fullt lokal AI",
+  "settingsChromeBuiltInGuideDesc": "Kjører helt lokalt på enheten din inne i nettleseren. Null nettverkslatens og 100% gratis med Gemini Nano.",
+  "debugHeaderTitle": "Spillfeilsøker og utviklerverktøy",
+  "debugStatusOffline": "Frakoblet",
+  "debugStatusLive": "Live",
+  "debugDetectedGame": "Oppdaget spill",
+  "debugNoneDetected": "Ingen oppdaget",
+  "debugTargetUrl": "Mål-URL",
+  "debugNoActiveTab": "Ingen aktiv fane",
+  "debugHtmlCopied": "HTML kopiert!",
+  "debugCopyHtml": "Kopier <main> HTML",
+  "debugLogsCopied": "Logger kopiert!",
+  "debugCopyLogs": "Kopier konsolllogger",
+  "debugBothCopied": "Begge kopiert!",
+  "debugCopyBoth": "Kopier begge (HTML og logger)",
+  "debugRegistryCopied": "Registrerings-JSON kopiert!",
+  "debugCopyRegistry": "Kopier dagens register JSON",
+  "debugCopyRegistryShort": "Kopier JSON",
+  "debugSubmitAnswer": "Send inn svar",
+  "debugDomPreview": "DOM Element Forhåndsvisning",
+  "debugHtmlTruncated": "\n\n[... [truncated, total characters: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Kopier fullført <main> HTML",
+  "debugNoMainTagCaptured": "Ingen aktiv <main>-tagg fanget. Sørg for at du er på en LinkedIn spillskjerm.",
+  "debugConsoleOutput": "Konsollutdata",
+  "debugEventsCount": "$1 arrangementer",
+  "debugRefreshLogsTooltip": "Oppdater logger",
+  "debugClearLogsTooltip": "Tøm logger",
+  "debugNoLogsCaptured": "Ingen logger er fanget ennå. Utfør handlinger på spillskjermen for å utløse konsollhendelser.",
+  "debugListeningEvents": "Lytter etter console.log, console.warn og console.error hendelser...",
+  "debugErrorInitializing": "Tilkobling til LinkedIn-spillside er i ferd med å bli initiert...",
+  "debugErrorRetrieveFailed": "Kan ikke hente spilldata.",
+  "debugErrorNotGamesPage": "Aktiv fane er ikke en LinkedIn Games-side. Naviger til et spill for å fange detaljer.",
+  "debugErrorNoActiveTab": "Kunne ikke identifisere den aktive fanen.",
+  "labelDailyReminders": "DAGLIGE PÅMINNELSER & SERIEBESKYTTELSE",
+  "settingEnableReminders": "Aktiver daglige påminnelser",
+  "settingEnableRemindersDesc": "Advar meg før dagens rekke utløper.",
+  "settingReminderTime": "Påminnelse Tid",
+  "settingReminderTimeNotice": "Velg lokal tid for å sjekke etter uløste spill.",
+  "notificationTitle": "Streakbeskytter 🚀",
+  "notificationMessage": "Ikke mist løsningsrekken din! Du har ikke løst dagens LinkedIn-spill ennå.",
+  "notificationButton": "Løs nå!",
+  "commandSolveActiveGame": "Løs det aktive LinkedIn-spillet automatisk.",
+  "commandGetSingleHint": "Gi et enkelt trinns hint eller sjekk for feil.",
+  "settingAutoOpenSidepanel": "Auto-åpne sidepanel på spill",
+  "settingAutoOpenSidepanelDesc": "Åpne automatisk løserens sidepanel når du besøker LinkedIn Games.",
+  "labelAutoOpenSidepanel": "AUTO-ÅPNE LØSNINGSBOKS",
+  "permissionDialogTitle": "Gi tilgang til siden",
+  "permissionDialogDesc": "For å oppdage aktive spillbrett og løse gåter, trenger utvidelsen tillatelse til å kjøre på LinkedIn Games. Klikk nedenfor for å gi tilgang.",
+  "permissionDialogButton": "Gi tilgang",
+  "omniboxSuggestionQueens": "👑 Spill og løs dronninger i dag!",
+  "omniboxSuggestionSudoku": "🔢 Åpne mini-Sudoku-løser",
+  "omniboxSuggestionStats": "📊 Åpne Streaks & Ytelsesdashbord",
+  "diagnosticsEngine": "Diagnostikkmotor",
+  "liveInspected": "Live inspisert",
+  "offline": "Frakoblet",
+  "inspectedTab": "Inspisert fane:",
+  "liveMatrixGridInspector": "Live Matrix Grid Inspektør",
+  "waitingForLinkedInGamePage": "Venter på LinkedIn-spillside",
+  "waitingForLinkedInGamePageDesc": "Naviger til hvilken som helst LinkedIn Game board-fane (Dronninger, Sudoku, Tango, Pinpoint) for å fange opp begrensningskoordinater, celletilstander og reaktive strukturer.",
+  "telemetryLogsStreamer": "Telemetry-loggstrømmer",
+  "searchLogsPlaceholder": "Søk logger...",
+  "allTypes": "ALLE TYPER",
+  "logsType": "LOGGER",
+  "infoType": "INFO",
+  "warnsType": "ADVARER",
+  "errorsType": "FEIL",
+  "selectTypePlaceholder": "Velg type",
+  "consoleStreamEmpty": "Konsollstrømmen er tom",
+  "consoleStreamEmptyDesc": "Ingen loggutdata ble oppdaget som samsvarer med filtrene. Kjør trinn inne i LinkedIn Games-løsningen for å strømme logghandlinger her.",
+  "subscribedToStorageSession": "Abonnert på storage.session-strømmen",
+  "parsingGameGridCells": "Parserer spillrutenettceller... Sørg for at brettet har aktive rutenettblokker synlige.",
+  "urlLabel": "Url:",
+  "notAvailable": "Ikke aktuelt",
+  "matchesLabel": "samsvar",
+  "copiedLabel": "Kopiert!",
+  "copyLogsTooltip": "Kopier logger",
+  "clearLogSpaceTooltip": "Tøm loggplass",
+  "contextMenuSolve": "⚡ Løs aktiv LinkedIn-spill",
+  "contextMenuHint": "💡 Få et hint",
+  "contextMenuViewResults": "📊 Se resultater",
+  "labelTelemetryTitle": "TELEMETRI & PERSONVERN",
+  "telemetryToggleLabel": "Send anonym telemetri",
+  "telemetryToggleDesc": "Hjelp med å forbedre løseren ved å dele anonyme ytelses- og bruksdata."
 }

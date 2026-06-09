@@ -1,648 +1,210 @@
 {
-  "extensionName": {
-    "message": "LinkedIn játékmegoldó",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Segéd a LinkedIn Games-hez. Napi rejtvények (Queens, Sudoku, Pinpoint, Crossclimb) automatikus megoldása szériakövetéssel és analitikával.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "LinkedIn játékok",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "Aktív táblák megoldása egyetlen kattintással",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Chrome-fül integráció szükséges.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Az aktív lap nem található.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "A navigálás ide: $1 nem sikerült.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "A kapcsolat sikertelen.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Hiba történt a megoldó futtatása közben.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "A megoldó elindult.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "Előzmények és statisztikák",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Teljes LinkedIn Games megoldási előzményeid és statisztikáid",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Összesen megoldva",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Játékok megoldva minden dátumon",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Átlagos idő",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Az összes rögzített befejezés alapján",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Aktív sorozat",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Egymást követő aktív napok",
-    "description": "Description for the active streak card"
-  },
-  "popupCardTitle": {
-    "message": "Csatlakozz szórakoztató napi játékokon keresztül",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "Készítsd fel az elméd a munkanapra és hasonlítsd össze az eredményeket. A pontjaid privátak, hacsak nem osztod meg azokat.",
-    "description": "Description of the card feed in popup"
-  },
-  "dashboardDescText": {
-    "message": "Elemezze a teljesítménymutatóit, rögzítse a sorozatait, és kövesse a napi megoldott rejtvények útvonalát.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "Jogi nyilatkozat: Ez egy független, nyílt forráskódú oktatási projekt. Nem áll kapcsolatban a LinkedIn Corporationnel, és azt nem szponzorálja vagy hagyja jóvá. A „LinkedIn” a LinkedIn Corporation bejegyzett védjegye.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "switchThemeTitle": {
-    "message": "Váltás $1 módra"
-  },
-  "solvingStatus": {
-    "message": "Megoldás..."
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "queens": {
-    "message": "Queens"
-  },
-  "zip": {
-    "message": "Zip"
-  },
-  "patches": {
-    "message": "Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "bonus": {
-    "message": "Bónusz"
-  },
-  "desc_patches": {
-    "message": "Rakd össze!"
-  },
-  "desc_zip": {
-    "message": "Teljesítsd a pályát"
-  },
-  "desc_sudoku": {
-    "message": "A klasszikus játék, mini változatban"
-  },
-  "desc_tango": {
-    "message": "Harmonizálja a hálózatot"
-  },
-  "desc_queens": {
-    "message": "Koronázd meg minden régiót"
-  },
-  "desc_crossclimb": {
-    "message": "Nyisd meg a trivia létrát"
-  },
-  "desc_pinpoint": {
-    "message": "Találd ki a kategóriát"
-  },
-  "titleSolve": {
-    "message": "Oldd meg $1"
-  },
-  "titleCompleted": {
-    "message": "Ma befejezve! Kattintson a navigáláshoz a $1-hez"
-  },
-  "titleOpen": {
-    "message": "Nyisd meg a $1-et a megoldáshoz"
-  },
-  "perfectDay": {
-    "message": "Tökéletes nap! Az összes $1 játék befejezve! 🎉"
-  },
-  "dailyProgress": {
-    "message": "Napi előrehaladás: $1 a $2 játékokból befejezve ma"
-  },
-  "statStreakDays": {
-    "message": "$1 nap"
-  },
-  "personalBests": {
-    "message": "Személyes legjobbak"
-  },
-  "noRecordsYet": {
-    "message": "Még nincs rögzített megoldási rekord."
-  },
-  "solvingHistory": {
-    "message": "Történelem megoldása"
-  },
-  "activityCalendar": {
-    "message": "Tevékenységi Naptár"
-  },
-  "clearFilter": {
-    "message": "Szűrő törlése"
-  },
-  "settingModel": {
-    "message": "Modell"
-  },
-  "settingModelSelect": {
-    "message": "Válassza ki a modellt"
-  },
-  "settingModelCustomOption": {
-    "message": "Egyedi modell név..."
-  },
-  "settingModelCustomLabel": {
-    "message": "Egyedi modell név"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "pl. llama3, mistral"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Írjon be egyedi azonosítót..."
-  },
-  "settingEndpointLabel": {
-    "message": "Végpont URL"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "pl. http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API kulcs"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API kulcs"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API kulcs"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API kulcs"
-  },
-  "settingApiKeyCustom": {
-    "message": "API kulcs (Opcionális)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Opcionális hitelesítő adatok..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Írja be a hitelesítő adatok kulcsát..."
-  },
-  "settingApiKeyNotice": {
-    "message": "A kiválasztott modell megoldja a Crossclimb és a Pinpoint feladatokat. A bővítmény soha nem osztja meg a kulcsodat."
-  },
-  "saveAndBack": {
-    "message": "Mentés és Vissza a Játékokhoz"
-  },
-  "solvingWorking": {
-    "message": "AI megoldó dolgozik..."
-  },
-  "completedToday": {
-    "message": "Ma befejezve"
-  },
-  "solvedCountSuffix": {
-    "message": "Megoldva"
-  },
-  "settingsHeaderTitle": {
-    "message": "AI modell konfiguráció"
-  },
-  "labelAiProvider": {
-    "message": "AI SZOLGÁLTATÓ"
-  },
-  "labelModelIdentifier": {
-    "message": "MODEL AZONOSÍTÓ"
-  },
-  "labelCustomModel": {
-    "message": "EGYEDI MODEL NÉV"
-  },
-  "labelEndpointUrl": {
-    "message": "VÉGPOINT URL"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API KULCS"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API KULCS"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API KULCS"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API KULCS"
-  },
-  "labelCustomKey": {
-    "message": "API KULCS (OPCIONÁLIS)"
-  },
-  "navHome": {
-    "message": "Otthon"
-  },
-  "navAiConfig": {
-    "message": "Beállítások / Opciók"
-  },
-  "navStats": {
-    "message": "Statisztikák"
-  },
-  "navTheme": {
-    "message": "Téma"
-  },
-  "navDebug": {
-    "message": "Hibakeresés"
-  },
-  "dailyProgressLabel": {
-    "message": "Napi Haladás"
-  },
-  "solveActiveBoard": {
-    "message": "Megoldás Aktív Tábla"
-  },
-  "backToGames": {
-    "message": "Vissza a LinkedIn játékokhoz"
-  },
-  "dashboardLabel": {
-    "message": "Műszerfal"
-  },
-  "gamesSolverTitle": {
-    "message": "Játékmegoldó"
-  },
-  "completedSuccessfully": {
-    "message": "Sikeresen befejezve"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Hitelesítések és Modellek"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Modell Útmutató és Információ"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Kapcsolati állapot"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Aktív megoldó:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Modellazonosító:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "A beállítások automatikusan mentve!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Állítsa be az AI modell integrációs végpontjait és hitelesítő adatait a fejlett rejtvénymegoldó érveléshez."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Kiváló teljesítmény szinte nullás költségek mellett. Kiváló logikával oldja meg a Crossclimb és Pinpoint problémáit. Ajánlott alapértelmezett: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Gyors, reagálóképes és rendkívül megbízható általános tudásmintákkal. Ajánlott alapértelmezett: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maximális érvelési kapacitás. Hibátlanul kezeli a nagyon összetett szószövetségeket. Ajánlott alapértelmezett: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Csatlakozzon helyi LLM keretrendszerekhez, mint az Ollama vagy az LM Studio. Adja meg az végpont URL-jét (pl. http://localhost:11434/v1) és a testreszabott modell nevét."
-  },
-  "showMoreDates": {
-    "message": "További dátumok megjelenítése"
-  },
-  "showLessDates": {
-    "message": "Kevesebb megjelenítése"
-  },
-  "solveBtn_withAi": {
-    "message": "Oldj meg mesterséges intelligenciával"
-  },
-  "solveBtn_game": {
-    "message": "Játék megoldása"
-  },
-  "solveBtn_solving": {
-    "message": "Megoldás..."
-  },
-  "solveBtn_solved": {
-    "message": "Megoldva!"
-  },
-  "scoreClue": {
-    "message": "1 nyomravezető"
-  },
-  "scoreClues": {
-    "message": "$1 nyomok"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "Jelöld meg, mint Nem Játszott"
-  },
-  "settingSolveSpeed": {
-    "message": "Megoldási Sebesség / Késleltetés"
-  },
-  "solveSpeed_instant": {
-    "message": "Azonnali (Leggyorsabb)"
-  },
-  "solveSpeed_normal": {
-    "message": "Normál (Standard)"
-  },
-  "solveSpeed_stealth": {
-    "message": "Rejtett üzemmód (Emberhez hasonló késleltetések)"
-  },
-  "labelSolveSpeed": {
-    "message": "MEGOLDÁSI SEBESSÉG ÉS TEMPÓ"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Az azonnali mód milliszekundumok alatt befejezi a táblát. A rejtett mód emberi viselkedést utánoz véletlenszerű ütemezéssel (1-3 másodperc), hogy megvédje a sorozatokat az automatizált észleléstől."
-  },
-  "solveBtn_hint": {
-    "message": "Kapj egy tippet"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Alapértelmezett megoldó művelet"
-  },
-  "solveMode_full": {
-    "message": "Teljes automatikus megoldás"
-  },
-  "solveMode_hint": {
-    "message": "Oktatási Tipp Mód"
-  },
-  "labelDefaultSolveMode": {
-    "message": "ALAPÉRTELMEZETT MEGOLDÓ MÓD"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Válaszd ki a fő műveletet, amikor a megoldót a fül nézetből vagy a táblákból indítod. A Teljes megoldás befejezi a játékot; a Tipp mód egy helyes elemet helyez el."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Nulla költségű és teljesen helyi MI"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Teljesen helyben fut a készülékeden a böngészőn belül. Nulla hálózati késleltetés és 100% ingyenes a Gemini Nano-val."
-  },
-  "debugHeaderTitle": {
-    "message": "Játék Hibakereső és Fejlesztő Eszközök"
-  },
-  "debugStatusOffline": {
-    "message": "Offline"
-  },
-  "debugStatusLive": {
-    "message": "Élő"
-  },
-  "debugDetectedGame": {
-    "message": "Észlelt játék"
-  },
-  "debugNoneDetected": {
-    "message": "Nem észlelve"
-  },
-  "debugTargetUrl": {
-    "message": "Cél URL"
-  },
-  "debugNoActiveTab": {
-    "message": "Nincs aktív fül"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML másolva!"
-  },
-  "debugCopyHtml": {
-    "message": "Másold a <main> HTML-t"
-  },
-  "debugLogsCopied": {
-    "message": "Naplók másolva!"
-  },
-  "debugCopyLogs": {
-    "message": "Másold a konzolnaplókat"
-  },
-  "debugBothCopied": {
-    "message": "Mindkettő másolva!"
-  },
-  "debugCopyBoth": {
-    "message": "Másold mindkettőt (HTML és naplók)"
-  },
-  "debugRegistryCopied": {
-    "message": "A regisztrációs JSON másolva!"
-  },
-  "debugCopyRegistry": {
-    "message": "Másolja a mai nyilvántartás JSON-ját"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Másold a JSON-t"
-  },
-  "debugSubmitAnswer": {
-    "message": "Válasz beküldése"
-  },
-  "debugDomPreview": {
-    "message": "DOM elem előnézete"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [csonkítva, összes karakter: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Másolat kész <main> HTML"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Nincs aktív <main> címke rögzítve. Győződjön meg róla, hogy egy LinkedIn játék képernyőn van."
-  },
-  "debugConsoleOutput": {
-    "message": "Konzol kimenet"
-  },
-  "debugEventsCount": {
-    "message": "$1 események"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Frissítse a naplókat"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Tisztítsa meg a naplókat"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Még nincsenek rögzített naplók. Végezzen műveleteket a játéknézetben a konzol események kiváltásához."
-  },
-  "debugListeningEvents": {
-    "message": "Figyelem a console.log, console.warn és console.error eseményeket..."
-  },
-  "debugErrorInitializing": {
-    "message": "A kapcsolat a LinkedIn Játék oldalával inicializálódik..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Nem sikerült lekérni a játékadatokat."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Az aktív fül nem egy LinkedIn Játékok oldal. Navigálj egy játékhoz a részletek rögzítéséhez."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Nem sikerült azonosítani az aktív lapot."
-  },
-  "labelDailyReminders": {
-    "message": "NAPI EMLÉKEZTETŐK ÉS SORVÉDŐ"
-  },
-  "settingEnableReminders": {
-    "message": "Napi emlékeztetők engedélyezése"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Figyelmeztess, mielőtt a mai sorozat lejár."
-  },
-  "settingReminderTime": {
-    "message": "Emlékeztető idő"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Válassza ki a helyi időt az megoldatlan játékok ellenőrzéséhez."
-  },
-  "notificationTitle": {
-    "message": "Sávvédő 🚀"
-  },
-  "notificationMessage": {
-    "message": "Ne veszítsd el a megoldási sorozatodat! Még nem oldottad meg a mai LinkedIn játékokat."
-  },
-  "notificationButton": {
-    "message": "Oldd meg most!"
-  },
-  "commandSolveActiveGame": {
-    "message": "Oldd meg az aktív LinkedIn játékot automatikusan."
-  },
-  "commandGetSingleHint": {
-    "message": "Adjon egy lépésben egy tippet vagy ellenőrizze a hibákat."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Automatikus oldalsáv megnyitása játékoknál"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Automatikusan nyissa meg a megoldó oldalsávját, amikor a LinkedIn Játékokat látogatja."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "AUTÓ-OPEN MEGOLDÓ OLDALSÁV"
-  },
-  "permissionDialogTitle": {
-    "message": "Oldalhozzáférés engedélyezése"
-  },
-  "permissionDialogDesc": {
-    "message": "Az aktív játéktáblák és rejtvények megoldásához a bővítménynek engedélyre van szüksége a LinkedIn Játékok futtatásához. Kattintson az alábbi gombra a hozzáférés engedélyezéséhez."
-  },
-  "permissionDialogButton": {
-    "message": "Hozzáférés engedélyezése"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Játssz és oldd meg a Queens-t ma!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Nyisd meg a mini-Sudoku megoldót"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Nyitott sorozatok és teljesítmény irányítópult"
-  },
-  "diagnosticsEngine": {
-    "message": "Diagnosztikai motor"
-  },
-  "liveInspected": {
-    "message": "Élő ellenőrzés alatt"
-  },
-  "offline": {
-    "message": "Offline"
-  },
-  "inspectedTab": {
-    "message": "Ellenőrzött fül:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Élő Mátrix Hálóellenőr"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "LinkedIn Játékoldalra várva"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Navigálj bármely LinkedIn Játék táblához (Queens, Sudoku, Tango, Pinpoint), hogy rögzítsd a korlátozási koordinátákat, a cellák állapotát és a reaktív struktúrákat."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Telemetry Napló Streamer"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Keresési naplók..."
-  },
-  "allTypes": {
-    "message": "MINDEN TÍPUS"
-  },
-  "logsType": {
-    "message": "NAPLÓK"
-  },
-  "infoType": {
-    "message": "INFO"
-  },
-  "warnsType": {
-    "message": "FIGYELMEZTET"
-  },
-  "errorsType": {
-    "message": "HIBÁK"
-  },
-  "selectTypePlaceholder": {
-    "message": "Válassza ki a típust"
-  },
-  "consoleStreamEmpty": {
-    "message": "Konzol folyamat üres"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Nincsenek a szűrőknek megfelelő naplóbejegyzések. Futtassa a lépéseket a LinkedIn Games megoldó felhasználói felületén, hogy itt streamelje a naplózott műveleteket."
-  },
-  "subscribedToStorageSession": {
-    "message": "Feliratkozva a storage.session streamre"
-  },
-  "parsingGameGridCells": {
-    "message": "Játékmező cellák elemzése... Győződjön meg róla, hogy a táblán aktív rácsblokkok láthatók."
-  },
-  "urlLabel": {
-    "message": "Url:"
-  },
-  "notAvailable": {
-    "message": "N/A"
-  },
-  "matchesLabel": {
-    "message": "mérkőzések"
-  },
-  "copiedLabel": {
-    "message": "Másolt!"
-  },
-  "copyLogsTooltip": {
-    "message": "Másolás naplók"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Tisztítsa meg a naplóteret"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Oldd meg az Aktív LinkedIn Játékot"
-  },
-  "contextMenuHint": {
-    "message": "💡 Kérj egy tippet"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Eredmények megtekintése"
-  },
-  "labelTelemetryTitle": {
-    "message": "TELEMETRIA ÉS ADATVÉDELEM"
-  },
-  "telemetryToggleLabel": {
-    "message": "Küldjön névtelen telemetriát"
-  },
-  "telemetryToggleDesc": {
-    "message": "Segíts a megoldó fejlesztésében az anonim teljesítmény- és használati mutatók megosztásával."
-  }
+  "extensionName": "LinkedIn játékmegoldó",
+  "extensionDescription": "Segéd a LinkedIn Games-hez. Napi rejtvények (Queens, Sudoku, Pinpoint, Crossclimb) automatikus megoldása szériakövetéssel és analitikával.",
+  "title": "LinkedIn játékok",
+  "subtitle": "Aktív táblák megoldása egyetlen kattintással",
+  "errorChromeTabIntegration": "Chrome-fül integráció szükséges.",
+  "errorActiveTabNotFound": "Az aktív lap nem található.",
+  "errorNavigationFailed": "A navigálás ide: $1 nem sikerült.",
+  "errorConnectionFailed": "A kapcsolat sikertelen.",
+  "errorExecutionFailedDefault": "Hiba történt a megoldó futtatása közben.",
+  "successSolverStarted": "A megoldó elindult.",
+  "dashboardTitle": "Előzmények és statisztikák",
+  "dashboardSubtitle": "Teljes LinkedIn Games megoldási előzményeid és statisztikáid",
+  "statTotalSolved": "Összesen megoldva",
+  "statTotalSolvedDesc": "Játékok megoldva minden dátumon",
+  "statAverageTime": "Átlagos idő",
+  "statAverageTimeDesc": "Az összes rögzített befejezés alapján",
+  "statActiveStreak": "Aktív sorozat",
+  "statActiveStreakDesc": "Egymást követő aktív napok",
+  "popupCardTitle": "Csatlakozz szórakoztató napi játékokon keresztül",
+  "popupCardDesc": "Készítsd fel az elméd a munkanapra és hasonlítsd össze az eredményeket. A pontjaid privátak, hacsak nem osztod meg azokat.",
+  "dashboardDescText": "Elemezze a teljesítménymutatóit, rögzítse a sorozatait, és kövesse a napi megoldott rejtvények útvonalát.",
+  "disclaimerText": "Jogi nyilatkozat: Ez egy független, nyílt forráskódú oktatási projekt. Nem áll kapcsolatban a LinkedIn Corporationnel, és azt nem szponzorálja vagy hagyja jóvá. A „LinkedIn” a LinkedIn Corporation bejegyzett védjegye.",
+  "switchThemeTitle": "Váltás $1 módra",
+  "solvingStatus": "Megoldás...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "Bónusz",
+  "desc_patches": "Rakd össze!",
+  "desc_zip": "Teljesítsd a pályát",
+  "desc_sudoku": "A klasszikus játék, mini változatban",
+  "desc_tango": "Harmonizálja a hálózatot",
+  "desc_queens": "Koronázd meg minden régiót",
+  "desc_crossclimb": "Nyisd meg a trivia létrát",
+  "desc_pinpoint": "Találd ki a kategóriát",
+  "titleSolve": "Oldd meg $1",
+  "titleCompleted": "Ma befejezve! Kattintson a navigáláshoz a $1-hez",
+  "titleOpen": "Nyisd meg a $1-et a megoldáshoz",
+  "perfectDay": "Tökéletes nap! Az összes $1 játék befejezve! 🎉",
+  "dailyProgress": "Napi előrehaladás: $1 a $2 játékokból befejezve ma",
+  "statStreakDays": "$1 nap",
+  "personalBests": "Személyes legjobbak",
+  "noRecordsYet": "Még nincs rögzített megoldási rekord.",
+  "solvingHistory": "Történelem megoldása",
+  "activityCalendar": "Tevékenységi Naptár",
+  "clearFilter": "Szűrő törlése",
+  "settingModel": "Modell",
+  "settingModelSelect": "Válassza ki a modellt",
+  "settingModelCustomOption": "Egyedi modell név...",
+  "settingModelCustomLabel": "Egyedi modell név",
+  "settingModelCustomPlaceholderLocal": "pl. llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Írjon be egyedi azonosítót...",
+  "settingEndpointLabel": "Végpont URL",
+  "settingEndpointPlaceholder": "pl. http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API kulcs",
+  "settingApiKeyOpenAI": "OpenAI API kulcs",
+  "settingApiKeyAnthropic": "Anthropic API kulcs",
+  "settingApiKeyDeepSeek": "DeepSeek API kulcs",
+  "settingApiKeyCustom": "API kulcs (Opcionális)",
+  "settingApiKeyPlaceholderCustom": "Opcionális hitelesítő adatok...",
+  "settingApiKeyPlaceholderDefault": "Írja be a hitelesítő adatok kulcsát...",
+  "settingApiKeyNotice": "A kiválasztott modell megoldja a Crossclimb és a Pinpoint feladatokat. A bővítmény soha nem osztja meg a kulcsodat.",
+  "saveAndBack": "Mentés és Vissza a Játékokhoz",
+  "solvingWorking": "AI megoldó dolgozik...",
+  "completedToday": "Ma befejezve",
+  "solvedCountSuffix": "Megoldva",
+  "settingsHeaderTitle": "AI modell konfiguráció",
+  "labelAiProvider": "AI SZOLGÁLTATÓ",
+  "labelModelIdentifier": "MODEL AZONOSÍTÓ",
+  "labelCustomModel": "EGYEDI MODEL NÉV",
+  "labelEndpointUrl": "VÉGPOINT URL",
+  "labelGeminiKey": "GEMINI API KULCS",
+  "labelOpenAiKey": "OPENAI API KULCS",
+  "labelAnthropicKey": "ANTHROPIC API KULCS",
+  "labelDeepSeekKey": "DEEPSEEK API KULCS",
+  "labelCustomKey": "API KULCS (OPCIONÁLIS)",
+  "navHome": "Otthon",
+  "navAiConfig": "Beállítások / Opciók",
+  "navStats": "Statisztikák",
+  "navTheme": "Téma",
+  "navDebug": "Hibakeresés",
+  "dailyProgressLabel": "Napi Haladás",
+  "solveActiveBoard": "Megoldás Aktív Tábla",
+  "backToGames": "Vissza a LinkedIn játékokhoz",
+  "dashboardLabel": "Műszerfal",
+  "gamesSolverTitle": "Játékmegoldó",
+  "completedSuccessfully": "Sikeresen befejezve",
+  "settingsCredentialsTitle": "Hitelesítések és Modellek",
+  "settingsModelGuideTitle": "Modell Útmutató és Információ",
+  "settingsConnectionStatusTitle": "Kapcsolati állapot",
+  "settingsActiveSolverLabel": "Aktív megoldó:",
+  "settingsModelIdentifierLabel": "Modellazonosító:",
+  "settingsAutoSavedNotification": "A beállítások automatikusan mentve!",
+  "settingsSubtitleDesc": "Állítsa be az AI modell integrációs végpontjait és hitelesítő adatait a fejlett rejtvénymegoldó érveléshez.",
+  "settingsGeminiGuideDesc": "Kiváló teljesítmény szinte nullás költségek mellett. Kiváló logikával oldja meg a Crossclimb és Pinpoint problémáit. Ajánlott alapértelmezett: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Gyors, reagálóképes és rendkívül megbízható általános tudásmintákkal. Ajánlott alapértelmezett: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maximális érvelési kapacitás. Hibátlanul kezeli a nagyon összetett szószövetségeket. Ajánlott alapértelmezett: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Csatlakozzon helyi LLM keretrendszerekhez, mint az Ollama vagy az LM Studio. Adja meg az végpont URL-jét (pl. http://localhost:11434/v1) és a testreszabott modell nevét.",
+  "showMoreDates": "További dátumok megjelenítése",
+  "showLessDates": "Kevesebb megjelenítése",
+  "solveBtn_withAi": "Oldj meg mesterséges intelligenciával",
+  "solveBtn_game": "Játék megoldása",
+  "solveBtn_solving": "Megoldás...",
+  "solveBtn_solved": "Megoldva!",
+  "scoreClue": "1 nyomravezető",
+  "scoreClues": "$1 nyomok",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "Jelöld meg, mint Nem Játszott",
+  "settingSolveSpeed": "Megoldási Sebesség / Késleltetés",
+  "solveSpeed_instant": "Azonnali (Leggyorsabb)",
+  "solveSpeed_normal": "Normál (Standard)",
+  "solveSpeed_stealth": "Rejtett üzemmód (Emberhez hasonló késleltetések)",
+  "labelSolveSpeed": "MEGOLDÁSI SEBESSÉG ÉS TEMPÓ",
+  "settingSolveSpeedNotice": "Az azonnali mód milliszekundumok alatt befejezi a táblát. A rejtett mód emberi viselkedést utánoz véletlenszerű ütemezéssel (1-3 másodperc), hogy megvédje a sorozatokat az automatizált észleléstől.",
+  "solveBtn_hint": "Kapj egy tippet",
+  "settingDefaultSolveMode": "Alapértelmezett megoldó művelet",
+  "solveMode_full": "Teljes automatikus megoldás",
+  "solveMode_hint": "Oktatási Tipp Mód",
+  "labelDefaultSolveMode": "ALAPÉRTELMEZETT MEGOLDÓ MÓD",
+  "settingDefaultSolveModeNotice": "Válaszd ki a fő műveletet, amikor a megoldót a fül nézetből vagy a táblákból indítod. A Teljes megoldás befejezi a játékot; a Tipp mód egy helyes elemet helyez el.",
+  "settingsChromeBuiltInGuideTitle": "Nulla költségű és teljesen helyi MI",
+  "settingsChromeBuiltInGuideDesc": "Teljesen helyben fut a készülékeden a böngészőn belül. Nulla hálózati késleltetés és 100% ingyenes a Gemini Nano-val.",
+  "debugHeaderTitle": "Játék Hibakereső és Fejlesztő Eszközök",
+  "debugStatusOffline": "Offline",
+  "debugStatusLive": "Élő",
+  "debugDetectedGame": "Észlelt játék",
+  "debugNoneDetected": "Nem észlelve",
+  "debugTargetUrl": "Cél URL",
+  "debugNoActiveTab": "Nincs aktív fül",
+  "debugHtmlCopied": "HTML másolva!",
+  "debugCopyHtml": "Másold a <main> HTML-t",
+  "debugLogsCopied": "Naplók másolva!",
+  "debugCopyLogs": "Másold a konzolnaplókat",
+  "debugBothCopied": "Mindkettő másolva!",
+  "debugCopyBoth": "Másold mindkettőt (HTML és naplók)",
+  "debugRegistryCopied": "A regisztrációs JSON másolva!",
+  "debugCopyRegistry": "Másolja a mai nyilvántartás JSON-ját",
+  "debugCopyRegistryShort": "Másold a JSON-t",
+  "debugSubmitAnswer": "Válasz beküldése",
+  "debugDomPreview": "DOM elem előnézete",
+  "debugHtmlTruncated": "\n\n[... [csonkítva, összes karakter: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Másolat kész <main> HTML",
+  "debugNoMainTagCaptured": "Nincs aktív <main> címke rögzítve. Győződjön meg róla, hogy egy LinkedIn játék képernyőn van.",
+  "debugConsoleOutput": "Konzol kimenet",
+  "debugEventsCount": "$1 események",
+  "debugRefreshLogsTooltip": "Frissítse a naplókat",
+  "debugClearLogsTooltip": "Tisztítsa meg a naplókat",
+  "debugNoLogsCaptured": "Még nincsenek rögzített naplók. Végezzen műveleteket a játéknézetben a konzol események kiváltásához.",
+  "debugListeningEvents": "Figyelem a console.log, console.warn és console.error eseményeket...",
+  "debugErrorInitializing": "A kapcsolat a LinkedIn Játék oldalával inicializálódik...",
+  "debugErrorRetrieveFailed": "Nem sikerült lekérni a játékadatokat.",
+  "debugErrorNotGamesPage": "Az aktív fül nem egy LinkedIn Játékok oldal. Navigálj egy játékhoz a részletek rögzítéséhez.",
+  "debugErrorNoActiveTab": "Nem sikerült azonosítani az aktív lapot.",
+  "labelDailyReminders": "NAPI EMLÉKEZTETŐK ÉS SORVÉDŐ",
+  "settingEnableReminders": "Napi emlékeztetők engedélyezése",
+  "settingEnableRemindersDesc": "Figyelmeztess, mielőtt a mai sorozat lejár.",
+  "settingReminderTime": "Emlékeztető idő",
+  "settingReminderTimeNotice": "Válassza ki a helyi időt az megoldatlan játékok ellenőrzéséhez.",
+  "notificationTitle": "Sávvédő 🚀",
+  "notificationMessage": "Ne veszítsd el a megoldási sorozatodat! Még nem oldottad meg a mai LinkedIn játékokat.",
+  "notificationButton": "Oldd meg most!",
+  "commandSolveActiveGame": "Oldd meg az aktív LinkedIn játékot automatikusan.",
+  "commandGetSingleHint": "Adjon egy lépésben egy tippet vagy ellenőrizze a hibákat.",
+  "settingAutoOpenSidepanel": "Automatikus oldalsáv megnyitása játékoknál",
+  "settingAutoOpenSidepanelDesc": "Automatikusan nyissa meg a megoldó oldalsávját, amikor a LinkedIn Játékokat látogatja.",
+  "labelAutoOpenSidepanel": "AUTÓ-OPEN MEGOLDÓ OLDALSÁV",
+  "permissionDialogTitle": "Oldalhozzáférés engedélyezése",
+  "permissionDialogDesc": "Az aktív játéktáblák és rejtvények megoldásához a bővítménynek engedélyre van szüksége a LinkedIn Játékok futtatásához. Kattintson az alábbi gombra a hozzáférés engedélyezéséhez.",
+  "permissionDialogButton": "Hozzáférés engedélyezése",
+  "omniboxSuggestionQueens": "👑 Játssz és oldd meg a Queens-t ma!",
+  "omniboxSuggestionSudoku": "🔢 Nyisd meg a mini-Sudoku megoldót",
+  "omniboxSuggestionStats": "📊 Nyitott sorozatok és teljesítmény irányítópult",
+  "diagnosticsEngine": "Diagnosztikai motor",
+  "liveInspected": "Élő ellenőrzés alatt",
+  "offline": "Offline",
+  "inspectedTab": "Ellenőrzött fül:",
+  "liveMatrixGridInspector": "Élő Mátrix Hálóellenőr",
+  "waitingForLinkedInGamePage": "LinkedIn Játékoldalra várva",
+  "waitingForLinkedInGamePageDesc": "Navigálj bármely LinkedIn Játék táblához (Queens, Sudoku, Tango, Pinpoint), hogy rögzítsd a korlátozási koordinátákat, a cellák állapotát és a reaktív struktúrákat.",
+  "telemetryLogsStreamer": "Telemetry Napló Streamer",
+  "searchLogsPlaceholder": "Keresési naplók...",
+  "allTypes": "MINDEN TÍPUS",
+  "logsType": "NAPLÓK",
+  "infoType": "INFO",
+  "warnsType": "FIGYELMEZTET",
+  "errorsType": "HIBÁK",
+  "selectTypePlaceholder": "Válassza ki a típust",
+  "consoleStreamEmpty": "Konzol folyamat üres",
+  "consoleStreamEmptyDesc": "Nincsenek a szűrőknek megfelelő naplóbejegyzések. Futtassa a lépéseket a LinkedIn Games megoldó felhasználói felületén, hogy itt streamelje a naplózott műveleteket.",
+  "subscribedToStorageSession": "Feliratkozva a storage.session streamre",
+  "parsingGameGridCells": "Játékmező cellák elemzése... Győződjön meg róla, hogy a táblán aktív rácsblokkok láthatók.",
+  "urlLabel": "Url:",
+  "notAvailable": "N/A",
+  "matchesLabel": "mérkőzések",
+  "copiedLabel": "Másolt!",
+  "copyLogsTooltip": "Másolás naplók",
+  "clearLogSpaceTooltip": "Tisztítsa meg a naplóteret",
+  "contextMenuSolve": "⚡ Oldd meg az Aktív LinkedIn Játékot",
+  "contextMenuHint": "💡 Kérj egy tippet",
+  "contextMenuViewResults": "📊 Eredmények megtekintése",
+  "labelTelemetryTitle": "TELEMETRIA ÉS ADATVÉDELEM",
+  "telemetryToggleLabel": "Küldjön névtelen telemetriát",
+  "telemetryToggleDesc": "Segíts a megoldó fejlesztésében az anonim teljesítmény- és használati mutatók megosztásával."
 }

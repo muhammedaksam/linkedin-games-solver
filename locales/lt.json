@@ -1,646 +1,210 @@
 {
-  "extensionName": {
-    "message": "„LinkedIn“ žaidimų sprendiklis",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Pagalbininkas „LinkedIn Games“. Automatiškai sprendžia kasdienius galvosūkius (Queens, Sudoku, Pinpoint, Crossclimb), stebi serijas ir pateikia analitiką.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "„LinkedIn“ žaidimai",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "Išspręskite aktyvias lentas vienu paspaudimu",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Reikalinga „Chrome“ skirtuko integracija.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Aktyvus skirtukas nerastas.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Nepavyko pereiti į $1.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Nepavyko prisijungti.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Vykdant sprendiklį įvyko problema.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Sprendiklis paleistas.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "Istorija ir statistika",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Jūsų LinkedIn Games sprendimų istorija ir statistika",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Išspręsta iš viso",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Žaidimai išspręsti per visas datas",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Vidutinis laikas",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Pagal visus užregistruotus užbaigimus",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Aktyvi serija",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Eilės aktyvios dienos",
-    "description": "Description for the active streak card"
-  },
-  "dashboardDescText": {
-    "message": "Analizuokite savo veiklos rodiklius, fiksuokite serijas ir sekite kasdien įveiktų galvosūkių eigą.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "Atsakomybės apribojimas: tai nepriklausomas, atvirojo kodo edukacinis projektas. Jis nėra susijęs su „LinkedIn Corporation“, jos neremia ir nepatvirtina. „LinkedIn“ yra registruotasis „LinkedIn Corporation“ prekių ženklas.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "switchThemeTitle": {
-    "message": "Perjunkite į $1 režimą"
-  },
-  "solvingStatus": {
-    "message": "Sprendžiama..."
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "queens": {
-    "message": "Queens"
-  },
-  "zip": {
-    "message": "Zip"
-  },
-  "patches": {
-    "message": "Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "bonus": {
-    "message": "Premija"
-  },
-  "desc_patches": {
-    "message": "Sudėk tai kartu"
-  },
-  "desc_zip": {
-    "message": "Užbaikite kelią"
-  },
-  "desc_sudoku": {
-    "message": "Klasikinis žaidimas, padarytas mini."
-  },
-  "desc_tango": {
-    "message": "Harmonizuoti tinklą"
-  },
-  "desc_queens": {
-    "message": "Karūnuokite kiekvieną regioną"
-  },
-  "desc_crossclimb": {
-    "message": "Atidarykite žinių laiptelį"
-  },
-  "desc_pinpoint": {
-    "message": "Atspėk kategoriją"
-  },
-  "titleSolve": {
-    "message": "Išspręskite $1"
-  },
-  "titleCompleted": {
-    "message": "Baigta šiandien! Spustelėkite, kad pereitumėte prie $1"
-  },
-  "titleOpen": {
-    "message": "Atidarykite $1, kad išspręstumėte"
-  },
-  "perfectDay": {
-    "message": "Puiki diena! Visi $1 žaidimai baigti! 🎉"
-  },
-  "dailyProgress": {
-    "message": "Dienos pažanga: $1 iš $2 žaidimų užbaigta šiandien"
-  },
-  "statStreakDays": {
-    "message": "$1 dienos"
-  },
-  "personalBests": {
-    "message": "Asmeniniai pasiekimai"
-  },
-  "noRecordsYet": {
-    "message": "Dar nėra užfiksuotų sprendimų įrašų."
-  },
-  "solvingHistory": {
-    "message": "Istorijos sprendimas"
-  },
-  "activityCalendar": {
-    "message": "Veiklos kalendorius"
-  },
-  "clearFilter": {
-    "message": "Išvalyti filtrą"
-  },
-  "settingModel": {
-    "message": "Modelis"
-  },
-  "settingModelSelect": {
-    "message": "Pasirinkite modelį"
-  },
-  "settingModelCustomOption": {
-    "message": "Pasirinktinis modelio pavadinimas..."
-  },
-  "settingModelCustomLabel": {
-    "message": "Pasirinktinis modelio pavadinimas"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "pvz. llama3, mistral"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Įveskite pasirinktą identifikatorių..."
-  },
-  "settingEndpointLabel": {
-    "message": "Pabaigos URL"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "pvz. http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API raktas"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API raktas"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API raktas"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API raktas"
-  },
-  "settingApiKeyCustom": {
-    "message": "API raktas (pasirinktinai)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Pasirinktiniai įgaliojimai..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Įveskite prisijungimo raktą..."
-  },
-  "settingApiKeyNotice": {
-    "message": "Pasirinktas modelis sprendžia Crossclimb ir Pinpoint. Išplėtimas niekada nesidalina jūsų raktu."
-  },
-  "popupCardTitle": {
-    "message": "Susijunkite per smagias, kasdienes žaidimus"
-  },
-  "popupCardDesc": {
-    "message": "Pasiruoškite savo protą darbo dienai ir palyginkite rezultatus. Jūsų rezultatai yra privatūs, nebent juos pasidalinsite."
-  },
-  "saveAndBack": {
-    "message": "Išsaugoti ir grįžti į žaidimus"
-  },
-  "solvingWorking": {
-    "message": "AI sprendėjas dirba..."
-  },
-  "completedToday": {
-    "message": "Baigta šiandien"
-  },
-  "solvedCountSuffix": {
-    "message": "Išspręsta"
-  },
-  "settingsHeaderTitle": {
-    "message": "AI modelio konfigūracija"
-  },
-  "labelAiProvider": {
-    "message": "DI TIEKĖJAS"
-  },
-  "labelModelIdentifier": {
-    "message": "MODELIO IDENTIFIKATORIUS"
-  },
-  "labelCustomModel": {
-    "message": "PRAŠYMO MODELIO PAVADINIMAS"
-  },
-  "labelEndpointUrl": {
-    "message": "PABAIGOS URL"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API RAKTAS"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API RAKTAS"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API RAKTAS"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API RAKTAS"
-  },
-  "labelCustomKey": {
-    "message": "API RAKTAS (PASIRINKTINIS)"
-  },
-  "navHome": {
-    "message": "Namai"
-  },
-  "navAiConfig": {
-    "message": "Nustatymai / Parinktys"
-  },
-  "navStats": {
-    "message": "Statistika"
-  },
-  "navTheme": {
-    "message": "Tema"
-  },
-  "navDebug": {
-    "message": "Derinimas"
-  },
-  "dailyProgressLabel": {
-    "message": "Kasdienis pažanga"
-  },
-  "solveActiveBoard": {
-    "message": "Išspręsti aktyvią lentą"
-  },
-  "backToGames": {
-    "message": "Atgal į LinkedIn žaidimus"
-  },
-  "dashboardLabel": {
-    "message": "Valdymo skydelis"
-  },
-  "gamesSolverTitle": {
-    "message": "Žaidimų sprendėjas"
-  },
-  "completedSuccessfully": {
-    "message": "Sėkmingai užbaigta"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Akreditacijos ir modeliai"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Modelio vadovas ir informacija"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Ryšio būsena"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Aktyvus sprendėjas:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Modelio identifikatorius:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Nustatymai automatiškai išsaugoti!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Konfigūruokite AI modelio integracijos galinius taškus ir kredencialus pažangiam galvosūkių sprendimo mąstymui."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Išskirtinis našumas beveik nulinėmis sąnaudomis. Puikiai sprendžia Crossclimb ir Pinpoint su puikia logika. Rekomenduojamas numatytasis: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Greitas, reaguojantis ir itin patikimas su bendrojo žinojimo modeliais. Rekomenduojama numatytoji parinktis: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maksimalus mąstymo pajėgumas. Be priekaištų tvarko labai sudėtingas žodžių asociacijas. Rekomenduojama numatytoji parinktis: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Prisijunkite prie vietinių LLM sistemų, tokių kaip Ollama arba LM Studio. Nurodykite savo galinio taško URL (pvz., http://localhost:11434/v1) ir pasirinktą modelio pavadinimą."
-  },
-  "showMoreDates": {
-    "message": "Rodyti daugiau datų"
-  },
-  "showLessDates": {
-    "message": "Rodyti mažiau"
-  },
-  "solveBtn_withAi": {
-    "message": "Išspręskite su dirbtiniu intelektu"
-  },
-  "solveBtn_game": {
-    "message": "Išspręsti žaidimą"
-  },
-  "solveBtn_solving": {
-    "message": "Sprendžiama..."
-  },
-  "solveBtn_solved": {
-    "message": "Išspręsta!"
-  },
-  "scoreClue": {
-    "message": "1 užuomina"
-  },
-  "scoreClues": {
-    "message": "$1 užuominos"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "Žymėti kaip nežaista"
-  },
-  "settingSolveSpeed": {
-    "message": "Greitis / Vėlavimas sprendimas"
-  },
-  "solveSpeed_instant": {
-    "message": "Momentinis (Grečiausias)"
-  },
-  "solveSpeed_normal": {
-    "message": "Normalus (Standartinis)"
-  },
-  "solveSpeed_stealth": {
-    "message": "Slaptas režimas (žmogiški delsimo laikai)"
-  },
-  "labelSolveSpeed": {
-    "message": "GREITUMO IR TEMPAVIMO SPRENDIMAS"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Momentinis režimas užbaigia lentą milisekundėmis. Slaptas režimas imituoja žmogaus elgesį su atsitiktiniu tempu (1–3 sekundės), kad apsaugotų serijas nuo automatizuoto aptikimo."
-  },
-  "solveBtn_hint": {
-    "message": "Gauti užuominą"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Numatytasis sprendimo veiksmas"
-  },
-  "solveMode_full": {
-    "message": "Pilnas automatinis sprendimas"
-  },
-  "solveMode_hint": {
-    "message": "Mokymosi patarimų režimas"
-  },
-  "labelDefaultSolveMode": {
-    "message": "NUMATYTAS SPRĘSTUVAS REŽIMAS"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Pasirinkite pagrindinį veiksmą, kai aktyvuojate sprendėją iš skirtuko peržiūros arba lentų. Pilnas sprendimas baigia žaidimą; Patarimų režimas įdeda vieną teisingą elementą."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Nulinė kaina ir visiškai vietinė dirbtinio intelekto sistema"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Vyksta visiškai lokaliai jūsų įrenginyje naršyklėje. Nėra tinklo delsos ir 100% nemokamai su Gemini Nano."
-  },
-  "debugHeaderTitle": {
-    "message": "Žaidimų derintuvas ir kūrimo įrankiai"
-  },
-  "debugStatusOffline": {
-    "message": "Neprisijungęs"
-  },
-  "debugStatusLive": {
-    "message": "Gyvai"
-  },
-  "debugDetectedGame": {
-    "message": "Aptikta žaidimas"
-  },
-  "debugNoneDetected": {
-    "message": "Nėra aptikta"
-  },
-  "debugTargetUrl": {
-    "message": "Tikslo URL"
-  },
-  "debugNoActiveTab": {
-    "message": "Nėra aktyvios kortelės"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML nukopijuota!"
-  },
-  "debugCopyHtml": {
-    "message": "Kopijuoti <main> HTML"
-  },
-  "debugLogsCopied": {
-    "message": "Žurnalai nukopijuoti!"
-  },
-  "debugCopyLogs": {
-    "message": "Kopijuoti konsolės žurnalus"
-  },
-  "debugBothCopied": {
-    "message": "Abu nukopijuoti!"
-  },
-  "debugCopyBoth": {
-    "message": "Kopijuoti abu (HTML ir žurnalus)"
-  },
-  "debugRegistryCopied": {
-    "message": "Registras JSON nukopijuotas!"
-  },
-  "debugCopyRegistry": {
-    "message": "Kopijuoti šiandienos registracijos JSON"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Kopijuoti JSON"
-  },
-  "debugSubmitAnswer": {
-    "message": "Pateikti atsakymą"
-  },
-  "debugDomPreview": {
-    "message": "DOM elemento peržiūra"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [truncated, total characters: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Kopijuoti pilną <main> HTML"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Nėra užfiksuoto aktyvaus <main> žymos. Įsitikinkite, kad esate LinkedIn žaidimo ekrane."
-  },
-  "debugConsoleOutput": {
-    "message": "Konsolės išvestis"
-  },
-  "debugEventsCount": {
-    "message": "$1 renginiai"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Atnaujinti žurnalus"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Išvalyti žurnalus"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Dar nėra užfiksuotų žurnalų. Atlikite veiksmus žaidimo ekrane, kad sukeltumėte konsolės įvykius."
-  },
-  "debugListeningEvents": {
-    "message": "Klausomasi console.log, console.warn ir console.error įvykių..."
-  },
-  "debugErrorInitializing": {
-    "message": "Jungimasis su LinkedIn žaidimo puslapiu pradedamas..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Nepavyko gauti žaidimo duomenų."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Aktyvi kortelė nėra LinkedIn žaidimų puslapis. Eikite į žaidimą, kad užfiksuotumėte detales."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Nepavyko nustatyti aktyvios kortelės."
-  },
-  "labelDailyReminders": {
-    "message": "DIENOS PRIMINIMAI IR SERIJOS APSAUGA"
-  },
-  "settingEnableReminders": {
-    "message": "Įjungti kasdienius priminimus"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Įspėk mane prieš šiandienos serijai pasibaigiant."
-  },
-  "settingReminderTime": {
-    "message": "Priminimo laikas"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Pasirinkite vietinį laiką, kad patikrintumėte neišspręstas žaidimų."
-  },
-  "notificationTitle": {
-    "message": "Juostų apsaugos priemonė 🚀"
-  },
-  "notificationMessage": {
-    "message": "Neprarask savo sprendimų serijos! Dar nesugebėjai išspręsti šiandienos LinkedIn žaidimų."
-  },
-  "notificationButton": {
-    "message": "Spręsk dabar!"
-  },
-  "commandSolveActiveGame": {
-    "message": "Automatiškai išspręskite aktyvią LinkedIn žaidimą."
-  },
-  "commandGetSingleHint": {
-    "message": "Pateikite vieno žingsnio užuominą arba patikrinkite klaidas."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Automatinis šoninės juostos atidarymas žaidimuose"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Automatiškai atidaryti sprendėjo šoninį skydelį, kai lankotės „LinkedIn Games“."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "AUTO-ATIDARYMO SPRENDIMŲ ŠONINIS PANELE"
-  },
-  "permissionDialogTitle": {
-    "message": "Suteikti prieigą prie puslapio"
-  },
-  "permissionDialogDesc": {
-    "message": "Norint aptikti aktyvius žaidimų lentas ir išspręsti galvosūkius, plėtinys turi gauti leidimą veikti „LinkedIn Games“. Spustelėkite žemiau, kad suteiktumėte prieigą."
-  },
-  "permissionDialogButton": {
-    "message": "Suteikti prieigą"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Žaiskite ir spręskite Karalienes šiandien!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Atidaryti mini-Sudoku sprendėją"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Atidaryti serijas ir našumo valdymo skydelį"
-  },
-  "diagnosticsEngine": {
-    "message": "Diagnostikos variklis"
-  },
-  "liveInspected": {
-    "message": "Gyvai tikrinama"
-  },
-  "offline": {
-    "message": "Neprisijungęs"
-  },
-  "inspectedTab": {
-    "message": "Patikrinta kortelė:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Gyvas Matricos Tinklo Inspektorius"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Laukiama LinkedIn žaidimo puslapio"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Eikite į bet kurią LinkedIn žaidimo lentos skiltį (Karalienės, Sudoku, Tango, Pinpoint), kad užfiksuotumėte apribojimų koordinates, langelių būsenas ir reaktyvias struktūras."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Telemetrijos žurnalų srautas"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Ieškoti žurnalų..."
-  },
-  "allTypes": {
-    "message": "VISI TIPAI"
-  },
-  "logsType": {
-    "message": "KURMIAI"
-  },
-  "infoType": {
-    "message": "INFORMACIJA"
-  },
-  "warnsType": {
-    "message": "ĮSPĖJA"
-  },
-  "errorsType": {
-    "message": "KLAIDOS"
-  },
-  "selectTypePlaceholder": {
-    "message": "Pasirinkite tipą"
-  },
-  "consoleStreamEmpty": {
-    "message": "Konsolės srautas tuščias"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Nerasta jokių žurnalo išvesties, atitinkančių filtrus. Vykdykite veiksmus LinkedIn žaidimų sprendimo sąsajoje, kad čia transliuotumėte žurnalo veiksmus."
-  },
-  "subscribedToStorageSession": {
-    "message": "Prenumeruota storage.session srautui"
-  },
-  "parsingGameGridCells": {
-    "message": "Analizuojami žaidimo tinklo langeliai... Užtikrinkite, kad lenta turėtų matomus aktyvius tinklo blokelius."
-  },
-  "urlLabel": {
-    "message": "Url:"
-  },
-  "notAvailable": {
-    "message": "N/A"
-  },
-  "matchesLabel": {
-    "message": "deglai"
-  },
-  "copiedLabel": {
-    "message": "Nukopijuota!"
-  },
-  "copyLogsTooltip": {
-    "message": "Kopijuoti žurnalus"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Išvalyti žurnalo erdvę"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Išspręskite aktyvų LinkedIn žaidimą"
-  },
-  "contextMenuHint": {
-    "message": "💡 Gauk užuominą"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Peržiūrėti rezultatus"
-  },
-  "labelTelemetryTitle": {
-    "message": "TELEMETRIJA IR PRIVATUMAS"
-  },
-  "telemetryToggleLabel": {
-    "message": "Siųsti anoniminius telemetrijos duomenis"
-  },
-  "telemetryToggleDesc": {
-    "message": "Padėkite pagerinti sprendėją dalindamiesi anoniminiais našumo ir naudojimo rodikliais."
-  }
+  "extensionName": "„LinkedIn“ žaidimų sprendiklis",
+  "extensionDescription": "Pagalbininkas „LinkedIn Games“. Automatiškai sprendžia kasdienius galvosūkius (Queens, Sudoku, Pinpoint, Crossclimb), stebi serijas ir pateikia analitiką.",
+  "title": "„LinkedIn“ žaidimai",
+  "subtitle": "Išspręskite aktyvias lentas vienu paspaudimu",
+  "errorChromeTabIntegration": "Reikalinga „Chrome“ skirtuko integracija.",
+  "errorActiveTabNotFound": "Aktyvus skirtukas nerastas.",
+  "errorNavigationFailed": "Nepavyko pereiti į $1.",
+  "errorConnectionFailed": "Nepavyko prisijungti.",
+  "errorExecutionFailedDefault": "Vykdant sprendiklį įvyko problema.",
+  "successSolverStarted": "Sprendiklis paleistas.",
+  "dashboardTitle": "Istorija ir statistika",
+  "dashboardSubtitle": "Jūsų LinkedIn Games sprendimų istorija ir statistika",
+  "statTotalSolved": "Išspręsta iš viso",
+  "statTotalSolvedDesc": "Žaidimai išspręsti per visas datas",
+  "statAverageTime": "Vidutinis laikas",
+  "statAverageTimeDesc": "Pagal visus užregistruotus užbaigimus",
+  "statActiveStreak": "Aktyvi serija",
+  "statActiveStreakDesc": "Eilės aktyvios dienos",
+  "dashboardDescText": "Analizuokite savo veiklos rodiklius, fiksuokite serijas ir sekite kasdien įveiktų galvosūkių eigą.",
+  "disclaimerText": "Atsakomybės apribojimas: tai nepriklausomas, atvirojo kodo edukacinis projektas. Jis nėra susijęs su „LinkedIn Corporation“, jos neremia ir nepatvirtina. „LinkedIn“ yra registruotasis „LinkedIn Corporation“ prekių ženklas.",
+  "switchThemeTitle": "Perjunkite į $1 režimą",
+  "solvingStatus": "Sprendžiama...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "Premija",
+  "desc_patches": "Sudėk tai kartu",
+  "desc_zip": "Užbaikite kelią",
+  "desc_sudoku": "Klasikinis žaidimas, padarytas mini.",
+  "desc_tango": "Harmonizuoti tinklą",
+  "desc_queens": "Karūnuokite kiekvieną regioną",
+  "desc_crossclimb": "Atidarykite žinių laiptelį",
+  "desc_pinpoint": "Atspėk kategoriją",
+  "titleSolve": "Išspręskite $1",
+  "titleCompleted": "Baigta šiandien! Spustelėkite, kad pereitumėte prie $1",
+  "titleOpen": "Atidarykite $1, kad išspręstumėte",
+  "perfectDay": "Puiki diena! Visi $1 žaidimai baigti! 🎉",
+  "dailyProgress": "Dienos pažanga: $1 iš $2 žaidimų užbaigta šiandien",
+  "statStreakDays": "$1 dienos",
+  "personalBests": "Asmeniniai pasiekimai",
+  "noRecordsYet": "Dar nėra užfiksuotų sprendimų įrašų.",
+  "solvingHistory": "Istorijos sprendimas",
+  "activityCalendar": "Veiklos kalendorius",
+  "clearFilter": "Išvalyti filtrą",
+  "settingModel": "Modelis",
+  "settingModelSelect": "Pasirinkite modelį",
+  "settingModelCustomOption": "Pasirinktinis modelio pavadinimas...",
+  "settingModelCustomLabel": "Pasirinktinis modelio pavadinimas",
+  "settingModelCustomPlaceholderLocal": "pvz. llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Įveskite pasirinktą identifikatorių...",
+  "settingEndpointLabel": "Pabaigos URL",
+  "settingEndpointPlaceholder": "pvz. http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API raktas",
+  "settingApiKeyOpenAI": "OpenAI API raktas",
+  "settingApiKeyAnthropic": "Anthropic API raktas",
+  "settingApiKeyDeepSeek": "DeepSeek API raktas",
+  "settingApiKeyCustom": "API raktas (pasirinktinai)",
+  "settingApiKeyPlaceholderCustom": "Pasirinktiniai įgaliojimai...",
+  "settingApiKeyPlaceholderDefault": "Įveskite prisijungimo raktą...",
+  "settingApiKeyNotice": "Pasirinktas modelis sprendžia Crossclimb ir Pinpoint. Išplėtimas niekada nesidalina jūsų raktu.",
+  "popupCardTitle": "Susijunkite per smagias, kasdienes žaidimus",
+  "popupCardDesc": "Pasiruoškite savo protą darbo dienai ir palyginkite rezultatus. Jūsų rezultatai yra privatūs, nebent juos pasidalinsite.",
+  "saveAndBack": "Išsaugoti ir grįžti į žaidimus",
+  "solvingWorking": "AI sprendėjas dirba...",
+  "completedToday": "Baigta šiandien",
+  "solvedCountSuffix": "Išspręsta",
+  "settingsHeaderTitle": "AI modelio konfigūracija",
+  "labelAiProvider": "DI TIEKĖJAS",
+  "labelModelIdentifier": "MODELIO IDENTIFIKATORIUS",
+  "labelCustomModel": "PRAŠYMO MODELIO PAVADINIMAS",
+  "labelEndpointUrl": "PABAIGOS URL",
+  "labelGeminiKey": "GEMINI API RAKTAS",
+  "labelOpenAiKey": "OPENAI API RAKTAS",
+  "labelAnthropicKey": "ANTHROPIC API RAKTAS",
+  "labelDeepSeekKey": "DEEPSEEK API RAKTAS",
+  "labelCustomKey": "API RAKTAS (PASIRINKTINIS)",
+  "navHome": "Namai",
+  "navAiConfig": "Nustatymai / Parinktys",
+  "navStats": "Statistika",
+  "navTheme": "Tema",
+  "navDebug": "Derinimas",
+  "dailyProgressLabel": "Kasdienis pažanga",
+  "solveActiveBoard": "Išspręsti aktyvią lentą",
+  "backToGames": "Atgal į LinkedIn žaidimus",
+  "dashboardLabel": "Valdymo skydelis",
+  "gamesSolverTitle": "Žaidimų sprendėjas",
+  "completedSuccessfully": "Sėkmingai užbaigta",
+  "settingsCredentialsTitle": "Akreditacijos ir modeliai",
+  "settingsModelGuideTitle": "Modelio vadovas ir informacija",
+  "settingsConnectionStatusTitle": "Ryšio būsena",
+  "settingsActiveSolverLabel": "Aktyvus sprendėjas:",
+  "settingsModelIdentifierLabel": "Modelio identifikatorius:",
+  "settingsAutoSavedNotification": "Nustatymai automatiškai išsaugoti!",
+  "settingsSubtitleDesc": "Konfigūruokite AI modelio integracijos galinius taškus ir kredencialus pažangiam galvosūkių sprendimo mąstymui.",
+  "settingsGeminiGuideDesc": "Išskirtinis našumas beveik nulinėmis sąnaudomis. Puikiai sprendžia Crossclimb ir Pinpoint su puikia logika. Rekomenduojamas numatytasis: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Greitas, reaguojantis ir itin patikimas su bendrojo žinojimo modeliais. Rekomenduojama numatytoji parinktis: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maksimalus mąstymo pajėgumas. Be priekaištų tvarko labai sudėtingas žodžių asociacijas. Rekomenduojama numatytoji parinktis: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Prisijunkite prie vietinių LLM sistemų, tokių kaip Ollama arba LM Studio. Nurodykite savo galinio taško URL (pvz., http://localhost:11434/v1) ir pasirinktą modelio pavadinimą.",
+  "showMoreDates": "Rodyti daugiau datų",
+  "showLessDates": "Rodyti mažiau",
+  "solveBtn_withAi": "Išspręskite su dirbtiniu intelektu",
+  "solveBtn_game": "Išspręsti žaidimą",
+  "solveBtn_solving": "Sprendžiama...",
+  "solveBtn_solved": "Išspręsta!",
+  "scoreClue": "1 užuomina",
+  "scoreClues": "$1 užuominos",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "Žymėti kaip nežaista",
+  "settingSolveSpeed": "Greitis / Vėlavimas sprendimas",
+  "solveSpeed_instant": "Momentinis (Grečiausias)",
+  "solveSpeed_normal": "Normalus (Standartinis)",
+  "solveSpeed_stealth": "Slaptas režimas (žmogiški delsimo laikai)",
+  "labelSolveSpeed": "GREITUMO IR TEMPAVIMO SPRENDIMAS",
+  "settingSolveSpeedNotice": "Momentinis režimas užbaigia lentą milisekundėmis. Slaptas režimas imituoja žmogaus elgesį su atsitiktiniu tempu (1–3 sekundės), kad apsaugotų serijas nuo automatizuoto aptikimo.",
+  "solveBtn_hint": "Gauti užuominą",
+  "settingDefaultSolveMode": "Numatytasis sprendimo veiksmas",
+  "solveMode_full": "Pilnas automatinis sprendimas",
+  "solveMode_hint": "Mokymosi patarimų režimas",
+  "labelDefaultSolveMode": "NUMATYTAS SPRĘSTUVAS REŽIMAS",
+  "settingDefaultSolveModeNotice": "Pasirinkite pagrindinį veiksmą, kai aktyvuojate sprendėją iš skirtuko peržiūros arba lentų. Pilnas sprendimas baigia žaidimą; Patarimų režimas įdeda vieną teisingą elementą.",
+  "settingsChromeBuiltInGuideTitle": "Nulinė kaina ir visiškai vietinė dirbtinio intelekto sistema",
+  "settingsChromeBuiltInGuideDesc": "Vyksta visiškai lokaliai jūsų įrenginyje naršyklėje. Nėra tinklo delsos ir 100% nemokamai su Gemini Nano.",
+  "debugHeaderTitle": "Žaidimų derintuvas ir kūrimo įrankiai",
+  "debugStatusOffline": "Neprisijungęs",
+  "debugStatusLive": "Gyvai",
+  "debugDetectedGame": "Aptikta žaidimas",
+  "debugNoneDetected": "Nėra aptikta",
+  "debugTargetUrl": "Tikslo URL",
+  "debugNoActiveTab": "Nėra aktyvios kortelės",
+  "debugHtmlCopied": "HTML nukopijuota!",
+  "debugCopyHtml": "Kopijuoti <main> HTML",
+  "debugLogsCopied": "Žurnalai nukopijuoti!",
+  "debugCopyLogs": "Kopijuoti konsolės žurnalus",
+  "debugBothCopied": "Abu nukopijuoti!",
+  "debugCopyBoth": "Kopijuoti abu (HTML ir žurnalus)",
+  "debugRegistryCopied": "Registras JSON nukopijuotas!",
+  "debugCopyRegistry": "Kopijuoti šiandienos registracijos JSON",
+  "debugCopyRegistryShort": "Kopijuoti JSON",
+  "debugSubmitAnswer": "Pateikti atsakymą",
+  "debugDomPreview": "DOM elemento peržiūra",
+  "debugHtmlTruncated": "\n\n[... [truncated, total characters: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Kopijuoti pilną <main> HTML",
+  "debugNoMainTagCaptured": "Nėra užfiksuoto aktyvaus <main> žymos. Įsitikinkite, kad esate LinkedIn žaidimo ekrane.",
+  "debugConsoleOutput": "Konsolės išvestis",
+  "debugEventsCount": "$1 renginiai",
+  "debugRefreshLogsTooltip": "Atnaujinti žurnalus",
+  "debugClearLogsTooltip": "Išvalyti žurnalus",
+  "debugNoLogsCaptured": "Dar nėra užfiksuotų žurnalų. Atlikite veiksmus žaidimo ekrane, kad sukeltumėte konsolės įvykius.",
+  "debugListeningEvents": "Klausomasi console.log, console.warn ir console.error įvykių...",
+  "debugErrorInitializing": "Jungimasis su LinkedIn žaidimo puslapiu pradedamas...",
+  "debugErrorRetrieveFailed": "Nepavyko gauti žaidimo duomenų.",
+  "debugErrorNotGamesPage": "Aktyvi kortelė nėra LinkedIn žaidimų puslapis. Eikite į žaidimą, kad užfiksuotumėte detales.",
+  "debugErrorNoActiveTab": "Nepavyko nustatyti aktyvios kortelės.",
+  "labelDailyReminders": "DIENOS PRIMINIMAI IR SERIJOS APSAUGA",
+  "settingEnableReminders": "Įjungti kasdienius priminimus",
+  "settingEnableRemindersDesc": "Įspėk mane prieš šiandienos serijai pasibaigiant.",
+  "settingReminderTime": "Priminimo laikas",
+  "settingReminderTimeNotice": "Pasirinkite vietinį laiką, kad patikrintumėte neišspręstas žaidimų.",
+  "notificationTitle": "Juostų apsaugos priemonė 🚀",
+  "notificationMessage": "Neprarask savo sprendimų serijos! Dar nesugebėjai išspręsti šiandienos LinkedIn žaidimų.",
+  "notificationButton": "Spręsk dabar!",
+  "commandSolveActiveGame": "Automatiškai išspręskite aktyvią LinkedIn žaidimą.",
+  "commandGetSingleHint": "Pateikite vieno žingsnio užuominą arba patikrinkite klaidas.",
+  "settingAutoOpenSidepanel": "Automatinis šoninės juostos atidarymas žaidimuose",
+  "settingAutoOpenSidepanelDesc": "Automatiškai atidaryti sprendėjo šoninį skydelį, kai lankotės „LinkedIn Games“.",
+  "labelAutoOpenSidepanel": "AUTO-ATIDARYMO SPRENDIMŲ ŠONINIS PANELE",
+  "permissionDialogTitle": "Suteikti prieigą prie puslapio",
+  "permissionDialogDesc": "Norint aptikti aktyvius žaidimų lentas ir išspręsti galvosūkius, plėtinys turi gauti leidimą veikti „LinkedIn Games“. Spustelėkite žemiau, kad suteiktumėte prieigą.",
+  "permissionDialogButton": "Suteikti prieigą",
+  "omniboxSuggestionQueens": "👑 Žaiskite ir spręskite Karalienes šiandien!",
+  "omniboxSuggestionSudoku": "🔢 Atidaryti mini-Sudoku sprendėją",
+  "omniboxSuggestionStats": "📊 Atidaryti serijas ir našumo valdymo skydelį",
+  "diagnosticsEngine": "Diagnostikos variklis",
+  "liveInspected": "Gyvai tikrinama",
+  "offline": "Neprisijungęs",
+  "inspectedTab": "Patikrinta kortelė:",
+  "liveMatrixGridInspector": "Gyvas Matricos Tinklo Inspektorius",
+  "waitingForLinkedInGamePage": "Laukiama LinkedIn žaidimo puslapio",
+  "waitingForLinkedInGamePageDesc": "Eikite į bet kurią LinkedIn žaidimo lentos skiltį (Karalienės, Sudoku, Tango, Pinpoint), kad užfiksuotumėte apribojimų koordinates, langelių būsenas ir reaktyvias struktūras.",
+  "telemetryLogsStreamer": "Telemetrijos žurnalų srautas",
+  "searchLogsPlaceholder": "Ieškoti žurnalų...",
+  "allTypes": "VISI TIPAI",
+  "logsType": "KURMIAI",
+  "infoType": "INFORMACIJA",
+  "warnsType": "ĮSPĖJA",
+  "errorsType": "KLAIDOS",
+  "selectTypePlaceholder": "Pasirinkite tipą",
+  "consoleStreamEmpty": "Konsolės srautas tuščias",
+  "consoleStreamEmptyDesc": "Nerasta jokių žurnalo išvesties, atitinkančių filtrus. Vykdykite veiksmus LinkedIn žaidimų sprendimo sąsajoje, kad čia transliuotumėte žurnalo veiksmus.",
+  "subscribedToStorageSession": "Prenumeruota storage.session srautui",
+  "parsingGameGridCells": "Analizuojami žaidimo tinklo langeliai... Užtikrinkite, kad lenta turėtų matomus aktyvius tinklo blokelius.",
+  "urlLabel": "Url:",
+  "notAvailable": "N/A",
+  "matchesLabel": "deglai",
+  "copiedLabel": "Nukopijuota!",
+  "copyLogsTooltip": "Kopijuoti žurnalus",
+  "clearLogSpaceTooltip": "Išvalyti žurnalo erdvę",
+  "contextMenuSolve": "⚡ Išspręskite aktyvų LinkedIn žaidimą",
+  "contextMenuHint": "💡 Gauk užuominą",
+  "contextMenuViewResults": "📊 Peržiūrėti rezultatus",
+  "labelTelemetryTitle": "TELEMETRIJA IR PRIVATUMAS",
+  "telemetryToggleLabel": "Siųsti anoniminius telemetrijos duomenis",
+  "telemetryToggleDesc": "Padėkite pagerinti sprendėją dalindamiesi anoniminiais našumo ir naudojimo rodikliais."
 }

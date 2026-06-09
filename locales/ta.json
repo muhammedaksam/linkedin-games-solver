@@ -1,624 +1,203 @@
 {
-  "extensionName": {
-    "message": "LinkedIn விளையாட்டுகள் தீர்வான்",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "LinkedIn Games களுக்கான உதவியாளர். தொடர்ச்சித் தொடர்கள் மற்றும் பகுப்பாய்வுகளுடன் தினசரி புதிர்களை (Queens, Sudoku, Pinpoint, Crossclimb) தானாகத் தீர்க்கும்.",
-    "description": "The description of the extension."
-  },
-  "subtitle": {
-    "message": "செயலில் இருக்கும் பலகைகளை ஒரு கிளிக்கில் தீர்க்கவும்",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Chrome தாவல் ஒருங்கிணைப்பு தேவைப்படுகிறது.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "செயலில் உள்ள தாவல் கிடைக்கவில்லை.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "$1 க்கு செல்ல முடியவில்லை.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "இணைப்பு தோல்வியடைந்தது.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "சால்வரை இயக்கும்போது ஒரு சிக்கல் ஏற்பட்டது.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "சால்வர் தொடங்கியது.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "வரலாறு & புள்ளியியல்",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "உங்கள் LinkedIn Games தீர்க்கல் வரலாறு மற்றும் புள்ளியியல்",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "மொத்தம் தீர்க்கப்பட்டது",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "அனைத்து தேதிகளிலுமான தீர்க்கப்பட்ட விளையாட்டுகள்",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "சராசரி நேரம்",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "பதிவுசெய்யப்பட்ட அனைத்து முடிவுகளிலும்",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "செயலில் தொடர்ச்சி",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "செயலில் உள்ள நாட்கள்",
-    "description": "Description for the active streak card"
-  },
-  "dashboardDescText": {
-    "message": "உங்கள் செயல்திறன் அளவீடுகளை பகுப்பாய்வு செய்து, தொடர் சாதனைகளை பதிவு செய்து, தினமும் முடித்த புதிர்களின் பாதையை கண்காணிக்கவும்.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "குறிப்பு: இது ஒரு சுயாதீன, திறند மூலக் கல்வித் திட்டம். இது LinkedIn Corporation உடன் தொடர்புடையதல்ல, அல்லது அதன் அனுமதி/ஆதரவு பெற்றதல்ல. 'LinkedIn' என்பது LinkedIn Corporation-ன் பதிவு செய்யப்பட்ட வர்த்தகச் சின்னமாகும்.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "title": {
-    "message": "லிங்க்டின் விளையாட்டுகள்"
-  },
-  "switchThemeTitle": {
-    "message": "$1 முறைக்கு மாறுங்கள்"
-  },
-  "solvingStatus": {
-    "message": "தீர்க்கிறது..."
-  },
-  "bonus": {
-    "message": "போனஸ்"
-  },
-  "desc_patches": {
-    "message": "அதை ஒன்றாக சேர்க்கவும்"
-  },
-  "desc_zip": {
-    "message": "பாதையை முடிக்கவும்"
-  },
-  "desc_sudoku": {
-    "message": "கிளாசிக் விளையாட்டு, சிறிய வடிவில் உருவாக்கப்பட்டது"
-  },
-  "desc_tango": {
-    "message": "கிரிட் ஒத்திசைவு செய்யவும்"
-  },
-  "desc_queens": {
-    "message": "ஒவ்வொரு பிராந்தியத்திற்கும் முத்திரை வைக்கவும்"
-  },
-  "desc_crossclimb": {
-    "message": "ஒரு தகவல் படிக்கட்டையை திறக்கவும்"
-  },
-  "desc_pinpoint": {
-    "message": "வகையை கணிக்கவும்"
-  },
-  "titleSolve": {
-    "message": "$1 ஐ தீர்க்கவும்"
-  },
-  "titleCompleted": {
-    "message": "இன்று முடிக்கப்பட்டது! $1 க்கு செல்ல கிளிக் செய்யவும்."
-  },
-  "titleOpen": {
-    "message": "$1 ஐ திறந்து தீர்க்கவும்"
-  },
-  "perfectDay": {
-    "message": "சரியான நாள்! அனைத்து $1 விளையாட்டுகள் முடிந்தன! 🎉"
-  },
-  "dailyProgress": {
-    "message": "தினசரி முன்னேற்றம்: $1 இல் $2 விளையாட்டுகள் இன்று முடிக்கப்பட்டன"
-  },
-  "statStreakDays": {
-    "message": "$1 நாட்கள்"
-  },
-  "personalBests": {
-    "message": "தனிப்பட்ட சிறந்தவை"
-  },
-  "noRecordsYet": {
-    "message": "எந்த தீர்வு பதிவுகள் இன்னும் பதிவு செய்யப்படவில்லை."
-  },
-  "solvingHistory": {
-    "message": "வரலாற்றை தீர்க்குதல்"
-  },
-  "activityCalendar": {
-    "message": "செயல்பாட்டு காலண்டர்"
-  },
-  "clearFilter": {
-    "message": "தெளிவான வடிகட்டியை நீக்கு"
-  },
-  "settingModel": {
-    "message": "மாதிரி"
-  },
-  "settingModelSelect": {
-    "message": "மாதிரியை தேர்வு செய்க"
-  },
-  "settingModelCustomOption": {
-    "message": "அனுகூல மாதிரியின் பெயர்..."
-  },
-  "settingModelCustomLabel": {
-    "message": "அனுகூல மாடல் பெயர்"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "எடுத்துக்காட்டாக: லாமா3, மிஸ்ட்ரல்"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "அனுகூல அடையாளத்தை உள்ளிடவும்..."
-  },
-  "settingEndpointLabel": {
-    "message": "எந்த முடிவில் URL"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "உதாரணம்: http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "ஜெமினி API விசை"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API விசை"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "ஆன்த்ரோபிக் API விசை"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "டீப் சீக் API விசை"
-  },
-  "settingApiKeyCustom": {
-    "message": "API விசை (விருப்பம்)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "விருப்ப அங்கீகாரங்கள்..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "அங்கீகாரம் உள்ளீடு செய்யவும்..."
-  },
-  "settingApiKeyNotice": {
-    "message": "தேர்ந்தெடுக்கப்பட்ட மாதிரி Crossclimb மற்றும் Pinpoint ஐ தீர்க்கிறது. நீட்டிப்பு உங்கள் விசையை எப்போது வேண்டுமானாலும் பகிரவில்லை."
-  },
-  "popupCardTitle": {
-    "message": "சந்தோஷமான, தினசரி விளையாட்டுகளால் இணைக்கவும்"
-  },
-  "popupCardDesc": {
-    "message": "உங்கள் மனதை வேலை நாளுக்கான தயாராகவும், முடிவுகளை ஒப்பிடவும். உங்கள் மதிப்பெண்கள் நீங்கள் பகிர்ந்தால் மட்டுமே பொதுவாக இருக்கும்."
-  },
-  "saveAndBack": {
-    "message": "சேமிக்கவும் & விளையாட்டுகளுக்கு திரும்பவும்"
-  },
-  "solvingWorking": {
-    "message": "ஏஐ தீர்வாளர் வேலை செய்கிறான்..."
-  },
-  "completedToday": {
-    "message": "இன்று முடிக்கப்பட்டது"
-  },
-  "solvedCountSuffix": {
-    "message": "தீர்க்கப்பட்டது"
-  },
-  "settingsHeaderTitle": {
-    "message": "ஏஐ மாதிரி அமைப்பு"
-  },
-  "labelAiProvider": {
-    "message": "ஏஐ வழங்குநர்"
-  },
-  "labelModelIdentifier": {
-    "message": "மாதிரி அடையாளம்"
-  },
-  "labelCustomModel": {
-    "message": "அனுகூல மாதிரி பெயர்"
-  },
-  "labelEndpointUrl": {
-    "message": "என்றுபுள்ளி URL"
-  },
-  "labelGeminiKey": {
-    "message": "ஜெமினி API விசை"
-  },
-  "labelOpenAiKey": {
-    "message": "ஓபன்ஏஐ API விசை"
-  },
-  "labelAnthropicKey": {
-    "message": "ஆன்த்ரோபிக் ஏபிஐ விசை"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API விசை"
-  },
-  "labelCustomKey": {
-    "message": "API விசை (விருப்பமானது)"
-  },
-  "navHome": {
-    "message": "வீடு"
-  },
-  "navAiConfig": {
-    "message": "அமைப்புகள் / விருப்பங்கள்"
-  },
-  "navStats": {
-    "message": "அணுகுமுறை"
-  },
-  "navTheme": {
-    "message": "தலைப்பு"
-  },
-  "navDebug": {
-    "message": "பிழைகளை சரிசெய்யு"
-  },
-  "dailyProgressLabel": {
-    "message": "தினசரி முன்னேற்றம்"
-  },
-  "solveActiveBoard": {
-    "message": "செயல்பாட்டுப் பலகையை தீர்க்கவும்"
-  },
-  "backToGames": {
-    "message": "லிங்க்டின் விளையாட்டுகளுக்கு திரும்பவும்"
-  },
-  "dashboardLabel": {
-    "message": "டாஷ்போர்டு"
-  },
-  "gamesSolverTitle": {
-    "message": "விளையாட்டு தீர்ப்பாளர்"
-  },
-  "completedSuccessfully": {
-    "message": "வெற்றிகரமாக முடிக்கப்பட்டது"
-  },
-  "settingsCredentialsTitle": {
-    "message": "சான்றிதழ்கள் & மாதிரிகள்"
-  },
-  "settingsModelGuideTitle": {
-    "message": "மாதிரி வழிகாட்டி & தகவல்"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "இணைப்பு நிலை"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "செயலில் உள்ள தீர்க்குபவர்:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "மாதிரி அடையாளம்:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "அமைப்புகள் தானாகச் சேமிக்கப்பட்டன!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "மேம்பட்ட புதிர் தீர்வு காரணிகளுக்கான AI மாதிரியின் ஒருங்கிணைப்பு முடிவுகள் மற்றும் அங்கீகாரங்களை அமைக்கவும்."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "சிறந்த செயல்திறன் சுமார் பூஜ்ய செலவுகளில். சிறந்த தர்க்கத்துடன் Crossclimb மற்றும் Pinpoint ஐ தீர்க்கிறது. பரிந்துரைக்கப்பட்ட இயல்பானது: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "வேகமாக, பதிலளிக்க திறமையான மற்றும் பொதுவான அறிவு மாதிரிகளுடன் மிகவும் நம்பகமானது. பரிந்துரைக்கப்படும் இயல்பானது: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "அதிகतमமான காரணவியல் திறன். மிகவும் சிக்கலான வார்த்தை தொடர்புகளை தவறாமல் கையாள்கிறது. பரிந்துரைக்கப்பட்ட இயல்பானது: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "உள்ளூர் LLM கட்டமைப்புகளுடன் இணைக்கவும், உதாரணமாக Ollama அல்லது LM Studio. உங்கள் முடிவுப் புள்ளி URL-ஐ (உதாரணமாக, http://localhost:11434/v1) மற்றும் தனிப்பயன் மாதிரியின் பெயரை குறிப்பிடவும்."
-  },
-  "showMoreDates": {
-    "message": "மேலும் தேதிகளை காட்டு"
-  },
-  "showLessDates": {
-    "message": "குறைவாகக் காட்டு"
-  },
-  "solveBtn_withAi": {
-    "message": "ஏ.ஐ. மூலம் தீர்க்கவும்"
-  },
-  "solveBtn_game": {
-    "message": "விளையாட்டை தீர்க்கவும்"
-  },
-  "solveBtn_solving": {
-    "message": "தீர்க்கிறேன்..."
-  },
-  "solveBtn_solved": {
-    "message": "தீர்க்கப்பட்டது!"
-  },
-  "scoreClue": {
-    "message": "1 குறிப்பு"
-  },
-  "scoreClues": {
-    "message": "$1 குறியீடுகள்"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "அடிக்குறிப்பிடு: விளையாடப்படவில்லை"
-  },
-  "settingSolveSpeed": {
-    "message": "திறந்த வேகம் / தாமதம்"
-  },
-  "solveSpeed_instant": {
-    "message": "உடனடி (அதிக வேகமான)"
-  },
-  "solveSpeed_normal": {
-    "message": "சாதாரண (மட்டுமே)"
-  },
-  "solveSpeed_stealth": {
-    "message": "மறைமுகம் (மனிதம் போல உள்ள தாமதங்கள்)"
-  },
-  "labelSolveSpeed": {
-    "message": "திறனாய்வு வேகம் மற்றும் வேகத்தை தீர்க்குதல்"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "உடனடி முறை பலகையை மில்லிசேக்கண்டுகளில் முடிக்கிறது. மறைவுப் பணி மனித நடத்தைப் போலவே செயல்படுகிறது, அதில் சீரற்ற வேகத்தில் (1–3 விநாடிகள்) செயல்பட்டு தானியங்கி கண்டுபிடிப்புக்கு எதிராக தொடர்ச்சிகளை பாதுகாக்கிறது."
-  },
-  "solveBtn_hint": {
-    "message": "அறிகுறி பெறுங்கள்"
-  },
-  "settingDefaultSolveMode": {
-    "message": "இயல்புநிலை தீர்வு நடவடிக்கை"
-  },
-  "solveMode_full": {
-    "message": "முழு ஆட்டோ-தீர்வு"
-  },
-  "solveMode_hint": {
-    "message": "கல்வி குறிப்பு முறை"
-  },
-  "labelDefaultSolveMode": {
-    "message": "மூல தீர்வு முறை"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "தொகுப்பு காட்சி அல்லது பலகைகளில் தீர்வாளர் செயல்படுத்தும் போது முதன்மை செயல்பாட்டை தேர்ந்தெடுக்கவும். முழு தீர்வு விளையாட்டை முடிக்கிறது; குறிப்பு முறை ஒரு சரியான உருப்படியை இடுகிறது."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "சூன்ய செலவு & முழுமையாக உள்ளூர் செயற்கை நுண்ணறிவு"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "உங்கள் சாதனத்தில் உலாவியில் உள்ளே முழுமையாக உள்ளூர் ரீதியாக இயங்குகிறது. நெட்வொர்க் தாமதம் இல்லை மற்றும் ஜெமினி நானோவுடன் 100% இலவசம்."
-  },
-  "debugHeaderTitle": {
-    "message": "விளையாட்டு டெபக் மற்றும் மேம்பாட்டு கருவிகள்"
-  },
-  "debugStatusOffline": {
-    "message": "ஆஃப்லைன்"
-  },
-  "debugStatusLive": {
-    "message": "உயிர்"
-  },
-  "debugDetectedGame": {
-    "message": "கண்டறியப்பட்ட விளையாட்டு"
-  },
-  "debugNoneDetected": {
-    "message": "எதுவும் கண்டுபிடிக்கப்படவில்லை"
-  },
-  "debugTargetUrl": {
-    "message": "இலக்கு URL"
-  },
-  "debugNoActiveTab": {
-    "message": "செயலில் இல்லாத தாவல்"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML நகலெடுக்கப்பட்டது!"
-  },
-  "debugCopyHtml": {
-    "message": "காப்பி <main> HTML"
-  },
-  "debugLogsCopied": {
-    "message": "பதிவுகள் நகலெடுக்கப்பட்டன!"
-  },
-  "debugCopyLogs": {
-    "message": "காப்பி கன்சோல் லாக்கள்"
-  },
-  "debugBothCopied": {
-    "message": "இரண்டு நகலெடுக்கப்பட்டது!"
-  },
-  "debugCopyBoth": {
-    "message": "இரண்டையும் நகலெடுக்கவும் (HTML & பதிவு)"
-  },
-  "debugRegistryCopied": {
-    "message": "ரெஜிஸ்ட்ரி JSON நகலெடுக்கப்பட்டது!"
-  },
-  "debugCopyRegistry": {
-    "message": "இன்றைய பதிவு JSON ஐ நகலெடுக்கவும்"
-  },
-  "debugCopyRegistryShort": {
-    "message": "ஜேசன் நகலெடுக்கவும்"
-  },
-  "debugSubmitAnswer": {
-    "message": "பதில் சமர்ப்பிக்கவும்"
-  },
-  "debugDomPreview": {
-    "message": "DOM உருப்படியின் முன்னோட்டம்"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [truncated, total characters: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "முழு <main> HTML ஐ நகலெடுக்கவும்"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "செயலில் உள்ள <main> குறிச்சொல் பிடிக்கப்படவில்லை. நீங்கள் LinkedIn விளையாட்டு திரையில் உள்ளீர்கள் என்பதை உறுதிப்படுத்தவும்."
-  },
-  "debugConsoleOutput": {
-    "message": "கான்சோல் வெளியீடு"
-  },
-  "debugEventsCount": {
-    "message": "$1 நிகழ்வுகள்"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "புதுப்பிக்கவும் பதிவு செய்யவும்"
-  },
-  "debugClearLogsTooltip": {
-    "message": "தெளிவான பதிவுகள்"
-  },
-  "debugNoLogsCaptured": {
-    "message": "என்னுடைய பதிவுகள் இன்னும் பிடிக்கப்படவில்லை. கான்சோல் நிகழ்வுகளை தூண்டுவதற்காக விளையாட்டு திரையில் நடவடிக்கைகளை மேற்கொள்ளவும்."
-  },
-  "debugListeningEvents": {
-    "message": "console.log, console.warn, மற்றும் console.error நிகழ்வுகளை கேட்கிறது..."
-  },
-  "debugErrorInitializing": {
-    "message": "LinkedIn விளையாட்டு பக்கம் உடனடியாக இணைக்கப்படுகிறது..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "விளையாட்டு தரவை மீட்டெடுக்க முடியவில்லை."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "செயலில் உள்ள தாவல் LinkedIn விளையாட்டுகள் பக்கம் அல்ல. விவரங்களைப் பெற ஒரு விளையாட்டுக்கு செல்லவும்."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "செயல்பாட்டில் உள்ள தாவலை அடையாளம் காண முடியவில்லை."
-  },
-  "labelDailyReminders": {
-    "message": "தினசரி நினைவூட்டிகள் & தொடர்ச்சி பாதுகாவல்"
-  },
-  "settingEnableReminders": {
-    "message": "தினசரி நினைவூட்டல்களை செயல்படுத்தவும்"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "இன்றைய தொடரின் காலாவதியாகும் முன் எனக்கு எச்சரிக்கையளிக்கவும்."
-  },
-  "settingReminderTime": {
-    "message": "அறிக்கையளிக்கும் நேரம்"
-  },
-  "settingReminderTimeNotice": {
-    "message": "உருவாக்கப்படாத விளையாட்டுகளை சரிபார்க்க உள்ளூர் நேரத்தை தேர்ந்தெடுக்கவும்."
-  },
-  "notificationTitle": {
-    "message": "ஸ்ட்ரீக் பாதுகாப்பாளர் 🚀"
-  },
-  "notificationMessage": {
-    "message": "உங்கள் தீர்வு தொடரை இழக்காதீர்கள்! நீங்கள் இன்று LinkedIn விளையாட்டுகளை இன்னும் தீர்க்கவில்லை."
-  },
-  "notificationButton": {
-    "message": "இப்போது தீர்க்கவும்!"
-  },
-  "commandSolveActiveGame": {
-    "message": "செயல்பாட்டில் உள்ள LinkedIn விளையாட்டை தானாகவே தீர்க்கவும்."
-  },
-  "commandGetSingleHint": {
-    "message": "ஒரு ஒரே படி குறிப்பு அல்லது தவறுகளை சரிபார்க்கவும்."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "விளையாட்டுகளில் தானாக திறக்கப்படும் பக்கம்"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "LinkedIn Games-ஐ பார்வையிடும் போது தீர்வாளர் பக்கம் தானாகவே திறக்கவும்."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "ஆட்டோ-ஓபன் தீர்வு பக்கம்"
-  },
-  "permissionDialogTitle": {
-    "message": "பக்கம் அணுகலை வழங்கு"
-  },
-  "permissionDialogDesc": {
-    "message": "செயல்பாட்டில் உள்ள விளையாட்டு பலகைகளை கண்டறிந்து புதிர்களை தீர்க்க, இந்த விரிவாக்கம் LinkedIn விளையாட்டுகளில் இயக்க அனுமதி தேவை. அணுகலை வழங்க கீழே கிளிக் செய்யவும்."
-  },
-  "permissionDialogButton": {
-    "message": "அணுகலை வழங்கு"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 இன்று ராணிகள் விளையாடவும் மற்றும் தீர்க்கவும்!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 சிறு-சுடோகு தீர்க்குபவர் திறக்கவும்"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 திறந்த தொடர்கள் மற்றும் செயல்திறன் கட்டுப்பாடு"
-  },
-  "diagnosticsEngine": {
-    "message": "அறிகுறி இயந்திரம்"
-  },
-  "liveInspected": {
-    "message": "உயிருடன் ஆய்வு செய்யப்பட்டு"
-  },
-  "offline": {
-    "message": "ஆஃப்லைன்"
-  },
-  "inspectedTab": {
-    "message": "சோதனை செய்யப்பட்ட டேப்:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "உயிர் மேட்ரிக்ஸ் கிரிட் ஆய்வாளர்"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "லிங்க்டின் விளையாட்டு பக்கம் காத்திருக்கிறேன்"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "எந்த LinkedIn விளையாட்டு வாரியத் தாவலுக்கு (குயின்ஸ், சுடோகு, டாங்கோ, பின்பாயிண்ட்) செல்லவும், கட்டுப்பாட்டு ஒருங்கிணைப்புகள், செல்லின் நிலைகள் மற்றும் எதிர்வினை அமைப்புகளைப் பதிவு செய்யவும்."
-  },
-  "telemetryLogsStreamer": {
-    "message": "டெலிமெட்ரி லாக்ஸ் ஸ்ட்ரீமர்"
-  },
-  "searchLogsPlaceholder": {
-    "message": "தேடல் பதிவுகள்..."
-  },
-  "allTypes": {
-    "message": "எல்லா வகைகள்"
-  },
-  "logsType": {
-    "message": "கட்டுகள்"
-  },
-  "infoType": {
-    "message": "தகவல்"
-  },
-  "warnsType": {
-    "message": "எச்சரிக்கை செய்கிறது"
-  },
-  "errorsType": {
-    "message": "பிழைகள்"
-  },
-  "selectTypePlaceholder": {
-    "message": "வகை தேர்வு செய்க"
-  },
-  "consoleStreamEmpty": {
-    "message": "கான்சோல் ஸ்ட்ரீம் காலியாக உள்ளது"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "எந்த வடிகட்டல்களுக்கும் பொருந்தும் பதிவு வெளியீடுகள் கண்டுபிடிக்கப்படவில்லை. இங்கு பதிவு செயல்களை ஒளிபரப்புவதற்கு LinkedIn Games தீர்வாளர் UI இல் படிகளை இயக்கவும்."
-  },
-  "subscribedToStorageSession": {
-    "message": "சேமிப்பு.சேஷன் ஓட்டத்திற்கு சந்தா பெற்றேன்"
-  },
-  "parsingGameGridCells": {
-    "message": "விளையாட்டு கிரிட் செல்களை பகுப்பாய்வு செய்கிறேன்... போர்டில் செயல்பாட்டில் உள்ள கிரிட் பிளாக்குகள் காட்சியளிக்கப்படுவதை உறுதிப்படுத்தவும்."
-  },
-  "urlLabel": {
-    "message": "யூஆர்எல்:"
-  },
-  "notAvailable": {
-    "message": "N/A"
-  },
-  "matchesLabel": {
-    "message": "போட்டிகள்"
-  },
-  "copiedLabel": {
-    "message": "பதிவு செய்யப்பட்டது!"
-  },
-  "copyLogsTooltip": {
-    "message": "பதிப்பு பதிவுகள்"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "தெளிவான பதிவு இடத்தை அழிக்கவும்"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ செயலில் உள்ள லிங்க்டின் விளையாட்டை தீர்க்கவும்"
-  },
-  "contextMenuHint": {
-    "message": "💡 ஒரு குறிப்பு பெறுங்கள்"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 முடிவுகளை காண்க"
-  },
-  "labelTelemetryTitle": {
-    "message": "தொலைஅளவீடு மற்றும் தனியுரிமை"
-  },
-  "telemetryToggleLabel": {
-    "message": "அறியாமலான டெலிமெட்ரி அனுப்பவும்"
-  },
-  "telemetryToggleDesc": {
-    "message": "தரவுகளைப் பகிர்ந்து, தீர்வாளர் மேம்படுத்த உதவுங்கள், இது அடையாளம் தெரியாத செயல்திறன் மற்றும் பயன்பாட்டு அளவுகோல்களை உள்ளடக்குகிறது."
-  }
+  "extensionName": "LinkedIn விளையாட்டுகள் தீர்வான்",
+  "extensionDescription": "LinkedIn Games களுக்கான உதவியாளர். தொடர்ச்சித் தொடர்கள் மற்றும் பகுப்பாய்வுகளுடன் தினசரி புதிர்களை (Queens, Sudoku, Pinpoint, Crossclimb) தானாகத் தீர்க்கும்.",
+  "subtitle": "செயலில் இருக்கும் பலகைகளை ஒரு கிளிக்கில் தீர்க்கவும்",
+  "errorChromeTabIntegration": "Chrome தாவல் ஒருங்கிணைப்பு தேவைப்படுகிறது.",
+  "errorActiveTabNotFound": "செயலில் உள்ள தாவல் கிடைக்கவில்லை.",
+  "errorNavigationFailed": "$1 க்கு செல்ல முடியவில்லை.",
+  "errorConnectionFailed": "இணைப்பு தோல்வியடைந்தது.",
+  "errorExecutionFailedDefault": "சால்வரை இயக்கும்போது ஒரு சிக்கல் ஏற்பட்டது.",
+  "successSolverStarted": "சால்வர் தொடங்கியது.",
+  "dashboardTitle": "வரலாறு & புள்ளியியல்",
+  "dashboardSubtitle": "உங்கள் LinkedIn Games தீர்க்கல் வரலாறு மற்றும் புள்ளியியல்",
+  "statTotalSolved": "மொத்தம் தீர்க்கப்பட்டது",
+  "statTotalSolvedDesc": "அனைத்து தேதிகளிலுமான தீர்க்கப்பட்ட விளையாட்டுகள்",
+  "statAverageTime": "சராசரி நேரம்",
+  "statAverageTimeDesc": "பதிவுசெய்யப்பட்ட அனைத்து முடிவுகளிலும்",
+  "statActiveStreak": "செயலில் தொடர்ச்சி",
+  "statActiveStreakDesc": "செயலில் உள்ள நாட்கள்",
+  "dashboardDescText": "உங்கள் செயல்திறன் அளவீடுகளை பகுப்பாய்வு செய்து, தொடர் சாதனைகளை பதிவு செய்து, தினமும் முடித்த புதிர்களின் பாதையை கண்காணிக்கவும்.",
+  "disclaimerText": "குறிப்பு: இது ஒரு சுயாதீன, திறند மூலக் கல்வித் திட்டம். இது LinkedIn Corporation உடன் தொடர்புடையதல்ல, அல்லது அதன் அனுமதி/ஆதரவு பெற்றதல்ல. 'LinkedIn' என்பது LinkedIn Corporation-ன் பதிவு செய்யப்பட்ட வர்த்தகச் சின்னமாகும்.",
+  "title": "லிங்க்டின் விளையாட்டுகள்",
+  "switchThemeTitle": "$1 முறைக்கு மாறுங்கள்",
+  "solvingStatus": "தீர்க்கிறது...",
+  "bonus": "போனஸ்",
+  "desc_patches": "அதை ஒன்றாக சேர்க்கவும்",
+  "desc_zip": "பாதையை முடிக்கவும்",
+  "desc_sudoku": "கிளாசிக் விளையாட்டு, சிறிய வடிவில் உருவாக்கப்பட்டது",
+  "desc_tango": "கிரிட் ஒத்திசைவு செய்யவும்",
+  "desc_queens": "ஒவ்வொரு பிராந்தியத்திற்கும் முத்திரை வைக்கவும்",
+  "desc_crossclimb": "ஒரு தகவல் படிக்கட்டையை திறக்கவும்",
+  "desc_pinpoint": "வகையை கணிக்கவும்",
+  "titleSolve": "$1 ஐ தீர்க்கவும்",
+  "titleCompleted": "இன்று முடிக்கப்பட்டது! $1 க்கு செல்ல கிளிக் செய்யவும்.",
+  "titleOpen": "$1 ஐ திறந்து தீர்க்கவும்",
+  "perfectDay": "சரியான நாள்! அனைத்து $1 விளையாட்டுகள் முடிந்தன! 🎉",
+  "dailyProgress": "தினசரி முன்னேற்றம்: $1 இல் $2 விளையாட்டுகள் இன்று முடிக்கப்பட்டன",
+  "statStreakDays": "$1 நாட்கள்",
+  "personalBests": "தனிப்பட்ட சிறந்தவை",
+  "noRecordsYet": "எந்த தீர்வு பதிவுகள் இன்னும் பதிவு செய்யப்படவில்லை.",
+  "solvingHistory": "வரலாற்றை தீர்க்குதல்",
+  "activityCalendar": "செயல்பாட்டு காலண்டர்",
+  "clearFilter": "தெளிவான வடிகட்டியை நீக்கு",
+  "settingModel": "மாதிரி",
+  "settingModelSelect": "மாதிரியை தேர்வு செய்க",
+  "settingModelCustomOption": "அனுகூல மாதிரியின் பெயர்...",
+  "settingModelCustomLabel": "அனுகூல மாடல் பெயர்",
+  "settingModelCustomPlaceholderLocal": "எடுத்துக்காட்டாக: லாமா3, மிஸ்ட்ரல்",
+  "settingModelCustomPlaceholderOther": "அனுகூல அடையாளத்தை உள்ளிடவும்...",
+  "settingEndpointLabel": "எந்த முடிவில் URL",
+  "settingEndpointPlaceholder": "உதாரணம்: http://localhost:11434/v1",
+  "settingApiKeyGemini": "ஜெமினி API விசை",
+  "settingApiKeyOpenAI": "OpenAI API விசை",
+  "settingApiKeyAnthropic": "ஆன்த்ரோபிக் API விசை",
+  "settingApiKeyDeepSeek": "டீப் சீக் API விசை",
+  "settingApiKeyCustom": "API விசை (விருப்பம்)",
+  "settingApiKeyPlaceholderCustom": "விருப்ப அங்கீகாரங்கள்...",
+  "settingApiKeyPlaceholderDefault": "அங்கீகாரம் உள்ளீடு செய்யவும்...",
+  "settingApiKeyNotice": "தேர்ந்தெடுக்கப்பட்ட மாதிரி Crossclimb மற்றும் Pinpoint ஐ தீர்க்கிறது. நீட்டிப்பு உங்கள் விசையை எப்போது வேண்டுமானாலும் பகிரவில்லை.",
+  "popupCardTitle": "சந்தோஷமான, தினசரி விளையாட்டுகளால் இணைக்கவும்",
+  "popupCardDesc": "உங்கள் மனதை வேலை நாளுக்கான தயாராகவும், முடிவுகளை ஒப்பிடவும். உங்கள் மதிப்பெண்கள் நீங்கள் பகிர்ந்தால் மட்டுமே பொதுவாக இருக்கும்.",
+  "saveAndBack": "சேமிக்கவும் & விளையாட்டுகளுக்கு திரும்பவும்",
+  "solvingWorking": "ஏஐ தீர்வாளர் வேலை செய்கிறான்...",
+  "completedToday": "இன்று முடிக்கப்பட்டது",
+  "solvedCountSuffix": "தீர்க்கப்பட்டது",
+  "settingsHeaderTitle": "ஏஐ மாதிரி அமைப்பு",
+  "labelAiProvider": "ஏஐ வழங்குநர்",
+  "labelModelIdentifier": "மாதிரி அடையாளம்",
+  "labelCustomModel": "அனுகூல மாதிரி பெயர்",
+  "labelEndpointUrl": "என்றுபுள்ளி URL",
+  "labelGeminiKey": "ஜெமினி API விசை",
+  "labelOpenAiKey": "ஓபன்ஏஐ API விசை",
+  "labelAnthropicKey": "ஆன்த்ரோபிக் ஏபிஐ விசை",
+  "labelDeepSeekKey": "DEEPSEEK API விசை",
+  "labelCustomKey": "API விசை (விருப்பமானது)",
+  "navHome": "வீடு",
+  "navAiConfig": "அமைப்புகள் / விருப்பங்கள்",
+  "navStats": "அணுகுமுறை",
+  "navTheme": "தலைப்பு",
+  "navDebug": "பிழைகளை சரிசெய்யு",
+  "dailyProgressLabel": "தினசரி முன்னேற்றம்",
+  "solveActiveBoard": "செயல்பாட்டுப் பலகையை தீர்க்கவும்",
+  "backToGames": "லிங்க்டின் விளையாட்டுகளுக்கு திரும்பவும்",
+  "dashboardLabel": "டாஷ்போர்டு",
+  "gamesSolverTitle": "விளையாட்டு தீர்ப்பாளர்",
+  "completedSuccessfully": "வெற்றிகரமாக முடிக்கப்பட்டது",
+  "settingsCredentialsTitle": "சான்றிதழ்கள் & மாதிரிகள்",
+  "settingsModelGuideTitle": "மாதிரி வழிகாட்டி & தகவல்",
+  "settingsConnectionStatusTitle": "இணைப்பு நிலை",
+  "settingsActiveSolverLabel": "செயலில் உள்ள தீர்க்குபவர்:",
+  "settingsModelIdentifierLabel": "மாதிரி அடையாளம்:",
+  "settingsAutoSavedNotification": "அமைப்புகள் தானாகச் சேமிக்கப்பட்டன!",
+  "settingsSubtitleDesc": "மேம்பட்ட புதிர் தீர்வு காரணிகளுக்கான AI மாதிரியின் ஒருங்கிணைப்பு முடிவுகள் மற்றும் அங்கீகாரங்களை அமைக்கவும்.",
+  "settingsGeminiGuideDesc": "சிறந்த செயல்திறன் சுமார் பூஜ்ய செலவுகளில். சிறந்த தர்க்கத்துடன் Crossclimb மற்றும் Pinpoint ஐ தீர்க்கிறது. பரிந்துரைக்கப்பட்ட இயல்பானது: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "வேகமாக, பதிலளிக்க திறமையான மற்றும் பொதுவான அறிவு மாதிரிகளுடன் மிகவும் நம்பகமானது. பரிந்துரைக்கப்படும் இயல்பானது: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "அதிகतमமான காரணவியல் திறன். மிகவும் சிக்கலான வார்த்தை தொடர்புகளை தவறாமல் கையாள்கிறது. பரிந்துரைக்கப்பட்ட இயல்பானது: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "உள்ளூர் LLM கட்டமைப்புகளுடன் இணைக்கவும், உதாரணமாக Ollama அல்லது LM Studio. உங்கள் முடிவுப் புள்ளி URL-ஐ (உதாரணமாக, http://localhost:11434/v1) மற்றும் தனிப்பயன் மாதிரியின் பெயரை குறிப்பிடவும்.",
+  "showMoreDates": "மேலும் தேதிகளை காட்டு",
+  "showLessDates": "குறைவாகக் காட்டு",
+  "solveBtn_withAi": "ஏ.ஐ. மூலம் தீர்க்கவும்",
+  "solveBtn_game": "விளையாட்டை தீர்க்கவும்",
+  "solveBtn_solving": "தீர்க்கிறேன்...",
+  "solveBtn_solved": "தீர்க்கப்பட்டது!",
+  "scoreClue": "1 குறிப்பு",
+  "scoreClues": "$1 குறியீடுகள்",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "அடிக்குறிப்பிடு: விளையாடப்படவில்லை",
+  "settingSolveSpeed": "திறந்த வேகம் / தாமதம்",
+  "solveSpeed_instant": "உடனடி (அதிக வேகமான)",
+  "solveSpeed_normal": "சாதாரண (மட்டுமே)",
+  "solveSpeed_stealth": "மறைமுகம் (மனிதம் போல உள்ள தாமதங்கள்)",
+  "labelSolveSpeed": "திறனாய்வு வேகம் மற்றும் வேகத்தை தீர்க்குதல்",
+  "settingSolveSpeedNotice": "உடனடி முறை பலகையை மில்லிசேக்கண்டுகளில் முடிக்கிறது. மறைவுப் பணி மனித நடத்தைப் போலவே செயல்படுகிறது, அதில் சீரற்ற வேகத்தில் (1–3 விநாடிகள்) செயல்பட்டு தானியங்கி கண்டுபிடிப்புக்கு எதிராக தொடர்ச்சிகளை பாதுகாக்கிறது.",
+  "solveBtn_hint": "அறிகுறி பெறுங்கள்",
+  "settingDefaultSolveMode": "இயல்புநிலை தீர்வு நடவடிக்கை",
+  "solveMode_full": "முழு ஆட்டோ-தீர்வு",
+  "solveMode_hint": "கல்வி குறிப்பு முறை",
+  "labelDefaultSolveMode": "மூல தீர்வு முறை",
+  "settingDefaultSolveModeNotice": "தொகுப்பு காட்சி அல்லது பலகைகளில் தீர்வாளர் செயல்படுத்தும் போது முதன்மை செயல்பாட்டை தேர்ந்தெடுக்கவும். முழு தீர்வு விளையாட்டை முடிக்கிறது; குறிப்பு முறை ஒரு சரியான உருப்படியை இடுகிறது.",
+  "settingsChromeBuiltInGuideTitle": "சூன்ய செலவு & முழுமையாக உள்ளூர் செயற்கை நுண்ணறிவு",
+  "settingsChromeBuiltInGuideDesc": "உங்கள் சாதனத்தில் உலாவியில் உள்ளே முழுமையாக உள்ளூர் ரீதியாக இயங்குகிறது. நெட்வொர்க் தாமதம் இல்லை மற்றும் ஜெமினி நானோவுடன் 100% இலவசம்.",
+  "debugHeaderTitle": "விளையாட்டு டெபக் மற்றும் மேம்பாட்டு கருவிகள்",
+  "debugStatusOffline": "ஆஃப்லைன்",
+  "debugStatusLive": "உயிர்",
+  "debugDetectedGame": "கண்டறியப்பட்ட விளையாட்டு",
+  "debugNoneDetected": "எதுவும் கண்டுபிடிக்கப்படவில்லை",
+  "debugTargetUrl": "இலக்கு URL",
+  "debugNoActiveTab": "செயலில் இல்லாத தாவல்",
+  "debugHtmlCopied": "HTML நகலெடுக்கப்பட்டது!",
+  "debugCopyHtml": "காப்பி <main> HTML",
+  "debugLogsCopied": "பதிவுகள் நகலெடுக்கப்பட்டன!",
+  "debugCopyLogs": "காப்பி கன்சோல் லாக்கள்",
+  "debugBothCopied": "இரண்டு நகலெடுக்கப்பட்டது!",
+  "debugCopyBoth": "இரண்டையும் நகலெடுக்கவும் (HTML & பதிவு)",
+  "debugRegistryCopied": "ரெஜிஸ்ட்ரி JSON நகலெடுக்கப்பட்டது!",
+  "debugCopyRegistry": "இன்றைய பதிவு JSON ஐ நகலெடுக்கவும்",
+  "debugCopyRegistryShort": "ஜேசன் நகலெடுக்கவும்",
+  "debugSubmitAnswer": "பதில் சமர்ப்பிக்கவும்",
+  "debugDomPreview": "DOM உருப்படியின் முன்னோட்டம்",
+  "debugHtmlTruncated": "\n\n[... [truncated, total characters: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "முழு <main> HTML ஐ நகலெடுக்கவும்",
+  "debugNoMainTagCaptured": "செயலில் உள்ள <main> குறிச்சொல் பிடிக்கப்படவில்லை. நீங்கள் LinkedIn விளையாட்டு திரையில் உள்ளீர்கள் என்பதை உறுதிப்படுத்தவும்.",
+  "debugConsoleOutput": "கான்சோல் வெளியீடு",
+  "debugEventsCount": "$1 நிகழ்வுகள்",
+  "debugRefreshLogsTooltip": "புதுப்பிக்கவும் பதிவு செய்யவும்",
+  "debugClearLogsTooltip": "தெளிவான பதிவுகள்",
+  "debugNoLogsCaptured": "என்னுடைய பதிவுகள் இன்னும் பிடிக்கப்படவில்லை. கான்சோல் நிகழ்வுகளை தூண்டுவதற்காக விளையாட்டு திரையில் நடவடிக்கைகளை மேற்கொள்ளவும்.",
+  "debugListeningEvents": "console.log, console.warn, மற்றும் console.error நிகழ்வுகளை கேட்கிறது...",
+  "debugErrorInitializing": "LinkedIn விளையாட்டு பக்கம் உடனடியாக இணைக்கப்படுகிறது...",
+  "debugErrorRetrieveFailed": "விளையாட்டு தரவை மீட்டெடுக்க முடியவில்லை.",
+  "debugErrorNotGamesPage": "செயலில் உள்ள தாவல் LinkedIn விளையாட்டுகள் பக்கம் அல்ல. விவரங்களைப் பெற ஒரு விளையாட்டுக்கு செல்லவும்.",
+  "debugErrorNoActiveTab": "செயல்பாட்டில் உள்ள தாவலை அடையாளம் காண முடியவில்லை.",
+  "labelDailyReminders": "தினசரி நினைவூட்டிகள் & தொடர்ச்சி பாதுகாவல்",
+  "settingEnableReminders": "தினசரி நினைவூட்டல்களை செயல்படுத்தவும்",
+  "settingEnableRemindersDesc": "இன்றைய தொடரின் காலாவதியாகும் முன் எனக்கு எச்சரிக்கையளிக்கவும்.",
+  "settingReminderTime": "அறிக்கையளிக்கும் நேரம்",
+  "settingReminderTimeNotice": "உருவாக்கப்படாத விளையாட்டுகளை சரிபார்க்க உள்ளூர் நேரத்தை தேர்ந்தெடுக்கவும்.",
+  "notificationTitle": "ஸ்ட்ரீக் பாதுகாப்பாளர் 🚀",
+  "notificationMessage": "உங்கள் தீர்வு தொடரை இழக்காதீர்கள்! நீங்கள் இன்று LinkedIn விளையாட்டுகளை இன்னும் தீர்க்கவில்லை.",
+  "notificationButton": "இப்போது தீர்க்கவும்!",
+  "commandSolveActiveGame": "செயல்பாட்டில் உள்ள LinkedIn விளையாட்டை தானாகவே தீர்க்கவும்.",
+  "commandGetSingleHint": "ஒரு ஒரே படி குறிப்பு அல்லது தவறுகளை சரிபார்க்கவும்.",
+  "settingAutoOpenSidepanel": "விளையாட்டுகளில் தானாக திறக்கப்படும் பக்கம்",
+  "settingAutoOpenSidepanelDesc": "LinkedIn Games-ஐ பார்வையிடும் போது தீர்வாளர் பக்கம் தானாகவே திறக்கவும்.",
+  "labelAutoOpenSidepanel": "ஆட்டோ-ஓபன் தீர்வு பக்கம்",
+  "permissionDialogTitle": "பக்கம் அணுகலை வழங்கு",
+  "permissionDialogDesc": "செயல்பாட்டில் உள்ள விளையாட்டு பலகைகளை கண்டறிந்து புதிர்களை தீர்க்க, இந்த விரிவாக்கம் LinkedIn விளையாட்டுகளில் இயக்க அனுமதி தேவை. அணுகலை வழங்க கீழே கிளிக் செய்யவும்.",
+  "permissionDialogButton": "அணுகலை வழங்கு",
+  "omniboxSuggestionQueens": "👑 இன்று ராணிகள் விளையாடவும் மற்றும் தீர்க்கவும்!",
+  "omniboxSuggestionSudoku": "🔢 சிறு-சுடோகு தீர்க்குபவர் திறக்கவும்",
+  "omniboxSuggestionStats": "📊 திறந்த தொடர்கள் மற்றும் செயல்திறன் கட்டுப்பாடு",
+  "diagnosticsEngine": "அறிகுறி இயந்திரம்",
+  "liveInspected": "உயிருடன் ஆய்வு செய்யப்பட்டு",
+  "offline": "ஆஃப்லைன்",
+  "inspectedTab": "சோதனை செய்யப்பட்ட டேப்:",
+  "liveMatrixGridInspector": "உயிர் மேட்ரிக்ஸ் கிரிட் ஆய்வாளர்",
+  "waitingForLinkedInGamePage": "லிங்க்டின் விளையாட்டு பக்கம் காத்திருக்கிறேன்",
+  "waitingForLinkedInGamePageDesc": "எந்த LinkedIn விளையாட்டு வாரியத் தாவலுக்கு (குயின்ஸ், சுடோகு, டாங்கோ, பின்பாயிண்ட்) செல்லவும், கட்டுப்பாட்டு ஒருங்கிணைப்புகள், செல்லின் நிலைகள் மற்றும் எதிர்வினை அமைப்புகளைப் பதிவு செய்யவும்.",
+  "telemetryLogsStreamer": "டெலிமெட்ரி லாக்ஸ் ஸ்ட்ரீமர்",
+  "searchLogsPlaceholder": "தேடல் பதிவுகள்...",
+  "allTypes": "எல்லா வகைகள்",
+  "logsType": "கட்டுகள்",
+  "infoType": "தகவல்",
+  "warnsType": "எச்சரிக்கை செய்கிறது",
+  "errorsType": "பிழைகள்",
+  "selectTypePlaceholder": "வகை தேர்வு செய்க",
+  "consoleStreamEmpty": "கான்சோல் ஸ்ட்ரீம் காலியாக உள்ளது",
+  "consoleStreamEmptyDesc": "எந்த வடிகட்டல்களுக்கும் பொருந்தும் பதிவு வெளியீடுகள் கண்டுபிடிக்கப்படவில்லை. இங்கு பதிவு செயல்களை ஒளிபரப்புவதற்கு LinkedIn Games தீர்வாளர் UI இல் படிகளை இயக்கவும்.",
+  "subscribedToStorageSession": "சேமிப்பு.சேஷன் ஓட்டத்திற்கு சந்தா பெற்றேன்",
+  "parsingGameGridCells": "விளையாட்டு கிரிட் செல்களை பகுப்பாய்வு செய்கிறேன்... போர்டில் செயல்பாட்டில் உள்ள கிரிட் பிளாக்குகள் காட்சியளிக்கப்படுவதை உறுதிப்படுத்தவும்.",
+  "urlLabel": "யூஆர்எல்:",
+  "notAvailable": "N/A",
+  "matchesLabel": "போட்டிகள்",
+  "copiedLabel": "பதிவு செய்யப்பட்டது!",
+  "copyLogsTooltip": "பதிப்பு பதிவுகள்",
+  "clearLogSpaceTooltip": "தெளிவான பதிவு இடத்தை அழிக்கவும்",
+  "contextMenuSolve": "⚡ செயலில் உள்ள லிங்க்டின் விளையாட்டை தீர்க்கவும்",
+  "contextMenuHint": "💡 ஒரு குறிப்பு பெறுங்கள்",
+  "contextMenuViewResults": "📊 முடிவுகளை காண்க",
+  "labelTelemetryTitle": "தொலைஅளவீடு மற்றும் தனியுரிமை",
+  "telemetryToggleLabel": "அறியாமலான டெலிமெட்ரி அனுப்பவும்",
+  "telemetryToggleDesc": "தரவுகளைப் பகிர்ந்து, தீர்வாளர் மேம்படுத்த உதவுங்கள், இது அடையாளம் தெரியாத செயல்திறன் மற்றும் பயன்பாட்டு அளவுகோல்களை உள்ளடக்குகிறது."
 }

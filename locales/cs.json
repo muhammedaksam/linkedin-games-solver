@@ -1,772 +1,210 @@
 {
-  "extensionName": {
-    "message": "Řešitel her LinkedIn",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Pomocník pro hry na LinkedIn. Automaticky řeší denní hádanky (Queens, Sudoku, Pinpoint, Crossclimb) s postupkami a analytikou.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "Hry LinkedIn",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "Vyřešte aktivní desky jedním kliknutím",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "Přepnout do režimu $1",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Je vyžadována integrace se záložkou Chromu.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Aktivní záložka nebyla nalezena.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Navigace na $1 se nezdařila.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Připojení se nezdařilo.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Při spouštění řešiče se něco pokazilo.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Řešič byl spuštěn.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "Řešení...",
-    "description": "Overlay label during solver run"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "desc_patches": {
-    "message": "Složte dílky dohromady"
-  },
-  "desc_zip": {
-    "message": "Dokončete cestu"
-  },
-  "desc_sudoku": {
-    "message": "Klasická hra, zmenšená"
-  },
-  "desc_tango": {
-    "message": "Harmonizujte mřížku"
-  },
-  "desc_queens": {
-    "message": "V korunujte každou oblast"
-  },
-  "desc_crossclimb": {
-    "message": "Odemkněte vědomostní žebřík"
-  },
-  "desc_pinpoint": {
-    "message": "Uhodněte kategorii"
-  },
-  "titleSolve": {
-    "message": "Vyřešit $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "Dnes dokončeno! Klikněte pro přechod na $1",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "Otevřít $1 pro řešení",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "Perfektní den! Všechny hry $1 dokončeny! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "Denní pokrok: $1 z $2 her dokončeno dnes",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "Historie a statistiky",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Váš přehled řešení a statistiky LinkedIn Games",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Celkem vyřešeno",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Hry vyřešené pro všechny datumy",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Průměrný čas",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Za všechny zaznamenané dokončení",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Aktivní série",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Po sobě jdoucí aktivní dny",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 dní",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "Osobní rekordy",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "Zatím žádné záznamy o řešeních.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "Historie řešení",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "Kalendář aktivity",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "Vymazat filtr",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModelSelect": {
-    "message": "Vybrat model",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "Vlastní název modelu...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "Vlastní název modelu",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "např. llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Zadejte vlastní identifikátor...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "např. http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "Gemini API klíč",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "OpenAI API klíč",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Anthropic API klíč",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "DeepSeek API klíč",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API klíč (volitelně)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Volitelné přihlašovací údaje...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Zadejte klíč přihlašovacích údajů...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "Vybraný model řeší Crossclimb & Pinpoint. Rozšíření nikdy nesdílí váš klíč.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "Připojujte se přes zábavné denní hry",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "Připravte si mysl na pracovní den a porovnejte výsledky. Vaše skóre je soukromé, pokud je nesdílíte.",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "Uložit a zpět ke hrám",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "AI řešič pracuje...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "Dokončeno dnes",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "Vyřešeno",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "Konfigurace AI modelu",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "POSKYTOVATEL AI",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "IDENTIFIKÁTOR MODELU",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "VLASTNÍ JMÉNO MODELU",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "URL ENDPOINTU",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API KLÍČ",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API KLÍČ",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API KLÍČ",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API KLÍČ",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API KLÍČ (VOLITELNĚ)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "Domů",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "Nastavení / Volby",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "Statistiky",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "Téma",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "Ladění",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "Denní pokrok",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "Vyřešit aktivní desku",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "Zpět k LinkedIn Games",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "Přístrojová deska",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "Řešič her",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "Analyzujte své metriky, zaznamenejte série a sledujte denní dokončené cesty puzzlů.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "Úspěšně dokončeno",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "Prohlášení: Toto je nezávislý, open-source vzdělávací projekt. Není nijak spojen, sponzorován ani schválen společností LinkedIn Corporation. „LinkedIn“ je registrovaná ochranná známka společnosti LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Pověření & Modely",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Průvodce modelem & info",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Stav připojení",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Aktivní řešič:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Identifikátor modelu:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Nastavení bylo automaticky uloženo!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Nakonfigurujte endpointy a přihlašovací údaje pro integraci AI modelů pro pokročilé řešení puzzlů.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Vynikající výkon při téměř nulových nákladech. Řeší Crossclimb a Pinpoint s vynikající logikou. Doporučeno: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Rychlý, responzivní a velmi spolehlivý s obecnými znalostními vzory. Doporučeno: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Maximální kapacita pro uvažování. Výborně zvládá velmi složité slovní asociace. Doporučeno: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Připojte se k lokálním LLM rámcům jako Ollama nebo LM Studio. Zadejte endpoint URL a vlastní název modelu.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "Zobrazit více dat",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "Zobrazit méně dat",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "Vyřešit s AI"
-  },
-  "solveBtn_game": {
-    "message": "Vyřešit hru"
-  },
-  "solveBtn_solving": {
-    "message": "Řeší se..."
-  },
-  "solveBtn_solved": {
-    "message": "Vyřešeno!"
-  },
-  "scoreClue": {
-    "message": "1 nápověda"
-  },
-  "scoreClues": {
-    "message": "$1 nápověd"
-  },
-  "markAsNotPlayed": {
-    "message": "Označit jako nehranou",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "Rychlost řešení / Prodleva",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "Okamžitě (Nejrychlejší)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "Normální (Standardní)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "Stealth režim (Lidské zpoždění)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "RYCHLOST & TEMPO ŘEŠENÍ",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Okamžitý režim dokončí desku za milisekundy. Stealth režim napodobuje lidské chování s náhodným tempem (1–3 s).",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "Získat nápovědu",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Výchozí akce řešiče",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "Plné automatické řešení",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "Vzdělávací režim nápovědy",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "VÝCHOZÍ REŽIM ŘEŠIČE",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Vyberte primární akci při spuštění řešiče z náhledu karty nebo panelů.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Žádné náklady & plně lokální AI",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Běží kompletně lokálně ve vašem zařízení v prohlížeči. Žádná síťová latence a 100% zdarma s Gemini Nano.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "Ladič her & Nástroje pro vývojáře",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusLive": {
-    "message": "Živě",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "Detekovaná hra",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "Nic nezaznamenáno",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "Cílové URL",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "Žádná aktivní karta",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML zkopírováno!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "Kopírovat <main> HTML",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "Logy zkopírovány!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "Kopírovat konzolové logy",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "Oboje zkopírováno!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "Kopírovat oboje (HTML & logy)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "Registry JSON zkopírován!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "Kopírovat dnešní registry JSON",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Kopírovat JSON",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "Odeslat odpověď",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "Náhled DOM prvku",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [celkem znaků: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Kopírovat úplné <main> HTML",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Nebyl zachycen aktivní tag <main>. Ujistěte se, že jste na obrazovce LinkedIn hry.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "Výstup konzole",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 událostí",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Obnovit logy",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Vyčistit logy",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Zatím nebyly zachyceny žádné logy. Pro vyvolání událostí proveďte akce na obrazovce hry.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "Poslouchám console.log, console.warn a console.error...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "Inicializuje se spojení se stránkou LinkedIn Games...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Nepodařilo se získat data hry.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Tato funkce je dostupná pouze na linkedin.com/games",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Nelze přistoupit k aktivní kartě. Zkontrolujte oprávnění rozšíření.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "Denní připomenutí",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "Povolit denní připomenutí",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Dostávejte upozornění, když jsou LinkedIn Games dostupné",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "Čas připomenutí",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Přizpůsobte, kdy obdržíte denní připomenutí",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "Denní připomenutí LinkedIn Games",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "Váš denní puzzl je připraven! Klikněte pro hraní.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "Hrát nyní",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "Vyřešit aktivní hru"
-  },
-  "commandGetSingleHint": {
-    "message": "Získat nápovědu pro aktuální hru"
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Automaticky otevřít boční panel"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Automaticky otevřít panel řešiče při návštěvě LinkedIn Games"
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "AUTO-OTEVŘÍT BOČNÍ PANEL"
-  },
-  "permissionDialogTitle": {
-    "message": "Oprávnění rozšíření"
-  },
-  "permissionDialogDesc": {
-    "message": "Toto rozšíření potřebuje oprávnění pro přístup k obsahu LinkedIn Games"
-  },
-  "permissionDialogButton": {
-    "message": "Povolit oprávnění"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "Vyřešit Queens puzzle"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "Vyřešit Sudoku puzzle"
-  },
-  "omniboxSuggestionStats": {
-    "message": "Zobrazit herní statistiky"
-  },
-  "diagnosticsEngine": {
-    "message": "Diagnostický engine"
-  },
-  "liveInspected": {
-    "message": "Živě inspektováno"
-  },
-  "inspectedTab": {
-    "message": "Inspektovaná karta"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Inspektor mřížky matice v reálném čase"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Čekání na stránku LinkedIn Games..."
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Přejděte na linkedin.com/games pro zobrazení dat puzzlu"
-  },
-  "telemetryLogsStreamer": {
-    "message": "Přenosník telemetrických logů"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Hledat v logách..."
-  },
-  "allTypes": {
-    "message": "Všechny typy"
-  },
-  "logsType": {
-    "message": "Logy"
-  },
-  "infoType": {
-    "message": "Info"
-  },
-  "warnsType": {
-    "message": "Upozornění"
-  },
-  "errorsType": {
-    "message": "Chyby"
-  },
-  "selectTypePlaceholder": {
-    "message": "Vyber typ logu"
-  },
-  "consoleStreamEmpty": {
-    "message": "Žádné záznamy v konzoli"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Začněte řešit, abyste zachytili telemetrii"
-  },
-  "subscribedToStorageSession": {
-    "message": "Přihlášeno k úložišťové relaci"
-  },
-  "parsingGameGridCells": {
-    "message": "Analýza buněk herní mřížky"
-  },
-  "urlLabel": {
-    "message": "URL"
-  },
-  "notAvailable": {
-    "message": "Není dostupné"
-  },
-  "matchesLabel": {
-    "message": "Shody"
-  },
-  "copiedLabel": {
-    "message": "Zkopírováno!"
-  },
-  "copyLogsTooltip": {
-    "message": "Kopírovat logy do schránky"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Vyčistit místo pro logy"
-  },
-  "contextMenuSolve": {
-    "message": "Řešit s LinkedIn Games Solver"
-  },
-  "contextMenuHint": {
-    "message": "Získat nápovědu pro tento puzzl"
-  },
-  "contextMenuViewResults": {
-    "message": "Zobrazit výsledky řešení"
-  },
-  "labelTelemetryTitle": {
-    "message": "Anonymní telemetrie & analytika",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "Povolit sběr analytiky",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "Pomozte vylepšit rozšíření sdílením anonymních dat o používání",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "bonus": {
-    "message": "Bonus"
-  },
-  "settingModel": {
-    "message": "Model"
-  },
-  "settingEndpointLabel": {
-    "message": "URL koncového bodu"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1 minuta $2 sekundy"
-  },
-  "debugStatusOffline": {
-    "message": "Offline"
-  },
-  "offline": {
-    "message": "Offline"
-  }
+  "extensionName": "Řešitel her LinkedIn",
+  "extensionDescription": "Pomocník pro hry na LinkedIn. Automaticky řeší denní hádanky (Queens, Sudoku, Pinpoint, Crossclimb) s postupkami a analytikou.",
+  "title": "Hry LinkedIn",
+  "subtitle": "Vyřešte aktivní desky jedním kliknutím",
+  "switchThemeTitle": "Přepnout do režimu $1",
+  "errorChromeTabIntegration": "Je vyžadována integrace se záložkou Chromu.",
+  "errorActiveTabNotFound": "Aktivní záložka nebyla nalezena.",
+  "errorNavigationFailed": "Navigace na $1 se nezdařila.",
+  "errorConnectionFailed": "Připojení se nezdařilo.",
+  "errorExecutionFailedDefault": "Při spouštění řešiče se něco pokazilo.",
+  "successSolverStarted": "Řešič byl spuštěn.",
+  "solvingStatus": "Řešení...",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "desc_patches": "Složte dílky dohromady",
+  "desc_zip": "Dokončete cestu",
+  "desc_sudoku": "Klasická hra, zmenšená",
+  "desc_tango": "Harmonizujte mřížku",
+  "desc_queens": "V korunujte každou oblast",
+  "desc_crossclimb": "Odemkněte vědomostní žebřík",
+  "desc_pinpoint": "Uhodněte kategorii",
+  "titleSolve": "Vyřešit $1",
+  "titleCompleted": "Dnes dokončeno! Klikněte pro přechod na $1",
+  "titleOpen": "Otevřít $1 pro řešení",
+  "perfectDay": "Perfektní den! Všechny hry $1 dokončeny! 🎉",
+  "dailyProgress": "Denní pokrok: $1 z $2 her dokončeno dnes",
+  "dashboardTitle": "Historie a statistiky",
+  "dashboardSubtitle": "Váš přehled řešení a statistiky LinkedIn Games",
+  "statTotalSolved": "Celkem vyřešeno",
+  "statTotalSolvedDesc": "Hry vyřešené pro všechny datumy",
+  "statAverageTime": "Průměrný čas",
+  "statAverageTimeDesc": "Za všechny zaznamenané dokončení",
+  "statActiveStreak": "Aktivní série",
+  "statActiveStreakDesc": "Po sobě jdoucí aktivní dny",
+  "statStreakDays": "$1 dní",
+  "personalBests": "Osobní rekordy",
+  "noRecordsYet": "Zatím žádné záznamy o řešeních.",
+  "solvingHistory": "Historie řešení",
+  "activityCalendar": "Kalendář aktivity",
+  "clearFilter": "Vymazat filtr",
+  "settingModelSelect": "Vybrat model",
+  "settingModelCustomOption": "Vlastní název modelu...",
+  "settingModelCustomLabel": "Vlastní název modelu",
+  "settingModelCustomPlaceholderLocal": "např. llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Zadejte vlastní identifikátor...",
+  "settingEndpointPlaceholder": "např. http://localhost:11434/v1",
+  "settingApiKeyGemini": "Gemini API klíč",
+  "settingApiKeyOpenAI": "OpenAI API klíč",
+  "settingApiKeyAnthropic": "Anthropic API klíč",
+  "settingApiKeyDeepSeek": "DeepSeek API klíč",
+  "settingApiKeyCustom": "API klíč (volitelně)",
+  "settingApiKeyPlaceholderCustom": "Volitelné přihlašovací údaje...",
+  "settingApiKeyPlaceholderDefault": "Zadejte klíč přihlašovacích údajů...",
+  "settingApiKeyNotice": "Vybraný model řeší Crossclimb & Pinpoint. Rozšíření nikdy nesdílí váš klíč.",
+  "popupCardTitle": "Připojujte se přes zábavné denní hry",
+  "popupCardDesc": "Připravte si mysl na pracovní den a porovnejte výsledky. Vaše skóre je soukromé, pokud je nesdílíte.",
+  "saveAndBack": "Uložit a zpět ke hrám",
+  "solvingWorking": "AI řešič pracuje...",
+  "completedToday": "Dokončeno dnes",
+  "solvedCountSuffix": "Vyřešeno",
+  "settingsHeaderTitle": "Konfigurace AI modelu",
+  "labelAiProvider": "POSKYTOVATEL AI",
+  "labelModelIdentifier": "IDENTIFIKÁTOR MODELU",
+  "labelCustomModel": "VLASTNÍ JMÉNO MODELU",
+  "labelEndpointUrl": "URL ENDPOINTU",
+  "labelGeminiKey": "GEMINI API KLÍČ",
+  "labelOpenAiKey": "OPENAI API KLÍČ",
+  "labelAnthropicKey": "ANTHROPIC API KLÍČ",
+  "labelDeepSeekKey": "DEEPSEEK API KLÍČ",
+  "labelCustomKey": "API KLÍČ (VOLITELNĚ)",
+  "navHome": "Domů",
+  "navAiConfig": "Nastavení / Volby",
+  "navStats": "Statistiky",
+  "navTheme": "Téma",
+  "navDebug": "Ladění",
+  "dailyProgressLabel": "Denní pokrok",
+  "solveActiveBoard": "Vyřešit aktivní desku",
+  "backToGames": "Zpět k LinkedIn Games",
+  "dashboardLabel": "Přístrojová deska",
+  "gamesSolverTitle": "Řešič her",
+  "dashboardDescText": "Analyzujte své metriky, zaznamenejte série a sledujte denní dokončené cesty puzzlů.",
+  "completedSuccessfully": "Úspěšně dokončeno",
+  "disclaimerText": "Prohlášení: Toto je nezávislý, open-source vzdělávací projekt. Není nijak spojen, sponzorován ani schválen společností LinkedIn Corporation. „LinkedIn“ je registrovaná ochranná známka společnosti LinkedIn Corporation.",
+  "settingsCredentialsTitle": "Pověření & Modely",
+  "settingsModelGuideTitle": "Průvodce modelem & info",
+  "settingsConnectionStatusTitle": "Stav připojení",
+  "settingsActiveSolverLabel": "Aktivní řešič:",
+  "settingsModelIdentifierLabel": "Identifikátor modelu:",
+  "settingsAutoSavedNotification": "Nastavení bylo automaticky uloženo!",
+  "settingsSubtitleDesc": "Nakonfigurujte endpointy a přihlašovací údaje pro integraci AI modelů pro pokročilé řešení puzzlů.",
+  "settingsGeminiGuideDesc": "Vynikající výkon při téměř nulových nákladech. Řeší Crossclimb a Pinpoint s vynikající logikou. Doporučeno: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Rychlý, responzivní a velmi spolehlivý s obecnými znalostními vzory. Doporučeno: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Maximální kapacita pro uvažování. Výborně zvládá velmi složité slovní asociace. Doporučeno: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Připojte se k lokálním LLM rámcům jako Ollama nebo LM Studio. Zadejte endpoint URL a vlastní název modelu.",
+  "showMoreDates": "Zobrazit více dat",
+  "showLessDates": "Zobrazit méně dat",
+  "solveBtn_withAi": "Vyřešit s AI",
+  "solveBtn_game": "Vyřešit hru",
+  "solveBtn_solving": "Řeší se...",
+  "solveBtn_solved": "Vyřešeno!",
+  "scoreClue": "1 nápověda",
+  "scoreClues": "$1 nápověd",
+  "markAsNotPlayed": "Označit jako nehranou",
+  "settingSolveSpeed": "Rychlost řešení / Prodleva",
+  "solveSpeed_instant": "Okamžitě (Nejrychlejší)",
+  "solveSpeed_normal": "Normální (Standardní)",
+  "solveSpeed_stealth": "Stealth režim (Lidské zpoždění)",
+  "labelSolveSpeed": "RYCHLOST & TEMPO ŘEŠENÍ",
+  "settingSolveSpeedNotice": "Okamžitý režim dokončí desku za milisekundy. Stealth režim napodobuje lidské chování s náhodným tempem (1–3 s).",
+  "solveBtn_hint": "Získat nápovědu",
+  "settingDefaultSolveMode": "Výchozí akce řešiče",
+  "solveMode_full": "Plné automatické řešení",
+  "solveMode_hint": "Vzdělávací režim nápovědy",
+  "labelDefaultSolveMode": "VÝCHOZÍ REŽIM ŘEŠIČE",
+  "settingDefaultSolveModeNotice": "Vyberte primární akci při spuštění řešiče z náhledu karty nebo panelů.",
+  "settingsChromeBuiltInGuideTitle": "Žádné náklady & plně lokální AI",
+  "settingsChromeBuiltInGuideDesc": "Běží kompletně lokálně ve vašem zařízení v prohlížeči. Žádná síťová latence a 100% zdarma s Gemini Nano.",
+  "debugHeaderTitle": "Ladič her & Nástroje pro vývojáře",
+  "debugStatusLive": "Živě",
+  "debugDetectedGame": "Detekovaná hra",
+  "debugNoneDetected": "Nic nezaznamenáno",
+  "debugTargetUrl": "Cílové URL",
+  "debugNoActiveTab": "Žádná aktivní karta",
+  "debugHtmlCopied": "HTML zkopírováno!",
+  "debugCopyHtml": "Kopírovat <main> HTML",
+  "debugLogsCopied": "Logy zkopírovány!",
+  "debugCopyLogs": "Kopírovat konzolové logy",
+  "debugBothCopied": "Oboje zkopírováno!",
+  "debugCopyBoth": "Kopírovat oboje (HTML & logy)",
+  "debugRegistryCopied": "Registry JSON zkopírován!",
+  "debugCopyRegistry": "Kopírovat dnešní registry JSON",
+  "debugCopyRegistryShort": "Kopírovat JSON",
+  "debugSubmitAnswer": "Odeslat odpověď",
+  "debugDomPreview": "Náhled DOM prvku",
+  "debugHtmlTruncated": "\n\n[ ... [celkem znaků: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Kopírovat úplné <main> HTML",
+  "debugNoMainTagCaptured": "Nebyl zachycen aktivní tag <main>. Ujistěte se, že jste na obrazovce LinkedIn hry.",
+  "debugConsoleOutput": "Výstup konzole",
+  "debugEventsCount": "$1 událostí",
+  "debugRefreshLogsTooltip": "Obnovit logy",
+  "debugClearLogsTooltip": "Vyčistit logy",
+  "debugNoLogsCaptured": "Zatím nebyly zachyceny žádné logy. Pro vyvolání událostí proveďte akce na obrazovce hry.",
+  "debugListeningEvents": "Poslouchám console.log, console.warn a console.error...",
+  "debugErrorInitializing": "Inicializuje se spojení se stránkou LinkedIn Games...",
+  "debugErrorRetrieveFailed": "Nepodařilo se získat data hry.",
+  "debugErrorNotGamesPage": "Tato funkce je dostupná pouze na linkedin.com/games",
+  "debugErrorNoActiveTab": "Nelze přistoupit k aktivní kartě. Zkontrolujte oprávnění rozšíření.",
+  "labelDailyReminders": "Denní připomenutí",
+  "settingEnableReminders": "Povolit denní připomenutí",
+  "settingEnableRemindersDesc": "Dostávejte upozornění, když jsou LinkedIn Games dostupné",
+  "settingReminderTime": "Čas připomenutí",
+  "settingReminderTimeNotice": "Přizpůsobte, kdy obdržíte denní připomenutí",
+  "notificationTitle": "Denní připomenutí LinkedIn Games",
+  "notificationMessage": "Váš denní puzzl je připraven! Klikněte pro hraní.",
+  "notificationButton": "Hrát nyní",
+  "commandSolveActiveGame": "Vyřešit aktivní hru",
+  "commandGetSingleHint": "Získat nápovědu pro aktuální hru",
+  "settingAutoOpenSidepanel": "Automaticky otevřít boční panel",
+  "settingAutoOpenSidepanelDesc": "Automaticky otevřít panel řešiče při návštěvě LinkedIn Games",
+  "labelAutoOpenSidepanel": "AUTO-OTEVŘÍT BOČNÍ PANEL",
+  "permissionDialogTitle": "Oprávnění rozšíření",
+  "permissionDialogDesc": "Toto rozšíření potřebuje oprávnění pro přístup k obsahu LinkedIn Games",
+  "permissionDialogButton": "Povolit oprávnění",
+  "omniboxSuggestionQueens": "Vyřešit Queens puzzle",
+  "omniboxSuggestionSudoku": "Vyřešit Sudoku puzzle",
+  "omniboxSuggestionStats": "Zobrazit herní statistiky",
+  "diagnosticsEngine": "Diagnostický engine",
+  "liveInspected": "Živě inspektováno",
+  "inspectedTab": "Inspektovaná karta",
+  "liveMatrixGridInspector": "Inspektor mřížky matice v reálném čase",
+  "waitingForLinkedInGamePage": "Čekání na stránku LinkedIn Games...",
+  "waitingForLinkedInGamePageDesc": "Přejděte na linkedin.com/games pro zobrazení dat puzzlu",
+  "telemetryLogsStreamer": "Přenosník telemetrických logů",
+  "searchLogsPlaceholder": "Hledat v logách...",
+  "allTypes": "Všechny typy",
+  "logsType": "Logy",
+  "infoType": "Info",
+  "warnsType": "Upozornění",
+  "errorsType": "Chyby",
+  "selectTypePlaceholder": "Vyber typ logu",
+  "consoleStreamEmpty": "Žádné záznamy v konzoli",
+  "consoleStreamEmptyDesc": "Začněte řešit, abyste zachytili telemetrii",
+  "subscribedToStorageSession": "Přihlášeno k úložišťové relaci",
+  "parsingGameGridCells": "Analýza buněk herní mřížky",
+  "urlLabel": "URL",
+  "notAvailable": "Není dostupné",
+  "matchesLabel": "Shody",
+  "copiedLabel": "Zkopírováno!",
+  "copyLogsTooltip": "Kopírovat logy do schránky",
+  "clearLogSpaceTooltip": "Vyčistit místo pro logy",
+  "contextMenuSolve": "Řešit s LinkedIn Games Solver",
+  "contextMenuHint": "Získat nápovědu pro tento puzzl",
+  "contextMenuViewResults": "Zobrazit výsledky řešení",
+  "labelTelemetryTitle": "Anonymní telemetrie & analytika",
+  "telemetryToggleLabel": "Povolit sběr analytiky",
+  "telemetryToggleDesc": "Pomozte vylepšit rozšíření sdílením anonymních dat o používání",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "Bonus",
+  "settingModel": "Model",
+  "settingEndpointLabel": "URL koncového bodu",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1 minuta $2 sekundy",
+  "debugStatusOffline": "Offline",
+  "offline": "Offline"
 }

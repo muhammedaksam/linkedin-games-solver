@@ -1,645 +1,210 @@
 {
-  "extensionName": {
-    "message": "Trình giải trò chơi LinkedIn",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Trợ lý cho LinkedIn Games. Tự động giải các câu đố hằng ngày (Queens, Sudoku, Pinpoint, Crossclimb) với chuỗi thắng và phân tích thống kê.",
-    "description": "The description of the extension."
-  },
-  "subtitle": {
-    "message": "Giải bàn chơi đang hoạt động chỉ với một lần nhấp",
-    "description": "Header subtitle of the popup"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Cần tích hợp với tab Chrome.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Không tìm thấy tab đang hoạt động.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Không thể chuyển đến $1.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Kết nối thất bại.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "Đã xảy ra sự cố khi chạy trình giải.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Đã khởi chạy trình giải.",
-    "description": "Toast message for successful solve start"
-  },
-  "dashboardTitle": {
-    "message": "Lịch sử & Thống kê",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Lịch sử và thống kê của bạn về việc giải LinkedIn Games",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Tổng đã giải",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Trò chơi đã giải qua tất cả các ngày",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Thời gian trung bình",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "Trên tất cả các lần hoàn thành đã ghi nhận",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Chuỗi hoạt động",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Các ngày hoạt động liên tiếp",
-    "description": "Description for the active streak card"
-  },
-  "dashboardDescText": {
-    "message": "Phân tích các chỉ số hiệu suất của bạn, ghi lại chuỗi thành tích và theo dõi hành trình các câu đố bạn hoàn thành mỗi ngày.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "disclaimerText": {
-    "message": "Tuyên bố miễn trừ trách nhiệm: Đây là một dự án giáo dục độc lập, mã nguồn mở. Không liên kết, không được tài trợ hoặc chứng thực bởi LinkedIn Corporation. “LinkedIn” là nhãn hiệu đã đăng ký của LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "title": {
-    "message": "Trò chơi LinkedIn"
-  },
-  "switchThemeTitle": {
-    "message": "Chuyển sang chế độ $1"
-  },
-  "solvingStatus": {
-    "message": "Giải quyết..."
-  },
-  "sudoku": {
-    "message": "Sudoku"
-  },
-  "tango": {
-    "message": "Tango"
-  },
-  "queens": {
-    "message": "Queens"
-  },
-  "zip": {
-    "message": "Zip"
-  },
-  "patches": {
-    "message": "Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint"
-  },
-  "bonus": {
-    "message": "Thưởng"
-  },
-  "desc_patches": {
-    "message": "Ghép lại với nhau"
-  },
-  "desc_zip": {
-    "message": "Hoàn thành con đường"
-  },
-  "desc_sudoku": {
-    "message": "Trò chơi cổ điển, phiên bản mini"
-  },
-  "desc_tango": {
-    "message": "Hài hòa lưới điện"
-  },
-  "desc_queens": {
-    "message": "Vương miện mỗi khu vực"
-  },
-  "desc_crossclimb": {
-    "message": "Mở khóa thang trivia"
-  },
-  "desc_pinpoint": {
-    "message": "Đoán danh mục"
-  },
-  "titleSolve": {
-    "message": "Giải $1"
-  },
-  "titleCompleted": {
-    "message": "Hoàn thành hôm nay! Nhấp để điều hướng đến $1"
-  },
-  "titleOpen": {
-    "message": "Mở $1 để giải quyết"
-  },
-  "perfectDay": {
-    "message": "Ngày hoàn hảo! Tất cả các trò chơi $1 đã hoàn thành! 🎉"
-  },
-  "dailyProgress": {
-    "message": "Tiến độ hàng ngày: $1 trong số $2 trò chơi đã hoàn thành hôm nay"
-  },
-  "statStreakDays": {
-    "message": "$1 ngày"
-  },
-  "personalBests": {
-    "message": "Thành tích cá nhân tốt nhất"
-  },
-  "noRecordsYet": {
-    "message": "Chưa có bản ghi nào được ghi lại."
-  },
-  "solvingHistory": {
-    "message": "Giải mã Lịch sử"
-  },
-  "activityCalendar": {
-    "message": "Lịch hoạt động"
-  },
-  "clearFilter": {
-    "message": "Xóa bộ lọc"
-  },
-  "settingModel": {
-    "message": "Mô hình"
-  },
-  "settingModelSelect": {
-    "message": "Chọn Mẫu"
-  },
-  "settingModelCustomOption": {
-    "message": "Tên Mô Hình Tùy Chỉnh..."
-  },
-  "settingModelCustomLabel": {
-    "message": "Tên Mô Hình Tùy Chỉnh"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "ví dụ: llama3, mistral"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Nhập mã định danh tùy chỉnh..."
-  },
-  "settingEndpointLabel": {
-    "message": "URL điểm cuối"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "ví dụ: http://localhost:11434/v1"
-  },
-  "settingApiKeyGemini": {
-    "message": "Khóa API Gemini"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "Khóa API OpenAI"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "Khóa API Anthropic"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "Khóa API DeepSeek"
-  },
-  "settingApiKeyCustom": {
-    "message": "Khóa API (Tùy chọn)"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Thông tin xác thực tùy chọn..."
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Nhập khóa thông tin đăng nhập..."
-  },
-  "settingApiKeyNotice": {
-    "message": "Mô hình đã chọn giải quyết Crossclimb & Pinpoint. Tiện ích mở rộng không bao giờ chia sẻ khóa của bạn."
-  },
-  "popupCardTitle": {
-    "message": "Kết nối qua những trò chơi vui nhộn hàng ngày"
-  },
-  "popupCardDesc": {
-    "message": "Chuẩn bị tâm trí của bạn cho ngày làm việc và so sánh kết quả. Điểm số của bạn là riêng tư trừ khi bạn chia sẻ chúng."
-  },
-  "saveAndBack": {
-    "message": "Lưu & Quay lại trò chơi"
-  },
-  "solvingWorking": {
-    "message": "AI Solver đang hoạt động..."
-  },
-  "completedToday": {
-    "message": "Hoàn thành hôm nay"
-  },
-  "solvedCountSuffix": {
-    "message": "Giải quyết"
-  },
-  "settingsHeaderTitle": {
-    "message": "Cấu hình Mô hình AI"
-  },
-  "labelAiProvider": {
-    "message": "Nhà cung cấp AI"
-  },
-  "labelModelIdentifier": {
-    "message": "MÃ MÔ HÌNH"
-  },
-  "labelCustomModel": {
-    "message": "TÊN MÔ HÌNH TÙY CHỈNH"
-  },
-  "labelEndpointUrl": {
-    "message": "URL ĐIỂM KẾT NỐI"
-  },
-  "labelGeminiKey": {
-    "message": "KHÓA API GEMINI"
-  },
-  "labelOpenAiKey": {
-    "message": "KHÓA API OPENAI"
-  },
-  "labelAnthropicKey": {
-    "message": "KHÓA API ANTHROPIC"
-  },
-  "labelDeepSeekKey": {
-    "message": "KHÓA API DEEPSEEK"
-  },
-  "labelCustomKey": {
-    "message": "KHÓA API (TÙY CHỌN)"
-  },
-  "navHome": {
-    "message": "Nhà"
-  },
-  "navAiConfig": {
-    "message": "Cài đặt / Tùy chọn"
-  },
-  "navStats": {
-    "message": "Thống kê"
-  },
-  "navTheme": {
-    "message": "Chủ đề"
-  },
-  "navDebug": {
-    "message": "Gỡ lỗi"
-  },
-  "dailyProgressLabel": {
-    "message": "Tiến độ hàng ngày"
-  },
-  "solveActiveBoard": {
-    "message": "Giải quyết Bảng Năng động"
-  },
-  "backToGames": {
-    "message": "Quay lại trò chơi LinkedIn"
-  },
-  "dashboardLabel": {
-    "message": "Bảng điều khiển"
-  },
-  "gamesSolverTitle": {
-    "message": "Giải pháp trò chơi"
-  },
-  "completedSuccessfully": {
-    "message": "Hoàn thành thành công"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Chứng chỉ & Mô hình"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Hướng dẫn & Thông tin Mô hình"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Trạng thái kết nối"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Giải pháp đang hoạt động:"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Mã định danh mẫu:"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Cài đặt đã được lưu tự động!"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Cấu hình các điểm cuối và thông tin xác thực tích hợp mô hình AI cho lý luận giải quyết câu đố nâng cao."
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Hiệu suất xuất sắc với chi phí gần như bằng không. Giải quyết Crossclimb và Pinpoint với logic xuất sắc. Đề xuất mặc định: gemini-2.5-flash."
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Nhanh chóng, nhạy bén và cực kỳ đáng tin cậy với các mẫu kiến thức chung. Đề xuất mặc định: gpt-4o-mini."
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Khả năng lý luận tối đa. Xử lý các liên kết từ rất phức tạp một cách hoàn hảo. Đề xuất mặc định: claude-3-5-haiku."
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Kết nối với các khung LLM địa phương như Ollama hoặc LM Studio. Chỉ định URL điểm cuối của bạn (ví dụ: http://localhost:11434/v1) và tên mô hình tùy chỉnh."
-  },
-  "showMoreDates": {
-    "message": "Hiển thị thêm ngày tháng"
-  },
-  "showLessDates": {
-    "message": "Hiển thị ít hơn"
-  },
-  "solveBtn_withAi": {
-    "message": "Giải quyết bằng AI"
-  },
-  "solveBtn_game": {
-    "message": "Giải trò chơi"
-  },
-  "solveBtn_solving": {
-    "message": "Giải quyết..."
-  },
-  "solveBtn_solved": {
-    "message": "Đã giải quyết!"
-  },
-  "scoreClue": {
-    "message": "1 manh mối"
-  },
-  "scoreClues": {
-    "message": "$1 gợi ý"
-  },
-  "scoreSeconds": {
-    "message": "$1s"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1m $2s"
-  },
-  "markAsNotPlayed": {
-    "message": "Đánh dấu là Chưa Chơi"
-  },
-  "settingSolveSpeed": {
-    "message": "Giải quyết Tốc độ / Trì hoãn"
-  },
-  "solveSpeed_instant": {
-    "message": "Ngay lập tức (Nhanh nhất)"
-  },
-  "solveSpeed_normal": {
-    "message": "Bình thường (Tiêu chuẩn)"
-  },
-  "solveSpeed_stealth": {
-    "message": "Chế độ ẩn (Độ trễ giống con người)"
-  },
-  "labelSolveSpeed": {
-    "message": "GIẢI QUYẾT TỐC ĐỘ VÀ NHỊP ĐỘ"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Chế độ tức thì hoàn thành bảng trong vài mili giây. Chế độ ẩn danh bắt chước hành vi con người với tốc độ ngẫu nhiên (1–3 giây) để bảo vệ chuỗi thành tích khỏi bị phát hiện tự động."
-  },
-  "solveBtn_hint": {
-    "message": "Nhận gợi ý"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Hành động Giải pháp Mặc định"
-  },
-  "solveMode_full": {
-    "message": "Giải tự động hoàn toàn"
-  },
-  "solveMode_hint": {
-    "message": "Chế độ Gợi ý Giáo dục"
-  },
-  "labelDefaultSolveMode": {
-    "message": "CHẾ ĐỘ GIẢI THUẬT MẶC ĐỊNH"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Chọn hành động chính khi kích hoạt bộ giải từ chế độ xem tab hoặc bảng. Giải toàn bộ kết thúc trò chơi; Chế độ gợi ý đặt một mục đúng."
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "Chi phí bằng không & AI hoàn toàn địa phương"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Chạy hoàn toàn trên thiết bị của bạn trong trình duyệt. Không có độ trễ mạng và hoàn toàn miễn phí với Gemini Nano."
-  },
-  "debugHeaderTitle": {
-    "message": "Công cụ Gỡ lỗi Game & Phát triển"
-  },
-  "debugStatusOffline": {
-    "message": "Ngoại tuyến"
-  },
-  "debugStatusLive": {
-    "message": "Sống"
-  },
-  "debugDetectedGame": {
-    "message": "Trò chơi đã phát hiện"
-  },
-  "debugNoneDetected": {
-    "message": "Không phát hiện được"
-  },
-  "debugTargetUrl": {
-    "message": "URL mục tiêu"
-  },
-  "debugNoActiveTab": {
-    "message": "Không có tab nào đang hoạt động"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML đã được sao chép!"
-  },
-  "debugCopyHtml": {
-    "message": "Sao chép HTML <main>"
-  },
-  "debugLogsCopied": {
-    "message": "Đã sao chép nhật ký!"
-  },
-  "debugCopyLogs": {
-    "message": "Sao chép nhật ký điều khiển"
-  },
-  "debugBothCopied": {
-    "message": "Cả hai đã được sao chép!"
-  },
-  "debugCopyBoth": {
-    "message": "Sao chép cả hai (HTML & Nhật ký)"
-  },
-  "debugRegistryCopied": {
-    "message": "Đã sao chép Registry JSON!"
-  },
-  "debugCopyRegistry": {
-    "message": "Sao chép JSON Đăng ký Hôm nay"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Sao chép JSON"
-  },
-  "debugSubmitAnswer": {
-    "message": "Gửi câu trả lời"
-  },
-  "debugDomPreview": {
-    "message": "Xem trước phần tử DOM"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[... [cắt ngắn, tổng số ký tự: $1] ... ]"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Sao chép HTML <main> hoàn tất"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Không có thẻ <main> nào được ghi lại. Hãy đảm bảo bạn đang ở trên màn hình trò chơi LinkedIn."
-  },
-  "debugConsoleOutput": {
-    "message": "Đầu ra Console"
-  },
-  "debugEventsCount": {
-    "message": "sự kiện $1"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Làm mới nhật ký"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Xóa nhật ký"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Chưa có nhật ký nào được ghi lại. Thực hiện các hành động trên màn hình trò chơi để kích hoạt các sự kiện trong bảng điều khiển."
-  },
-  "debugListeningEvents": {
-    "message": "Đang lắng nghe các sự kiện console.log, console.warn và console.error..."
-  },
-  "debugErrorInitializing": {
-    "message": "Đang khởi tạo kết nối với trang trò chơi LinkedIn..."
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Không thể lấy dữ liệu trò chơi."
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Tab đang hoạt động không phải là trang trò chơi LinkedIn. Hãy điều hướng đến một trò chơi để ghi lại chi tiết."
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Không thể xác định tab đang hoạt động."
-  },
-  "labelDailyReminders": {
-    "message": "NHẮC NHỞ HÀNG NGÀY & BẢO VỆ CHUỖI"
-  },
-  "settingEnableReminders": {
-    "message": "Bật Nhắc Nhở Hàng Ngày"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Hãy nhắc tôi trước khi chuỗi ngày hôm nay kết thúc."
-  },
-  "settingReminderTime": {
-    "message": "Thời gian nhắc nhở"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Chọn thời gian địa phương để kiểm tra các trò chơi chưa giải quyết."
-  },
-  "notificationTitle": {
-    "message": "Bảo vệ chuỗi 🚀"
-  },
-  "notificationMessage": {
-    "message": "Đừng để mất chuỗi giải quyết của bạn! Bạn chưa giải quyết các trò chơi LinkedIn hôm nay."
-  },
-  "notificationButton": {
-    "message": "Giải ngay!"
-  },
-  "commandSolveActiveGame": {
-    "message": "Giải trò chơi LinkedIn đang hoạt động một cách tự động."
-  },
-  "commandGetSingleHint": {
-    "message": "Cung cấp một gợi ý một bước hoặc kiểm tra lỗi."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Mở tự động thanh bên trong trò chơi"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Tự động mở bảng điều khiển của trình giải khi truy cập LinkedIn Games."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "MỞ TỰ ĐỘNG THANH CÔNG CỤ GIẢI QUYẾT"
-  },
-  "permissionDialogTitle": {
-    "message": "Cấp quyền truy cập trang"
-  },
-  "permissionDialogDesc": {
-    "message": "Để phát hiện các bảng trò chơi đang hoạt động và giải các câu đố, tiện ích mở rộng cần quyền truy cập để chạy trên LinkedIn Games. Nhấp vào bên dưới để cấp quyền truy cập."
-  },
-  "permissionDialogButton": {
-    "message": "Cấp quyền truy cập"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Chơi & Giải Đố Nữ Hoàng hôm nay!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Mở trình giải mini-Sudoku"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Bảng điều khiển Streaks & Hiệu suất"
-  },
-  "diagnosticsEngine": {
-    "message": "Động cơ chẩn đoán"
-  },
-  "liveInspected": {
-    "message": "Kiểm tra trực tiếp"
-  },
-  "offline": {
-    "message": "Ngoại tuyến"
-  },
-  "inspectedTab": {
-    "message": "Tab đã kiểm tra:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Trình kiểm tra lưới ma trận trực tiếp"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Đang chờ Trang Trò Chơi LinkedIn"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Đi tới bất kỳ tab bảng trò chơi LinkedIn nào (Queens, Sudoku, Tango, Pinpoint) để ghi lại tọa độ ràng buộc, trạng thái ô và cấu trúc phản ứng."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Trình phát nhật ký telemetry"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Tìm kiếm nhật ký..."
-  },
-  "allTypes": {
-    "message": "TẤT CẢ CÁC LOẠI"
-  },
-  "logsType": {
-    "message": "NHẬT KÝ"
-  },
-  "infoType": {
-    "message": "THÔNG TIN"
-  },
-  "warnsType": {
-    "message": "CẢNH BÁO"
-  },
-  "errorsType": {
-    "message": "LỖI"
-  },
-  "selectTypePlaceholder": {
-    "message": "Chọn loại"
-  },
-  "consoleStreamEmpty": {
-    "message": "Bảng điều khiển luồng trống"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Không phát hiện đầu ra nhật ký nào phù hợp với bộ lọc. Chạy các bước trong giao diện người dùng giải quyết trò chơi LinkedIn để phát trực tiếp các hành động nhật ký ở đây."
-  },
-  "subscribedToStorageSession": {
-    "message": "Đã đăng ký luồng storage.session"
-  },
-  "parsingGameGridCells": {
-    "message": "Phân tích các ô lưới trò chơi... Đảm bảo rằng bảng có các khối lưới hoạt động hiển thị."
-  },
-  "urlLabel": {
-    "message": "Url:"
-  },
-  "notAvailable": {
-    "message": "Không áp dụng"
-  },
-  "matchesLabel": {
-    "message": "diêm"
-  },
-  "copiedLabel": {
-    "message": "Đã sao chép!"
-  },
-  "copyLogsTooltip": {
-    "message": "Sao chép nhật ký"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Xóa không gian nhật ký"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Giải trò chơi LinkedIn đang hoạt động"
-  },
-  "contextMenuHint": {
-    "message": "💡 Nhận Gợi Ý"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Xem Kết Quả"
-  },
-  "labelTelemetryTitle": {
-    "message": "ĐO LƯỜNG TỪ XA & QUYỀN RIÊNG TƯ"
-  },
-  "telemetryToggleLabel": {
-    "message": "Gửi dữ liệu ẩn danh"
-  },
-  "telemetryToggleDesc": {
-    "message": "Giúp cải thiện bộ giải bằng cách chia sẻ các chỉ số hiệu suất và sử dụng ẩn danh."
-  }
+  "extensionName": "Trình giải trò chơi LinkedIn",
+  "extensionDescription": "Trợ lý cho LinkedIn Games. Tự động giải các câu đố hằng ngày (Queens, Sudoku, Pinpoint, Crossclimb) với chuỗi thắng và phân tích thống kê.",
+  "subtitle": "Giải bàn chơi đang hoạt động chỉ với một lần nhấp",
+  "errorChromeTabIntegration": "Cần tích hợp với tab Chrome.",
+  "errorActiveTabNotFound": "Không tìm thấy tab đang hoạt động.",
+  "errorNavigationFailed": "Không thể chuyển đến $1.",
+  "errorConnectionFailed": "Kết nối thất bại.",
+  "errorExecutionFailedDefault": "Đã xảy ra sự cố khi chạy trình giải.",
+  "successSolverStarted": "Đã khởi chạy trình giải.",
+  "dashboardTitle": "Lịch sử & Thống kê",
+  "dashboardSubtitle": "Lịch sử và thống kê của bạn về việc giải LinkedIn Games",
+  "statTotalSolved": "Tổng đã giải",
+  "statTotalSolvedDesc": "Trò chơi đã giải qua tất cả các ngày",
+  "statAverageTime": "Thời gian trung bình",
+  "statAverageTimeDesc": "Trên tất cả các lần hoàn thành đã ghi nhận",
+  "statActiveStreak": "Chuỗi hoạt động",
+  "statActiveStreakDesc": "Các ngày hoạt động liên tiếp",
+  "dashboardDescText": "Phân tích các chỉ số hiệu suất của bạn, ghi lại chuỗi thành tích và theo dõi hành trình các câu đố bạn hoàn thành mỗi ngày.",
+  "disclaimerText": "Tuyên bố miễn trừ trách nhiệm: Đây là một dự án giáo dục độc lập, mã nguồn mở. Không liên kết, không được tài trợ hoặc chứng thực bởi LinkedIn Corporation. “LinkedIn” là nhãn hiệu đã đăng ký của LinkedIn Corporation.",
+  "title": "Trò chơi LinkedIn",
+  "switchThemeTitle": "Chuyển sang chế độ $1",
+  "solvingStatus": "Giải quyết...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "Thưởng",
+  "desc_patches": "Ghép lại với nhau",
+  "desc_zip": "Hoàn thành con đường",
+  "desc_sudoku": "Trò chơi cổ điển, phiên bản mini",
+  "desc_tango": "Hài hòa lưới điện",
+  "desc_queens": "Vương miện mỗi khu vực",
+  "desc_crossclimb": "Mở khóa thang trivia",
+  "desc_pinpoint": "Đoán danh mục",
+  "titleSolve": "Giải $1",
+  "titleCompleted": "Hoàn thành hôm nay! Nhấp để điều hướng đến $1",
+  "titleOpen": "Mở $1 để giải quyết",
+  "perfectDay": "Ngày hoàn hảo! Tất cả các trò chơi $1 đã hoàn thành! 🎉",
+  "dailyProgress": "Tiến độ hàng ngày: $1 trong số $2 trò chơi đã hoàn thành hôm nay",
+  "statStreakDays": "$1 ngày",
+  "personalBests": "Thành tích cá nhân tốt nhất",
+  "noRecordsYet": "Chưa có bản ghi nào được ghi lại.",
+  "solvingHistory": "Giải mã Lịch sử",
+  "activityCalendar": "Lịch hoạt động",
+  "clearFilter": "Xóa bộ lọc",
+  "settingModel": "Mô hình",
+  "settingModelSelect": "Chọn Mẫu",
+  "settingModelCustomOption": "Tên Mô Hình Tùy Chỉnh...",
+  "settingModelCustomLabel": "Tên Mô Hình Tùy Chỉnh",
+  "settingModelCustomPlaceholderLocal": "ví dụ: llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Nhập mã định danh tùy chỉnh...",
+  "settingEndpointLabel": "URL điểm cuối",
+  "settingEndpointPlaceholder": "ví dụ: http://localhost:11434/v1",
+  "settingApiKeyGemini": "Khóa API Gemini",
+  "settingApiKeyOpenAI": "Khóa API OpenAI",
+  "settingApiKeyAnthropic": "Khóa API Anthropic",
+  "settingApiKeyDeepSeek": "Khóa API DeepSeek",
+  "settingApiKeyCustom": "Khóa API (Tùy chọn)",
+  "settingApiKeyPlaceholderCustom": "Thông tin xác thực tùy chọn...",
+  "settingApiKeyPlaceholderDefault": "Nhập khóa thông tin đăng nhập...",
+  "settingApiKeyNotice": "Mô hình đã chọn giải quyết Crossclimb & Pinpoint. Tiện ích mở rộng không bao giờ chia sẻ khóa của bạn.",
+  "popupCardTitle": "Kết nối qua những trò chơi vui nhộn hàng ngày",
+  "popupCardDesc": "Chuẩn bị tâm trí của bạn cho ngày làm việc và so sánh kết quả. Điểm số của bạn là riêng tư trừ khi bạn chia sẻ chúng.",
+  "saveAndBack": "Lưu & Quay lại trò chơi",
+  "solvingWorking": "AI Solver đang hoạt động...",
+  "completedToday": "Hoàn thành hôm nay",
+  "solvedCountSuffix": "Giải quyết",
+  "settingsHeaderTitle": "Cấu hình Mô hình AI",
+  "labelAiProvider": "Nhà cung cấp AI",
+  "labelModelIdentifier": "MÃ MÔ HÌNH",
+  "labelCustomModel": "TÊN MÔ HÌNH TÙY CHỈNH",
+  "labelEndpointUrl": "URL ĐIỂM KẾT NỐI",
+  "labelGeminiKey": "KHÓA API GEMINI",
+  "labelOpenAiKey": "KHÓA API OPENAI",
+  "labelAnthropicKey": "KHÓA API ANTHROPIC",
+  "labelDeepSeekKey": "KHÓA API DEEPSEEK",
+  "labelCustomKey": "KHÓA API (TÙY CHỌN)",
+  "navHome": "Nhà",
+  "navAiConfig": "Cài đặt / Tùy chọn",
+  "navStats": "Thống kê",
+  "navTheme": "Chủ đề",
+  "navDebug": "Gỡ lỗi",
+  "dailyProgressLabel": "Tiến độ hàng ngày",
+  "solveActiveBoard": "Giải quyết Bảng Năng động",
+  "backToGames": "Quay lại trò chơi LinkedIn",
+  "dashboardLabel": "Bảng điều khiển",
+  "gamesSolverTitle": "Giải pháp trò chơi",
+  "completedSuccessfully": "Hoàn thành thành công",
+  "settingsCredentialsTitle": "Chứng chỉ & Mô hình",
+  "settingsModelGuideTitle": "Hướng dẫn & Thông tin Mô hình",
+  "settingsConnectionStatusTitle": "Trạng thái kết nối",
+  "settingsActiveSolverLabel": "Giải pháp đang hoạt động:",
+  "settingsModelIdentifierLabel": "Mã định danh mẫu:",
+  "settingsAutoSavedNotification": "Cài đặt đã được lưu tự động!",
+  "settingsSubtitleDesc": "Cấu hình các điểm cuối và thông tin xác thực tích hợp mô hình AI cho lý luận giải quyết câu đố nâng cao.",
+  "settingsGeminiGuideDesc": "Hiệu suất xuất sắc với chi phí gần như bằng không. Giải quyết Crossclimb và Pinpoint với logic xuất sắc. Đề xuất mặc định: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Nhanh chóng, nhạy bén và cực kỳ đáng tin cậy với các mẫu kiến thức chung. Đề xuất mặc định: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Khả năng lý luận tối đa. Xử lý các liên kết từ rất phức tạp một cách hoàn hảo. Đề xuất mặc định: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Kết nối với các khung LLM địa phương như Ollama hoặc LM Studio. Chỉ định URL điểm cuối của bạn (ví dụ: http://localhost:11434/v1) và tên mô hình tùy chỉnh.",
+  "showMoreDates": "Hiển thị thêm ngày tháng",
+  "showLessDates": "Hiển thị ít hơn",
+  "solveBtn_withAi": "Giải quyết bằng AI",
+  "solveBtn_game": "Giải trò chơi",
+  "solveBtn_solving": "Giải quyết...",
+  "solveBtn_solved": "Đã giải quyết!",
+  "scoreClue": "1 manh mối",
+  "scoreClues": "$1 gợi ý",
+  "scoreSeconds": "$1s",
+  "scoreMinutesSeconds": "$1m $2s",
+  "markAsNotPlayed": "Đánh dấu là Chưa Chơi",
+  "settingSolveSpeed": "Giải quyết Tốc độ / Trì hoãn",
+  "solveSpeed_instant": "Ngay lập tức (Nhanh nhất)",
+  "solveSpeed_normal": "Bình thường (Tiêu chuẩn)",
+  "solveSpeed_stealth": "Chế độ ẩn (Độ trễ giống con người)",
+  "labelSolveSpeed": "GIẢI QUYẾT TỐC ĐỘ VÀ NHỊP ĐỘ",
+  "settingSolveSpeedNotice": "Chế độ tức thì hoàn thành bảng trong vài mili giây. Chế độ ẩn danh bắt chước hành vi con người với tốc độ ngẫu nhiên (1–3 giây) để bảo vệ chuỗi thành tích khỏi bị phát hiện tự động.",
+  "solveBtn_hint": "Nhận gợi ý",
+  "settingDefaultSolveMode": "Hành động Giải pháp Mặc định",
+  "solveMode_full": "Giải tự động hoàn toàn",
+  "solveMode_hint": "Chế độ Gợi ý Giáo dục",
+  "labelDefaultSolveMode": "CHẾ ĐỘ GIẢI THUẬT MẶC ĐỊNH",
+  "settingDefaultSolveModeNotice": "Chọn hành động chính khi kích hoạt bộ giải từ chế độ xem tab hoặc bảng. Giải toàn bộ kết thúc trò chơi; Chế độ gợi ý đặt một mục đúng.",
+  "settingsChromeBuiltInGuideTitle": "Chi phí bằng không & AI hoàn toàn địa phương",
+  "settingsChromeBuiltInGuideDesc": "Chạy hoàn toàn trên thiết bị của bạn trong trình duyệt. Không có độ trễ mạng và hoàn toàn miễn phí với Gemini Nano.",
+  "debugHeaderTitle": "Công cụ Gỡ lỗi Game & Phát triển",
+  "debugStatusOffline": "Ngoại tuyến",
+  "debugStatusLive": "Sống",
+  "debugDetectedGame": "Trò chơi đã phát hiện",
+  "debugNoneDetected": "Không phát hiện được",
+  "debugTargetUrl": "URL mục tiêu",
+  "debugNoActiveTab": "Không có tab nào đang hoạt động",
+  "debugHtmlCopied": "HTML đã được sao chép!",
+  "debugCopyHtml": "Sao chép HTML <main>",
+  "debugLogsCopied": "Đã sao chép nhật ký!",
+  "debugCopyLogs": "Sao chép nhật ký điều khiển",
+  "debugBothCopied": "Cả hai đã được sao chép!",
+  "debugCopyBoth": "Sao chép cả hai (HTML & Nhật ký)",
+  "debugRegistryCopied": "Đã sao chép Registry JSON!",
+  "debugCopyRegistry": "Sao chép JSON Đăng ký Hôm nay",
+  "debugCopyRegistryShort": "Sao chép JSON",
+  "debugSubmitAnswer": "Gửi câu trả lời",
+  "debugDomPreview": "Xem trước phần tử DOM",
+  "debugHtmlTruncated": "\n\n[... [cắt ngắn, tổng số ký tự: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Sao chép HTML <main> hoàn tất",
+  "debugNoMainTagCaptured": "Không có thẻ <main> nào được ghi lại. Hãy đảm bảo bạn đang ở trên màn hình trò chơi LinkedIn.",
+  "debugConsoleOutput": "Đầu ra Console",
+  "debugEventsCount": "sự kiện $1",
+  "debugRefreshLogsTooltip": "Làm mới nhật ký",
+  "debugClearLogsTooltip": "Xóa nhật ký",
+  "debugNoLogsCaptured": "Chưa có nhật ký nào được ghi lại. Thực hiện các hành động trên màn hình trò chơi để kích hoạt các sự kiện trong bảng điều khiển.",
+  "debugListeningEvents": "Đang lắng nghe các sự kiện console.log, console.warn và console.error...",
+  "debugErrorInitializing": "Đang khởi tạo kết nối với trang trò chơi LinkedIn...",
+  "debugErrorRetrieveFailed": "Không thể lấy dữ liệu trò chơi.",
+  "debugErrorNotGamesPage": "Tab đang hoạt động không phải là trang trò chơi LinkedIn. Hãy điều hướng đến một trò chơi để ghi lại chi tiết.",
+  "debugErrorNoActiveTab": "Không thể xác định tab đang hoạt động.",
+  "labelDailyReminders": "NHẮC NHỞ HÀNG NGÀY & BẢO VỆ CHUỖI",
+  "settingEnableReminders": "Bật Nhắc Nhở Hàng Ngày",
+  "settingEnableRemindersDesc": "Hãy nhắc tôi trước khi chuỗi ngày hôm nay kết thúc.",
+  "settingReminderTime": "Thời gian nhắc nhở",
+  "settingReminderTimeNotice": "Chọn thời gian địa phương để kiểm tra các trò chơi chưa giải quyết.",
+  "notificationTitle": "Bảo vệ chuỗi 🚀",
+  "notificationMessage": "Đừng để mất chuỗi giải quyết của bạn! Bạn chưa giải quyết các trò chơi LinkedIn hôm nay.",
+  "notificationButton": "Giải ngay!",
+  "commandSolveActiveGame": "Giải trò chơi LinkedIn đang hoạt động một cách tự động.",
+  "commandGetSingleHint": "Cung cấp một gợi ý một bước hoặc kiểm tra lỗi.",
+  "settingAutoOpenSidepanel": "Mở tự động thanh bên trong trò chơi",
+  "settingAutoOpenSidepanelDesc": "Tự động mở bảng điều khiển của trình giải khi truy cập LinkedIn Games.",
+  "labelAutoOpenSidepanel": "MỞ TỰ ĐỘNG THANH CÔNG CỤ GIẢI QUYẾT",
+  "permissionDialogTitle": "Cấp quyền truy cập trang",
+  "permissionDialogDesc": "Để phát hiện các bảng trò chơi đang hoạt động và giải các câu đố, tiện ích mở rộng cần quyền truy cập để chạy trên LinkedIn Games. Nhấp vào bên dưới để cấp quyền truy cập.",
+  "permissionDialogButton": "Cấp quyền truy cập",
+  "omniboxSuggestionQueens": "👑 Chơi & Giải Đố Nữ Hoàng hôm nay!",
+  "omniboxSuggestionSudoku": "🔢 Mở trình giải mini-Sudoku",
+  "omniboxSuggestionStats": "📊 Bảng điều khiển Streaks & Hiệu suất",
+  "diagnosticsEngine": "Động cơ chẩn đoán",
+  "liveInspected": "Kiểm tra trực tiếp",
+  "offline": "Ngoại tuyến",
+  "inspectedTab": "Tab đã kiểm tra:",
+  "liveMatrixGridInspector": "Trình kiểm tra lưới ma trận trực tiếp",
+  "waitingForLinkedInGamePage": "Đang chờ Trang Trò Chơi LinkedIn",
+  "waitingForLinkedInGamePageDesc": "Đi tới bất kỳ tab bảng trò chơi LinkedIn nào (Queens, Sudoku, Tango, Pinpoint) để ghi lại tọa độ ràng buộc, trạng thái ô và cấu trúc phản ứng.",
+  "telemetryLogsStreamer": "Trình phát nhật ký telemetry",
+  "searchLogsPlaceholder": "Tìm kiếm nhật ký...",
+  "allTypes": "TẤT CẢ CÁC LOẠI",
+  "logsType": "NHẬT KÝ",
+  "infoType": "THÔNG TIN",
+  "warnsType": "CẢNH BÁO",
+  "errorsType": "LỖI",
+  "selectTypePlaceholder": "Chọn loại",
+  "consoleStreamEmpty": "Bảng điều khiển luồng trống",
+  "consoleStreamEmptyDesc": "Không phát hiện đầu ra nhật ký nào phù hợp với bộ lọc. Chạy các bước trong giao diện người dùng giải quyết trò chơi LinkedIn để phát trực tiếp các hành động nhật ký ở đây.",
+  "subscribedToStorageSession": "Đã đăng ký luồng storage.session",
+  "parsingGameGridCells": "Phân tích các ô lưới trò chơi... Đảm bảo rằng bảng có các khối lưới hoạt động hiển thị.",
+  "urlLabel": "Url:",
+  "notAvailable": "Không áp dụng",
+  "matchesLabel": "diêm",
+  "copiedLabel": "Đã sao chép!",
+  "copyLogsTooltip": "Sao chép nhật ký",
+  "clearLogSpaceTooltip": "Xóa không gian nhật ký",
+  "contextMenuSolve": "⚡ Giải trò chơi LinkedIn đang hoạt động",
+  "contextMenuHint": "💡 Nhận Gợi Ý",
+  "contextMenuViewResults": "📊 Xem Kết Quả",
+  "labelTelemetryTitle": "ĐO LƯỜNG TỪ XA & QUYỀN RIÊNG TƯ",
+  "telemetryToggleLabel": "Gửi dữ liệu ẩn danh",
+  "telemetryToggleDesc": "Giúp cải thiện bộ giải bằng cách chia sẻ các chỉ số hiệu suất và sử dụng ẩn danh."
 }

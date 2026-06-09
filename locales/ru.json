@@ -1,780 +1,210 @@
 {
-  "extensionName": {
-    "message": "Решатель игр LinkedIn",
-    "description": "The name of the extension."
-  },
-  "extensionDescription": {
-    "message": "Помощник для LinkedIn Games. Автоматически решает ежедневные головоломки (Queens, Sudoku, Pinpoint, Crossclimb) с сериями и аналитикой.",
-    "description": "The description of the extension."
-  },
-  "title": {
-    "message": "Игры LinkedIn",
-    "description": "Header title of the popup"
-  },
-  "subtitle": {
-    "message": "Решайте активные доски одним кликом",
-    "description": "Header subtitle of the popup"
-  },
-  "switchThemeTitle": {
-    "message": "Переключиться в режим $1",
-    "description": "Tooltip to switch theme"
-  },
-  "errorChromeTabIntegration": {
-    "message": "Требуется интеграция с вкладкой Chrome.",
-    "description": "Error shown if not running in extension context"
-  },
-  "errorActiveTabNotFound": {
-    "message": "Не удалось найти активную вкладку.",
-    "description": "Error shown if tab is not found"
-  },
-  "errorNavigationFailed": {
-    "message": "Не удалось перейти к $1.",
-    "description": "Error shown if tab switching fails"
-  },
-  "errorConnectionFailed": {
-    "message": "Не удалось подключиться.",
-    "description": "Error shown if content script is unresponsive"
-  },
-  "errorExecutionFailedDefault": {
-    "message": "При запуске решателя возникла проблема.",
-    "description": "Fallback solver error"
-  },
-  "successSolverStarted": {
-    "message": "Решатель запущен.",
-    "description": "Toast message for successful solve start"
-  },
-  "solvingStatus": {
-    "message": "Решение...",
-    "description": "Overlay label during solver run"
-  },
-  "sudoku": {
-    "message": "Sudoku",
-    "description": "Game name Sudoku"
-  },
-  "tango": {
-    "message": "Tango",
-    "description": "Game name Tango"
-  },
-  "queens": {
-    "message": "Queens",
-    "description": "Game name Queens"
-  },
-  "zip": {
-    "message": "Zip",
-    "description": "Game name Zip"
-  },
-  "patches": {
-    "message": "Patches",
-    "description": "Game name Patches"
-  },
-  "crossclimb": {
-    "message": "Crossclimb",
-    "description": "Game name Crossclimb"
-  },
-  "pinpoint": {
-    "message": "Pinpoint",
-    "description": "Game name Pinpoint"
-  },
-  "bonus": {
-    "message": "Бонус",
-    "description": "Bonus badge next to game name"
-  },
-  "desc_patches": {
-    "message": "Соединить патчи вместе"
-  },
-  "desc_zip": {
-    "message": "Завершить путь"
-  },
-  "desc_sudoku": {
-    "message": "Классическая игра, мини-версия"
-  },
-  "desc_tango": {
-    "message": "Гармонизировать сетку"
-  },
-  "desc_queens": {
-    "message": "Увенчать каждую область"
-  },
-  "desc_crossclimb": {
-    "message": "Открыть лестницу исследования"
-  },
-  "desc_pinpoint": {
-    "message": "Угадать категорию"
-  },
-  "titleSolve": {
-    "message": "Решить $1",
-    "description": "Tooltip for active game"
-  },
-  "titleCompleted": {
-    "message": "Завершено сегодня! Нажмите, чтобы перейти к $1",
-    "description": "Tooltip for completed game"
-  },
-  "titleOpen": {
-    "message": "Откройте $1 для решения",
-    "description": "Tooltip for locked/unopened game"
-  },
-  "perfectDay": {
-    "message": "Идеальный день! Все игры $1 завершены! 🎉",
-    "description": "Congratulatory message when all games are solved"
-  },
-  "dailyProgress": {
-    "message": "Ежедневный прогресс: $1 из $2 игр завершено",
-    "description": "Standard daily status footer"
-  },
-  "dashboardTitle": {
-    "message": "История и статистика",
-    "description": "Header title of the solver dashboard"
-  },
-  "dashboardSubtitle": {
-    "message": "Ваша история и статистика по LinkedIn Games",
-    "description": "Header subtitle of the solver dashboard"
-  },
-  "statTotalSolved": {
-    "message": "Всего решено",
-    "description": "Label for the total solved games card"
-  },
-  "statTotalSolvedDesc": {
-    "message": "Игры решённые на все даты",
-    "description": "Description for the total solved games card"
-  },
-  "statAverageTime": {
-    "message": "Среднее время",
-    "description": "Label for the average solve time card"
-  },
-  "statAverageTimeDesc": {
-    "message": "По всем зафиксированным завершениям",
-    "description": "Description for the average solve time card"
-  },
-  "statActiveStreak": {
-    "message": "Активная серия",
-    "description": "Label for the active streak card"
-  },
-  "statActiveStreakDesc": {
-    "message": "Подряд идущие активные дни",
-    "description": "Description for the active streak card"
-  },
-  "statStreakDays": {
-    "message": "$1 дней",
-    "description": "Pluralized count of consecutive active days"
-  },
-  "personalBests": {
-    "message": "Личные рекорды",
-    "description": "Label for personal best records list"
-  },
-  "noRecordsYet": {
-    "message": "Нет записей о решениях.",
-    "description": "Message shown when there are no historical entries"
-  },
-  "solvingHistory": {
-    "message": "История решений",
-    "description": "Label for historical chronological log"
-  },
-  "activityCalendar": {
-    "message": "Календарь активности",
-    "description": "Label for calendar activity card"
-  },
-  "clearFilter": {
-    "message": "Очистить фильтр",
-    "description": "Button to clear selected date filter"
-  },
-  "settingModel": {
-    "message": "Модель",
-    "description": "Label for the settings model selection dropdown"
-  },
-  "settingModelSelect": {
-    "message": "Выбрать модель",
-    "placeholder": "Placeholder text for model selection trigger"
-  },
-  "settingModelCustomOption": {
-    "message": "Пользовательское имя модели...",
-    "description": "Select item option for custom model name"
-  },
-  "settingModelCustomLabel": {
-    "message": "Пользовательское имя модели",
-    "description": "Label for custom model name text input"
-  },
-  "settingModelCustomPlaceholderLocal": {
-    "message": "например: llama3, mistral",
-    "description": "Placeholder for local custom models"
-  },
-  "settingModelCustomPlaceholderOther": {
-    "message": "Введите пользовательский ID...",
-    "description": "Placeholder for other provider custom models"
-  },
-  "settingEndpointLabel": {
-    "message": "URL конечной точки",
-    "description": "Label for custom endpoint input"
-  },
-  "settingEndpointPlaceholder": {
-    "message": "например: http://localhost:11434/v1",
-    "description": "Placeholder for custom endpoint input"
-  },
-  "settingApiKeyGemini": {
-    "message": "API ключ Gemini",
-    "description": "Label for Gemini API key"
-  },
-  "settingApiKeyOpenAI": {
-    "message": "API ключ OpenAI",
-    "description": "Label for OpenAI API key"
-  },
-  "settingApiKeyAnthropic": {
-    "message": "API ключ Anthropic",
-    "description": "Label for Anthropic API key"
-  },
-  "settingApiKeyDeepSeek": {
-    "message": "API ключ DeepSeek",
-    "description": "Label for DeepSeek API key"
-  },
-  "settingApiKeyCustom": {
-    "message": "API ключ (необязательно)",
-    "description": "Label for custom API key"
-  },
-  "settingApiKeyPlaceholderCustom": {
-    "message": "Учетные данные (необязательно)...",
-    "description": "Placeholder for custom API key credentials"
-  },
-  "settingApiKeyPlaceholderDefault": {
-    "message": "Введите ключ учетных данных...",
-    "description": "Placeholder for default provider API key credentials"
-  },
-  "settingApiKeyNotice": {
-    "message": "Выбранная модель решает Crossclimb и Pinpoint. Расширение никогда не делится вашим ключом.",
-    "description": "Notice under API key inputs in settings panel"
-  },
-  "popupCardTitle": {
-    "message": "Решатель игр LinkedIn",
-    "description": "Title of the card feed in popup"
-  },
-  "popupCardDesc": {
-    "message": "Решайте игры LinkedIn с помощью ИИ",
-    "description": "Description of the card feed in popup"
-  },
-  "saveAndBack": {
-    "message": "Сохранить и вернуться к играм",
-    "description": "Save button text in AI Config settings"
-  },
-  "solvingWorking": {
-    "message": "Решатель ИИ работает...",
-    "description": "Label for active solving state"
-  },
-  "completedToday": {
-    "message": "Завершено сегодня",
-    "description": "Completed today badge"
-  },
-  "solvedCountSuffix": {
-    "message": "Решено",
-    "description": "Solved count label suffix"
-  },
-  "settingsHeaderTitle": {
-    "message": "Конфигурация модели ИИ",
-    "description": "AI model configuration title"
-  },
-  "labelAiProvider": {
-    "message": "Поставщик ИИ",
-    "description": "AI Provider select block label"
-  },
-  "labelModelIdentifier": {
-    "message": "Идентификатор модели",
-    "description": "Model Identifier select block label"
-  },
-  "labelCustomModel": {
-    "message": "Пользовательское имя модели",
-    "description": "Custom Model Name input block label"
-  },
-  "labelEndpointUrl": {
-    "message": "URL конечной точки",
-    "description": "Endpoint URL input block label"
-  },
-  "labelGeminiKey": {
-    "message": "GEMINI API КЛЮЧ",
-    "description": "Gemini API key label in uppercase"
-  },
-  "labelOpenAiKey": {
-    "message": "OPENAI API КЛЮЧ",
-    "description": "OpenAI API key label in uppercase"
-  },
-  "labelAnthropicKey": {
-    "message": "ANTHROPIC API КЛЮЧ",
-    "description": "Anthropic API key label in uppercase"
-  },
-  "labelDeepSeekKey": {
-    "message": "DEEPSEEK API КЛЮЧ",
-    "description": "DeepSeek API key label in uppercase"
-  },
-  "labelCustomKey": {
-    "message": "API КЛЮЧ (НЕОБЯЗАТЕЛЬНО)",
-    "description": "Custom API key label in uppercase"
-  },
-  "navHome": {
-    "message": "Главная",
-    "description": "Home nav link label"
-  },
-  "navAiConfig": {
-    "message": "Настройки/Опции",
-    "description": "AI Config settings nav link label"
-  },
-  "navStats": {
-    "message": "Статистика",
-    "description": "Stats nav link label"
-  },
-  "navTheme": {
-    "message": "Тема",
-    "description": "Theme nav link label"
-  },
-  "navDebug": {
-    "message": "Отладка",
-    "description": "Debug nav link label"
-  },
-  "dailyProgressLabel": {
-    "message": "Ежедневный прогресс",
-    "description": "Daily progress label"
-  },
-  "solveActiveBoard": {
-    "message": "Решить активную доску",
-    "description": "Active board solve label"
-  },
-  "backToGames": {
-    "message": "Вернуться к играм LinkedIn",
-    "description": "Text for the link back to games tab"
-  },
-  "dashboardLabel": {
-    "message": "Панель управления",
-    "description": "Dashboard brand badge label"
-  },
-  "gamesSolverTitle": {
-    "message": "Решатель игр",
-    "description": "Brand header title text"
-  },
-  "dashboardDescText": {
-    "message": "Анализируйте свои показатели, фиксируйте серии и отслеживайте путь ежедневных завершённых головоломок.",
-    "description": "Sub-header description on statistics dashboard"
-  },
-  "completedSuccessfully": {
-    "message": "Успешно завершено",
-    "description": "Success dot tooltip on solved timeline row"
-  },
-  "disclaimerText": {
-    "message": "Отказ от ответственности: это независимый образовательный проект с открытым исходным кодом. Он не связан с LinkedIn Corporation, не спонсируется и не поддерживается ею. 'LinkedIn' — зарегистрированная торговая марка LinkedIn Corporation.",
-    "description": "Compliance footer disclaimer text"
-  },
-  "settingsCredentialsTitle": {
-    "message": "Учетные данные и модели",
-    "description": "Title for settings credentials block"
-  },
-  "settingsModelGuideTitle": {
-    "message": "Руководство по моделям и информация",
-    "description": "Title for settings model guide block"
-  },
-  "settingsConnectionStatusTitle": {
-    "message": "Статус соединения",
-    "description": "Title for connection status block"
-  },
-  "settingsActiveSolverLabel": {
-    "message": "Активный решатель:",
-    "description": "Label for active solver status field"
-  },
-  "settingsModelIdentifierLabel": {
-    "message": "Идентификатор модели:",
-    "description": "Label for model identifier status field"
-  },
-  "settingsAutoSavedNotification": {
-    "message": "Настройки автоматически сохранены!",
-    "description": "Toast message when settings are saved"
-  },
-  "settingsSubtitleDesc": {
-    "message": "Настройте конечные точки модели ИИ и учетные данные для решения продвинутых головоломок.",
-    "description": "Subtitle description under settings tab header"
-  },
-  "settingsGeminiGuideDesc": {
-    "message": "Отличная производительность при почти нулевой стоимости. Решает Crossclimb и Pinpoint с отличной логикой. Рекомендуется: gemini-2.5-flash.",
-    "description": "Gemini guide text"
-  },
-  "settingsOpenaiGuideDesc": {
-    "message": "Быстро, отзывчиво и очень надежно с моделями общих знаний. Рекомендуется: gpt-4o-mini.",
-    "description": "OpenAI guide text"
-  },
-  "settingsAnthropicGuideDesc": {
-    "message": "Максимальная способность рассуждения. Безупречно обрабатывает сложные кроссворды. Рекомендуется: claude-3-5-haiku.",
-    "description": "Anthropic guide text"
-  },
-  "settingsCustomGuideDesc": {
-    "message": "Подключитесь к локальным фреймворкам LLM, таким как Ollama или LM Studio. Укажите URL конечной точки (например, http://localhost:11434/v1) и имя пользовательской модели.",
-    "description": "Custom guide text"
-  },
-  "showMoreDates": {
-    "message": "Показать больше дат",
-    "description": "Button to expand the list of historical puzzle logs"
-  },
-  "showLessDates": {
-    "message": "Показать меньше",
-    "description": "Button to collapse the list of historical puzzle logs back to the default limit"
-  },
-  "solveBtn_withAi": {
-    "message": "Решить с ИИ"
-  },
-  "solveBtn_game": {
-    "message": "Решить игру"
-  },
-  "solveBtn_solving": {
-    "message": "Решение..."
-  },
-  "solveBtn_solved": {
-    "message": "Решено!"
-  },
-  "scoreClue": {
-    "message": "1 подсказка"
-  },
-  "scoreClues": {
-    "message": "$1 подсказки"
-  },
-  "scoreSeconds": {
-    "message": "$1сек"
-  },
-  "scoreMinutesSeconds": {
-    "message": "$1м $2сек"
-  },
-  "markAsNotPlayed": {
-    "message": "Отметить как не сыграно",
-    "description": "Context menu option to undo a completed game for today"
-  },
-  "settingSolveSpeed": {
-    "message": "Скорость решения/задержка",
-    "description": "Label for solving speed mode in settings"
-  },
-  "solveSpeed_instant": {
-    "message": "Мгновенно (самое быстрое)",
-    "description": "Instant speed mode option"
-  },
-  "solveSpeed_normal": {
-    "message": "Нормально (стандартное)",
-    "description": "Normal speed mode option"
-  },
-  "solveSpeed_stealth": {
-    "message": "Режим скрытности (задержки как у человека)",
-    "description": "Stealth speed mode option with human paced delays"
-  },
-  "labelSolveSpeed": {
-    "message": "Скорость и темп решения",
-    "description": "Section header for solving speed settings"
-  },
-  "settingSolveSpeedNotice": {
-    "message": "Режим мгновенной обработки завершает доску в миллисекундах. Режим скрытности имитирует поведение человека со случайными задержками (1-3 секунды) для защиты от автоматического обнаружения.",
-    "description": "Help message for solving speed modes"
-  },
-  "solveBtn_hint": {
-    "message": "Получить подсказку",
-    "description": "Text for get hint button on active board top toolbar"
-  },
-  "settingDefaultSolveMode": {
-    "message": "Действие решателя по умолчанию",
-    "description": "Label for default solving action in settings"
-  },
-  "solveMode_full": {
-    "message": "Полное автоматическое решение",
-    "description": "Solve everything automatically option label"
-  },
-  "solveMode_hint": {
-    "message": "Образовательный режим подсказок",
-    "description": "Educational hint step solving option label"
-  },
-  "labelDefaultSolveMode": {
-    "message": "Режим решателя по умолчанию",
-    "description": "Section header label for solver action settings"
-  },
-  "settingDefaultSolveModeNotice": {
-    "message": "Выберите основное действие при запуске решателя из представления вкладок или досок. Полное решение завершает игру; режим подсказки размещает один правильный элемент.",
-    "description": "Notice for solver action mode choices"
-  },
-  "settingsChromeBuiltInGuideTitle": {
-    "message": "ИИ с нулевыми затратами и полностью локальный",
-    "description": "Chrome Built-in AI guide title"
-  },
-  "settingsChromeBuiltInGuideDesc": {
-    "message": "Работает полностью локально на вашем устройстве, внутри браузера. Нулевая сетевая задержка с Gemini Nano, 100% бесплатно.",
-    "description": "Chrome Built-in AI guide text"
-  },
-  "debugHeaderTitle": {
-    "message": "Отладчик игр и инструменты разработчика",
-    "description": "Header title for the debugger and dev tools tab"
-  },
-  "debugStatusOffline": {
-    "message": "Автономно",
-    "description": "Debug offline status indicator label"
-  },
-  "debugStatusLive": {
-    "message": "В сети",
-    "description": "Debug live status indicator label"
-  },
-  "debugDetectedGame": {
-    "message": "Обнаруженная игра",
-    "description": "Debug label for active game name detection"
-  },
-  "debugNoneDetected": {
-    "message": "Не обнаружено",
-    "description": "Debug label when no game is active or detected"
-  },
-  "debugTargetUrl": {
-    "message": "Целевой URL",
-    "description": "Debug label for the active browser tab url"
-  },
-  "debugNoActiveTab": {
-    "message": "Нет активной вкладки",
-    "description": "Debug label when there is no active browser tab"
-  },
-  "debugHtmlCopied": {
-    "message": "HTML скопирован!",
-    "description": "Toast message after copying main tag outerHTML"
-  },
-  "debugCopyHtml": {
-    "message": "Копировать <main> HTML",
-    "description": "Button label to copy main tag outerHTML"
-  },
-  "debugLogsCopied": {
-    "message": "Логи скопированы!",
-    "description": "Toast message after copying active console logs"
-  },
-  "debugCopyLogs": {
-    "message": "Копировать логи консоли",
-    "description": "Button label to copy active console logs"
-  },
-  "debugBothCopied": {
-    "message": "Оба скопированы!",
-    "description": "Toast message after copying both html and logs"
-  },
-  "debugCopyBoth": {
-    "message": "Копировать оба (HTML и логи)",
-    "description": "Button label to copy both html and logs"
-  },
-  "debugRegistryCopied": {
-    "message": "JSON реестра скопирован!",
-    "description": "Toast message after copying today's daily registry puzzle data"
-  },
-  "debugCopyRegistry": {
-    "message": "Копировать JSON реестра сегодня",
-    "description": "Button label to copy today's daily registry puzzle data"
-  },
-  "debugCopyRegistryShort": {
-    "message": "Копировать JSON",
-    "description": "Short copy button label"
-  },
-  "debugSubmitAnswer": {
-    "message": "Отправить ответ",
-    "description": "Button to submit active board answers to GitHub"
-  },
-  "debugDomPreview": {
-    "message": "Предпросмотр элемента DOM",
-    "description": "Card title for the captured main outerHTML preview"
-  },
-  "debugHtmlTruncated": {
-    "message": "\n\n[ ... [обрезано, всего символов: $1] ... ]",
-    "description": "Truncation note inside the main outerHTML preview"
-  },
-  "debugCopyCompleteHtmlTooltip": {
-    "message": "Копировать полный <main> HTML",
-    "description": "Tooltip/title for main HTML copy button"
-  },
-  "debugNoMainTagCaptured": {
-    "message": "Нет активных тегов <main>. Убедитесь, что вы на странице игр LinkedIn.",
-    "description": "Placeholder text when no outerHTML is captured"
-  },
-  "debugConsoleOutput": {
-    "message": "Вывод консоли",
-    "description": "Card title for captured console logs feed"
-  },
-  "debugEventsCount": {
-    "message": "$1 событий",
-    "description": "Count of captured console events badge"
-  },
-  "debugRefreshLogsTooltip": {
-    "message": "Обновить логи",
-    "description": "Tooltip for refresh logs button"
-  },
-  "debugClearLogsTooltip": {
-    "message": "Очистить логи",
-    "description": "Tooltip for clear logs button"
-  },
-  "debugNoLogsCaptured": {
-    "message": "Логи еще не захвачены. Выполните действия на игровой доске для срабатывания событий консоли.",
-    "description": "Placeholder text when console logs feed is empty"
-  },
-  "debugListeningEvents": {
-    "message": "Прослушивание событий console.log, console.warn и console.error...",
-    "description": "Footer indicator of the active log listener"
-  },
-  "debugErrorInitializing": {
-    "message": "Инициализация соединения со страницей игр LinkedIn...",
-    "description": "Error string when SW connection is pending"
-  },
-  "debugErrorRetrieveFailed": {
-    "message": "Не удалось получить данные игры.",
-    "description": "Error string when content script response is invalid"
-  },
-  "debugErrorNotGamesPage": {
-    "message": "Активная вкладка не является страницей игр LinkedIn. Перейдите на игру для захвата сведений.",
-    "description": "Error string when active tab is not on linkedin.com/games"
-  },
-  "debugErrorNoActiveTab": {
-    "message": "Не удалось определить активную вкладку.",
-    "description": "Error string when active tab query fails"
-  },
-  "labelDailyReminders": {
-    "message": "Ежедневные напоминания и защита серии",
-    "description": "Daily reminders settings card heading"
-  },
-  "settingEnableReminders": {
-    "message": "Включить ежедневные напоминания",
-    "description": "Toggle daily reminders label"
-  },
-  "settingEnableRemindersDesc": {
-    "message": "Предупредить перед истечением серии сегодня.",
-    "description": "Toggle daily reminders description"
-  },
-  "settingReminderTime": {
-    "message": "Время напоминания",
-    "description": "Input for reminder time label"
-  },
-  "settingReminderTimeNotice": {
-    "message": "Выберите местное время для проверки незавершенных игр.",
-    "description": "Daily reminders time picker notice"
-  },
-  "notificationTitle": {
-    "message": "Защита серии 🚀",
-    "description": "Desktop notification title"
-  },
-  "notificationMessage": {
-    "message": "Не потеряйте свою серию решений! Вы еще не решили сегодняшние игры LinkedIn.",
-    "description": "Desktop notification body message"
-  },
-  "notificationButton": {
-    "message": "Решить сейчас!",
-    "description": "Desktop notification button text"
-  },
-  "commandSolveActiveGame": {
-    "message": "Автоматически решить активную игру LinkedIn."
-  },
-  "commandGetSingleHint": {
-    "message": "Дать одношаговую подсказку или проверить ошибки."
-  },
-  "settingAutoOpenSidepanel": {
-    "message": "Автоматически открывать боковую панель в играх"
-  },
-  "settingAutoOpenSidepanelDesc": {
-    "message": "Автоматически открывать боковую панель решателя при посещении игр LinkedIn."
-  },
-  "labelAutoOpenSidepanel": {
-    "message": "Автоматически открывать боковую панель решателя"
-  },
-  "permissionDialogTitle": {
-    "message": "Предоставить разрешение страницы"
-  },
-  "permissionDialogDesc": {
-    "message": "Для обнаружения активных досок игр и решения головоломок расширению требуется разрешение на запуск на страницах игр LinkedIn. Нажмите ниже, чтобы предоставить доступ."
-  },
-  "permissionDialogButton": {
-    "message": "Предоставить разрешение"
-  },
-  "omniboxSuggestionQueens": {
-    "message": "👑 Играйте и решайте Королев сегодня!"
-  },
-  "omniboxSuggestionSudoku": {
-    "message": "🔢 Открыть мини-решатель судоку"
-  },
-  "omniboxSuggestionStats": {
-    "message": "📊 Открыть панель управления серий и производительности"
-  },
-  "diagnosticsEngine": {
-    "message": "Диагностический механизм"
-  },
-  "liveInspected": {
-    "message": "Проверено в реальном времени"
-  },
-  "offline": {
-    "message": "Офлайн"
-  },
-  "inspectedTab": {
-    "message": "Проверенная вкладка:"
-  },
-  "liveMatrixGridInspector": {
-    "message": "Проверитель матричной сетки в реальном времени"
-  },
-  "waitingForLinkedInGamePage": {
-    "message": "Ожидание страницы игр LinkedIn"
-  },
-  "waitingForLinkedInGamePageDesc": {
-    "message": "Перейдите на любую вкладку доски игр LinkedIn (Королевы, Судоку, Танго, Точное попадание) для захвата центра ограничений, состояния ячеек и реактивных структур."
-  },
-  "telemetryLogsStreamer": {
-    "message": "Потоковая передача логов телеметрии"
-  },
-  "searchLogsPlaceholder": {
-    "message": "Поиск в логах..."
-  },
-  "allTypes": {
-    "message": "Все типы"
-  },
-  "logsType": {
-    "message": "Логи"
-  },
-  "infoType": {
-    "message": "Информация"
-  },
-  "warnsType": {
-    "message": "Предупреждения"
-  },
-  "errorsType": {
-    "message": "Ошибки"
-  },
-  "selectTypePlaceholder": {
-    "message": "Выберите тип"
-  },
-  "consoleStreamEmpty": {
-    "message": "Поток консоли пуст"
-  },
-  "consoleStreamEmptyDesc": {
-    "message": "Не обнаружены логи, соответствующие фильтрам. Выполните шаги в среде решателя игр LinkedIn для потоковой передачи логов."
-  },
-  "subscribedToStorageSession": {
-    "message": "Подписано на поток storage.session"
-  },
-  "parsingGameGridCells": {
-    "message": "Анализ ячеек сетки игры... Убедитесь, что доска имеет видимые активные блоки сетки."
-  },
-  "urlLabel": {
-    "message": "URL:"
-  },
-  "notAvailable": {
-    "message": "Недоступно"
-  },
-  "matchesLabel": {
-    "message": "Совпадения"
-  },
-  "copiedLabel": {
-    "message": "Скопировано!"
-  },
-  "copyLogsTooltip": {
-    "message": "Копировать логи"
-  },
-  "clearLogSpaceTooltip": {
-    "message": "Очистить пространство логов"
-  },
-  "contextMenuSolve": {
-    "message": "⚡ Решить активную игру LinkedIn"
-  },
-  "contextMenuHint": {
-    "message": "💡 Получить подсказку"
-  },
-  "contextMenuViewResults": {
-    "message": "📊 Просмотр результатов"
-  },
-  "labelTelemetryTitle": {
-    "message": "Телеметрия и конфиденциальность",
-    "description": "Section header for telemetry and privacy settings"
-  },
-  "telemetryToggleLabel": {
-    "message": "Отправить анонимную телеметрию",
-    "description": "Toggle label for telemetry consent"
-  },
-  "telemetryToggleDesc": {
-    "message": "Помогите улучшить решатель, поделившись анонимными метриками производительности и использования.",
-    "description": "Toggle description explaining what telemetry tracks anonymously"
-  }
+  "extensionName": "Решатель игр LinkedIn",
+  "extensionDescription": "Помощник для LinkedIn Games. Автоматически решает ежедневные головоломки (Queens, Sudoku, Pinpoint, Crossclimb) с сериями и аналитикой.",
+  "title": "Игры LinkedIn",
+  "subtitle": "Решайте активные доски одним кликом",
+  "switchThemeTitle": "Переключиться в режим $1",
+  "errorChromeTabIntegration": "Требуется интеграция с вкладкой Chrome.",
+  "errorActiveTabNotFound": "Не удалось найти активную вкладку.",
+  "errorNavigationFailed": "Не удалось перейти к $1.",
+  "errorConnectionFailed": "Не удалось подключиться.",
+  "errorExecutionFailedDefault": "При запуске решателя возникла проблема.",
+  "successSolverStarted": "Решатель запущен.",
+  "solvingStatus": "Решение...",
+  "sudoku": "Sudoku",
+  "tango": "Tango",
+  "queens": "Queens",
+  "zip": "Zip",
+  "patches": "Patches",
+  "crossclimb": "Crossclimb",
+  "pinpoint": "Pinpoint",
+  "bonus": "Бонус",
+  "desc_patches": "Соединить патчи вместе",
+  "desc_zip": "Завершить путь",
+  "desc_sudoku": "Классическая игра, мини-версия",
+  "desc_tango": "Гармонизировать сетку",
+  "desc_queens": "Увенчать каждую область",
+  "desc_crossclimb": "Открыть лестницу исследования",
+  "desc_pinpoint": "Угадать категорию",
+  "titleSolve": "Решить $1",
+  "titleCompleted": "Завершено сегодня! Нажмите, чтобы перейти к $1",
+  "titleOpen": "Откройте $1 для решения",
+  "perfectDay": "Идеальный день! Все игры $1 завершены! 🎉",
+  "dailyProgress": "Ежедневный прогресс: $1 из $2 игр завершено",
+  "dashboardTitle": "История и статистика",
+  "dashboardSubtitle": "Ваша история и статистика по LinkedIn Games",
+  "statTotalSolved": "Всего решено",
+  "statTotalSolvedDesc": "Игры решённые на все даты",
+  "statAverageTime": "Среднее время",
+  "statAverageTimeDesc": "По всем зафиксированным завершениям",
+  "statActiveStreak": "Активная серия",
+  "statActiveStreakDesc": "Подряд идущие активные дни",
+  "statStreakDays": "$1 дней",
+  "personalBests": "Личные рекорды",
+  "noRecordsYet": "Нет записей о решениях.",
+  "solvingHistory": "История решений",
+  "activityCalendar": "Календарь активности",
+  "clearFilter": "Очистить фильтр",
+  "settingModel": "Модель",
+  "settingModelSelect": "Выбрать модель",
+  "settingModelCustomOption": "Пользовательское имя модели...",
+  "settingModelCustomLabel": "Пользовательское имя модели",
+  "settingModelCustomPlaceholderLocal": "например: llama3, mistral",
+  "settingModelCustomPlaceholderOther": "Введите пользовательский ID...",
+  "settingEndpointLabel": "URL конечной точки",
+  "settingEndpointPlaceholder": "например: http://localhost:11434/v1",
+  "settingApiKeyGemini": "API ключ Gemini",
+  "settingApiKeyOpenAI": "API ключ OpenAI",
+  "settingApiKeyAnthropic": "API ключ Anthropic",
+  "settingApiKeyDeepSeek": "API ключ DeepSeek",
+  "settingApiKeyCustom": "API ключ (необязательно)",
+  "settingApiKeyPlaceholderCustom": "Учетные данные (необязательно)...",
+  "settingApiKeyPlaceholderDefault": "Введите ключ учетных данных...",
+  "settingApiKeyNotice": "Выбранная модель решает Crossclimb и Pinpoint. Расширение никогда не делится вашим ключом.",
+  "popupCardTitle": "Решатель игр LinkedIn",
+  "popupCardDesc": "Решайте игры LinkedIn с помощью ИИ",
+  "saveAndBack": "Сохранить и вернуться к играм",
+  "solvingWorking": "Решатель ИИ работает...",
+  "completedToday": "Завершено сегодня",
+  "solvedCountSuffix": "Решено",
+  "settingsHeaderTitle": "Конфигурация модели ИИ",
+  "labelAiProvider": "Поставщик ИИ",
+  "labelModelIdentifier": "Идентификатор модели",
+  "labelCustomModel": "Пользовательское имя модели",
+  "labelEndpointUrl": "URL конечной точки",
+  "labelGeminiKey": "GEMINI API КЛЮЧ",
+  "labelOpenAiKey": "OPENAI API КЛЮЧ",
+  "labelAnthropicKey": "ANTHROPIC API КЛЮЧ",
+  "labelDeepSeekKey": "DEEPSEEK API КЛЮЧ",
+  "labelCustomKey": "API КЛЮЧ (НЕОБЯЗАТЕЛЬНО)",
+  "navHome": "Главная",
+  "navAiConfig": "Настройки/Опции",
+  "navStats": "Статистика",
+  "navTheme": "Тема",
+  "navDebug": "Отладка",
+  "dailyProgressLabel": "Ежедневный прогресс",
+  "solveActiveBoard": "Решить активную доску",
+  "backToGames": "Вернуться к играм LinkedIn",
+  "dashboardLabel": "Панель управления",
+  "gamesSolverTitle": "Решатель игр",
+  "dashboardDescText": "Анализируйте свои показатели, фиксируйте серии и отслеживайте путь ежедневных завершённых головоломок.",
+  "completedSuccessfully": "Успешно завершено",
+  "disclaimerText": "Отказ от ответственности: это независимый образовательный проект с открытым исходным кодом. Он не связан с LinkedIn Corporation, не спонсируется и не поддерживается ею. 'LinkedIn' — зарегистрированная торговая марка LinkedIn Corporation.",
+  "settingsCredentialsTitle": "Учетные данные и модели",
+  "settingsModelGuideTitle": "Руководство по моделям и информация",
+  "settingsConnectionStatusTitle": "Статус соединения",
+  "settingsActiveSolverLabel": "Активный решатель:",
+  "settingsModelIdentifierLabel": "Идентификатор модели:",
+  "settingsAutoSavedNotification": "Настройки автоматически сохранены!",
+  "settingsSubtitleDesc": "Настройте конечные точки модели ИИ и учетные данные для решения продвинутых головоломок.",
+  "settingsGeminiGuideDesc": "Отличная производительность при почти нулевой стоимости. Решает Crossclimb и Pinpoint с отличной логикой. Рекомендуется: gemini-2.5-flash.",
+  "settingsOpenaiGuideDesc": "Быстро, отзывчиво и очень надежно с моделями общих знаний. Рекомендуется: gpt-4o-mini.",
+  "settingsAnthropicGuideDesc": "Максимальная способность рассуждения. Безупречно обрабатывает сложные кроссворды. Рекомендуется: claude-3-5-haiku.",
+  "settingsCustomGuideDesc": "Подключитесь к локальным фреймворкам LLM, таким как Ollama или LM Studio. Укажите URL конечной точки (например, http://localhost:11434/v1) и имя пользовательской модели.",
+  "showMoreDates": "Показать больше дат",
+  "showLessDates": "Показать меньше",
+  "solveBtn_withAi": "Решить с ИИ",
+  "solveBtn_game": "Решить игру",
+  "solveBtn_solving": "Решение...",
+  "solveBtn_solved": "Решено!",
+  "scoreClue": "1 подсказка",
+  "scoreClues": "$1 подсказки",
+  "scoreSeconds": "$1сек",
+  "scoreMinutesSeconds": "$1м $2сек",
+  "markAsNotPlayed": "Отметить как не сыграно",
+  "settingSolveSpeed": "Скорость решения/задержка",
+  "solveSpeed_instant": "Мгновенно (самое быстрое)",
+  "solveSpeed_normal": "Нормально (стандартное)",
+  "solveSpeed_stealth": "Режим скрытности (задержки как у человека)",
+  "labelSolveSpeed": "Скорость и темп решения",
+  "settingSolveSpeedNotice": "Режим мгновенной обработки завершает доску в миллисекундах. Режим скрытности имитирует поведение человека со случайными задержками (1-3 секунды) для защиты от автоматического обнаружения.",
+  "solveBtn_hint": "Получить подсказку",
+  "settingDefaultSolveMode": "Действие решателя по умолчанию",
+  "solveMode_full": "Полное автоматическое решение",
+  "solveMode_hint": "Образовательный режим подсказок",
+  "labelDefaultSolveMode": "Режим решателя по умолчанию",
+  "settingDefaultSolveModeNotice": "Выберите основное действие при запуске решателя из представления вкладок или досок. Полное решение завершает игру; режим подсказки размещает один правильный элемент.",
+  "settingsChromeBuiltInGuideTitle": "ИИ с нулевыми затратами и полностью локальный",
+  "settingsChromeBuiltInGuideDesc": "Работает полностью локально на вашем устройстве, внутри браузера. Нулевая сетевая задержка с Gemini Nano, 100% бесплатно.",
+  "debugHeaderTitle": "Отладчик игр и инструменты разработчика",
+  "debugStatusOffline": "Автономно",
+  "debugStatusLive": "В сети",
+  "debugDetectedGame": "Обнаруженная игра",
+  "debugNoneDetected": "Не обнаружено",
+  "debugTargetUrl": "Целевой URL",
+  "debugNoActiveTab": "Нет активной вкладки",
+  "debugHtmlCopied": "HTML скопирован!",
+  "debugCopyHtml": "Копировать <main> HTML",
+  "debugLogsCopied": "Логи скопированы!",
+  "debugCopyLogs": "Копировать логи консоли",
+  "debugBothCopied": "Оба скопированы!",
+  "debugCopyBoth": "Копировать оба (HTML и логи)",
+  "debugRegistryCopied": "JSON реестра скопирован!",
+  "debugCopyRegistry": "Копировать JSON реестра сегодня",
+  "debugCopyRegistryShort": "Копировать JSON",
+  "debugSubmitAnswer": "Отправить ответ",
+  "debugDomPreview": "Предпросмотр элемента DOM",
+  "debugHtmlTruncated": "\n\n[ ... [обрезано, всего символов: $1] ... ]",
+  "debugCopyCompleteHtmlTooltip": "Копировать полный <main> HTML",
+  "debugNoMainTagCaptured": "Нет активных тегов <main>. Убедитесь, что вы на странице игр LinkedIn.",
+  "debugConsoleOutput": "Вывод консоли",
+  "debugEventsCount": "$1 событий",
+  "debugRefreshLogsTooltip": "Обновить логи",
+  "debugClearLogsTooltip": "Очистить логи",
+  "debugNoLogsCaptured": "Логи еще не захвачены. Выполните действия на игровой доске для срабатывания событий консоли.",
+  "debugListeningEvents": "Прослушивание событий console.log, console.warn и console.error...",
+  "debugErrorInitializing": "Инициализация соединения со страницей игр LinkedIn...",
+  "debugErrorRetrieveFailed": "Не удалось получить данные игры.",
+  "debugErrorNotGamesPage": "Активная вкладка не является страницей игр LinkedIn. Перейдите на игру для захвата сведений.",
+  "debugErrorNoActiveTab": "Не удалось определить активную вкладку.",
+  "labelDailyReminders": "Ежедневные напоминания и защита серии",
+  "settingEnableReminders": "Включить ежедневные напоминания",
+  "settingEnableRemindersDesc": "Предупредить перед истечением серии сегодня.",
+  "settingReminderTime": "Время напоминания",
+  "settingReminderTimeNotice": "Выберите местное время для проверки незавершенных игр.",
+  "notificationTitle": "Защита серии 🚀",
+  "notificationMessage": "Не потеряйте свою серию решений! Вы еще не решили сегодняшние игры LinkedIn.",
+  "notificationButton": "Решить сейчас!",
+  "commandSolveActiveGame": "Автоматически решить активную игру LinkedIn.",
+  "commandGetSingleHint": "Дать одношаговую подсказку или проверить ошибки.",
+  "settingAutoOpenSidepanel": "Автоматически открывать боковую панель в играх",
+  "settingAutoOpenSidepanelDesc": "Автоматически открывать боковую панель решателя при посещении игр LinkedIn.",
+  "labelAutoOpenSidepanel": "Автоматически открывать боковую панель решателя",
+  "permissionDialogTitle": "Предоставить разрешение страницы",
+  "permissionDialogDesc": "Для обнаружения активных досок игр и решения головоломок расширению требуется разрешение на запуск на страницах игр LinkedIn. Нажмите ниже, чтобы предоставить доступ.",
+  "permissionDialogButton": "Предоставить разрешение",
+  "omniboxSuggestionQueens": "👑 Играйте и решайте Королев сегодня!",
+  "omniboxSuggestionSudoku": "🔢 Открыть мини-решатель судоку",
+  "omniboxSuggestionStats": "📊 Открыть панель управления серий и производительности",
+  "diagnosticsEngine": "Диагностический механизм",
+  "liveInspected": "Проверено в реальном времени",
+  "offline": "Офлайн",
+  "inspectedTab": "Проверенная вкладка:",
+  "liveMatrixGridInspector": "Проверитель матричной сетки в реальном времени",
+  "waitingForLinkedInGamePage": "Ожидание страницы игр LinkedIn",
+  "waitingForLinkedInGamePageDesc": "Перейдите на любую вкладку доски игр LinkedIn (Королевы, Судоку, Танго, Точное попадание) для захвата центра ограничений, состояния ячеек и реактивных структур.",
+  "telemetryLogsStreamer": "Потоковая передача логов телеметрии",
+  "searchLogsPlaceholder": "Поиск в логах...",
+  "allTypes": "Все типы",
+  "logsType": "Логи",
+  "infoType": "Информация",
+  "warnsType": "Предупреждения",
+  "errorsType": "Ошибки",
+  "selectTypePlaceholder": "Выберите тип",
+  "consoleStreamEmpty": "Поток консоли пуст",
+  "consoleStreamEmptyDesc": "Не обнаружены логи, соответствующие фильтрам. Выполните шаги в среде решателя игр LinkedIn для потоковой передачи логов.",
+  "subscribedToStorageSession": "Подписано на поток storage.session",
+  "parsingGameGridCells": "Анализ ячеек сетки игры... Убедитесь, что доска имеет видимые активные блоки сетки.",
+  "urlLabel": "URL:",
+  "notAvailable": "Недоступно",
+  "matchesLabel": "Совпадения",
+  "copiedLabel": "Скопировано!",
+  "copyLogsTooltip": "Копировать логи",
+  "clearLogSpaceTooltip": "Очистить пространство логов",
+  "contextMenuSolve": "⚡ Решить активную игру LinkedIn",
+  "contextMenuHint": "💡 Получить подсказку",
+  "contextMenuViewResults": "📊 Просмотр результатов",
+  "labelTelemetryTitle": "Телеметрия и конфиденциальность",
+  "telemetryToggleLabel": "Отправить анонимную телеметрию",
+  "telemetryToggleDesc": "Помогите улучшить решатель, поделившись анонимными метриками производительности и использования."
 }
