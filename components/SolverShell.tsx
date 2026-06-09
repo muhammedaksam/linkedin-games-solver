@@ -1,3 +1,4 @@
+import { analytics } from "#analytics"
 import {
   AlertCircle,
   BarChart3,
@@ -40,7 +41,6 @@ import {
   SelectTrigger,
   SelectValue
 } from "~components/ui/select"
-import { trackEvent } from "~lib/analytics"
 import { GAMES_CONFIG } from "~lib/games-config"
 import { getActiveLocale, getLocaleDirection, getMessage } from "~lib/i18n"
 import { localStorage, secureStorage, syncStorage } from "~lib/storage"
@@ -336,7 +336,7 @@ export function SolverShell({
 
   // Track active tab views
   useEffect(() => {
-    trackEvent(`${activeTab}_viewed`).catch(console.error)
+    analytics.track(`${activeTab}_viewed`).catch(console.error)
   }, [activeTab])
 
   // Fetch debug logs and main html from content script and storage session
@@ -424,9 +424,9 @@ export function SolverShell({
   }
 
   const handleSolve = async (gameId: string) => {
-    trackEvent("solve_clicked", { game: gameId, mode: defaultSolveMode }).catch(
-      console.error
-    )
+    analytics
+      .track("solve_clicked", { game: gameId, mode: defaultSolveMode })
+      .catch(console.error)
 
     if (typeof chrome === "undefined" || !chrome.tabs) {
       setSolveError(getMessage("errorChromeTabIntegration"))
@@ -554,7 +554,7 @@ export function SolverShell({
   }
 
   const handleMarkNotPlayed = async (gameId: string) => {
-    trackEvent("mark_not_played", { game: gameId }).catch(console.error)
+    analytics.track("mark_not_played", { game: gameId }).catch(console.error)
     const dateKey = getLocalDateString()
     const updated = { ...solveHistory }
     if (updated[dateKey]) {
@@ -570,7 +570,7 @@ export function SolverShell({
 
   // Debug copying and cleaning actions
   const handleCopyHtml = () => {
-    trackEvent("copy_html").catch(console.error)
+    analytics.track("copy_html").catch(console.error)
     if (!mainHtml) return
     navigator.clipboard
       .writeText(mainHtml)
@@ -582,7 +582,7 @@ export function SolverShell({
   }
 
   const handleCopyLogs = () => {
-    trackEvent("copy_logs").catch(console.error)
+    analytics.track("copy_logs").catch(console.error)
     if (debugLogs.length === 0) return
     const logsText = debugLogs
       .map(
@@ -599,7 +599,7 @@ export function SolverShell({
   }
 
   const handleCopyBoth = () => {
-    trackEvent("copy_both_logs_html").catch(console.error)
+    analytics.track("copy_both_logs_html").catch(console.error)
     const logsText = debugLogs
       .map(
         (log) => `[${log.timestamp}] [${log.type.toUpperCase()}] ${log.message}`
@@ -616,7 +616,9 @@ export function SolverShell({
   }
 
   const handleCopyRegistryEntry = async () => {
-    trackEvent("copy_registry_entry", { game: activeGame }).catch(console.error)
+    analytics
+      .track("copy_registry_entry", { game: activeGame })
+      .catch(console.error)
     if (typeof chrome === "undefined" || !chrome.tabs) return
     try {
       const [tab] = await chrome.tabs.query({
@@ -669,7 +671,9 @@ export function SolverShell({
   }
 
   const handleSubmitToRegistry = async () => {
-    trackEvent("submit_to_registry", { game: activeGame }).catch(console.error)
+    analytics
+      .track("submit_to_registry", { game: activeGame })
+      .catch(console.error)
     if (typeof chrome === "undefined" || !chrome.tabs) return
     try {
       const [tab] = await chrome.tabs.query({

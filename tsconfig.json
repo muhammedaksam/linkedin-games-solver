@@ -3,6 +3,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "paths": {
+      "#analytics": ["./.wxt/analytics/index.ts"],
       "@plasmohq/messaging": ["./lib/plasmo-messaging-shim.ts"],
       "@plasmohq/storage": ["./lib/plasmo-storage-shim.ts"],
       "@plasmohq/storage/secure": ["./lib/plasmo-storage-shim.ts"],

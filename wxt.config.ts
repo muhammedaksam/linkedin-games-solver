@@ -2,7 +2,7 @@ import path from "node:path"
 import { defineConfig } from "wxt"
 
 export default defineConfig({
-  modules: ["@wxt-dev/module-react"],
+  modules: ["@wxt-dev/module-react", "@wxt-dev/analytics/module"],
   hooks: {
     "entrypoints:found": (wxt, entrypointInfos) => {
       entrypointInfos.push({
@@ -45,10 +45,7 @@ export default defineConfig({
       "offscreen"
     ],
     optional_host_permissions: ["https://*.linkedin.com/games/*"],
-    host_permissions: [
-      "https://raw.githubusercontent.com/*",
-      "https://www.google-analytics.com/*"
-    ],
+    host_permissions: ["https://raw.githubusercontent.com/*"],
     omnibox: {
       keyword: "solve"
     },
@@ -87,12 +84,6 @@ export default defineConfig({
   },
   vite: () => ({
     define: {
-      "process.env.PLASMO_PUBLIC_GTAG_ID": JSON.stringify(
-        process.env.PLASMO_PUBLIC_GTAG_ID || ""
-      ),
-      "process.env.PLASMO_PUBLIC_SECRET_API_KEY": JSON.stringify(
-        process.env.PLASMO_PUBLIC_SECRET_API_KEY || ""
-      ),
       "process.env.NODE_ENV": JSON.stringify(
         process.env.NODE_ENV || "development"
       ),

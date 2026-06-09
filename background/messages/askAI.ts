@@ -1,7 +1,8 @@
+import { analytics } from "#analytics"
+
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 import { askAI } from "~games/ai"
-import { trackEventDirect } from "~lib/analytics"
 
 export type RequestBody = {
   prompt: string
@@ -19,7 +20,7 @@ const handler: PlasmoMessaging.MessageHandler<RequestBody> = async (
   }
 
   try {
-    await trackEventDirect("ask_ai", { promptLength: prompt.length })
+    await analytics.track("ask_ai", { promptLength: String(prompt.length) })
     const text = await askAI(prompt, jsonMode)
     res.send({ success: true, text })
   } catch (error) {

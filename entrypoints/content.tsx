@@ -1,7 +1,7 @@
+import { analytics } from "#analytics"
 import ReactDOM from "react-dom/client"
 
 import { detectActiveSolver } from "~games"
-import { trackEvent } from "~lib/analytics"
 import { sendToBackground } from "~lib/plasmo-messaging-shim"
 import { syncStorage as storage } from "~lib/storage"
 import {
@@ -533,11 +533,13 @@ const messageListener = (
           `[LinkedIn Games Solver] Solver ${currentActive.name} completed successfully.`
         )
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-        trackEvent("solve_completed", {
-          game: msgGameId,
-          mode,
-          duration_seconds: durationSeconds
-        }).catch(() => {})
+        analytics
+          .track("solve_completed", {
+            game: msgGameId,
+            mode,
+            duration_seconds: String(durationSeconds)
+          })
+          .catch(() => {})
         if (mode !== "hint") {
           await saveGameCompleted(msgGameId, durationSeconds)
         }

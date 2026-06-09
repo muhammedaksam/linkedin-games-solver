@@ -33,6 +33,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@wxt-dev/analytics": "^0.5.4",
     "@wxt-dev/storage": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -80,8 +81,7 @@
       "https://*.linkedin.com/games/*"
     ],
     "host_permissions": [
-      "https://raw.githubusercontent.com/*",
-      "https://www.google-analytics.com/*"
+      "https://raw.githubusercontent.com/*"
     ],
     "permissions": [
       "activeTab",

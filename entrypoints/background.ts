@@ -1,5 +1,6 @@
+import { analytics } from "#analytics"
+
 import { askAI } from "~games/ai"
-import { trackEventDirect } from "~lib/analytics"
 import { syncStorage } from "~lib/storage"
 
 interface SolveRecord {
@@ -476,15 +477,19 @@ export default defineBackground({
           chrome.runtime
             .getPlatformInfo()
             .then((platform) => {
-              trackEventDirect("new_install", {
-                operating_system: platform.os
-              }).catch(console.error)
+              analytics
+                .track("new_install", {
+                  operating_system: platform.os
+                })
+                .catch(console.error)
             })
             .catch(console.error)
         } else if (details.reason === "update") {
-          trackEventDirect("extension_update", {
-            previous_version: details.previousVersion
-          }).catch(console.error)
+          analytics
+            .track("extension_update", {
+              previous_version: details.previousVersion
+            })
+            .catch(console.error)
         }
       } catch (err) {
         console.warn("[Analytics] Installation track failed:", err)
@@ -700,9 +705,11 @@ export default defineBackground({
         const { name, body } = message as { name: string; body: MessageBody }
 
         if (name === "askAI") {
-          trackEventDirect("ask_ai", {
-            promptLength: body?.prompt?.length || 0
-          }).catch(() => {})
+          analytics
+            .track("ask_ai", {
+              promptLength: String(body?.prompt?.length || 0)
+            })
+            .catch(() => {})
 
           askAI(body.prompt || "", body.jsonMode)
             .then((text) => sendResponse({ success: true, text }))
@@ -800,9 +807,9 @@ export default defineBackground({
         }
 
         if (name === "fetchRegistry") {
-          trackEventDirect("fetch_registry", { game: body?.game }).catch(
-            () => {}
-          )
+          analytics
+            .track("fetch_registry", { game: body?.game })
+            .catch(() => {})
           const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${body?.game}.json`
 
           fetch(registryUrl)
@@ -831,23 +838,6 @@ export default defineBackground({
                 error: err instanceof Error ? err.message : String(err)
               })
             )
-          return true
-        }
-
-        if (name === "trackEvent") {
-          const { name: eventName, params } = body || {}
-          if (eventName) {
-            trackEventDirect(eventName, params)
-              .then(() => sendResponse({ success: true }))
-              .catch((err: unknown) =>
-                sendResponse({
-                  success: false,
-                  error: err instanceof Error ? err.message : String(err)
-                })
-              )
-          } else {
-            sendResponse({ success: false, error: "Event name is missing" })
-          }
           return true
         }
       }

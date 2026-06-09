@@ -1,6 +1,6 @@
-import type { PlasmoMessaging } from "@plasmohq/messaging"
+import { analytics } from "#analytics"
 
-import { trackEventDirect } from "~lib/analytics"
+import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 export type RequestBody = {
   game: string
@@ -17,7 +17,7 @@ const handler: PlasmoMessaging.MessageHandler<RequestBody> = async (
   }
 
   try {
-    await trackEventDirect("fetch_registry", { game })
+    await analytics.track("fetch_registry", { game })
     const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${game}.json`
 
     const response = await fetch(registryUrl)
