@@ -1,0 +1,10 @@
+pnpm-lock.yaml
+.output
+node_modules
+.wxt
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.ico
