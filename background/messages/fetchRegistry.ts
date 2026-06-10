@@ -1,6 +1,6 @@
-import { analytics } from "#analytics"
-
 import type { PlasmoMessaging } from "@plasmohq/messaging"
+
+import { analytics } from "#analytics"
 
 export type RequestBody = {
   game: string

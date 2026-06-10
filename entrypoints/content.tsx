@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client"
 
 import { detectActiveSolver } from "~games"
 import { analytics } from "~lib/analytics"
+import { initLocale } from "~lib/i18n"
 import { sendToBackground } from "~lib/plasmo-messaging-shim"
 import { syncStorage as storage } from "~lib/storage"
 import {
@@ -776,6 +777,9 @@ export default defineContentScript({
   matches: ["https://*.linkedin.com/games/*"],
   cssInjectionMode: "ui",
   async main(ctx) {
+    // Initialize localization dictionary before any rendering or detection runs
+    await initLocale()
+
     console.log(
       "[LinkedIn Games Solver] Content Script loaded with WXT Shadow Root UI."
     )

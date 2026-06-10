@@ -1,4 +1,3 @@
-import { i18n } from "#i18n"
 import type { Locale } from "react-day-picker"
 import {
   ar,
@@ -51,6 +50,8 @@ import {
   zhTW
 } from "react-day-picker/locale"
 
+import { i18n } from "#i18n"
+
 // Map locale keys to display metadata (labels and flags)
 export interface LocaleOption {
   code: string
@@ -59,8 +60,8 @@ export interface LocaleOption {
 }
 
 export const SUPPORTED_LOCALES: LocaleOption[] = [
-  { code: "ar", label: "العربية", flag: "🇸🇦" },
   { code: "am", label: "አማርኛ", flag: "🇪🇹" },
+  { code: "ar", label: "العربية", flag: "🇸🇦" },
   { code: "bg", label: "Български", flag: "🇧🇬" },
   { code: "bn", label: "বাংলা", flag: "🇧🇩" },
   { code: "ca", label: "Català", flag: "🇪🇸" },
@@ -215,24 +216,109 @@ function getSystemBaseLanguage(): string {
 
 // Initial state load
 const systemLocale = getSystemBaseLanguage()
+let activeLocaleCache = systemLocale
+
+let loadedMessages: Record<string, string> = {}
 
 export function getActiveLocale(): string {
-  if (typeof window !== "undefined" && window.localStorage) {
-    const saved = window.localStorage.getItem("user-locale")
-    if (saved && SUPPORTED_LOCALES.some((l) => l.code === saved)) {
-      return saved
-    }
-  }
-  return systemLocale
+  return activeLocaleCache
 }
 
 export function setActiveLocale(code: string): void {
+  activeLocaleCache = code
   if (typeof window !== "undefined" && window.localStorage) {
     window.localStorage.setItem("user-locale", code)
+  }
+  const chromeApi = globalThis.chrome
+  if (chromeApi?.storage?.sync) {
+    chromeApi.storage.sync.set({ "sync:userLocale": code }).catch((err) => {
+      console.warn(
+        "[i18n] Failed to save userLocale to chrome.storage.sync:",
+        err
+      )
+    })
   }
   if (typeof window !== "undefined") {
     window.dispatchEvent(new CustomEvent("localeChanged", { detail: code }))
   }
+}
+
+export async function initLocale(): Promise<void> {
+  let activeLocale = systemLocale
+  const chromeApi = globalThis.chrome
+
+  if (chromeApi?.storage?.sync) {
+    try {
+      const res = await chromeApi.storage.sync.get("sync:userLocale")
+      const val = res ? res["sync:userLocale"] : null
+      if (val && SUPPORTED_LOCALES.some((l) => l.code === val)) {
+        activeLocale = val
+      }
+    } catch (err) {
+      console.warn(
+        "[i18n] Failed to load userLocale from chrome.storage.sync:",
+        err
+      )
+    }
+  } else if (typeof window !== "undefined" && window.localStorage) {
+    const saved = window.localStorage.getItem("user-locale")
+    if (saved && SUPPORTED_LOCALES.some((l) => l.code === saved)) {
+      activeLocale = saved
+    }
+  }
+
+  activeLocaleCache = activeLocale
+
+  const currentSystemLocale = getSystemBaseLanguage()
+  if (activeLocale === currentSystemLocale) {
+    loadedMessages = {}
+    return
+  }
+
+  if (!chromeApi?.runtime?.getURL) {
+    loadedMessages = {}
+    return
+  }
+
+  try {
+    const url = chromeApi.runtime.getURL(
+      `_locales/${activeLocale}/messages.json`
+    )
+    const res = await fetch(url)
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`)
+    }
+    const data = await res.json()
+    const msgs: Record<string, string> = {}
+    for (const key in data) {
+      if (data[key] && typeof data[key].message === "string") {
+        msgs[key] = data[key].message
+      }
+    }
+    loadedMessages = msgs
+  } catch (err) {
+    console.warn(
+      `[i18n] Failed to load messages for locale "${activeLocale}":`,
+      err
+    )
+    loadedMessages = {}
+  }
+}
+
+function formatMessage(
+  message: string,
+  substitutions?: string | string[]
+): string {
+  let formatted = message
+  if (substitutions != null) {
+    const subs = Array.isArray(substitutions) ? substitutions : [substitutions]
+    for (let i = 0; i < subs.length; i++) {
+      const placeholder = `$${i + 1}`
+      formatted = formatted.replaceAll(placeholder, subs[i])
+    }
+  }
+  formatted = formatted.replaceAll("$$", "$")
+  return formatted
 }
 
 export function getMessage(
@@ -240,6 +326,10 @@ export function getMessage(
   substitutions?: string | string[]
 ): string {
   try {
+    if (loadedMessages[key] !== undefined) {
+      return formatMessage(loadedMessages[key], substitutions)
+    }
+
     if (substitutions != null) {
       const subs = Array.isArray(substitutions)
         ? substitutions
@@ -254,6 +344,11 @@ export function getMessage(
     console.warn(`[i18n] Failed to get message for "${key}":`, err)
     return key
   }
+}
+
+// Fire and forget initialization on script load
+if (typeof window !== "undefined") {
+  initLocale().catch(() => {})
 }
 
 export const locale = getActiveLocale()

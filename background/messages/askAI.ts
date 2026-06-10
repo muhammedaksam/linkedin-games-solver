@@ -1,8 +1,8 @@
-import { analytics } from "#analytics"
-
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 import { askAI } from "~games/ai"
+
+import { analytics } from "#analytics"
 
 export type RequestBody = {
   prompt: string

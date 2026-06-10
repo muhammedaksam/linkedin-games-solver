@@ -72,7 +72,7 @@ export default defineConfig({
     web_accessible_resources: [
       {
         matches: ["https://*.linkedin.com/*"],
-        resources: ["logger-main.js"]
+        resources: ["logger-main.js", "_locales/*/messages.json"]
       }
     ],
     browser_specific_settings: {

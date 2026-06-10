@@ -1,5 +1,12 @@
-import { i18n } from "#i18n"
 import iconPath from "url:~assets/icon.svg"
+
+import { getMessage, initLocale } from "../lib/i18n"
+
+const i18n = {
+  t: getMessage
+}
+
+await initLocale()
 
 if (
   typeof chrome !== "undefined" &&

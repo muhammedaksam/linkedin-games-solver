@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client"
 import "~tabs/dashboard.css"
 
 import { SolverShell } from "../components/SolverShell"
+import { initLocale } from "../lib/i18n"
 
 export function IndexPopup() {
   useEffect(() => {
@@ -13,6 +14,8 @@ export function IndexPopup() {
 
   return <SolverShell isSidePanel={false} />
 }
+
+await initLocale()
 
 const rootEl = document.getElementById("root")
 if (rootEl) {

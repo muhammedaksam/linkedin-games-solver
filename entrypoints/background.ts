@@ -1,8 +1,11 @@
-import { i18n } from "#i18n"
-
 import { askAI } from "~games/ai"
 import { analytics } from "~lib/analytics"
+import { getMessage, initLocale } from "~lib/i18n"
 import { syncStorage } from "~lib/storage"
+
+const i18n = {
+  t: getMessage
+}
 
 interface SolveRecord {
   solved: boolean
@@ -88,6 +91,41 @@ async function safeUpdateContextMenus(updates: Record<string, boolean>) {
       chrome.contextMenus.update(id, { visible })
     )
   )
+}
+
+function setupContextMenus() {
+  if (typeof chrome !== "undefined" && chrome.contextMenus) {
+    chrome.contextMenus.removeAll(() => {
+      chrome.contextMenus.create({
+        id: "solve-active-game-menu",
+        title: i18n.t("contextMenuSolve") || "⚡ Solve Active LinkedIn Game",
+        contexts: ["page"],
+        documentUrlPatterns: ["https://*.linkedin.com/games/*"]
+      })
+
+      chrome.contextMenus.create({
+        id: "get-single-hint-menu",
+        title: i18n.t("contextMenuHint") || "💡 Get a Hint",
+        contexts: ["page"],
+        documentUrlPatterns: ["https://*.linkedin.com/games/*"]
+      })
+
+      chrome.contextMenus.create({
+        id: "view-results-menu",
+        title: i18n.t("contextMenuViewResults") || "📊 View Results",
+        contexts: ["page"],
+        documentUrlPatterns: ["https://*.linkedin.com/games/*"]
+      })
+
+      // Update visibility for any active tab immediately
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const tab = tabs?.[0]
+        if (tab?.id) {
+          updateContextMenusForTab(tab.id, tab.url).catch(console.error)
+        }
+      })
+    })
+  }
 }
 
 // Dynamically updates context menu visibility based on tab URL and solving status
@@ -386,7 +424,8 @@ const GAME_URL_MAP: Record<string, string> = {
 }
 
 export default defineBackground({
-  main() {
+  async main() {
+    await initLocale()
     // Allow content scripts to access chrome.storage.session
     if (
       typeof chrome !== "undefined" &&
@@ -466,6 +505,13 @@ export default defineBackground({
     // Listen to storage changes to update the alarm reactively
     chrome.storage.onChanged.addListener((changes, areaName) => {
       if (areaName === "sync") {
+        if (changes["sync:userLocale"]) {
+          initLocale()
+            .then(() => {
+              setupContextMenus()
+            })
+            .catch(console.error)
+        }
         if (changes.streakRemindersEnabled || changes.streakReminderTime) {
           setupStreakAlarm().catch(console.error)
         }
@@ -504,40 +550,8 @@ export default defineBackground({
         console.warn("[Analytics] Installation track failed:", err)
       }
 
-      // Context Menu shortcuts for LinkedIn Game Pages
-      if (typeof chrome !== "undefined" && chrome.contextMenus) {
-        chrome.contextMenus.removeAll(() => {
-          chrome.contextMenus.create({
-            id: "solve-active-game-menu",
-            title:
-              i18n.t("contextMenuSolve") || "⚡ Solve Active LinkedIn Game",
-            contexts: ["page"],
-            documentUrlPatterns: ["https://*.linkedin.com/games/*"]
-          })
-
-          chrome.contextMenus.create({
-            id: "get-single-hint-menu",
-            title: i18n.t("contextMenuHint") || "💡 Get a Hint",
-            contexts: ["page"],
-            documentUrlPatterns: ["https://*.linkedin.com/games/*"]
-          })
-
-          chrome.contextMenus.create({
-            id: "view-results-menu",
-            title: i18n.t("contextMenuViewResults") || "📊 View Results",
-            contexts: ["page"],
-            documentUrlPatterns: ["https://*.linkedin.com/games/*"]
-          })
-
-          // Update visibility for any active tab immediately
-          chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            const tab = tabs?.[0]
-            if (tab?.id) {
-              updateContextMenusForTab(tab.id, tab.url).catch(console.error)
-            }
-          })
-        })
-      }
+      await initLocale()
+      setupContextMenus()
     })
 
     // Listen to active tab changes to update context menus
@@ -560,6 +574,7 @@ export default defineBackground({
     })
     setupStreakAlarm().catch(console.error)
     initBadge().catch(console.error)
+    setupContextMenus()
 
     // Trigger notification on alarm fire
     chrome.alarms.onAlarm.addListener((alarm) => {
