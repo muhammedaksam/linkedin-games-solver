@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 결과 보기",
   "labelTelemetryTitle": "원격 분석 및 개인 정보 보호",
   "telemetryToggleLabel": "익명의 원격 분석 전송",
-  "telemetryToggleDesc": "익명의 성능 및 사용 메트릭을 공유하여 풀이기 개선에 도움을 줍니다."
+  "telemetryToggleDesc": "익명의 성능 및 사용 메트릭을 공유하여 풀이기 개선에 도움을 줍니다.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

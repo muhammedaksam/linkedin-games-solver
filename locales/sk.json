@@ -199,5 +199,10 @@
   "contextMenuViewResults": "📊 Zobraziť výsledky",
   "labelTelemetryTitle": "TELEMETRIA A OCHRANA SÚKROMIA",
   "telemetryToggleLabel": "Odoslať anonymnú telemetriu",
-  "telemetryToggleDesc": "Pomôžte zlepšiť riešiteľ tým, že zdieľate anonymné výkonnostné a používanie metriky."
+  "telemetryToggleDesc": "Pomôžte zlepšiť riešiteľ tým, že zdieľate anonymné výkonnostné a používanie metriky.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

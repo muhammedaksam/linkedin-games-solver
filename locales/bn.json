@@ -206,5 +206,10 @@
   "labelTelemetryTitle": "অননুমোদিত টেলিমেট্রি & অ্যানালিটিক্স",
   "telemetryToggleLabel": "অ্যানালিটিক্স সংগ্রহ সক্ষম করুন",
   "telemetryToggleDesc": "অজানা ব্যবহার তথ্য শেয়ার করে এক্সটেনশন উন্নত করতে সাহায্য করুন",
-  "notAvailable": "প্রযোজ্য নয়"
+  "notAvailable": "প্রযোজ্য নয়",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

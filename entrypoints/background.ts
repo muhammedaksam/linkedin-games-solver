@@ -1,7 +1,7 @@
-import { analytics } from "#analytics"
 import { i18n } from "#i18n"
 
 import { askAI } from "~games/ai"
+import { analytics } from "~lib/analytics"
 import { syncStorage } from "~lib/storage"
 
 interface SolveRecord {
@@ -469,27 +469,19 @@ export default defineBackground({
     })
 
     // Initialize alarm and context menus on sw load / startup
-    chrome.runtime.onInstalled.addListener((details) => {
+    chrome.runtime.onInstalled.addListener(async (details) => {
       setupStreakAlarm().catch(console.error)
 
       try {
         if (details.reason === "install") {
-          chrome.runtime
-            .getPlatformInfo()
-            .then((platform) => {
-              analytics
-                .track("new_install", {
-                  operating_system: platform.os
-                })
-                .catch(console.error)
-            })
-            .catch(console.error)
+          const platform = await chrome.runtime.getPlatformInfo()
+          await analytics.track("new_install", {
+            operating_system: platform.os
+          })
         } else if (details.reason === "update") {
-          analytics
-            .track("extension_update", {
-              previous_version: details.previousVersion
-            })
-            .catch(console.error)
+          await analytics.track("extension_update", {
+            previous_version: details.previousVersion
+          })
         }
       } catch (err) {
         console.warn("[Analytics] Installation track failed:", err)
@@ -619,7 +611,19 @@ export default defineBackground({
     // Listen to Omnibox suggestion input events
     chrome.omnibox.onInputChanged.addListener(async (text, suggest) => {
       const clean = text.trim().toLowerCase()
-      const allSuggestions = [
+      const allSuggestions: Array<{
+        content: string
+        descKey:
+          | "omniboxSuggestionQueens"
+          | "omniboxSuggestionSudoku"
+          | "omniboxSuggestionTango"
+          | "omniboxSuggestionPinpoint"
+          | "omniboxSuggestionCrossclimb"
+          | "omniboxSuggestionZip"
+          | "omniboxSuggestionPatches"
+          | "omniboxSuggestionStats"
+        defaultDesc: string
+      }> = [
         {
           content: "queens",
           descKey: "omniboxSuggestionQueens",
@@ -697,51 +701,50 @@ export default defineBackground({
     })
 
     // Unified message broker dispatcher supporting standard Plasmo shims
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-      if (message && typeof message === "object" && "name" in message) {
-        const { name, body } = message as { name: string; body: MessageBody }
+    chrome.runtime.onMessage.addListener(
+      async (message, sender, sendResponse) => {
+        if (message && typeof message === "object" && "name" in message) {
+          const { name, body } = message as { name: string; body: MessageBody }
 
-        if (name === "askAI") {
-          analytics
-            .track("ask_ai", {
+          if (name === "askAI") {
+            await analytics.track("ask_ai", {
               promptLength: String(body?.prompt?.length || 0)
             })
-            .catch(() => {})
 
-          askAI(body.prompt || "", body.jsonMode)
-            .then((text) => sendResponse({ success: true, text }))
-            .catch((err: unknown) =>
+            try {
+              const text = await askAI(body.prompt || "", body.jsonMode)
+              sendResponse({ success: true, text })
+            } catch (err: unknown) {
               sendResponse({
                 success: false,
                 error: err instanceof Error ? err.message : String(err)
               })
-            )
-          return true
-        }
+            }
+            return true
+          }
 
-        if (name === "captureTab") {
-          const windowId =
-            sender?.tab?.windowId || chrome.windows.WINDOW_ID_CURRENT
-          const { cropRect, targetWidth, targetHeight } = body || {}
+          if (name === "captureTab") {
+            const windowId =
+              sender?.tab?.windowId || chrome.windows.WINDOW_ID_CURRENT
+            const { cropRect, targetWidth, targetHeight } = body || {}
 
-          const capturePromise = new Promise<string>((resolve, reject) => {
-            chrome.tabs.captureVisibleTab(
-              windowId,
-              { format: "jpeg", quality: 85 },
-              (capturedUrl) => {
-                if (chrome.runtime.lastError) {
-                  reject(new Error(chrome.runtime.lastError.message))
-                } else if (!capturedUrl) {
-                  reject(new Error("Captured URL is empty"))
-                } else {
-                  resolve(capturedUrl)
-                }
-              }
-            )
-          })
+            try {
+              const rawUrl = await new Promise<string>((resolve, reject) => {
+                chrome.tabs.captureVisibleTab(
+                  windowId,
+                  { format: "jpeg", quality: 85 },
+                  (capturedUrl) => {
+                    if (chrome.runtime.lastError) {
+                      reject(new Error(chrome.runtime.lastError.message))
+                    } else if (!capturedUrl) {
+                      reject(new Error("Captured URL is empty"))
+                    } else {
+                      resolve(capturedUrl)
+                    }
+                  }
+                )
+              })
 
-          capturePromise
-            .then(async (rawUrl) => {
               if (!cropRect) {
                 sendResponse({ success: true, dataUrl: rawUrl })
                 return
@@ -768,7 +771,12 @@ export default defineBackground({
               chrome.runtime.sendMessage(
                 {
                   action: "preprocess-image",
-                  data: { dataUrl: rawUrl, cropRect, targetWidth, targetHeight }
+                  data: {
+                    dataUrl: rawUrl,
+                    cropRect,
+                    targetWidth,
+                    targetHeight
+                  }
                 },
                 async (processedResponse) => {
                   try {
@@ -793,51 +801,53 @@ export default defineBackground({
                   }
                 }
               )
-            })
-            .catch((err) =>
+            } catch (err: unknown) {
               sendResponse({
                 success: false,
                 error: err instanceof Error ? err.message : String(err)
               })
-            )
-          return true
-        }
+            }
+            return true
+          }
 
-        if (name === "fetchRegistry") {
-          analytics
-            .track("fetch_registry", { game: body?.game })
-            .catch(() => {})
-          const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${body?.game}.json`
+          if (name === "fetchRegistry") {
+            ;(async () => {
+              await analytics.track("fetch_registry", { game: body?.game })
+            })()
+            const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${body?.game}.json`
 
-          fetch(registryUrl)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-              return res.json()
-            })
-            .then((data) => sendResponse({ success: true, data }))
-            .catch((err) =>
+            try {
+              const res = await fetch(registryUrl)
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`)
+              }
+              const data = await res.json()
+              sendResponse({ success: true, data })
+            } catch (err: unknown) {
               sendResponse({
                 success: false,
                 error: err instanceof Error ? err.message : String(err)
               })
-            )
-          return true
-        }
+            }
+            return true
+          }
 
-        if (name === "solverStatus") {
-          const { status } = body || {}
-          const tabId = sender?.tab?.id
-          updateActionBadge(undefined, status, tabId)
-            .then(() => sendResponse({ success: true }))
-            .catch((err) =>
+          if (name === "solverStatus") {
+            const { status } = body || {}
+            const tabId = sender?.tab?.id
+            try {
+              await updateActionBadge(undefined, status, tabId)
+              sendResponse({ success: true })
+            } catch (err: unknown) {
               sendResponse({
                 success: false,
                 error: err instanceof Error ? err.message : String(err)
               })
-            )
-          return true
+            }
+            return true
+          }
         }
       }
-    })
+    )
   }
 })

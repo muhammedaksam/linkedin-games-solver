@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 પરિણામો જુઓ",
   "labelTelemetryTitle": "ટેલેમેટ્રી અને ગોપનીયતા",
   "telemetryToggleLabel": "ગોપનીય ટેલેમેટ્રી મોકલો",
-  "telemetryToggleDesc": "સહાય કરો અને અજાણ્યા પ્રદર્શન અને ઉપયોગ મેટ્રિક્સને શેર કરીને સોલ્વર સુધારો."
+  "telemetryToggleDesc": "સહાય કરો અને અજાણ્યા પ્રદર્શન અને ઉપયોગ મેટ્રિક્સને શેર કરીને સોલ્વર સુધારો.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

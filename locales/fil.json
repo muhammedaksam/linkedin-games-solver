@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 Tingnan ang Mga Resulta",
   "labelTelemetryTitle": "TELEMETRY AT PRIBADO",
   "telemetryToggleLabel": "Magpadala ng Walang Pangalan na Telemetry",
-  "telemetryToggleDesc": "Tumulong na mapabuti ang solver sa pamamagitan ng pagbabahagi ng mga hindi nagpapakilalang sukatan ng pagganap at paggamit."
+  "telemetryToggleDesc": "Tumulong na mapabuti ang solver sa pamamagitan ng pagbabahagi ng mga hindi nagpapakilalang sukatan ng pagganap at paggamit.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

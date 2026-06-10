@@ -206,5 +206,10 @@
   "debugStatusOffline": "Offline",
   "offline": "Offline",
   "liveMatrixGridInspector": "Live Matrix Grid Inspektör",
-  "notAvailable": "Ej tillämpligt"
+  "notAvailable": "Ej tillämpligt",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

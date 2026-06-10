@@ -10,7 +10,8 @@ import {
   Terminal,
   Trash2
 } from "lucide-react"
-import React, { useCallback, useEffect, useState } from "react"
+import type React from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import "~tabs/dashboard.css"
 
@@ -335,14 +336,15 @@ export default function DevToolsPanel() {
     }
   }, [fetchSessionLogs, inspectTabDOM])
 
-  const handleClearLogs = () => {
+  const handleClearLogs = async () => {
     if (typeof chrome !== "undefined" && chrome.storage?.session) {
-      chrome.storage.session.remove("solverLogs").then(() => {
-        setLogs([])
-      })
-    } else {
-      setLogs([])
+      try {
+        await chrome.storage.session.remove("solverLogs")
+      } catch (err) {
+        console.error("Failed to clear session logs:", err)
+      }
     }
+    setLogs([])
   }
 
   const triggerCopyToast = (message: string) => {
@@ -350,44 +352,44 @@ export default function DevToolsPanel() {
     setTimeout(() => setCopyMessage(null), 2000)
   }
 
-  const handleCopyLogs = () => {
+  const handleCopyLogs = async () => {
     if (logs.length === 0) return
     const text = logs
       .map(
         (log) => `[${log.timestamp}] [${log.type.toUpperCase()}] ${log.message}`
       )
       .join("\n")
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        triggerCopyToast(getMessage("debugLogsCopied") || "Logs Copied!")
-      })
-      .catch((err) => console.error("Failed to copy DevTools logs:", err))
+    try {
+      await navigator.clipboard.writeText(text)
+      triggerCopyToast(getMessage("debugLogsCopied") || "Logs Copied!")
+    } catch (err) {
+      console.error("Failed to copy DevTools logs:", err)
+    }
   }
 
-  const handleCopyHtml = () => {
+  const handleCopyHtml = async () => {
     if (!mainHtml) return
-    navigator.clipboard
-      .writeText(mainHtml)
-      .then(() => {
-        triggerCopyToast(getMessage("debugHtmlCopied") || "HTML Copied!")
-      })
-      .catch((err) => console.error("Failed to copy DOM HTML:", err))
+    try {
+      await navigator.clipboard.writeText(mainHtml)
+      triggerCopyToast(getMessage("debugHtmlCopied") || "HTML Copied!")
+    } catch (err) {
+      console.error("Failed to copy DOM HTML:", err)
+    }
   }
 
-  const handleCopyBoth = () => {
+  const handleCopyBoth = async () => {
     const logsText = logs
       .map(
         (log) => `[${log.timestamp}] [${log.type.toUpperCase()}] ${log.message}`
       )
       .join("\n")
     const combinedText = `=== CONSOLE LOGS ===\n${logsText || "(No logs captured)"}\n\n=== <main> HTML CONTENT ===\n${mainHtml || "(No HTML captured)"}`
-    navigator.clipboard
-      .writeText(combinedText)
-      .then(() => {
-        triggerCopyToast(getMessage("debugBothCopied") || "Both Copied!")
-      })
-      .catch((err) => console.error("Failed to copy combined info:", err))
+    try {
+      await navigator.clipboard.writeText(combinedText)
+      triggerCopyToast(getMessage("debugBothCopied") || "Both Copied!")
+    } catch (err) {
+      console.error("Failed to copy combined info:", err)
+    }
   }
 
   const filteredLogs = logs.filter((log) => {
@@ -491,9 +493,7 @@ export default function DevToolsPanel() {
     const base =
       "w-full h-auto min-w-0 min-h-0 aspect-square rounded-md border flex items-center justify-center font-bold text-[10px] sm:text-xs transition-all duration-200 select-none shadow-sm "
     if (cell.disabled) {
-      return (
-        base + "bg-muted/30 text-muted-foreground border-dashed border-border"
-      )
+      return `${base}bg-muted/30 text-muted-foreground border-dashed border-border`
     }
     const hasColor =
       cell.color &&
@@ -501,9 +501,9 @@ export default function DevToolsPanel() {
       cell.color !== "transparent" &&
       cell.color !== "rgba(0,0,0,0)"
     if (hasColor) {
-      return base + "text-foreground font-black"
+      return `${base}text-foreground font-black`
     }
-    return base + "bg-card hover:bg-muted/10 text-foreground border-border"
+    return `${base}bg-card hover:bg-muted/10 text-foreground border-border`
   }
 
   return (
@@ -751,7 +751,7 @@ export default function DevToolsPanel() {
                     const isWarn = log.type === "warn"
                     return (
                       <div
-                        key={idx}
+                        key={`${log.type}-${log.timestamp}-${idx}`}
                         className={`flex items-start gap-1 pb-1 border-b border-white/5 break-all ${isError ? "text-red-400 bg-red-950/20 px-1.5 py-0.5 rounded" : ""} ${isWarn ? "text-amber-400 bg-amber-950/15 px-1.5 py-0.5 rounded" : ""}`}>
                         <span className="text-slate-500 select-none shrink-0">
                           {log.timestamp}

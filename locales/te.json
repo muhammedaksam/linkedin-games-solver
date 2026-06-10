@@ -199,5 +199,10 @@
   "contextMenuViewResults": "📊 ఫలితాలను చూడండి",
   "labelTelemetryTitle": "టెలిమెట్రీ & గోప్యత",
   "telemetryToggleLabel": "అజ్ఞాత టెలిమెట్రీ పంపండి",
-  "telemetryToggleDesc": "పరిష్కారాన్ని మెరుగుపరచడానికి గోప్యమైన పనితీరు మరియు వినియోగ మేట్రిక్‌లను పంచుకోండి."
+  "telemetryToggleDesc": "పరిష్కారాన్ని మెరుగుపరచడానికి గోప్యమైన పనితీరు మరియు వినియోగ మేట్రిక్‌లను పంచుకోండి.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

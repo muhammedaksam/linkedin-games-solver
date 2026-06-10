@@ -206,5 +206,10 @@
   "pinpoint": "Pinpoint",
   "settingModel": "Model",
   "scoreSeconds": "$1s",
-  "scoreMinutesSeconds": "$1m $2s"
+  "scoreMinutesSeconds": "$1m $2s",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

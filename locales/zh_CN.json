@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 查看结果",
   "labelTelemetryTitle": "遥测与隐私",
   "telemetryToggleLabel": "发送匿名遥测",
-  "telemetryToggleDesc": "通过共享匿名性能和使用情况指标来帮助改进求解器。"
+  "telemetryToggleDesc": "通过共享匿名性能和使用情况指标来帮助改进求解器。",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

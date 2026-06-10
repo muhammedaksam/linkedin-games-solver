@@ -206,5 +206,10 @@
   "contextMenuViewResults": "عرض نتائج الحل",
   "labelTelemetryTitle": "القياس والبيانات المجهولة",
   "telemetryToggleLabel": "تمكين جمع التحليلات",
-  "telemetryToggleDesc": "ساعد في تحسين الإضافة بمشاركة بيانات استخدام مجهولة"
+  "telemetryToggleDesc": "ساعد في تحسين الإضافة بمشاركة بيانات استخدام مجهولة",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

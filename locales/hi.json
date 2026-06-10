@@ -206,5 +206,10 @@
   "labelTelemetryTitle": "टेलीमेट्री और गोपनीयता",
   "telemetryToggleLabel": "अनाम टेलीमेट्री भेजें",
   "telemetryToggleDesc": "अनाम प्रदर्शन और उपयोग मेट्रिक्स साझा करके सॉल्वर में सुधार करने में मदद करें।",
-  "notAvailable": "एन/ए"
+  "notAvailable": "एन/ए",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

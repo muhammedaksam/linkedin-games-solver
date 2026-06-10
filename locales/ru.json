@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 Просмотр результатов",
   "labelTelemetryTitle": "Телеметрия и конфиденциальность",
   "telemetryToggleLabel": "Отправить анонимную телеметрию",
-  "telemetryToggleDesc": "Помогите улучшить решатель, поделившись анонимными метриками производительности и использования."
+  "telemetryToggleDesc": "Помогите улучшить решатель, поделившись анонимными метриками производительности и использования.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

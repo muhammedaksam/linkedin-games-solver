@@ -206,5 +206,10 @@
   "contextMenuViewResults": "Виж резултатите от решаването",
   "labelTelemetryTitle": "Анонимна телеметрия & аналитика",
   "telemetryToggleLabel": "Разреши събиране на аналитика",
-  "telemetryToggleDesc": "Помогни за подобряване на разширението чрез споделяне на анонимни данни"
+  "telemetryToggleDesc": "Помогни за подобряване на разширението чрез споделяне на анонимни данни",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

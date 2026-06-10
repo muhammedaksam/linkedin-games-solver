@@ -206,5 +206,10 @@
   "navDebug": "Debuggare",
   "dashboardLabel": "Cruscotto",
   "debugStatusOffline": "Offline",
-  "offline": "Offline"
+  "offline": "Offline",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

@@ -199,5 +199,10 @@
   "contextMenuViewResults": "📊 Tazama Matokeo",
   "labelTelemetryTitle": "TELEMETRIA NA FARAGHA",
   "telemetryToggleLabel": "Tuma Telemetry Isiyo Na Jina",
-  "telemetryToggleDesc": "Saidia kuboresha msolver kwa kushiriki takwimu za utendaji na matumizi bila majina."
+  "telemetryToggleDesc": "Saidia kuboresha msolver kwa kushiriki takwimu za utendaji na matumizi bila majina.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

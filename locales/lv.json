@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 Skatīt rezultātus",
   "labelTelemetryTitle": "TELEMETRIJA UN PRIVĀTUMS",
   "telemetryToggleLabel": "Sūtīt anonīmus telemetrijas datus",
-  "telemetryToggleDesc": "Palīdziet uzlabot risinātāju, daloties ar anonīmiem snieguma un lietošanas rādītājiem."
+  "telemetryToggleDesc": "Palīdziet uzlabot risinātāju, daloties ar anonīmiem snieguma un lietošanas rādītājiem.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 Lihat Keputusan",
   "labelTelemetryTitle": "TELEMETRI & PRIVASI",
   "telemetryToggleLabel": "Hantar Telemetri Tanpa Nama",
-  "telemetryToggleDesc": "Bantu tingkatkan penyelesai dengan berkongsi metrik prestasi dan penggunaan secara tanpa nama."
+  "telemetryToggleDesc": "Bantu tingkatkan penyelesai dengan berkongsi metrik prestasi dan penggunaan secara tanpa nama.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

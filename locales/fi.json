@@ -206,5 +206,10 @@
   "debugStatusLive": "Elää",
   "offline": "Offline",
   "urlLabel": "Url:",
-  "notAvailable": "Ei sovellettavissa"
+  "notAvailable": "Ei sovellettavissa",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

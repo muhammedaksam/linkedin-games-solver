@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 結果を表示",
   "labelTelemetryTitle": "遠隔測定とプライバシー",
   "telemetryToggleLabel": "匿名テレメトリを送信",
-  "telemetryToggleDesc": "匿名のパフォーマンスと使用メトリックを共有してソルバーの改善を支援します。"
+  "telemetryToggleDesc": "匿名のパフォーマンスと使用メトリックを共有してソルバーの改善を支援します。",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

@@ -199,5 +199,10 @@
   "contextMenuViewResults": "📊 Poglej rezultate",
   "labelTelemetryTitle": "TELEMETRIJA IN ZASEBNOST",
   "telemetryToggleLabel": "Pošlji anonimno telemetrijo",
-  "telemetryToggleDesc": "Pomagajte izboljšati rešitelj z deljenjem anonimnih meritev uspešnosti in uporabe."
+  "telemetryToggleDesc": "Pomagajte izboljšati rešitelj z deljenjem anonimnih meritev uspešnosti in uporabe.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

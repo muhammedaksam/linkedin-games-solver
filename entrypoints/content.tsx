@@ -1,7 +1,7 @@
-import { analytics } from "#analytics"
 import ReactDOM from "react-dom/client"
 
 import { detectActiveSolver } from "~games"
+import { analytics } from "~lib/analytics"
 import { sendToBackground } from "~lib/plasmo-messaging-shim"
 import { syncStorage as storage } from "~lib/storage"
 import {
@@ -526,27 +526,24 @@ const messageListener = (
     updateSolverStatus("solving")
 
     const startTime = Date.now()
-    currentActive
-      .solve(mode)
-      .then(async () => {
+    ;(async () => {
+      try {
+        await currentActive.solve(mode)
         console.log(
           `[LinkedIn Games Solver] Solver ${currentActive.name} completed successfully.`
         )
         const durationSeconds = Math.round((Date.now() - startTime) / 1000)
-        analytics
-          .track("solve_completed", {
-            game: msgGameId,
-            mode,
-            duration_seconds: String(durationSeconds)
-          })
-          .catch(() => {})
+        await analytics.track("solve_completed", {
+          game: msgGameId,
+          mode,
+          duration_seconds: String(durationSeconds)
+        })
         if (mode !== "hint") {
           await saveGameCompleted(msgGameId, durationSeconds)
         }
         setReactSuccess?.(true)
         sendResponse({ success: true, game: currentActive.name.toLowerCase() })
-      })
-      .catch((err: Error | unknown) => {
+      } catch (err: unknown) {
         console.error(
           `[LinkedIn Games Solver] Solver ${currentActive.name} failed:`,
           err
@@ -558,12 +555,12 @@ const messageListener = (
           error: errMsg,
           game: currentActive.name.toLowerCase()
         })
-      })
-      .finally(() => {
+      } finally {
         globalSolving = false
         setReactSolving?.(false)
         updateSolverStatus("idle")
-      })
+      }
+    })()
 
     return true
   }

@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 ಫಲಿತಾಂಶಗಳನ್ನು ನೋಡಿ",
   "labelTelemetryTitle": "ಟೆಲಿಮೆಟ್ರಿ ಮತ್ತು ಗೌಪ್ಯತೆ",
   "telemetryToggleLabel": "ಅಜ್ಞಾತ ಟೆಲಿಮೆಟ್ರಿ ಕಳುಹಿಸಿ",
-  "telemetryToggleDesc": "ಅನಾಮಿಕ ಕಾರ್ಯಕ್ಷಮತೆ ಮತ್ತು ಬಳಕೆ ಮೆಟ್ರಿಕ್‌ಗಳನ್ನು ಹಂಚಿಕೊಂಡು ಪರಿಹಾರವನ್ನು ಸುಧಾರಿಸಲು ಸಹಾಯ ಮಾಡಿ."
+  "telemetryToggleDesc": "ಅನಾಮಿಕ ಕಾರ್ಯಕ್ಷಮತೆ ಮತ್ತು ಬಳಕೆ ಮೆಟ್ರಿಕ್‌ಗಳನ್ನು ಹಂಚಿಕೊಂಡು ಪರಿಹಾರವನ್ನು ಸುಧಾರಿಸಲು ಸಹಾಯ ಮಾಡಿ.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

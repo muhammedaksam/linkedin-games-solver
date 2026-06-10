@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 ഫലങ്ങൾ കാണുക",
   "labelTelemetryTitle": "ടെലിമെട്രി & സ്വകാര്യത",
   "telemetryToggleLabel": "അനാമിക ടെലിമെട്രി അയക്കുക",
-  "telemetryToggleDesc": "അനാമികമായ പ്രകടനവും ഉപയോഗ മെട്രിക്‌സും പങ്കുവെച്ച് സോൾവറെ മെച്ചപ്പെടുത്താൻ സഹായിക്കുക."
+  "telemetryToggleDesc": "അനാമികമായ പ്രകടനവും ഉപയോഗ മെട്രിക്‌സും പങ്കുവെച്ച് സോൾവറെ മെച്ചപ്പെടുത്താൻ സഹായിക്കുക.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

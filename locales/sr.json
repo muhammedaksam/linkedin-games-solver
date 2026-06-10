@@ -199,5 +199,10 @@
   "contextMenuViewResults": "📊 Pogledajte rezultate",
   "labelTelemetryTitle": "TELEMETRIJA I PRIVATNOST",
   "telemetryToggleLabel": "Pošaljite anonimnu telemetriju",
-  "telemetryToggleDesc": "Pomozite poboljšanju rešenja deljenjem anonimnih performansi i metrika korišćenja."
+  "telemetryToggleDesc": "Pomozite poboljšanju rešenja deljenjem anonimnih performansi i metrika korišćenja.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

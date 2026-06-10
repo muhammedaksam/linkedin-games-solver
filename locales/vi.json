@@ -206,5 +206,10 @@
   "contextMenuViewResults": "📊 Xem Kết Quả",
   "labelTelemetryTitle": "ĐO LƯỜNG TỪ XA & QUYỀN RIÊNG TƯ",
   "telemetryToggleLabel": "Gửi dữ liệu ẩn danh",
-  "telemetryToggleDesc": "Giúp cải thiện bộ giải bằng cách chia sẻ các chỉ số hiệu suất và sử dụng ẩn danh."
+  "telemetryToggleDesc": "Giúp cải thiện bộ giải bằng cách chia sẻ các chỉ số hiệu suất và sử dụng ẩn danh.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

@@ -199,5 +199,10 @@
   "contextMenuViewResults": "📊 முடிவுகளை காண்க",
   "labelTelemetryTitle": "தொலைஅளவீடு மற்றும் தனியுரிமை",
   "telemetryToggleLabel": "அறியாமலான டெலிமெட்ரி அனுப்பவும்",
-  "telemetryToggleDesc": "தரவுகளைப் பகிர்ந்து, தீர்வாளர் மேம்படுத்த உதவுங்கள், இது அடையாளம் தெரியாத செயல்திறன் மற்றும் பயன்பாட்டு அளவுகோல்களை உள்ளடக்குகிறது."
+  "telemetryToggleDesc": "தரவுகளைப் பகிர்ந்து, தீர்வாளர் மேம்படுத்த உதவுங்கள், இது அடையாளம் தெரியாத செயல்திறன் மற்றும் பயன்பாட்டு அளவுகோல்களை உள்ளடக்குகிறது.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

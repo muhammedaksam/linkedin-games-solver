@@ -52,12 +52,9 @@ export async function solveWithMultimodalAI(
   const cropRect = getBoardCropRect()
 
   // 1. Capture the tab screen visually using the background service worker
-  const captureRes = await new Promise<{
-    success: boolean
-    dataUrl?: string
-    error?: string
-  }>((resolve) => {
-    sendToBackground<
+  let captureRes: { success: boolean; dataUrl?: string; error?: string }
+  try {
+    const res = await sendToBackground<
       unknown,
       { success: boolean; dataUrl?: string; error?: string }
     >({
@@ -68,19 +65,14 @@ export async function solveWithMultimodalAI(
         targetHeight: 512
       }
     })
-      .then((res) => {
-        resolve(
-          res || {
-            success: false,
-            error: "No response from background worker."
-          }
-        )
-      })
-      .catch((err: unknown) => {
-        const errMsg = err instanceof Error ? err.message : String(err)
-        resolve({ success: false, error: errMsg })
-      })
-  })
+    captureRes = res || {
+      success: false,
+      error: "No response from background worker."
+    }
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : String(err)
+    captureRes = { success: false, error: errMsg }
+  }
 
   if (!captureRes.success || !captureRes.dataUrl) {
     throw new Error(

@@ -1,4 +1,3 @@
-import { analytics } from "#analytics"
 import {
   AlertCircle,
   BarChart3,
@@ -22,8 +21,6 @@ import {
 } from "lucide-react"
 import { useCallback, useEffect, useState } from "react"
 
-import { useStorage } from "@plasmohq/storage/hook"
-
 import { DisclaimerFooter } from "~components/disclaimer-footer"
 import { LanguageSwitcher } from "~components/LanguageSwitcher"
 import { Button } from "~components/ui/button"
@@ -41,9 +38,15 @@ import {
   SelectTrigger,
   SelectValue
 } from "~components/ui/select"
+import { analytics } from "~lib/analytics"
 import { GAMES_CONFIG } from "~lib/games-config"
 import { getActiveLocale, getLocaleDirection, getMessage } from "~lib/i18n"
-import { localStorage, secureStorage, syncStorage } from "~lib/storage"
+import {
+  localStorage,
+  secureStorage,
+  syncStorage,
+  useStorage
+} from "~lib/storage"
 import {
   cn,
   getLocalDateString,
@@ -300,20 +303,17 @@ export function SolverShell({
         currentWindow: true
       })
       if (tab?.id && tab?.url?.includes("linkedin.com/games/")) {
-        chrome.tabs.sendMessage(
-          tab.id,
-          { action: "detectGame" },
-          (response) => {
-            if (chrome.runtime.lastError) {
-              console.log("No content script responsive yet.")
-              return
-            }
-            if (response?.game) {
-              console.log("Detected game on page:", response.game)
-              setActiveGame(response.game)
-            }
+        try {
+          const response = await chrome.tabs.sendMessage(tab.id, {
+            action: "detectGame"
+          })
+          if (response?.game) {
+            console.log("Detected game on page:", response.game)
+            setActiveGame(response.game)
           }
-        )
+        } catch (err) {
+          console.debug("No content script responsive yet:", err)
+        }
       }
     } catch (e) {
       console.error("Failed to detect active game:", e)
@@ -322,7 +322,10 @@ export function SolverShell({
 
   // Sync active game and set document direction on mount
   useEffect(() => {
-    detectActiveGame()
+    const init = async () => {
+      await detectActiveGame()
+    }
+    init()
     const activeLoc = getActiveLocale()
     document.documentElement.dir = getLocaleDirection(activeLoc)
     document.documentElement.lang = activeLoc
@@ -336,7 +339,9 @@ export function SolverShell({
 
   // Track active tab views
   useEffect(() => {
-    analytics.track(`${activeTab}_viewed`).catch(console.error)
+    ;(async () => {
+      await analytics.track(`${activeTab}_viewed`)
+    })()
   }, [activeTab])
 
   // Fetch debug logs and main html from content script and storage session
@@ -361,33 +366,30 @@ export function SolverShell({
       if (tab?.id && tab?.url) {
         setDebugTabUrl(tab.url)
         if (tab.url.includes("linkedin.com/games/")) {
-          chrome.tabs.sendMessage(
-            tab.id,
-            { action: "getDebugInfo" },
-            (response) => {
-              if (chrome.runtime.lastError) {
-                // If it fails but we have session logs, don't show block error
-                if (debugLogs.length === 0) {
-                  setDebugError(getMessage("debugErrorInitializing"))
-                }
-                return
+          try {
+            const response = await chrome.tabs.sendMessage(tab.id, {
+              action: "getDebugInfo"
+            })
+            if (response?.success) {
+              // Fallback / merge in case storage didn't hit
+              if (response.logs && response.logs.length > 0) {
+                setDebugLogs(response.logs)
               }
-              if (response?.success) {
-                // Fallback / merge in case storage didn't hit
-                if (response.logs && response.logs.length > 0) {
-                  setDebugLogs(response.logs)
-                }
-                setMainHtml(response.mainHtml || "")
-                setDebugError(null)
-              } else {
-                if (debugLogs.length === 0) {
-                  setDebugError(
-                    response?.error || getMessage("debugErrorRetrieveFailed")
-                  )
-                }
+              setMainHtml(response.mainHtml || "")
+              setDebugError(null)
+            } else {
+              if (debugLogs.length === 0) {
+                setDebugError(
+                  response?.error || getMessage("debugErrorRetrieveFailed")
+                )
               }
             }
-          )
+          } catch {
+            // If it fails but we have session logs, don't show block error
+            if (debugLogs.length === 0) {
+              setDebugError(getMessage("debugErrorInitializing"))
+            }
+          }
         } else {
           setDebugError(getMessage("debugErrorNotGamesPage"))
         }
@@ -424,9 +426,10 @@ export function SolverShell({
   }
 
   const handleSolve = async (gameId: string) => {
-    analytics
-      .track("solve_clicked", { game: gameId, mode: defaultSolveMode })
-      .catch(console.error)
+    await analytics.track("solve_clicked", {
+      game: gameId,
+      mode: defaultSolveMode
+    })
 
     if (typeof chrome === "undefined" || !chrome.tabs) {
       setSolveError(getMessage("errorChromeTabIntegration"))
@@ -531,30 +534,28 @@ export function SolverShell({
     setSolveError(null)
     setSolveSuccess(false)
 
-    chrome.tabs.sendMessage(
-      tab.id,
-      { action: "solve", game: gameId, mode: defaultSolveMode },
-      (res) => {
-        setSolving(false)
-
-        if (chrome.runtime.lastError) {
-          setSolveError(getMessage("errorConnectionFailed"))
-          return
-        }
-
-        if (res?.success) {
-          setSolveSuccess(true)
-          setSolveError(null)
-          setTimeout(() => setSolveSuccess(false), 3500)
-        } else {
-          setSolveError(res?.error || getMessage("errorExecutionFailedDefault"))
-        }
+    try {
+      const res = await chrome.tabs.sendMessage(tab.id, {
+        action: "solve",
+        game: gameId,
+        mode: defaultSolveMode
+      })
+      setSolving(false)
+      if (res?.success) {
+        setSolveSuccess(true)
+        setSolveError(null)
+        setTimeout(() => setSolveSuccess(false), 3500)
+      } else {
+        setSolveError(res?.error || getMessage("errorExecutionFailedDefault"))
       }
-    )
+    } catch {
+      setSolving(false)
+      setSolveError(getMessage("errorConnectionFailed"))
+    }
   }
 
   const handleMarkNotPlayed = async (gameId: string) => {
-    analytics.track("mark_not_played", { game: gameId }).catch(console.error)
+    await analytics.track("mark_not_played", { game: gameId })
     const dateKey = getLocalDateString()
     const updated = { ...solveHistory }
     if (updated[dateKey]) {
@@ -569,56 +570,54 @@ export function SolverShell({
   }
 
   // Debug copying and cleaning actions
-  const handleCopyHtml = () => {
-    analytics.track("copy_html").catch(console.error)
+  const handleCopyHtml = async () => {
+    await analytics.track("copy_html")
     if (!mainHtml) return
-    navigator.clipboard
-      .writeText(mainHtml)
-      .then(() => {
-        setCopyHtmlSuccess(true)
-        setTimeout(() => setCopyHtmlSuccess(false), 2000)
-      })
-      .catch((err) => console.error("Failed to copy HTML:", err))
+    try {
+      await navigator.clipboard.writeText(mainHtml)
+      setCopyHtmlSuccess(true)
+      setTimeout(() => setCopyHtmlSuccess(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy HTML:", err)
+    }
   }
 
-  const handleCopyLogs = () => {
-    analytics.track("copy_logs").catch(console.error)
+  const handleCopyLogs = async () => {
+    await analytics.track("copy_logs")
     if (debugLogs.length === 0) return
     const logsText = debugLogs
       .map(
         (log) => `[${log.timestamp}] [${log.type.toUpperCase()}] ${log.message}`
       )
       .join("\n")
-    navigator.clipboard
-      .writeText(logsText)
-      .then(() => {
-        setCopyLogsSuccess(true)
-        setTimeout(() => setCopyLogsSuccess(false), 2000)
-      })
-      .catch((err) => console.error("Failed to copy logs:", err))
+    try {
+      await navigator.clipboard.writeText(logsText)
+      setCopyLogsSuccess(true)
+      setTimeout(() => setCopyLogsSuccess(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy logs:", err)
+    }
   }
 
-  const handleCopyBoth = () => {
-    analytics.track("copy_both_logs_html").catch(console.error)
+  const handleCopyBoth = async () => {
+    await analytics.track("copy_both_logs_html")
     const logsText = debugLogs
       .map(
         (log) => `[${log.timestamp}] [${log.type.toUpperCase()}] ${log.message}`
       )
       .join("\n")
     const combinedText = `=== CONSOLE LOGS ===\n${logsText || "(No logs captured)"}\n\n=== <main> HTML CONTENT ===\n${mainHtml || "(No HTML captured)"}`
-    navigator.clipboard
-      .writeText(combinedText)
-      .then(() => {
-        setCopyBothSuccess(true)
-        setTimeout(() => setCopyBothSuccess(false), 2000)
-      })
-      .catch((err) => console.error("Failed to copy combined info:", err))
+    try {
+      await navigator.clipboard.writeText(combinedText)
+      setCopyBothSuccess(true)
+      setTimeout(() => setCopyBothSuccess(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy combined info:", err)
+    }
   }
 
   const handleCopyRegistryEntry = async () => {
-    analytics
-      .track("copy_registry_entry", { game: activeGame })
-      .catch(console.error)
+    await analytics.track("copy_registry_entry", { game: activeGame })
     if (typeof chrome === "undefined" || !chrome.tabs) return
     try {
       const [tab] = await chrome.tabs.query({
@@ -627,41 +626,36 @@ export function SolverShell({
       })
       if (tab?.id && tab.url?.includes("linkedin.com/games/")) {
         setDebugError(null)
-        chrome.tabs.sendMessage(
-          tab.id,
-          { action: "extractPuzzleData" },
-          (response) => {
-            if (chrome.runtime.lastError) {
-              setDebugError(
-                "Could not communicate with the game tab. Please make sure the tab is active."
-              )
-              return
-            }
-            if (response?.success) {
-              const puzzleNum = String(response.puzzleNumber)
-              const formattedJSON = JSON.stringify(
-                {
-                  [puzzleNum]: response.data
-                },
-                null,
-                2
-              )
+        try {
+          const response = await chrome.tabs.sendMessage(tab.id, {
+            action: "extractPuzzleData"
+          })
+          if (response?.success) {
+            const puzzleNum = String(response.puzzleNumber)
+            const formattedJSON = JSON.stringify(
+              {
+                [puzzleNum]: response.data
+              },
+              null,
+              2
+            )
 
-              navigator.clipboard
-                .writeText(formattedJSON)
-                .then(() => {
-                  setCopyRegistrySuccess(true)
-                  setTimeout(() => setCopyRegistrySuccess(false), 2000)
-                })
-                .catch((err) => {
-                  console.error("Clipboard copy failed:", err)
-                  setDebugError("Clipboard write access blocked by browser.")
-                })
-            } else {
-              setDebugError(response?.error || "Failed to extract puzzle data.")
+            try {
+              await navigator.clipboard.writeText(formattedJSON)
+              setCopyRegistrySuccess(true)
+              setTimeout(() => setCopyRegistrySuccess(false), 2000)
+            } catch (err) {
+              console.error("Clipboard copy failed:", err)
+              setDebugError("Clipboard write access blocked by browser.")
             }
+          } else {
+            setDebugError(response?.error || "Failed to extract puzzle data.")
           }
-        )
+        } catch {
+          setDebugError(
+            "Could not communicate with the game tab. Please make sure the tab is active."
+          )
+        }
       } else {
         setDebugError("Please navigate to an active LinkedIn game tab first.")
       }
@@ -671,9 +665,7 @@ export function SolverShell({
   }
 
   const handleSubmitToRegistry = async () => {
-    analytics
-      .track("submit_to_registry", { game: activeGame })
-      .catch(console.error)
+    await analytics.track("submit_to_registry", { game: activeGame })
     if (typeof chrome === "undefined" || !chrome.tabs) return
     try {
       const [tab] = await chrome.tabs.query({
@@ -682,53 +674,48 @@ export function SolverShell({
       })
       if (tab?.id && tab.url?.includes("linkedin.com/games/")) {
         setDebugError(null)
-        chrome.tabs.sendMessage(
-          tab.id,
-          { action: "extractPuzzleData" },
-          (response) => {
-            if (chrome.runtime.lastError) {
+        try {
+          const response = await chrome.tabs.sendMessage(tab.id, {
+            action: "extractPuzzleData"
+          })
+          if (response?.success) {
+            const puzzleId = String(response.puzzleNumber)
+            let url = `https://github.com/muhammedaksam/linkedin-games-solver/issues/new?template=add-puzzle.yml`
+
+            if (activeGame === "pinpoint") {
+              const category = encodeURIComponent(response.data.category || "")
+              const clues = encodeURIComponent(
+                (response.data.clues || []).join("\n")
+              )
+              url += `&game=Pinpoint&puzzleId=${puzzleId}&pinpoint_category=${category}&pinpoint_clues=${clues}`
+            } else if (activeGame === "crossclimb") {
+              const topWord = encodeURIComponent(response.data.topWord || "")
+              const bottomWord = encodeURIComponent(
+                response.data.bottomWord || ""
+              )
+              const clues = encodeURIComponent(
+                (response.data.clues || []).join("\n")
+              )
+              const answers = encodeURIComponent(
+                (response.data.answers || []).join("\n")
+              )
+              url += `&game=Crossclimb&puzzleId=${puzzleId}&crossclimb_top=${topWord}&crossclimb_bottom=${bottomWord}&crossclimb_clues=${clues}&crossclimb_answers=${answers}`
+            } else {
               setDebugError(
-                "Could not communicate with the game tab. Please make sure the tab is active."
+                "Direct submission is only supported for Pinpoint and Crossclimb."
               )
               return
             }
-            if (response?.success) {
-              const puzzleId = String(response.puzzleNumber)
-              let url = `https://github.com/muhammedaksam/linkedin-games-solver/issues/new?template=add-puzzle.yml`
 
-              if (activeGame === "pinpoint") {
-                const category = encodeURIComponent(
-                  response.data.category || ""
-                )
-                const clues = encodeURIComponent(
-                  (response.data.clues || []).join("\n")
-                )
-                url += `&game=Pinpoint&puzzleId=${puzzleId}&pinpoint_category=${category}&pinpoint_clues=${clues}`
-              } else if (activeGame === "crossclimb") {
-                const topWord = encodeURIComponent(response.data.topWord || "")
-                const bottomWord = encodeURIComponent(
-                  response.data.bottomWord || ""
-                )
-                const clues = encodeURIComponent(
-                  (response.data.clues || []).join("\n")
-                )
-                const answers = encodeURIComponent(
-                  (response.data.answers || []).join("\n")
-                )
-                url += `&game=Crossclimb&puzzleId=${puzzleId}&crossclimb_top=${topWord}&crossclimb_bottom=${bottomWord}&crossclimb_clues=${clues}&crossclimb_answers=${answers}`
-              } else {
-                setDebugError(
-                  "Direct submission is only supported for Pinpoint and Crossclimb."
-                )
-                return
-              }
-
-              window.open(url, "_blank")
-            } else {
-              setDebugError(response?.error || "Failed to extract puzzle data.")
-            }
+            window.open(url, "_blank")
+          } else {
+            setDebugError(response?.error || "Failed to extract puzzle data.")
           }
-        )
+        } catch {
+          setDebugError(
+            "Could not communicate with the game tab. Please make sure the tab is active."
+          )
+        }
       } else {
         setDebugError("Please navigate to an active LinkedIn game tab first.")
       }
@@ -745,11 +732,16 @@ export function SolverShell({
         currentWindow: true
       })
       if (tab?.id && tab.url?.includes("linkedin.com/games/")) {
-        chrome.tabs.sendMessage(tab.id, { action: "clearDebugLogs" }, (res) => {
-          if (!chrome.runtime.lastError && res?.success) {
+        try {
+          const res = await chrome.tabs.sendMessage(tab.id, {
+            action: "clearDebugLogs"
+          })
+          if (res?.success) {
             setDebugLogs([])
           }
-        })
+        } catch {
+          setDebugLogs([])
+        }
       } else {
         setDebugLogs([])
       }
@@ -1746,7 +1738,7 @@ export function SolverShell({
                     const isWarn = log.type === "warn"
                     return (
                       <div
-                        key={idx}
+                        key={`${log.type}-${log.timestamp}-${idx}`}
                         className={cn(
                           "flex items-start gap-1 pb-1 border-b border-white/5 break-all",
                           isError && "text-red-400 bg-red-950/20 px-1 rounded",

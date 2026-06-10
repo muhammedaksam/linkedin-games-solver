@@ -96,14 +96,20 @@ export function useStorage<T = unknown>(
   useEffect(() => {
     // Initial fetch
     let active = true
-    instance.get<T>(key).then((val) => {
-      if (!active) return
-      if (val !== null) {
-        setState(val)
-      } else if (defaultValue !== undefined) {
-        setState(defaultValue)
+    const init = async () => {
+      try {
+        const val = await instance.get<T>(key)
+        if (!active) return
+        if (val !== null) {
+          setState(val)
+        } else if (defaultValue !== undefined) {
+          setState(defaultValue)
+        }
+      } catch (err) {
+        console.error("Storage fetch error:", err)
       }
-    })
+    }
+    init()
 
     // Listen to changes in chrome.storage
     const handleStorageChange = (

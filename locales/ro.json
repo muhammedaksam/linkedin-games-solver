@@ -199,5 +199,10 @@
   "contextMenuViewResults": "📊 Vezi rezultatele",
   "labelTelemetryTitle": "TELEMETRIE ȘI CONFIDENȚIALITATE",
   "telemetryToggleLabel": "Trimite Telemetrie Anonimă",
-  "telemetryToggleDesc": "Ajută la îmbunătățirea rezolvatorului prin partajarea de metrici anonime de performanță și utilizare."
+  "telemetryToggleDesc": "Ajută la îmbunătățirea rezolvatorului prin partajarea de metrici anonime de performanță și utilizare.",
+  "omniboxSuggestionTango": "🔄 Open Tango Solver",
+  "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
+  "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
+  "omniboxSuggestionZip": "⚡ Open Zip Solver",
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
 }

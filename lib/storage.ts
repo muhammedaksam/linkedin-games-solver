@@ -197,14 +197,18 @@ export const localStorage = new WxtStorageWrapper("local")
 export const syncStorage = new WxtStorageWrapper("sync")
 
 export const secureStorage = new WxtSecureStorageWrapper()
-secureStorage
-  .setPassword("linkedin-games-solver-secure-storage-password-v1-key")
-  .catch((err) => {
+;(async () => {
+  try {
+    await secureStorage.setPassword(
+      "linkedin-games-solver-secure-storage-password-v1-key"
+    )
+  } catch (err) {
     console.error(
       "[Storage] Failed to initialize secure key storage password:",
       err
     )
-  })
+  }
+})()
 
 export function useStorage<T>(
   keyObj: {
@@ -219,11 +223,17 @@ export function useStorage<T>(
 
   useEffect(() => {
     // Load initial value
-    keyObj.instance.get<T>(keyObj.key).then((val) => {
-      if (val !== null && val !== undefined) {
-        setValue(val)
+    const init = async () => {
+      try {
+        const val = await keyObj.instance.get<T>(keyObj.key)
+        if (val !== null && val !== undefined) {
+          setValue(val)
+        }
+      } catch (err) {
+        console.error("Storage fetch error:", err)
       }
-    })
+    }
+    init()
 
     const unwatch = storage.watch<unknown>(fullKey as StorageKey, async () => {
       const val = await keyObj.instance.get<T>(keyObj.key)
