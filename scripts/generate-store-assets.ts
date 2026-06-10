@@ -102,7 +102,10 @@ function renderPaddedSvg(
   artworkSize: number
 ): void {
   ensureDir(tmpDir)
-  const tempPng = path.join(tmpDir, `temp-${path.basename(pngPath)}-${artworkSize}.png`)
+  const tempPng = path.join(
+    tmpDir,
+    `temp-${path.basename(pngPath)}-${artworkSize}.png`
+  )
   renderSvg(svgPath, tempPng, artworkSize, artworkSize)
 
   execFileSync(
