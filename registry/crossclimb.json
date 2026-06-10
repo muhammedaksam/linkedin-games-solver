@@ -1738,5 +1738,17 @@
     "answers": ["DEAD", "DEAR", "NEAR", "NEAT", "NEST"],
     "topWord": "HEAD",
     "bottomWord": "REST"
+  },
+  "771": {
+    "clues": [
+      "What a boxer may do to practice",
+      "Length, as of a bridge or time",
+      "Turn around and around",
+      "Largest organ of the human body",
+      "Pass over, like a step in a list"
+    ],
+    "answers": ["SPAR", "SPAN", "SPIN", "SKIN", "SKIP"],
+    "topWord": "STAR",
+    "bottomWord": "SHIP"
   }
 }
