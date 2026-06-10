@@ -118,6 +118,18 @@ jobs:
               } catch (e) {
                 console.log(`Failed to add a comment to issue #${issueNumber}: ${e.message}`);
               }
+
+              try {
+                await github.rest.issues.lock({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  lock_reason: 'resolved'
+                });
+                console.log(`Successfully locked issue #${issueNumber} for conversation.`);
+              } catch (e) {
+                console.log(`Failed to lock issue #${issueNumber}: ${e.message}`);
+              }
             } else {
               console.log("No linked issue found in the Pull Request body.");
             }
