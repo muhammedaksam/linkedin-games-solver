@@ -14,7 +14,7 @@ if (
   try {
     chrome.devtools.panels.create(
       `${i18n.t("extensionName")} 🧩`,
-      "icon.png",
+      "assets/icon-32.png",
       "devtools-panel.html",
       (_panel) => {
         console.log("DevTools panel successfully registered!")

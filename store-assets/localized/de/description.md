@@ -1,21 +1,20 @@
-# LinkedIn-Spiele-Löser
+# LinkedIn Games Solver
 
-Ein Helfer für LinkedIn-Spiele. Tägliche Rätsel (Queens, Sudoku, Pinpoint, Crossclimb) automatisch lösen mit Serien und Statistiken.
+Ein Helfer für LinkedIn Games. Löst täglich Rätsel (Queens, Sudoku, Pinpoint, Crossclimb) automatisch mit Streaks und Analysen.
 
 ## Warum installieren?
-
-- Verlieren Sie nie Ihre Serie: Halten Sie Ihre tägliche Serie aufrecht, selbst an den stressigsten Tagen oder wenn die Rätsel besonders knifflig sind.
-- Meistern Sie Quiz- und Worträtsel: Spiele wie Crossclimb und Pinpoint erfordern tiefes Allgemeinwissen und schnelle Assoziationen. Die integrierte KI löst diese mit herausragender Präzision.
-- Hybride Antwortdatenbank: Lösen Sie Crossclimb und Pinpoint sofort und ohne API-Kosten über unsere Remote-Datenbank – ganz ohne persönliche KI-Schlüssel.
-- Volle Unterstützung für Bonusspiele: Lösen Sie sowohl Standardrätsel als auch spezielle Bonus-Herausforderungen (Queens, Sudoku usw.) nahtlos mit separater Serienverfolgung und einem dedizierten "Bonus"-Abzeichen auf dem Dashboard.
-- Nahtlose native Integration: Das Lösungs-Overlay erscheint direkt auf Ihrem aktiven Spiele-Tab. Ein Klick genügt, und das gelöste Spielfeld wird auf dem Bildschirm angezeigt.
-- Pädagogischer Hinweis-Modus (Hint Mode): Lernen Sie, Rätsel auf natürliche Weise zu lösen. Erhalten Sie Vorschläge für einzelne logische Züge, statt das Spielfeld automatisch komplett auszufüllen, und erkennen Sie Fehler sofort durch rote Markierungen auf dem Bildschirm.
-- Getarnte Lösungsgeschwindigkeit (Stealth Mode): Ahmen Sie menschliches Klickverhalten mit zufälligen, natürlichen Verzögerungen (1–3 Sekunden) nach, um Ihre tägliche Löseserie vor Bot-Erkennungs-Systemen zu schützen.
-- Kontextbezogene Tastenkombinationen: Nutzen Sie praktische Rechtsklick-Aktionen wie "Als nicht gespielt markieren", "Lösen" oder "Hinweis holen" direkt auf den Spielkarten.
-- Lokale integrierte Chrome-KI: Verbinden Sie das integrierte Gemini Nano-Modell von Google Chrome für eine kostenlose, vollständig lokale und private Lösungserfahrung.
-- Modernes Statistik-Dashboard: Verfolgen Sie Ihren Löseverlauf, Ihre Durchschnittszeiten, Ihre aktuellen Serien und Ihre persönlichen Bestleistungen auf einem modernen Aktivitätskalender.
-- Privat und Sicher: Läuft vollständig lokal in Ihrem Browser. Ihre API-Schlüssel werden lokal mit AES-256 verschlüsselt und niemals übertragen. Die anonyme Telemetrie kann jederzeit ein- oder ausgeschaltet werden.
+* Nie wieder einen Streak verlieren: Halte deinen täglichen Schwung aufrecht und sichere deinen Streak selbst an den schwierigsten Tagen oder wenn dir die Zeit knapp ist.
+* Meistere Trivia- und Worträtsel: Spiele wie Crossclimb und Pinpoint erfordern tiefes Trivia-Wissen und schnelle Assoziation. Die integrierte KI löst sie mit hoher Genauigkeit.
+* Hybrid-Antworten-Register: Löse Crossclimb und Pinpoint sofort ohne API-Kosten mit unserer entfernten Antworten-Datenbank, keine persönlichen KI-Schlüssel erforderlich.
+* Volle Unterstützung für Bonusspiele: Löse nahtlos sowohl standardmäßige tägliche Rätsel als auch lokalisierte Bonuslevel (Queens, Sudoku usw.) mit unabhängiger Streak-Verfolgung und einem speziellen Dashboard "Bonus"-Abzeichen.
+* Vollständig native Integration: Das Solver-Overlay erscheint direkt auf deinem aktiven Spiel-Tab. Ein Klick, und du siehst das gelöste Brett direkt auf dem Bildschirm.
+* Bildungs-Hinweis-Modus: Lerne, wie man Rätsel auf natürliche Weise löst. Anstatt automatisch zu vervollständigen, erhalte einen einzigen logischen Zug vorgeschlagen und erkenne Fehler sofort mit roten Hervorhebungen auf dem Bildschirm.
+* Stealth Solve Speed (Stealth-Modus): Emuliere menschliches Klickverhalten mit randomisierten, natürlichen Verzögerungen (1–3 Sekunden), um deinen täglichen Lösungsstreak vor Bot-Erkennungsflags zu schützen.
+* Kontextbewusste Shortcuts: Genieße Rechtsklick-Kontextmenüoptionen wie "Als nicht gespielt markieren", "Lösen" oder "Hinweis erhalten" direkt von den Spielkarten.
+* Lokale Chrome-eigene KI: Verbinde das integrierte Gemini Nano-Modell von Google Chrome für ein kostenfreies, vollständig lokales und privates Rätsellösungserlebnis.
+* Schönes Analyse-Dashboard: Verfolge deine Lösungshistorie, durchschnittliche Zeiten, Streaks und persönliche Bestleistungen mit unserem modernen Premium-Kalender-Dashboard.
+* Privat und sicher: Läuft vollständig in deinem Browser. Deine API-Schlüssel sind lokal mit AES-256 verschlüsselt und werden niemals mit einem Server geteilt. Melde dich jederzeit für anonyme Telemetrie an oder ab.
 
 ---
 
-_Haftungsausschluss: Dies ist ein unabhängiges, quelloffenes Bildungsprojekt. Es ist nicht mit der LinkedIn Corporation verbunden, wird von ihr gesponsert oder unterstützt. „LinkedIn“ ist eine eingetragene Marke der LinkedIn Corporation._
+*Haftungsausschluss: Dies ist ein unabhängiges, quelloffenes Bildungsprojekt. Es ist nicht mit der LinkedIn Corporation verbunden, wird von ihr gesponsert oder unterstützt. „LinkedIn“ ist eine eingetragene Marke der LinkedIn Corporation.*

@@ -25,17 +25,17 @@ export default defineConfig({
     default_locale: "en",
     devtools_page: "devtools.html",
     icons: {
-      "16": "icon.png",
-      "32": "icon.png",
-      "48": "icon.png",
-      "128": "icon.png"
+      "16": "assets/icon-16.png",
+      "32": "assets/icon-32.png",
+      "48": "assets/icon-48.png",
+      "128": "assets/icon-128.png"
     },
     action: {
       default_icon: {
-        "16": "icon.png",
-        "32": "icon.png",
-        "48": "icon.png",
-        "128": "icon.png"
+        "16": "assets/icon-16.png",
+        "32": "assets/icon-32.png",
+        "48": "assets/icon-48.png",
+        "128": "assets/icon-128.png"
       }
     },
     permissions: [
