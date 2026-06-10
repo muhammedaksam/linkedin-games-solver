@@ -81,6 +81,15 @@ function getGameFromUrl(
   }
 }
 
+async function safeUpdateContextMenus(updates: Record<string, boolean>) {
+  if (typeof chrome === "undefined" || !chrome.contextMenus) return
+  await Promise.allSettled(
+    Object.entries(updates).map(([id, visible]) =>
+      chrome.contextMenus.update(id, { visible })
+    )
+  )
+}
+
 // Dynamically updates context menu visibility based on tab URL and solving status
 async function updateContextMenusForTab(tabId: number, urlStr?: string) {
   if (typeof chrome === "undefined" || !chrome.contextMenus) return
@@ -92,17 +101,21 @@ async function updateContextMenusForTab(tabId: number, urlStr?: string) {
     }
 
     if (!urlStr) {
-      chrome.contextMenus.update("solve-active-game-menu", { visible: false })
-      chrome.contextMenus.update("get-single-hint-menu", { visible: false })
-      chrome.contextMenus.update("view-results-menu", { visible: false })
+      await safeUpdateContextMenus({
+        "solve-active-game-menu": false,
+        "get-single-hint-menu": false,
+        "view-results-menu": false
+      })
       return
     }
 
     const gameInfo = getGameFromUrl(urlStr)
     if (!gameInfo) {
-      chrome.contextMenus.update("solve-active-game-menu", { visible: false })
-      chrome.contextMenus.update("get-single-hint-menu", { visible: false })
-      chrome.contextMenus.update("view-results-menu", { visible: false })
+      await safeUpdateContextMenus({
+        "solve-active-game-menu": false,
+        "get-single-hint-menu": false,
+        "view-results-menu": false
+      })
       return
     }
 
@@ -122,14 +135,18 @@ async function updateContextMenusForTab(tabId: number, urlStr?: string) {
 
     if (isSolved) {
       // Already solved today: hide Solve & Hint, show View Results
-      chrome.contextMenus.update("solve-active-game-menu", { visible: false })
-      chrome.contextMenus.update("get-single-hint-menu", { visible: false })
-      chrome.contextMenus.update("view-results-menu", { visible: true })
+      await safeUpdateContextMenus({
+        "solve-active-game-menu": false,
+        "get-single-hint-menu": false,
+        "view-results-menu": true
+      })
     } else {
       // Not yet solved today: show Solve & Hint, hide View Results
-      chrome.contextMenus.update("solve-active-game-menu", { visible: true })
-      chrome.contextMenus.update("get-single-hint-menu", { visible: true })
-      chrome.contextMenus.update("view-results-menu", { visible: false })
+      await safeUpdateContextMenus({
+        "solve-active-game-menu": true,
+        "get-single-hint-menu": true,
+        "view-results-menu": false
+      })
     }
   } catch (err) {
     console.warn("[ContextMenus] Update failed:", err)

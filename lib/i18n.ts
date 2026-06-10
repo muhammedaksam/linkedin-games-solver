@@ -239,14 +239,19 @@ export function getMessage(
   key: string,
   substitutions?: string | string[]
 ): string {
-  const subs = Array.isArray(substitutions)
-    ? substitutions
-    : substitutions
-      ? [substitutions]
-      : []
   try {
-    return (i18n.t as (key: string, ...args: string[]) => string)(key, ...subs)
-  } catch {
+    if (substitutions != null) {
+      const subs = Array.isArray(substitutions)
+        ? substitutions
+        : [substitutions]
+      return (i18n.t as unknown as (k: string, s: string[]) => string)(
+        key,
+        subs
+      )
+    }
+    return (i18n.t as unknown as (k: string) => string)(key)
+  } catch (err) {
+    console.warn(`[i18n] Failed to get message for "${key}":`, err)
     return key
   }
 }
