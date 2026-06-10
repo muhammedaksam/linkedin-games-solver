@@ -1,5 +1,41 @@
 # Changelog
 
+## v0.3.0
+
+[compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.2.0...v0.3.0)
+
+### 🚀 Enhancements
+
+- Implement automated asset uploader for Firefox Add-ons (AMO) ([09f209a](https://github.com/muhammedaksam/linkedin-games-solver/commit/09f209a))
+- Add omnibox search suggestions and implement anonymous telemetry reporting ([10265e9](https://github.com/muhammedaksam/linkedin-games-solver/commit/10265e9))
+- Automatically lock issues upon pull request merge ([4f64768](https://github.com/muhammedaksam/linkedin-games-solver/commit/4f64768))
+- Implement async locale initialization with chrome.storage.sync support and dynamic message loading ([9623245](https://github.com/muhammedaksam/linkedin-games-solver/commit/9623245))
+
+### 💅 Refactors
+
+- Migrate analytics implementation to @wxt-dev/analytics and remove custom tracking logic ([0998616](https://github.com/muhammedaksam/linkedin-games-solver/commit/0998616))
+- Improve i18n handling, add Plasmo shims to test config, and encapsulate context menu updates ([514d458](https://github.com/muhammedaksam/linkedin-games-solver/commit/514d458))
+
+### 🏡 Chore
+
+- Update store assets and localize metadata for multiple languages ([b635c26](https://github.com/muhammedaksam/linkedin-games-solver/commit/b635c26))
+- Update solver registry ([09df002](https://github.com/muhammedaksam/linkedin-games-solver/commit/09df002))
+- Update solver registry ([ee6ed2e](https://github.com/muhammedaksam/linkedin-games-solver/commit/ee6ed2e))
+- Standardize smart quote usage across registry clue definitions ([c6224f2](https://github.com/muhammedaksam/linkedin-games-solver/commit/c6224f2))
+- Update solver registry ([9063c64](https://github.com/muhammedaksam/linkedin-games-solver/commit/9063c64))
+- Update solver registry ([8d18937](https://github.com/muhammedaksam/linkedin-games-solver/commit/8d18937))
+- Remove unused plasmo dependencies and update project packages ([bf44eb3](https://github.com/muhammedaksam/linkedin-games-solver/commit/bf44eb3))
+- Update project dependencies in package.json and pnpm-lock.yaml ([56e7936](https://github.com/muhammedaksam/linkedin-games-solver/commit/56e7936))
+- Add .prettierignore file to exclude build artifacts and static assets ([828aab3](https://github.com/muhammedaksam/linkedin-games-solver/commit/828aab3))
+- Update solver registry ([c67902d](https://github.com/muhammedaksam/linkedin-games-solver/commit/c67902d))
+- Update solver registry ([123ad8d](https://github.com/muhammedaksam/linkedin-games-solver/commit/123ad8d))
+- Update localized store assets, add new icons, and refactor devtools launcher configuration ([d0033ac](https://github.com/muhammedaksam/linkedin-games-solver/commit/d0033ac))
+- Update documentation formatting across all localized descriptions and refresh generation script ([62c21e4](https://github.com/muhammedaksam/linkedin-games-solver/commit/62c21e4))
+
+### ❤️ Contributors
+
+- Muhammed Mustafa AKSAM ([@muhammedaksam](https://github.com/muhammedaksam))
+
 ## v0.2.0
 
 [compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.1.0...v0.2.0)
