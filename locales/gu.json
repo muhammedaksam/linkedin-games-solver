@@ -30,6 +30,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "બોનસ",
   "desc_patches": "તેને એકઠું કરો",
   "desc_zip": "માર્ગ પૂર્ણ કરો",
@@ -38,6 +39,7 @@
   "desc_queens": "દરેક પ્રદેશને તાજ આપો",
   "desc_crossclimb": "ટ્રિવિયા લેડર ખોલો",
   "desc_pinpoint": "શ્રેણી અનુમાન કરો",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 ઉકેલો",
   "titleCompleted": "આજે પૂર્ણ થયું! નેવિગેટ કરવા માટે ક્લિક કરો $1",
   "titleOpen": "ઓપન $1 ને ઉકેલવા માટે",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

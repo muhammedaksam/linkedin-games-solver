@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonus",
   "desc_patches": "Satukan ia bersama",
   "desc_zip": "Lengkapkan laluan",
@@ -36,6 +37,7 @@
   "desc_queens": "Kawal setiap wilayah",
   "desc_crossclimb": "Buka tangga trivia",
   "desc_pinpoint": "Tebak kategori",
+  "desc_wend": "Weave through words",
   "titleSolve": "Selesaikan $1",
   "titleCompleted": "Selesai hari ini! Klik untuk pergi ke $1",
   "titleOpen": "Buka $1 untuk menyelesaikan",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonuss",
   "desc_patches": "Sastādīt kopā",
   "desc_zip": "Pabeidziet ceļu",
@@ -36,6 +37,7 @@
   "desc_queens": "Kronējiet katru reģionu",
   "desc_crossclimb": "Atbloķēt viktorīnas kāpnes",
   "desc_pinpoint": "Uzmini kategoriju",
+  "desc_wend": "Weave through words",
   "titleSolve": "Atrisināt $1",
   "titleCompleted": "Pabeigts šodien! Noklikšķiniet, lai pārietu uz $1",
   "titleOpen": "Atveriet $1, lai atrisinātu",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

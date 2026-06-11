@@ -98,6 +98,7 @@
   "desc_queens": "Coroe cada região",
   "desc_crossclimb": "Descubra a série de palavras",
   "desc_pinpoint": "Adivinhe categoria",
+  "desc_wend": "Weave through words",
   "scoreClue": "1 pista",
   "scoreClues": "$1 pistas",
   "markAsNotPlayed": "Marcar como não jogado",
@@ -199,6 +200,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "desc_patches": "Junte as peças",
   "desc_zip": "Complete o caminho",
   "navStats": "Estatísticas",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

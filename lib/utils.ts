@@ -41,7 +41,8 @@ export function getPuzzleNumber(gameId: string): number {
     sudoku: 280,
     tango: 588,
     crossclimb: 748,
-    pinpoint: 748
+    pinpoint: 748,
+    wend: 3
   }
 
   const base = baseNumbers[gameId] || 748

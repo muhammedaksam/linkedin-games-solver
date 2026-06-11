@@ -30,6 +30,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "ಬೋನಸ್",
   "desc_patches": "ಒಟ್ಟುಗೂಡಿಸಿ",
   "desc_zip": "ಮಾರ್ಗವನ್ನು ಸಂಪೂರ್ಣಗೊಳಿಸಿ",
@@ -38,6 +39,7 @@
   "desc_queens": "ಪ್ರತಿ ಪ್ರದೇಶವನ್ನು ಕಿರೀಟ ಹಾಕಿ",
   "desc_crossclimb": "ಟ್ರಿವಿಯಾ ಹೀಗೆ ತೆರೆಯಿರಿ",
   "desc_pinpoint": "ವರ್ಗವನ್ನು ಊಹಿಸಿ",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 ಅನ್ನು ಪರಿಹರಿಸಿ",
   "titleCompleted": "ಇಂದು ಸಂಪೂರ್ಣವಾಗಿದೆ! $1 ಗೆ ನಾವಿಗೇಟ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ",
   "titleOpen": "$1 ಅನ್ನು ಪರಿಹರಿಸಲು ತೆರೆಯಿರಿ",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

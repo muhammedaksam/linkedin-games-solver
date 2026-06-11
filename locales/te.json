@@ -29,6 +29,7 @@
   "desc_queens": "ప్రతి ప్రాంతానికి కిరీటాన్ని పెట్టండి",
   "desc_crossclimb": "ట్రివియా లాడ్డర్‌ను అన్లాక్ చేయండి",
   "desc_pinpoint": "వర్గాన్ని ఊహించండి",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 ను పరిష్కరించండి",
   "titleCompleted": "ఈ రోజు పూర్తయింది! $1 కు వెళ్లడానికి క్లిక్ చేయండి.",
   "titleOpen": "$1 ను పరిష్కరించడానికి తెరవండి",
@@ -204,5 +205,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

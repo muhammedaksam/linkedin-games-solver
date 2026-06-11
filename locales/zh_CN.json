@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "奖励",
   "titleSolve": "求解 $1",
   "titleCompleted": "今日已完成！点击跳转至 $1",
@@ -107,6 +108,7 @@
   "desc_queens": "为每个地区加冕",
   "desc_crossclimb": "解锁小知识阶梯",
   "desc_pinpoint": "猜测类别",
+  "desc_wend": "Weave through words",
   "scoreClue": "1 条线索",
   "scoreClues": "$1 条线索",
   "scoreSeconds": "$1秒",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

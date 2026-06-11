@@ -21,6 +21,7 @@
   "desc_queens": "Corona cada regió",
   "desc_crossclimb": "Desbloqueja una escala de trivialitats",
   "desc_pinpoint": "Endevina la categoria",
+  "desc_wend": "Weave through words",
   "titleSolve": "Resol $1",
   "titleCompleted": "Completat avui! Fes clic per navegar a $1",
   "titleOpen": "Obre $1 per resoldre",
@@ -204,6 +205,7 @@
   "zip": "Zip",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "settingModel": "Model",
   "scoreSeconds": "$1s",
   "scoreMinutesSeconds": "$1m $2s",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

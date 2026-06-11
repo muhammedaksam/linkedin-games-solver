@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "बोनस",
   "desc_patches": "एकत्र करा",
   "desc_zip": "मार्ग पूर्ण करा",
@@ -36,6 +37,7 @@
   "desc_queens": "प्रत्येक प्रदेशाला मुकुट द्या",
   "desc_crossclimb": "ट्रिविया लॅडर अनलॉक करा",
   "desc_pinpoint": "श्रेणी ओळखा",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 सोडवा",
   "titleCompleted": "आज पूर्ण झाले! $1 कडे जाण्यासाठी क्लिक करा",
   "titleOpen": "$1 उघडा सोडवण्यासाठी",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

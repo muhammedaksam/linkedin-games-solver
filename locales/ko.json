@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "보너스",
   "desc_patches": "패치를 연결하기",
   "desc_zip": "경로 완성하기",
@@ -26,6 +27,7 @@
   "desc_queens": "각 영역 왕관 씌우기",
   "desc_crossclimb": "학습 사다리 열기",
   "desc_pinpoint": "카테고리 맞추기",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 풀기",
   "titleCompleted": "오늘 완료! $1로 이동을 클릭하세요",
   "titleOpen": "풀기 위해 $1 열기",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

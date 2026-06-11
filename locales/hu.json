@@ -30,6 +30,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bónusz",
   "desc_patches": "Rakd össze!",
   "desc_zip": "Teljesítsd a pályát",
@@ -38,6 +39,7 @@
   "desc_queens": "Koronázd meg minden régiót",
   "desc_crossclimb": "Nyisd meg a trivia létrát",
   "desc_pinpoint": "Találd ki a kategóriát",
+  "desc_wend": "Weave through words",
   "titleSolve": "Oldd meg $1",
   "titleCompleted": "Ma befejezve! Kattintson a navigáláshoz a $1-hez",
   "titleOpen": "Nyisd meg a $1-et a megoldáshoz",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

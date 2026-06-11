@@ -30,6 +30,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonus",
   "desc_patches": "Pagsama-samahin ito",
   "desc_zip": "Kumpletuhin ang landas",
@@ -38,6 +39,7 @@
   "desc_queens": "Koronahan ang bawat rehiyon",
   "desc_crossclimb": "Buksan ang isang hagdang-trivia",
   "desc_pinpoint": "Hulaan ang kategorya",
+  "desc_wend": "Weave through words",
   "titleSolve": "Lutasin ang $1",
   "titleCompleted": "Natapos na ngayon! I-click upang mag-navigate sa $1",
   "titleOpen": "Buksan ang $1 upang malutas",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

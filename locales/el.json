@@ -22,6 +22,7 @@
   "desc_queens": "Στέψε κάθε περιοχή",
   "desc_crossclimb": "Ξεκλείδωσε μια κλίμακα trivia",
   "desc_pinpoint": "Μάντεψε την κατηγορία",
+  "desc_wend": "Weave through words",
   "titleSolve": "Επίλυση $1",
   "titleCompleted": "Ολοκληρώθηκε σήμερα! Κάνε κλικ για μετάβαση σε $1",
   "titleOpen": "Άνοιξε $1 για επίλυση",
@@ -206,10 +207,12 @@
   "tango": "Tango",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "liveMatrixGridInspector": "Ζωντανός Επιθεωρητής Πλέγματος Matrix",
   "omniboxSuggestionTango": "🔄 Open Tango Solver",
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

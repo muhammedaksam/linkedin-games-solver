@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Thưởng",
   "desc_patches": "Ghép lại với nhau",
   "desc_zip": "Hoàn thành con đường",
@@ -36,6 +37,7 @@
   "desc_queens": "Vương miện mỗi khu vực",
   "desc_crossclimb": "Mở khóa thang trivia",
   "desc_pinpoint": "Đoán danh mục",
+  "desc_wend": "Weave through words",
   "titleSolve": "Giải $1",
   "titleCompleted": "Hoàn thành hôm nay! Nhấp để điều hướng đến $1",
   "titleOpen": "Mở $1 để giải quyết",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

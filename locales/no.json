@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonus",
   "desc_patches": "Sett det sammen",
   "desc_zip": "Fullfør stien",
@@ -36,6 +37,7 @@
   "desc_queens": "Kron hver region",
   "desc_crossclimb": "Lås opp en trivia-stige",
   "desc_pinpoint": "Gjet kategorien",
+  "desc_wend": "Weave through words",
   "titleSolve": "Løs $1",
   "titleCompleted": "Fullført i dag! Klikk for å navigere til $1",
   "titleOpen": "Åpne $1 for å løse",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

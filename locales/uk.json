@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Бонус",
   "desc_patches": "Зберіть це разом",
   "desc_zip": "Завершіть шлях",
@@ -36,6 +37,7 @@
   "desc_queens": "Коронуйте кожен регіон",
   "desc_crossclimb": "Відкрийте вікторину сходів",
   "desc_pinpoint": "Вгадай категорію",
+  "desc_wend": "Weave through words",
   "titleSolve": "Розв'яжіть $1",
   "titleCompleted": "Завершено сьогодні! Натисніть, щоб перейти до $1",
   "titleOpen": "Відкрийте $1, щоб вирішити",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

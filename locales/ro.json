@@ -29,6 +29,7 @@
   "desc_queens": "Coroanează fiecare regiune",
   "desc_crossclimb": "Dezvăluie o scară de trivia",
   "desc_pinpoint": "Ghicește categoria",
+  "desc_wend": "Weave through words",
   "titleSolve": "Rezolvă $1",
   "titleCompleted": "Finalizat astăzi! Faceți clic pentru a naviga la $1",
   "titleOpen": "Deschide $1 pentru a rezolva",
@@ -204,5 +205,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

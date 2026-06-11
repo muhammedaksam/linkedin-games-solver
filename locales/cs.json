@@ -21,6 +21,7 @@
   "desc_queens": "V korunujte každou oblast",
   "desc_crossclimb": "Odemkněte vědomostní žebřík",
   "desc_pinpoint": "Uhodněte kategorii",
+  "desc_wend": "Weave through words",
   "titleSolve": "Vyřešit $1",
   "titleCompleted": "Dnes dokončeno! Klikněte pro přechod na $1",
   "titleOpen": "Otevřít $1 pro řešení",
@@ -200,6 +201,7 @@
   "tango": "Tango",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonus",
   "settingModel": "Model",
   "settingEndpointLabel": "URL koncového bodu",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

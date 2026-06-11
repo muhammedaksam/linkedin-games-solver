@@ -16,6 +16,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "desc_patches": "Anslut lappar tillsammans",
   "desc_zip": "Slutför vägen",
   "desc_sudoku": "Klassiskt spel, miniversion",
@@ -23,6 +24,7 @@
   "desc_queens": "Krona varje område",
   "desc_crossclimb": "Öppna studieladder",
   "desc_pinpoint": "Gissa kategori",
+  "desc_wend": "Weave through words",
   "titleSolve": "Lösa $1",
   "titleCompleted": "Slutförd idag! Klicka för att gå till $1",
   "titleOpen": "Öppna $1 för att lösa",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

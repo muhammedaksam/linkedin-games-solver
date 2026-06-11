@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "ボーナス",
   "desc_patches": "パッチをつなぎ合わせる",
   "desc_zip": "パスを完成させる",
@@ -26,6 +27,7 @@
   "desc_queens": "各領域をクラウンする",
   "desc_crossclimb": "スタディクライマーを開く",
   "desc_pinpoint": "カテゴリーを推測する",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1を解く",
   "titleCompleted": "今日完了！$1に行くをクリック",
   "titleOpen": "解くために$1を開く",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

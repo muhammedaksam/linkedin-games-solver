@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Бонус",
   "desc_patches": "Соединить патчи вместе",
   "desc_zip": "Завершить путь",
@@ -26,6 +27,7 @@
   "desc_queens": "Увенчать каждую область",
   "desc_crossclimb": "Открыть лестницу исследования",
   "desc_pinpoint": "Угадать категорию",
+  "desc_wend": "Weave through words",
   "titleSolve": "Решить $1",
   "titleCompleted": "Завершено сегодня! Нажмите, чтобы перейти к $1",
   "titleOpen": "Откройте $1 для решения",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

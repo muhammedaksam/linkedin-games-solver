@@ -29,6 +29,7 @@
   "desc_queens": "มงกุฎแต่ละภูมิภาค",
   "desc_crossclimb": "ปลดล็อกบันไดความรู้ทั่วไป",
   "desc_pinpoint": "เดาให้ถูกหมวดหมู่",
+  "desc_wend": "Weave through words",
   "titleSolve": "แก้ $1",
   "titleCompleted": "เสร็จสิ้นวันนี้! คลิกเพื่อไปยัง $1",
   "titleOpen": "เปิด $1 เพื่อแก้ไข",
@@ -204,5 +205,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

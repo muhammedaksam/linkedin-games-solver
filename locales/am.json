@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "ቦኑስ",
   "desc_patches": "ክፍሎቹን ሰርጥ",
   "desc_zip": "መሄድ አጠናቀር",
@@ -26,6 +27,7 @@
   "desc_queens": "እያንዳንዱን ክልል ንግሥታት ስር አድርግ",
   "desc_crossclimb": "የትዕዛዝ መደርደር ክፈት",
   "desc_pinpoint": "ምድብን እገምታለሁ",
+  "desc_wend": "Weave through words",
   "titleSolve": "መፍትሄ $1",
   "titleCompleted": "ዛሬ ተጠናቀቀ! ለማሳሰብ ወደ $1 ይጫኑ",
   "titleOpen": "ለመፍታት $1 ክፈት",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

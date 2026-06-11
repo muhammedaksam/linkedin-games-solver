@@ -16,6 +16,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "titleSolve": "Résoudre $1",
   "titleCompleted": "Terminé aujourd'hui ! Cliquez pour accéder à $1",
   "titleOpen": "Ouvrir $1 pour résoudre",
@@ -104,6 +105,7 @@
   "desc_queens": "Couronner chaque région",
   "desc_crossclimb": "Déverrouiller un quiz",
   "desc_pinpoint": "Deviner la catégorie",
+  "desc_wend": "Weave through words",
   "scoreClue": "1 indice",
   "scoreClues": "$1 indices",
   "markAsNotPlayed": "Marquer comme non joué",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

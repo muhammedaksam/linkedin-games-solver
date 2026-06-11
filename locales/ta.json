@@ -29,6 +29,7 @@
   "desc_queens": "ஒவ்வொரு பிராந்தியத்திற்கும் முத்திரை வைக்கவும்",
   "desc_crossclimb": "ஒரு தகவல் படிக்கட்டையை திறக்கவும்",
   "desc_pinpoint": "வகையை கணிக்கவும்",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 ஐ தீர்க்கவும்",
   "titleCompleted": "இன்று முடிக்கப்பட்டது! $1 க்கு செல்ல கிளிக் செய்யவும்.",
   "titleOpen": "$1 ஐ திறந்து தீர்க்கவும்",
@@ -204,5 +205,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

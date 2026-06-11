@@ -22,6 +22,7 @@
   "desc_queens": "Krooni iga piirkond",
   "desc_crossclimb": "Lukusta trivia redel lahti",
   "desc_pinpoint": "Arva kategooria",
+  "desc_wend": "Weave through words",
   "titleSolve": "Lahenda $1",
   "titleCompleted": "Täna lõpetatud! Klõpsa, et navigeerida $1",
   "titleOpen": "Ava $1 lahendamiseks",
@@ -203,6 +204,7 @@
   "tango": "Tango",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "settingEndpointLabel": "Lõpp-punkti URL",
   "labelEndpointUrl": "LÕPP-PUNKTI URL",
   "scoreSeconds": "$1s",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

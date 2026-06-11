@@ -349,7 +349,7 @@ async function checkVisitedGameSolved() {
         hintButton.hasAttribute("disabled")
       ) {
         if (
-          ["tango", "queens", "sudoku", "patches", "zip"].includes(baseGameId)
+          ["tango", "queens", "sudoku", "patches", "zip", "wend"].includes(baseGameId)
         ) {
           // Both disabled at start of game due to empty history & cooldown.
           // Only treat as ended if page was loaded > 15s ago.

@@ -4,6 +4,7 @@ import pinpointIcon from "~assets/pinpoint.svg"
 import queensIcon from "~assets/queens.svg"
 import sudokuIcon from "~assets/sudoku.svg"
 import tangoIcon from "~assets/tango.svg"
+import wendIcon from "~assets/wend.svg"
 import zipIcon from "~assets/zip.svg"
 
 export interface GameMetadata {
@@ -183,6 +184,28 @@ export const GAMES_CONFIG: GameMetadata[] = [
       popupIconBg: "bg-blue-500/10 text-blue-500",
       popupTextAccent: "text-blue-600 dark:text-blue-400",
       popupIndicatorDot: "bg-emerald-500"
+    }
+  },
+  {
+    id: "wend",
+    title: "Wend",
+    description: "Weave through words",
+    icon: wendIcon,
+    path: "wend",
+    illustrationBg: "bg-[#fbf1cc] dark:bg-[#3c3015]",
+    illustrationColor: "text-[#eeb500] dark:text-[#ffd54f]",
+    color: {
+      gradient: "from-amber-500/10 to-yellow-500/10",
+      text: "text-amber-500",
+      border: "border-amber-500/20",
+      badge: "bg-amber-500/10 text-amber-500",
+      popupActive:
+        "border-amber-500 bg-amber-500/5 hover:bg-amber-500/10 text-amber-600 dark:text-amber-400 shadow-[0_2px_8px_rgba(245,158,11,0.08)]",
+      popupCompleted:
+        "border-amber-500/30 bg-amber-500/[0.02] hover:bg-amber-500/[0.05]",
+      popupIconBg: "bg-amber-500/10 text-amber-500",
+      popupTextAccent: "text-amber-600 dark:text-amber-400",
+      popupIndicatorDot: "bg-amber-500"
     }
   }
 ]

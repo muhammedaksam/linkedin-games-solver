@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "बोनस",
   "desc_patches": "पैच को एक साथ जोड़ें",
   "desc_zip": "पथ को पूरा करें",
@@ -26,6 +27,7 @@
   "desc_queens": "प्रत्येक क्षेत्र को ताज पहनाएं",
   "desc_crossclimb": "अध्ययन सीढ़ी खोलें",
   "desc_pinpoint": "श्रेणी का अनुमान लगाएं",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 हल करें",
   "titleCompleted": "आज पूरा! $1 पर जाने के लिए क्लिक करें",
   "titleOpen": "हल करने के लिए $1 खोलें",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

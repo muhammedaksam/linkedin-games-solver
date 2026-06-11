@@ -38,8 +38,7 @@ export class TangoSolver extends BaseSolver {
       console.log("[Tango] Attempting React Fiber state extraction...")
       const boardState: ReactTangoBoard = await fetchReactBoardState("tango")
       if (
-        boardState &&
-        boardState.cells &&
+        boardState?.cells &&
         boardState.cells.length > 0 &&
         boardState.constraints
       ) {
@@ -65,10 +64,11 @@ export class TangoSolver extends BaseSolver {
           `[Tango] React Extraction Successful! N=${N}, constraints=${edges.length}`
         )
       }
-    } catch (err) {
+    } catch (error) {
+      const errMsg = error instanceof Error ? error.message : String(error)
       console.warn(
         "[Tango] React Fiber state extraction failed, falling back to layout DOM parsing:",
-        err.message || err
+        errMsg
       )
     }
 

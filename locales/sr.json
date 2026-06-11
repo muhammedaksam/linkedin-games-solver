@@ -29,6 +29,7 @@
   "desc_queens": "Kruniš svaku regiju",
   "desc_crossclimb": "Otključajte trivia merdevine",
   "desc_pinpoint": "Pogodi kategoriju",
+  "desc_wend": "Weave through words",
   "titleSolve": "Reši $1",
   "titleCompleted": "Dovršeno danas! Kliknite da odete na $1",
   "titleOpen": "Otvorite $1 da biste rešili",
@@ -204,5 +205,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

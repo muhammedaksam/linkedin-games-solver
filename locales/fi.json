@@ -20,6 +20,7 @@
   "desc_queens": "Kruunaa jokainen alue",
   "desc_crossclimb": "Avaa tietokilta",
   "desc_pinpoint": "Arvaile kategoria",
+  "desc_wend": "Weave through words",
   "titleSolve": "Ratkaise $1",
   "titleCompleted": "Valmis tänään! Siirry kuin $1:een",
   "titleOpen": "Avaa $1 ratkaistavaksi",
@@ -199,6 +200,7 @@
   "zip": "Zip",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonus",
   "scoreSeconds": "$1s",
   "scoreMinutesSeconds": "$1m $2s",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

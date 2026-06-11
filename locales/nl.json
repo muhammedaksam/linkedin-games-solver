@@ -16,6 +16,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "desc_patches": "Plakken samenbrengen",
   "desc_zip": "Pad voltooien",
   "desc_sudoku": "Klassiek spel, mini versie",
@@ -23,6 +24,7 @@
   "desc_queens": "Elke regio kronen",
   "desc_crossclimb": "Studieladder openen",
   "desc_pinpoint": "Categorie raden",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 oplossen",
   "titleCompleted": "Vandaag voltooid! Klik om naar $1 te gaan",
   "titleOpen": "Open $1 om op te lossen",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

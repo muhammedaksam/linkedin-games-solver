@@ -5,6 +5,7 @@ import { PinpointSolver } from "~games/pinpoint"
 import { QueensSolver } from "~games/queens"
 import { SudokuSolver } from "~games/sudoku"
 import { TangoSolver } from "~games/tango"
+import { WendSolver } from "~games/wend"
 import { ZipSolver } from "~games/zip"
 
 // List of all solvers adhering to the solver principal
@@ -15,7 +16,8 @@ export const SOLVERS: BaseSolver[] = [
   new ZipSolver(),
   new PatchesSolver(),
   new CrossclimbSolver(),
-  new PinpointSolver()
+  new PinpointSolver(),
+  new WendSolver()
 ]
 
 /**
@@ -38,5 +40,6 @@ export {
   QueensSolver,
   SudokuSolver,
   TangoSolver,
+  WendSolver,
   ZipSolver
 }

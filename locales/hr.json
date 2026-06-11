@@ -30,6 +30,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonus",
   "desc_patches": "Sastavi to zajedno",
   "desc_zip": "Završite putanju",
@@ -38,6 +39,7 @@
   "desc_queens": "Kruni svaku regiju",
   "desc_crossclimb": "Otključajte trivijalnu ljestvicu",
   "desc_pinpoint": "Pogodi kategoriju",
+  "desc_wend": "Weave through words",
   "titleSolve": "Riješi $1",
   "titleCompleted": "Dovršeno danas! Kliknite za navigaciju na $1",
   "titleOpen": "Otvorite $1 da riješite",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

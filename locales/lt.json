@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Premija",
   "desc_patches": "Sudėk tai kartu",
   "desc_zip": "Užbaikite kelią",
@@ -36,6 +37,7 @@
   "desc_queens": "Karūnuokite kiekvieną regioną",
   "desc_crossclimb": "Atidarykite žinių laiptelį",
   "desc_pinpoint": "Atspėk kategoriją",
+  "desc_wend": "Weave through words",
   "titleSolve": "Išspręskite $1",
   "titleCompleted": "Baigta šiandien! Spustelėkite, kad pereitumėte prie $1",
   "titleOpen": "Atidarykite $1, kad išspręstumėte",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

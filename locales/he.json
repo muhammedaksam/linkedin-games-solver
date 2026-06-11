@@ -30,6 +30,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "בונוס",
   "desc_patches": "חבר את זה יחד",
   "desc_zip": "השלם את הדרך",
@@ -38,6 +39,7 @@
   "desc_queens": "כתר כל אזור",
   "desc_crossclimb": "פתח סולם טריוויה",
   "desc_pinpoint": "נחש את הקטגוריה",
+  "desc_wend": "Weave through words",
   "titleSolve": "פתור $1",
   "titleCompleted": "הושלם היום! לחץ כדי לעבור ל-$1",
   "titleOpen": "פתח $1 כדי לפתור",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

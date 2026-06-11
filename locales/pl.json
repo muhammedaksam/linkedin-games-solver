@@ -16,6 +16,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "desc_patches": "Połączyć łatki razem",
   "desc_zip": "Ukończyć ścieżkę",
   "desc_sudoku": "Klasyczna gra, wersja mini",
@@ -23,6 +24,7 @@
   "desc_queens": "Ukoronować każdy obszar",
   "desc_crossclimb": "Otworzyć drabinę studium",
   "desc_pinpoint": "Zgadnąć kategorię",
+  "desc_wend": "Weave through words",
   "titleSolve": "Rozwiąż $1",
   "titleCompleted": "Ukończone dzisiaj! Kliknij, aby przejść do $1",
   "titleOpen": "Otwórz $1 do rozwiązania",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

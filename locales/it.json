@@ -22,6 +22,7 @@
   "desc_queens": "Incoronare ogni area",
   "desc_crossclimb": "Aprire la scala di studio",
   "desc_pinpoint": "Indovinare la categoria",
+  "desc_wend": "Weave through words",
   "titleSolve": "Risolvi $1",
   "titleCompleted": "Completato oggi! Fai clic per andare a $1",
   "titleOpen": "Apri $1 per risolvere",
@@ -201,6 +202,7 @@
   "sudoku": "Sudoku",
   "tango": "Tango",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Bonus",
   "navHome": "Casa",
   "navDebug": "Debuggare",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

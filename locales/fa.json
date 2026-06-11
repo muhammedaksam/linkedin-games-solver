@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "جایزه",
   "desc_patches": "قطعات را کنار هم قرار بده",
   "desc_zip": "مسیر را تکمیل کن",
@@ -26,6 +27,7 @@
   "desc_queens": "هر ناحیه را تاج دار کن",
   "desc_crossclimb": "نردبان مطالعات را باز کن",
   "desc_pinpoint": "دسته‌بندی را حدس بزن",
+  "desc_wend": "Weave through words",
   "titleSolve": "حل $1",
   "titleCompleted": "امروز تکمیل شد! برای رفتن به $1 کلیک کنید",
   "titleOpen": "$1 را برای حل باز کنید",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

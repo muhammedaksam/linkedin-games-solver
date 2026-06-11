@@ -29,6 +29,7 @@
   "desc_queens": "Taji kila eneo",
   "desc_crossclimb": "fungua ngazi ya maswali ya trivia",
   "desc_pinpoint": "Kisia kundi",
+  "desc_wend": "Weave through words",
   "titleSolve": "Suluhisha $1",
   "titleCompleted": "Imekamilika leo! Bonyeza ili kuhamasisha kwenda $1",
   "titleOpen": "Fungua $1 kutatua",
@@ -204,5 +205,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

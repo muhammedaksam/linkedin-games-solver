@@ -18,6 +18,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "Бонус",
   "desc_patches": "Състави парчетата",
   "desc_zip": "Завърши пътя",
@@ -26,6 +27,7 @@
   "desc_queens": "Короняса всяка зона",
   "desc_crossclimb": "Отключи стълба от въпроси",
   "desc_pinpoint": "Познай категорията",
+  "desc_wend": "Weave through words",
   "titleSolve": "Реши $1",
   "titleCompleted": "Днес завършено! Кликни за $1",
   "titleOpen": "Отвори $1 за решаване",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

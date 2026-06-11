@@ -73,6 +73,8 @@ function getGameFromUrl(
       baseGameId = "crossclimb"
     } else if (rawLower.includes("pinpoint")) {
       baseGameId = "pinpoint"
+    } else if (rawLower.includes("wend")) {
+      baseGameId = "wend"
     } else {
       return null
     }
@@ -420,7 +422,8 @@ const GAME_URL_MAP: Record<string, string> = {
   zip: "zip/",
   patches: "patches/",
   crossclimb: "crossclimb/",
-  pinpoint: "pinpoint/"
+  pinpoint: "pinpoint/",
+  wend: "wend/"
 }
 
 export default defineBackground({
@@ -653,6 +656,7 @@ export default defineBackground({
           | "omniboxSuggestionCrossclimb"
           | "omniboxSuggestionZip"
           | "omniboxSuggestionPatches"
+          | "omniboxSuggestionWend"
           | "omniboxSuggestionStats"
         defaultDesc: string
       }> = [
@@ -690,6 +694,11 @@ export default defineBackground({
           content: "patches",
           descKey: "omniboxSuggestionPatches",
           defaultDesc: "🧩 Open Patches Solver"
+        },
+        {
+          content: "wend",
+          descKey: "omniboxSuggestionWend",
+          defaultDesc: "🔤 Open Wend Solver"
         },
         {
           content: "stats",

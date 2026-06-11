@@ -24,6 +24,7 @@
   "desc_queens": "Corona cada región",
   "desc_crossclimb": "Desbloquea una escalera de trivia",
   "desc_pinpoint": "Adivina la categoría",
+  "desc_wend": "Weave through words",
   "titleSolve": "Resolver $1",
   "titleCompleted": "¡Completado hoy! Haz clic para ir a $1",
   "titleOpen": "Abre $1 para resolver",
@@ -205,11 +206,13 @@
   "telemetryToggleDesc": "Ayuda a mejorar la extensión compartiendo datos de uso anónimos",
   "tango": "Tango",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "scoreSeconds": "$1s",
   "scoreMinutesSeconds": "$1m $2s",
   "omniboxSuggestionTango": "🔄 Open Tango Solver",
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

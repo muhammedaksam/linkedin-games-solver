@@ -29,6 +29,7 @@
   "desc_queens": "Korunujte každý región",
   "desc_crossclimb": "Odomknite trivia rebrík",
   "desc_pinpoint": "Uhádni kategóriu",
+  "desc_wend": "Weave through words",
   "titleSolve": "Rieš $1",
   "titleCompleted": "Dnes dokončené! Kliknite na navigáciu k $1",
   "titleOpen": "Otvor $1 na vyriešenie",
@@ -204,5 +205,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }

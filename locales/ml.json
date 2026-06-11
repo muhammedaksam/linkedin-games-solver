@@ -28,6 +28,7 @@
   "patches": "Patches",
   "crossclimb": "Crossclimb",
   "pinpoint": "Pinpoint",
+  "wend": "Wend",
   "bonus": "ബോണസ്",
   "desc_patches": "ഇത് ഒന്നിച്ച് ചേര്ക്കുക",
   "desc_zip": "പാത പൂർത്തിയാക്കുക",
@@ -36,6 +37,7 @@
   "desc_queens": "പ്രതീകമായി ഓരോ മേഖലയിലും മുടി കിരീടം ഇടുക",
   "desc_crossclimb": "ട്രിവിയ ലാഡർ തുറക്കുക",
   "desc_pinpoint": "വിഭാഗം അനുമാനിക്കുക",
+  "desc_wend": "Weave through words",
   "titleSolve": "$1 പരിഹരിക്കുക",
   "titleCompleted": "ഇന്ന് പൂർത്തിയായി! $1-ലേക്ക് പോകാൻ ക്ലിക്ക് ചെയ്യുക",
   "titleOpen": "$1 തുറക്കുക പ്രശ്നം പരിഹരിക്കാൻ",
@@ -211,5 +213,6 @@
   "omniboxSuggestionPinpoint": "📍 Open Pinpoint Solver",
   "omniboxSuggestionCrossclimb": "🧗 Open Crossclimb Solver",
   "omniboxSuggestionZip": "⚡ Open Zip Solver",
-  "omniboxSuggestionPatches": "🧩 Open Patches Solver"
+  "omniboxSuggestionPatches": "🧩 Open Patches Solver",
+  "omniboxSuggestionWend": "🔤 Open Wend Solver"
 }
