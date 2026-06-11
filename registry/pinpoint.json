@@ -1374,5 +1374,15 @@
   "771": {
     "category": "Terms for wind conditions (varying duration and intensity)",
     "clues": ["Blast", "Zephyr", "Gale", "Gust", "Breeze"]
+  },
+  "772": {
+    "category": "Things found in a wallet or purse",
+    "clues": [
+      "Photos",
+      "Receipts",
+      "Cash",
+      "Emergency contact info",
+      "Identification card"
+    ]
   }
 }
