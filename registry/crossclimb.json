@@ -1750,5 +1750,17 @@
     "answers": ["SPAR", "SPAN", "SPIN", "SKIN", "SKIP"],
     "topWord": "STAR",
     "bottomWord": "SHIP"
+  },
+  "772": {
+    "clues": [
+      "Opposite of wild",
+      "What a clock measures",
+      "Tart green fruit",
+      "Shortest distance between two points",
+      "Thin, like some hair"
+    ],
+    "answers": ["TAME", "TIME", "LIME", "LINE", "FINE"],
+    "topWord": "TAKE",
+    "bottomWord": "FIVE"
   }
 }
