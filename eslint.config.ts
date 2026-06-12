@@ -15,8 +15,7 @@ export default tseslint.config(
       "store-assets/",
       "postcss.config.js",
       "content.tsx",
-      "background.ts",
-      "contents/"
+      "background.ts"
     ]
   },
   eslint.configs.recommended,

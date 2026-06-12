@@ -39,7 +39,7 @@ An advanced, obfuscation-proof browser extension compatible with Google Chrome�
 
 - **Instant & Guided Solvers**: Instantly solve puzzles or receive step-by-step hints to learn best practices and strategies.
 - **Obfuscation-Proof Engine**: Pulls board states, region matrices, relational edges, and constraints directly from React Fiber virtual tree properties rather than scraping fragile DOM coordinates.
-- **Hybrid Registry / AI Solver**: Automatically fetches pre-solved daily trivia answers from a public registry, eliminating API token costs and LLM hallucinations for games like Crossclimb and Pinpoint. Falls back to active AI inference if needed.
+- **Hybrid Registry / AI Solver**: Automatically fetches pre-solved daily trivia answers from a public registry, eliminating API token costs and LLM hallucinations for games like Crossclimb, Pinpoint, and Wend. Falls back to active AI inference if needed.
 - **Multi-Model AI Integration**: Uses advanced LLM reasoning (Gemini, Claude, GPT-4o, DeepSeek, or local Ollama) to solve new trivia-based games.
 - **One-Click Contribution Engine**: Easily submit today's board states directly to our registry using the automated "Submit Answer" button, or copy the pre-formatted registry JSON in a single click for manual Pull Requests.
 - **Human-like Pacing (Stealth Mode)**: Secure your daily streaks with custom pacing controls featuring randomized click delays, mimicking human patterns.
@@ -135,8 +135,9 @@ To ensure lightning-fast solving speeds, prevent AI hallucinations on trivia-bas
 
 ### Registry File Schemas
 
-- **[crossclimb.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/crossclimb.json)**: Stores five-word ladder steps, starting/ending anchors, and clues mapped by the puzzle number.
-- **[pinpoint.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/pinpoint.json)**: Stores categories and word clues mapped by the puzzle number.
+- **[crossclimb.json](registry/crossclimb.json)**: Stores five-word ladder steps, starting/ending anchors, and clues mapped by the puzzle number.
+- **[pinpoint.json](registry/pinpoint.json)**: Stores categories and word clues mapped by the puzzle number.
+- **[wend.json](registry/wend.json)**: Stores completed word lists (ordered top to bottom) mapped by the puzzle number.
 
 #### Example Entry (`pinpoint.json`)
 
@@ -157,7 +158,7 @@ We want to make contributing daily puzzles as simple and accessible as possible.
 
 This is the fastest, completely automated way to contribute:
 
-1. Navigate to the active game board on LinkedIn (Crossclimb or Pinpoint).
+1. Navigate to the active game board on LinkedIn (Crossclimb, Pinpoint, or Wend).
 2. Open the extension popup or side panel, and click on the **Debug** tab.
 3. Scroll to the bottom and click the **"Submit Answer"** button.
 4. This instantly launches a new tab to our GitHub repository's puzzle submission form, fully pre-filled with today's game type, puzzle ID, clues, and answers using URL query parameters!
@@ -181,8 +182,9 @@ If you prefer opening a manual Pull Request:
 3. Scroll to the bottom and click **"Copy JSON"** (under today's registry JSON).
 4. The extension extracts the daily board state, formats it to the exact schema, and copies the formatted JSON block to your clipboard.
 5. Paste it directly into the respective registry file:
-   - **[pinpoint.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/pinpoint.json)**
-   - **[crossclimb.json](file:///c:/Users/muhammed/Documents/GitHub/linkedin-games-solver/registry/crossclimb.json)**
+   - **[pinpoint.json](registry/pinpoint.json)**
+   - **[crossclimb.json](registry/crossclimb.json)**
+   - **[wend.json](registry/wend.json)**
 
 ---
 
@@ -224,10 +226,11 @@ sequenceDiagram
 | **Sudoku**     |    🐹 Ember.js     |        👁️ DOM Scraper        |    Direct input read-outs & aria accessibility parsing     |     🟢 Not Applicable      |
 | **Crossclimb** |    🐹 Ember.js     | 👁️ DOM Scraper + 🗃️ Registry |        Active input values & candidate word arrays         | 🟢 100% LLM Reasoning Mode |
 | **Pinpoint**   |    🐹 Ember.js     | 👁️ DOM Scraper + 🗃️ Registry |              Category hints & card text lists              | 🟢 100% LLM Reasoning Mode |
+| **Wend**       |      ⚛️ React      |        👁️ DOM Scraper        |     Word length slots, cell letters & hole coordinates     | 🟢 100% LLM Reasoning Mode |
 
 > [!NOTE]
 >
-> **Ember-based Games**: Sudoku, Pinpoint, and Crossclimb are built using Ember.js, which does not feature a virtual React state tree. The extension detects framework contexts automatically, logging descriptive skip events in diagnostics and successfully falling back to DOM scraper pipelines. For Pinpoint and Crossclimb, the extension first securely Queries the Public GitHub answers registry.
+> **Ember-based Games**: Sudoku, Pinpoint, and Crossclimb are built using Ember.js, which does not feature a virtual React state tree. The extension detects framework contexts automatically, logging descriptive skip events in diagnostics and successfully falling back to DOM scraper pipelines. For Pinpoint, Crossclimb, and Wend, the extension first securely Queries the Public GitHub answers registry.
 
 ---
 
@@ -312,7 +315,7 @@ pnpm generate:store-assets
 - [x] **Dynamic Selector Discovery**: Adaptive page element scanner supporting Ember.js and React contexts gracefully.
 - [x] **Strict Type-Safety**: Generics-driven IPC messaging constraints.
 - [x] **Localization Overhaul**: Support for multilingual UI strings and layouts.
-- [x] **AI-Assisted Self-Solving Answers Registry**: Secure public pre-cached database for trivia-based games (Pinpoint & Crossclimb).
+- [x] **AI-Assisted Self-Solving Answers Registry**: Secure public pre-cached database for trivia-based games (Pinpoint, Crossclimb, and Wend).
 - [x] **Automated Registry Updates Pipeline**: CI/CD integration to auto-validate and append user-submitted daily game pull requests.
 
 ---

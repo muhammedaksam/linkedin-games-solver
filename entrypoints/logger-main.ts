@@ -1,9 +1,9 @@
-import type { PlasmoCSConfig } from "plasmo"
-
 import type {
   ReactPatchesBoard,
   ReactQueensBoard,
   ReactTangoBoard,
+  ReactWendBoard,
+  ReactWendCell,
   ReactZipBoard
 } from "../games/react-bridge"
 
@@ -17,18 +17,14 @@ declare global {
       | ReactTangoBoard
       | ReactZipBoard
       | ReactPatchesBoard
+      | ReactWendBoard
       | undefined
   }
 }
 
-export const config: PlasmoCSConfig = {
-  matches: ["https://*.linkedin.com/games/*"],
-  world: "MAIN",
-  run_at: "document_start"
-}
-
-// Check to prevent double-initialization
-if (!window.__SOLVER_LOGGER_INITIALIZED__) {
+export default defineUnlistedScript(() => {
+  // Check to prevent double-initialization
+  if (window.__SOLVER_LOGGER_INITIALIZED__) return
   window.__SOLVER_LOGGER_INITIALIZED__ = true
 
   const originalLog = console.log
@@ -247,6 +243,20 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
     drawnRegions: unknown[]
   }
 
+  interface WendGamePuzzle {
+    $type?: string
+    gridRows?: number
+    gridCols?: number
+    rows?: number
+    cols?: number
+    words?: string[]
+  }
+
+  interface WendGameState {
+    $type?: string
+    solvedFlags?: boolean[]
+  }
+
   interface LinkedInRawCell {
     idx: number
     regionId?: string | number
@@ -256,7 +266,12 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
     hasQueen?: boolean
     hasMarker?: boolean
     isGiven?: boolean
-    value?: number
+    value?: number | string
+    letter?: string
+    isHole?: boolean
+    isLocked?: boolean
+    row?: number
+    col?: number
   }
 
   interface LinkedInRawConstraint {
@@ -279,6 +294,8 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
       queensGamePuzzle?: QueensGamePuzzle
       trailGamePuzzle?: TrailGamePuzzle
       patchesGamePuzzle?: PatchesGamePuzzle
+      wendGamePuzzle?: WendGamePuzzle
+      weaveGamePuzzle?: WendGamePuzzle
       cells?: LinkedInRawCell[]
       board?: {
         cells?: LinkedInRawCell[]
@@ -302,6 +319,8 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
         queensGameState?: QueensGameState
         trailGameState?: TrailGameState
         patchesGameState?: PatchesGameState
+        wendGameState?: WendGameState
+        weaveGameState?: WendGameState
         cells?: LinkedInRawCell[]
         board?: {
           cells?: LinkedInRawCell[]
@@ -369,8 +388,13 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
   }
 
   const extractReactState = (
-    gameName: "queens" | "tango" | "zip" | "patches" | string
-  ): ReactQueensBoard | ReactTangoBoard | ReactZipBoard | ReactPatchesBoard => {
+    gameName: "queens" | "tango" | "zip" | "patches" | "wend" | string
+  ):
+    | ReactQueensBoard
+    | ReactTangoBoard
+    | ReactZipBoard
+    | ReactPatchesBoard
+    | ReactWendBoard => {
     if (
       gameName === "sudoku" ||
       gameName === "pinpoint" ||
@@ -439,7 +463,7 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
         }
         // Inspect state
         if (curr.memoizedState) {
-          let stateNode = curr.memoizedState
+          let stateNode: ReactFiberStateNode | undefined = curr.memoizedState
           while (stateNode) {
             if (
               stateNode.memoizedState &&
@@ -455,13 +479,12 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
       return null
     }
 
-    // 3. Search return tree for a "game" prop object (which contains complete clean models)
+    // 3. Search return tree for a "game" prop object
     let currFiber = fiber
     let gameObj: LinkedInGameObj | null = null
     while (currFiber) {
       if (
-        currFiber.memoizedProps &&
-        currFiber.memoizedProps.game &&
+        currFiber.memoizedProps?.game &&
         typeof currFiber.memoizedProps.game === "object"
       ) {
         gameObj = currFiber.memoizedProps.game
@@ -475,51 +498,6 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
         "[Test] Found parent React game state object! Properties:",
         Object.keys(gameObj)
       )
-      if (gameObj.puzzle) {
-        console.log(
-          "[Test]   - game.puzzle properties:",
-          Object.keys(gameObj.puzzle)
-        )
-        const puzzleCase = gameObj.puzzle.$case
-        if (puzzleCase && gameObj.puzzle[puzzleCase]) {
-          console.log(
-            `[Test]   - game.puzzle.${puzzleCase} properties:`,
-            Object.keys(gameObj.puzzle[puzzleCase] as Record<string, unknown>)
-          )
-          console.log(
-            `[Test]   - ${puzzleCase} JSON:`,
-            JSON.stringify(gameObj.puzzle[puzzleCase])
-          )
-        }
-      }
-      if (gameObj.gameState) {
-        console.log(
-          "[Test]   - game.gameState properties:",
-          Object.keys(gameObj.gameState)
-        )
-        if (gameObj.gameState.mostRecentGameState) {
-          console.log(
-            "[Test]   - game.gameState.mostRecentGameState properties:",
-            Object.keys(gameObj.gameState.mostRecentGameState)
-          )
-          const stateCase = gameObj.gameState.mostRecentGameState.$case
-          if (stateCase && gameObj.gameState.mostRecentGameState[stateCase]) {
-            console.log(
-              `[Test]   - mostRecentGameState.${stateCase} properties:`,
-              Object.keys(
-                gameObj.gameState.mostRecentGameState[stateCase] as Record<
-                  string,
-                  unknown
-                >
-              )
-            )
-            console.log(
-              `[Test]   - ${stateCase} JSON:`,
-              JSON.stringify(gameObj.gameState.mostRecentGameState[stateCase])
-            )
-          }
-        }
-      }
     }
 
     // Generic fallback helper to pull key from game object, then recursively up the fiber tree
@@ -529,8 +507,7 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
 
         // lotkaGamePuzzle
         if (
-          gameObj.puzzle &&
-          gameObj.puzzle.lotkaGamePuzzle &&
+          gameObj.puzzle?.lotkaGamePuzzle &&
           (gameObj.puzzle.lotkaGamePuzzle as Record<string, unknown>)[
             keyName
           ] !== undefined
@@ -542,8 +519,7 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
 
         // mostRecentGameState
         if (
-          gameObj.gameState &&
-          gameObj.gameState.mostRecentGameState &&
+          gameObj.gameState?.mostRecentGameState &&
           (gameObj.gameState.mostRecentGameState as Record<string, unknown>)[
             keyName
           ] !== undefined
@@ -612,14 +588,14 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
         if (Array.isArray(gameObj.cells)) return gameObj.cells
 
         // Nested under puzzle.lotkaGamePuzzle
-        if (gameObj.puzzle && gameObj.puzzle.lotkaGamePuzzle) {
+        if (gameObj.puzzle?.lotkaGamePuzzle) {
           const l = gameObj.puzzle.lotkaGamePuzzle
           if (l.board && Array.isArray(l.board.cells)) return l.board.cells
           if (l.grid && Array.isArray(l.grid.cells)) return l.grid.cells
         }
 
         // Nested under gameState.mostRecentGameState
-        if (gameObj.gameState && gameObj.gameState.mostRecentGameState) {
+        if (gameObj.gameState?.mostRecentGameState) {
           const m = gameObj.gameState.mostRecentGameState
           if (m.board && Array.isArray(m.board.cells)) return m.board.cells
           if (m.grid && Array.isArray(m.grid.cells)) return m.grid.cells
@@ -660,21 +636,17 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
       return null
     }
 
-    // 4. Compile schemas by game type
+    // Compile schemas by game type
     if (gameName === "queens") {
       let boardSize = getBoardSize()
       let cells: ReactQueensBoard["cells"] | null = null
-      let solution: number[] | undefined = undefined
+      let solution: number[] | undefined
 
       const queensPuzzle = gameObj?.puzzle?.queensGamePuzzle
       const queensState =
         gameObj?.gameState?.mostRecentGameState?.queensGameState
 
-      if (
-        queensPuzzle &&
-        queensPuzzle.gridSize &&
-        Array.isArray(queensPuzzle.colorGrid)
-      ) {
+      if (queensPuzzle?.gridSize && Array.isArray(queensPuzzle.colorGrid)) {
         boardSize = queensPuzzle.gridSize
         const N = boardSize
         const guesses = queensState?.guesses || []
@@ -687,7 +659,6 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
               ? queensPuzzle.colorGrid[row].colors[col]
               : 0
 
-          // Find if there is a player guess for this position
           const guess = guesses.find(
             (g) =>
               g.gridPosition &&
@@ -720,7 +691,6 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
         }
       }
 
-      // If we couldn't extract using the queens schema, fall back to the generic arrays
       if (!cells) {
         const rawCells = getCellsArray()
         if (rawCells) {
@@ -763,12 +733,12 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
       let size = getBoardSize()
       let cells: ReactTangoBoard["cells"] = null
       let constraints: ReactTangoBoard["constraints"] = null
-      let solution: number[] | undefined = undefined
+      let solution: number[] | undefined
 
       const lotkaPuzzle = gameObj?.puzzle?.lotkaGamePuzzle
       const lotkaState = gameObj?.gameState?.mostRecentGameState?.lotkaGameState
 
-      if (lotkaPuzzle && lotkaPuzzle.gridSize) {
+      if (lotkaPuzzle?.gridSize) {
         size = lotkaPuzzle.gridSize
         const presetCellIdxes = lotkaPuzzle.presetCellIdxes || []
         const cellValues = lotkaState?.cellValues || []
@@ -803,27 +773,29 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
         }
       }
 
-      // If we couldn't extract using the lotka schema, fall back to the generic arrays
       if (!cells) {
         const rawCells = getCellsArray()
         if (rawCells) {
           cells = rawCells.map((cell, idx) => ({
             idx,
-            value: cell.value !== undefined ? cell.value : -1,
+            value:
+              typeof cell.value === "number"
+                ? cell.value
+                : typeof cell.value === "string"
+                  ? parseInt(cell.value, 10) || -1
+                  : -1,
             isGiven: !!cell.isGiven
           }))
         }
       }
 
       if (!constraints) {
-        // Look for edges/constraints array
         const getTangoConstraints = (): LinkedInRawConstraint[] | null => {
           if (gameObj) {
             if (Array.isArray(gameObj.constraints)) return gameObj.constraints
             if (Array.isArray(gameObj.edges)) return gameObj.edges
 
-            // Nested under puzzle.lotkaGamePuzzle
-            if (gameObj.puzzle && gameObj.puzzle.lotkaGamePuzzle) {
+            if (gameObj.puzzle?.lotkaGamePuzzle) {
               const l = gameObj.puzzle.lotkaGamePuzzle
               if (Array.isArray(l.constraints))
                 return l.constraints as LinkedInRawConstraint[]
@@ -833,7 +805,6 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
               if (l.board && Array.isArray(l.board.edges)) return l.board.edges
             }
 
-            // Nested under puzzle
             if (gameObj.puzzle) {
               if (Array.isArray(gameObj.puzzle.constraints))
                 return gameObj.puzzle.constraints as LinkedInRawConstraint[]
@@ -852,15 +823,13 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
                 return gameObj.puzzle.board.edges
             }
 
-            // Nested under gameState.mostRecentGameState
-            if (gameObj.gameState && gameObj.gameState.mostRecentGameState) {
+            if (gameObj.gameState?.mostRecentGameState) {
               const m = gameObj.gameState.mostRecentGameState
               if (Array.isArray(m.constraints))
                 return m.constraints as LinkedInRawConstraint[]
               if (Array.isArray(m.edges)) return m.edges
             }
 
-            // Nested under gameState
             if (gameObj.gameState) {
               if (Array.isArray(gameObj.gameState.constraints))
                 return gameObj.gameState.constraints as LinkedInRawConstraint[]
@@ -920,11 +889,11 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
       let size = getBoardSize()
       let checkpoints: ReactZipBoard["checkpoints"] = []
       let walls: ReactZipBoard["walls"] = []
-      let solution: number[] | undefined = undefined
+      let solution: number[] | undefined
 
       const trailPuzzle = gameObj?.puzzle?.trailGamePuzzle
 
-      if (trailPuzzle && trailPuzzle.gridSize) {
+      if (trailPuzzle?.gridSize) {
         size = trailPuzzle.gridSize
         if (Array.isArray(trailPuzzle.orderedSequence)) {
           checkpoints = trailPuzzle.orderedSequence.map(
@@ -1030,6 +999,128 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
       }
     }
 
+    if (gameName === "wend") {
+      const wendPuzzle =
+        gameObj?.puzzle?.wendGamePuzzle || gameObj?.puzzle?.weaveGamePuzzle
+      const wendState =
+        gameObj?.gameState?.mostRecentGameState?.wendGameState ||
+        gameObj?.gameState?.mostRecentGameState?.weaveGameState
+
+      let gridRows = wendPuzzle?.gridRows || wendPuzzle?.rows || 5
+      let gridCols = wendPuzzle?.gridCols || wendPuzzle?.cols || 5
+
+      if (!gridRows || !gridCols) {
+        gridCols = getBoardSize()
+        gridRows = gridCols
+      }
+
+      let cells: ReactWendCell[] = []
+      const rawCells = getCellsArray()
+      if (rawCells && rawCells.length > 0) {
+        cells = rawCells.map((cell, idx) => {
+          const row =
+            cell.row !== undefined ? cell.row : Math.floor(idx / gridCols)
+          const col = cell.col !== undefined ? cell.col : idx % gridCols
+          return {
+            idx,
+            letter: String(cell.value || cell.letter || "").toUpperCase(),
+            row,
+            col,
+            isHole: !!cell.isHole || cell.state === 2,
+            isLocked: !!cell.isGiven || !!cell.isLocked || cell.state === 1
+          }
+        })
+      }
+
+      if (cells.length === 0) {
+        const grid = document.querySelector('[data-testid="interactive-grid"]')
+        if (grid) {
+          const cellEls = grid.querySelectorAll("[data-cell-idx]")
+          cells = Array.from(cellEls).map((el) => {
+            const idx = parseInt(el.getAttribute("data-cell-idx") || "0", 10)
+            const isHole = el.getAttribute("data-cell-is-hole") === "true"
+            const isLocked = el.getAttribute("data-cell-is-locked") === "true"
+            let letter = ""
+            if (!isHole) {
+              const span = el.querySelector("span[class*='_08ba2e12']")
+              if (span) {
+                letter = (span.textContent || "").trim().toUpperCase()
+              }
+              if (!letter) {
+                const spans = el.querySelectorAll("span")
+                for (const s of Array.from(spans)) {
+                  const txt = (s.textContent || "").trim()
+                  if (txt.length === 1 && /[A-Z]/i.test(txt)) {
+                    letter = txt.toUpperCase()
+                    break
+                  }
+                }
+              }
+            }
+            return {
+              idx,
+              letter,
+              row: Math.floor(idx / gridCols),
+              col: idx % gridCols,
+              isHole,
+              isLocked
+            }
+          })
+        }
+      }
+
+      let wordLengths: number[] = []
+      let solvedFlags: boolean[] = []
+
+      if (wendPuzzle && Array.isArray(wendPuzzle.words)) {
+        wordLengths = wendPuzzle.words.map((w: string) => w.length)
+      }
+      if (wendState && Array.isArray(wendState.solvedFlags)) {
+        solvedFlags = wendState.solvedFlags
+      }
+
+      if (wordLengths.length === 0) {
+        let rowIdx = 0
+        while (true) {
+          const row = document.querySelector(
+            `[data-testid="wend-word-list-row-${rowIdx}"]`
+          )
+          if (!row) break
+
+          let slotIdx = 0
+          while (
+            row.querySelector(
+              `[data-testid="wend-word-list-slot-${rowIdx}-${slotIdx}"]`
+            )
+          ) {
+            slotIdx++
+          }
+          if (slotIdx > 0) wordLengths.push(slotIdx)
+          solvedFlags.push(row.getAttribute("data-locked") === "true")
+          rowIdx++
+        }
+      }
+
+      while (solvedFlags.length < wordLengths.length) {
+        solvedFlags.push(false)
+      }
+
+      const solution =
+        wendPuzzle && Array.isArray(wendPuzzle.words)
+          ? wendPuzzle.words
+          : undefined
+
+      return {
+        game: "wend",
+        gridCols,
+        gridRows,
+        cells,
+        wordLengths,
+        solvedFlags,
+        solution
+      }
+    }
+
     throw new Error(
       `State extraction not implemented yet for game: ${gameName}`
     )
@@ -1047,4 +1138,4 @@ if (!window.__SOLVER_LOGGER_INITIALIZED__) {
       console.error(`[Test] Extraction Failed:`, errMsg)
     }
   }
-}
+})

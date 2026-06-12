@@ -831,6 +831,22 @@ export default defineContentScript({
     // Initialize localization dictionary before any rendering or detection runs
     await initLocale()
 
+    // Inject the main-world logger/state extraction bridge script
+    try {
+      const script = document.createElement("script")
+      script.src = chrome.runtime.getURL("/logger-main.js")
+      script.onload = () => script.remove()
+      ;(document.head || document.documentElement).appendChild(script)
+      console.log(
+        "[LinkedIn Games Solver] Injected Main World Logger Bridge script."
+      )
+    } catch (err) {
+      console.error(
+        "[LinkedIn Games Solver] Failed to inject Main World Logger Bridge script:",
+        err
+      )
+    }
+
     console.log(
       "[LinkedIn Games Solver] Content Script loaded with WXT Shadow Root UI."
     )

@@ -25,11 +25,7 @@ export class ZipSolver extends BaseSolver {
     try {
       console.log("[Zip] Attempting React Fiber state extraction...")
       const boardState = await fetchReactBoardState("zip")
-      if (
-        boardState &&
-        boardState.checkpoints &&
-        boardState.checkpoints.length > 0
-      ) {
+      if (boardState?.checkpoints?.length > 0) {
         N = boardState.size
         checkpoints = new Map<number, number>()
         for (const cp of boardState.checkpoints) {
@@ -60,7 +56,7 @@ export class ZipSolver extends BaseSolver {
     } catch (err) {
       console.warn(
         "[Zip] React Fiber state extraction failed, falling back to DOM parsing:",
-        err.message || err
+        err instanceof Error ? err.message : err
       )
     }
 

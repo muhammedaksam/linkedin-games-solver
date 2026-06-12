@@ -66,8 +66,27 @@ export interface ReactPatchesBoard {
   solution?: number[][]
 }
 
+export interface ReactWendCell {
+  idx: number
+  letter: string
+  row: number
+  col: number
+  isHole: boolean
+  isLocked: boolean
+}
+
+export interface ReactWendBoard {
+  game: "wend"
+  gridCols: number
+  gridRows: number
+  cells: ReactWendCell[]
+  wordLengths: number[]
+  solvedFlags: boolean[]
+  solution?: string[]
+}
+
 export async function fetchReactBoardState<
-  T extends "queens" | "tango" | "zip" | "patches"
+  T extends "queens" | "tango" | "zip" | "patches" | "wend"
 >(
   gameName: T
 ): Promise<
@@ -77,7 +96,9 @@ export async function fetchReactBoardState<
       ? ReactTangoBoard
       : T extends "zip"
         ? ReactZipBoard
-        : ReactPatchesBoard
+        : T extends "patches"
+          ? ReactPatchesBoard
+          : ReactWendBoard
 > {
   return new Promise((resolve, reject) => {
     if (typeof window === "undefined") {

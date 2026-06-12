@@ -1,5 +1,7 @@
 import { askAI } from "~games/ai"
 import { BaseSolver } from "~games/base"
+import { fetchReactBoardState } from "~games/react-bridge"
+import { fetchRegistry, findWendAnswer, type WendPuzzle } from "~games/registry"
 
 interface WendCell {
   idx: number
@@ -27,9 +29,34 @@ export class WendSolver extends BaseSolver {
   }
 
   async solve(mode: "full" | "hint" = "full"): Promise<void> {
-    const { cells, gridCols, gridRows } = this.parseGrid()
-    const wordLengths = this.getWordLengths()
-    const solvedFlags = this.getSolvedWordFlags()
+    let cells: WendCell[]
+    let gridCols: number
+    let gridRows: number
+    let wordLengths: number[]
+    let solvedFlags: boolean[]
+
+    try {
+      const boardState = await fetchReactBoardState("wend")
+      cells = boardState.cells
+      gridCols = boardState.gridCols
+      gridRows = boardState.gridRows
+      wordLengths = boardState.wordLengths
+      solvedFlags = boardState.solvedFlags
+      console.log(
+        "[Wend] Successfully extracted state from React Fiber bridge."
+      )
+    } catch (err) {
+      console.warn(
+        "[Wend] React Fiber extraction failed, falling back to DOM scraper:",
+        err
+      )
+      const domGrid = this.parseGrid()
+      cells = domGrid.cells
+      gridCols = domGrid.gridCols
+      gridRows = domGrid.gridRows
+      wordLengths = this.getWordLengths()
+      solvedFlags = this.getSolvedWordFlags()
+    }
 
     console.log(
       `[Wend] Grid: ${gridCols}x${gridRows}, Word lengths: [${wordLengths}]`
@@ -41,28 +68,90 @@ export class WendSolver extends BaseSolver {
       return
     }
 
-    // Identify available (non-hole, non-locked) cells
-    const availableCells = cells.filter((c) => !c.isHole && !c.isLocked)
-    const unsolvedLengths = wordLengths.filter((_, i) => !solvedFlags[i])
-    const totalRequired = unsolvedLengths.reduce((a, b) => a + b, 0)
-
-    console.log(
-      `[Wend] Available cells: ${availableCells.length}, Unsolved word lengths: [${unsolvedLengths}], Total required: ${totalRequired}`
-    )
-
-    if (availableCells.length !== totalRequired) {
-      console.warn(
-        `[Wend] Available cell count (${availableCells.length}) != required (${totalRequired})`
-      )
+    // Try using daily registry pre-solved answers
+    let registry: Record<string, WendPuzzle> = {}
+    try {
+      registry = await fetchRegistry("wend")
+    } catch (err) {
+      console.warn("[Wend] Failed to load registry:", err)
     }
 
-    // Ask AI for solution
-    const solution = await this.solveWithAI(
-      cells,
-      gridCols,
-      gridRows,
-      unsolvedLengths
-    )
+    let solution: WendWordSolution[] | null = null
+    const matchedPuzzle = findWendAnswer(registry)
+
+    if (matchedPuzzle && Array.isArray(matchedPuzzle.words)) {
+      console.log("[Wend] Match found in registry:", matchedPuzzle.words)
+
+      // Get currently solved words from DOM
+      const solvedWords: string[] = []
+      let rowIdx = 0
+      while (true) {
+        const row = this.$(`[data-testid="wend-word-list-row-${rowIdx}"]`)
+        if (!row) break
+        if (row.getAttribute("data-locked") === "true") {
+          let word = ""
+          let slotIdx = 0
+          while (true) {
+            const slot = this.$(
+              `[data-testid="wend-word-list-slot-${rowIdx}-${slotIdx}"]`,
+              row
+            )
+            if (!slot) break
+            word += (slot.textContent || "").trim().toUpperCase()
+            slotIdx++
+          }
+          if (word) solvedWords.push(word)
+        }
+        rowIdx++
+      }
+
+      // Filter registry words to find only unsolved ones
+      const unsolvedWords = [...matchedPuzzle.words]
+      for (const solved of solvedWords) {
+        const idx = unsolvedWords.indexOf(solved)
+        if (idx !== -1) {
+          unsolvedWords.splice(idx, 1)
+        }
+      }
+
+      console.log("[Wend] Unsolved words to find paths for:", unsolvedWords)
+      solution = this.findPathsForWords(cells, unsolvedWords)
+
+      if (solution) {
+        console.log(
+          "[Wend] Found path solution for registry words using local DFS pathfinder."
+        )
+      } else {
+        console.warn(
+          "[Wend] Local DFS pathfinder failed to map registry words to grid."
+        )
+      }
+    }
+
+    if (!solution) {
+      // Identify available (non-hole, non-locked) cells
+      const availableCells = cells.filter((c) => !c.isHole && !c.isLocked)
+      const unsolvedLengths = wordLengths.filter((_, i) => !solvedFlags[i])
+      const totalRequired = unsolvedLengths.reduce((a, b) => a + b, 0)
+
+      console.log(
+        `[Wend] Available cells: ${availableCells.length}, Unsolved word lengths: [${unsolvedLengths}], Total required: ${totalRequired}`
+      )
+
+      if (availableCells.length !== totalRequired) {
+        console.warn(
+          `[Wend] Available cell count (${availableCells.length}) != required (${totalRequired})`
+        )
+      }
+
+      // Ask AI for solution
+      solution = await this.solveWithAI(
+        cells,
+        gridCols,
+        gridRows,
+        unsolvedLengths
+      )
+    }
 
     if (!solution || solution.length === 0) {
       throw new Error(
@@ -71,7 +160,7 @@ export class WendSolver extends BaseSolver {
     }
 
     console.log(
-      `[Wend] AI Solution:`,
+      `[Wend] Final Solution:`,
       solution.map((w) => `${w.word} → [${w.path}]`)
     )
 
@@ -432,5 +521,97 @@ Think step by step. Consider all possible words for each length. Verify adjacenc
       lastEl.dispatchEvent(this.createMouseEvent("mouseup", 0))
       lastEl.dispatchEvent(this.createMouseEvent("click", 0))
     }
+  }
+
+  private findPathsForWords(
+    cells: WendCell[],
+    words: string[]
+  ): WendWordSolution[] | null {
+    const available = cells.filter((c) => !c.isHole && !c.isLocked)
+    const cellMap = new Map(available.map((c) => [c.idx, c]))
+
+    const findWordPaths = (
+      word: string,
+      currentIdx: number,
+      charIndex: number,
+      currentPath: number[],
+      used: Set<number>
+    ): number[][] => {
+      if (charIndex === word.length) {
+        return [currentPath]
+      }
+
+      const results: number[][] = []
+      const char = word[charIndex]
+
+      if (charIndex === 0) {
+        for (const cell of available) {
+          if (!used.has(cell.idx) && cell.letter === char) {
+            used.add(cell.idx)
+            const paths = findWordPaths(word, cell.idx, 1, [cell.idx], used)
+            results.push(...paths)
+            used.delete(cell.idx)
+          }
+        }
+      } else {
+        const currCell = cellMap.get(currentIdx)
+        if (currCell) {
+          const neighbors = [
+            { r: currCell.row - 1, c: currCell.col },
+            { r: currCell.row + 1, c: currCell.col },
+            { r: currCell.row, c: currCell.col - 1 },
+            { r: currCell.row, c: currCell.col + 1 }
+          ]
+
+          for (const n of neighbors) {
+            const cell = available.find((c) => c.row === n.r && c.col === n.c)
+            if (cell && !used.has(cell.idx) && cell.letter === char) {
+              used.add(cell.idx)
+              const paths = findWordPaths(
+                word,
+                cell.idx,
+                charIndex + 1,
+                [...currentPath, cell.idx],
+                used
+              )
+              results.push(...paths)
+              used.delete(cell.idx)
+            }
+          }
+        }
+      }
+      return results
+    }
+
+    const backtrack = (
+      wordIndex: number,
+      used: Set<number>,
+      solution: WendWordSolution[]
+    ): WendWordSolution[] | null => {
+      if (wordIndex === words.length) {
+        if (used.size === available.length) {
+          return solution
+        }
+        return null
+      }
+
+      const word = words[wordIndex]
+      const paths = findWordPaths(word, -1, 0, [], used)
+
+      for (const path of paths) {
+        for (const idx of path) used.add(idx)
+        solution.push({ word, path })
+
+        const res = backtrack(wordIndex + 1, used, solution)
+        if (res) return res
+
+        solution.pop()
+        for (const idx of path) used.delete(idx)
+      }
+
+      return null
+    }
+
+    return backtrack(0, new Set<number>(), [])
   }
 }
