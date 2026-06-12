@@ -1,5 +1,5 @@
 /// <reference types="dom-chromium-ai" />
-import { sendToBackground } from "@plasmohq/messaging"
+import { sendMessage } from "~lib/messaging"
 
 /**
  * Converts a data URL to an Image Bitmap safely for AI ingestion.
@@ -54,16 +54,10 @@ export async function solveWithMultimodalAI(
   // 1. Capture the tab screen visually using the background service worker
   let captureRes: { success: boolean; dataUrl?: string; error?: string }
   try {
-    const res = await sendToBackground<
-      unknown,
-      { success: boolean; dataUrl?: string; error?: string }
-    >({
-      name: "captureTab",
-      body: {
-        cropRect,
-        targetWidth: 512,
-        targetHeight: 512
-      }
+    const res = await sendMessage("captureTab", {
+      cropRect,
+      targetWidth: 512,
+      targetHeight: 512
     })
     captureRes = res || {
       success: false,

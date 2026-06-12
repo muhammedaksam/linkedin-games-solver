@@ -1,4 +1,4 @@
-import { sendToBackground } from "@plasmohq/messaging"
+import { sendMessage } from "~lib/messaging"
 
 import { getLocalDateString, getPuzzleNumber } from "~lib/utils"
 
@@ -37,12 +37,12 @@ export async function fetchRegistry(
     chrome.runtime.id
   ) {
     try {
-      const response = await sendToBackground({
-        name: "fetchRegistry",
-        body: { game }
-      })
+      const response = await sendMessage("fetchRegistry", { game })
       if (response?.success) {
-        return response.data
+        return response.data as Record<
+          string,
+          PinpointPuzzle | CrossclimbPuzzle | WendPuzzle
+        >
       } else {
         throw new Error(
           response?.error ||

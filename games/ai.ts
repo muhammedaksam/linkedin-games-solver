@@ -1,6 +1,6 @@
 /// <reference types="dom-chromium-ai" />
-import { sendToBackground } from "@plasmohq/messaging"
 import { Storage } from "@plasmohq/storage"
+import { sendMessage } from "~lib/messaging"
 
 import { secureStorage } from "~lib/storage"
 
@@ -14,9 +14,9 @@ export interface AIConfig {
 }
 
 export async function getAIConfig(): Promise<AIConfig> {
-  const provider = (await storage.get("aiProvider")) || "gemini"
-  const model = (await storage.get("aiModel")) || "gemini-2.5-flash"
-  const customEndpoint = (await storage.get("aiCustomEndpoint")) || ""
+  const provider = (await storage.get<string>("aiProvider")) || "gemini"
+  const model = (await storage.get<string>("aiModel")) || "gemini-2.5-flash"
+  const customEndpoint = (await storage.get<string>("aiCustomEndpoint")) || ""
 
   // Secure storage for AI key retrieval
   let apiKey = (await secureStorage.get<string>("aiApiKey")) || ""
@@ -51,11 +51,8 @@ export async function askAI(prompt: string, jsonMode = false): Promise<string> {
   // route the API request safely through the Background SW to bypass LinkedIn's strict CSP.
   if (typeof window !== "undefined") {
     try {
-      const response = await sendToBackground({
-        name: "askAI",
-        body: { prompt, jsonMode }
-      })
-      if (response?.success) {
+      const response = await sendMessage("askAI", { prompt, jsonMode })
+      if (response?.success && response.text) {
         return response.text
       } else {
         throw new Error(

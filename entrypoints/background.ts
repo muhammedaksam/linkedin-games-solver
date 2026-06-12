@@ -1,4 +1,5 @@
 import { askAI } from "~games/ai"
+import { onMessage } from "~lib/messaging"
 import { analytics } from "~lib/analytics"
 import { getMessage, initLocale } from "~lib/i18n"
 import { syncStorage } from "~lib/storage"
@@ -13,22 +14,7 @@ interface SolveRecord {
   solvedAt?: string
 }
 
-interface MessageBody {
-  prompt?: string
-  jsonMode?: boolean
-  cropRect?: {
-    x: number
-    y: number
-    width: number
-    height: number
-  }
-  targetWidth?: number
-  targetHeight?: number
-  game?: string
-  status?: "solving" | "idle"
-  name?: string
-  params?: Record<string, unknown>
-}
+
 
 console.log("[LinkedIn Games Solver] Background service worker initialized.")
 
@@ -741,154 +727,155 @@ export default defineBackground({
       })
     })
 
-    // Unified message broker dispatcher supporting standard Plasmo shims
-    chrome.runtime.onMessage.addListener(
-      async (message, sender, sendResponse) => {
-        if (message && typeof message === "object" && "name" in message) {
-          const { name, body } = message as { name: string; body: MessageBody }
+    onMessage("askAI", async (message) => {
+      const { prompt, jsonMode } = message.data
+      try {
+        await analytics.track("ask_ai", {
+          promptLength: String(prompt?.length || 0)
+        })
+      } catch (trackErr) {
+        console.warn("[Analytics] askAI track failed:", trackErr)
+      }
 
-          if (name === "askAI") {
-            await analytics.track("ask_ai", {
-              promptLength: String(body?.prompt?.length || 0)
-            })
-
-            try {
-              const text = await askAI(body.prompt || "", body.jsonMode)
-              sendResponse({ success: true, text })
-            } catch (err: unknown) {
-              sendResponse({
-                success: false,
-                error: err instanceof Error ? err.message : String(err)
-              })
-            }
-            return true
-          }
-
-          if (name === "captureTab") {
-            const windowId =
-              sender?.tab?.windowId || chrome.windows.WINDOW_ID_CURRENT
-            const { cropRect, targetWidth, targetHeight } = body || {}
-
-            try {
-              const rawUrl = await new Promise<string>((resolve, reject) => {
-                chrome.tabs.captureVisibleTab(
-                  windowId,
-                  { format: "jpeg", quality: 85 },
-                  (capturedUrl) => {
-                    if (chrome.runtime.lastError) {
-                      reject(new Error(chrome.runtime.lastError.message))
-                    } else if (!capturedUrl) {
-                      reject(new Error("Captured URL is empty"))
-                    } else {
-                      resolve(capturedUrl)
-                    }
-                  }
-                )
-              })
-
-              if (!cropRect) {
-                sendResponse({ success: true, dataUrl: rawUrl })
-                return
-              }
-
-              const OFFSCREEN_PATH = "offscreen.html"
-              const swSelf = self as unknown as {
-                clients: { matchAll: () => Promise<Array<{ url: string }>> }
-              }
-              const matchedClients = await swSelf.clients.matchAll()
-              const hasDocument = matchedClients.some((c) =>
-                c.url.endsWith(OFFSCREEN_PATH)
-              )
-
-              if (!hasDocument) {
-                await chrome.offscreen.createDocument({
-                  url: OFFSCREEN_PATH,
-                  reasons: [chrome.offscreen.Reason.BLOBS],
-                  justification:
-                    "Crop and compress puzzle screenshots for multimodal AI processing"
-                })
-              }
-
-              chrome.runtime.sendMessage(
-                {
-                  action: "preprocess-image",
-                  data: {
-                    dataUrl: rawUrl,
-                    cropRect,
-                    targetWidth,
-                    targetHeight
-                  }
-                },
-                async (processedResponse) => {
-                  try {
-                    await chrome.offscreen.closeDocument()
-                  } catch (closeErr) {
-                    console.warn(
-                      "[Offscreen] Failed to close document:",
-                      closeErr
-                    )
-                  }
-
-                  if (
-                    processedResponse?.success &&
-                    processedResponse?.dataUrl
-                  ) {
-                    sendResponse({
-                      success: true,
-                      dataUrl: processedResponse.dataUrl
-                    })
-                  } else {
-                    sendResponse({ success: true, dataUrl: rawUrl })
-                  }
-                }
-              )
-            } catch (err: unknown) {
-              sendResponse({
-                success: false,
-                error: err instanceof Error ? err.message : String(err)
-              })
-            }
-            return true
-          }
-
-          if (name === "fetchRegistry") {
-            ;(async () => {
-              await analytics.track("fetch_registry", { game: body?.game })
-            })()
-            const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${body?.game}.json`
-
-            try {
-              const res = await fetch(registryUrl)
-              if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`)
-              }
-              const data = await res.json()
-              sendResponse({ success: true, data })
-            } catch (err: unknown) {
-              sendResponse({
-                success: false,
-                error: err instanceof Error ? err.message : String(err)
-              })
-            }
-            return true
-          }
-
-          if (name === "solverStatus") {
-            const { status } = body || {}
-            const tabId = sender?.tab?.id
-            try {
-              await updateActionBadge(undefined, status, tabId)
-              sendResponse({ success: true })
-            } catch (err: unknown) {
-              sendResponse({
-                success: false,
-                error: err instanceof Error ? err.message : String(err)
-              })
-            }
-            return true
-          }
+      try {
+        const text = await askAI(prompt || "", jsonMode)
+        return { success: true, text }
+      } catch (err: unknown) {
+        return {
+          success: false,
+          error: err instanceof Error ? err.message : String(err)
         }
       }
-    )
+    })
+
+    onMessage("captureTab", async (message) => {
+      const windowId =
+        message.sender?.tab?.windowId || chrome.windows.WINDOW_ID_CURRENT
+      const { cropRect, targetWidth, targetHeight } = message.data
+
+      try {
+        const rawUrl = await new Promise<string>((resolve, reject) => {
+          chrome.tabs.captureVisibleTab(
+            windowId,
+            { format: "jpeg", quality: 85 },
+            (capturedUrl) => {
+              if (chrome.runtime.lastError) {
+                reject(new Error(chrome.runtime.lastError.message))
+              } else if (!capturedUrl) {
+                reject(new Error("Captured URL is empty"))
+              } else {
+                resolve(capturedUrl)
+              }
+            }
+          )
+        })
+
+        if (!cropRect) {
+          return { success: true, dataUrl: rawUrl }
+        }
+
+        const OFFSCREEN_PATH = "offscreen.html"
+        const swSelf = self as unknown as {
+          clients: { matchAll: () => Promise<Array<{ url: string }>> }
+        }
+        const matchedClients = await swSelf.clients.matchAll()
+        const hasDocument = matchedClients.some((c) =>
+          c.url.endsWith(OFFSCREEN_PATH)
+        )
+
+        if (!hasDocument) {
+          await chrome.offscreen.createDocument({
+            url: OFFSCREEN_PATH,
+            reasons: [chrome.offscreen.Reason.BLOBS],
+            justification:
+              "Crop and compress puzzle screenshots for multimodal AI processing"
+          })
+        }
+
+        const processedResponse = await new Promise<{
+          success?: boolean
+          dataUrl?: string
+        } | null | undefined>((resolve) => {
+          chrome.runtime.sendMessage(
+            {
+              action: "preprocess-image",
+              data: {
+                dataUrl: rawUrl,
+                cropRect,
+                targetWidth,
+                targetHeight
+              }
+            },
+            (response) => {
+              resolve(response)
+            }
+          )
+        })
+
+        try {
+          await chrome.offscreen.closeDocument()
+        } catch (closeErr) {
+          console.warn(
+            "[Offscreen] Failed to close document:",
+            closeErr
+          )
+        }
+
+        if (
+          processedResponse?.success &&
+          processedResponse?.dataUrl
+        ) {
+          return {
+            success: true,
+            dataUrl: processedResponse.dataUrl
+          }
+        } else {
+          return { success: true, dataUrl: rawUrl }
+        }
+      } catch (err: unknown) {
+        return {
+          success: false,
+          error: err instanceof Error ? err.message : String(err)
+        }
+      }
+    })
+
+    onMessage("fetchRegistry", async (message) => {
+      const { game } = message.data
+      try {
+        await analytics.track("fetch_registry", { game })
+      } catch (trackErr) {
+        console.warn("[Analytics] fetchRegistry track failed:", trackErr)
+      }
+      const registryUrl = `https://raw.githubusercontent.com/muhammedaksam/linkedin-games-solver/main/registry/${game}.json`
+
+      try {
+        const res = await fetch(registryUrl)
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`)
+        }
+        const data = await res.json()
+        return { success: true, data }
+      } catch (err: unknown) {
+        return {
+          success: false,
+          error: err instanceof Error ? err.message : String(err)
+        }
+      }
+    })
+
+    onMessage("solverStatus", async (message) => {
+      const { status } = message.data
+      const tabId = message.sender?.tab?.id
+      try {
+        await updateActionBadge(undefined, status, tabId)
+        return { success: true }
+      } catch (err: unknown) {
+        return {
+          success: false,
+          error: err instanceof Error ? err.message : String(err)
+        }
+      }
+    })
   }
 })

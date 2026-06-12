@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"
 import { detectActiveSolver } from "~games"
 import { analytics } from "~lib/analytics"
 import { initLocale } from "~lib/i18n"
-import { sendToBackground } from "~lib/plasmo-messaging-shim"
+import { sendMessage } from "~lib/messaging"
 import { syncStorage as storage } from "~lib/storage"
 import {
   getLocalDateString,
@@ -414,10 +414,7 @@ export function setGlobalSolving(val: boolean) {
 
 export function updateSolverStatus(status: "solving" | "idle") {
   if (typeof window !== "undefined") {
-    sendToBackground({
-      name: "solverStatus",
-      body: { status }
-    }).catch(() => {})
+    sendMessage("solverStatus", { status }).catch(() => {})
   }
 }
 

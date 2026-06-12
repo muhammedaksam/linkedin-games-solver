@@ -4,10 +4,6 @@ import { defineConfig } from "vitest/config"
 export default defineConfig({
   resolve: {
     alias: {
-      "@plasmohq/messaging": path.resolve(
-        __dirname,
-        "./lib/plasmo-messaging-shim.ts"
-      ),
       "@plasmohq/storage/secure": path.resolve(
         __dirname,
         "./lib/plasmo-storage-shim.ts"

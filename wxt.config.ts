@@ -92,7 +92,6 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        "@plasmohq/messaging": path.resolve("./lib/plasmo-messaging-shim.ts"),
         "@plasmohq/storage/secure": path.resolve(
           "./lib/plasmo-storage-shim.ts"
         ),
