@@ -461,13 +461,11 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
       for (const item of words) {
         if (typeof item === "string") {
           wordsList.push(item.toUpperCase())
-        } else if (
-          item &&
-          typeof item === "object" &&
-          "word" in item &&
-          typeof (item as Record<string, unknown>).word === "string"
-        ) {
-          wordsList.push((item as Record<string, unknown>).word.toUpperCase())
+        } else if (item && typeof item === "object") {
+          const itemObj = item as Record<string, unknown>
+          if (typeof itemObj.word === "string") {
+            wordsList.push(itemObj.word.toUpperCase())
+          }
         }
       }
 
