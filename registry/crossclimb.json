@@ -1762,5 +1762,17 @@
     "answers": ["TAME", "TIME", "LIME", "LINE", "FINE"],
     "topWord": "TAKE",
     "bottomWord": "FIVE"
+  },
+  "773": {
+    "clues": [
+      "Male deer",
+      "Where your shoulder blades are",
+      "Show reluctance to act",
+      "Daily exercise for a dog owner",
+      "Great ___ of China"
+    ],
+    "answers": ["BUCK", "BACK", "BALK", "WALK", "WALL"],
+    "topWord": "DUCK",
+    "bottomWord": "CALL"
   }
 }
