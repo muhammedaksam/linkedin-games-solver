@@ -456,96 +456,67 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
         return null
       }
 
-      // Ensure every element of the array is an object with word: string and path: number[]
-      const validSolutions: WendWordSolution[] = []
+      // Map to plain string words array
+      const wordsList: string[] = []
       for (const item of words) {
-        if (
+        if (typeof item === "string") {
+          wordsList.push(item.toUpperCase())
+        } else if (
           item &&
           typeof item === "object" &&
-          typeof item.word === "string" &&
-          Array.isArray(item.path) &&
-          item.path.every((x: unknown) => typeof x === "number")
+          "word" in item &&
+          typeof (item as Record<string, unknown>).word === "string"
         ) {
-          validSolutions.push(item)
+          wordsList.push((item as Record<string, unknown>).word.toUpperCase())
         }
       }
 
-      if (validSolutions.length !== wordLengths.length) {
+      if (wordsList.length !== wordLengths.length) {
         console.warn(
-          `[Wend] Expected ${wordLengths.length} valid word solutions, got ${validSolutions.length}`
+          `[Wend] Expected ${wordLengths.length} words, got ${wordsList.length}`
         )
         return null
       }
 
-      // Sort by word length to match expected order
-      const sortedLengths = [...wordLengths].sort((a, b) => a - b)
-      validSolutions.sort((a, b) => a.path.length - b.path.length)
+      // Check if word lengths match expected lengths
+      const sortedExpected = [...wordLengths].sort((a, b) => a - b)
+      const sortedWords = [...wordsList].sort((a, b) => a.length - b.length)
 
-      // Validate each word
-      const usedCells = new Set<number>()
-      for (let i = 0; i < validSolutions.length; i++) {
-        const w = validSolutions[i]
-
-        if (w.path.length !== sortedLengths[i]) {
+      for (let i = 0; i < sortedExpected.length; i++) {
+        if (sortedWords[i].length !== sortedExpected[i]) {
           console.warn(
-            `[Wend] Word "${w.word}" path length ${w.path.length} != expected ${sortedLengths[i]}`
+            `[Wend] Word "${sortedWords[i]}" length ${sortedWords[i].length} != expected ${sortedExpected[i]}`
           )
           return null
         }
-
-        // Check path validity
-        for (let j = 0; j < w.path.length; j++) {
-          const idx = w.path[j]
-          const cell = cells.find((c) => c.idx === idx)
-          if (!cell || cell.isHole || cell.isLocked) {
-            console.warn(`[Wend] Invalid cell idx ${idx} in word "${w.word}"`)
-            return null
-          }
-
-          if (usedCells.has(idx)) {
-            console.warn(
-              `[Wend] Cell ${idx} used multiple times in word "${w.word}"`
-            )
-            return null
-          }
-          usedCells.add(idx)
-
-          // Check adjacency with previous cell
-          if (j > 0) {
-            const prevIdx = w.path[j - 1]
-            const prevCell = cells.find((c) => c.idx === prevIdx)
-            if (!prevCell) return null
-
-            const dr = Math.abs(cell.row - prevCell.row)
-            const dc = Math.abs(cell.col - prevCell.col)
-            if (dr + dc !== 1) {
-              console.warn(
-                `[Wend] Non-adjacent cells ${prevIdx}→${idx} in word "${w.word}" (dr=${dr}, dc=${dc})`
-              )
-              return null
-            }
-          }
-
-          // Verify letter matches
-          if (cell.letter !== w.word[j]?.toUpperCase()) {
-            console.warn(
-              `[Wend] Letter mismatch at path[${j}]: cell has "${cell.letter}", word expects "${w.word[j]}"`
-            )
-            return null
-          }
-        }
       }
 
-      // Verify all available cells are used
-      const availableCount = cells.filter(
-        (c) => !c.isHole && !c.isLocked
-      ).length
-      if (usedCells.size !== availableCount) {
+      // Find paths programmatically using backtracking (sorted descending for speed)
+      const sortedWordsDesc = [...wordsList].sort((a, b) => b.length - a.length)
+      const pathsDesc = this.findPathsForWords(sortedWordsDesc, cells)
+      if (!pathsDesc) {
         console.warn(
-          `[Wend] Used ${usedCells.size} cells but ${availableCount} available`
+          "[Wend] Could not find a valid disjoint path cover for words:",
+          sortedWordsDesc
         )
         return null
       }
+
+      // Map back to words with their programmatically found paths
+      const solvedMap = new Map<string, number[]>()
+      for (let i = 0; i < sortedWordsDesc.length; i++) {
+        solvedMap.set(sortedWordsDesc[i], pathsDesc[i])
+      }
+
+      // Construct final ascending length order solutions
+      const validSolutions: WendWordSolution[] = sortedExpected.map((len) => {
+        // Find a word in wordsList that matches this length and is in solvedMap
+        const word = wordsList.find((w) => w.length === len && solvedMap.has(w))
+        if (!word) throw new Error(`Solved word of length ${len} not found`)
+        const path = solvedMap.get(word)!
+        solvedMap.delete(word) // prevent duplicates if same length words
+        return { word, path }
+      })
 
       console.log("[Wend] AI solution validated successfully!")
       return validSolutions
@@ -553,6 +524,86 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
       console.warn("[Wend] Failed to parse AI response:", err)
       return null
     }
+  }
+
+  private findPathsForWords(
+    words: string[],
+    cells: WendCell[]
+  ): number[][] | null {
+    const available = cells.filter((c) => !c.isHole && !c.isLocked)
+    const solutions: number[][] = []
+    const used = new Set<number>()
+
+    const search = (wordIdx: number): boolean => {
+      if (wordIdx === words.length) {
+        return true
+      }
+
+      const word = words[wordIdx].toUpperCase()
+      // Find all starting cells for this word
+      for (const startCell of available) {
+        if (used.has(startCell.idx)) continue
+        if (startCell.letter.toUpperCase() !== word[0]) continue
+
+        // Try to find a path starting from this cell
+        const path: number[] = [startCell.idx]
+        used.add(startCell.idx)
+
+        if (findPath(word, 1, startCell, path)) {
+          solutions.push([...path])
+          if (search(wordIdx + 1)) {
+            return true
+          }
+          solutions.pop()
+        }
+
+        used.delete(startCell.idx)
+      }
+
+      return false
+    }
+
+    const findPath = (
+      word: string,
+      charIdx: number,
+      currentCell: WendCell,
+      path: number[]
+    ): boolean => {
+      if (charIdx === word.length) {
+        return true
+      }
+
+      const targetChar = word[charIdx]
+      // Find adjacent cells
+      for (const nextCell of available) {
+        if (used.has(nextCell.idx)) continue
+        if (nextCell.letter.toUpperCase() !== targetChar) continue
+
+        // Check adjacency
+        const isAdjacent =
+          Math.abs(currentCell.row - nextCell.row) +
+            Math.abs(currentCell.col - nextCell.col) === 1
+
+        if (isAdjacent) {
+          path.push(nextCell.idx)
+          used.add(nextCell.idx)
+
+          if (findPath(word, charIdx + 1, nextCell, path)) {
+            return true
+          }
+
+          used.delete(nextCell.idx)
+          path.pop()
+        }
+      }
+
+      return false
+    }
+
+    if (search(0)) {
+      return solutions
+    }
+    return null
   }
 
   // ---------------------------------------------------------------------------
