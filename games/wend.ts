@@ -351,10 +351,10 @@ RULES:
 
 ADJACENCY: Cell at (r1,c1) is adjacent to (r2,c2) if |r1-r2| + |c1-c2| = 1 and neither is a hole.
 
-Return ONLY a JSON array of objects, sorted by word length ascending:
+Return ONLY a JSON array containing EXACTLY ${wordLengths.length} objects, one for each word, sorted by word length ascending:
 [{"word":"EXAMPLE","path":[idx1,idx2,...]}]
 
-Think step by step. Consider all possible words for each length. Verify adjacency for every consecutive pair in each path. Verify every available cell is used exactly once.`
+Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.length} words to use up all ${available.length} available cells. Verify adjacency for every consecutive pair in each path. Verify every available cell is used exactly once.`
 
     console.log("[Wend] Sending puzzle to AI...")
     const raw = await askAI(prompt, true)
@@ -370,7 +370,9 @@ Think step by step. Consider all possible words for each length. Verify adjacenc
       prompt +
         "\n\nIMPORTANT: Your previous answer was invalid. Double-check that:\n1. Every path has ONLY orthogonally adjacent consecutive cells\n2. ALL available cells are used exactly once\n3. All words are common English words\n4. Word lengths match exactly: [" +
         wordLengths.join(", ") +
-        "]",
+        "]\n5. You must return ALL " +
+        wordLengths.length +
+        " words in a single JSON array.",
       true
     )
     console.log("[Wend] AI retry response:", retryRaw)
@@ -389,35 +391,92 @@ Think step by step. Consider all possible words for each length. Verify adjacenc
     wordLengths: number[]
   ): WendWordSolution[] | null {
     try {
-      // Extract JSON array from response
       let jsonStr = raw.trim()
-      const bracketStart = jsonStr.indexOf("[")
-      const bracketEnd = jsonStr.lastIndexOf("]")
-      if (bracketStart !== -1 && bracketEnd !== -1) {
-        jsonStr = jsonStr.slice(bracketStart, bracketEnd + 1)
+
+      // Strip markdown code blocks if present
+      jsonStr = jsonStr.replace(/^```json\s*/i, "").replace(/```$/, "").trim()
+
+      let words: unknown
+      try {
+        words = JSON.parse(jsonStr)
+      } catch {
+        // Fallback: try finding first [ and last ]
+        const bracketStart = jsonStr.indexOf("[")
+        const bracketEnd = jsonStr.lastIndexOf("]")
+        if (bracketStart !== -1 && bracketEnd !== -1) {
+          try {
+            words = JSON.parse(jsonStr.slice(bracketStart, bracketEnd + 1))
+          } catch {
+            // Also try fallback for object { and }
+            const braceStart = jsonStr.indexOf("{")
+            const braceEnd = jsonStr.lastIndexOf("}")
+            if (braceStart !== -1 && braceEnd !== -1) {
+              try {
+                words = JSON.parse(jsonStr.slice(braceStart, braceEnd + 1))
+              } catch {
+                return null
+              }
+            } else {
+              return null
+            }
+          }
+        } else {
+          // Try fallback for object { and }
+          const braceStart = jsonStr.indexOf("{")
+          const braceEnd = jsonStr.lastIndexOf("}")
+          if (braceStart !== -1 && braceEnd !== -1) {
+            try {
+              words = JSON.parse(jsonStr.slice(braceStart, braceEnd + 1))
+            } catch {
+              return null
+            }
+          } else {
+            return null
+          }
+        }
       }
 
-      const words: WendWordSolution[] = JSON.parse(jsonStr)
+      // If it parsed as a single object (e.g. {"word": ..., "path": ...}), wrap it in an array
+      if (words && typeof words === "object" && !Array.isArray(words)) {
+        if ("word" in words && "path" in words) {
+          words = [words]
+        }
+      }
 
-      if (!Array.isArray(words) || words.length !== wordLengths.length) {
+      if (!Array.isArray(words)) {
+        console.warn("[Wend] Parsed response is not an array")
+        return null
+      }
+
+      // Ensure every element of the array is an object with word: string and path: number[]
+      const validSolutions: WendWordSolution[] = []
+      for (const item of words) {
+        if (
+          item &&
+          typeof item === "object" &&
+          typeof item.word === "string" &&
+          Array.isArray(item.path) &&
+          item.path.every((x: unknown) => typeof x === "number")
+        ) {
+          validSolutions.push(item)
+        }
+      }
+
+      if (validSolutions.length !== wordLengths.length) {
         console.warn(
-          `[Wend] Expected ${wordLengths.length} words, got ${words?.length}`
+          `[Wend] Expected ${wordLengths.length} valid word solutions, got ${validSolutions.length}`
         )
         return null
       }
 
       // Sort by word length to match expected order
       const sortedLengths = [...wordLengths].sort((a, b) => a - b)
-      words.sort((a, b) => a.path.length - b.path.length)
+      validSolutions.sort((a, b) => a.path.length - b.path.length)
 
       // Validate each word
       const usedCells = new Set<number>()
-      for (let i = 0; i < words.length; i++) {
-        const w = words[i]
-        if (!w.word || !w.path || !Array.isArray(w.path)) {
-          console.warn(`[Wend] Invalid word entry at index ${i}`)
-          return null
-        }
+      for (let i = 0; i < validSolutions.length; i++) {
+        const w = validSolutions[i]
 
         if (w.path.length !== sortedLengths[i]) {
           console.warn(
@@ -481,7 +540,7 @@ Think step by step. Consider all possible words for each length. Verify adjacenc
       }
 
       console.log("[Wend] AI solution validated successfully!")
-      return words
+      return validSolutions
     } catch (err) {
       console.warn("[Wend] Failed to parse AI response:", err)
       return null
