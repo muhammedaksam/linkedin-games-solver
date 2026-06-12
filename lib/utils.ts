@@ -42,7 +42,7 @@ export function getPuzzleNumber(gameId: string): number {
     tango: 588,
     crossclimb: 748,
     pinpoint: 748,
-    wend: 3
+    wend: -21
   }
 
   const base = baseNumbers[gameId] || 748

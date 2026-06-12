@@ -15,7 +15,7 @@ body:
     attributes:
       label: "Game Type"
       placeholder: "e.g., Pinpoint or Crossclimb"
-      description: "Which game are you submitting answers for? (Please type either 'Pinpoint' or 'Crossclimb')"
+      description: "Which game are you submitting answers for? (Please type 'Pinpoint', 'Crossclimb', or 'Wend')"
     validations:
       required: true
 
@@ -54,6 +54,25 @@ body:
         Gene
         Swimming
       description: "List the 5 clues revealed during the game, one per line."
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### 🔤 Wend Details (Only fill this if you selected Wend)
+
+  - type: textarea
+    id: wend_words
+    attributes:
+      label: "Wend Words"
+      placeholder: |
+        WIN
+        HOLD
+        ALIGN
+        ENGINE
+      description: "List the completed words from the word list, one per line (in order from top to bottom)."
     validations:
       required: false
 

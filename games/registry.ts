@@ -2,6 +2,10 @@ import { sendToBackground } from "@plasmohq/messaging"
 
 import { getLocalDateString, getPuzzleNumber } from "~lib/utils"
 
+export interface WendPuzzle {
+  words: string[]
+}
+
 export interface PinpointPuzzle {
   category: string
   clues: string[]
@@ -21,8 +25,11 @@ export async function fetchRegistry(
   game: "crossclimb"
 ): Promise<Record<string, CrossclimbPuzzle>>
 export async function fetchRegistry(
-  game: "pinpoint" | "crossclimb"
-): Promise<Record<string, PinpointPuzzle | CrossclimbPuzzle>> {
+  game: "wend"
+): Promise<Record<string, WendPuzzle>>
+export async function fetchRegistry(
+  game: "pinpoint" | "crossclimb" | "wend"
+): Promise<Record<string, PinpointPuzzle | CrossclimbPuzzle | WendPuzzle>> {
   if (
     typeof window !== "undefined" &&
     typeof chrome !== "undefined" &&
@@ -91,6 +98,29 @@ export function findPinpointAnswer(
   if (clueMatch) {
     console.log(`[Pinpoint Registry] Match found by active clues fallback!`)
     return clueMatch
+  }
+
+  return null
+}
+
+export function findWendAnswer(
+  registry: Record<string, WendPuzzle>,
+  _boardWords?: string[]
+): WendPuzzle | null {
+  if (!registry || typeof registry !== "object") return null
+
+  // 1. Try matching by Puzzle Number
+  const puzzleNum = String(getPuzzleNumber("wend"))
+  if (registry[puzzleNum]) {
+    console.log(`[Wend Registry] Match found by puzzle number: #${puzzleNum}`)
+    return registry[puzzleNum]
+  }
+
+  // 2. Try matching by date as a backward-compatible fallback
+  const today = getLocalDateString()
+  if (registry[today]) {
+    console.log(`[Wend Registry] Match found by date: ${today}`)
+    return registry[today]
   }
 
   return null

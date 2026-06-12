@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest"
 
 import {
   validateCrossclimbPuzzle,
-  validatePinpointPuzzle
+  validatePinpointPuzzle,
+  validateWendPuzzle
 } from "./validate-registry"
 
 describe("Pinpoint Registry Validation", () => {
@@ -135,5 +136,45 @@ describe("Crossclimb Registry Validation", () => {
     }
     const errors = validateCrossclimbPuzzle("701", validPuzzle)
     expect(errors).toEqual([])
+  })
+})
+
+describe("Wend Registry Validation", () => {
+  it("should pass validation for a valid wend puzzle entry", () => {
+    const validPuzzle = {
+      words: ["WIN", "HOLD", "ALIGN", "ENGINE"]
+    }
+    const errors = validateWendPuzzle("3", validPuzzle)
+    expect(errors).toEqual([])
+  })
+
+  it("should fail if words array is missing", () => {
+    const badPuzzle = {}
+    const errors = validateWendPuzzle("3", badPuzzle)
+    expect(errors.some((e) => e.includes("words"))).toBe(true)
+  })
+
+  it("should fail if words contain non-uppercase characters", () => {
+    const badPuzzle = {
+      words: ["Win", "HOLD", "ALIGN", "ENGINE"]
+    }
+    const errors = validateWendPuzzle("3", badPuzzle)
+    expect(errors.some((e) => e.includes("uppercase"))).toBe(true)
+  })
+
+  it("should fail if key format is invalid", () => {
+    const validPuzzle = {
+      words: ["WIN", "HOLD", "ALIGN", "ENGINE"]
+    }
+    const errors = validateWendPuzzle("abc", validPuzzle)
+    expect(errors.some((e) => e.includes("Invalid key format"))).toBe(true)
+  })
+
+  it("should fail if there are too few words", () => {
+    const badPuzzle = {
+      words: ["HI"]
+    }
+    const errors = validateWendPuzzle("3", badPuzzle)
+    expect(errors.some((e) => e.includes("between 2 and 10"))).toBe(true)
   })
 })

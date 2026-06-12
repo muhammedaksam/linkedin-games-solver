@@ -1,16 +1,21 @@
 import * as fs from "fs"
 import * as path from "path"
 
-import type { CrossclimbPuzzle, PinpointPuzzle } from "../games/registry"
+import type {
+  CrossclimbPuzzle,
+  PinpointPuzzle,
+  WendPuzzle
+} from "../games/registry"
 import {
   validateCrossclimbPuzzle,
-  validatePinpointPuzzle
+  validatePinpointPuzzle,
+  validateWendPuzzle
 } from "./validate-registry"
 
 interface ParseResult {
-  game: "pinpoint" | "crossclimb"
+  game: "pinpoint" | "crossclimb" | "wend"
   puzzleId: string
-  puzzleData: PinpointPuzzle | CrossclimbPuzzle
+  puzzleData: PinpointPuzzle | CrossclimbPuzzle | WendPuzzle
 }
 
 export function parseIssueBody(body: string): Record<string, string> {
@@ -53,7 +58,9 @@ export function extractPuzzle(sections: Record<string, string>): ParseResult {
 
   const game = rawGame.toLowerCase().includes("pinpoint")
     ? "pinpoint"
-    : "crossclimb"
+    : rawGame.toLowerCase().includes("wend")
+      ? "wend"
+      : "crossclimb"
 
   if (game === "pinpoint") {
     const category = sections["Pinpoint Category"] || ""
@@ -69,6 +76,20 @@ export function extractPuzzle(sections: Record<string, string>): ParseResult {
       puzzleData: {
         category,
         clues
+      }
+    }
+  } else if (game === "wend") {
+    const rawWords = sections["Wend Words"] || ""
+    const words = rawWords
+      .split("\n")
+      .map((w) => w.trim().toUpperCase())
+      .filter(Boolean)
+
+    return {
+      game,
+      puzzleId,
+      puzzleData: {
+        words
       }
     }
   } else {
@@ -126,6 +147,8 @@ function runProcessor() {
     let validationErrors: string[] = []
     if (game === "pinpoint") {
       validationErrors = validatePinpointPuzzle(puzzleId, puzzleData)
+    } else if (game === "wend") {
+      validationErrors = validateWendPuzzle(puzzleId, puzzleData)
     } else {
       validationErrors = validateCrossclimbPuzzle(puzzleId, puzzleData)
     }
@@ -149,7 +172,10 @@ function runProcessor() {
       `${game}.json`
     )
 
-    let registry: Record<string, PinpointPuzzle | CrossclimbPuzzle> = {}
+    let registry: Record<
+      string,
+      PinpointPuzzle | CrossclimbPuzzle | WendPuzzle
+    > = {}
     if (fs.existsSync(registryFilePath)) {
       registry = JSON.parse(fs.readFileSync(registryFilePath, "utf8"))
     }
@@ -181,11 +207,14 @@ function runProcessor() {
     registry[puzzleId] = puzzleData
 
     // Sort registry keys if they are numeric so the file stays sorted
-    const sortedRegistry: Record<string, PinpointPuzzle | CrossclimbPuzzle> = {}
+    const sortedRegistry: Record<
+      string,
+      PinpointPuzzle | CrossclimbPuzzle | WendPuzzle
+    > = {}
     const keys = Object.keys(registry).sort((a, b) => {
       const aNum = parseInt(a, 10)
       const bNum = parseInt(b, 10)
-      if (!isNaN(aNum) && !isNaN(bNum)) {
+      if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) {
         return aNum - bNum
       }
       return a.localeCompare(b)
@@ -198,7 +227,7 @@ function runProcessor() {
     // Write back pretty-printed with 2 spaces
     fs.writeFileSync(
       registryFilePath,
-      JSON.stringify(sortedRegistry, null, 2) + "\n"
+      `${JSON.stringify(sortedRegistry, null, 2)}\n`
     )
 
     const summaryContent =

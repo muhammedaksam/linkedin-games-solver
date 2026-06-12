@@ -349,7 +349,9 @@ async function checkVisitedGameSolved() {
         hintButton.hasAttribute("disabled")
       ) {
         if (
-          ["tango", "queens", "sudoku", "patches", "zip", "wend"].includes(baseGameId)
+          ["tango", "queens", "sudoku", "patches", "zip", "wend"].includes(
+            baseGameId
+          )
         ) {
           // Both disabled at start of game due to empty history & cooldown.
           // Only treat as ended if page was loaded > 15s ago.
@@ -694,6 +696,55 @@ const messageListener = (
             game: "crossclimb",
             puzzleNumber,
             data: { clues, answers, topWord, bottomWord }
+          })
+        } else if (gameName === "wend") {
+          // Parse word list to get solved words from the completed board
+          const words: string[] = []
+          let rowIdx = 0
+          while (true) {
+            const row = document.querySelector(
+              `[data-testid="wend-word-list-row-${rowIdx}"]`
+            )
+            if (!row) break
+
+            const isLocked = row.getAttribute("data-locked") === "true"
+            if (!isLocked) {
+              sendResponse({
+                success: false,
+                error:
+                  "Wend puzzle is not fully solved yet. Please complete all words before extracting."
+              })
+              return
+            }
+
+            let word = ""
+            let slotIdx = 0
+            while (true) {
+              const slot = row.querySelector(
+                `[data-testid="wend-word-list-slot-${rowIdx}-${slotIdx}"]`
+              )
+              if (!slot) break
+              word += slot.textContent?.trim() || ""
+              slotIdx++
+            }
+            if (word) words.push(word)
+            rowIdx++
+          }
+
+          if (words.length === 0) {
+            sendResponse({
+              success: false,
+              error:
+                "No Wend word data found on page. Make sure the board is loaded/completed."
+            })
+            return
+          }
+
+          sendResponse({
+            success: true,
+            game: "wend",
+            puzzleNumber,
+            data: { words }
           })
         } else {
           sendResponse({

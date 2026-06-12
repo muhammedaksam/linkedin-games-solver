@@ -22,7 +22,7 @@ export class QueensSolver extends BaseSolver {
       cells.length > 0 &&
       (cells.some((c) => c.querySelector('[data-testid="queen-svg"]')) ||
         cells.some((c) => {
-          const classes = c.className
+          const classes = c.getAttribute("class") || ""
           // Check for known color classes from LinkedIn's Queens game
           return QueensSolver.KNOWN_COLOR_CLASSES
             ? Array.from(QueensSolver.KNOWN_COLOR_CLASSES).some((cc) =>
@@ -47,17 +47,19 @@ export class QueensSolver extends BaseSolver {
     try {
       console.log("[Queens] Attempting React Fiber state extraction...")
       const boardState: ReactQueensBoard = await fetchReactBoardState("queens")
-      if (boardState && boardState.cells && boardState.cells.length > 0) {
+      if (boardState?.cells?.length > 0) {
         N = boardState.boardSize
         regionOf = new Array<number>(N * N)
         const regionsMap = new Map<string | number, number>()
         let nextRegionId = 0
 
         for (const cell of boardState.cells) {
-          if (!regionsMap.has(cell.regionId)) {
-            regionsMap.set(cell.regionId, nextRegionId++)
+          let rId = regionsMap.get(cell.regionId)
+          if (rId === undefined) {
+            rId = nextRegionId++
+            regionsMap.set(cell.regionId, rId)
           }
-          regionOf[cell.idx] = regionsMap.get(cell.regionId)!
+          regionOf[cell.idx] = rId
 
           if (cell.state === 1) {
             givenQueens.add(cell.idx)
@@ -74,10 +76,11 @@ export class QueensSolver extends BaseSolver {
           `[Queens] React Extraction Successful! N=${N}, regions=${regionCount}`
         )
       }
-    } catch (err) {
+    } catch (error) {
+      const errMsg = error instanceof Error ? error.message : String(error)
       console.warn(
         "[Queens] React Fiber state extraction failed, falling back to DOM parsing:",
-        err.message || err
+        errMsg
       )
     }
 

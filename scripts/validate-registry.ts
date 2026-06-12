@@ -53,6 +53,48 @@ export function validatePinpointPuzzle(key: string, puzzle: unknown): string[] {
   return errors
 }
 
+interface RawWendPuzzle {
+  words?: unknown
+}
+
+export function validateWendPuzzle(key: string, puzzle: unknown): string[] {
+  const errors: string[] = []
+
+  // Validate Key
+  if (!/^\d+$/.test(key) && !/^\d{4}-\d{2}-\d{2}$/.test(key)) {
+    errors.push(
+      `Invalid key format. Must be a numeric string (puzzle ID) or a date in YYYY-MM-DD format. Got: "${key}"`
+    )
+  }
+
+  if (!puzzle || typeof puzzle !== "object") {
+    errors.push("Puzzle entry must be a JSON object.")
+    return errors
+  }
+
+  const p = puzzle as RawWendPuzzle
+
+  // Validate words array
+  if (!Array.isArray(p.words)) {
+    errors.push("Property 'words' must be an array.")
+  } else {
+    if (p.words.length < 2 || p.words.length > 10) {
+      errors.push(
+        `Property 'words' must contain between 2 and 10 words. Got: ${p.words.length}`
+      )
+    }
+    p.words.forEach((word: unknown, index: number) => {
+      if (typeof word !== "string" || !/^[A-Z]+$/.test(word)) {
+        errors.push(
+          `Word at index ${index} must be an uppercase alphabetic string. Got: "${word}"`
+        )
+      }
+    })
+  }
+
+  return errors
+}
+
 interface RawCrossclimbPuzzle {
   topWord?: unknown
   bottomWord?: unknown
@@ -205,6 +247,7 @@ export function runValidationPipeline(): ValidationError[] {
 
   const pinpointPath = path.join(workspaceRoot, "registry", "pinpoint.json")
   const crossclimbPath = path.join(workspaceRoot, "registry", "crossclimb.json")
+  const wendPath = path.join(workspaceRoot, "registry", "wend.json")
 
   console.log("=== Starting Registry Integrity Verification ===")
 
@@ -218,6 +261,15 @@ export function runValidationPipeline(): ValidationError[] {
   crossclimbFormatErrors.forEach((err) => {
     errors.push({
       file: "registry/crossclimb.json",
+      key: "Global",
+      message: err
+    })
+  })
+
+  const wendFormatErrors = checkFileFormat(wendPath)
+  wendFormatErrors.forEach((err) => {
+    errors.push({
+      file: "registry/wend.json",
       key: "Global",
       message: err
     })
@@ -246,6 +298,21 @@ export function runValidationPipeline(): ValidationError[] {
         const itemErrors = validateCrossclimbPuzzle(key, puzzle)
         itemErrors.forEach((err) => {
           errors.push({ file: "registry/crossclimb.json", key, message: err })
+        })
+      }
+    } catch {
+      // JSON format error is already caught by checkFileFormat
+    }
+  }
+
+  // 4. Validate Wend entry contents
+  if (fs.existsSync(wendPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(wendPath, "utf8"))
+      for (const [key, puzzle] of Object.entries(data)) {
+        const itemErrors = validateWendPuzzle(key, puzzle)
+        itemErrors.forEach((err) => {
+          errors.push({ file: "registry/wend.json", key, message: err })
         })
       }
     } catch {

@@ -700,9 +700,14 @@ export function SolverShell({
                 (response.data.answers || []).join("\n")
               )
               url += `&game=Crossclimb&puzzleId=${puzzleId}&crossclimb_top=${topWord}&crossclimb_bottom=${bottomWord}&crossclimb_clues=${clues}&crossclimb_answers=${answers}`
+            } else if (activeGame === "wend") {
+              const wendWords = encodeURIComponent(
+                (response.data.words || []).join("\n")
+              )
+              url += `&game=Wend&puzzleId=${puzzleId}&wend_words=${wendWords}`
             } else {
               setDebugError(
-                "Direct submission is only supported for Pinpoint and Crossclimb."
+                "Direct submission is only supported for Pinpoint, Crossclimb, and Wend."
               )
               return
             }
@@ -1621,7 +1626,9 @@ export function SolverShell({
                   type="button"
                   variant="outline"
                   disabled={
-                    activeGame !== "pinpoint" && activeGame !== "crossclimb"
+                    activeGame !== "pinpoint" &&
+                    activeGame !== "crossclimb" &&
+                    activeGame !== "wend"
                   }
                   onClick={handleCopyRegistryEntry}
                   className={cn(
@@ -1644,7 +1651,9 @@ export function SolverShell({
                   type="button"
                   variant="outline"
                   disabled={
-                    activeGame !== "pinpoint" && activeGame !== "crossclimb"
+                    activeGame !== "pinpoint" &&
+                    activeGame !== "crossclimb" &&
+                    activeGame !== "wend"
                   }
                   onClick={handleSubmitToRegistry}
                   className="col-span-1 h-8 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 px-2.5 border-border hover:bg-muted/40 text-foreground disabled:opacity-40 disabled:pointer-events-none">
