@@ -493,8 +493,8 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
 
       // Find paths programmatically using backtracking (sorted descending for speed)
       const sortedWordsDesc = [...wordsList].sort((a, b) => b.length - a.length)
-      const pathsDesc = this.findPathsForWords(sortedWordsDesc, cells)
-      if (!pathsDesc) {
+      const solutionsDesc = this.findPathsForWords(cells, sortedWordsDesc)
+      if (!solutionsDesc) {
         console.warn(
           "[Wend] Could not find a valid disjoint path cover for words:",
           sortedWordsDesc
@@ -502,20 +502,14 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
         return null
       }
 
-      // Map back to words with their programmatically found paths
-      const solvedMap = new Map<string, number[]>()
-      for (let i = 0; i < sortedWordsDesc.length; i++) {
-        solvedMap.set(sortedWordsDesc[i], pathsDesc[i])
-      }
-
       // Construct final ascending length order solutions
       const validSolutions: WendWordSolution[] = sortedExpected.map((len) => {
-        // Find a word in wordsList that matches this length and is in solvedMap
-        const word = wordsList.find((w) => w.length === len && solvedMap.has(w))
-        if (!word) throw new Error(`Solved word of length ${len} not found`)
-        const path = solvedMap.get(word)!
-        solvedMap.delete(word) // prevent duplicates if same length words
-        return { word, path }
+        // Find a solution in solutionsDesc that matches this length
+        const solIdx = solutionsDesc.findIndex((s) => s.word.length === len)
+        if (solIdx === -1) throw new Error(`Solved word of length ${len} not found`)
+        const sol = solutionsDesc[solIdx]
+        solutionsDesc.splice(solIdx, 1) // prevent duplicate matching for same lengths
+        return sol
       })
 
       console.log("[Wend] AI solution validated successfully!")
@@ -524,86 +518,6 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
       console.warn("[Wend] Failed to parse AI response:", err)
       return null
     }
-  }
-
-  private findPathsForWords(
-    words: string[],
-    cells: WendCell[]
-  ): number[][] | null {
-    const available = cells.filter((c) => !c.isHole && !c.isLocked)
-    const solutions: number[][] = []
-    const used = new Set<number>()
-
-    const search = (wordIdx: number): boolean => {
-      if (wordIdx === words.length) {
-        return true
-      }
-
-      const word = words[wordIdx].toUpperCase()
-      // Find all starting cells for this word
-      for (const startCell of available) {
-        if (used.has(startCell.idx)) continue
-        if (startCell.letter.toUpperCase() !== word[0]) continue
-
-        // Try to find a path starting from this cell
-        const path: number[] = [startCell.idx]
-        used.add(startCell.idx)
-
-        if (findPath(word, 1, startCell, path)) {
-          solutions.push([...path])
-          if (search(wordIdx + 1)) {
-            return true
-          }
-          solutions.pop()
-        }
-
-        used.delete(startCell.idx)
-      }
-
-      return false
-    }
-
-    const findPath = (
-      word: string,
-      charIdx: number,
-      currentCell: WendCell,
-      path: number[]
-    ): boolean => {
-      if (charIdx === word.length) {
-        return true
-      }
-
-      const targetChar = word[charIdx]
-      // Find adjacent cells
-      for (const nextCell of available) {
-        if (used.has(nextCell.idx)) continue
-        if (nextCell.letter.toUpperCase() !== targetChar) continue
-
-        // Check adjacency
-        const isAdjacent =
-          Math.abs(currentCell.row - nextCell.row) +
-            Math.abs(currentCell.col - nextCell.col) === 1
-
-        if (isAdjacent) {
-          path.push(nextCell.idx)
-          used.add(nextCell.idx)
-
-          if (findPath(word, charIdx + 1, nextCell, path)) {
-            return true
-          }
-
-          used.delete(nextCell.idx)
-          path.pop()
-        }
-      }
-
-      return false
-    }
-
-    if (search(0)) {
-      return solutions
-    }
-    return null
   }
 
   // ---------------------------------------------------------------------------
