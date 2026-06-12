@@ -351,8 +351,13 @@ RULES:
 
 ADJACENCY: Cell at (r1,c1) is adjacent to (r2,c2) if |r1-r2| + |c1-c2| = 1 and neither is a hole.
 
-Return ONLY a JSON array containing EXACTLY ${wordLengths.length} objects, one for each word, sorted by word length ascending:
-[{"word":"EXAMPLE","path":[idx1,idx2,...]}]
+Return ONLY a JSON object in this exact format:
+{
+  "words": [
+    {"word": "EXAMPLE", "path": [idx1, idx2, ...]}
+  ]
+}
+The "words" array must contain EXACTLY ${wordLengths.length} objects, one for each word, sorted by word length ascending.
 
 Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.length} words to use up all ${available.length} available cells. Verify adjacency for every consecutive pair in each path. Verify every available cell is used exactly once.`
 
@@ -372,7 +377,7 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
         wordLengths.join(", ") +
         "]\n5. You must return ALL " +
         wordLengths.length +
-        " words in a single JSON array.",
+        " words inside the \"words\" array of the JSON object.",
       true
     )
     console.log("[Wend] AI retry response:", retryRaw)
@@ -436,10 +441,13 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
         }
       }
 
-      // If it parsed as a single object (e.g. {"word": ..., "path": ...}), wrap it in an array
+      // If it parsed as a single object, check if it has "words" property or "word"/"path"
       if (words && typeof words === "object" && !Array.isArray(words)) {
-        if ("word" in words && "path" in words) {
-          words = [words]
+        const wordsObj = words as Record<string, unknown>
+        if ("words" in wordsObj && Array.isArray(wordsObj.words)) {
+          words = wordsObj.words
+        } else if ("word" in wordsObj && "path" in wordsObj) {
+          words = [wordsObj]
         }
       }
 
