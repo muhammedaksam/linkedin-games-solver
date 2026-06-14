@@ -1388,5 +1388,15 @@
   "773": {
     "category": "Words that come before \"order\"",
     "clues": ["Natural", "Standing", "Purchase", "Pecking", "Out of"]
+  },
+  "775": {
+    "category": "Things that block sunlight",
+    "clues": [
+      "Clouds",
+      "Parasols",
+      "Tinted glass",
+      "Dark curtains",
+      "The Moon during some eclipses"
+    ]
   }
 }
