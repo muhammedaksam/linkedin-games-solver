@@ -1774,5 +1774,17 @@
     "answers": ["BUCK", "BACK", "BALK", "WALK", "WALL"],
     "topWord": "DUCK",
     "bottomWord": "CALL"
+  },
+  "775": {
+    "clues": [
+      "“Phooey!”",
+      "Misbehaving child",
+      "Vessel with life vests",
+      "Large, slithery hunters that constrict their prey",
+      "Programs that might be used to chat"
+    ],
+    "answers": ["DRAT", "BRAT", "BOAT", "BOAS", "BOTS"],
+    "topWord": "DRAW",
+    "bottomWord": "LOTS"
   }
 }
