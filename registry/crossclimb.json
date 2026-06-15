@@ -1786,5 +1786,17 @@
     "answers": ["DRAT", "BRAT", "BOAT", "BOAS", "BOTS"],
     "topWord": "DRAW",
     "bottomWord": "LOTS"
+  },
+  "776": {
+    "clues": [
+      "Radiate light",
+      "Small village, like the one in “The Hobbit”",
+      "What two toddlers with only one toy may learn to do",
+      "Gaze with intent",
+      "Put away to use later"
+    ],
+    "answers": ["SHINE", "SHIRE", "SHARE", "STARE", "STORE"],
+    "topWord": "RHINE",
+    "bottomWord": "STONE"
   }
 }
