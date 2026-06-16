@@ -112,7 +112,9 @@ export function findWendAnswer(
   if (edition !== undefined) {
     const editionStr = String(edition)
     if (registry[editionStr]) {
-      console.log(`[Wend Registry] Match found by extracted edition number: #${edition}`)
+      console.log(
+        `[Wend Registry] Match found by extracted edition number: #${edition}`
+      )
       return registry[editionStr]
     }
   }

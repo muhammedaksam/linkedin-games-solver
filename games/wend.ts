@@ -96,7 +96,10 @@ export class WendSolver extends BaseSolver {
 
     // 1. Try extracting solution directly from React Fiber board state
     if (boardState?.solution && Array.isArray(boardState.solution)) {
-      console.log("[Wend] Found solution in React Fiber state:", boardState.solution)
+      console.log(
+        "[Wend] Found solution in React Fiber state:",
+        boardState.solution
+      )
 
       const unsolvedWords = [...boardState.solution].map((w) => w.toUpperCase())
       for (const solved of solvedWords) {
@@ -106,7 +109,10 @@ export class WendSolver extends BaseSolver {
         }
       }
 
-      console.log("[Wend] Unsolved words (from React Fiber) to find paths for:", unsolvedWords)
+      console.log(
+        "[Wend] Unsolved words (from React Fiber) to find paths for:",
+        unsolvedWords
+      )
       solution = this.findPathsForWords(cells, unsolvedWords)
       if (solution) {
         console.log(
@@ -133,7 +139,9 @@ export class WendSolver extends BaseSolver {
       if (matchedPuzzle && Array.isArray(matchedPuzzle.words)) {
         console.log("[Wend] Match found in registry:", matchedPuzzle.words)
 
-        const unsolvedWords = [...matchedPuzzle.words].map((w) => w.toUpperCase())
+        const unsolvedWords = [...matchedPuzzle.words].map((w) =>
+          w.toUpperCase()
+        )
         for (const solved of solvedWords) {
           const idx = unsolvedWords.indexOf(solved)
           if (idx !== -1) {
@@ -141,7 +149,10 @@ export class WendSolver extends BaseSolver {
           }
         }
 
-        console.log("[Wend] Unsolved words (from registry) to find paths for:", unsolvedWords)
+        console.log(
+          "[Wend] Unsolved words (from registry) to find paths for:",
+          unsolvedWords
+        )
         solution = this.findPathsForWords(cells, unsolvedWords)
 
         if (solution) {
@@ -585,8 +596,14 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
         button: 0,
         which: buttons > 0 ? 1 : 0
       })
-      Object.defineProperty(ev, "offsetX", { value: offsetX, configurable: true })
-      Object.defineProperty(ev, "offsetY", { value: offsetY, configurable: true })
+      Object.defineProperty(ev, "offsetX", {
+        value: offsetX,
+        configurable: true
+      })
+      Object.defineProperty(ev, "offsetY", {
+        value: offsetY,
+        configurable: true
+      })
       return ev
     }
 
