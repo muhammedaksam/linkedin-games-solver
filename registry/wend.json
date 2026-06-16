@@ -1,28 +1,11 @@
 {
   "3": {
-    "words": [
-      "WIN",
-      "HOLD",
-      "ALIGN",
-      "ENGINE"
-    ]
+    "words": ["WIN", "HOLD", "ALIGN", "ENGINE"]
   },
   "5": {
-    "words": [
-      "POINT",
-      "COMPASS",
-      "WESTWARD",
-      "EXCURSION"
-    ]
+    "words": ["POINT", "COMPASS", "WESTWARD", "EXCURSION"]
   },
   "6": {
-    "words": [
-      "INK",
-      "PINCH",
-      "CINEMA",
-      "MINIMUM",
-      "INFINITY",
-      "INTELLECT"
-    ]
+    "words": ["INK", "PINCH", "CINEMA", "MINIMUM", "INFINITY", "INTELLECT"]
   }
 }
