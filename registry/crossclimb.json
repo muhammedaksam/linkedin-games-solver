@@ -1798,5 +1798,17 @@
     "answers": ["SHINE", "SHIRE", "SHARE", "STARE", "STORE"],
     "topWord": "RHINE",
     "bottomWord": "STONE"
+  },
+  "776": {
+    "clues": [
+      "Object on which spice jars are arranged",
+      "What the stripes on an officer's shoulder or upper sleeve identify",
+      "Business that typically has a vault",
+      "Prohibits a specific activity",
+      "Metal containers for soup and other pantry items"
+    ],
+    "answers": ["RACK", "RANK", "BANK", "BANS", "CANS"],
+    "topWord": "RACE",
+    "bottomWord": "CARS"
   }
 }
