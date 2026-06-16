@@ -377,7 +377,7 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
         wordLengths.join(", ") +
         "]\n5. You must return ALL " +
         wordLengths.length +
-        " words inside the \"words\" array of the JSON object.",
+        ' words inside the "words" array of the JSON object.',
       true
     )
     console.log("[Wend] AI retry response:", retryRaw)
@@ -399,7 +399,10 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
       let jsonStr = raw.trim()
 
       // Strip markdown code blocks if present
-      jsonStr = jsonStr.replace(/^```json\s*/i, "").replace(/```$/, "").trim()
+      jsonStr = jsonStr
+        .replace(/^```json\s*/i, "")
+        .replace(/```$/, "")
+        .trim()
 
       let words: unknown
       try {
@@ -504,7 +507,8 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
       const validSolutions: WendWordSolution[] = sortedExpected.map((len) => {
         // Find a solution in solutionsDesc that matches this length
         const solIdx = solutionsDesc.findIndex((s) => s.word.length === len)
-        if (solIdx === -1) throw new Error(`Solved word of length ${len} not found`)
+        if (solIdx === -1)
+          throw new Error(`Solved word of length ${len} not found`)
         const sol = solutionsDesc[solIdx]
         solutionsDesc.splice(solIdx, 1) // prevent duplicate matching for same lengths
         return sol

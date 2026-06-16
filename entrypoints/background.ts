@@ -1,7 +1,7 @@
 import { askAI } from "~games/ai"
-import { onMessage } from "~lib/messaging"
 import { analytics } from "~lib/analytics"
 import { getMessage, initLocale } from "~lib/i18n"
+import { onMessage } from "~lib/messaging"
 import { syncStorage } from "~lib/storage"
 
 const i18n = {
@@ -13,8 +13,6 @@ interface SolveRecord {
   time: number
   solvedAt?: string
 }
-
-
 
 console.log("[LinkedIn Games Solver] Background service worker initialized.")
 
@@ -792,10 +790,14 @@ export default defineBackground({
           })
         }
 
-        const processedResponse = await new Promise<{
-          success?: boolean
-          dataUrl?: string
-        } | null | undefined>((resolve) => {
+        const processedResponse = await new Promise<
+          | {
+              success?: boolean
+              dataUrl?: string
+            }
+          | null
+          | undefined
+        >((resolve) => {
           chrome.runtime.sendMessage(
             {
               action: "preprocess-image",
@@ -815,16 +817,10 @@ export default defineBackground({
         try {
           await chrome.offscreen.closeDocument()
         } catch (closeErr) {
-          console.warn(
-            "[Offscreen] Failed to close document:",
-            closeErr
-          )
+          console.warn("[Offscreen] Failed to close document:", closeErr)
         }
 
-        if (
-          processedResponse?.success &&
-          processedResponse?.dataUrl
-        ) {
+        if (processedResponse?.success && processedResponse?.dataUrl) {
           return {
             success: true,
             dataUrl: processedResponse.dataUrl

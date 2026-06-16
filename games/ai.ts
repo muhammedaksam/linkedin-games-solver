@@ -1,7 +1,7 @@
 /// <reference types="dom-chromium-ai" />
 import { Storage } from "@plasmohq/storage"
-import { sendMessage } from "~lib/messaging"
 
+import { sendMessage } from "~lib/messaging"
 import { secureStorage } from "~lib/storage"
 
 const storage = new Storage({ area: "local" })

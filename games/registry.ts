@@ -1,5 +1,4 @@
 import { sendMessage } from "~lib/messaging"
-
 import { getLocalDateString, getPuzzleNumber } from "~lib/utils"
 
 export interface WendPuzzle {
