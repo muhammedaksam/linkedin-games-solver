@@ -226,7 +226,7 @@ sequenceDiagram
 | **Sudoku**     |    🐹 Ember.js     |        👁️ DOM Scraper        |    Direct input read-outs & aria accessibility parsing     |     🟢 Not Applicable      |
 | **Crossclimb** |    🐹 Ember.js     | 👁️ DOM Scraper + 🗃️ Registry |        Active input values & candidate word arrays         | 🟢 100% LLM Reasoning Mode |
 | **Pinpoint**   |    🐹 Ember.js     | 👁️ DOM Scraper + 🗃️ Registry |              Category hints & card text lists              | 🟢 100% LLM Reasoning Mode |
-| **Wend**       |      ⚛️ React      |        👁️ DOM Scraper        |     Word length slots, cell letters & hole coordinates     | 🟢 100% LLM Reasoning Mode |
+| **Wend**       |      ⚛️ React      | ⚡ Fiber Bridge + 🗃️ Registry | Word length slots, cell letters, hole coordinates & solution paths | 🟢 100% LLM Reasoning Mode |
 
 > [!NOTE]
 >

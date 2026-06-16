@@ -31,7 +31,8 @@ const gameIcons = [
   "crossclimb",
   "sudoku",
   "zip",
-  "patches"
+  "patches",
+  "wend"
 ] as const
 
 function q(value: string | number | boolean): string {
@@ -311,6 +312,11 @@ function generateMockSolveHistory(): SolveHistory {
         solvedAt: `${dayBeforeStr}T23:01:27.383Z`,
         time: 4
       },
+      wend: {
+        solved: true,
+        solvedAt: `${dayBeforeStr}T23:01:27.800Z`,
+        time: 4
+      },
       zip: {
         solved: true,
         solvedAt: `${dayBeforeStr}T23:01:26.288Z`,
@@ -347,6 +353,11 @@ function generateMockSolveHistory(): SolveHistory {
         solved: true,
         solvedAt: `${yesterdayStr}T07:22:16.477Z`,
         time: 2
+      },
+      wend: {
+        solved: true,
+        solvedAt: `${yesterdayStr}T07:22:18.500Z`,
+        time: 3
       },
       zip: {
         solved: true,
@@ -389,6 +400,11 @@ function generateMockSolveHistory(): SolveHistory {
         solved: true,
         time: 2,
         solvedAt: `${todayStr}T10:50:29.857Z`
+      },
+      wend: {
+        solved: true,
+        time: 5,
+        solvedAt: `${todayStr}T10:51:04.120Z`
       }
     }
   }
@@ -432,6 +448,10 @@ function generateMockActiveHistory(): SolveHistory {
       solved: true,
       time: 2,
       solvedAt: `${todayStr}T10:50:29.857Z`
+    },
+    wend: {
+      solved: false,
+      time: 0
     }
   }
 
@@ -796,6 +816,14 @@ async function generatePromoMarquee(
       "east",
       "-geometry",
       "+30+150",
+      "-composite",
+      "\\(",
+      q(path.join(tmpDir, "wend-220.png")),
+      "\\)",
+      "-gravity",
+      "east",
+      "-geometry",
+      "+60-160",
       "-composite",
       ...(localeFontPath ? ["-font", q(localeFontPath)] : []),
       "-strip"
