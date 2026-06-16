@@ -40,12 +40,12 @@ export class PatchesSolver extends BaseSolver {
     let H = 0
     let clues: Clue[] = []
     let reactSuccess = false
-    let reactSolution: Rect[] | undefined = undefined
+    let reactSolution: Rect[] | undefined
 
     try {
       console.log("[Patches] Attempting React Fiber state extraction...")
       const boardState = await fetchReactBoardState("patches")
-      if (boardState && boardState.clues && boardState.clues.length > 0) {
+      if (boardState?.clues && boardState.clues.length > 0) {
         W = boardState.gridCols
         H = boardState.gridRows
         clues = boardState.clues.map((c) => ({
@@ -98,7 +98,7 @@ export class PatchesSolver extends BaseSolver {
     } catch (err) {
       console.warn(
         "[Patches] React Fiber state extraction failed, falling back to DOM parsing:",
-        err.message || err
+        err instanceof Error ? err.message : err
       )
     }
 
@@ -284,7 +284,13 @@ export class PatchesSolver extends BaseSolver {
 
     if (!startCell || !endCell) return
 
-    startCell.dispatchEvent(this.createMouseEvent("mousedown", 1))
+    startCell.dispatchEvent(
+      this.createMouseEvent("mousedown", startCell, 1, 10, 10)
+    )
+    // Move by 15px in X direction to exceed the 10px drag threshold check
+    startCell.dispatchEvent(
+      this.createMouseEvent("mousemove", startCell, 1, 25, 10)
+    )
     await this.sleep(50)
 
     for (let r = rect.r; r <= rect.r + rect.h - 1; r++) {
@@ -292,15 +298,21 @@ export class PatchesSolver extends BaseSolver {
         if (r === rect.r && c === rect.c) continue // Start cell is already active
         const cell = getCell(r, c)
         if (cell) {
-          cell.dispatchEvent(this.createMouseEvent("mousemove", 1))
-          cell.dispatchEvent(this.createMouseEvent("mouseenter", 1))
-          cell.dispatchEvent(this.createMouseEvent("mouseover", 1))
+          cell.dispatchEvent(
+            this.createMouseEvent("mouseover", cell, 1, 10, 10)
+          )
+          cell.dispatchEvent(
+            this.createMouseEvent("mouseenter", cell, 1, 10, 10)
+          )
+          cell.dispatchEvent(
+            this.createMouseEvent("mousemove", cell, 1, 10, 10)
+          )
           await this.sleep(50)
         }
       }
     }
 
-    endCell.dispatchEvent(this.createMouseEvent("mouseup", 0))
-    endCell.dispatchEvent(this.createMouseEvent("click", 0))
+    endCell.dispatchEvent(this.createMouseEvent("mouseup", endCell, 0, 10, 10))
+    endCell.dispatchEvent(this.createMouseEvent("click", endCell, 0, 10, 10))
   }
 }

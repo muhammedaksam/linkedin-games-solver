@@ -20,7 +20,7 @@ export class ZipSolver extends BaseSolver {
     let checkpoints = new Map<number, number>()
     let walls = new Set<string>()
     let reactSuccess = false
-    let reactSolution: number[] | undefined = undefined
+    let reactSolution: number[] | undefined
 
     try {
       console.log("[Zip] Attempting React Fiber state extraction...")
@@ -326,24 +326,30 @@ export class ZipSolver extends BaseSolver {
 
     const firstEl = cellEl(solution[0])
     if (firstEl) {
-      firstEl.dispatchEvent(this.createMouseEvent("mousedown", 1))
+      firstEl.dispatchEvent(
+        this.createMouseEvent("mousedown", firstEl, 1, 10, 10)
+      )
+      // Move by 15px in X direction to exceed the 10px drag threshold check
+      firstEl.dispatchEvent(
+        this.createMouseEvent("mousemove", firstEl, 1, 25, 10)
+      )
     }
     await this.sleep(50)
 
     for (let i = 1; i < solution.length; i++) {
       const el = cellEl(solution[i])
       if (el) {
-        el.dispatchEvent(this.createMouseEvent("mousemove", 1))
-        el.dispatchEvent(this.createMouseEvent("mouseenter", 1))
-        el.dispatchEvent(this.createMouseEvent("mouseover", 1))
+        el.dispatchEvent(this.createMouseEvent("mouseover", el, 1, 10, 10))
+        el.dispatchEvent(this.createMouseEvent("mouseenter", el, 1, 10, 10))
+        el.dispatchEvent(this.createMouseEvent("mousemove", el, 1, 10, 10))
       }
       await this.sleep(40)
     }
 
     const lastEl = cellEl(solution[solution.length - 1])
     if (lastEl) {
-      lastEl.dispatchEvent(this.createMouseEvent("mouseup", 0))
-      lastEl.dispatchEvent(this.createMouseEvent("click", 0))
+      lastEl.dispatchEvent(this.createMouseEvent("mouseup", lastEl, 0, 10, 10))
+      lastEl.dispatchEvent(this.createMouseEvent("click", lastEl, 0, 10, 10))
     }
   }
 }

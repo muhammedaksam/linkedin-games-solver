@@ -65,13 +65,45 @@ export abstract class BaseSolver {
   /**
    * Helper to create a MouseEvent.
    */
-  protected createMouseEvent(type: string, buttons = 1): MouseEvent {
-    return new MouseEvent(type, {
-      bubbles: true,
+  protected createMouseEvent(
+    type: string,
+    el?: HTMLElement | null,
+    buttons = 1,
+    offsetX = 10,
+    offsetY = 10
+  ): MouseEvent {
+    const isEnterLeave = type === "mouseenter" || type === "mouseleave"
+    const init: MouseEventInit = {
+      bubbles: !isEnterLeave,
       cancelable: true,
       view: window,
-      buttons
-    })
+      buttons,
+      button: 0,
+      which: buttons > 0 ? 1 : 0
+    }
+
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      const cx = rect.left + offsetX
+      const cy = rect.top + offsetY
+      init.clientX = cx
+      init.clientY = cy
+      init.screenX = cx
+      init.screenY = cy
+    }
+
+    const ev = new MouseEvent(type, init)
+    if (el) {
+      Object.defineProperty(ev, "offsetX", {
+        value: offsetX,
+        configurable: true
+      })
+      Object.defineProperty(ev, "offsetY", {
+        value: offsetY,
+        configurable: true
+      })
+    }
+    return ev
   }
 
   /**
