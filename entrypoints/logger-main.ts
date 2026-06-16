@@ -1110,6 +1110,14 @@ export default defineUnlistedScript(() => {
           ? wendPuzzle.words
           : undefined
 
+      let edition: number | undefined
+      if (typeof gameObj?.todaysGameEditionText === "string") {
+        const m = gameObj.todaysGameEditionText.match(/\d+/)
+        if (m) {
+          edition = parseInt(m[0], 10)
+        }
+      }
+
       return {
         game: "wend",
         gridCols,
@@ -1117,7 +1125,8 @@ export default defineUnlistedScript(() => {
         cells,
         wordLengths,
         solvedFlags,
-        solution
+        solution,
+        edition
       }
     }
 

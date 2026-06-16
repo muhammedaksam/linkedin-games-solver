@@ -1,6 +1,6 @@
 import { askAI } from "~games/ai"
 import { BaseSolver } from "~games/base"
-import { fetchReactBoardState } from "~games/react-bridge"
+import { fetchReactBoardState, type ReactWendBoard } from "~games/react-bridge"
 import { fetchRegistry, findWendAnswer, type WendPuzzle } from "~games/registry"
 
 interface WendCell {
@@ -34,9 +34,10 @@ export class WendSolver extends BaseSolver {
     let gridRows: number
     let wordLengths: number[]
     let solvedFlags: boolean[]
+    let boardState: ReactWendBoard | null = null
 
     try {
-      const boardState = await fetchReactBoardState("wend")
+      boardState = await fetchReactBoardState("wend")
       cells = boardState.cells
       gridCols = boardState.gridCols
       gridRows = boardState.gridRows
@@ -68,45 +69,36 @@ export class WendSolver extends BaseSolver {
       return
     }
 
-    // Try using daily registry pre-solved answers
-    let registry: Record<string, WendPuzzle> = {}
-    try {
-      registry = await fetchRegistry("wend")
-    } catch (err) {
-      console.warn("[Wend] Failed to load registry:", err)
+    // Get currently solved words from DOM
+    const solvedWords: string[] = []
+    let rowIdx = 0
+    while (true) {
+      const row = this.$(`[data-testid="wend-word-list-row-${rowIdx}"]`)
+      if (!row) break
+      if (row.getAttribute("data-locked") === "true") {
+        let word = ""
+        let slotIdx = 0
+        while (true) {
+          const slot = this.$(
+            `[data-testid="wend-word-list-slot-${rowIdx}-${slotIdx}"]`,
+            row
+          )
+          if (!slot) break
+          word += (slot.textContent || "").trim().toUpperCase()
+          slotIdx++
+        }
+        if (word) solvedWords.push(word)
+      }
+      rowIdx++
     }
 
     let solution: WendWordSolution[] | null = null
-    const matchedPuzzle = findWendAnswer(registry)
 
-    if (matchedPuzzle && Array.isArray(matchedPuzzle.words)) {
-      console.log("[Wend] Match found in registry:", matchedPuzzle.words)
+    // 1. Try extracting solution directly from React Fiber board state
+    if (boardState?.solution && Array.isArray(boardState.solution)) {
+      console.log("[Wend] Found solution in React Fiber state:", boardState.solution)
 
-      // Get currently solved words from DOM
-      const solvedWords: string[] = []
-      let rowIdx = 0
-      while (true) {
-        const row = this.$(`[data-testid="wend-word-list-row-${rowIdx}"]`)
-        if (!row) break
-        if (row.getAttribute("data-locked") === "true") {
-          let word = ""
-          let slotIdx = 0
-          while (true) {
-            const slot = this.$(
-              `[data-testid="wend-word-list-slot-${rowIdx}-${slotIdx}"]`,
-              row
-            )
-            if (!slot) break
-            word += (slot.textContent || "").trim().toUpperCase()
-            slotIdx++
-          }
-          if (word) solvedWords.push(word)
-        }
-        rowIdx++
-      }
-
-      // Filter registry words to find only unsolved ones
-      const unsolvedWords = [...matchedPuzzle.words]
+      const unsolvedWords = [...boardState.solution].map((w) => w.toUpperCase())
       for (const solved of solvedWords) {
         const idx = unsolvedWords.indexOf(solved)
         if (idx !== -1) {
@@ -114,17 +106,53 @@ export class WendSolver extends BaseSolver {
         }
       }
 
-      console.log("[Wend] Unsolved words to find paths for:", unsolvedWords)
+      console.log("[Wend] Unsolved words (from React Fiber) to find paths for:", unsolvedWords)
       solution = this.findPathsForWords(cells, unsolvedWords)
-
       if (solution) {
         console.log(
-          "[Wend] Found path solution for registry words using local DFS pathfinder."
+          "[Wend] Found path solution for React Fiber words using local DFS pathfinder."
         )
       } else {
         console.warn(
-          "[Wend] Local DFS pathfinder failed to map registry words to grid."
+          "[Wend] Local DFS pathfinder failed to map React Fiber words to grid."
         )
+      }
+    }
+
+    // 2. Try using daily registry pre-solved answers
+    if (!solution) {
+      let registry: Record<string, WendPuzzle> = {}
+      try {
+        registry = await fetchRegistry("wend")
+      } catch (err) {
+        console.warn("[Wend] Failed to load registry:", err)
+      }
+
+      const matchedPuzzle = findWendAnswer(registry, boardState?.edition)
+
+      if (matchedPuzzle && Array.isArray(matchedPuzzle.words)) {
+        console.log("[Wend] Match found in registry:", matchedPuzzle.words)
+
+        const unsolvedWords = [...matchedPuzzle.words].map((w) => w.toUpperCase())
+        for (const solved of solvedWords) {
+          const idx = unsolvedWords.indexOf(solved)
+          if (idx !== -1) {
+            unsolvedWords.splice(idx, 1)
+          }
+        }
+
+        console.log("[Wend] Unsolved words (from registry) to find paths for:", unsolvedWords)
+        solution = this.findPathsForWords(cells, unsolvedWords)
+
+        if (solution) {
+          console.log(
+            "[Wend] Found path solution for registry words using local DFS pathfinder."
+          )
+        } else {
+          console.warn(
+            "[Wend] Local DFS pathfinder failed to map registry words to grid."
+          )
+        }
       }
     }
 
@@ -201,21 +229,20 @@ export class WendSolver extends BaseSolver {
     let gridCols = 0
     let gridRows = 0
 
-    const colMatch = style.match(/--_125bc5f2:\s*(\d+)/)
-    const rowMatch = style.match(/--_61d78eb6:\s*(\d+)/)
-    if (colMatch) gridCols = parseInt(colMatch[1], 10)
-    if (rowMatch) gridRows = parseInt(rowMatch[1], 10)
-
-    // Fallback: compute from CSS custom properties via getComputedStyle
-    if (!gridCols || !gridRows) {
-      const cs = getComputedStyle(grid)
-      for (const prop of ["--_125bc5f2", "--_61d78eb6"]) {
-        const val = parseInt(cs.getPropertyValue(prop).trim(), 10)
-        if (val > 0) {
-          if (!gridCols) gridCols = val
-          else if (!gridRows) gridRows = val
-        }
-      }
+    // Extract grid dimensions from inline style CSS custom properties
+    // LinkedIn obfuscates these names, so we match any custom property with a small integer value
+    const dimensionMatches = style.matchAll(/--[\w-]+:\s*(\d+)/g)
+    const dims: number[] = []
+    for (const m of dimensionMatches) {
+      const val = parseInt(m[1], 10)
+      if (val > 0 && val < 20) dims.push(val)
+    }
+    if (dims.length >= 2) {
+      gridCols = dims[0]
+      gridRows = dims[1]
+    } else if (dims.length === 1) {
+      gridCols = dims[0]
+      gridRows = dims[0]
     }
 
     // Final fallback: infer from cell count
@@ -531,10 +558,44 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
 
     const cellEl = (idx: number) => this.$(`[data-cell-idx="${idx}"]`)
 
-    // mousedown on first cell
+    /**
+     * Create a MouseEvent targeting the cell element.
+     * Overrides offsetX and offsetY to satisfy target-relative drag distance thresholds.
+     */
+    const createMouseEvent = (
+      type: string,
+      el: HTMLElement,
+      buttons: number,
+      offsetX = 10,
+      offsetY = 10
+    ): MouseEvent => {
+      const rect = el.getBoundingClientRect()
+      const cx = rect.left + offsetX
+      const cy = rect.top + offsetY
+      const isEnterLeave = type === "mouseenter" || type === "mouseleave"
+      const ev = new MouseEvent(type, {
+        bubbles: !isEnterLeave,
+        cancelable: true,
+        view: window,
+        clientX: cx,
+        clientY: cy,
+        screenX: cx,
+        screenY: cy,
+        buttons,
+        button: 0,
+        which: buttons > 0 ? 1 : 0
+      })
+      Object.defineProperty(ev, "offsetX", { value: offsetX, configurable: true })
+      Object.defineProperty(ev, "offsetY", { value: offsetY, configurable: true })
+      return ev
+    }
+
+    // mousedown on first cell at offsetX=10, offsetY=10
     const firstEl = cellEl(path[0])
     if (firstEl) {
-      firstEl.dispatchEvent(this.createMouseEvent("mousedown", 1))
+      firstEl.dispatchEvent(createMouseEvent("mousedown", firstEl, 1, 10, 10))
+      // Move by 15px in X direction to exceed the 10px drag threshold check
+      firstEl.dispatchEvent(createMouseEvent("mousemove", firstEl, 1, 25, 10))
     }
     await this.sleep(60)
 
@@ -542,9 +603,9 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
     for (let i = 1; i < path.length; i++) {
       const el = cellEl(path[i])
       if (el) {
-        el.dispatchEvent(this.createMouseEvent("mousemove", 1))
-        el.dispatchEvent(this.createMouseEvent("mouseenter", 1))
-        el.dispatchEvent(this.createMouseEvent("mouseover", 1))
+        el.dispatchEvent(createMouseEvent("mouseover", el, 1, 10, 10))
+        el.dispatchEvent(createMouseEvent("mouseenter", el, 1, 10, 10))
+        el.dispatchEvent(createMouseEvent("mousemove", el, 1, 10, 10))
       }
       await this.sleep(50)
     }
@@ -552,8 +613,8 @@ Think step by step. You must solve the ENTIRE grid, finding all ${wordLengths.le
     // mouseup on last cell
     const lastEl = cellEl(path[path.length - 1])
     if (lastEl) {
-      lastEl.dispatchEvent(this.createMouseEvent("mouseup", 0))
-      lastEl.dispatchEvent(this.createMouseEvent("click", 0))
+      lastEl.dispatchEvent(createMouseEvent("mouseup", lastEl, 0, 10, 10))
+      lastEl.dispatchEvent(createMouseEvent("click", lastEl, 0, 10, 10))
     }
   }
 

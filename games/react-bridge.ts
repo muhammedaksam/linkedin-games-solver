@@ -83,6 +83,7 @@ export interface ReactWendBoard {
   wordLengths: number[]
   solvedFlags: boolean[]
   solution?: string[]
+  edition?: number
 }
 
 export async function fetchReactBoardState<

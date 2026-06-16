@@ -104,18 +104,27 @@ export function findPinpointAnswer(
 
 export function findWendAnswer(
   registry: Record<string, WendPuzzle>,
-  _boardWords?: string[]
+  edition?: number
 ): WendPuzzle | null {
   if (!registry || typeof registry !== "object") return null
 
-  // 1. Try matching by Puzzle Number
+  // 1. Try matching by extracted edition number
+  if (edition !== undefined) {
+    const editionStr = String(edition)
+    if (registry[editionStr]) {
+      console.log(`[Wend Registry] Match found by extracted edition number: #${edition}`)
+      return registry[editionStr]
+    }
+  }
+
+  // 2. Try matching by Puzzle Number
   const puzzleNum = String(getPuzzleNumber("wend"))
   if (registry[puzzleNum]) {
     console.log(`[Wend Registry] Match found by puzzle number: #${puzzleNum}`)
     return registry[puzzleNum]
   }
 
-  // 2. Try matching by date as a backward-compatible fallback
+  // 3. Try matching by date as a backward-compatible fallback
   const today = getLocalDateString()
   if (registry[today]) {
     console.log(`[Wend Registry] Match found by date: ${today}`)
