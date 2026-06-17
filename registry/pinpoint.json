@@ -1412,5 +1412,15 @@
   "776": {
     "category": "Names of chemical elements",
     "clues": ["Lead", "Iron", "Silicon", "Carbon", "Oxygen"]
+  },
+  "778": {
+    "category": "Foods named for cities",
+    "clues": [
+      "Gouda",
+      "Frankfurters",
+      "Peking Duck",
+      "Brussels sprouts",
+      "New York Cheesecake"
+    ]
   }
 }
