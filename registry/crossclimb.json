@@ -1810,5 +1810,17 @@
     "answers": ["RACK", "RANK", "BANK", "BANS", "CANS"],
     "topWord": "RACE",
     "bottomWord": "CARS"
+  },
+  "778": {
+    "clues": [
+      "Basic building block of life (all organisms have at least one)",
+      "What one might ring on someone's porch to get them to the door",
+      "Leather strip worn around the waist",
+      "Run away suddenly, or last name of retired sprinter Usain",
+      "Font style to draw attention"
+    ],
+    "answers": ["CELL", "BELL", "BELT", "BOLT", "BOLD"],
+    "topWord": "CALL",
+    "bottomWord": "FOLD"
   }
 }
