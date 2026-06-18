@@ -2,7 +2,11 @@ import path from "node:path"
 import { defineConfig } from "wxt"
 
 export default defineConfig({
-  modules: ["@wxt-dev/i18n/module", "@wxt-dev/module-react"],
+  modules: [
+    "@wxt-dev/i18n/module",
+    "@wxt-dev/module-react",
+    "@wxt-dev/analytics/module"
+  ],
   hooks: {
     "entrypoints:found": (wxt, entrypointInfos) => {
       entrypointInfos.push({
