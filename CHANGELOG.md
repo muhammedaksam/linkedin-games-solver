@@ -1,5 +1,58 @@
 # Changelog
 
+## v0.4.0
+
+[compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.3.0...v0.4.0)
+
+### 🚀 Enhancements
+
+- Add support for the Wend game and integrate it into the solver suite ([6aa49b5](https://github.com/muhammedaksam/linkedin-games-solver/commit/6aa49b5))
+- Add support for the Wend game and update existing registry and validation logic ([be479ff](https://github.com/muhammedaksam/linkedin-games-solver/commit/be479ff))
+- Add Wend game support with registry integration, inject main-world bridge, and refactor analytics configuration ([89cdda4](https://github.com/muhammedaksam/linkedin-games-solver/commit/89cdda4))
+
+### 🩹 Fixes
+
+- **wend:** Prevent JSON parsing crash when AI returns single word object ([6842b35](https://github.com/muhammedaksam/linkedin-games-solver/commit/6842b35))
+- **wend:** Request top-level JSON object to prevent AI from dropping array items ([fb68b08](https://github.com/muhammedaksam/linkedin-games-solver/commit/fb68b08))
+- **wend:** Delegate index-to-letter/adjacency paths search to programmatic backtracking solver ([98e8e30](https://github.com/muhammedaksam/linkedin-games-solver/commit/98e8e30))
+- **wend:** Remove duplicate findPathsForWords and reuse the pre-existing one ([208920d](https://github.com/muhammedaksam/linkedin-games-solver/commit/208920d))
+- **wend:** Address unknown type cast warning in parseAIResponse ([4ed6399](https://github.com/muhammedaksam/linkedin-games-solver/commit/4ed6399))
+- Add @wxt-dev/analytics/module to wxt config ([c7af420](https://github.com/muhammedaksam/linkedin-games-solver/commit/c7af420))
+
+### 💅 Refactors
+
+- Migrate legacy @plasmohq/messaging to @webext-core/messaging ([2ae5116](https://github.com/muhammedaksam/linkedin-games-solver/commit/2ae5116))
+- Format answers arrays in registry JSON files for better readability ([d60bc69](https://github.com/muhammedaksam/linkedin-games-solver/commit/d60bc69))
+- Improve code formatting and readability across game logic and messaging modules ([bc6b6c1](https://github.com/muhammedaksam/linkedin-games-solver/commit/bc6b6c1))
+- Enhance mouse event simulation with coordinate offsets and improve game interaction sequences ([afac80d](https://github.com/muhammedaksam/linkedin-games-solver/commit/afac80d))
+
+### 🏡 Chore
+
+- Update solver registry ([51f980e](https://github.com/muhammedaksam/linkedin-games-solver/commit/51f980e))
+- Update solver registry ([961043f](https://github.com/muhammedaksam/linkedin-games-solver/commit/961043f))
+- Update solver registry ([38ba05f](https://github.com/muhammedaksam/linkedin-games-solver/commit/38ba05f))
+- Update solver registry ([69e45d5](https://github.com/muhammedaksam/linkedin-games-solver/commit/69e45d5))
+- Update solver registry ([098e9e0](https://github.com/muhammedaksam/linkedin-games-solver/commit/098e9e0))
+- Update solver registry ([528643f](https://github.com/muhammedaksam/linkedin-games-solver/commit/528643f))
+- Update solver registry ([93654ab](https://github.com/muhammedaksam/linkedin-games-solver/commit/93654ab))
+- Update solver registry ([8a9d677](https://github.com/muhammedaksam/linkedin-games-solver/commit/8a9d677))
+- Update solver registry ([8de1380](https://github.com/muhammedaksam/linkedin-games-solver/commit/8de1380))
+- Update solver registry ([86f38d5](https://github.com/muhammedaksam/linkedin-games-solver/commit/86f38d5))
+- Update solver registry ([4e15ffa](https://github.com/muhammedaksam/linkedin-games-solver/commit/4e15ffa))
+- Update solver registry ([4748aeb](https://github.com/muhammedaksam/linkedin-games-solver/commit/4748aeb))
+- Update solver registry ([1f775bd](https://github.com/muhammedaksam/linkedin-games-solver/commit/1f775bd))
+- Update solver registry ([6ae1c37](https://github.com/muhammedaksam/linkedin-games-solver/commit/6ae1c37))
+- Update solver registry ([f694890](https://github.com/muhammedaksam/linkedin-games-solver/commit/f694890))
+- Update application icons and localized store assets ([5673d42](https://github.com/muhammedaksam/linkedin-games-solver/commit/5673d42))
+- Refactor description formatting in all locales and update game registry/logic ([1167427](https://github.com/muhammedaksam/linkedin-games-solver/commit/1167427))
+- Update solver registry ([e1c18e6](https://github.com/muhammedaksam/linkedin-games-solver/commit/e1c18e6))
+- Update solver registry ([26049b0](https://github.com/muhammedaksam/linkedin-games-solver/commit/26049b0))
+- Update solver registry ([07482a3](https://github.com/muhammedaksam/linkedin-games-solver/commit/07482a3))
+
+### ❤️ Contributors
+
+- Muhammed Mustafa AKSAM ([@muhammedaksam](https://github.com/muhammedaksam))
+
 ## v0.3.0
 
 [compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.2.0...v0.3.0)
