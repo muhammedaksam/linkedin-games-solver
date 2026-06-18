@@ -1822,5 +1822,17 @@
     "answers": ["CELL", "BELL", "BELT", "BOLT", "BOLD"],
     "topWord": "CALL",
     "bottomWord": "FOLD"
+  },
+  "779": {
+    "clues": [
+      "Shelter set up when camping",
+      "Column to the left of the “ones”, in whole numbers",
+      "Metal containers for food named for a chemical element",
+      "Prong on a fork",
+      "What a whistler might whistle"
+    ],
+    "answers": ["TENT", "TENS", "TINS", "TINE", "TUNE"],
+    "topWord": "TEST",
+    "bottomWord": "TUBE"
   }
 }
