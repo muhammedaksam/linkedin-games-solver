@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.0
+
+[compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.4.0...v0.5.0)
+
 ## v0.4.0
 
 [compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.3.0...v0.4.0)
