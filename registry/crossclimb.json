@@ -1834,5 +1834,17 @@
     "answers": ["TENT", "TENS", "TINS", "TINE", "TUNE"],
     "topWord": "TEST",
     "bottomWord": "TUBE"
+  },
+  "780": {
+    "clues": [
+      "Embraces in one’s arms",
+      "Dogs with wrinkly, flat faces",
+      "“___ in Boots” (fairy tale with an anthropomorphic cat)",
+      "Do well enough to clear an examination in school",
+      "Future’s opposite"
+    ],
+    "answers": ["HUGS", "PUGS", "PUSS", "PASS", "PAST"],
+    "topWord": "HUGE",
+    "bottomWord": "VAST"
   }
 }
