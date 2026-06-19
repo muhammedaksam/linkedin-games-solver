@@ -240,18 +240,25 @@ export class QueensSolver extends BaseSolver {
     "bbeafac7" // lilac (Eflatun)
   ])
 
-  private getRegionKey(cellEl: HTMLElement | null): string {
+  public getRegionKey(cellEl: HTMLElement | null): string {
     if (!cellEl) return "UNKNOWN"
 
     // Strategy 1: Try the aria-label.
-    // English format: "Light blue color empty cell, row 1, column 5"
+    // English new format: "Empty cell of color Lavender, row 1, column 1" or "Queen cell of color Peach Orange..."
+    // English old format: "Light blue color empty cell, row 1, column 5"
     // Turkish format: "Açık mavi renkte boş hücre, 1. satır, 5. sütun"
     // Other locales may vary, but the color name always comes before the first comma.
     const label = (cellEl.getAttribute("aria-label") || "").trim()
     if (label) {
-      // English: match "COLOR color ..." before comma
+      // 1. English (new format): match "of color COLOR" before comma
+      const ofColorMatch = label.match(/of color\s+([^,]+)/i)
+      if (ofColorMatch?.[1]) return ofColorMatch[1].trim().toLowerCase()
+
+      // 2. English (old format): match "COLOR color ..." before comma
       const enMatch = label.match(/^(.+?)\s+color\s+/i)
-      if (enMatch?.[1]) return enMatch[1].trim().toLowerCase()
+      if (enMatch?.[1] && !enMatch[1].toLowerCase().endsWith("of")) {
+        return enMatch[1].trim().toLowerCase()
+      }
 
       // Localized: match "COLOR renkte/renk/colored/..." — take everything
       // before the first comma as the color description, then strip the cell-state
@@ -261,7 +268,7 @@ export class QueensSolver extends BaseSolver {
         // Remove common cell-state descriptors in known locales
         const cleaned = beforeComma
           .replace(
-            /\b(renkte|renk|color|empty|boş|hücre|cell|queen|vacía|vacío|vide|leer|空|vazia|vazio)\b/gi,
+            /(?<=^|[\s,.-])(renkte|renk|color|empty|boş|hücre|cell|queen|vacía|vacío|vide|leer|空|vazia|vazio)(?=$|[\s,.-])/gi,
             ""
           )
           .replace(/\s{2,}/g, " ")

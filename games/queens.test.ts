@@ -94,4 +94,31 @@ describe("Queens Solver Engine", () => {
     const solution = solver.solveQueens(N, regionOf, givenQueens)
     expect(solution).toBeNull()
   })
+
+  describe("getRegionKey", () => {
+    const mockCell = (ariaLabel: string, className = "") => ({
+      getAttribute: (name: string) => (name === "aria-label" ? ariaLabel : null),
+      className
+    } as unknown as HTMLElement)
+
+    it("should correctly identify color from English aria-labels (both formats)", () => {
+      const solver = new QueensSolver()
+
+      const cellOldEn = mockCell("Light blue color empty cell, row 1, column 5")
+      expect(solver.getRegionKey(cellOldEn)).toBe("light blue")
+
+      const cellNewEn = mockCell("Empty cell of color Lavender, row 1, column 1")
+      expect(solver.getRegionKey(cellNewEn)).toBe("lavender")
+
+      const cellNewEnQueen = mockCell("Queen cell of color Peach Orange, row 1, column 4")
+      expect(solver.getRegionKey(cellNewEnQueen)).toBe("peach orange")
+    })
+
+    it("should correctly identify color from Turkish/localized aria-labels", () => {
+      const solver = new QueensSolver()
+
+      const cellTr = mockCell("Açık mavi renkte boş hücre, 1. satır, 5. sütun")
+      expect(solver.getRegionKey(cellTr)).toBe("açık mavi")
+    })
+  })
 })
