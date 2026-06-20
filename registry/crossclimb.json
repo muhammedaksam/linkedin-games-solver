@@ -1846,5 +1846,17 @@
     "answers": ["HUGS", "PUGS", "PUSS", "PASS", "PAST"],
     "topWord": "HUGE",
     "bottomWord": "VAST"
+  },
+  "781": {
+    "clues": [
+      "Element of a project that must be completed",
+      "Affix to the wall with a small pin",
+      "Complete absence, as of a quality",
+      "Small taste of an ice cream cone",
+      "Choose among options"
+    ],
+    "answers": ["TASK", "TACK", "LACK", "LICK", "PICK"],
+    "topWord": "MASK",
+    "bottomWord": "PUCK"
   }
 }
