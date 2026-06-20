@@ -1436,5 +1436,15 @@
   "780": {
     "category": "Words that come before “spot”",
     "clues": ["Bright", "Blind", "Sweet", "Hits the", "X marks the"]
+  },
+  "781": {
+    "category": "Things people can climb",
+    "clues": [
+      "Stairs",
+      "Trees",
+      "Mountains",
+      "The career ladder",
+      "Indoor rock walls"
+    ]
   }
 }
