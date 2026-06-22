@@ -1858,5 +1858,17 @@
     "answers": ["TASK", "TACK", "LACK", "LICK", "PICK"],
     "topWord": "MASK",
     "bottomWord": "PUCK"
+  },
+  "783": {
+    "clues": [
+      "Highest point of a mountain",
+      "Bonus earned at a job like a gym membership or free meal",
+      "Meat from a pig",
+      "Tiny skin opening",
+      "Part of an apple that is left over after eating"
+    ],
+    "answers": ["PEAK", "PERK", "PORK", "PORE", "CORE"],
+    "topWord": "PEAS",
+    "bottomWord": "CORN"
   }
 }
