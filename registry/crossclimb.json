@@ -1870,5 +1870,17 @@
     "answers": ["PEAK", "PERK", "PORK", "PORE", "CORE"],
     "topWord": "PEAS",
     "bottomWord": "CORN"
+  },
+  "784": {
+    "clues": [
+      "Put dirt into, as a hole",
+      "Dropped from a height",
+      "Have as a sensation",
+      "Costs that might be hidden",
+      "Perceives through the eyes"
+    ],
+    "answers": ["FILL", "FELL", "FEEL", "FEES", "SEES"],
+    "topWord": "FILM",
+    "bottomWord": "SETS"
   }
 }
