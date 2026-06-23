@@ -15,6 +15,7 @@ export class SudokuSolver extends BaseSolver {
     const url = new URL(window.location.href)
     return (
       url.pathname.includes("/sudoku") ||
+      url.pathname.includes("/mini-sudoku") ||
       (this.$$("[data-cell-idx]").length > 0 &&
         (!!this.$(".sudoku-cell") ||
           this.$$("[data-cell-idx]").some((cell) =>

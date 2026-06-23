@@ -96,10 +96,12 @@ describe("Queens Solver Engine", () => {
   })
 
   describe("getRegionKey", () => {
-    const mockCell = (ariaLabel: string, className = "") => ({
-      getAttribute: (name: string) => (name === "aria-label" ? ariaLabel : null),
-      className
-    } as unknown as HTMLElement)
+    const mockCell = (ariaLabel: string, className = "") =>
+      ({
+        getAttribute: (name: string) =>
+          name === "aria-label" ? ariaLabel : null,
+        className
+      }) as unknown as HTMLElement
 
     it("should correctly identify color from English aria-labels (both formats)", () => {
       const solver = new QueensSolver()
@@ -107,10 +109,14 @@ describe("Queens Solver Engine", () => {
       const cellOldEn = mockCell("Light blue color empty cell, row 1, column 5")
       expect(solver.getRegionKey(cellOldEn)).toBe("light blue")
 
-      const cellNewEn = mockCell("Empty cell of color Lavender, row 1, column 1")
+      const cellNewEn = mockCell(
+        "Empty cell of color Lavender, row 1, column 1"
+      )
       expect(solver.getRegionKey(cellNewEn)).toBe("lavender")
 
-      const cellNewEnQueen = mockCell("Queen cell of color Peach Orange, row 1, column 4")
+      const cellNewEnQueen = mockCell(
+        "Queen cell of color Peach Orange, row 1, column 4"
+      )
       expect(solver.getRegionKey(cellNewEnQueen)).toBe("peach orange")
     })
 
