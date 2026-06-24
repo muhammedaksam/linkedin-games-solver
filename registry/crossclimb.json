@@ -1882,5 +1882,17 @@
     "answers": ["FILL", "FELL", "FEEL", "FEES", "SEES"],
     "topWord": "FILM",
     "bottomWord": "SETS"
+  },
+  "785": {
+    "clues": [
+      "Body part that goes into a shoe",
+      "Black residue in a fireplace",
+      "Put in order from smallest to largest",
+      "Like muscles after a workout",
+      "How to address a king"
+    ],
+    "answers": ["FOOT", "SOOT", "SORT", "SORE", "SIRE"],
+    "topWord": "FONT",
+    "bottomWord": "SIZE"
   }
 }
