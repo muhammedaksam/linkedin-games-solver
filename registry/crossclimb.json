@@ -1894,5 +1894,17 @@
     "answers": ["FOOT", "SOOT", "SORT", "SORE", "SIRE"],
     "topWord": "FONT",
     "bottomWord": "SIZE"
+  },
+  "786": {
+    "clues": [
+      "Bearded farm animal",
+      "Serving vessel for sauce or gravy shaped like a watercraft",
+      "Play, as a drum",
+      "Red edible root, or sugar source",
+      "Sound from a microwave after cooking is complete"
+    ],
+    "answers": ["GOAT", "BOAT", "BEAT", "BEET", "BEEP"],
+    "topWord": "GOAL",
+    "bottomWord": "KEEP"
   }
 }
