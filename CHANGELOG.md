@@ -1,5 +1,54 @@
 # Changelog
 
+## v0.6.0
+
+[compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.5.0...v0.6.0)
+
+### 🚀 Enhancements
+
+- Update getRegionKey to support new aria-label formats and improve regex matching logic ([1a2e32e](https://github.com/muhammedaksam/linkedin-games-solver/commit/1a2e32e))
+- Add support for mini-sudoku and improve formatting in queens test suite ([b122c7f](https://github.com/muhammedaksam/linkedin-games-solver/commit/b122c7f))
+
+### 🩹 Fixes
+
+- Add time-based delay to Sudoku game-ended state detection ([b7839bf](https://github.com/muhammedaksam/linkedin-games-solver/commit/b7839bf))
+
+### 💅 Refactors
+
+- Migrate solveHistory storage from sync to local and implement automatic migration logic ([5eec058](https://github.com/muhammedaksam/linkedin-games-solver/commit/5eec058))
+- Format codebase for consistent indentation and improved readability ([8ea52f4](https://github.com/muhammedaksam/linkedin-games-solver/commit/8ea52f4))
+
+### 🏡 Chore
+
+- Update solver registry ([8927454](https://github.com/muhammedaksam/linkedin-games-solver/commit/8927454))
+- Update solver registry ([073045a](https://github.com/muhammedaksam/linkedin-games-solver/commit/073045a))
+- Update solver registry ([c24b6d5](https://github.com/muhammedaksam/linkedin-games-solver/commit/c24b6d5))
+- Update solver registry ([6f9abba](https://github.com/muhammedaksam/linkedin-games-solver/commit/6f9abba))
+- Update solver registry ([f185657](https://github.com/muhammedaksam/linkedin-games-solver/commit/f185657))
+- Update solver registry ([44f4c03](https://github.com/muhammedaksam/linkedin-games-solver/commit/44f4c03))
+- Update solver registry ([bb0db67](https://github.com/muhammedaksam/linkedin-games-solver/commit/bb0db67))
+- Update solver registry ([1d52cfb](https://github.com/muhammedaksam/linkedin-games-solver/commit/1d52cfb))
+- Update solver registry ([a1208ab](https://github.com/muhammedaksam/linkedin-games-solver/commit/a1208ab))
+- Update solver registry ([b8c0356](https://github.com/muhammedaksam/linkedin-games-solver/commit/b8c0356))
+- Update solver registry ([6fef018](https://github.com/muhammedaksam/linkedin-games-solver/commit/6fef018))
+- Update solver registry ([9bd076b](https://github.com/muhammedaksam/linkedin-games-solver/commit/9bd076b))
+- Update solver registry ([7ae70f1](https://github.com/muhammedaksam/linkedin-games-solver/commit/7ae70f1))
+- Update solver registry ([bc432c5](https://github.com/muhammedaksam/linkedin-games-solver/commit/bc432c5))
+- Update solver registry ([f0d45dc](https://github.com/muhammedaksam/linkedin-games-solver/commit/f0d45dc))
+- Update solver registry ([5e47822](https://github.com/muhammedaksam/linkedin-games-solver/commit/5e47822))
+- Update solver registry ([eae54e7](https://github.com/muhammedaksam/linkedin-games-solver/commit/eae54e7))
+- Update solver registry ([b9968ef](https://github.com/muhammedaksam/linkedin-games-solver/commit/b9968ef))
+- Update solver registry ([204eaf9](https://github.com/muhammedaksam/linkedin-games-solver/commit/204eaf9))
+- Update solver registry ([e4afc0a](https://github.com/muhammedaksam/linkedin-games-solver/commit/e4afc0a))
+- Update solver registry ([c0bc56e](https://github.com/muhammedaksam/linkedin-games-solver/commit/c0bc56e))
+- Update solver registry ([e8ca793](https://github.com/muhammedaksam/linkedin-games-solver/commit/e8ca793))
+- Update solver registry ([aa9c7de](https://github.com/muhammedaksam/linkedin-games-solver/commit/aa9c7de))
+- Update solver registry ([a0c9be4](https://github.com/muhammedaksam/linkedin-games-solver/commit/a0c9be4))
+
+### ❤️ Contributors
+
+- Muhammed Mustafa AKSAM ([@muhammedaksam](https://github.com/muhammedaksam))
+
 ## v0.5.0
 
 [compare changes](https://github.com/muhammedaksam/linkedin-games-solver/compare/v0.4.0...v0.5.0)
