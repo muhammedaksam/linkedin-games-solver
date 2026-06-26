@@ -2,7 +2,7 @@ import { askAI } from "~games/ai"
 import { analytics } from "~lib/analytics"
 import { getMessage, initLocale } from "~lib/i18n"
 import { onMessage } from "~lib/messaging"
-import { syncStorage } from "~lib/storage"
+import { localStorage, syncStorage } from "~lib/storage"
 
 const i18n = {
   t: getMessage
@@ -12,6 +12,31 @@ interface SolveRecord {
   solved: boolean
   time: number
   solvedAt?: string
+}
+
+async function migrateSolveHistoryToLocal() {
+  try {
+    const syncHistory = await syncStorage.get<Record<string, Record<string, SolveRecord>>>("solveHistory")
+    if (syncHistory) {
+      const localHistory = await localStorage.get<Record<string, Record<string, SolveRecord>>>("solveHistory") || {}
+      
+      const mergedHistory = { ...syncHistory, ...localHistory }
+      for (const dateKey of Object.keys(syncHistory)) {
+        if (localHistory[dateKey]) {
+          mergedHistory[dateKey] = {
+            ...syncHistory[dateKey],
+            ...localHistory[dateKey]
+          }
+        }
+      }
+      
+      await localStorage.set("solveHistory", mergedHistory)
+      await syncStorage.remove("solveHistory")
+      console.log("[Storage Migration] Successfully migrated and merged solveHistory from sync to local storage.")
+    }
+  } catch (err) {
+    console.error("[Storage Migration] Failed to migrate solveHistory:", err)
+  }
 }
 
 console.log("[LinkedIn Games Solver] Background service worker initialized.")
@@ -144,7 +169,7 @@ async function updateContextMenusForTab(tabId: number, urlStr?: string) {
     }
 
     const history =
-      (await syncStorage.get<Record<string, Record<string, SolveRecord>>>(
+      (await localStorage.get<Record<string, Record<string, SolveRecord>>>(
         "solveHistory"
       )) || {}
 
@@ -317,7 +342,7 @@ export const updateActionBadge = async (
 const initBadge = async () => {
   try {
     const history =
-      (await syncStorage.get<Record<string, Record<string, SolveRecord>>>(
+      (await localStorage.get<Record<string, Record<string, SolveRecord>>>(
         "solveHistory"
       )) || {}
     const streak = calculateStreak(history)
@@ -333,7 +358,7 @@ const checkAndNotifyStreak = async () => {
     if (!enabled) return
 
     const history =
-      (await syncStorage.get<Record<string, Record<string, SolveRecord>>>(
+      (await localStorage.get<Record<string, Record<string, SolveRecord>>>(
         "solveHistory"
       )) || {}
 
@@ -412,6 +437,7 @@ const GAME_URL_MAP: Record<string, string> = {
 
 export default defineBackground({
   async main() {
+    await migrateSolveHistoryToLocal()
     await initLocale()
     // Allow content scripts to access chrome.storage.session
     if (
@@ -499,11 +525,13 @@ export default defineBackground({
             })
             .catch(console.error)
         }
-        if (changes.streakRemindersEnabled || changes.streakReminderTime) {
+        if (changes["sync:streakRemindersEnabled"] || changes["sync:streakReminderTime"]) {
           setupStreakAlarm().catch(console.error)
         }
-        if (changes.solveHistory) {
-          const newHistory = changes.solveHistory.newValue || {}
+      }
+      if (areaName === "local") {
+        if (changes["local:solveHistory"]) {
+          const newHistory = changes["local:solveHistory"].newValue || {}
           const streak = calculateStreak(newHistory)
           updateActionBadge(streak).catch(console.error)
 

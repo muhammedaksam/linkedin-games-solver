@@ -149,7 +149,7 @@ export default function Dashboard() {
   const [history] = useStorage<Record<string, Record<string, SolveRecord>>>(
     {
       key: "solveHistory",
-      instance: syncStorage
+      instance: localStorage
     },
     {}
   )

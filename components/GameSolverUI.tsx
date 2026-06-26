@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 
 import { detectActiveSolver } from "~games"
 import { getMessage } from "~lib/i18n"
-import { syncStorage as storage, useStorage } from "~lib/storage"
+import { localStorage, syncStorage as storage, useStorage } from "~lib/storage"
 import { getLocalDateString, type SolveHistory } from "~lib/utils"
 
 import {
@@ -91,7 +91,7 @@ export function GameSolverUI() {
   const [solveHistory] = useStorage<SolveHistory>(
     {
       key: "solveHistory",
-      instance: storage
+      instance: localStorage
     },
     {}
   )

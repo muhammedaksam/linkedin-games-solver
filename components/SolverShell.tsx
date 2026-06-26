@@ -127,7 +127,7 @@ export function SolverShell({
   const [solveHistory, setSolveHistory] = useStorage<SolveHistory>(
     {
       key: "solveHistory",
-      instance: syncStorage
+      instance: localStorage
     },
     {}
   )

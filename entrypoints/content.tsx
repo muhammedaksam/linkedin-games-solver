@@ -4,7 +4,7 @@ import { detectActiveSolver } from "~games"
 import { analytics } from "~lib/analytics"
 import { initLocale } from "~lib/i18n"
 import { sendMessage } from "~lib/messaging"
-import { syncStorage as storage } from "~lib/storage"
+import { localStorage as storage } from "~lib/storage"
 import {
   getLocalDateString,
   getPuzzleNumber,
