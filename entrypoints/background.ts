@@ -16,10 +16,16 @@ interface SolveRecord {
 
 async function migrateSolveHistoryToLocal() {
   try {
-    const syncHistory = await syncStorage.get<Record<string, Record<string, SolveRecord>>>("solveHistory")
+    const syncHistory =
+      await syncStorage.get<Record<string, Record<string, SolveRecord>>>(
+        "solveHistory"
+      )
     if (syncHistory) {
-      const localHistory = await localStorage.get<Record<string, Record<string, SolveRecord>>>("solveHistory") || {}
-      
+      const localHistory =
+        (await localStorage.get<Record<string, Record<string, SolveRecord>>>(
+          "solveHistory"
+        )) || {}
+
       const mergedHistory = { ...syncHistory, ...localHistory }
       for (const dateKey of Object.keys(syncHistory)) {
         if (localHistory[dateKey]) {
@@ -29,10 +35,12 @@ async function migrateSolveHistoryToLocal() {
           }
         }
       }
-      
+
       await localStorage.set("solveHistory", mergedHistory)
       await syncStorage.remove("solveHistory")
-      console.log("[Storage Migration] Successfully migrated and merged solveHistory from sync to local storage.")
+      console.log(
+        "[Storage Migration] Successfully migrated and merged solveHistory from sync to local storage."
+      )
     }
   } catch (err) {
     console.error("[Storage Migration] Failed to migrate solveHistory:", err)
@@ -525,7 +533,10 @@ export default defineBackground({
             })
             .catch(console.error)
         }
-        if (changes["sync:streakRemindersEnabled"] || changes["sync:streakReminderTime"]) {
+        if (
+          changes["sync:streakRemindersEnabled"] ||
+          changes["sync:streakReminderTime"]
+        ) {
           setupStreakAlarm().catch(console.error)
         }
       }

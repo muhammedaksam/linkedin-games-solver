@@ -386,8 +386,9 @@ async function checkVisitedGameSolved() {
   const isSudokuEnded =
     (!!document.querySelector(".games-share-footer") ||
       !!document.querySelector(".grid-board--disabled") ||
-      document.querySelectorAll(".sudoku-input-buttons__numbers button[disabled]")
-        .length === 6) &&
+      document.querySelectorAll(
+        ".sudoku-input-buttons__numbers button[disabled]"
+      ).length === 6) &&
     Date.now() - lastUrlChangeTime > 15000
 
   const isGameEnded =
