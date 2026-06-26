@@ -376,16 +376,19 @@ async function checkVisitedGameSolved() {
         (sudokuNotes.classList.contains("sudoku-under-board__cta--disabled") ||
           sudokuNotes.getAttribute("aria-disabled") === "true")
       ) {
-        controlsEnded = true
+        if (Date.now() - lastUrlChangeTime > 15000) {
+          controlsEnded = true
+        }
       }
     }
   }
 
   const isSudokuEnded =
-    !!document.querySelector(".games-share-footer") ||
-    !!document.querySelector(".grid-board--disabled") ||
-    document.querySelectorAll(".sudoku-input-buttons__numbers button[disabled]")
-      .length === 6
+    (!!document.querySelector(".games-share-footer") ||
+      !!document.querySelector(".grid-board--disabled") ||
+      document.querySelectorAll(".sudoku-input-buttons__numbers button[disabled]")
+        .length === 6) &&
+    Date.now() - lastUrlChangeTime > 15000
 
   const isGameEnded =
     isResultsUrl ||
