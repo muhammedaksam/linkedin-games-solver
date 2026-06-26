@@ -1906,5 +1906,17 @@
     "answers": ["GOAT", "BOAT", "BEAT", "BEET", "BEEP"],
     "topWord": "GOAL",
     "bottomWord": "KEEP"
+  },
+  "787": {
+    "clues": [
+      "Like fish that you have to be careful eating",
+      "Connection between two things that may be “common” or “covalent”",
+      "Like some farewells",
+      "Cross a river in a shallow place, or automobile company that produces the Mustang",
+      "Microsoft application for preparing text documents"
+    ],
+    "answers": ["BONY", "BOND", "FOND", "FORD", "WORD"],
+    "topWord": "BODY",
+    "bottomWord": "WORK"
   }
 }
